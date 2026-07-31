@@ -35,13 +35,13 @@ You are never obliged to take everything on offer. Take whichever legal captures
 
 Building. Add a card from your hand to one or more table cards, push them into a pile, and announce what the pile is now worth: "building eight." You must keep a card in hand capable of capturing that number, and you may not build using only cards already on the table.
 
-A single build is one combination adding to the announced number, such as a 3 and a 5 built to eight. Any player holding the right card may capture it, and any player may raise it by adding a card from hand — laying an ace on a build of eight and announcing nine takes it over, so long as they hold a nine.
+A single build is one combination adding to the announced number, such as a 3 and a 5 built to eight. Any player holding the right card may capture it, and a single build may be raised by adding one card from hand — laying an ace on a build of eight and announcing nine takes it over, so long as whoever announces nine holds a nine. Raising an opponent's build is legal everywhere. Raising your own is permitted by some rule sets and barred by others, so settle which you are playing before the first deal.
 
 A multiple build is two or more separate groups worth the same number stacked together, for example an 8 from hand laid on a 5-and-3 build, still worth eight. Once a build is multiple its value is fixed; nobody may raise it, and only a card of that number takes it. Court cards can never go into a build.
 
 While you own a build on the table you may not trail. On each of your turns you must capture, add to a build, or start another build, and if you can do none of those, you must capture your own build.
 
-Trailing. When you cannot capture or build, or simply prefer not to, lay a card face up on the table by itself. It becomes a loose card that anyone may take.
+Trailing. When you cannot capture or build, or simply prefer not to, lay a card face up on the table by itself. It becomes a loose card that anyone may take. Trailing is legal even when a capture was there for the taking; the build rule above is the only thing that ever forces your hand.
 
 Sweeps. A capture that clears the table completely is a sweep. Turn one card in your capture pile face up to record it. The player after a sweep faces an empty table and can only trail.
 
@@ -62,7 +62,7 @@ At the end of each round, sort your captured cards and score:
 
 That is 11 fixed points a round, plus however many sweeps were made.
 
-If two players pass the target in the same round, settle it by counting in the traditional fixed order — most cards, most spades, big casino, little casino, then the aces of spades, clubs, hearts and diamonds — and the first to reach the target wins. Sweeps are earned during play rather than at the count, so they sit on the score before that sequence begins.
+If two players pass the target in the same round, settle it by counting in the traditional fixed order — most cards, most spades, big casino, little casino, then the aces of spades, clubs, hearts and diamonds — and the first to reach the target wins. Sweeps are earned during play rather than at the count, so they sit on the score before that sequence begins. If the two are still exactly level once every item has been awarded, play a further round to settle it.
 
 ## Variants
 
@@ -70,7 +70,7 @@ If two players pass the target in the same round, settle it by counting in the t
 
 **Spade Casino** — The spade suit carries the scoring instead of a single point for holding most of it. Each spade you capture is worth a point on its own, the jack of spades scores an extra one, and the rest of the values are unchanged. Game is 61 and is normally pegged on a cribbage board as the points come in, since the totals move so much faster.
 
-**Draw Casino** — The undealt cards stay as a face-down stock and you draw one after every play to keep your hand at four, so there are no separate deals and no announced last round. Cards simply run out when the stock does. It removes most of the counting advantage of the standard game, since you cannot track how many rounds remain.
+**Draw Casino** — The undealt cards stay as a face-down stock and you draw one after every play to keep your hand at four, so there are no separate deals and no announced last round. Once the stock is empty the hands in play are simply played out with no further draws, and as in the standard game whoever made the last capture takes any cards still lying on the table, without it counting as a sweep. It removes most of the counting advantage of the standard game, since you cannot track how many rounds remain.
 
 **Partnership Casino** — The standard four-handed form: two teams of two, partners facing each other across the table, captures thrown into one shared pile and scored as a unit. A build made by one partner may be captured by the other, so builds become a way of passing information and setting your partner up rather than a private plan.
 

@@ -21,7 +21,7 @@ Aces work high or low but never both in the same run: A-2-3 and Q-K-A are legal,
 
 ## Play
 
-Melds are the usual two shapes: a set of three or four cards of the same rank, or a run of three or more cards of one suit in sequence. Unlike most rummies, melds are laid face up in front of you and stay yours, because at the end of the hand you are paid for the cards sitting on the table in front of you.
+Melds come in the usual two shapes: a set of three or four matching ranks, or a run of at least three cards that follow one another within a single suit. Unlike most rummies, melds are laid face up in front of you and stay yours, because at the end of the hand you are paid for the cards sitting on the table in front of you.
 
 A turn is draw, then meld or lay off, then discard.
 
@@ -31,17 +31,17 @@ That obligation is what makes the pile dangerous. A convenient discard early on 
 
 Taking only the top card of the discard pile is the ordinary exception: you may take it without having to use it, exactly as in basic Rummy. Some groups apply the melding obligation to the top card as well, so settle it before you deal.
 
-After drawing you may lay down as many melds as you like, and you may lay off cards onto any meld on the table, including melds belonging to your opponents. A card laid off is placed physically with the meld it extends, but it counts for you when scores are worked out, so feeding an opponent's run is a perfectly good way to bank points. Nothing has to be melded; a card kept in hand is only a liability at the end of the hand.
+After drawing you may lay down as many melds as you like, and you may lay off cards onto any meld on the table, including melds belonging to your opponents. A card laid off onto somebody else's meld counts for you, not for them, so feeding an opponent's run is a perfectly good way to bank points; keep it in front of you rather than pushing it into their spread, because at scoring time you need to see whose card it is. Nothing has to be melded; a card kept in hand is only a liability at the end of the hand.
 
 Finish by discarding one card face up, adding it to the fan.
 
 The hand ends the moment one player has no cards left, whether their last card went down in a meld, was laid off, or was discarded. Everyone else is caught with whatever is still in hand.
 
-A hand can also end without anyone going out. If the stock is empty and the player whose turn it is either cannot use the discard pile or chooses not to, the hand stops there and is scored as it stands. The discard pile is not turned over to make a new stock.
+A hand can also end without anyone going out. Once the stock is empty the discard pile is not turned over to make a new one, so from that point the pile is the only source of cards. A player who takes from it plays an otherwise normal turn, melding or laying off and then discarding, and the hand goes on; the usual conditions still apply, so a buried card must still be used at once. The moment the turn reaches a player who cannot take anything useful, or who simply declines to take, the hand stops there and is scored where it stands.
 
 ## Goal & scoring
 
-Score each hand separately, then keep a running total. The first player to reach 500 points wins. If two or more cross 500 in the same hand, the highest total takes it.
+Score each hand separately, then keep a running total. The first player to reach 500 points wins. If two or more cross 500 in the same hand, the highest total takes it, and if those totals are equal the tied players play further hands until one of them is ahead on their own.
 
 At the end of a hand, each player adds up the value of every card they have on the table, counting melds they laid down and cards they laid off onto anybody's meld, then subtracts the value of every card still in their hand. Aces are 15, or 1 when melded low against a 2; face cards are 10; everything else is its number.
 
@@ -57,7 +57,7 @@ Going out is worth having but carries no bonus in the standard game. Its value i
 
 **Wild jokers** — Add one or two jokers as wild cards that can stand for any card in a meld. Fix their value before you start, usually 15 or 20 points, counting for you on the table and against you in hand. A common companion rule lets a player who holds the natural card a joker is standing in for swap it into the meld and take the joker.
 
-**Michigan Rum** — Played with 52 cards plus four jokers. The jokers are not wild here: they form a rank of their own and can only be melded as a group of three or four jokers together, never inside a run and never as a substitute. Each one is worth 20 points, which makes a set of jokers a large swing and being caught holding one expensive.
+**Lay-offs on your own melds only** — A common tightening of the standard game: you may only extend melds you laid down yourself, so an opponent's run is no longer a place to park spare cards. It removes the tactic of scoring off other people's spreads, makes a long run in front of you much safer to own, and pushes players to lay down their own three-card melds earlier so that they have somewhere to build.
 
 **Persian Rummy** — A four-player partnership relative using 52 cards and four jokers, with partners sitting opposite and their scores combined. Aces rank high only, so A-2-3 is not a run. Jokers count 20 apiece and are treated as their own rank rather than as wild cards. The game runs to 500 like the parent game, but partnership play changes the calculation on laying off, since helping your partner's meld helps your own side.
 

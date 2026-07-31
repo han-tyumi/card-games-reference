@@ -5,17 +5,17 @@
 **Also known as:** Oh Pshaw, Blackout, Nomination Whist, Contract Whist, Up and Down the River, Elevator, Bust  
 **Players:** 3-7 players (best with 5)  
 **Deck:** 1 standard deck (52 cards)  
-**Time:** 30-60 minutes  
+**Time:** 30-90 minutes  
 **Difficulty:** Easy  
 **Category:** Trick-taking  
 
 ## Setup
 
-Three to seven players, everyone for themselves, with one standard 52-card deck. Aces are high, there are no partnerships, and the game plays best with four to six.
+Three to seven players, everyone for themselves, with one standard 52-card deck. Cards rank in the ordinary way within each suit, ace high down through king, queen, jack and the numbers to the two. There are no partnerships, and the game plays best with four to six.
 
 A game is a fixed series of deals in which the hand size changes every time. The most common shape is an arc: start at the largest hand you have agreed on, drop one card per deal down to a single card, then climb back up to where you started. With five players starting at ten, that is 10, 9, 8 and so on down to 1, then 2, 3 up to 10 again, nineteen deals in total. Other groups run the arc upward only, or downward only, or cut it off at a round number such as seven. Decide the shape and write the sequence at the top of the score sheet before the first card is dealt, because the whole game is scored against it.
 
-The ceiling on hand size is what the deck allows. Divide 52 by the number of players and round down: 17 for three, 13 for four, 10 for five, 8 for six, 7 for seven. Most groups play a shorter arc than the maximum simply to keep the game to a sensible length.
+The ceiling on hand size is what the deck allows. Divide 52 by the number of players and round down: 17 for three, 13 for four, 10 for five, 8 for six, 7 for seven. Many groups shave one card off that figure, so that a card is always left over to turn for trump, and most play a shorter arc than the maximum anyway simply to keep the game to a sensible length.
 
 Choose a first dealer at random; the deal then moves clockwise every hand. Deal the agreed number of cards one at a time to each player, then turn the next card of the undealt stock face up. Its suit is trump for that deal. That card belongs to nobody and stays face up beside the remaining stock, which is not used. On a deal that consumes the entire pack there is no card left to turn, so that hand is played with no trump at all.
 
@@ -57,7 +57,7 @@ Ties for first place are normally just shared. Some groups settle them with a si
 
 **Blind one-card deals** — On the deal where each player holds one card, nobody looks at their own card. Instead each player holds it face outward against their forehead, so they can see everyone else's card but not their own, and bid on that information. It turns the most luck-heavy deal of the game into a deduction problem and is popular enough that many groups treat it as part of the standard game.
 
-**Nomination trump (Contract Whist)** — Rather than turning a card for trump, the highest bidder names the trump suit, which is where the alternative name Nomination Whist comes from. Bidding then becomes a genuine auction, since the right to choose trump is worth competing for, and the winning bidder usually leads to the first trick. Some versions of this form also require the first-hand bid to be made before players look at all of their cards.
+**Nomination trump (Contract Whist)** — Rather than turning a card for trump, the highest bidder names the trump suit, which is where the alternative name Nomination Whist comes from. Bidding then becomes a genuine auction, since the right to choose trump is worth competing for, and in this form the player who took the auction names the suit and leads to the first trick rather than the player at the dealer's left. Some versions of this form also require the first-hand bid to be made before players look at all of their cards.
 
 **Deal-pattern variations** — The names attached to this game usually track its deal pattern. Up and Down the River and the British Nomination Whist run the full descending-then-ascending arc. Oh Pshaw generally means the ascending-only version, starting at one card and building up. Elevator and Blackout are used for either direction depending on the region. The rules of play are identical in all of them; only the sequence of hand sizes and hence the length of the game changes.
 

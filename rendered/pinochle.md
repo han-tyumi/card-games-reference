@@ -25,18 +25,20 @@ Agree two house questions before the first deal, because tables differ and both 
 
 A hand runs in three stages: the auction, the meld, then twelve tricks.
 
-The auction. Bidding opens with the player to the dealer's left and moves clockwise. A bid is the number of points your side undertakes to score this hand, meld and captured counters combined. The usual minimum opening bid is 250, and each later bid must beat the previous one, normally in steps of 10. Passing puts you out of the auction for that hand, and the auction ends when three players have passed in succession. The last live bidder's side has the contract. If nobody bids at all, most groups oblige the dealer to take the contract at the minimum; some throw the hand in and redeal.
+The auction. Bidding opens with the player to the dealer's left and moves clockwise. A bid is the number of points your side undertakes to score this hand, meld and captured counters combined. The usual minimum opening bid is 250, though 200 and 300 are both common house figures, and each later bid must beat the previous one, normally in steps of 10. Passing puts you out of the auction for the rest of that hand: you cannot come back in when the bidding returns to you. The auction therefore ends as soon as three of the four players have passed, whether or not those passes were consecutive, and the one player still live holds the contract for their side. A passed-out auction is handled in one of three ways, so choose in advance: require the player to the dealer's left to open at the minimum so that there is always a contract, which is the most common fix; oblige the dealer to take it at the minimum; or throw the hand in, pass the deal and redeal.
 
 Naming trump and the pass. The high bidder names the trump suit. Many tables then use a four-card pass: the bidder's partner passes four cards face down, the bidder looks at them and passes any four back. The returned cards need not be the ones received. Tables that play without the pass bid noticeably lower, which is why it is worth agreeing on it in advance.
 
 Melding. All four players lay their scoring combinations face up on the table at once. Each side adds its meld aloud, the totals are written down, and the cards are then taken back into hand before any card is played. Meld comes from the cards you hold at that moment, never from cards captured later in tricks. A single card may be used in more than one meld provided the melds are of different types: the queen of spades can count in a marriage, in a pinochle and in queens around all at once, but one queen of spades cannot form two marriages. The important restriction is that a side scores none of its meld unless it wins at least one trick during the play.
 
-The tricks. The high bidder leads to the first trick and play runs clockwise. The rules for playing a card are strict, which is the feature that separates Pinochle from most trick games:
+The tricks. The high bidder leads to the first trick and play runs clockwise. Give this one a moment before you start, because it is the rule most likely to differ from what somebody at the table learned: in the auction game the lead belongs to the contractor, but the versions of partnership Pinochle played without an auction hand it to the player at the dealer's left instead. The rules for playing a card are strict, which is the feature that separates Pinochle from most trick games:
 
 - If you can follow suit you must, and if you can also beat the highest card of that suit already played, you must do that as well.
-- If you cannot follow suit, you must play a trump if you hold one.
-- If the trick has already been trumped and you cannot follow suit, you must play a higher trump than the one on the table when you can.
-- Only when you can neither follow nor trump may you play whatever you like.
+- If you cannot follow suit, you must play a trump if you hold one, even when it cannot win the trick.
+- If the trick has already been trumped and you cannot follow suit, you must beat the trump on the table when you are able; holding only lower trumps, you must still play one of them.
+- Only when you can neither follow suit nor trump may you play whatever you like.
+
+That third rule is the one point of the play that varies: a minority of tables let a player who cannot overtrump discard instead. Settle it before the opening lead.
 
 A trick is won by the highest trump in it, or by the highest card of the suit led when no trump has been played. Between two identical cards, the one led or played earlier wins. The winner of a trick leads to the next. When all twelve tricks are gone, the side that took the last trick claims a bonus, both sides count the counters they captured, and the hand is scored.
 
@@ -48,7 +50,7 @@ The counters are the aces, tens and kings. In the point-count scheme most tables
 
 Meld values in the single-deck game:
 
-- Run in trump (A-10-K-Q-J of trump): 150. Both trump runs: 1500.
+- Run in trump (A-10-K-Q-J of trump): 150. Both trump runs at once: 1500, although some tables score them simply as 150 apiece.
 - Royal marriage, the king and queen of trump: 40.
 - Plain marriage, king and queen of any other suit: 20 each.
 - Dix, the nine of trump: 10 each, so 20 for the pair.
@@ -60,7 +62,7 @@ Meld values in the single-deck game:
 
 A run already contains the royal marriage, so you do not also claim the 40 for it.
 
-Settling a hand. Add each side's meld to the counters it captured. If the contracting side reaches or passes its bid, both sides simply add what they made. If it falls short it has gone set: it scores nothing for the hand and the full amount of the bid is subtracted from its running total, which can drive the score below zero. The defending side scores its meld and counters as normal, subject to the same requirement that meld needs at least one trick to stand.
+Settling a hand. Add each side's meld to the counters it captured. If the contracting side reaches or passes its bid, both sides simply add what they made. If it falls short it has gone set: it scores nothing for the hand and the full amount of the bid is subtracted from its running total, which can drive the score below zero. Some groups soften that by letting a set side keep the meld it laid down and only deducting the bid; the harsher version given here is the more common one. The defending side scores its meld and counters as normal, subject to the same requirement that meld needs at least one trick to stand, which means a defending pair shut out of every trick records nothing at all for the hand.
 
 First side to 1000 points wins. The customary tie-break is that the contracting side's score is settled first, so if both sides cross the target in the same hand the contractors win, having taken the risk. Some groups play to 1500, and some let a side stop play mid-hand to claim the game.
 
@@ -68,7 +70,7 @@ First side to 1000 points wins. The customary tie-break is that the contracting 
 
 **Double-deck partnership Pinochle** — Four players in partnerships with an 80-card pack: two pinochle decks combined with all the nines removed, so four copies of A, 10, K, Q and J in each suit. Everyone gets 20 cards. Bidding opens at 50 and rises in steps of one or five. Meld values are roughly a tenth of the single-deck figures, so a trump run is 15, aces around 10, kings around 8, queens around 6, jacks around 4, a royal marriage 4, a plain marriage 2, a pinochle 4 and a double pinochle 30. Counters are the aces, tens and kings at 1 point each, 48 in total, plus 2 for the last trick, giving 50 points in tricks per hand. Game is 500. There is no card pass, and the same must-follow, must-beat, must-trump rules apply. Many North American players regard this as the standard modern form of the game.
 
-**Two-handed Pinochle** — The classic head-to-head game, and the oldest form. Each player gets 12 cards from the 48-card pack and the remaining 24 form a face-down stock with its top card turned up to set trump. There is no auction. After each trick the winner draws the top card of the stock and the loser takes the next, and the trick winner may lay down one meld before drawing, scoring it immediately. Holding the dix, the nine of trump, lets you swap it for the exposed trump card. Suit-following and must-beat rules do not apply until the stock runs out, at which point the last 12 tricks are played under the strict rules. Game is usually 1000.
+**Two-handed Pinochle** — The classic head-to-head game, and the oldest form. Each player gets 12 cards from the 48-card pack and the remaining 24 form a face-down stock with its top card turned up to set trump. There is no auction. After each trick the winner may lay down one meld and score it immediately, then draws the top card of the stock while the loser takes the next, so both are back to 12 cards. On winning a trick you may also swap the dix, the nine of trump, for the exposed trump card. Suit-following and must-beat rules do not apply while the stock lasts; once it is exhausted, including the final face-up trump, the last 12 tricks are played under the strict follow, beat and trump rules. Counters score as in the four-handed game and the last trick is worth 10. Game is usually 1000, and if both players cross the target in the same hand the one with the higher total wins.
 
 **Three-handed Auction Pinochle** — The best-known solo form, played with the 48-card pack. Each of the three players gets 15 cards and three go face down as a widow. Players bid, minimum usually 300, and the high bidder turns the widow face up, takes it in, names trump, and buries any three cards, which count toward the bidder's own trick score if they are counters. The bidder then plays alone against the other two, who cooperate. The bidder must reach the bid with meld plus counters or be set for the amount bid; the defenders score nothing but the satisfaction of setting the contract, and games are frequently settled per hand in chips rather than by a target total.
 

@@ -15,13 +15,13 @@ Hearts is at its best with four players, each on their own. There are no partner
 
 Pick a first dealer however you like, drawing for the low card being the usual method, then pass the deal one seat to the left after every hand. The dealer shuffles and deals the entire pack out one card at a time, clockwise, beginning with the player on their left. Four players get 13 cards each and the hand runs 13 tricks.
 
-Other numbers need the pack trimmed so the deal comes out even. For three players, remove the 2 of diamonds and deal 17 each. For five, remove the 2 of diamonds and the 2 of clubs and deal 10 each. For six, remove the 2 of diamonds, the 2 and 3 of clubs and the 2 of spades and deal 8 each. The cards pulled are always low cards from the two suits that carry no penalties, so nothing about the scoring changes.
+Other numbers need the pack trimmed so the deal comes out even. For three players, remove the 2 of diamonds and deal 17 each. For five, remove the 2 of diamonds and the 2 of clubs and deal 10 each. For six, remove the 2 and 3 of diamonds and the 2 and 3 of clubs and deal 8 each. The cards pulled are always low clubs and diamonds, the two suits that carry no penalties, so all 26 penalty points are still in the deal whatever the player count. Other combinations of low cards are used at some tables; the only things that matter are that the deal comes out even and that no heart and not the queen of spades is withdrawn.
 
 There is no layout, no stock and no discard pile. Everything sits in the players' hands, and there is nothing to write down until the first hand has been played out.
 
 ## Play
 
-Every hand opens with a pass. Pick three cards out of your hand and lay them face down in front of the player who is to receive them. Nobody may look at the cards coming their way until they have committed their own three, so the exchange is genuinely blind on both sides. The direction rotates deal by deal: pass to the left on the first hand, to the right on the second, straight across on the third, and on the fourth hand nobody passes at all and you play what you were dealt. Then the cycle starts again. Three players have no seat across from anyone, so their rotation is left, right, hold.
+Every hand opens with a pass. Pick three cards out of your hand and lay them face down in front of the player who is to receive them. Nobody may look at the cards coming their way until they have committed their own three, so the exchange is genuinely blind on both sides. The direction rotates deal by deal: pass to the left on the first hand, to the right on the second, straight across on the third, and on the fourth hand nobody passes at all and you play what you were dealt. Then the cycle starts again. Three and five players have nobody sitting directly opposite, so their rotation drops the across pass and runs left, right, hold; six players use the full four-hand cycle.
 
 Once the passes have been picked up, whoever holds the 2 of clubs must lead it to the first trick. If the 2 of clubs was removed for the player count, the lowest club still in the pack leads instead: the 3 of clubs in a five-handed game, the 4 of clubs in a six-handed game. Play then goes clockwise, one card from each player.
 
@@ -43,7 +43,7 @@ Each heart you collect in a trick costs 1 penalty point and the queen of spades 
 
 The exception is shooting the moon. If a single player takes all 13 hearts and the queen of spades in the same hand, the result inverts: the shooter scores nothing and every opponent is charged 26. Most groups let the shooter choose instead to subtract 26 from their own total, which is the better option when the opponents are already close to the finish or when you are sitting on zero and cannot go below it. The attempt is all or nothing. Let one heart escape to another player and you simply keep the pile you have gathered, which is normally a catastrophe.
 
-Keep a running total for each player. The game ends at the end of the hand in which anyone reaches or passes 100 points, and the player with the lowest total at that moment wins. A target of 50 makes for a quicker game. If the two lowest totals are level, the usual fix is to keep dealing until the tie breaks.
+Keep a running total for each player. The game ends at the end of the hand in which anyone reaches or passes 100 points, and the player with the lowest total at that moment wins. A target of 50 makes for a quicker game. If two or more players are level on the lowest total when the game would end, nobody has won: deal again and keep playing complete hands, with the same finish condition applied each time, until exactly one player is alone on the lowest score.
 
 ## Variants
 
@@ -55,7 +55,7 @@ Keep a running total for each player. The game ends at the end of the hand in wh
 
 **Spot Hearts** — Hearts are worth their pip value rather than a flat point each. The 2 through 10 count face value, the jack, queen and king count 10 apiece, the ace counts 15, and the queen of spades is raised to 25. That makes a single deal worth 124 points instead of 26, so the game target has to be scaled up to match, commonly to 500. Low hearts become throwaways and the ace of hearts becomes the card everyone is watching.
 
-**Shoot the Sun** — An extra tier above shooting the moon that almost nobody achieves. Taking every trick in the hand, not merely every penalty card, is worth double the usual moon: 52 points against each opponent, or 52 struck off your own total, whichever you prefer. Groups that use it treat a failed sun as an ordinary moon attempt, so a player who wins twelve tricks and all the penalties still scores the plain moon.
+**Shoot the Sun** — An extra tier above shooting the moon that almost nobody achieves. Taking every trick in the hand, not merely every penalty card, is worth double the usual moon: 52 points against each opponent, or 52 struck off your own total, whichever you prefer. Groups that use it treat a failed sun as an ordinary moon attempt, so a player who wins twelve tricks and all the penalties still scores the plain moon. Doubling is not universal; plenty of tables recognise the feat but pay it at the ordinary 26, so say which you are using before anyone tries it.
 
 **Tags:** beginner-friendly, classic, counting, family-friendly, strategy
 

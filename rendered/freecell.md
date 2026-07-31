@@ -36,11 +36,15 @@ maximum cards = (1 + empty free cells) x 2 ^ (empty columns)
 
 With two cells open and no empty columns you can move three cards. With all four cells open and one empty column you can move ten. There is one catch: if the destination is itself an empty column, that column cannot double as workspace, so leave it out of the exponent. Moving into your only empty column with all four cells free gets you five cards, not ten.
 
+That doubling formula is what most implementations use, and it is what a careful player can actually achieve by hand. A minority of programs are stingier and multiply instead of doubling, capping the move at (1 + empty free cells) x (1 + empty columns), which with four cells and two empty columns allows 15 cards rather than 20. If your version refuses a move you think should be legal, this is usually why. Nothing is lost either way: the supermove is only a convenience, and you can always perform the same transfer one card at a time.
+
 The run you are moving must already be a proper descending, alternating-colour sequence. A stack that merely sits together is not movable as a block, and if you do not have the storage for the whole run you have to break it up by hand.
 
 Taking a card back off a foundation into the tableau is allowed in most implementations and is occasionally the move that saves a deal, but some versions lock a foundation once a card is played there, so check before you count on it.
 
-The deal ends when all four foundations reach their kings, or when you are stuck: every free cell occupied, no empty column, and no exposed card that fits anywhere.
+No move is ever compulsory. You are never obliged to send an ace or any other card to a foundation, and holding a low card back in the tableau to catch the next card down is a standard technique. Many programs autoplay cards to the foundations for you once they can no longer be needed; that is a convenience setting, not a rule, and it can usually be switched off.
+
+The deal ends when all four foundations reach their kings, or when you are stuck: all four free cells occupied, no empty column, and nothing among the four cell cards and the eight column ends that fits onto a foundation or onto another column. Because nothing is hidden, being stuck is always the end of that deal; there is no redeal and no reshuffle.
 
 ## Goal & scoring
 

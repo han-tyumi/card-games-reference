@@ -20,7 +20,7 @@
 | --- | --- | --- | --- | --- |
 | [Euchre](euchre.md) | 3-6 players (best with 4) | 1 standard deck stripped to 24 cards (A, K, Q, J, 10, 9 in each suit) | 20-40 minutes | Easy |
 | [Hearts](hearts.md) | 3-6 players (best with 4) | 1 standard deck (52 cards), jokers removed; a few low cards come out for 3, 5 or 6 players | 30-60 minutes | Easy |
-| [Oh Hell](oh-hell.md) | 3-7 players (best with 5) | 1 standard deck (52 cards) | 30-60 minutes | Easy |
+| [Oh Hell](oh-hell.md) | 3-7 players (best with 5) | 1 standard deck (52 cards) | 30-90 minutes | Easy |
 | [Pinochle](pinochle.md) | 2-4 players (best with 4) | 1 pinochle deck (48 cards: two each of A, 10, K, Q, J, 9 in every suit), which you can build from two standard decks by keeping only those ranks | 45-90 minutes | Complex |
 | [Spades](spades.md) | 2-4 players (best with 4) | 1 standard deck (52 cards), jokers removed | 45-90 minutes | Medium |
 | [Whist](whist.md) | 4 players | 1 standard deck (52 cards), jokers removed | 30-60 minutes | Simple |

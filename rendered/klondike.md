@@ -2,7 +2,7 @@
 
 # Klondike
 
-**Also known as:** Solitaire, Patience, Klondike Solitaire, Canfield  
+**Also known as:** Solitaire, Patience, Klondike Solitaire  
 **Players:** 1 player  
 **Deck:** 1 standard deck (52 cards), jokers removed  
 **Time:** 5-20 minutes  
@@ -15,49 +15,53 @@ Use a single 52-card deck with the jokers removed. Shuffle, then build seven tab
 
 Above the tableau, reserve four spaces for the foundations. They start empty. The 24 cards you did not deal go face down in a single packet as the stock, with an empty space beside it for the waste. There is no dealer to choose and no opponent, so play begins the moment the layout is built.
 
+One caution before you follow rules printed elsewhere: older British sources sometimes call this game Canfield, while North American sources use Canfield for an entirely different game, the one also known as Demon. Match the layout described above rather than the title on the page.
+
 ## Play
 
-There are two places to build. The four foundations go up in suit starting from the ace: move an ace up as soon as one is exposed, then the 2 of that suit, and so on through the king. The seven tableau piles go down in alternating colours, so a red 9 accepts a black 8, and that black 8 accepts a red 7.
+There are two places to build. The four foundations go up in suit starting from the ace: an ace may go up the moment it is exposed, then the 2 of that suit, and so on through the king. The seven tableau piles go down in alternating colours, so a red 9 accepts a black 8, and that black 8 accepts a red 7.
 
-Playable cards are the exposed card at the outer end of each tableau pile and the top card of the waste. You may move one of those to a foundation, or to a tableau pile whose exposed card is one rank higher and the opposite colour. You may also lift a properly ordered run of face-up tableau cards and move it as a unit onto a card that continues the sequence. Most rule sets let you take just the lower portion of a run; stricter ones make you move the whole face-up group or nothing.
+Playable cards are the exposed card at the outer end of each tableau pile and the top card of the waste. You may move one of those to a foundation, or to a tableau pile whose exposed card is one rank higher and the opposite colour. You may also lift a run of face-up tableau cards that already descends one rank at a time in alternating colours and move it as a unit onto a card that continues that sequence. Most rule sets let you take just the lower portion of a run; stricter ones make you move the whole face-up group or nothing.
 
 Any time a move leaves a face-down card at the end of a tableau pile, turn it up immediately.
 
 Empty columns carry the one real restriction: only a king, or a run headed by a king, may be moved into a column you have cleared. Nothing else may go there, so emptying a column with no king in sight usually wastes the space.
 
-When you run out of tableau moves, work the stock. Turn cards face up onto the waste and play from there. Only the top card of the waste is ever playable, and it leaves one card at a time. How many cards you turn per go is the setting that defines the two common versions.
+Nothing is compulsory. You may leave an exposed ace sitting in the tableau, decline to fill an empty column, or go to the stock while tableau moves are still available; the only forced action is turning up a newly exposed face-down card.
+
+When the tableau has nothing you want, work the stock. Turn cards face up onto the waste and play from there. Only the top card of the waste is ever playable, and it leaves one card at a time. How many cards you turn per go is the setting that defines the two common versions.
 
 Draw one: turn a single card at a time. Every card in the stock reaches the top of the waste on every pass, so nothing stays out of reach and the game is far more forgiving.
 
-Draw three: turn three at once, overlapped so you can read all three but only the outermost is playable. The two behind it become available only after the card in front of them is played. Because the stock is consumed in blocks of three, roughly two thirds of it is unreachable at any given moment, and every card you take shifts which cards surface on the next pass. This is the older and harder default.
+Draw three: turn three at once, overlapped so you can read all three but only the outermost is playable. The two behind it become available only after the card in front of them is played. Because the stock is consumed in blocks of three, roughly two thirds of it is unreachable at any given moment, and every card you take shifts which cards surface on the next pass. If fewer than three cards are left when you reach the end of the stock, turn up however many remain and treat the outermost of them as the playable one. This is the older and harder default.
 
-When the stock runs out, turn the waste over without shuffling to form a new stock. That is a redeal, and its limit is the other point players argue about. Casual play generally allows unlimited redeals in both draw modes. Scored and timed versions cap it: three passes through the stock, meaning two redeals, is the usual draw-three convention, while draw one and Vegas scoring are often played with a single pass and no redeal at all. Settle the limit before you deal.
+When the stock runs out, turn the waste over without shuffling to form a new stock. That is a redeal, and its limit is the other point players argue about. Casual play generally allows unlimited redeals in both draw modes. Scored versions restrict it in two different ways. Standard scoring keeps redeals unlimited but bills you for each one past the first pass. Vegas scoring caps the passes outright: one pass and no redeal at draw one, three passes and two redeals at draw three. Timed and competitive settings commonly borrow the three-pass cap for draw three. None of this is standardised, so settle the limit before you deal.
 
 Taking the top card back off a foundation into the tableau is permitted in most rule sets and is sometimes the only way to free a card you need, though scored versions charge you for it and a few rule sets forbid it outright.
 
-The deal ends when all four foundations are complete, or when you are stuck: nothing playable from any tableau pile, nothing playable off the waste, and no redeal left.
+The deal ends when all four foundations are complete, or when you are stuck: the stock empty with no redeal left, nothing playable off the waste, and no legal move anywhere in the tableau. There is no partial win and no reshuffle. If you lose, gather the cards, shuffle properly, and deal again.
 
 ## Goal & scoring
 
 You win by getting all 52 cards onto the foundations, each suit built ace through king. Most people simply play win or lose and keep no score.
 
-Standard scoring, the system most software uses, awards 5 points for moving a card from the waste to the tableau, 10 for moving a card to a foundation, and 5 for turning up a face-down tableau card. Pulling a card back from a foundation costs 15. Recycling the stock costs points once you are past the first pass, commonly 20 in draw three and a steeper charge in draw one, where an extra pass is worth much more. Timed play adds a bonus that grows the faster you finish.
+Standard scoring, the system most software uses, awards 5 points for moving a card from the waste to the tableau, 10 for moving a card to a foundation, and 5 for turning up a face-down tableau card. Pulling a card back from a foundation costs 15. Recycling the stock costs points once you are past the first pass: 20 per recycle at draw three and 100 per recycle at draw one, where a fresh pass is worth far more. The running total is not allowed to fall below zero. Timed play adds a clock to that: you shed 2 points for every 10 seconds at the table and collect a finishing bonus that shrinks the longer you took, so a fast win scores far above a slow one.
 
-Vegas scoring treats the deal as a wager. You buy the deck for 52 units, one per card, and collect 5 units for every card you land on a foundation, so eleven cards puts you 3 ahead and break-even is closer than it looks. You normally get one pass through the stock, and many players carry a running bankroll from deal to deal.
+Vegas scoring treats the deal as a wager. You buy the deck for 52 units, one per card, and collect 5 units for every card you land on a foundation, so eleven cards puts you 3 ahead and break-even is closer than it looks. Passes through the stock are capped rather than penalised: one at draw one, three at draw three. Many players carry a running bankroll from deal to deal instead of settling each deal on its own.
 
-Klondike is not always winnable, which matters more than beginners expect. Exhaustive computer analysis of draw-three Klondike with every face-down card revealed in advance puts the ceiling at about 82 percent of deals, so roughly one deal in six cannot be won by anyone regardless of skill. Draw one is more winnable than that. Playing blind, as you actually do, real results are much lower: large samples of players come in near a third of games at draw one and around one game in ten at draw three.
+Klondike is not always winnable, which matters more than beginners expect. Solver studies of draw-three Klondike with every face-down card revealed in advance, and unlimited redeals allowed, put the ceiling near 82 percent of deals, so something close to one deal in five cannot be won by anyone regardless of skill. Draw one is more forgiving and its ceiling is higher, but there is no equally well-established published figure for it, so treat any specific draw-one percentage you see with suspicion. Playing blind, as you actually do, real results are much lower: large samples of players come in near a third of games at draw one and around one game in ten at draw three, and those aggregate numbers vary noticeably from site to site.
 
 ## Variants
 
-**Vegas Klondike** — Klondike played as a bet. You pay 52 units for the deck, one per card, and earn 5 units for each card you get onto a foundation, so eleven cards is break-even plus a little. Only one pass through the stock is allowed, with no redeal, which makes the draw-three version brutal. Many players keep a cumulative bankroll across a session instead of settling each deal separately.
+**Vegas Klondike** — Klondike played as a bet. You pay 52 units for the deck, one per card, and earn 5 units for each card you get onto a foundation, so eleven cards is break-even plus a little. Passes through the stock are strictly limited: one pass and no redeal at draw one, three passes at draw three. Losing money on a deal is the normal outcome, and many players keep a cumulative bankroll across a session instead of settling each deal separately.
 
-**Thoughtful Klondike** — Identical to ordinary Klondike except that the identity of every face-down card is known from the start. It is mostly a research construct: because the only difference is information, any deal solvable in Thoughtful Klondike is solvable in Klondike too, so solving it gives an upper bound on how often the real game can be won. This is where the roughly 82 percent figure for draw three comes from.
+**Thoughtful Klondike** — Identical to ordinary Klondike except that the identity of every face-down card is known from the start. It is mostly a research construct: because the only difference is information, any deal solvable in Thoughtful Klondike is solvable in Klondike too, so solving it gives an upper bound on how often the real game can be won. This is where the roughly 82 percent figure for draw three with unlimited redeals comes from; the same technique is what any credible winnability claim for Klondike rests on.
 
 **Double Klondike** — Two decks, 104 cards, nine tableau piles dealt one through nine, and eight foundations, two per suit. Building rules are unchanged: foundations up in suit from the ace, tableau down in alternating colours, kings only into empty columns. The extra piles make it noticeably easier to win than single-deck Klondike. The name is also used for a two-player race in which each player has their own tableau but both feed a shared set of foundations.
 
 **Whitehead** — The same 28-card, seven-pile layout as Klondike, but everything is dealt face up so there is nothing hidden. The tableau builds down in matching colour rather than alternating colour, red on red and black on black. Only runs that are entirely of one suit may be moved as a block, and an empty column will take any card or run, not just a king.
 
-**Tags:** beginner-friendly, classic, family-friendly, luck, solo, strategy, travel
+**Tags:** beginner-friendly, classic, family-friendly, luck, solo, strategy
 
 *Rules verified against: Wikipedia, Solitaire Laboratory, GameRules.com, Solitaired, Solitaire.com, BVS Solitaire, Solvitaire winnability study (Blake and Gent). This write-up is original text, not reproduced from those sources.*
 

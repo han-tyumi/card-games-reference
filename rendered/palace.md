@@ -13,23 +13,23 @@
 
 Remove the jokers. One pack comfortably serves two to four players. At five or more the stock runs dry almost immediately, so shuffle two packs together.
 
-Cards rank in the normal ascending order with the ace at the top: 3, 4, 5, 6, 8, 9, jack, queen, king, ace. The 2, the 7 and the 10 are deliberately missing from that list. They are lifted out of the ranking altogether and given special powers, described under play.
+Cards rank in the ordinary ascending order with the ace on top: 3, 4, 5, 6, 7, 8, 9, jack, queen, king, ace. Only two ranks sit outside that ladder completely, the 2 and the 10, because either of them may be laid on any card whatsoever. The 7 keeps its normal place in the order, above the 6 and below the 8, but it puts a restriction on whoever plays next. All three of these ranks are explained under play.
 
 Pick a dealer any way you like for the first hand; after that the loser of the previous hand deals. The dealer gives each player three cards face down in a row, and nobody may look at these. On top of those three, deal each player three more cards face up, so every player has three face-down cards with a face-up card covering each one. Then deal three cards to each player as a hand. That is nine cards per player. The rest goes face down in the middle as the stock.
 
 A quicker way to reach the same layout, and the one most groups use: deal the three face-down cards, then deal six more cards to each player's hand. Look at your six, pick any three of them, and lay those three face up on your face-down cards. The other three stay in your hand. This lets you choose what sits on your table rather than taking whatever the deal gave you, and it is worth thinking about, since your face-up cards are what you will be stuck with in the endgame. Once the first card has been played, your face-up cards are locked and cannot be rearranged.
 
-The player holding the lowest card in hand starts, ignoring the special ranks; in practice that means whoever has the lowest 3, 4 or 5. If nobody wants to check, the player to the dealer's left simply goes first. Play runs clockwise.
+The player holding the lowest ordinary card in hand starts, and opens by playing that card. Ignore any 2, 7 or 10 when comparing, so in practice this comes down to whoever holds the lowest 3, 4 or 5. If two players hold the same lowest rank, the one sitting nearer the dealer's left starts. Groups that cannot be bothered to check simply let the player to the dealer's left open with anything. Play runs clockwise.
 
 ## Play
 
 On your turn you play one card, or several cards of the same rank at once, from your hand onto the discard pile in the middle. Your card must be equal to or higher than the card showing on top of the pile. Equal is enough, so a nine covers a nine. If you play more than one card, they must all be the same rank as each other. After you play, and only while the stock still has cards in it, draw back up to three cards in hand. If you played three at once, draw three.
 
-If you cannot play, or simply do not want to, you pick up the entire discard pile into your hand and your turn ends. You draw nothing that turn. This is the whole engine of the game: the pile grows, someone eventually gets stuck with it, and they are suddenly holding fifteen cards while everyone else holds three.
+If you cannot play, you pick up the entire discard pile into your hand and your turn ends. You draw nothing that turn, and the middle of the table is now bare, so the next player may open with any card they like. Groups differ on whether you may also pick the pile up by choice while holding a legal play, usually to avoid surrendering a card you want to keep: some allow it freely, others rule that if you can play you must. Settle that one before the first deal. Either way this is the engine of the game: the pile grows, someone eventually swallows it whole, and they are suddenly holding fifteen cards while everybody else holds three.
 
 Three ranks break the equal-or-higher rule.
 
-The 2 resets. You may play a 2 on absolutely any card, and once it is down the pile counts as clear: the next player may play anything they like on top of it.
+The 2 resets. You may play a 2 on absolutely any card, and once it is down the pile counts as clear: the next player may play anything they like on top of it. Nothing leaves the table, though. Every card stays in the pile, so whoever ends up picking it up still collects the lot.
 
 The 7 reverses direction of the requirement. You may play a 7 on any card of 7 or lower, and the player after you must then play a 7 or lower, not higher. A 2 or a 10 still gets you out of it, because those two can be played on anything.
 
@@ -57,7 +57,7 @@ One finishing detail is worth agreeing in advance. If your last card is a 10, or
 
 **Extra special cards** — Groups pile more powers onto more ranks, and almost nobody plays exactly the same set. Common additions: the 3 is transparent or glass, meaning it sits on the pile but the next player must beat whatever card is underneath it; the 8 is invisible in the same way, or else skips the next player entirely; the 9 forces the next play to be equal or lower, doing the job the 7 does elsewhere; and jokers, when left in the pack, either burn the pile or force the next player to pick it up. Decide the full list before dealing, because arguments about a single rank are how this game gets its rude names.
 
-**Big-table version** — For five to eight players, shuffle two packs together and deal four face-down cards, four face-up cards and a hand of four, refilling to four rather than three. The pile grows much faster with more players feeding it, so burns matter more and picking up is far more punishing. Duplicate cards make four of a kind noticeably easier to complete, which keeps hands from stalling.
+**Big-table version** — For five or six players, shuffle two packs together and deal four face-down cards, four face-up cards and a hand of four, refilling to four rather than three. The pile grows much faster with more players feeding it, so burns matter more and picking up is far more punishing. Duplicate cards make four of a kind noticeably easier to complete, which keeps hands from stalling.
 
 **Open swapping** — Instead of locking your three face-up cards once play begins, you may swap a card between your hand and your face-up row at the start of any of your turns while the stock still holds cards. It softens the game considerably, because a bad opening layout can be repaired rather than suffered, and it gives you somewhere to park a 2 or a 10 for the endgame. Groups that use it usually limit you to one swap per turn.
 

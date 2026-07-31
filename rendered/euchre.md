@@ -29,11 +29,11 @@ Second round of bidding. If all four pass, the dealer turns the upcard face down
 
 Going alone. Whoever names trump, in either round, may declare a loner at that moment, before any card is led. Their partner lays all five cards face down and takes no part in the hand, and the maker plays one against two. The declaration must be made when trump is called; you cannot decide to go alone once play has started.
 
-Playing the tricks. The player to the dealer's left leads to the first trick, except on a loner, where the lead falls to the player on the loner's left. Each player in turn clockwise must follow the suit led if holding a card of it. A player who cannot follow may play anything at all, trump included. There is no obligation to trump and no obligation to beat what has already been played. The trick goes to the highest trump in it, or, if nobody trumped, to the highest card of the suit led. The winner of a trick leads to the next. Five tricks are played and the hand is then scored.
+Playing the tricks. The player to the dealer's left leads to the first trick. On a lone hand the partner who is sitting out is simply skipped in the rotation, so if that partner happens to be the player at the dealer's left, the lead passes clockwise to the next active player instead. Some tournament groups use a different convention and give the opening lead to the opponent seated at the lone player's left; settle which one you are using before the first deal, because it changes who plays last to the opening trick. Each player in turn clockwise must follow the suit led if holding a card of it. A player who cannot follow may play anything at all, trump included. There is no obligation to trump and no obligation to beat what has already been played. The trick goes to the highest trump in it, or, if nobody trumped, to the highest card of the suit led. The winner of a trick leads to the next. Five tricks are played and the hand is then scored.
 
 The bower trap. Two situations catch new players, and both come from the left bower changing suit. If hearts are trump and a diamond is led, the jack of diamonds is a heart and may not be played to follow the diamond lead. If hearts are trump and hearts are led, a player whose only heart is the jack of diamonds does hold a heart and must play it.
 
-Reneging. Failing to follow suit when you were able to is a renege. Standard club and tournament practice is to stop the hand as soon as it is discovered and award the innocent side 2 points, or 4 if the renege was committed against a lone hand.
+Reneging. Failing to follow suit when you were able to is a renege. Club and tournament practice is to stop the hand the moment the fault is spotted and award the innocent side 2 points, or 4 if the renege was committed against a lone hand. Casual tables more often finish the hand out and simply deny the offending side any score for it. Both are in use, so agree which applies before you deal.
 
 Four of the twenty-four cards never reach a hand, so besides the upcard three cards stay unknown all deal. That, along with the dealer's buried discard, is what makes tracking the seven trump cards worth the effort.
 
@@ -51,13 +51,15 @@ Score at the end of each hand as follows:
 
 Note the asymmetry on a loner. Success pays two extra points, failure costs nothing extra, since a euchre is worth 2 to the defenders whether or not the maker went alone. Note also that ordering up hands the makers all the risk: a euchre is worth as much as a march, which is why a side sitting on 8 or 9 points is dangerous to bid against.
 
-Games are usually a race to 10. Playing to 11 is common in some regions, and league play sometimes uses a fixed number of hands with the higher total winning instead of a target score.
+Only one side can score in any given hand, so the two totals never advance together and there is no way for both sides to reach the target at once: the moment a side's total hits 10 the game stops and that side has won. No tie-break is needed.
+
+Games are usually a race to 10. Playing to 11 is common in some regions, and league play sometimes uses a fixed number of hands with the higher total winning instead of a target score, in which case an equal total is normally settled by playing one more hand.
 
 ## Variants
 
 **Stick the dealer** — Also called screw the dealer. If the first three players pass in the second round of bidding, the dealer may not pass and must name one of the three eligible suits. It removes thrown-in hands entirely, speeds the game up, and creates the game's most reliable pressure point, since the dealer is often forced into a suit they would never have called voluntarily. Widespread enough that many tables treat it as standard rather than a variation.
 
-**Cutthroat (three-handed) Euchre** — Three players, no partnerships, same 24-card deck and same five-card hands, with the remainder forming the kitty and its top card turned up. Whoever names trump plays alone against the other two, who cooperate for that hand only. The maker scores 1 point for three or four tricks and 3 points for all five; if the maker is euchred, each of the two defenders scores 2. First to 10 wins. The temporary alliances make it a very different bidding game from the partnership version.
+**Cutthroat (three-handed) Euchre** — Three players, no partnerships, the same 24-card deck and the same five-card hands. Fifteen cards are dealt, the nine left over form the kitty, and its top card is turned up exactly as in the four-handed game. Whoever names trump plays alone against the other two, who cooperate for that hand only. The maker scores 1 point for three or four tricks and 3 points for all five, though some groups pay only 2 for the march; if the maker is euchred, each of the two defenders scores 2. First to 10 wins. The temporary alliances make it a very different bidding game from the partnership version.
 
 **The Benny (25-card Euchre)** — A joker, sometimes replaced by the two of spades, is added to the deck as the Benny or best bower: the highest trump no matter which suit is trump. Holding it guarantees a trick. If the Benny is turned up as the upcard, the dealer names the trump suit. Common in Britain, Australia and parts of Canada, often alongside a target of 11 points rather than 10.
 

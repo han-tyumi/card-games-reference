@@ -28,6 +28,8 @@ The player to the dealer's left leads to the first trick and may not lead a spad
 
 Spades may not be led until they have been broken, meaning until some spade has been played to a trick led in another suit, whether that was a deliberate ruff or a helpless discard. The one exception is a player holding nothing but spades, who may lead one. Nothing stops you trumping in the first time you are void; that is normally how spades get broken.
 
+Failing to follow suit when you held the suit led is a renege. If it comes to light before the last trick of the hand has been gathered, the usual remedy is that the offending side is set for the hand: it takes the full negative score for its bid no matter how many tricks it actually won, any nil it declared is treated as broken, and the other side scores as normal. Some groups prefer a milder penalty of three tricks handed over to the opponents with the hand otherwise standing. Either way the correction only applies while the hand is live; once the deal has been scored and the cards are shuffled, the score stands.
+
 Everyone keeps their side's tricks together where both partnerships can count them. When the thirteenth trick is finished, count the tricks each side took and score the hand, then pass the deal to the left.
 
 ## Goal & scoring
@@ -52,9 +54,9 @@ Play continues until a side is at 500 or more at the end of a hand. If both side
 
 **Whiz and Mirror** — Two restricted-bidding forms. In Whiz, each player must bid either nil or the exact number of spades in their hand, and no other bid is legal. Mirror is the stricter cousin: you must bid your spade count, and nil is only available to a player who was dealt no spades at all. Both remove almost all bidding judgement and shift the entire game onto the play of the cards.
 
-**Jokers and high deuces** — Both jokers are added to the pack as the two highest trumps, a big joker and a little joker, and two low cards are removed so the deal still comes to 13 each. Many groups also promote one or more deuces into the trump suit above the ace of spades. The pecking order among the promoted deuces is the most argued-about detail in the whole game and varies from table to table, so establish it out loud before the first deal rather than mid-trick.
+**Jokers and high deuces** — Both jokers join the pack as the two highest trumps, the big joker above the little joker, and two low cards are taken out so the deal still comes to 13 each. In the widespread joker-joker-deuce-deuce form the 2 of hearts and the 2 of clubs are the cards removed, and the two surviving deuces are promoted into the trump suit, the commonest order being big joker, little joker, 2 of spades, 2 of diamonds, then the ace of spades on down to the 3. A good number of tables rank the 2 of diamonds above the 2 of spades instead, so settle the order out loud before the first deal rather than mid-trick.
 
-**Two-handed Spades** — Instead of a deal, the pack sits face down and the players alternate building their hands from it. On your turn you look at the top card and either keep it, in which case the next card goes to the discard pile unseen, or reject it, in which case you must take the card underneath. Continue until each player holds 13 cards; the rest are out of play. Bidding, the ban on leading spades before they are broken, and the scoring are all unchanged, and the game still runs to 500.
+**Two-handed Spades** — Instead of a deal, the pack sits face down and the players alternate building their hands from it. Cut for the first draw, high card going first. On your turn you look at the top card and either keep it, in which case the next card goes face down to a dead pile unseen, or reject it face down, in which case you must take the card underneath. Continue until each player holds 13 cards; the remaining 26 are out of play. Mirroring the four-handed game, the player who drew first also bids first and leads to the opening trick, and may not lead a spade. The ban on leading spades before they are broken and the scoring are unchanged, and the game still runs to 500.
 
 **Tags:** classic, counting, partnership, strategy
 

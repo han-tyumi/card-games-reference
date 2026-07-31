@@ -2,7 +2,7 @@
 
 # Cribbage
 
-**Also known as:** Crib, Six-card Cribbage, Noddy  
+**Also known as:** Crib, Six-card Cribbage  
 **Players:** 2-4 players (best with 2)  
 **Deck:** 1 standard deck (52 cards), plus a cribbage board or pencil and paper  
 **Time:** 20-45 minutes  
@@ -11,13 +11,13 @@
 
 ## Setup
 
-Two players, one standard 52-card deck, and a cribbage board with two pegs each. Cards rank king high down to ace low, and for counting purposes an ace is 1, a face card is 10, and everything else is worth its index.
+Two players, one standard 52-card deck, and a cribbage board with two pegs each. Cards rank king high down to ace low, and for counting purposes an ace is 1, a face card is 10, and everything else is worth its index. The ace is always low and runs never turn the corner: ace-two-three is a run, queen-king-ace is not.
 
 Cut for the deal: low card deals first, and the deal alternates every hand afterwards. Cutting for the first deal matters, because the dealer's edge is real and it swaps every deal.
 
 Deal six cards to each player, one at a time, and put the rest of the deck face down to one side. Look at your six and lay two of them face down in a pile off to the dealer's side of the board. Those four cards are the crib, an extra hand that the dealer alone will score at the end of the deal, so the non-dealer throws to it defensively and the dealer throws to it generously. Neither player looks at the crib until the hands have been played out.
 
-With both hands down to four cards and the crib set aside, the non-dealer cuts the deck and the dealer turns up the top card of the bottom portion, laying it face up on the deck. This is the starter, and it is shared: both hands and the crib count it as a fifth card at the end of the deal, though it is not used during the play. If the starter is a jack, the dealer immediately pegs 2 for his heels.
+With both hands down to four cards and the crib set aside, the non-dealer cuts the deck and the dealer turns up the top card of the bottom portion, laying it face up on the deck. This is the starter, and it is shared: both hands and the crib count it as a fifth card at the end of the deal, though it is not used during the play. If the starter is a jack, the dealer immediately pegs 2 for his heels; strict play requires the claim before the opening lead, and a dealer who forgets forfeits the 2.
 
 Both pegs start off the board. Score by leapfrogging the back peg ahead of the front one, so the gap always shows what you just scored.
 
@@ -27,13 +27,13 @@ A deal has two phases: the play, usually called pegging, and then the show.
 
 The play. The non-dealer leads a card face up in front of them and announces its value. The dealer plays a card and announces the new running total, and so on alternately, each of you keeping your own played cards in a personal row rather than a shared pile so the hands can be picked up again afterwards. The running total may never exceed 31.
 
-You peg immediately as you lay a card down: 2 for taking the total to exactly 15; 2 for taking it to exactly 31; 2 for playing a card of the same rank as the one just played; 6 for a third card of that rank; 12 for a fourth. A run of three or more scores a point per card, counting backwards through the cards played since the last reset, in any order, as long as no unrelated card sits among them. Runs can be lengthened by either player: after 6, 4, 5 has scored three, a 3 or a 7 scores four. Suits are irrelevant during the play, and a pair is only a pair if the card just before it matched, not merely if the rank appeared earlier.
+You peg immediately as you lay a card down: 2 for taking the total to exactly 15; 2 for taking it to exactly 31; 2 for playing a card of the same rank as the one just played; 6 for a third card of that rank; 12 for a fourth. A run of three or more scores a point per card, counting backwards through the cards played since the last reset, in any order, as long as no unrelated card sits among them and no rank is repeated. A duplicate kills the run: once 2, 3, 4 has pegged three, a second 3 played on top scores nothing at all, because the four cards contain two 3s and the last three played are not a run either. Runs can be lengthened by either player: after 6, 4, 5 has scored three, a 3 or a 7 scores four. Suits are irrelevant during the play, and a pair is only a pair if the card just before it matched, not merely if the rank appeared earlier.
 
-Go. If you cannot play a card without pushing the total past 31, say "go". Your opponent then keeps playing on their own for as long as they legally can. When nobody can play, whoever laid the last card pegs 1 for the go, or 2 instead if the total landed exactly on 31. The count then resets to zero and the player who did not lay that last card leads to the new count, with whatever cards remain. This is the same point people call "last card": when both hands run dry, the player who laid the final card of the deal takes that single point, or 2 if it happened to make 31. It is one point, not a go point plus a last-card point.
+Go. You must play whenever you legally can; passing by choice is not allowed. If every card left in your hand would push the total past 31, say "go". Your opponent then keeps playing on their own for as long as they legally can. When nobody can play, whoever laid the last card pegs 1 for the go, or 2 instead if the total landed exactly on 31. The count then resets to zero and the player who did not lay that last card leads to the new count, with whatever cards remain. This is the same point people call "last card": when both hands run dry, the player who laid the final card of the deal takes that single point, or 2 if it happened to make 31. It is one point, not a go point plus a last-card point.
 
 The show. When both hands are empty, everyone picks their four cards back up and scores them together with the starter, treating it as a fifth card. Counting happens in a fixed order and must be done aloud: the non-dealer's hand first, then the dealer's hand, then the dealer's crib. That order decides close games, because play stops the moment a peg reaches the game hole. A non-dealer sitting on 118 counts first and can win before the dealer's hand and crib are ever counted.
 
-The deal then passes and the next hand begins. Points are pegged as they are earned, never totalled at the end, and a peg once advanced cannot be moved back; if you overlook points and start the next stage, they are lost, unless you are playing muggins, in which case your opponent takes them.
+The deal then passes to the other player, all fifty-two cards are gathered up and shuffled, and the next hand begins. Points are pegged as they are earned, never totalled at the end, and a peg once advanced cannot be moved back; if you overlook points and start the next stage, they are lost, unless you are playing muggins, in which case your opponent takes them.
 
 ## Goal & scoring
 
