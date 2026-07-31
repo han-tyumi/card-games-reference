@@ -224,9 +224,287 @@ export interface CardGame {
    */
   play: string;
   /**
+   * Captioned rows of named cards, for the things prose explains badly: what order cards rank in, and what a valid combination actually looks like. Optional, and worth including only where the answer is not obvious -- a ranking strip for a game that ranks ace high teaches nothing.
+   *
+   * @minItems 1
+   * @maxItems 4
+   */
+  figures?: [
+    {
+      /**
+       * "ranking" for cards in order of power, "meld" for a valid (or invalid) combination.
+       */
+      kind: "ranking" | "meld";
+      /**
+       * What the figure shows, e.g. "Trump ranking when diamonds are trump".
+       */
+      caption: string;
+      /**
+       * @minItems 1
+       * @maxItems 4
+       */
+      rows: [
+        {
+          /**
+           * Caption to the left of the row, e.g. "Valid run".
+           */
+          label?: string;
+          /**
+           * Set false to mark a row as a counter-example, drawn struck through. Useful for the mistakes people actually make, like running king-ace-two.
+           */
+          valid?: boolean;
+          /**
+           * @minItems 1
+           * @maxItems 14
+           */
+          cards: [
+            {
+              /**
+               * The card as a player would say it: "A♠", "10♦", "J♥". Use the suit symbols. "?" for any card, "Jkr" for a joker.
+               */
+              face: string;
+              /**
+               * Small caption under this one card, e.g. "Right bower".
+               */
+              note?: string;
+            },
+            ...{
+              /**
+               * The card as a player would say it: "A♠", "10♦", "J♥". Use the suit symbols. "?" for any card, "Jkr" for a joker.
+               */
+              face: string;
+              /**
+               * Small caption under this one card, e.g. "Right bower".
+               */
+              note?: string;
+            }[]
+          ];
+        },
+        ...{
+          /**
+           * Caption to the left of the row, e.g. "Valid run".
+           */
+          label?: string;
+          /**
+           * Set false to mark a row as a counter-example, drawn struck through. Useful for the mistakes people actually make, like running king-ace-two.
+           */
+          valid?: boolean;
+          /**
+           * @minItems 1
+           * @maxItems 14
+           */
+          cards: [
+            {
+              /**
+               * The card as a player would say it: "A♠", "10♦", "J♥". Use the suit symbols. "?" for any card, "Jkr" for a joker.
+               */
+              face: string;
+              /**
+               * Small caption under this one card, e.g. "Right bower".
+               */
+              note?: string;
+            },
+            ...{
+              /**
+               * The card as a player would say it: "A♠", "10♦", "J♥". Use the suit symbols. "?" for any card, "Jkr" for a joker.
+               */
+              face: string;
+              /**
+               * Small caption under this one card, e.g. "Right bower".
+               */
+              note?: string;
+            }[]
+          ];
+        }[]
+      ];
+    },
+    ...{
+      /**
+       * "ranking" for cards in order of power, "meld" for a valid (or invalid) combination.
+       */
+      kind: "ranking" | "meld";
+      /**
+       * What the figure shows, e.g. "Trump ranking when diamonds are trump".
+       */
+      caption: string;
+      /**
+       * @minItems 1
+       * @maxItems 4
+       */
+      rows: [
+        {
+          /**
+           * Caption to the left of the row, e.g. "Valid run".
+           */
+          label?: string;
+          /**
+           * Set false to mark a row as a counter-example, drawn struck through. Useful for the mistakes people actually make, like running king-ace-two.
+           */
+          valid?: boolean;
+          /**
+           * @minItems 1
+           * @maxItems 14
+           */
+          cards: [
+            {
+              /**
+               * The card as a player would say it: "A♠", "10♦", "J♥". Use the suit symbols. "?" for any card, "Jkr" for a joker.
+               */
+              face: string;
+              /**
+               * Small caption under this one card, e.g. "Right bower".
+               */
+              note?: string;
+            },
+            ...{
+              /**
+               * The card as a player would say it: "A♠", "10♦", "J♥". Use the suit symbols. "?" for any card, "Jkr" for a joker.
+               */
+              face: string;
+              /**
+               * Small caption under this one card, e.g. "Right bower".
+               */
+              note?: string;
+            }[]
+          ];
+        },
+        ...{
+          /**
+           * Caption to the left of the row, e.g. "Valid run".
+           */
+          label?: string;
+          /**
+           * Set false to mark a row as a counter-example, drawn struck through. Useful for the mistakes people actually make, like running king-ace-two.
+           */
+          valid?: boolean;
+          /**
+           * @minItems 1
+           * @maxItems 14
+           */
+          cards: [
+            {
+              /**
+               * The card as a player would say it: "A♠", "10♦", "J♥". Use the suit symbols. "?" for any card, "Jkr" for a joker.
+               */
+              face: string;
+              /**
+               * Small caption under this one card, e.g. "Right bower".
+               */
+              note?: string;
+            },
+            ...{
+              /**
+               * The card as a player would say it: "A♠", "10♦", "J♥". Use the suit symbols. "?" for any card, "Jkr" for a joker.
+               */
+              face: string;
+              /**
+               * Small caption under this one card, e.g. "Right bower".
+               */
+              note?: string;
+            }[]
+          ];
+        }[]
+      ];
+    }[]
+  ];
+  /**
    * What winning looks like and how points (if any) are counted.
    */
   goal_and_scoring: string;
+  /**
+   * Hand size by player count, and anything taken out of the deck to make it come out even. Include it where this actually varies -- Hearts strips cards at 3, 5 and 6 players -- and omit it where one number covers every case, since "thirteen each" needs no table.
+   *
+   * @minItems 1
+   * @maxItems 10
+   */
+  deal?: [
+    {
+      /**
+       * The player count this row applies to.
+       */
+      players: number;
+      /**
+       * Cards dealt to each player. Use 0 where the whole deck is shared out and the count follows from the deck size.
+       */
+      hand: number;
+      /**
+       * Cards taken out of the deck at this player count, e.g. "2♦". Omit when none are.
+       */
+      removed?: string;
+      /**
+       * Anything else specific to this count.
+       */
+      note?: string;
+    },
+    ...{
+      /**
+       * The player count this row applies to.
+       */
+      players: number;
+      /**
+       * Cards dealt to each player. Use 0 where the whole deck is shared out and the count follows from the deck size.
+       */
+      hand: number;
+      /**
+       * Cards taken out of the deck at this player count, e.g. "2♦". Omit when none are.
+       */
+      removed?: string;
+      /**
+       * Anything else specific to this count.
+       */
+      note?: string;
+    }[]
+  ];
+  /**
+   * Point values as a lookup, for games where scoring is something you consult mid-hand rather than remember: Cribbage's combinations, Canasta's card values, Pinochle's melds. The prose in goal_and_scoring still explains how scoring works; this is only the numbers.
+   *
+   * @minItems 2
+   * @maxItems 24
+   */
+  scoring_table?: [
+    {
+      /**
+       * What scores, e.g. "Fifteen" or "Each ace".
+       */
+      item: string;
+      /**
+       * What it is worth, as text so ranges and conditions fit: "2", "-10", "20 each".
+       */
+      value: string;
+      /**
+       * A short qualifier, e.g. "only if it takes a trick".
+       */
+      note?: string;
+    },
+    {
+      /**
+       * What scores, e.g. "Fifteen" or "Each ace".
+       */
+      item: string;
+      /**
+       * What it is worth, as text so ranges and conditions fit: "2", "-10", "20 each".
+       */
+      value: string;
+      /**
+       * A short qualifier, e.g. "only if it takes a trick".
+       */
+      note?: string;
+    },
+    ...{
+      /**
+       * What scores, e.g. "Fifteen" or "Each ace".
+       */
+      item: string;
+      /**
+       * What it is worth, as text so ranges and conditions fit: "2", "-10", "20 each".
+       */
+      value: string;
+      /**
+       * A short qualifier, e.g. "only if it takes a trick".
+       */
+      note?: string;
+    }[]
+  ];
   /**
    * A few well-known variations. Not intended to be exhaustive.
    *

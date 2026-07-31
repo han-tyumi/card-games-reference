@@ -5,7 +5,16 @@
  * buildDiagram(), so they cannot disagree about where anything goes.
  */
 
-import { CARD, buildDiagram, type Diagram, type Layout, type ZoneKind } from "naibi";
+import {
+  CARD,
+  buildDiagram,
+  buildFigure,
+  isRedSuit,
+  type Diagram,
+  type Figure,
+  type Layout,
+  type ZoneKind,
+} from "naibi";
 
 const PAD = 8;
 const RADIUS = 3;
@@ -163,6 +172,87 @@ export function renderDiagramSvg(layout: Layout, title: string): string {
     const y = diagram.height + PAD + 14 + index * CAPTION_LINE;
     parts.push(
       `<text x="${(width / 2).toFixed(1)}" y="${y.toFixed(1)}" ` +
+        `text-anchor="middle" font-family="system-ui, sans-serif" ` +
+        `font-size="${CAPTION_SIZE}" fill="${TEXT}">${escapeXml(line)}</text>`,
+    );
+  });
+
+  parts.push("</svg>");
+  return parts.join("\n");
+}
+
+const RED = "#a4243b";
+const FACE_SIZE = 12;
+
+/** Draw a ranking strip or a combination example. */
+export function renderFigureSvg(figure: Figure, title: string): string {
+  const built = buildFigure(figure);
+  const captionLines = wrapText(
+    figure.caption,
+    Math.max(built.width, MIN_CAPTION_WIDTH),
+    CAPTION_SIZE,
+  );
+  const captionHeight = captionLines.length * CAPTION_LINE + 6;
+
+  const content = Math.max(built.width, MIN_CAPTION_WIDTH);
+  const width = content + PAD * 2;
+  const height = built.height + PAD * 2 + captionHeight;
+  const shift = (content - built.width) / 2;
+
+  const parts: string[] = [
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" ` +
+      `width="${width}" height="${height}" role="img" ` +
+      `aria-label="${escapeXml(title)}: ${escapeXml(figure.caption)}">`,
+    `<title>${escapeXml(figure.caption)}</title>`,
+  ];
+
+  for (const card of built.cards) {
+    const x = card.x + PAD + shift;
+    const y = card.y + PAD;
+    const ink = isRedSuit(card.face) ? RED : STROKE;
+
+    parts.push(
+      `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${card.width}" ` +
+        `height="${card.height}" rx="${RADIUS}" fill="#ffffff" ` +
+        `stroke="${STROKE}" stroke-width="1"${card.struck ? ' opacity="0.65"' : ""}/>`,
+      `<text x="${(x + card.width / 2).toFixed(1)}" ` +
+        `y="${(y + card.height / 2 + FACE_SIZE / 3).toFixed(1)}" ` +
+        `text-anchor="middle" font-family="system-ui, sans-serif" ` +
+        `font-size="${FACE_SIZE}" fill="${ink}">${escapeXml(card.face)}</text>`,
+    );
+
+    if (card.note) {
+      wrapText(card.note, CARD.width + 14, LABEL_SIZE, 2).forEach((line, i) => {
+        parts.push(
+          `<text x="${(x + card.width / 2).toFixed(1)}" ` +
+            `y="${(y + card.height + 8 + i * LABEL_LINE).toFixed(1)}" ` +
+            `text-anchor="middle" font-family="system-ui, sans-serif" ` +
+            `font-size="${LABEL_SIZE}" fill="${TEXT}">${escapeXml(line)}</text>`,
+        );
+      });
+    }
+  }
+
+  // A struck row reads as "not this" at a glance, without needing the caption.
+  for (const row of built.rowLabels) {
+    const lines = wrapText(row.text, row.width, LABEL_SIZE + 1, 2);
+    // Centre the block on the card row rather than hanging it off the first line.
+    const top = row.y + PAD - ((lines.length - 1) * LABEL_LINE) / 2;
+    lines.forEach((line, i) => {
+      parts.push(
+        `<text x="${(row.width + PAD + shift).toFixed(1)}" ` +
+          `y="${(top + i * LABEL_LINE).toFixed(1)}" ` +
+          `text-anchor="end" font-family="system-ui, sans-serif" ` +
+          `font-size="${LABEL_SIZE + 1}" fill="${row.struck ? RED : TEXT}">` +
+          `${escapeXml(line)}</text>`,
+      );
+    });
+  }
+
+  captionLines.forEach((line, index) => {
+    parts.push(
+      `<text x="${(width / 2).toFixed(1)}" ` +
+        `y="${(built.height + PAD + 14 + index * CAPTION_LINE).toFixed(1)}" ` +
         `text-anchor="middle" font-family="system-ui, sans-serif" ` +
         `font-size="${CAPTION_SIZE}" fill="${TEXT}">${escapeXml(line)}</text>`,
     );

@@ -58,6 +58,71 @@
     "caption": "Partners sit opposite. Twenty of the 24 cards are dealt five at a time; the last four stay in the middle and the upcard opens the bidding."
   },
   "play": "First round of bidding. Beginning with the player to the dealer's left and moving clockwise, each player either passes or accepts the upcard's suit as trump. Accepting is called ordering it up if you are one of the dealer's opponents, assisting if you are the dealer's partner, and taking it up if you are the dealer. As soon as somebody accepts, bidding stops: the dealer adds the upcard to hand and buries any one card face down under the kitty, going back to five cards. The side that chose trump are the makers, the other pair the defenders.\n\nSecond round of bidding. If all four pass, the dealer turns the upcard face down on the kitty and the auction goes round once more from the dealer's left. Now a player may pass or name any suit as trump except the suit just turned down. Naming the other suit of the same color is called next; naming either suit of the opposite color is cross, or green. Nobody exchanges cards in the second round, and the kitty is finished with. If all four pass again the hand is dead: throw the cards in and pass the deal. Under the very common stick-the-dealer rule the dealer is instead forced to name a suit rather than let the hand die.\n\nGoing alone. Whoever names trump, in either round, may declare a loner at that moment, before any card is led. Their partner lays all five cards face down and takes no part in the hand, and the maker plays one against two. The declaration must be made when trump is called; you cannot decide to go alone once play has started.\n\nPlaying the tricks. The player to the dealer's left leads to the first trick. On a lone hand the partner who is sitting out is simply skipped in the rotation, so if that partner happens to be the player at the dealer's left, the lead passes clockwise to the next active player instead. Some tournament groups use a different convention and give the opening lead to the opponent seated at the lone player's left; settle which one you are using before the first deal, because it changes who plays last to the opening trick. Each player in turn clockwise must follow the suit led if holding a card of it. A player who cannot follow may play anything at all, trump included. There is no obligation to trump and no obligation to beat what has already been played. The trick goes to the highest trump in it, or, if nobody trumped, to the highest card of the suit led. The winner of a trick leads to the next. Five tricks are played and the hand is then scored.\n\nThe bower trap. Two situations catch new players, and both come from the left bower changing suit. If hearts are trump and a diamond is led, the jack of diamonds is a heart and may not be played to follow the diamond lead. If hearts are trump and hearts are led, a player whose only heart is the jack of diamonds does hold a heart and must play it.\n\nReneging. Failing to follow suit when you were able to is a renege. Club and tournament practice is to stop the hand the moment the fault is spotted and award the innocent side 2 points, or 4 if the renege was committed against a lone hand. Casual tables more often finish the hand out and simply deny the offending side any score for it. Both are in use, so agree which applies before you deal.\n\nFour of the twenty-four cards never reach a hand, so besides the upcard three cards stay unknown all deal. That, along with the dealer's buried discard, is what makes tracking the seven trump cards worth the effort.",
+  "figures": [
+    {
+      "kind": "ranking",
+      "caption": "Trump ranking with diamonds as trump. The jack of the same colour joins the trump suit and outranks the ace, which is the rule newcomers most often get wrong.",
+      "rows": [
+        {
+          "label": "Trump, high to low",
+          "cards": [
+            {
+              "face": "J♦",
+              "note": "Right bower"
+            },
+            {
+              "face": "J♥",
+              "note": "Left bower"
+            },
+            {
+              "face": "A♦"
+            },
+            {
+              "face": "K♦"
+            },
+            {
+              "face": "Q♦"
+            },
+            {
+              "face": "10♦"
+            },
+            {
+              "face": "9♦"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "ranking",
+      "caption": "Every other suit ranks normally. Hearts is short one jack, because that jack is now a trump.",
+      "rows": [
+        {
+          "label": "Plain suit",
+          "cards": [
+            {
+              "face": "A♠"
+            },
+            {
+              "face": "K♠"
+            },
+            {
+              "face": "Q♠"
+            },
+            {
+              "face": "J♠"
+            },
+            {
+              "face": "10♠"
+            },
+            {
+              "face": "9♠"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "goal_and_scoring": "A side wins by being first to 10 points. Points come only from the outcome of a hand; individual tricks are worth nothing on their own, and the defenders score nothing at all whenever the makers succeed.\n\nScore at the end of each hand as follows:\n\n- Makers win three or four tricks: 1 point.\n- Makers win all five, called a march: 2 points.\n- A lone maker wins three or four tricks: 1 point.\n- A lone maker wins all five: 4 points.\n- Makers win fewer than three tricks: they are euchred, and the defenders take 2 points.\n\nNote the asymmetry on a loner. Success pays two extra points, failure costs nothing extra, since a euchre is worth 2 to the defenders whether or not the maker went alone. Note also that ordering up hands the makers all the risk: a euchre is worth as much as a march, which is why a side sitting on 8 or 9 points is dangerous to bid against.\n\nOnly one side can score in any given hand, so the two totals never advance together and there is no way for both sides to reach the target at once: the moment a side's total hits 10 the game stops and that side has won. No tie-break is needed.\n\nGames are usually a race to 10. Playing to 11 is common in some regions, and league play sometimes uses a fixed number of hands with the higher total winning instead of a target score, in which case an equal total is normally settled by playing one more hand.",
   "variants": [
     {

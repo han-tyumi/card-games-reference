@@ -24,6 +24,8 @@ import {
   CARD,
   SECTIONS,
   buildDiagram,
+  buildFigure,
+  isRedSuit,
   categoryLabel,
   facts,
   gamesByCategory,
@@ -304,9 +306,12 @@ function drawDiagram(book: Booklet, layout: NonNullable<CardGame["layout"]>): vo
 
   doc.font(fonts.regular).fontSize(6.5).fillColor(MUTED);
   for (const label of diagram.labels) {
+    // Give the caption more room than the card it sits under, centred on it, so
+    // a word like "Opponent" wraps between words instead of mid-word.
+    const bleed = 18;
     const [x, y] = at(label.x, label.y - 6);
-    doc.text(label.text, x, y, {
-      width: label.width * scale,
+    doc.text(label.text, x - bleed / 2, y, {
+      width: label.width * scale + bleed,
       align: "center",
     });
   }
@@ -323,6 +328,117 @@ function drawDiagram(book: Booklet, layout: NonNullable<CardGame["layout"]>): vo
 
   doc.x = MARGINS.left;
   doc.y = originY + height + 8;
+}
+
+const RED = "#a4243b";
+
+/** Draw a ranking strip or combination example, mirroring the SVG figure. */
+function drawFigure(book: Booklet, figure: NonNullable<CardGame["figures"]>[number]): void {
+  const { doc, fonts } = book;
+  const built = buildFigure(figure);
+  const scale = Math.min(1, book.contentWidth / Math.max(built.width, 1));
+
+  book.ensureSpace(built.height * scale + 26);
+
+  const originX = MARGINS.left + (book.contentWidth - built.width * scale) / 2;
+  const originY = doc.y + 4;
+
+  for (const card of built.cards) {
+    const x = originX + card.x * scale;
+    const y = originY + card.y * scale;
+    doc
+      .roundedRect(x, y, card.width * scale, card.height * scale, 2)
+      .fillAndStroke("#ffffff", MUTED);
+
+    doc
+      .font(fonts.bold)
+      .fontSize(9 * scale + 1)
+      .fillColor(isRedSuit(card.face) ? RED : TEXT)
+      .text(clean(card.face, book.fonts.unicode), x, y + card.height * scale / 2 - 5, {
+        width: card.width * scale,
+        align: "center",
+        lineBreak: false,
+      });
+
+    if (card.note) {
+      doc
+        .font(fonts.regular)
+        .fontSize(5.5)
+        .fillColor(MUTED)
+        .text(card.note, x - 7, y + card.height * scale + 2, {
+          width: card.width * scale + 14,
+          align: "center",
+        });
+    }
+  }
+
+  doc.font(fonts.regular).fontSize(6.5);
+  for (const row of built.rowLabels) {
+    doc
+      .fillColor(row.struck ? RED : MUTED)
+      .text(row.text, originX, originY + row.y * scale - 8, {
+        width: row.width * scale,
+        align: "right",
+      });
+  }
+
+  doc.font(fonts.regular).fontSize(7).fillColor(MUTED);
+  doc.text(
+    clean(figure.caption, book.fonts.unicode),
+    MARGINS.left,
+    originY + built.height * scale + 4,
+    { width: book.contentWidth, align: "center" },
+  );
+
+  doc.x = MARGINS.left;
+  doc.moveDown(0.5);
+}
+
+/** A compact reference table: deal sizes, or point values. */
+function drawTable(book: Booklet, header: string[], rows: string[][]): void {
+  const { doc, fonts } = book;
+  const columns = header.length;
+  // First column carries the label and gets the room; the rest split what's left.
+  const firstWidth = book.contentWidth * (columns === 2 ? 0.55 : 0.4);
+  const restWidth = (book.contentWidth - firstWidth) / (columns - 1);
+  const widthOf = (i: number) => (i === 0 ? firstWidth : restWidth);
+  const xOf = (i: number) =>
+    MARGINS.left + (i === 0 ? 0 : firstWidth + (i - 1) * restWidth);
+
+  const write = (cells: string[], bold: boolean): void => {
+    const height =
+      Math.max(
+        ...cells.map((cell, i) =>
+          doc
+            .font(bold ? fonts.bold : fonts.regular)
+            .fontSize(8.5)
+            .heightOfString(clean(cell, book.fonts.unicode), { width: widthOf(i) - 6 }),
+        ),
+      ) + 4;
+
+    book.ensureSpace(height + 4);
+    const y = doc.y;
+    cells.forEach((cell, i) => {
+      doc
+        .font(bold ? fonts.bold : fonts.regular)
+        .fontSize(8.5)
+        .fillColor(bold ? ACCENT : TEXT)
+        .text(clean(cell, book.fonts.unicode), xOf(i), y, { width: widthOf(i) - 6 });
+    });
+    doc.y = y + height;
+    doc
+      .moveTo(MARGINS.left, doc.y - 2)
+      .lineTo(MARGINS.left + book.contentWidth, doc.y - 2)
+      .strokeColor(RULE)
+      .lineWidth(0.4)
+      .stroke();
+    doc.x = MARGINS.left;
+  };
+
+  doc.moveDown(0.3);
+  write(header, true);
+  for (const row of rows) write(row, false);
+  doc.moveDown(0.4);
 }
 
 function titlePage(book: Booklet, gameCount: number): void {
@@ -449,7 +565,42 @@ function gamePage(
   for (const { key, heading } of SECTIONS) {
     book.heading(heading);
     book.body(blocks(game[key]));
-    if (key === "setup" && game.layout) drawDiagram(book, game.layout);
+
+    if (key === "setup") {
+      if (game.layout) drawDiagram(book, game.layout);
+      if (game.deal) {
+        const hasRemoved = game.deal.some((r) => r.removed);
+        const header = ["Players", "Each player gets"];
+        if (hasRemoved) header.push("Removed");
+        drawTable(
+          book,
+          header,
+          game.deal.map((r) => {
+            const cells = [
+              String(r.players),
+              r.hand === 0 ? "whole deck, shared out" : `${r.hand} cards`,
+            ];
+            if (hasRemoved) cells.push(r.removed ?? "\u2014");
+            return cells;
+          }),
+        );
+      }
+    }
+
+    if (key === "play" && game.figures) {
+      for (const figure of game.figures) drawFigure(book, figure);
+    }
+
+    if (key === "goal_and_scoring" && game.scoring_table) {
+      const hasNote = game.scoring_table.some((r) => r.note);
+      drawTable(
+        book,
+        hasNote ? ["Scores", "Value", "Notes"] : ["Scores", "Value"],
+        game.scoring_table.map((r) =>
+          hasNote ? [r.item, r.value, r.note ?? "\u2014"] : [r.item, r.value],
+        ),
+      );
+    }
   }
 
   book.heading("Variants");

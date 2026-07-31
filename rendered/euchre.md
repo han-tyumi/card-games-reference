@@ -39,6 +39,10 @@ Reneging. Failing to follow suit when you were able to is a renege. Club and tou
 
 Four of the twenty-four cards never reach a hand, so besides the upcard three cards stay unknown all deal. That, along with the dealer's buried discard, is what makes tracking the seven trump cards worth the effort.
 
+![Euchre card figure](diagrams/euchre-fig1.svg)
+
+![Euchre card figure](diagrams/euchre-fig2.svg)
+
 ## Goal & scoring
 
 A side wins by being first to 10 points. Points come only from the outcome of a hand; individual tricks are worth nothing on their own, and the defenders score nothing at all whenever the makers succeed.

@@ -19,6 +19,13 @@ Other numbers need the pack trimmed so the deal comes out even. For three player
 
 There is no layout, no stock and no discard pile. Everything sits in the players' hands, and there is nothing to write down until the first hand has been played out.
 
+| Players | Each player gets | Removed from the deck | Notes |
+| --- | --- | --- | --- |
+| 3 | 17 cards | 2♦ | — |
+| 4 | 13 cards | — | The whole pack is dealt out. |
+| 5 | 10 cards | 2♦, 2♣ | — |
+| 6 | 8 cards | 2♦, 3♦, 2♣, 3♣ | — |
+
 ## Play
 
 Every hand opens with a pass. Pick three cards out of your hand and lay them face down in front of the player who is to receive them. Nobody may look at the cards coming their way until they have committed their own three, so the exchange is genuinely blind on both sides. The direction rotates deal by deal: pass to the left on the first hand, to the right on the second, straight across on the third, and on the fourth hand nobody passes at all and you play what you were dealt. Then the cycle starts again. Three and five players have nobody sitting directly opposite, so their rotation drops the across pass and runs left, right, hold; six players use the full four-hand cycle.
