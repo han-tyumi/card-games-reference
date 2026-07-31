@@ -159,6 +159,37 @@ So, concretely:
 If you ever find text in this repository that reads like it came from somewhere
 else, please open an issue. It will be rewritten.
 
+### Check your own wording before opening a PR
+
+This is not a hypothetical risk, and good intentions are not enough to avoid it.
+When the v1 entries were audited, several passages had drifted close enough to a
+source's wording to need rewriting — despite having been written by someone
+working from notes rather than copying. The pattern was consistent and worth
+knowing about:
+
+- **It happens in procedural detail, not in overviews.** Every match was a
+  sentence explaining a specific mechanic — how a penalty is paid, how a card
+  exchange works, what happens when a pile empties, how a failed bid is scored.
+  Prose about the feel of a game never matched; prose about the exact sequence
+  of a rule did.
+- **The cause is clause order, not vocabulary.** These were not copy-pastes.
+  They were sentences that walked through a rule in the same order as the source,
+  with different words in the slots. That is still derived from someone else's
+  expression.
+- **The narrower the rule, the higher the risk.** When a rule has one natural
+  order to explain it in, everyone lands near the same sentence. Those passages
+  need deliberate restructuring, not just resynonymising.
+
+So before opening a PR, take two or three of your most **specific procedural
+sentences** and search each as an exact quoted phrase. If a card game rules site
+comes back with your sentence — or with your sentence wearing different nouns —
+rewrite the passage from scratch. Keep the rule identical and change the
+expression: different clause order, different framing, different sentence
+boundaries.
+
+Pick sentences that would be damning if they matched. Searching "Aces are low"
+proves nothing; a match there is coincidence.
+
 ## Contributing
 
 New games and corrections are both welcome. Corrections especially — card game
