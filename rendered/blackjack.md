@@ -21,6 +21,8 @@ Every round starts with each player placing a bet in their betting spot. Once al
 
 An ace plus any ten-value card in your first two cards is a blackjack, also called a natural. It is the best hand in the game and is settled at a better rate than an ordinary win.
 
+![Blackjack setup diagram](diagrams/blackjack.svg)
+
 ## Play
 
 Before anyone acts, the dealer checks for a natural. If the upcard is an ace, the dealer first offers insurance: any player may put up a side bet of up to half their original stake, and that bet pays 2 to 1 if the dealer's hole card turns out to be a ten-value card. A player holding a blackjack against a dealer ace may instead take even money, which is the same wager in disguise and pays their hand 1 to 1 immediately. When the upcard is an ace or a ten-value card, the dealer then peeks at the hole card. If it is a natural, the round is over at once: insurance is paid, every ordinary hand loses, and any player who also holds a blackjack pushes.

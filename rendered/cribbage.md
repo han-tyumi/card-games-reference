@@ -21,6 +21,8 @@ Once both hands are down to four cards and the crib is out of the way, the non-d
 
 Both pegs start off the board. Score by leapfrogging the back peg ahead of the front one, so the gap always shows what you just scored.
 
+![Cribbage setup diagram](diagrams/cribbage.svg)
+
 ## Play
 
 A deal has two phases: the play, usually called pegging, and then the show.

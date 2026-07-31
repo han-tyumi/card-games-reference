@@ -21,6 +21,8 @@ Card values in play: an ace is 1 and numeral cards are worth their pips, which i
 
 Each player (or partnership) keeps captured cards in a face-down pile, out of play until the round is scored. The player to the dealer's left starts.
 
+![Casino setup diagram](diagrams/casino.svg)
+
 ## Play
 
 On your turn you play exactly one card from your hand, face up, and it must do one of three things: capture, build, or trail. Then play passes to the left. Never more than one card, never fewer.

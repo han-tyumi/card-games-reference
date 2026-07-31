@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 193.6" width="276" height="193.6" role="img" aria-label="Blackjack setup diagram">
+<title>Blackjack setup</title>
+<rect x="63.0" y="8.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="143.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="183.0" y="8.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="83.0" y="88.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="83.0" y="89.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="88.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="89.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="163.0" y="88.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="163.0" y="89.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="78.0" y="60.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Shoe</text>
+<text x="158.0" y="60.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Dealer's upcard</text>
+<text x="198.0" y="60.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Hole card</text>
+<text x="138.0" y="141.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Players' hands</text>
+<text x="138.0" y="157.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Three of the up to seven players shown. Only the</text>
+<text x="138.0" y="169.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">dealer's second card is hidden; in shoe games the</text>
+<text x="138.0" y="181.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">players' two cards are dealt face up.</text>
+</svg>
