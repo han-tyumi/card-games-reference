@@ -2,8 +2,8 @@
 <title>Aces are low, and every pile builds down in alternating colours. Nothing can be played on an ace, and a king only ever goes into a corner or onto an empty arm of the cross.</title>
 <rect x="82.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
 <text x="97.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">K♠</text>
-<text x="97.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Corners</text>
-<text x="97.0" y="67.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">only</text>
+<text x="97.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Corner or</text>
+<text x="97.0" y="67.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">empty arm</text>
 <rect x="118.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
 <text x="133.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">Q♥</text>
 <rect x="154.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>

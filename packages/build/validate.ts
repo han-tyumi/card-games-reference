@@ -127,6 +127,53 @@ function checkEntry(
 
   problems.push(...checkTagSemantics(data));
   problems.push(...checkLayout(data));
+  problems.push(...checkDeal(data));
+
+  return problems;
+}
+
+/**
+ * A deal table has to answer the question for every group that can play.
+ *
+ * This was a real defect: 500 Rummy seats 2 to 8 but its table stopped at 5,
+ * so a table of six looked it up and found nothing. A gap is worse than no
+ * table at all, because the reader trusts it and comes away misinformed.
+ */
+function checkDeal(data: Entry): string[] {
+  const deal = data["deal"];
+  if (!Array.isArray(deal)) return [];
+
+  const players = data["players"] as Record<string, unknown> | undefined;
+  const min = typeof players?.["min"] === "number" ? players["min"] : null;
+  const max = typeof players?.["max"] === "number" ? players["max"] : null;
+  if (min === null || max === null) return [];
+
+  const problems: string[] = [];
+  const listed = new Set<number>();
+
+  for (const row of deal) {
+    const count = (row as Record<string, unknown>)["players"];
+    if (typeof count !== "number") continue;
+    if (listed.has(count)) {
+      problems.push(`deal lists ${count} players more than once`);
+    }
+    listed.add(count);
+    if (count < min || count > max) {
+      problems.push(`deal covers ${count} players, outside the game's ${min}-${max}`);
+    }
+  }
+
+  const missing: number[] = [];
+  for (let count = min; count <= max; count += 1) {
+    if (!listed.has(count)) missing.push(count);
+  }
+  if (missing.length > 0) {
+    problems.push(
+      `deal has no row for ${missing.join(", ")} ` +
+        `player${missing.length === 1 && missing[0] === 1 ? "" : "s"}, ` +
+        `but the game seats ${min}-${max}`,
+    );
+  }
 
   return problems;
 }

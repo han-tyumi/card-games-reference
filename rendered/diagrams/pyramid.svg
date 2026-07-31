@@ -42,6 +42,6 @@
 <text x="83.0" y="563.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Stock</text>
 <text x="123.0" y="563.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Waste</text>
 <text x="203.0" y="563.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Discards</text>
-<text x="143.0" y="589.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Every card covers the two below it, so only the seven</text>
-<text x="143.0" y="601.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">cards of the bottom row start free.</text>
+<text x="143.0" y="589.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Every card is covered by the two below it, so only the</text>
+<text x="143.0" y="601.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">seven cards of the bottom row start free.</text>
 </svg>
