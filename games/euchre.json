@@ -1,0 +1,59 @@
+{
+  "id": "euchre",
+  "name": "Euchre",
+  "aliases": [
+    "Eucre",
+    "Euker"
+  ],
+  "category": "trick-taking",
+  "players": {
+    "min": 3,
+    "max": 6,
+    "ideal": 4
+  },
+  "decks": "1 standard deck stripped to 24 cards (A, K, Q, J, 10, 9 in each suit)",
+  "setup": "Four players in two fixed partnerships, partners seated opposite each other. Strip a standard pack down to 24 cards: ace, king, queen, jack, ten and nine in each of the four suits. Nothing lower is used.\n\nFor the first dealer, turn cards face up one at a time around the table and give the deal to whoever receives the first black jack. After that the deal passes clockwise every hand.\n\nDeal five cards to each player clockwise in two rounds, three to a player then two, or two then three. Whichever pattern you start with, keep it for the rest of that deal. That accounts for twenty cards. Stack the remaining four face down in the middle as the kitty and turn its top card face up. That upcard is the suit on offer in the first round of bidding.\n\nDo not sort your hand yet, because ranking is not fixed until trump is settled. In the three plain suits cards run ace, king, queen, jack, ten, nine from high to low. In trump the order is right bower (the jack of the trump suit, the best card in the deck), left bower (the other jack of the same color), then ace, king, queen, ten, nine. The left bower does not merely rank as trump, it belongs to trump for the whole hand. With spades as trump the jack of clubs is a spade: you may not use it to follow a club lead, and you must play it to a spade lead if it is your only spade. The trump suit therefore holds seven cards and the same-color suit only five.\n\nKeep score on paper, or with the traditional pair of spare low cards laid face down and turned to show the count.",
+  "play": "First round of bidding. Beginning with the player to the dealer's left and moving clockwise, each player either passes or accepts the upcard's suit as trump. Accepting is called ordering it up if you are one of the dealer's opponents, assisting if you are the dealer's partner, and taking it up if you are the dealer. As soon as somebody accepts, bidding stops: the dealer adds the upcard to hand and buries any one card face down under the kitty, going back to five cards. The side that chose trump are the makers, the other pair the defenders.\n\nSecond round of bidding. If all four pass, the dealer turns the upcard face down on the kitty and the auction goes round once more from the dealer's left. Now a player may pass or name any suit as trump except the suit just turned down. Naming the other suit of the same color is called next; naming either suit of the opposite color is cross, or green. Nobody exchanges cards in the second round, and the kitty is finished with. If all four pass again the hand is dead: throw the cards in and pass the deal. Under the very common stick-the-dealer rule the dealer is instead forced to name a suit rather than let the hand die.\n\nGoing alone. Whoever names trump, in either round, may declare a loner at that moment, before any card is led. Their partner lays all five cards face down and takes no part in the hand, and the maker plays one against two. The declaration must be made when trump is called; you cannot decide to go alone once play has started.\n\nPlaying the tricks. The player to the dealer's left leads to the first trick, except on a loner, where the lead falls to the player on the loner's left. Each player in turn clockwise must follow the suit led if holding a card of it. A player who cannot follow may play anything at all, trump included. There is no obligation to trump and no obligation to beat what has already been played. The trick goes to the highest trump in it, or, if nobody trumped, to the highest card of the suit led. The winner of a trick leads to the next. Five tricks are played and the hand is then scored.\n\nThe bower trap. Two situations catch new players, and both come from the left bower changing suit. If hearts are trump and a diamond is led, the jack of diamonds is a heart and may not be played to follow the diamond lead. If hearts are trump and hearts are led, a player whose only heart is the jack of diamonds does hold a heart and must play it.\n\nReneging. Failing to follow suit when you were able to is a renege. Standard club and tournament practice is to stop the hand as soon as it is discovered and award the innocent side 2 points, or 4 if the renege was committed against a lone hand.\n\nFour of the twenty-four cards never reach a hand, so besides the upcard three cards stay unknown all deal. That, along with the dealer's buried discard, is what makes tracking the seven trump cards worth the effort.",
+  "goal_and_scoring": "A side wins by being first to 10 points. Points come only from the outcome of a hand; individual tricks are worth nothing on their own, and the defenders score nothing at all whenever the makers succeed.\n\nScore at the end of each hand as follows:\n\n- Makers win three or four tricks: 1 point.\n- Makers win all five, called a march: 2 points.\n- A lone maker wins three or four tricks: 1 point.\n- A lone maker wins all five: 4 points.\n- Makers win fewer than three tricks: they are euchred, and the defenders take 2 points.\n\nNote the asymmetry on a loner. Success pays two extra points, failure costs nothing extra, since a euchre is worth 2 to the defenders whether or not the maker went alone. Note also that ordering up hands the makers all the risk: a euchre is worth as much as a march, which is why a side sitting on 8 or 9 points is dangerous to bid against.\n\nGames are usually a race to 10. Playing to 11 is common in some regions, and league play sometimes uses a fixed number of hands with the higher total winning instead of a target score.",
+  "variants": [
+    {
+      "name": "Stick the dealer",
+      "description": "Also called screw the dealer. If the first three players pass in the second round of bidding, the dealer may not pass and must name one of the three eligible suits. It removes thrown-in hands entirely, speeds the game up, and creates the game's most reliable pressure point, since the dealer is often forced into a suit they would never have called voluntarily. Widespread enough that many tables treat it as standard rather than a variation."
+    },
+    {
+      "name": "Cutthroat (three-handed) Euchre",
+      "description": "Three players, no partnerships, same 24-card deck and same five-card hands, with the remainder forming the kitty and its top card turned up. Whoever names trump plays alone against the other two, who cooperate for that hand only. The maker scores 1 point for three or four tricks and 3 points for all five; if the maker is euchred, each of the two defenders scores 2. First to 10 wins. The temporary alliances make it a very different bidding game from the partnership version."
+    },
+    {
+      "name": "The Benny (25-card Euchre)",
+      "description": "A joker, sometimes replaced by the two of spades, is added to the deck as the Benny or best bower: the highest trump no matter which suit is trump. Holding it guarantees a trick. If the Benny is turned up as the upcard, the dealer names the trump suit. Common in Britain, Australia and parts of Canada, often alongside a target of 11 points rather than 10."
+    },
+    {
+      "name": "Bid Euchre",
+      "description": "An auction version, usually with a larger deck (frequently 24 or 32 cards, or two packs combined for more players), in which players bid a specific number of tricks rather than simply accepting or naming trump. The high bidder names trump, and scoring is by tricks won rather than by the fixed 1, 2 and 4 point table. A side that fails to reach its bid loses points equal to the bid. It scales to five and six players more comfortably than standard Euchre."
+    },
+    {
+      "name": "Defending alone",
+      "description": "An optional rule allowing a defender to announce that they will play alone against a lone maker, sending their own partner out of the hand as well and turning it into a one-against-one duel. If the defender euchres the maker, their side scores 4 instead of 2. High variance, and worth agreeing on before the first deal, since not every group plays it."
+    }
+  ],
+  "difficulty": "easy",
+  "duration_minutes": "20-40",
+  "tags": [
+    "partnership",
+    "classic",
+    "strategy",
+    "quick",
+    "family-friendly",
+    "beginner-friendly"
+  ],
+  "sources_consulted": [
+    "Pagat",
+    "Bicycle Cards",
+    "Wikipedia",
+    "Britannica",
+    "World Euchre Federation",
+    "Ohio Euchre",
+    "Trickster Cards"
+  ]
+}

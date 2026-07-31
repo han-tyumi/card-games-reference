@@ -2,7 +2,7 @@
 
 # Card Game Rules — Index
 
-15 games, written from scratch and free to reuse under CC BY-SA 4.0.
+16 games, written from scratch and free to reuse under CC BY-SA 4.0.
 
 ## Solitaire (1 player)
 
@@ -18,6 +18,7 @@
 
 | Game | Players | Deck | Time | Difficulty |
 | --- | --- | --- | --- | --- |
+| [Euchre](euchre.md) | 3-6 players (best with 4) | 1 standard deck stripped to 24 cards (A, K, Q, J, 10, 9 in each suit) | 20-40 minutes | Easy |
 | [Hearts](hearts.md) | 3-6 players (best with 4) | 1 standard deck (52 cards), jokers removed; a few low cards come out for 3, 5 or 6 players | 30-60 minutes | Easy |
 | [Spades](spades.md) | 2-4 players (best with 4) | 1 standard deck (52 cards), jokers removed | 45-90 minutes | Medium |
 | [Whist](whist.md) | 4 players | 1 standard deck (52 cards), jokers removed | 30-60 minutes | Simple |
