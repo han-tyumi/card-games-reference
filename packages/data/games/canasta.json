@@ -28,60 +28,144 @@
         {
           "label": "Natural meld",
           "cards": [
-            { "face": "8♠" },
-            { "face": "8♥" },
-            { "face": "8♦" }
+            {
+              "face": "8♠"
+            },
+            {
+              "face": "8♥"
+            },
+            {
+              "face": "8♦"
+            }
           ]
         },
         {
           "label": "Mixed meld",
           "cards": [
-            { "face": "K♣" },
-            { "face": "K♦" },
-            { "face": "2♠", "note": "Wild" }
+            {
+              "face": "K♣"
+            },
+            {
+              "face": "K♦"
+            },
+            {
+              "face": "2♠",
+              "note": "Wild"
+            }
           ]
         },
         {
           "label": "Too few naturals",
           "valid": false,
           "cards": [
-            { "face": "7♥", "note": "Only one" },
-            { "face": "2♣" },
-            { "face": "2♦" }
+            {
+              "face": "7♥",
+              "note": "Only one"
+            },
+            {
+              "face": "2♣"
+            },
+            {
+              "face": "2♦"
+            }
           ]
         },
         {
           "label": "Sequences never count",
           "valid": false,
           "cards": [
-            { "face": "4♠" },
-            { "face": "5♠" },
-            { "face": "6♠" }
+            {
+              "face": "4♠"
+            },
+            {
+              "face": "5♠"
+            },
+            {
+              "face": "6♠"
+            }
           ]
         }
       ]
     }
   ],
-  "goal_and_scoring": "The partnership target is 5,000 points, played out over as many deals as it takes. Each deal is scored for the side as a whole.\n\nCard values: jokers 50; twos and aces 20; kings, queens, jacks, tens, nines, and eights 10; sevens, sixes, fives, fours, and black threes 5. Add up everything your side has melded and subtract the value of every card still in either partner's hand.\n\nBonuses: 500 for each natural canasta, 300 for each mixed canasta, and 100 for going out. Going out concealed is worth 200 instead: you lay your whole hand down in one turn, canasta included, having put nothing on the table earlier in the deal, neither a meld of your own nor an addition to your partner's. Your partner may already have melds down; some rule sets are stricter and require the whole side to have stayed off the table.\n\nRed threes count 100 each for the side that laid them down, but only if that side made its initial meld; a side that never melded has the same 100 per red three deducted. Holding all four doubles it to 800 for or 800 against.\n\nA deal can easily come out negative. Add each deal to the running total, since that total sets the next deal's minimum meld. The game ends when a side reaches 5,000 or more once a deal has been fully scored; if both sides cross 5,000 in the same deal, the higher total wins, and if the two totals are level as well, play one more deal to break the tie.",
+  "goal_and_scoring": "The partnership target is 5,000 points, played out over as many deals as it takes. Each deal is scored for the side as a whole.\n\nEvery card carries a point value fixed by its rank, wild cards counting for most and the low cards for least. Add up everything your side has melded and subtract the value of every card still in either partner's hand.\n\nBonuses: 500 for each natural canasta, 300 for each mixed canasta, and 100 for going out. Going out concealed is worth 200 instead: you lay your whole hand down in one turn, canasta included, having put nothing on the table earlier in the deal, neither a meld of your own nor an addition to your partner's. Your partner may already have melds down; some rule sets are stricter and require the whole side to have stayed off the table.\n\nRed threes count 100 each for the side that laid them down, but only if that side made its initial meld; a side that never melded has the same 100 per red three deducted. Holding all four doubles it to 800 for or 800 against.\n\nA deal can easily come out negative. Add each deal to the running total, since that total sets the next deal's minimum meld. The game ends when a side reaches 5,000 or more once a deal has been fully scored; if both sides cross 5,000 in the same deal, the higher total wins, and if the two totals are level as well, play one more deal to break the tie.",
   "scoring_table": [
-    { "item": "Joker", "value": "50" },
-    { "item": "Two", "value": "20" },
-    { "item": "Ace", "value": "20" },
-    { "item": "King down to eight", "value": "10" },
-    { "item": "Seven down to four", "value": "5" },
-    { "item": "Black three", "value": "5" },
-    { "item": "Natural canasta", "value": "500" },
-    { "item": "Mixed canasta", "value": "300" },
-    { "item": "Going out", "value": "100" },
-    { "item": "Going out concealed", "value": "200", "note": "instead of the 100" },
-    { "item": "Red three", "value": "100", "note": "each; deducted instead if the side never melded" },
-    { "item": "All four red threes", "value": "800", "note": "for or against" },
-    { "item": "Cards left in hand", "value": "deducted", "note": "at face value, both partners" },
-    { "item": "Initial meld, score below 0", "value": "15" },
-    { "item": "Initial meld, 0 to 1,495", "value": "50" },
-    { "item": "Initial meld, 1,500 to 2,995", "value": "90" },
-    { "item": "Initial meld, 3,000 or above", "value": "120" },
-    { "item": "Game", "value": "5,000" }
+    {
+      "item": "Joker",
+      "value": "50"
+    },
+    {
+      "item": "Two",
+      "value": "20"
+    },
+    {
+      "item": "Ace",
+      "value": "20"
+    },
+    {
+      "item": "King down to eight",
+      "value": "10"
+    },
+    {
+      "item": "Seven down to four",
+      "value": "5"
+    },
+    {
+      "item": "Black three",
+      "value": "5"
+    },
+    {
+      "item": "Natural canasta",
+      "value": "500"
+    },
+    {
+      "item": "Mixed canasta",
+      "value": "300"
+    },
+    {
+      "item": "Going out",
+      "value": "100"
+    },
+    {
+      "item": "Going out concealed",
+      "value": "200",
+      "note": "instead of the 100"
+    },
+    {
+      "item": "Red three",
+      "value": "100",
+      "note": "each; deducted instead if the side never melded"
+    },
+    {
+      "item": "All four red threes",
+      "value": "800",
+      "note": "for or against"
+    },
+    {
+      "item": "Cards left in hand",
+      "value": "deducted",
+      "note": "at face value, both partners"
+    },
+    {
+      "item": "Initial meld, score below 0",
+      "value": "15"
+    },
+    {
+      "item": "Initial meld, 0 to 1,495",
+      "value": "50"
+    },
+    {
+      "item": "Initial meld, 1,500 to 2,995",
+      "value": "90"
+    },
+    {
+      "item": "Initial meld, 3,000 or above",
+      "value": "120"
+    },
+    {
+      "item": "Game",
+      "value": "5,000"
+    }
   ],
   "variants": [
     {

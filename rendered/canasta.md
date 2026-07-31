@@ -49,7 +49,7 @@ When the stock runs out. If the last stock card is a red three, the player shows
 
 The partnership target is 5,000 points, played out over as many deals as it takes. Each deal is scored for the side as a whole.
 
-Card values: jokers 50; twos and aces 20; kings, queens, jacks, tens, nines, and eights 10; sevens, sixes, fives, fours, and black threes 5. Add up everything your side has melded and subtract the value of every card still in either partner's hand.
+Every card carries a point value fixed by its rank, wild cards counting for most and the low cards for least. Add up everything your side has melded and subtract the value of every card still in either partner's hand.
 
 Bonuses: 500 for each natural canasta, 300 for each mixed canasta, and 100 for going out. Going out concealed is worth 200 instead: you lay your whole hand down in one turn, canasta included, having put nothing on the table earlier in the deal, neither a meld of your own nor an addition to your partner's. Your partner may already have melds down; some rule sets are stricter and require the whole side to have stayed off the table.
 

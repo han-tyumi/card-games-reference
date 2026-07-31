@@ -46,7 +46,7 @@ Otherwise the hand ends the moment a player lays down their last card. The stand
 
 Your aim in each hand is to be the first to run out of cards. Over a session, the aim is to be first to an agreed point target.
 
-When someone goes out, every other player counts what is still in their hand: 50 for each eight, 10 for each king, queen, jack or ten, 1 for each ace, and face value for everything from two through nine. The player who went out scores the combined total of all the opposing hands. A target of 100 makes for a short game; 500 is the other common choice, and some groups simply agree on a fixed number of deals and add up as they go.
+When someone goes out, every other player counts the value of what is still in their hand. Eights are punished hardest, which is the price of holding the game's most useful card too long. The player who went out scores the combined total of all the opposing hands. A target of 100 makes for a short game; 500 is the other common choice, and some groups simply agree on a fixed number of deals and add up as they go.
 
 If the hand blocks because the stock is exhausted and nobody can play, the player with the smallest hand total is credited with the difference between their own total and each opponent's, which is usually a much thinner score than going out cleanly.
 

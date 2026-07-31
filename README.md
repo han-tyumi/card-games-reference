@@ -339,6 +339,29 @@ Two rules of thumb for the awkward middle:
 Where a name is ambiguous across regions, say so in the prose rather than in
 `aliases` — see the note on aliases above.
 
+### Prose, lists, tables and figures each do one job
+
+Every fact should appear **once**, in whichever medium presents it best. The
+failure to avoid is writing a table out as a sentence and then printing the
+table underneath it, which is how a page gets long without getting clearer.
+
+| Use | For |
+| --- | --- |
+| **Prose** | The rule, the reasoning, conditions, and anything with a "because" in it |
+| **A list** | Three or more parallel items that have no order or ranking between them |
+| **A table** | Anything with the same shape repeated: a value per card, a hand size per player count |
+| **A figure** | Spatial or ordinal facts — where things sit, what beats what, what a valid combination looks like |
+
+So Oh Hell's prose keeps the *rule* — divide 52 by the number of players and
+round down — because that generalises to any table, while the deal table carries
+the worked answers. Canasta's prose says card values rise with rank and the
+table lists them. Neither says "see the table below": the prose has to read
+correctly on its own, since consumers of the data may render it alone.
+
+Where prose already lists values cleanly and no table exists, that is fine. The
+test is not "could this be a table" but "does a table answer the question
+faster".
+
 ### Style
 
 - Plain and direct. Second person where it reads naturally.
