@@ -45,6 +45,8 @@ Face-down cards are played blind, one per turn. Pick one without looking, turn i
 
 If you pick up the pile at any stage you must clear your hand out again before returning to your table cards. The order is always hand, then face-up, then face-down.
 
+![Palace card figure](diagrams/palace-fig1.svg)
+
 ## Goal & scoring
 
 You are trying not to be last. A player is finished the moment their hand, their three face-up cards and their three face-down cards are all gone. The first player out is the winner, but the result everyone actually cares about is at the other end: play continues after the winner leaves until only one player still holds cards, and that player is the loser. The loser deals the next hand, and in most groups is on the receiving end of whatever name the group uses for the game.

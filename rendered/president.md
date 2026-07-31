@@ -37,6 +37,10 @@ Before the next hand is played, the ranks pay out. Whoever finished as Scum must
 
 Once the exchange is settled, the President leads to the first round of the hand. Some groups instead give the opening lead to the Scum as a small consolation. Either convention works as long as everyone uses the same one.
 
+![President card figure](diagrams/president-fig1.svg)
+
+![President card figure](diagrams/president-fig2.svg)
+
 ## Goal & scoring
 
 The immediate goal in each hand is to shed your cards before everyone else and come out as President. The longer-term goal is to stay at the top, because the card exchange means the President starts each new hand with better cards than they were dealt and the Scum starts with worse. Most groups play with no written score at all: the game is about holding the President's chair, and it ends when people have had enough.

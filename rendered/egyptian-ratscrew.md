@@ -73,6 +73,12 @@ While you have no cards you are skipped in the rotation: nobody waits for you to
 
 Groups vary on how generous to be here. Some let eliminated players, and even people who were not playing, keep slapping in indefinitely.
 
+![Egyptian Ratscrew card figure](diagrams/egyptian-ratscrew-fig1.svg)
+
+![Egyptian Ratscrew card figure](diagrams/egyptian-ratscrew-fig2.svg)
+
+![Egyptian Ratscrew card figure](diagrams/egyptian-ratscrew-fig3.svg)
+
 ## Goal & scoring
 
 There is no scoring. You win by holding every card in play, which is 52 with a single pack, 54 if you left the jokers in and 104 with two packs. In practice that means everyone else has been knocked out and you are the only player with a stack in front of you.

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 216" width="442" height="346" role="img" aria-label="Egyptian Ratscrew: The two patterns every table plays, reading left to right up to the top of the pile. A sandwich needs exactly one card in between; two cards in between is not one, and slapping it costs you a card.">
+<title>The two patterns every table plays, reading left to right up to the top of the pile. A sandwich needs exactly one card in between; two cards in between is not one, and slapping it costs you a card.</title>
+<rect x="106.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="121.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">7♠</text>
+<rect x="142.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="157.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">7♦</text>
+<rect x="106.0" y="60.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="121.0" y="85.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">9♣</text>
+<rect x="142.0" y="60.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="157.0" y="85.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">4♥</text>
+<rect x="178.0" y="60.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="193.0" y="85.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">9♠</text>
+<rect x="106.0" y="112.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<text x="121.0" y="137.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">9♣</text>
+<rect x="142.0" y="112.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<text x="157.0" y="137.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">4♥</text>
+<rect x="178.0" y="112.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<text x="193.0" y="137.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">3♦</text>
+<rect x="214.0" y="112.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<text x="229.0" y="137.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">9♠</text>
+<text x="98.0" y="32.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Double</text>
+<text x="98.0" y="84.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Sandwich</text>
+<text x="98.0" y="136.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#a4243b">Not a sandwich</text>
+<text x="138.0" y="168.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">The two patterns every table plays, reading left to</text>
+<text x="138.0" y="180.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">right up to the top of the pile. A sandwich needs</text>
+<text x="138.0" y="192.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">exactly one card in between; two cards in between is</text>
+<text x="138.0" y="204.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">not one, and slapping it costs you a card.</text>
+</svg>

@@ -48,6 +48,66 @@
     "caption": "Every player gets the same nine cards: three face-down cards with a face-up card squared on top of each, plus a hand of three. The discard pile starts empty."
   },
   "play": "On your turn you play one card, or several cards of the same rank at once, from your hand onto the discard pile in the middle. Your card must be equal to or higher than the card showing on top of the pile. Equal is enough, so a nine covers a nine. If you play more than one card, they must all be the same rank as each other. After you play, and only while the stock still has cards in it, draw back up to three cards in hand. If you played three at once, draw three.\n\nIf you cannot play, you pick up the entire discard pile into your hand and your turn ends. You draw nothing that turn, and the middle of the table is now bare, so the next player may open with any card they like. Groups differ on whether you may also pick the pile up by choice while holding a legal play, usually to avoid surrendering a card you want to keep: some allow it freely, others rule that if you can play you must. Settle that one before the first deal. Either way this is the engine of the game: the pile grows, someone eventually swallows it whole, and they are suddenly holding fifteen cards while everybody else holds three.\n\nThree ranks break the equal-or-higher rule.\n\nThe 2 resets. You may play a 2 on absolutely any card, and once it is down the pile counts as clear: the next player may play anything they like on top of it. Nothing leaves the table, though. Every card stays in the pile, so whoever ends up picking it up still collects the lot.\n\nThe 7 reverses direction of the requirement. You may play a 7 on any card of 7 or lower, and the player after you must then play a 7 or lower, not higher. A 2 or a 10 still gets you out of it, because those two can be played on anything.\n\nThe 10 burns. A 10 is legal on top of anything. Everything sitting in the middle, plus the 10 that just landed on it, leaves circulation for the rest of the hand: push the lot into a dead heap at the edge of the table, where it never rejoins the stock and can never be picked up by anyone. With the middle now empty, you top your hand back up to three and take another turn immediately, leading whatever card suits you.\n\nFour of a kind does exactly what a 10 does. It makes no difference how the four got there — one player slapping all four down together, or three of a rank already showing and somebody adding the last one. The moment the top four cards of the pile share a rank, the pile is dead and joins the same heap as a burn, and the player who supplied that fourth card refills to three and leads again.\n\nThe hand runs through three stages. While the stock lasts you always refill to three cards, so you play out of your hand and the layout in front of you is untouched. Once the stock is empty you stop drawing and simply play your hand down. When your hand is empty, you start playing your three face-up cards, and you may play any of them, or two or three of the same rank together. Only when the face-up cards are also gone do you touch the face-down ones.\n\nFace-down cards are played blind, one per turn. Pick one without looking, turn it straight onto the pile, and see what happens. If it legally covers the top card, it stays and play carries on. If it does not, you take it back along with the whole pile into your hand, and you are back to playing out of a hand until you empty it again. You may not look at a face-down card before committing to it, and you may not play two on the same turn.\n\nIf you pick up the pile at any stage you must clear your hand out again before returning to your table cards. The order is always hand, then face-up, then face-down.",
+  "figures": [
+    {
+      "kind": "ranking",
+      "caption": "The ordinary ladder, ace on top; equal is enough to cover. The 2 and the 10 sit outside it and go on any card. The 7 keeps its place but forces the next player to play a 7 or lower.",
+      "rows": [
+        {
+          "label": "Low to high",
+          "cards": [
+            {
+              "face": "3♣"
+            },
+            {
+              "face": "4♦"
+            },
+            {
+              "face": "5♥"
+            },
+            {
+              "face": "6♠"
+            },
+            {
+              "face": "7♣",
+              "note": "Forces low"
+            },
+            {
+              "face": "8♦"
+            },
+            {
+              "face": "9♥"
+            },
+            {
+              "face": "J♠"
+            },
+            {
+              "face": "Q♣"
+            },
+            {
+              "face": "K♦"
+            },
+            {
+              "face": "A♥"
+            }
+          ]
+        },
+        {
+          "label": "Play on anything",
+          "cards": [
+            {
+              "face": "2♠",
+              "note": "Resets"
+            },
+            {
+              "face": "10♦",
+              "note": "Burns"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "goal_and_scoring": "You are trying not to be last. A player is finished the moment their hand, their three face-up cards and their three face-down cards are all gone. The first player out is the winner, but the result everyone actually cares about is at the other end: play continues after the winner leaves until only one player still holds cards, and that player is the loser. The loser deals the next hand, and in most groups is on the receiving end of whatever name the group uses for the game.\n\nThere is no point scoring. Each hand stands on its own and you simply play as many as you feel like, though some groups keep a tally of how many times each person has finished last across an evening.\n\nOne finishing detail is worth agreeing in advance. If your last card is a 10, or completes four of a kind, you burn the pile and go out, but there is now nothing on the table for the next player to beat. Most groups treat you as out and let the next player lead anything. Others rule that you cannot go out on a burner and must pick the card back up, which makes the endgame considerably meaner.",
   "variants": [
     {

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 120" width="442" height="192" role="img" aria-label="Egyptian Ratscrew: Turning one of these stops the rotation: the next player owes you a face card, and the rank you turned sets how many cards they get to find one.">
+<title>Turning one of these stops the rotation: the next player owes you a face card, and the rank you turned sets how many cards they get to find one.</title>
+<rect x="106.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="121.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">J♠</text>
+<text x="121.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">1 card</text>
+<rect x="142.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="157.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">Q♥</text>
+<text x="157.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">2 cards</text>
+<rect x="178.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="193.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">K♦</text>
+<text x="193.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">3 cards</text>
+<rect x="214.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="229.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">A♣</text>
+<text x="229.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">4 cards</text>
+<text x="98.0" y="32.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Attempts owed</text>
+<text x="138.0" y="84.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Turning one of these stops the rotation: the next</text>
+<text x="138.0" y="96.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">player owes you a face card, and the rank you turned</text>
+<text x="138.0" y="108.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">sets how many cards they get to find one.</text>
+</svg>
