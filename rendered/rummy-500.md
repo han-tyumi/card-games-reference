@@ -15,7 +15,7 @@ Two to eight can play. Up to four players use a single 52-card pack; from five p
 
 Deal 7 cards to each player, one at a time, clockwise from the dealer's left. In the two-player game deal 13 each instead. Place the remainder face down as the stock and turn its top card face up to begin the discard pile.
 
-The discard pile is the heart of this game, so lay it out properly. Every discard goes on the pile offset from the one below it, fanned so that every card in the pile stays readable to everyone for the whole hand. Never square it up.
+The discard pile is the heart of this game, so lay it out properly. Stagger each new discard against the one beneath it, building a long overlapping ladder in which no card ever hides another. Anyone at the table should be able to read the pile from top to bottom at any point in the hand, which means it must never be squared up or gathered into a neat stack.
 
 Aces work high or low but never both in the same run: A-2-3 and Q-K-A are legal, K-A-2 is not. Point values are what you will be adding up all game. An ace is worth 15, except when it is melded low in a sequence with the 2, where it counts 1. Kings, queens and jacks are 10 each. Every other card is worth its number. The player to the dealer's left starts.
 
@@ -43,7 +43,7 @@ A hand can also end without anyone going out. Once the stock is empty the discar
 
 Score each hand separately, then keep a running total. The first player to reach 500 points wins. If two or more cross 500 in the same hand, the highest total takes it, and if those totals are equal the tied players play further hands until one of them is ahead on their own.
 
-At the end of a hand, each player adds up the value of every card they have on the table, counting melds they laid down and cards they laid off onto anybody's meld, then subtracts the value of every card still in their hand. Aces are 15, or 1 when melded low against a 2; face cards are 10; everything else is its number.
+A player's score for the hand is a difference between two figures: what is showing in front of them, less what is trapped in their hand. Everything on the table feeds the first figure, whether it arrived there in a meld of their own or as a card laid off onto somebody else's spread; every card never played feeds the second. Aces are 15, or 1 when melded low against a 2; face cards are 10; everything else is its number.
 
 The result can easily be negative, and negative scores really are subtracted from your running total, so a player caught with two aces and a couple of kings while holding nothing on the table goes backwards. That is the game's main pressure: melding early banks points but tells everyone what you are collecting, while sitting on cards to build a bigger play risks handing back more than you make.
 

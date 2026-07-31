@@ -56,7 +56,7 @@ You are trying to empty your hand. The first player to get rid of every card, an
 
 There is no point scoring at all. A game is a single deal and takes as long as it takes.
 
-Many groups do not stop at the winner. Play carries on with the remaining players, finishing positions are recorded as each one goes out, and the last player still holding cards is the loser. A player who has gone out is skipped from then on, and the rank cycle runs on unbroken from the last claim rather than restarting. That version gives everyone something to play for after the first person leaves, and it means being second-to-last is a real result rather than nothing.
+Many groups do not stop at the winner. Once someone is out, the rest keep going and note the order in which they finish; whoever is left with the only unplayed hand at the end takes last place. Anyone who has already finished is passed over on later circuits, and the rank sequence continues from wherever the last claim left it rather than starting over. Ranking the whole table this way keeps the people still in it invested after the first person leaves, and it turns second-to-last into an outcome worth chasing rather than a consolation.
 
 A few practical points that decide games. Lie small: claiming one card is far less suspicious than claiming four, and it also costs you less to be caught early when the pile is short. Watch the pile size, because a challenge is only worth making when the pile is small or when you are certain. And count: if you hold three queens yourself, anyone claiming three queens is caught before they finish the sentence.
 

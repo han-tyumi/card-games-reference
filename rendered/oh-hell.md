@@ -25,7 +25,7 @@ Rule a grid before you start: one column per player, one row per deal, with spac
 
 Bidding. With the cards dealt and trump turned, each player in turn starting to the dealer's left, and finishing with the dealer, announces out loud exactly how many tricks they intend to win. Bids are spoken in order, not written secretly, so later bidders are better informed than earlier ones. Zero is a legal and frequently correct bid. No bid may exceed the number of cards in the hand.
 
-The hook. The dealer bids last and is the only player under a restriction: the dealer may not name a number that would make the bids add up to exactly the number of tricks available. At least one player is therefore guaranteed to miss. If the hand is five cards and the four earlier bids were 1, 2, 0 and 1, totalling four, the dealer may say anything except 1. This is the rule the game is named for, and it exists to stop a table from politely arranging for everyone to succeed. If the earlier bids already add up to more than the number of tricks, the dealer is unrestricted, since no bid can bring the total back down.
+The hook. Bidding last is less of a privilege than it looks, because one figure is always barred to the dealer: whichever one would leave the table's bids balancing perfectly against the tricks in the hand. Somebody is therefore certain to fail every deal. Say the hand is five cards and the four earlier bids were 1, 2, 0 and 1, totalling four; every number is open to the dealer except 1. This is the rule the game is named for, and it exists to stop a table from politely arranging for everyone to succeed. Where the earlier bids have already overshot what the hand contains, nothing at all is barred to the dealer, since no bid can bring the total back down.
 
 Write every bid on the score sheet before a card is played. Bids cannot be revised once the first lead is made.
 
@@ -41,7 +41,7 @@ When the last trick of a deal has been taken, compare each player's count with t
 
 You win by holding the highest total when the agreed run of deals is finished. There is no target to race to and no sudden-death ending; the game is over when the arc is over.
 
-The standard scoring is all-or-nothing per hand. A player who takes exactly the number of tricks bid scores 10 plus that number, so a made bid of 3 is worth 13 and a made bid of 0 is worth 10. A player who takes any other number scores nothing for that hand. Overtricks earn no consolation whatever: bidding three and taking four is exactly as worthless as bidding three and taking two, which is what makes deliberately dumping a trick on an opponent a real weapon.
+The standard scoring is all-or-nothing per hand. Hit your contract on the nose and the hand pays a flat 10 with the size of the contract added on top, so a fulfilled 3 is worth 13 and a fulfilled 0 is worth 10. Land anywhere else, above or below, and the hand pays you nothing at all. Overtricks earn no consolation whatever: bidding three and taking four is exactly as worthless as bidding three and taking two, which is what makes deliberately dumping a trick on an opponent a real weapon.
 
 A common gentler version awards every player 1 point per trick taken regardless of whether they hit their bid, plus a flat 10-point bonus for hitting it exactly. That keeps trailing players engaged; the strict version produces sharper swings and a tenser endgame. Choose one before the first deal, because the two reward completely different bidding.
 
