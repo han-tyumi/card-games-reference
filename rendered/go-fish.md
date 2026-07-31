@@ -2,7 +2,7 @@
 
 # Go Fish
 
-**Also known as:** Fish, Authors, Happy Families  
+**Also known as:** Fish  
 **Players:** 2-6 players (best with 4)  
 **Deck:** 1 standard deck (52 cards), jokers removed  
 **Time:** 10-20 minutes  
@@ -33,7 +33,7 @@ If the player you asked has none of that rank, they say "Go fish." You draw the 
 
 Whenever you complete a book, meaning all four cards of one rank, lay it face up in front of you straight away. Completing a book does not end your turn and does not earn you an extra one; carry on with whatever you were doing. Cards in a laid-down book are out of play and cannot be asked for.
 
-If your hand runs empty while the pool still has cards, draw a fresh hand at the start of your next turn: five cards, or however many remain if there are fewer than five. Then ask as normal. Some groups have you draw only one card in that situation, which is harsher but keeps the pool alive longer; settle it before you start. If your hand is empty and the pool is empty as well, you are out and the remaining players carry on without you.
+If your hand runs empty while the pool still has cards, refill it straight away: take five, or whatever is left if fewer than five remain. Do this the moment your last card leaves your hand, so if it empties in the middle of your own turn you draw and carry on asking without a break. Some groups have you draw only one card in that situation, which is harsher but keeps the pool alive longer; settle it before you start. If your hand is empty and the pool is empty as well, you are out, and the remaining players carry on without you. You can only put a question to a player who is actually holding cards, so anyone who is out is skipped from then on.
 
 One detail worth agreeing up front: if you ask a question and the pool is already empty, there is nothing to fish for, so a "go fish" answer simply ends your turn.
 
@@ -51,7 +51,7 @@ The skill in the game is memory. Every question tells the table what you hold an
 
 ## Variants
 
-**Ask for the exact card** — Instead of naming a rank, you name a single card by rank and suit, such as the nine of clubs. You still have to hold at least one card of that rank to ask. The tighter target means far fewer successful requests, so hands last longer and remembering exactly which cards have surfaced matters much more. This is how the older parlour game Authors is played.
+**Ask for the exact card** — Instead of naming a rank, you name a single card by rank and suit, such as the nine of clubs. You still have to hold at least one card of that rank to ask. The tighter target means far fewer successful requests, so hands last longer and remembering exactly which cards have surfaced matters much more. This is the older parlour game Authors, which Go Fish descends from and which is still sometimes used as another name for it.
 
 **The blocker plays next** — When someone tells you to go fish, the turn moves to them rather than to the player on your left. Turn order becomes unpredictable, which stops players from timing their questions around a fixed rotation, and it rewards answering "go fish" honestly and fast. Widely played as a house rule and worth agreeing on before the deal, since it changes the flow completely.
 

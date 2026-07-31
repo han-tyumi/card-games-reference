@@ -39,11 +39,9 @@
 | Game | Players | Deck | Time | Difficulty |
 | --- | --- | --- | --- | --- |
 | [Crazy Eights](crazy-eights.md) | 2-7 players (best with 4) | 1 standard deck (52 cards) for two to five players; 2 decks shuffled together (104 cards) for six or seven | 15-30 minutes | Simple |
-| [Egyptian Ratscrew](egyptian-ratscrew.md) | 2-8 players (best with 4) | 1 standard deck (52 cards); some groups leave the jokers in so the deal comes out even, or add a second deck above six players | 15-45 minutes | Easy |
 | [Kings in the Corner](kings-in-the-corner.md) | 2-6 players (best with 4) | 1 standard deck (52 cards), jokers removed | 15-30 minutes | Easy |
 | [Palace](palace.md) | 2-6 players (best with 4) | 1 standard deck (52 cards), jokers removed; 2 decks shuffled together for five or more players | 15-30 minutes | Easy |
 | [President](president.md) | 3-8 players (best with 5) | 1 standard deck (52 cards), jokers usually removed; add a second deck above about seven players | 20-45 minutes | Easy |
-| [Slapjack](slapjack.md) | 2-8 players (best with 4) | 1 standard deck (52 cards), jokers removed; 2 decks shuffled together for six or more players | 10-30 minutes | Simple |
 | [Speed](speed.md) | 2-4 players (best with 2) | 1 standard deck (52 cards), jokers removed | 5-15 minutes | Easy |
 | [Spit](spit.md) | 2 players | 1 standard deck (52 cards), jokers removed | 10-25 minutes | Easy |
 
@@ -53,8 +51,10 @@
 | --- | --- | --- | --- | --- |
 | [Casino](casino.md) | 2-4 players (best with 2) | 1 standard deck (52 cards) | 20-40 minutes | Medium |
 | [Cribbage](cribbage.md) | 2-4 players (best with 2) | 1 standard deck (52 cards), plus a cribbage board or pencil and paper | 20-45 minutes | Medium |
+| [Egyptian Ratscrew](egyptian-ratscrew.md) | 2-8 players (best with 4) | 1 standard deck (52 cards); some groups leave the jokers in so the deal comes out even, or add a second deck above six players | 15-45 minutes | Easy |
 | [Go Fish](go-fish.md) | 2-6 players (best with 4) | 1 standard deck (52 cards), jokers removed | 10-20 minutes | Simple |
 | [Old Maid](old-maid.md) | 2-8 players (best with 4) | 1 standard deck with one queen removed (51 cards) | 10-20 minutes | Simple |
+| [Slapjack](slapjack.md) | 2-8 players (best with 4) | 1 standard deck (52 cards), jokers removed; 2 decks shuffled together for six or more players | 10-30 minutes | Simple |
 | [War](war.md) | 2-4 players (best with 2) | 1 standard deck (52 cards), jokers removed | 15-45 minutes | Simple |
 
 ## Bluffing

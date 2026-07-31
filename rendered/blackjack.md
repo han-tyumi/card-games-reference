@@ -27,19 +27,21 @@ Before anyone acts, the dealer checks for a natural. If the upcard is an ace, th
 
 Otherwise play begins with the player on the dealer's left and moves clockwise. Each player finishes their hand completely before the next one starts. Your options on your first two cards are:
 
-Hit. Take another card. You may keep hitting as long as you are under 21.
+Hit. Take another card. You may keep hitting as long as you are under 21. Where the cards are dealt face up you signal this by tapping the felt beside them rather than saying it out loud, so the decision is on camera.
 
-Stand. Take nothing more and let the hand ride.
+Stand. Take nothing more and let the hand ride, signalled by waving a flat hand over your cards.
 
 Double down. Double your original bet and take exactly one more card, then you are done whatever the total. Most tables allow this on any two cards; some restrict it to hard totals of 9, 10 or 11.
 
-Split. If your two cards are the same rank, put out a second bet equal to the first and separate them into two hands. Each gets a second card and is then played out in turn. If a split hand pairs again you can usually split once more, up to a limit of three or four hands in total. Splitting is subject to two firm exceptions: split aces receive exactly one card each and cannot be hit again or resplit, and an ace paired with a ten after a split counts as an ordinary 21, not a blackjack. Whether you may double after splitting varies by house.
+Split. If your two cards are a pair, put out a second bet equal to the first and separate them into two hands, each of which is dealt a second card and then played out in turn. Two cards of the same rank always count as a pair, and at nearly every table any two ten-value cards do as well, so a king alongside a ten may be split even though the ranks differ. If a split hand pairs again you can usually split once more, up to a limit of three or four hands in total. Splitting is subject to two firm exceptions: split aces receive exactly one card each and cannot be hit again or resplit, and any two-card 21 made on a split hand counts as an ordinary 21 rather than a natural, so it pays 1 to 1, pushes against a dealer's three-card 21, and loses to a dealer's blackjack. Whether you may double after splitting varies by house.
 
 Surrender. Where offered, you may abandon the hand before drawing any card and forfeit half your bet. This is late surrender, meaning it is only available after the dealer has confirmed no natural. Plenty of tables do not offer it at all.
 
 Going over 21 is a bust. Your cards are taken and your bet is collected immediately, before the dealer plays. That is the whole basis of the house edge: you lose a bust hand even if the dealer goes on to bust as well.
 
-When every player has finished, the dealer turns the hole card up and plays by fixed rule, with no choices at all. The dealer draws to any total of 16 or less and stands on any total of 17 or more, counting a soft 17 such as ace-6 as a 17 and standing on it. The dealer never doubles, never splits, and never surrenders. If the dealer busts, every player still standing wins.
+When every player has finished, the dealer turns the hole card up and plays by fixed rule, with no choices at all. The one exception is that if every player has already busted there is nothing left to beat, so the dealer collects the bets and the round ends without another card being drawn. The dealer draws to any total of 16 or less and stands on any total of 17 or more, counting a soft 17 such as ace-6 as a 17 and standing on it. The dealer never doubles, never splits, and never surrenders. If the dealer busts, every player still standing wins.
+
+Rounds run back to back for as long as you want to keep playing. Casinos bury a cut card partway down the shoe and reshuffle at the end of whichever round reaches it, so the shoe is never dealt to the bottom. At home, play out the round you are in, then collect the discards and reshuffle everything before the next deal. If the cards do run out part-way through a round, shuffle the discard pile at once, leaving the cards already on the table where they are, and carry on dealing from it.
 
 ## Goal & scoring
 
@@ -51,7 +53,7 @@ A winning hand pays 1 to 1, so a 10-chip bet returns your 10 plus 10 more. A bla
 
 A blackjack beats any 21 built from three or more cards, and it is paid at the better rate; a three-card 21 against a dealer blackjack simply loses. Two blackjacks push.
 
-There is no running score. You play as many rounds as you like and count your chips at the end. Sensible play matters: with correct basic strategy the house edge on a standard six-deck game with these rules sits well under one percent, but insurance is a losing bet at almost any count, and a table paying 6 to 5 on blackjacks instead of 3 to 2 costs you roughly an extra 1.4 percent.
+There is no running score. You play as many rounds as you like and count your chips at the end. Sensible play matters: played with correct basic strategy, a six-deck game with the rules above costs you somewhere around four tenths of one percent of what you stake, which is about as good as a casino game gets. Insurance is a losing bet at almost any count, and a table paying 6 to 5 on blackjacks instead of 3 to 2 adds roughly another 1.4 percent, wiping out that edge several times over.
 
 ## Variants
 

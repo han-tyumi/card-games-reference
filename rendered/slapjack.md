@@ -7,13 +7,13 @@
 **Deck:** 1 standard deck (52 cards), jokers removed; 2 decks shuffled together for six or more players  
 **Time:** 10-30 minutes  
 **Difficulty:** Simple  
-**Category:** Shedding  
+**Category:** Matching & collecting  
 
 ## Setup
 
 Take the jokers out and clear a hard, flat surface everyone can reach. Two to eight can play. Three or more is better than two, because with two players the pile bounces back and forth and a game can run a long time.
 
-Choose a dealer however you like; it matters very little, since nothing about the deal is an advantage. Deal the entire pack out one card at a time, face down, clockwise, until every card is gone. Hands do not need to come out even. With five players two people simply start with an extra card.
+Choose a dealer however you like; it matters very little, since nothing about the deal is an advantage, and pass the deal to the left if you play again. Deal the entire pack out one card at a time, face down, clockwise, until every card is gone. Hands do not need to come out even. With five players two people simply start with an extra card.
 
 Nobody looks at any card, including their own. Square your cards into a tidy face-down stack in front of you. Keep it squared throughout: you play off the top and put winnings on the bottom, and a spilled stack costs you slaps.
 
@@ -29,11 +29,11 @@ Almost every card does nothing. You turn it, and the turn passes to the player o
 
 When a jack appears, everyone races to slap the pile. The first hand flat on the pile takes the whole thing: gather it up, square it, add it face down to the bottom of your stack, and shuffle your stack if you like. That player then turns the first card of a new pile, and play continues clockwise from them. There are only four jacks in the pack, so piles can get big before one shows up.
 
-If two or more hands land at what looks like the same moment, the bottom hand wins, meaning the one actually touching the cards rather than the back of somebody else's hand. If it is genuinely too close to call, the simplest fix is to leave the pile where it is and carry on turning cards.
+If two or more hands land at what looks like the same moment, the bottom hand wins, meaning the one actually touching the cards rather than the back of somebody else's hand. If it is genuinely too close to call, do not split the pile: leave it in the middle exactly as it is, and let the player to the left of whoever turned the jack carry on turning cards onto it. The pile then goes to whoever wins the next jack.
 
-Slap a card that is not a jack and you pay for it. Take the top card off your own stack, without looking at it, and pass it face down to the player who turned the card you slapped, who puts it on the bottom of their stack. On a table with an aggressive slapper this is where whole games are decided. Note that the penalty card goes to one specific player, not to the middle, so a bad slap directly rewards the person you slapped over.
+Slap a card that is not a jack and you pay for it. Take the top card off your own stack, without looking at it, and pass it face down to the player who turned the card you slapped, who puts it on the bottom of their stack. On a table with an aggressive slapper this is where whole games are decided. Note that the penalty card goes to one specific player, not to the middle, so a bad slap directly rewards the person you slapped over. One gap in that rule is worth plugging in advance: if you slap a non-jack that you turned yourself, there is nobody obvious to pay, and the tidiest fix is to hand the card to the player on your left.
 
-When you turn your last card you are not out yet. You stay at the table and you may still slap, so the very next jack is your way back: win that slap and the entire pile becomes your new stack. Miss it, meaning the pile is claimed by someone else while you have no cards, and you are out for good. You get exactly one chance, not an open invitation to keep slapping all game.
+When you turn your last card you are not out yet. You stay at the table and you may still slap, so the very next jack is your way back: win that slap and the entire pile becomes your new stack. Miss it, meaning the pile is claimed by someone else while you have no cards, and you are out for good. You get exactly one chance, not an open invitation to keep slapping all game. While you are waiting on it you are skipped in the rotation, since you have nothing to turn; the turn passes to the next player who still has a stack.
 
 A player who is out takes no further part. Their cards are already in circulation, so nothing needs to be redistributed and play carries on around the shrinking table.
 
@@ -43,9 +43,9 @@ Play continues, jack by jack, until only one player is left holding cards.
 
 ## Goal & scoring
 
-The goal is to end up with all 52 cards. There is no scoring, no rounds and no partial credit: a player who has been knocked out is out, and the last player holding cards has, by definition, got the whole deck.
+You are trying to finish holding every card in play: 52 with one pack, 104 if you dealt two. There is no scoring, no rounds and no partial credit. A player who has been knocked out is out, and the last player still holding cards has by definition collected the lot.
 
-A full game to 52 does take a while, especially with two players, because a large stack is not safe. One badly judged slap or one missed jack transfers a big pile and swings the whole game. Expect the lead to change hands several times.
+A full game does take a while, especially with two players, because a large stack is not safe. One badly judged slap or one missed jack transfers a big pile and swings the whole game. Expect the lead to change hands several times.
 
 If you want a guaranteed finish time, agree a stopping point before you start. Two common ones: play for a set fifteen or twenty minutes and give the win to whoever has the tallest stack, or play until the table is down to two and declare the larger stack the winner.
 

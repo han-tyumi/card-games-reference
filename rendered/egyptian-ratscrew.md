@@ -7,17 +7,17 @@
 **Deck:** 1 standard deck (52 cards); some groups leave the jokers in so the deal comes out even, or add a second deck above six players  
 **Time:** 15-45 minutes  
 **Difficulty:** Easy  
-**Category:** Shedding  
+**Category:** Matching & collecting  
 
 ## Setup
 
 You need a flat surface everyone can reach and hit. A table is better than a floor, and a hard surface is better than a bed, because the pile has to stay square enough to see the top card.
 
-Pick a dealer any way you like. Shuffle and deal the whole pack out one card at a time, face down, going clockwise, until the cards run out. Hands will be uneven unless the player count divides into 52, and a one- or two-card difference does not matter. Some groups leave the two jokers in purely so the deal comes out level at three, six or thirteen players.
+Pick a dealer any way you like; if you play a second game, pass the deal to the left. Shuffle and deal the whole pack out one card at a time, face down, going clockwise, until the cards run out. A 52-card pack comes out level only at two, four or thirteen players, and a one- or two-card difference does not matter anyway. Some groups leave the two jokers in so that 54 cards divide evenly at three, six or nine. If you do leave them in, say what they are: the default is that a joker is an ordinary card that never matches anything and never triggers a slap, though some tables make it slappable on sight.
 
-Nobody looks at their cards, ever, including their own. Square your cards into a neat face-down stack in front of you and keep it squared: you play off the top and add winnings to the bottom, so a sloppy stack slows you down and lets people see cards early.
+Nobody looks at any card at any point, their own stack included. Square your cards into a neat face-down stack in front of you and keep it squared: you play off the top and add winnings to the bottom, so a sloppy stack slows you down and lets people see cards early.
 
-Before the first card is turned, agree on two things out loud. First, which slap patterns are live. Doubles and sandwiches are near-universal; top-bottom, marriages, tens and runs are optional and every group plays a different set. Second, what a false slap costs, normally one card burned to the bottom of the pile, sometimes two. Arguments about these mid-game are what the game is famous for.
+Before the first card is turned, agree on two things out loud. First, which slap patterns are live. Doubles and sandwiches are near-universal and top-bottom is close behind; marriages, tens and runs are extras, and every group plays a different set. Second, what a false slap costs, normally one card burned to the bottom of the pile, sometimes two. Arguments about these mid-game are what the game is famous for.
 
 The player to the dealer's left turns the first card. Play runs clockwise.
 
@@ -40,21 +40,24 @@ That player flips cards from their own stack onto the pile, one at a time, up to
 
 If one of the cards they flip is itself a face card or an ace, they stop immediately, even if they had attempts left. The challenge now passes to the player after them, with the count reset by whatever rank was just turned. Challenges can chain around the table several times and the pile gets fat.
 
-If they use up all their attempts without turning a face card or ace, the challenge is over. The player who turned the most recent face card takes the entire pile, puts it face down under their own stack, and turns the first card of a brand-new pile.
+If they use up all their attempts without turning a face card or ace, the challenge is over. The player who turned the most recent face card takes the entire pile, puts it face down under their own stack, and turns the first card of a brand-new pile. Play then carries on clockwise from that player, exactly as it does after a slap.
 
 Note that the cards flipped during a challenge are ordinary cards on the pile. They can and do complete slap patterns, which is where most of the chaos comes from.
 
 SLAPPING
 
-Slapping outranks everything, including a challenge in progress. The instant the top of the pile completes a live pattern, anyone at the table may slap it, including the player who just turned the card and including players who are not part of the current challenge. The first hand onto the pile takes the whole thing, adds it face down to the bottom of their stack, and turns the first card of the next pile. Play then continues clockwise from them.
+Slapping outranks everything, including a challenge in progress. The instant the top of the pile completes a live pattern, anyone at the table may slap it, including the player who just turned the card and including players who are not part of the current challenge. The first hand onto the pile takes the whole thing, adds it face down to the bottom of their stack, and turns the first card of the next pile. Play then continues clockwise from them. Any face-card challenge that was in progress dies with the pile: once the cards have been carried off, nobody owes anybody a face card. You may square the won cards up any way you like and shuffle them into your stack if you want to, but you never look at them.
 
-The standard patterns:
+The two patterns every table plays:
 
 - Double: the top two cards are the same rank, for example 7 then 7.
 - Sandwich: two cards of the same rank with exactly one card between them, for example 9, 4, 9.
-- Top-bottom: the card just turned matches the rank of the very bottom card of the pile.
 
-Common optional additions, all of which must be agreed in advance: marriage, a king and queen next to each other in either order; tens, two consecutive cards whose values add to exactly ten, with face cards not counting; and runs, three or four cards in consecutive rank order, up or down.
+Top-bottom is nearly as common and is the first one to add: it is live when the card just turned matches the rank of the card at the very bottom of the pile. It only works if somebody remembers what that bottom card was, which is why some groups drop it.
+
+Further additions, all of which must be agreed before the first card is turned: marriage, a king and queen next to each other in either order; tens, two consecutive cards whose ranks add to exactly ten, counting an ace as one and giving jacks, queens and kings no value at all, so 6 then 4 is live and so is ace then 9; and runs, three cards in consecutive rank order either up or down with suits ignored, ace low unless you also allow it to run king-ace-two.
+
+Suits never matter for any pattern.
 
 If several hands land at once, the bottom hand wins, meaning whoever is actually touching the cards rather than the back of someone else's hand.
 
@@ -66,13 +69,13 @@ RUNNING OUT OF CARDS
 
 Playing your last card does not eliminate you. You stay at the table with an empty space in front of you and you may still slap. Win a slap and the entire pile comes to you, and you are back in with a large stack. This is why the game can run so long: a player who is down to nothing can be the leader thirty seconds later.
 
-You are out when someone else claims the pile while you are cardless, because your chance to slap back in has gone. A player with no cards who owes a face card obviously cannot produce one, so the challenge ends and the challenger takes the pile. A cardless player who false-slaps has nothing to burn; the usual ruling is that they are out on the spot.
+While you have no cards you are skipped in the rotation: nobody waits for you to turn anything, and the turn passes straight on to the next player who still has a stack. You are out when someone else claims the pile while you are cardless, because your chance to slap back in has gone. If you run out in the middle of answering a face-card challenge, whether you had attempts left or not, you cannot produce what you owe, so the challenge ends there and the player who turned the last face card takes the pile. A cardless player who false-slaps has nothing to burn; the usual ruling is that they are out on the spot.
 
 Groups vary on how generous to be here. Some let eliminated players, and even people who were not playing, keep slapping in indefinitely.
 
 ## Goal & scoring
 
-There is no scoring. You win by holding all 52 cards, which in practice means everyone else has been knocked out and you are the only player left with a stack.
+There is no scoring. You win by holding every card in play, which is 52 with a single pack, 54 if you left the jokers in and 104 with two packs. In practice that means everyone else has been knocked out and you are the only player with a stack in front of you.
 
 Getting all the way there can take a while, because a cardless player who slaps well comes straight back into the game, and a full-table game can swing several times before anyone is genuinely eliminated. It is entirely normal for one player to hold forty cards and lose ten minutes later.
 

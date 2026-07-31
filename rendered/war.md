@@ -11,31 +11,33 @@
 
 ## Setup
 
-Take a 52-card deck and remove the jokers. Shuffle well and deal the whole pack out face down, one card at a time, so that each player has an equal stack. With two players that is 26 cards each; with three, deal 17 each and set the odd card aside; with four, 13 each.
+Take a 52-card deck and remove the jokers. Shuffle well and deal the whole pack out face down, one card at a time, so that each player has an equal stack. With two players that is 26 cards each; with three, deal 17 each and set the odd card aside so the stacks are level; with four, 13 each.
 
-Nobody looks at their cards at any point. Keep your stack squared up face down in front of you, and leave a clear space in the middle of the table where cards will be turned up. Some players like to keep a second face-down pile beside the first for cards they win, so the two never get mixed; either way, cards you win go under the cards you have not played yet.
+Nobody looks at their cards at any point. Keep your stack squared up face down in front of you, and leave a clear space in the middle of the table where cards will be turned up.
 
-Ranking is the usual one with aces high: A, K, Q, J, 10, 9, 8, 7, 6, 5, 4, 3, 2. Suits are irrelevant from start to finish. There is no dealer advantage and no first player, because everybody acts at the same moment, so choosing who deals is purely a matter of convenience.
+Agree before the first battle on where won cards go, because the two usual methods behave differently. Either slide everything you win straight underneath your face-down stack, so you play from a single pile all game, or keep a separate face-down winnings pile beside it and only turn that pile over once your playing stack is exhausted. Whichever you choose, give the won cards a shuffle before they re-enter play; the reason is in the play section and it matters more than it sounds.
+
+Ranking is the usual one with aces high: A, K, Q, J, 10, 9, 8, 7, 6, 5, 4, 3, 2. Suits are irrelevant from start to finish. There is no dealer advantage and no first player, because everybody acts at the same moment, so choosing who deals is purely a matter of convenience, and if you play several games in a row anyone may deal the next one.
 
 ## Play
 
-Play is a series of battles. On each battle every player takes the top card of their stack and turns it face up in the middle at the same time. Whoever turned up the highest rank wins all the cards on the table and adds them face down to the bottom of their stack. Suits never break a tie and never matter.
+Play is a series of battles. On each battle every player takes the top card of their stack and turns it face up in the middle at the same time. Whoever turned up the highest rank collects every card on the table and adds it face down to their own cards, using whichever of the two methods you settled on in setup. Suits never break a tie and never matter.
 
 When the two highest cards are equal, that is a war. Each tied player puts three cards face down on top of the pile they are contesting, then turns one more card face up. The higher of the new face-up cards takes everything: in a two-player war that is ten cards, the two originals plus eight more.
 
 If the face-up cards of the war are also equal, the war simply repeats. Each player again lays three down and one up, adding another eight cards to the pot, and again the higher card takes the lot. There is no cap on this. A second round is often called a double war and a third a triple war, and while three or four consecutive ties are rare, nothing in the rules stops the sequence from continuing.
 
-Sources differ on how many cards go face down. Three down and one up, often chanted as I-de-clare-war while dealing them, is the version most people learn. Bicycle and Pagat give a shorter form with a single card face down and a single card face up, which puts six cards at stake instead of ten and is noticeably quicker. Settle which you are using before the first tie, since it changes how fast stacks change hands.
+Published rule sets differ on how many cards go face down, and both forms are in wide use. Three down and one up, often chanted as I-de-clare-war while the cards are dealt, is the version most people learn as children. Several standard references instead give a shorter form of a single card face down and a single card face up, which puts six cards at stake in a two-player war instead of ten and is noticeably quicker. Settle which one you are using before the first tie, since it changes how abruptly stacks change hands.
 
 Running short of cards mid-war is the edge case that causes arguments. The usual ruling is that you put down as many face-down cards as you can spare and turn your very last card face up as your fighting card; if you have exactly one card left, that card is your face-up card and there are no face-down cards at all. A player who cannot produce a single card has lost. Some groups play the stricter version where failing to complete a full war loses the game outright.
 
-When your face-down stack runs out, turn over the cards you have won and carry on with them. Shuffle them first. This is not merely tidiness: if won cards are stacked back in a fixed order the game can settle into a loop that never resolves, and a meaningful share of unshuffled games are mathematically endless.
+When you play the last card of your face-down stack, pick up the cards you have won, shuffle them, and carry on with them as your new stack. If instead you have been putting winnings straight under your stack, shuffle each batch as you add it. The shuffling is not tidiness. War has no decisions in it, so a deal plus a fixed rule for returning won cards determines the whole game: if the cards always go back in the same order, a deal can enter a cycle in which the same sequence of battles repeats forever and neither player ever wins. Randomising the returned cards breaks any such cycle, and the game then ends with probability one.
 
 With three or four players everyone flips at once and the highest card takes the whole table. If two or more players tie for highest, only those players go to war; anyone who was beaten leaves their card in the pot and takes no further part in that battle. A player whose cards are gone is out, and the rest continue until one player holds everything.
 
 ## Goal & scoring
 
-You win by taking every card in the deck. There is no scoring, no tricks to count and nothing to write down, and no decision is ever made by a player: once the cards are dealt the entire result is fixed by the shuffle and by how won cards are returned to each stack.
+You win by taking every card in the deck. There is no scoring, no tricks to count and nothing to write down. No player ever makes a decision either: once the pack is dealt, the result depends only on the order of the cards and on how won cards are put back, so there is no way to play the game well or badly.
 
 Because cards keep circulating, a game can run far longer than beginners expect. Fifteen to thirty minutes is typical, but an hour is entirely possible, and a game between two evenly matched stacks can churn without either side making progress.
 
@@ -45,13 +47,13 @@ Most households therefore cap it. Play for a set time, or a set number of battle
 
 **One card down, one card up** — On a tie each player buries only a single card face down before turning up the deciding card, so six cards are at stake in a two-player war rather than ten. This is the form printed by several standard references and it shortens the game noticeably, since fewer cards are locked into each contested pot and players run their stacks down less abruptly. Repeated ties are handled the same way, one down and one up each time.
 
-**Casino War** — The banked table-game version, played against a dealer. You bet, then you and the dealer each get one card and the higher card wins even money. On a tie you choose: surrender and forfeit half your stake, or go to war by matching your original bet, after which the dealer burns three cards and deals one more to each of you. Beating or tying the dealer on that second card wins even money on the raise while the original bet pushes. Many tables pay a bonus if the second cards tie as well, and most offer a side bet on the first two cards tying, typically at 10 to 1.
+**Casino War** — The banked table-game version, played against a dealer. You bet, then you and the dealer each get one card and the higher card wins even money. On a tie you choose: surrender and forfeit half your stake, or go to war by matching your original bet, after which the dealer burns three cards and deals one more to each of you. Beating or tying the dealer on that second card wins even money on the raise while the original bet pushes. Where it is offered, a second tie pays a bonus, commonly equal to the original wager, but plenty of tables do not offer it at all. Most tables also carry an optional side bet that the first two cards will tie, typically paying 10 to 1.
 
 **Three or more players** — Deal the pack out as evenly as possible, setting aside any remainder, and have everyone turn a card at the same time. The highest card sweeps the table. If two or more players tie for the lead, only the tied players fight the war, and cards already beaten stay in the pot as spoils for the eventual winner. Players drop out as their cards run out and the last one standing wins. Four players with two decks shuffled together keeps the same feel with more cards in motion.
 
 **Timed War** — Set a timer, often ten or fifteen minutes, and play until it goes off. Whoever holds more cards at that point wins. This is the standard fix for the game's biggest flaw with young children, since it guarantees an ending and gives a clear result without anyone having to concede a stalemate that could otherwise go on indefinitely.
 
-**Jokers wild** — Leave both jokers in the deck as the highest cards, outranking aces and each other only by a tie. With 54 cards the two-player deal is 27 apiece. Jokers make sweeps more dramatic without adding any decisions, and if two jokers meet you resolve it as an ordinary war.
+**Jokers wild** — Leave both jokers in the deck and rank them above the ace, so a joker beats every other card in the pack. With 54 cards the two-player deal is 27 apiece and the three-player deal is 18 apiece with no card left over. The two jokers are equal to each other, so if they meet you fight an ordinary war over them. Jokers make the sweeps more dramatic without adding any decisions, which is the whole appeal for younger players.
 
 **Tags:** beginner-friendly, classic, family-friendly, kids, luck, travel, two-player
 

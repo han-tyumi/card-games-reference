@@ -11,11 +11,11 @@
 
 ## Setup
 
-Two players, 52 cards, jokers out. Shuffle and deal 20 cards to each player: 15 face down as a personal draw pile, and 5 more as a hand you may look at. That accounts for 40 cards; the remaining 12 build the middle.
+The standard game is for two players and uses all 52 cards with the jokers taken out. Anyone may deal; over a match, either alternate the deal or let the loser of the previous round deal, since it confers no advantage. Shuffle and deal 20 cards to each player: 15 face down as a personal draw pile, and 5 more as a hand you pick up and look at. That accounts for 40 cards; the remaining 12 build the middle.
 
 Lay the middle out as a single row between you, running left to right: a face-down stack of 5, a single face-down card, a second single face-down card, then another face-down stack of 5. The two single cards in the centre will become the build piles that everyone plays onto. The stacks of five on either end are the side stacks, held in reserve for when play jams.
 
-Put your draw pile face down at your right hand, where you can reach it without looking, and pick up your five-card hand. Each player is responsible for one side stack, the one nearest them on their own side of the row.
+Put your draw pile face down at your right hand, where you can reach it without looking, and pick up your five-card hand. The two side stacks sit at opposite ends of the row, and each player takes charge of exactly one of them; the usual convention is that you own the stack at your left-hand end, which means the two of you are using opposite ends. Settle this before you start so that nobody flips the same stack twice.
 
 When both players say they are ready, each of you puts a hand on one of the two centre cards and you flip them face up together. The game starts the instant they land, so agree on a count first if you want it fair.
 
@@ -31,9 +31,13 @@ Because both players are reaching for the same two piles, collisions happen cons
 
 When neither player can play anything, the game is stuck. Both players then take the top card of their own side stack and flip it face up onto the centre pile next to it, doing so at the same time. That gives two fresh top cards and play resumes instantly. Note that being stuck means neither player has a legal card in hand, not that either of you has run out of cards.
 
-Work through the side stacks a card at a time as further jams occur. When both side stacks are empty and play jams again, gather the two centre piles, shuffle each one, set them face down as new side stacks, and turn one card from each into the middle to start two fresh build piles. Play then continues exactly as before.
+Work through the side stacks a card at a time as further jams occur. When both side stacks are empty and play jams again, gather the two centre piles, shuffle each one, set them face down as new side stacks, and turn one card from each into the middle to start two fresh build piles. Play then continues exactly as before. If by then the middle holds only two or three cards in total, just split them as evenly as you can and carry on; late in a round the middle is thin because most of the pack is sitting in the losing player's hand and draw pile.
+
+Nothing here is compulsory. You may hold a playable card back if you can see a better use for it, and you need not top your hand up the instant a slot opens. The only hard constraints are that a card must fit the pile you put it on, that you never hold more than five cards, and that the side stacks come out only when both players are stuck.
 
 A round ends the moment a player puts down the last card they have, meaning both hand and draw pile are empty. That player calls out Speed, or in some circles slams a hand down on a centre pile, and the round is over immediately. Anything still in the other player's hand is irrelevant; there is no consolation for being close.
+
+One warning about names. In some regions this game is called Spit or Slam, but the game filed under Spit in this collection is a different one: there you have no hand at all, you play off the top of a row of five stock piles in front of you, and the round ends with the two players grabbing for the centre piles. If someone offers you a game of Spit, check which layout they mean before you deal.
 
 ## Goal & scoring
 
@@ -47,13 +51,13 @@ If you want a running score, the two simple methods are one point per round won,
 
 **Jokers wild** — Leave both jokers in, giving 54 cards, and deal the extra pair into the draw piles. A joker can be played onto either centre pile at any time regardless of what is showing. The player who plays it announces the rank it stands for, and building continues up or down from that rank. Jokers are the standard escape hatch for a hand that has gone dead, and they cut down on how often play jams.
 
-**Three or four players** — For three players, give each person their own side stack of five and put three single cards in the middle as build piles, then split the rest evenly as draw piles; adding the two jokers makes the count divide cleanly. For four, shuffle two decks together, deal each player a hand of five plus a draw pile, and use four centre piles with a side stack per player. More build piles keep the game from locking up, but they also make it very hard to watch every pile at once.
+**Three or four players** — For three players, give each person their own side stack of five and put three single cards in the middle as build piles. That is 18 cards in the middle, so add the two jokers and the remaining 36 split evenly into hands of five plus draw piles of seven; play the jokers as wild, since ordinary jokers would just be two cards nobody can ever put down. For four, shuffle two decks together and use four centre piles with a side stack of five behind each, which leaves exactly 80 cards, or the standard five-card hand and fifteen-card draw pile each. More build piles keep the game from locking up, but they also make it very hard to watch every pile at once.
 
 **Refill only when empty** — You may not top your hand up card by card. Instead you play until your hand is completely empty and only then draw five fresh cards. This slows the game down and puts a real cost on dumping playable cards carelessly, since you can strand yourself with one useless card and no way to replace it. It is a common way to level the field between a fast player and a slower one.
 
 **No ace wrap** — Some households rank the cards strictly from 2 up to ace with no wrap-around, so an ace can only be played on a king and nothing can be played on an ace except a king. This makes aces near-dead cards and lengthens rounds considerably. Agree on it before dealing, because it is the single most common source of mid-game arguments in Speed.
 
-**California Speed** — A different game that shares the name and the frantic pace. Split the deck evenly between two players. Each player lays four cards face up in a row, forming a shared grid of eight. Whenever any two of the eight cards match in rank, both players race to slap a card from their own stack on top of one of them; being second means taking your card back. The aim is still to be the first out of cards, but the skill is pattern spotting rather than sequence building.
+**Spit** — The nearest relative, and in some places simply another name for this game, though the layout is quite different. Each player deals themselves a row of five stock piles holding one to five cards with the top card of each turned face up, keeps the remaining eleven cards as a face-down spit pile, and holds no hand at all. The same build-up-or-down rule applies to two centre piles, but when you are stuck both players turn a spit card instead of a side-stack card, and the round ends with a scramble for the centre piles rather than a simple win. It is the harder of the two, because you can only ever play five specific cards.
 
 **Tags:** beginner-friendly, classic, family-friendly, quick, reflex, speed, two-player
 
