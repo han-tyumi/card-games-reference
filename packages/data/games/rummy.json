@@ -21,7 +21,94 @@
     "other": []
   },
   "setup": "Use one 52-card pack with the jokers removed. Any fair method picks the first dealer; drawing cards and giving the deal to the highest is common, with tied drawers drawing again. The deal then passes to the left after each hand, which means it simply alternates in the two-player game.\n\nHow many cards you get depends on the size of the table. With two players, deal 10 each. With three or four, deal 7 each. With five or six, deal 6 each. Deal one card at a time, face down, clockwise, starting with the player on the dealer's left.\n\nPut the rest of the pack face down in the middle as the stock, then turn its top card face up beside it to start the discard pile. Only the top card of that pile is ever available, so keep it squared up rather than spread.\n\nAces are low. A-2-3 is a run and Q-K-A is not, unless you agree otherwise before the first deal. For scoring, an ace is 1 point, each numbered card is worth its number, and a jack, queen or king is 10. The player to the dealer's left takes the first turn.",
+  "deal": [
+    {
+      "players": 2,
+      "hand": 10
+    },
+    {
+      "players": 3,
+      "hand": 7
+    },
+    {
+      "players": 4,
+      "hand": 7
+    },
+    {
+      "players": 5,
+      "hand": 6
+    },
+    {
+      "players": 6,
+      "hand": 6
+    }
+  ],
   "play": "You are trying to get rid of every card in your hand by arranging them into melds. A set is three or four cards of the same rank, such as three nines. A run is three or more cards of one suit in sequence, such as 5♠ 6♠ 7♠. A card can only belong to one meld at a time.\n\nA turn has three parts and always happens in this order.\n\nFirst, draw. Take either the top card of the stock, sight unseen, or the top card of the discard pile, which everyone can see. You draw exactly one card, and you may not dig deeper into the discard pile.\n\nSecond, meld if you want to. Lay any complete set or run from your hand face up in front of you. You may also lay off: add a card to any meld already on the table, yours or an opponent's, by putting a fourth card on a set or extending either end of a run. Laying off is how single cards get used up late in a hand; the card you add simply becomes part of that meld, and since melds score nothing for anybody in the basic game it does not matter whose spread it joined. Melding is always optional, even when you can. Holding a completed meld back keeps your options open but risks getting caught with it.\n\nThird, discard. Put one card face up on the discard pile. That ends your turn and passes play to the left. The one thing you cannot do is take the top discard and immediately throw the same card back.\n\nTwo points worth agreeing before you deal, because tables differ. Some groups let you lay down as many melds as you like on a turn while others allow only one per turn, and some require you to have melded something of your own before you are allowed to lay off on other players. The looser version of both is the more common modern game.\n\nThe hand ends when somebody goes out, which means playing their last card. You can go out by melding, by laying off, or by discarding your final card, and any mix of those in one turn. In the basic game you do not need to keep a card back for a final discard, though a good number of households insist on it.\n\nIf nobody has gone out by the time the stock is empty, take the discard pile, leave its top card where it is as the only card of a new discard pile, and turn the rest face down as a fresh stock. Shuffling that new stock first is common and harmless. The player who found the stock empty draws from the new one and finishes their turn as normal, and play continues to the left. If the pack cycles a second time with nobody out, most groups end the hand there and score the cards as they stand.\n\nGoing out in a single turn, with no previous melds or lay-offs at all, is going rummy and pays double. To do it you must put your entire hand down on one turn, having laid nothing on the table earlier in the deal.",
+  "figures": [
+    {
+      "kind": "meld",
+      "caption": "A set is three or four cards of the same rank; a run is three or more cards of one suit in sequence. Aces are low, so A-2-3 is a run and Q-K-A is not unless you agree otherwise before the first deal.",
+      "rows": [
+        {
+          "label": "Set",
+          "cards": [
+            {
+              "face": "9♠"
+            },
+            {
+              "face": "9♥"
+            },
+            {
+              "face": "9♦"
+            }
+          ]
+        },
+        {
+          "label": "Run",
+          "cards": [
+            {
+              "face": "5♠"
+            },
+            {
+              "face": "6♠"
+            },
+            {
+              "face": "7♠"
+            }
+          ]
+        },
+        {
+          "label": "Run, ace low",
+          "cards": [
+            {
+              "face": "A♦"
+            },
+            {
+              "face": "2♦"
+            },
+            {
+              "face": "3♦"
+            }
+          ]
+        },
+        {
+          "label": "Not a run",
+          "valid": false,
+          "cards": [
+            {
+              "face": "Q♣"
+            },
+            {
+              "face": "K♣"
+            },
+            {
+              "face": "A♣"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "goal_and_scoring": "The object of each hand is to be first to shed every card. The object of the game is to reach an agreed target, most often 100 or 500, over as many hands as it takes; a fixed number of deals works just as well as long as everyone agrees before the first shuffle.\n\nWhen a player goes out, everyone else counts the cards still in their hand. Melds already on the table do not count for or against anybody, and neither do cards you laid off. Aces are 1, numbered cards are face value, and jacks, queens and kings are 10 each. The winner of the hand scores the sum of everything all the other players are left holding.\n\nGoing rummy doubles the whole amount collected for that hand.\n\nThe common alternative is penalty scoring: instead of the winner collecting, each losing player writes down the value of their own leftover cards as a plus score, the winner writes zero, and the game runs until someone crosses an agreed limit, at which point the lowest total wins.\n\nTies are settled the same way under either method: if two or more players are level for the win once the target has been passed, deal again and keep playing until one of them is clear on their own.",
   "variants": [
     {

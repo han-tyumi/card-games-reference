@@ -37,6 +37,8 @@ The show. When both hands are empty, everyone picks their four cards back up and
 
 The deal then passes to the other player, all fifty-two cards are gathered up and shuffled, and the next hand begins. Points are pegged as they are earned, never totalled at the end, and a peg once advanced cannot be moved back; if you overlook points and start the next stage, they are lost, unless you are playing muggins, in which case your opponent takes them.
 
+![Cribbage card figure](diagrams/cribbage-fig1.svg)
+
 ## Goal & scoring
 
 First to 121 points wins, which is twice around a standard board plus the game hole. Points are pegged continuously, and the game ends instantly when a peg reaches 121, mid-count if necessary.
@@ -53,6 +55,22 @@ A hand or crib is scored as those four cards plus the starter, and every scoring
 The highest possible hand is 29: three fives and the jack matching a starter five. Zero-point hands are common enough to have their own name, a nineteen.
 
 In match play, a loser still short of 91 is skunked and the win is usually worth double; short of 61 is a double skunk.
+
+| Scores | Value | Notes |
+| --- | --- | --- |
+| Fifteen | 2 | a count of exactly 15, in the play or at the show |
+| Thirty-one | 2 | in the play |
+| Pair | 2 | three of a kind 6, four of a kind 12 |
+| Run | 1 per card | three or more consecutive ranks |
+| Double run of three | 8 | — |
+| Flush in hand | 4 | 5 if the starter matches the suit |
+| Flush in the crib | 5 | only the full five-card flush scores |
+| His nobs | 1 | jack matching the starter's suit |
+| His heels | 2 | to the dealer when the starter turned is a jack |
+| Go or last card | 1 | 2 where the count stopped on exactly 31 |
+| Game | 121 | — |
+| Skunk | loser under 91 | the win is usually worth double |
+| Double skunk | loser under 61 | — |
 
 ## Variants
 

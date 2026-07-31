@@ -52,7 +52,116 @@
     "caption": "Ten cards each leaves 31 in the stock; its top card is turned up beside it as the whole discard pile."
   },
   "play": "There are two kinds of meld. A set is three or four cards that share a rank. A run is three or more cards of a single suit in unbroken order. Each card can only work in one meld at a time, so holding 7♣ 7♠ 7♥ 8♥ 9♥ you may count the set of sevens or the heart run, not both. Everything outside your melds is deadwood, and its point total is what the whole game turns on.\n\nThe first turn has its own procedure. The non-dealer may take the upcard or refuse it. If they refuse, the dealer gets the same offer. If both refuse, the non-dealer opens by drawing the top card of the stock. Whoever takes a card then discards, and the players alternate normally from there.\n\nAn ordinary turn is two actions with nothing in between. Draw exactly one card, either the face-down top of the stock or the face-up top of the discard pile, then discard exactly one card face up onto the pile. You are back to ten cards at the end of every turn. You may not take the top discard and throw the same card straight back on that turn; a handful of modern rule sets, the Gin Rummy Association's among them, do permit it, so settle that one before the first deal. Melds are never laid on the table during play; they stay in your hand until the hand ends.\n\nYou end the hand by knocking. You may knock on any turn, including your first, as long as your deadwood after discarding comes to 10 points or less. To do it, lay your final discard face down instead of face up, then spread your hand with the melds grouped separately from the deadwood and state your count. Knocking is optional. With a low count you are allowed to keep playing and hunt for a bigger score, at the risk of being knocked on first.\n\nZero deadwood is gin. Declare it the same way, spreading a hand in which every card is melded once the discard is gone.\n\nYour opponent now spreads too. They arrange their own melds and then lay off: any loose card of theirs that fits one of your melds can be pushed onto it, adding a fourth card to a set or extending either end of a run. Every card laid off comes out of their deadwood. Two restrictions matter. Nothing can be laid off against a gin hand, and nothing can ever be laid off onto the other player's deadwood.\n\nOnce the laying off is finished the two deadwood counts are compared, which decides who scores the hand.\n\nThe stock can run out. If a player draws the card that leaves only two cards in the stock and then discards without knocking, the hand is dead: neither player scores, and the same dealer deals again. Those last two stock cards are never drawn.",
+  "figures": [
+    {
+      "kind": "meld",
+      "caption": "Each card counts in one meld only. Holding 7♣ 7♠ 7♥ 8♥ 9♥ you may take the set of sevens or the heart run, not both. Aces are low and do not wrap, so A-2-3 is a sequence and Q-K-A is not.",
+      "rows": [
+        {
+          "label": "Set of sevens",
+          "cards": [
+            {
+              "face": "7♣"
+            },
+            {
+              "face": "7♠"
+            },
+            {
+              "face": "7♥",
+              "note": "one or the other"
+            }
+          ]
+        },
+        {
+          "label": "Or the heart run",
+          "cards": [
+            {
+              "face": "7♥",
+              "note": "not both"
+            },
+            {
+              "face": "8♥"
+            },
+            {
+              "face": "9♥"
+            }
+          ]
+        },
+        {
+          "label": "Run, ace low",
+          "cards": [
+            {
+              "face": "A♠"
+            },
+            {
+              "face": "2♠"
+            },
+            {
+              "face": "3♠"
+            }
+          ]
+        },
+        {
+          "label": "Not a run",
+          "valid": false,
+          "cards": [
+            {
+              "face": "Q♦"
+            },
+            {
+              "face": "K♦"
+            },
+            {
+              "face": "A♦"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "goal_and_scoring": "Hands are only steps toward the match target, which is 100 points. Longer sessions sometimes set it at 250 or 500; nothing else about the scoring changes.\n\nA knock that survives scores the knocker the difference between the two deadwood counts. Knock with 6 against an opponent left holding 21 and you take 15. If the opponent's count after laying off is lower than yours, or exactly equal to it, they have undercut you: they score the difference plus a 25-point undercut bonus, and an equal count still counts as an undercut, worth the flat 25. Gin scores 25 plus every point of deadwood in the opponent's hand, and it can be neither laid off against nor undercut.\n\nKeep running totals. The game ends as soon as either player's total reaches 100 at the end of a hand. Then add the bonuses: each player scores 25 for every individual hand they won, called a box or line bonus, and whoever reached 100 first adds a 100-point game bonus. If the loser never won a single hand, the winner doubles their entire total, game bonus included, which is known as a shutout, blitz or schneider. The higher total after bonuses wins the match, and the gap between the totals is the margin that gets settled. A dead hand scores nothing and counts as a hand won by neither player, so it earns no box. In the rare case that the two totals finish exactly level, the match goes to whoever crossed 100 first.",
+  "scoring_table": [
+    {
+      "item": "Knock",
+      "value": "difference",
+      "note": "opponent's deadwood after lay-offs, less the knocker's"
+    },
+    {
+      "item": "Gin",
+      "value": "25 + deadwood",
+      "note": "opponent's full deadwood; nothing may be laid off against it"
+    },
+    {
+      "item": "Undercut",
+      "value": "25 + difference",
+      "note": "to the defender; an equal count still undercuts"
+    },
+    {
+      "item": "Dead hand",
+      "value": "0",
+      "note": "stock down to two cards; no box for either player"
+    },
+    {
+      "item": "Box (line) bonus",
+      "value": "25",
+      "note": "per hand won, added once the game ends"
+    },
+    {
+      "item": "Game bonus",
+      "value": "100",
+      "note": "to whoever reaches the target first"
+    },
+    {
+      "item": "Shutout (blitz)",
+      "value": "double total",
+      "note": "if the loser won no hand; game bonus included"
+    },
+    {
+      "item": "Match target",
+      "value": "100",
+      "note": "250 or 500 for a longer session"
+    }
+  ],
   "variants": [
     {
       "name": "Oklahoma Gin",

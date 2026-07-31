@@ -43,6 +43,8 @@ If your side has not melded yet and you draw from the stock into a hand you can 
 
 When the stock runs out. If the last stock card is a red three, the player shows it and the hand ends immediately with no discard. Otherwise play carries on with no stock to draw from, so the discard pile is the only source of cards. Taking it is now compulsory rather than optional: if the top card can be added to one of your side's melds and the pile is not frozen against you, you must take the pile, meld, and discard as usual. You may still take it by the ordinary two-cards-from-hand route if that is open to you, but only the add-to-a-meld case is forced. The moment a player has no legal way to take the pile, the hand stops there: nobody goes out, no going-out bonus is scored, and the deal is counted as it stands.
 
+![Canasta card figure](diagrams/canasta-fig1.svg)
+
 ## Goal & scoring
 
 The partnership target is 5,000 points, played out over as many deals as it takes. Each deal is scored for the side as a whole.
@@ -54,6 +56,27 @@ Bonuses: 500 for each natural canasta, 300 for each mixed canasta, and 100 for g
 Red threes count 100 each for the side that laid them down, but only if that side made its initial meld; a side that never melded has the same 100 per red three deducted. Holding all four doubles it to 800 for or 800 against.
 
 A deal can easily come out negative. Add each deal to the running total, since that total sets the next deal's minimum meld. The game ends when a side reaches 5,000 or more once a deal has been fully scored; if both sides cross 5,000 in the same deal, the higher total wins, and if the two totals are level as well, play one more deal to break the tie.
+
+| Scores | Value | Notes |
+| --- | --- | --- |
+| Joker | 50 | — |
+| Two | 20 | — |
+| Ace | 20 | — |
+| King down to eight | 10 | — |
+| Seven down to four | 5 | — |
+| Black three | 5 | — |
+| Natural canasta | 500 | — |
+| Mixed canasta | 300 | — |
+| Going out | 100 | — |
+| Going out concealed | 200 | instead of the 100 |
+| Red three | 100 | each; deducted instead if the side never melded |
+| All four red threes | 800 | for or against |
+| Cards left in hand | deducted | at face value, both partners |
+| Initial meld, score below 0 | 15 | — |
+| Initial meld, 0 to 1,495 | 50 | — |
+| Initial meld, 1,500 to 2,995 | 90 | — |
+| Initial meld, 3,000 or above | 120 | — |
+| Game | 5,000 | — |
 
 ## Variants
 

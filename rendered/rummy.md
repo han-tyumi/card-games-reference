@@ -19,6 +19,14 @@ Put the rest of the pack face down in the middle as the stock, then turn its top
 
 Aces are low. A-2-3 is a run and Q-K-A is not, unless you agree otherwise before the first deal. For scoring, an ace is 1 point, each numbered card is worth its number, and a jack, queen or king is 10. The player to the dealer's left takes the first turn.
 
+| Players | Each player gets |
+| --- | --- |
+| 2 | 10 cards |
+| 3 | 7 cards |
+| 4 | 7 cards |
+| 5 | 6 cards |
+| 6 | 6 cards |
+
 ## Play
 
 You are trying to get rid of every card in your hand by arranging them into melds. A set is three or four cards of the same rank, such as three nines. A run is three or more cards of one suit in sequence, such as 5♠ 6♠ 7♠. A card can only belong to one meld at a time.
@@ -38,6 +46,8 @@ The hand ends when somebody goes out, which means playing their last card. You c
 If nobody has gone out by the time the stock is empty, take the discard pile, leave its top card where it is as the only card of a new discard pile, and turn the rest face down as a fresh stock. Shuffling that new stock first is common and harmless. The player who found the stock empty draws from the new one and finishes their turn as normal, and play continues to the left. If the pack cycles a second time with nobody out, most groups end the hand there and score the cards as they stand.
 
 Going out in a single turn, with no previous melds or lay-offs at all, is going rummy and pays double. To do it you must put your entire hand down on one turn, having laid nothing on the table earlier in the deal.
+
+![Rummy card figure](diagrams/rummy-fig1.svg)
 
 ## Goal & scoring
 

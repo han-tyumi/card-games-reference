@@ -37,6 +37,8 @@ Once the laying off is finished the two deadwood counts are compared, which deci
 
 The stock can run out. If a player draws the card that leaves only two cards in the stock and then discards without knocking, the hand is dead: neither player scores, and the same dealer deals again. Those last two stock cards are never drawn.
 
+![Gin Rummy card figure](diagrams/gin-rummy-fig1.svg)
+
 ## Goal & scoring
 
 Hands are only steps toward the match target, which is 100 points. Longer sessions sometimes set it at 250 or 500; nothing else about the scoring changes.
@@ -44,6 +46,17 @@ Hands are only steps toward the match target, which is 100 points. Longer sessio
 A knock that survives scores the knocker the difference between the two deadwood counts. Knock with 6 against an opponent left holding 21 and you take 15. If the opponent's count after laying off is lower than yours, or exactly equal to it, they have undercut you: they score the difference plus a 25-point undercut bonus, and an equal count still counts as an undercut, worth the flat 25. Gin scores 25 plus every point of deadwood in the opponent's hand, and it can be neither laid off against nor undercut.
 
 Keep running totals. The game ends as soon as either player's total reaches 100 at the end of a hand. Then add the bonuses: each player scores 25 for every individual hand they won, called a box or line bonus, and whoever reached 100 first adds a 100-point game bonus. If the loser never won a single hand, the winner doubles their entire total, game bonus included, which is known as a shutout, blitz or schneider. The higher total after bonuses wins the match, and the gap between the totals is the margin that gets settled. A dead hand scores nothing and counts as a hand won by neither player, so it earns no box. In the rare case that the two totals finish exactly level, the match goes to whoever crossed 100 first.
+
+| Scores | Value | Notes |
+| --- | --- | --- |
+| Knock | difference | opponent's deadwood after lay-offs, less the knocker's |
+| Gin | 25 + deadwood | opponent's full deadwood; nothing may be laid off against it |
+| Undercut | 25 + difference | to the defender; an equal count still undercuts |
+| Dead hand | 0 | stock down to two cards; no box for either player |
+| Box (line) bonus | 25 | per hand won, added once the game ends |
+| Game bonus | 100 | to whoever reaches the target first |
+| Shutout (blitz) | double total | if the loser won no hand; game bonus included |
+| Match target | 100 | 250 or 500 for a longer session |
 
 ## Variants
 

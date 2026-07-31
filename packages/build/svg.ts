@@ -18,6 +18,12 @@ import {
 
 const PAD = 8;
 const RADIUS = 3;
+/**
+ * Rendered size relative to the coordinate space. The viewBox keeps the
+ * geometry in abstract units; this decides how big it actually appears, and at
+ * 1:1 the diagrams read as postage stamps in a Markdown page.
+ */
+const DISPLAY_SCALE = 1.6;
 
 /**
  * Face-down cards get a tint so a diagram reads at a glance: what you can see
@@ -114,7 +120,8 @@ export function renderDiagramSvg(layout: Layout, title: string): string {
   const parts: string[] = [];
   parts.push(
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" ` +
-      `width="${width}" height="${height}" role="img" ` +
+      `width="${(width * DISPLAY_SCALE).toFixed(0)}" ` +
+      `height="${(height * DISPLAY_SCALE).toFixed(0)}" role="img" ` +
       `aria-label="${escapeXml(title)} setup diagram">`,
   );
   parts.push(`<title>${escapeXml(title)} setup</title>`);
@@ -201,7 +208,8 @@ export function renderFigureSvg(figure: Figure, title: string): string {
 
   const parts: string[] = [
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" ` +
-      `width="${width}" height="${height}" role="img" ` +
+      `width="${(width * DISPLAY_SCALE).toFixed(0)}" ` +
+      `height="${(height * DISPLAY_SCALE).toFixed(0)}" role="img" ` +
       `aria-label="${escapeXml(title)}: ${escapeXml(figure.caption)}">`,
     `<title>${escapeXml(figure.caption)}</title>`,
   ];

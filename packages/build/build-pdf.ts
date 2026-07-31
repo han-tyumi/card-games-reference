@@ -73,10 +73,17 @@ const MUTED = "#5b6672";
 const RULE = "#c8d0d8";
 const TEXT = "#111111";
 
-const MARGINS = { top: 58, bottom: 62, left: 61, right: 61 };
+// Left/right margins are set by READABILITY, not by fitting the most words on
+// the page: they give a measure of roughly 70 characters, near the 66 that
+// centuries of book typography converged on. A wider column costs the reader
+// their place on every return sweep.
+const MARGINS = { top: 58, bottom: 62, left: 95, right: 95 };
 
 // Contents-page metrics. Used both to reserve pages and to draw them, so the
 // two cannot disagree.
+/** Cap on growing a figure past its natural size, so cards stay card-shaped. */
+const MAX_ENLARGE = 1.35;
+
 const TOC_TITLE_HEIGHT = 46;
 const TOC_LINE = { category: 27, game: 17 };
 
@@ -203,20 +210,20 @@ class Booklet {
     // Keep a heading with at least one line of its section.
     this.ensureSpace(34);
     doc.moveDown(0.6);
-    doc.font(fonts.bold).fontSize(11.5).fillColor(ACCENT);
+    doc.font(fonts.bold).fontSize(12.5).fillColor(ACCENT);
     this.text(value);
     doc.moveDown(0.25);
   }
 
   body(content: Block[]): void {
     const { doc, fonts } = this;
-    doc.font(fonts.regular).fontSize(10).fillColor(TEXT);
+    doc.font(fonts.regular).fontSize(11).fillColor(TEXT);
 
     for (const block of content) {
       if (block.kind === "paragraph") {
         this.ensureSpace(24);
         doc.x = MARGINS.left;
-        this.text(block.text, { align: "left", lineGap: 2.2 });
+        this.text(block.text, { align: "left", lineGap: 2.6 });
         doc.moveDown(0.45);
         continue;
       }
@@ -231,7 +238,7 @@ class Booklet {
         doc.text("•", bulletX, y, { lineBreak: false });
         doc.text(clean(item, fonts.unicode), itemX, y, {
           width: itemWidth,
-          lineGap: 2.2,
+          lineGap: 2.6,
         });
         doc.moveDown(0.2);
       }
@@ -239,6 +246,26 @@ class Booklet {
       doc.moveDown(0.35);
     }
   }
+}
+
+/**
+ * Decide how to place a block that would overrun the page.
+ *
+ * Returns the scale to draw at, having started a new page if the block cannot
+ * reasonably be squeezed in. Shrinking slightly beats leaving a third of a page
+ * blank; shrinking a lot does not, so there is a floor.
+ */
+function fitOrBreak(book: Booklet, naturalHeight: number, scale: number): number {
+  const available = book.bottom - book.doc.y - 12;
+  if (naturalHeight <= available) return scale;
+
+  const MIN_SHRINK = 0.72;
+  if (available > 90 && available / naturalHeight >= MIN_SHRINK) {
+    return scale * (available / naturalHeight);
+  }
+
+  book.doc.addPage();
+  return scale;
 }
 
 /**
@@ -251,13 +278,18 @@ function drawDiagram(book: Booklet, layout: NonNullable<CardGame["layout"]>): vo
   const { doc, fonts } = book;
   const diagram = buildDiagram(layout);
 
-  // Scale to fit the text column, never enlarging past natural size.
-  const scale = Math.min(1, book.contentWidth / diagram.width);
-  const width = diagram.width * scale;
+  // Fit the measure, and allow modest enlargement: at natural size a small
+  // diagram reads as incidental rather than as something to study.
+  const widthScale = Math.min(MAX_ENLARGE, book.contentWidth / diagram.width);
   const captionHeight = diagram.caption ? 14 : 0;
-  const height = diagram.height * scale + captionHeight;
+  const naturalHeight = diagram.height * widthScale + captionHeight;
 
-  book.ensureSpace(height + 12);
+  // Rather than always bumping a too-tall diagram to the next page -- which can
+  // strand half a page of white -- shrink it to fit when there is a sensible
+  // amount of room left, and only break when there genuinely is not.
+  const scale = fitOrBreak(book, naturalHeight, widthScale);
+  const width = diagram.width * scale;
+  const height = diagram.height * scale + captionHeight;
 
   const originX = MARGINS.left + (book.contentWidth - width) / 2;
   const originY = doc.y + 4;
@@ -336,9 +368,8 @@ const RED = "#a4243b";
 function drawFigure(book: Booklet, figure: NonNullable<CardGame["figures"]>[number]): void {
   const { doc, fonts } = book;
   const built = buildFigure(figure);
-  const scale = Math.min(1, book.contentWidth / Math.max(built.width, 1));
-
-  book.ensureSpace(built.height * scale + 26);
+  const widthScale = Math.min(MAX_ENLARGE, book.contentWidth / Math.max(built.width, 1));
+  const scale = fitOrBreak(book, built.height * widthScale + 26, widthScale);
 
   const originX = MARGINS.left + (book.contentWidth - built.width * scale) / 2;
   const originY = doc.y + 4;
@@ -411,7 +442,7 @@ function drawTable(book: Booklet, header: string[], rows: string[][]): void {
         ...cells.map((cell, i) =>
           doc
             .font(bold ? fonts.bold : fonts.regular)
-            .fontSize(8.5)
+            .fontSize(9)
             .heightOfString(clean(cell, book.fonts.unicode), { width: widthOf(i) - 6 }),
         ),
       ) + 4;
@@ -421,7 +452,7 @@ function drawTable(book: Booklet, header: string[], rows: string[][]): void {
     cells.forEach((cell, i) => {
       doc
         .font(bold ? fonts.bold : fonts.regular)
-        .fontSize(8.5)
+        .fontSize(9)
         .fillColor(bold ? ACCENT : TEXT)
         .text(clean(cell, book.fonts.unicode), xOf(i), y, { width: widthOf(i) - 6 });
     });
@@ -537,7 +568,7 @@ function gamePage(
 
   for (const [label, value] of facts(game)) {
     const cleaned = clean(value, book.fonts.unicode);
-    doc.font(fonts.regular).fontSize(9);
+    doc.font(fonts.regular).fontSize(9.5);
     const rowHeight = doc.heightOfString(cleaned, { width: valueWidth }) + 3;
     book.ensureSpace(rowHeight);
 
@@ -604,7 +635,7 @@ function gamePage(
   }
 
   book.heading("Variants");
-  doc.fontSize(10).fillColor(TEXT);
+  doc.fontSize(11).fillColor(TEXT);
   for (const variant of game.variants) {
     book.ensureSpace(28);
     doc.font(fonts.bold);
@@ -615,14 +646,14 @@ function gamePage(
     doc.font(fonts.regular);
     doc.text(
       ` — ${clean(variant.description, book.fonts.unicode).replace(/\n/g, " ")}`,
-      { width: book.contentWidth, lineGap: 2.2 },
+      { width: book.contentWidth, lineGap: 2.6 },
     );
     doc.moveDown(0.4);
   }
 
   doc.moveDown(0.4);
   book.ensureSpace(26);
-  doc.font(fonts.italic).fontSize(8.5).fillColor(MUTED);
+  doc.font(fonts.italic).fontSize(9).fillColor(MUTED);
   book.text(
     `Rules verified against: ${game.sources_consulted.join(", ")}. ` +
       `Original text; not reproduced from those sources.`,

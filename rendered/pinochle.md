@@ -44,6 +44,10 @@ A trick is won by the highest trump in it, or by the highest card of the suit le
 
 One consequence of the must-beat rule worth planning for: you cannot quietly duck a trick to protect a ten. If you hold the ace and the ten of a led suit and an opponent's ace is already on the table, you are compelled to play your own ace, and your ten is exposed for the rest of the hand.
 
+![Pinochle card figure](diagrams/pinochle-fig1.svg)
+
+![Pinochle card figure](diagrams/pinochle-fig2.svg)
+
 ## Goal & scoring
 
 The counters are the aces, tens and kings. In the point-count scheme most tables now use, each counter captured in a trick is worth 10 to the side that took it, and queens, jacks and nines are worth nothing. Twenty-four counters make 240, and the last trick is worth an extra 10, so exactly 250 points are available in tricks every hand. The older values, still in use, are ace 11, ten 10, king 4, queen 3, jack 2 with 10 for the last trick, which comes to the same 250.
@@ -65,6 +69,22 @@ A run already contains the royal marriage, so you do not also claim the 40 for i
 Settling a hand. Each side totals its meld together with the counters it captured. Where the contractors have matched or beaten the number they bid, both columns simply take what was earned. Falling short is another matter: the contract is set, everything the contracting pair earned that hand evaporates, and their column takes a penalty the size of the bid itself, which is quite capable of pushing a total into the negatives. Some groups soften that by letting a set side keep the meld it laid down and only deducting the bid; the harsher version given here is the more common one. The defending side scores its meld and counters as normal, subject to the same requirement that meld needs at least one trick to stand, which means a defending pair shut out of every trick records nothing at all for the hand.
 
 First side to 1000 points wins. The customary tie-break is that the contracting side's score is settled first, so if both sides cross the target in the same hand the contractors win, having taken the risk. Some groups play to 1500, and some let a side stop play mid-hand to claim the game.
+
+| Scores | Value | Notes |
+| --- | --- | --- |
+| Counter captured (ace, ten, king) | 10 | queens, jacks and nines count nothing |
+| Last trick | 10 | 250 available in tricks each hand |
+| Run in trump (A-10-K-Q-J) | 150 | both trump runs 1500 |
+| Royal marriage (K-Q of trump) | 40 | not claimed again inside a run |
+| Plain marriage (K-Q, other suit) | 20 | — |
+| Dix (nine of trump) | 10 | 20 for the pair |
+| Pinochle (Q♠ with J♦) | 40 | double 300 |
+| Aces around | 100 | double 1000 |
+| Kings around | 80 | double 800 |
+| Queens around | 60 | double 600 |
+| Jacks around | 40 | double 400 |
+| Contract set | minus the bid | the contractors' meld and counters are lost as well |
+| Game | 1000 | — |
 
 ## Variants
 

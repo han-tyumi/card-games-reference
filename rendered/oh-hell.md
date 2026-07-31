@@ -21,6 +21,14 @@ Choose a first dealer at random; the deal then moves clockwise every hand. Deal 
 
 Rule a grid before you start: one column per player, one row per deal, with space to record each player's bid next to their running total.
 
+| Players | Each player gets | Notes |
+| --- | --- | --- |
+| 3 | 17 cards | Largest hand the deck allows; 1 card left over to turn for trump. |
+| 4 | 13 cards | Largest hand; the whole pack is dealt, so that deal has no trump. |
+| 5 | 10 cards | Largest hand; 2 cards left over. |
+| 6 | 8 cards | Largest hand; 4 cards left over. |
+| 7 | 7 cards | Largest hand; 3 cards left over. |
+
 ## Play
 
 Bidding. With the cards dealt and trump turned, each player in turn starting to the dealer's left, and finishing with the dealer, announces out loud exactly how many tricks they intend to win. Bids are spoken in order, not written secretly, so later bidders are better informed than earlier ones. Zero is a legal and frequently correct bid. No bid may exceed the number of cards in the hand.

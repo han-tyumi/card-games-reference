@@ -66,6 +66,15 @@ That is 11 fixed points a round, plus however many sweeps were made.
 
 If two players pass the target in the same round, settle it by counting in the traditional fixed order — most cards, most spades, big casino, little casino, then the aces of spades, clubs, hearts and diamonds — and the first to reach the target wins. Sweeps are earned during play rather than at the count, so they sit on the score before that sequence begins. If the two are still exactly level once every item has been awarded, play a further round to settle it.
 
+| Scores | Value | Notes |
+| --- | --- | --- |
+| Most cards | 3 | nobody scores it at 26 apiece |
+| Most spades | 1 | thirteen spades, so it cannot tie |
+| Big casino (10♦) | 2 | — |
+| Little casino (2♠) | 1 | — |
+| Each ace | 1 | four in total |
+| Each sweep | 1 | — |
+
 ## Variants
 
 **Royal Casino** — Court cards get numeric values and join the arithmetic: jack 11, queen 12, king 13. They can be built, captured by sums, and used to capture combinations, which makes builds far more flexible. The ace is usually worth 1 or 14 at the discretion of whoever plays it. Everything else follows the standard game.

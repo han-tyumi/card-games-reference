@@ -52,6 +52,15 @@ The exception is shooting the moon. If a single player takes all 13 hearts and t
 
 Keep a running total for each player. The game ends at the end of the hand in which anyone reaches or passes 100 points, and the player with the lowest total at that moment wins. A target of 50 makes for a quicker game. If two or more players are level on the lowest total when the game would end, nobody has won: deal again and keep playing complete hands, with the same finish condition applied each time, until exactly one player is alone on the lowest score.
 
+| Scores | Value | Notes |
+| --- | --- | --- |
+| Each heart taken in a trick | 1 | — |
+| Queen of spades | 13 | — |
+| Every other card | 0 | The number of tricks you win does not matter, only what is inside them. |
+| Penalty points in one deal | 26 | — |
+| Shooting the moon | 26 | Charged to every opponent, or subtract 26 from the shooter's own total. |
+| Game ends at | 100 | Lowest total wins; 50 makes a quicker game. |
+
 ## Variants
 
 **Omnibus Hearts (Jack of Diamonds)** — The jack of diamonds becomes a bonus card worth minus 10, so whoever takes it in a trick has 10 points struck off their score for that hand. It reshapes the deal completely, because diamonds are suddenly worth fighting for rather than dumping, and a shot at the moon now requires the jack as well as all the hearts and the queen of spades. Some groups use the 10 of diamonds for the same purpose.

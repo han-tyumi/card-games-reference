@@ -21,6 +21,13 @@ Aces work high or low but never both in the same run: A-2-3 and Q-K-A are legal,
 
 ![500 Rummy setup diagram](diagrams/rummy-500.svg)
 
+| Players | Each player gets | Notes |
+| --- | --- | --- |
+| 2 | 13 cards | One 52-card pack. |
+| 3 | 7 cards | One 52-card pack. |
+| 4 | 7 cards | One 52-card pack. |
+| 5 | 7 cards | Five to eight players shuffle two packs together, 104 cards. |
+
 ## Play
 
 Melds come in the usual two shapes: a set of three or four matching ranks, or a run of at least three cards that follow one another within a single suit. Unlike most rummies, melds are laid face up in front of you and stay yours, because at the end of the hand you are paid for the cards sitting on the table in front of you.
@@ -40,6 +47,8 @@ Finish by discarding one card face up, adding it to the fan.
 The hand ends the moment one player has no cards left, whether their last card went down in a meld, was laid off, or was discarded. Everyone else is caught with whatever is still in hand.
 
 A hand can also end without anyone going out. Once the stock is empty the discard pile is not turned over to make a new one, so from that point the pile is the only source of cards. A player who takes from it plays an otherwise normal turn, melding or laying off and then discarding, and the hand goes on; the usual conditions still apply, so a buried card must still be used at once. The moment the turn reaches a player who cannot take anything useful, or who simply declines to take, the hand stops there and is scored where it stands.
+
+![500 Rummy card figure](diagrams/rummy-500-fig1.svg)
 
 ## Goal & scoring
 

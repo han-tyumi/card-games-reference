@@ -57,6 +57,16 @@ A blackjack beats any 21 built from three or more cards, and it is paid at the b
 
 There is no running score. You play as many rounds as you like and count your chips at the end. Sensible play matters: played with correct basic strategy, a six-deck game with the rules above costs you somewhere around four tenths of one percent of what you stake, which is about as good as a casino game gets. Insurance is a losing bet at almost any count, and a table paying 6 to 5 on blackjacks instead of 3 to 2 adds roughly another 1.4 percent, wiping out that edge several times over.
 
+| Scores | Value | Notes |
+| --- | --- | --- |
+| Winning hand | 1 to 1 | — |
+| Blackjack (natural) | 3 to 2 | 6 to 5 at some tables |
+| Insurance | 2 to 1 | if the hole card is ten-value |
+| Even money | 1 to 1 | blackjack against a dealer ace |
+| Push (tie) | stake returned | — |
+| Losing hand or bust | stake lost | — |
+| Surrender | half the stake returned | — |
+
 ## Variants
 
 **Dealer hits soft 17** — The dealer must draw on a soft 17 such as ace-6 rather than standing on it, and stands only on hard 17 or any 18 and up. This is now the more common rule on casino floors and it costs the player about a fifth of a percent, because it lets the dealer improve a weak 17 into a winner. Tables normally state which rule applies in print on the felt: "dealer must stand on all 17s" or "dealer hits soft 17".

@@ -21,6 +21,15 @@ Put the undealt cards face down in the middle as the stock, then turn the top on
 
 The player to the dealer's left goes first, and play runs clockwise.
 
+| Players | Each player gets | Notes |
+| --- | --- | --- |
+| 2 | 7 cards | One 52-card pack. |
+| 3 | 5 cards | — |
+| 4 | 5 cards | — |
+| 5 | 5 cards | — |
+| 6 | 5 cards | Two packs shuffled together, 104 cards. |
+| 7 | 5 cards | — |
+
 ## Play
 
 On your turn you add exactly one card to the top of the discard pile. The card you play must agree with the card currently showing in either its suit or its rank. A ten of hearts, for example, can be covered by any other heart or by any other ten. That is the whole of the matching rule.
@@ -44,6 +53,13 @@ If the hand blocks because the stock is exhausted and nobody can play, the playe
 A popular alternative flips the bookkeeping. Instead of the winner banking the opponents' cards, each player records the value of the cards left in their own hand as penalty points. Play stops as soon as anyone hits 100, and the lowest score at that moment wins. The card values are identical either way; only who receives the points changes.
 
 Finish the deal you are in rather than stopping the instant somebody crosses the line. If two players end that deal past the target, the higher total takes it when the winner is collecting points and the lower total takes it when players are recording penalties. If they are exactly level, deal once more and let that hand decide.
+
+| Scores | Value |
+| --- | --- |
+| Each eight | 50 |
+| Each king, queen, jack or ten | 10 |
+| Each ace | 1 |
+| Each 2 through 9 | face value |
 
 ## Variants
 

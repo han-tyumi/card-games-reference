@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 336" width="442" height="538" role="img" aria-label="500 Rummy: An ace plays high or low, but never both ends of the same run. Melded low against the 2 it counts 1 point; anywhere else it is worth 15.">
+<title>An ace plays high or low, but never both ends of the same run. Melded low against the 2 it counts 1 point; anywhere else it is worth 15.</title>
+<rect x="124.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="139.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">A♥</text>
+<text x="139.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">counts 1</text>
+<rect x="160.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="175.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">2♥</text>
+<rect x="196.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="211.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">3♥</text>
+<rect x="124.0" y="80.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="139.0" y="105.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">Q♠</text>
+<rect x="160.0" y="80.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="175.0" y="105.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">K♠</text>
+<rect x="196.0" y="80.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="211.0" y="105.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">A♠</text>
+<text x="211.0" y="130.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">counts 15</text>
+<rect x="124.0" y="152.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<text x="139.0" y="177.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">K♦</text>
+<rect x="160.0" y="152.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<text x="175.0" y="177.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">A♦</text>
+<rect x="196.0" y="152.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<text x="211.0" y="177.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">2♦</text>
+<rect x="124.0" y="224.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="139.0" y="249.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">J♣</text>
+<rect x="160.0" y="224.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="175.0" y="249.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">J♥</text>
+<rect x="196.0" y="224.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="211.0" y="249.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">J♠</text>
+<text x="116.0" y="32.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Run, ace low</text>
+<text x="116.0" y="104.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Run, ace high</text>
+<text x="116.0" y="176.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#a4243b">Not a run</text>
+<text x="116.0" y="248.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Set</text>
+<text x="138.0" y="300.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">An ace plays high or low, but never both ends of the</text>
+<text x="138.0" y="312.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">same run. Melded low against the 2 it counts 1 point;</text>
+<text x="138.0" y="324.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">anywhere else it is worth 15.</text>
+</svg>

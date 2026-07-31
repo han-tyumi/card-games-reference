@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 268" width="442" height="429" role="img" aria-label="Rummy: A set is three or four cards of the same rank; a run is three or more cards of one suit in sequence. Aces are low, so A-2-3 is a run and Q-K-A is not unless you agree otherwise before the first deal.">
+<title>A set is three or four cards of the same rank; a run is three or more cards of one suit in sequence. Aces are low, so A-2-3 is a run and Q-K-A is not unless you agree otherwise before the first deal.</title>
+<rect x="124.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="139.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">9♠</text>
+<rect x="160.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="175.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">9♥</text>
+<rect x="196.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="211.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">9♦</text>
+<rect x="124.0" y="60.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="139.0" y="85.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">5♠</text>
+<rect x="160.0" y="60.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="175.0" y="85.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">6♠</text>
+<rect x="196.0" y="60.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="211.0" y="85.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">7♠</text>
+<rect x="124.0" y="112.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="139.0" y="137.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">A♦</text>
+<rect x="160.0" y="112.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="175.0" y="137.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">2♦</text>
+<rect x="196.0" y="112.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="211.0" y="137.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">3♦</text>
+<rect x="124.0" y="164.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<text x="139.0" y="189.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">Q♣</text>
+<rect x="160.0" y="164.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<text x="175.0" y="189.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">K♣</text>
+<rect x="196.0" y="164.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<text x="211.0" y="189.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">A♣</text>
+<text x="116.0" y="32.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Set</text>
+<text x="116.0" y="84.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Run</text>
+<text x="116.0" y="136.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Run, ace low</text>
+<text x="116.0" y="188.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#a4243b">Not a run</text>
+<text x="138.0" y="220.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">A set is three or four cards of the same rank; a run is</text>
+<text x="138.0" y="232.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">three or more cards of one suit in sequence. Aces are</text>
+<text x="138.0" y="244.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">low, so A-2-3 is a run and Q-K-A is not unless you</text>
+<text x="138.0" y="256.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">agree otherwise before the first deal.</text>
+</svg>

@@ -46,6 +46,19 @@ Bring a nil home and the partnership banks 100, with the partner's contract sett
 
 Play continues until a side is at 500 or more at the end of a hand. If both sides cross in the same hand, the higher total wins, and a genuine tie is broken by playing one more hand. Many groups also set a floor of minus 200, at which point that side loses outright.
 
+| Scores | Value | Notes |
+| --- | --- | --- |
+| Contract made | 10 per trick bid | — |
+| Each trick over the bid (bag) | 1 | — |
+| Contract set | -10 per trick bid | No credit for the tricks the side did win. |
+| Reaching 10 bags | -100 | 10 comes off the bag tally; any surplus stays for the next batch. |
+| Nil made | 100 | — |
+| Nil broken | -100 | — |
+| Blind nil made | 200 | — |
+| Blind nil broken | -200 | — |
+| Game | 500 | — |
+| Optional loss floor | -200 | House rule: a side reaching it loses outright. |
+
 ## Variants
 
 **Cutthroat (Solo) Spades** — Partnerships are abolished and every player bids and scores for themselves, which turns the game into a running series of temporary alliances against whoever is ahead. Nil is usually reduced to 50 or 100 by agreement and the target is shortened, often to 200 or 300. Three-handed cutthroat is common too: remove the 2 of clubs so that 51 cards deal out to 17 each.

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 108" width="480" height="173" role="img" aria-label="Pinochle: Rank within a suit is not the usual order: the ace is high but the ten sits second, above the king.">
+<title>Rank within a suit is not the usual order: the ace is high but the ten sits second, above the king.</title>
+<rect x="82.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="97.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">A♠</text>
+<rect x="118.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="133.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">10♠</text>
+<text x="133.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Above K</text>
+<rect x="154.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="169.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">K♠</text>
+<rect x="190.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="205.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">Q♠</text>
+<rect x="226.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="241.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">J♠</text>
+<rect x="262.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="277.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">9♠</text>
+<text x="74.0" y="27.5" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Any suit, high</text>
+<text x="74.0" y="36.5" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">to low</text>
+<text x="150.0" y="84.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Rank within a suit is not the usual order: the ace is high</text>
+<text x="150.0" y="96.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">but the ten sits second, above the king.</text>
+</svg>
