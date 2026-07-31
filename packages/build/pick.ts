@@ -8,6 +8,8 @@
  * Options
  *   --players N     only games that seat exactly N
  *   --decks N       only games playable with N standard decks on hand
+ *                   (excludes games needing a purpose-built pack)
+ *   --special       include games needing their own pack, e.g. hanafuda
  *   --jokers        you have jokers available (default: assume not)
  *   --minutes N     only games that can finish within N minutes
  *   --difficulty X  simple | easy | medium | complex (or "up-to-X")
@@ -87,7 +89,12 @@ function main(): number {
   }
 
   if (decks !== undefined) {
-    games = games.filter((g) => g.equipment.standard_decks <= decks);
+    // standard_decks 0 means a pack you cannot build from ordinary cards, so
+    // "0 <= 1" must NOT read as playable by someone holding a 52-card deck.
+    games = games.filter(
+      (g) =>
+        g.equipment.standard_decks > 0 && g.equipment.standard_decks <= decks,
+    );
     reasons.push(`${decks} deck${decks === 1 ? "" : "s"}`);
   }
 
@@ -95,6 +102,13 @@ function main(): number {
     games = games.filter((g) => g.equipment.jokers === 0);
   } else {
     reasons.push("jokers available");
+  }
+
+  // Games needing their own pack are out of reach unless you say you have one.
+  if (!process.argv.includes("--special")) {
+    games = games.filter((g) => g.equipment.standard_decks > 0);
+  } else {
+    reasons.push("specialty decks included");
   }
 
   if (minutes !== undefined) {
