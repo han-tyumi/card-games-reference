@@ -1,0 +1,54 @@
+{
+  "id": "canasta",
+  "name": "Canasta",
+  "aliases": [
+    "Classic Canasta",
+    "Argentine Canasta"
+  ],
+  "category": "rummy-type",
+  "players": {
+    "min": 2,
+    "max": 4,
+    "ideal": 4
+  },
+  "decks": "2 standard decks plus 4 jokers (108 cards)",
+  "setup": "Four players in two fixed partnerships, partners sitting opposite each other. Shuffle two full 52-card decks together with four jokers: 108 cards. Cut for seats and first deal if you want a formal start, high card choosing; after that the deal passes clockwise each hand.\n\nDeal 11 cards to each player, one at a time. Set the remaining cards face down in the middle as the stock and turn its top card face up beside it to begin the discard pile. If that upcard is a joker, a two, or a red three, turn another card on top of it and keep going until an ordinary card is showing. When that happens the pile starts the hand frozen; leave the wild card or red three sticking out crossways so everyone can see it stays frozen.\n\nBefore the first turn, every player puts any red threes from their dealt hand face up on the table in front of them and draws one replacement card from the stock for each, repeating if a replacement is itself a red three. The player to the dealer's left plays first.\n\nMelds belong to the partnership, not the player, so keep them all in one group in front of one partner where both of you can reach them. Score is kept per partnership across as many deals as the game takes.",
+  "play": "Play goes clockwise, and a turn has three parts: take cards, meld if you want to, then discard one card face up on the pile. Melding is optional; taking and discarding are not.\n\nTaking cards. Either draw the top card of the stock, or take the whole discard pile when you are entitled to. If you ever draw a red three, lay it down face up at once and draw another card to replace it.\n\nMelds. A meld is three or more cards of the same rank, four through ace, and suits are irrelevant. Jokers and twos are wild and may be included, but a meld must always hold at least two natural cards and may never hold more than three wild cards. There are no sequences in Canasta. Your side may have only one meld of any given rank, so instead of starting a second you add to the one already on the table; either partner may add to any of the side's melds at any time. Cards on the table stay there and cannot be taken back into hand.\n\nThrees. Red threes are never melded or held in hand; they sit face up in front of you doing nothing but scoring. Black threes may be melded only on the turn you go out, and only as a natural set of three or four with no wild card among them.\n\nThe first meld. Neither partner may put anything down until the side lays out melds whose card points reach a minimum set by their score at the start of the deal: 15 points if the score is below zero, 50 from 0 to 1,495, 90 from 1,500 to 2,995, and 120 at 3,000 or above. The whole requirement must be satisfied in one turn, and only the face value of the cards counts toward it. Red threes, canasta bonuses, and the going-out bonus do not help. If you make the initial meld while taking the discard pile, the top card counts but the buried cards do not.\n\nTaking the discard pile. You must use the top card immediately in a meld, and you always take the entire pile, never part of it. If the pile is not frozen against you, you may take it either by matching the top card with two natural cards of that rank from your hand, or by adding the top card to one of your side's existing melds, though not to one that is already a completed canasta of seven. If the pile is frozen against you, only the first way works: two natural cards of the same rank from your hand, melded together with the top discard. The pile is frozen for everyone once a wild card or red three lies buried in it, it is frozen against any side that has not yet made its initial meld, and it starts frozen if the first upcard was a wild card or red three. A frozen pile stays frozen until somebody takes it.\n\nBlack threes. Discarding a black three stops the next player from taking the pile no matter what they hold, but that block lasts one turn only and does not freeze the pile.\n\nCanastas. A meld of seven or more cards is a canasta. Square it up and mark it with a red card on top if it is natural (no wilds) or a black card if it is mixed. You may keep adding cards afterwards, but laying a wild card on a natural canasta turns it into a mixed one.\n\nGoing out. You go out when you play the last card from your hand, whether as a discard, a new meld, or an addition to an existing one; finishing with a meld and no discard is allowed. Your side must have completed at least one canasta first. Before you touch anything on your turn you may ask your partner \"may I go out?\" and you are bound by the yes or no you get. Once you have melded or reached for the pile, you have given up the right to ask.\n\nIf your side has not melded yet and you draw from the stock into a hand you can lay down complete, canasta included, you may go out concealed on the spot without meeting the minimum count. Take the pile instead of drawing and that concession disappears: you must make the minimum, and the concealed bonus is not yours to claim.\n\nWhen the stock runs out. If the last stock card is a red three, the player shows it and the hand ends immediately with no discard. Otherwise play continues with no stock: each player in turn must take the discard pile if its top card matches one of their side's melds and the pile is not frozen against them. The moment a player cannot do that, the hand stops there with nobody going out.",
+  "goal_and_scoring": "The partnership target is 5,000 points, played out over as many deals as it takes. Each deal is scored for the side as a whole.\n\nCard values: jokers 50; twos and aces 20; kings, queens, jacks, tens, nines, and eights 10; sevens, sixes, fives, fours, and black threes 5. Add up everything your side has melded and subtract the value of every card still in either partner's hand.\n\nBonuses: 500 for each natural canasta, 300 for each mixed canasta, and 100 for going out. Going out concealed is worth 200 instead, which means laying down your whole hand in a single turn including a canasta, having never melded or added to your partner's melds earlier in the deal.\n\nRed threes count 100 each for the side that laid them down, but only if that side made its initial meld; a side that never melded has the same 100 per red three deducted. Holding all four doubles it to 800 for or 800 against.\n\nA deal can easily come out negative. Add each deal to the running total, since that total sets the next deal's minimum meld. The game ends when a side reaches 5,000 or more once a deal has been fully scored; if both sides cross 5,000 in the same deal, the higher total wins.",
+  "variants": [
+    {
+      "name": "Two- and three-player Canasta",
+      "description": "With two players, each is dealt 15 cards, a stock draw takes two cards rather than one (you still discard only one), everyone plays alone, and you need two canastas to go out. With three, deal 13 cards each and again play as individuals with the standard one-canasta requirement. Everything else follows the four-hand game."
+    },
+    {
+      "name": "Samba",
+      "description": "Three decks and six jokers, 162 cards, for up to six players, dealt 15 each. Alongside ordinary rank melds you may build suited sequences; a run of seven cards in one suit is a samba, counts as a canasta for going out, and scores 1,500. Stock draws take two cards, going out needs two canastas, and the game runs to 10,000 with the initial meld minimum climbing to 150 once a side passes 7,000."
+    },
+    {
+      "name": "Hand and Foot",
+      "description": "The most popular North American descendant, usually four to six decks with jokers. Each player gets two packets, commonly 11 cards as the hand and 13 as the foot; you play the hand first and only pick up the foot after emptying it. Melds are built toward books of seven, clean (no wilds) or dirty (with wilds), and going out typically demands a set quota of each, so a partnership cannot finish early on a thin table."
+    },
+    {
+      "name": "Modern American Canasta",
+      "description": "The version most tournament and club play now uses. Initial melds must come entirely from the hand and must include a set of three or more natural cards, wild cards may be collected into a canasta of their own for a very large bonus (and a heavy penalty if left unfinished), and a partnership needs two canastas rather than one to go out. Melded ranks that can no longer be completed are treated as dead, which changes discard strategy considerably."
+    }
+  ],
+  "difficulty": "complex",
+  "duration_minutes": "60-120",
+  "tags": [
+    "partnership",
+    "classic",
+    "strategy",
+    "counting",
+    "long-game"
+  ],
+  "sources_consulted": [
+    "Pagat",
+    "Bicycle Cards",
+    "Wikipedia",
+    "Britannica",
+    "Hoyle's Rules of Games",
+    "Canasta League of America",
+    "GameRules.com"
+  ]
+}

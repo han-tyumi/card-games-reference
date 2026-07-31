@@ -1,4 +1,0 @@
-# Build and validation dependencies. The game data itself is plain JSON and
-# needs nothing installed to read.
-jsonschema>=4.0
-reportlab>=4.0

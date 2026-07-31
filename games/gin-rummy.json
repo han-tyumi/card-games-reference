@@ -1,0 +1,57 @@
+{
+  "id": "gin-rummy",
+  "name": "Gin Rummy",
+  "aliases": [
+    "Gin"
+  ],
+  "category": "rummy-type",
+  "players": {
+    "min": 2,
+    "max": 2,
+    "ideal": 2
+  },
+  "decks": "1 standard deck (52 cards), jokers removed",
+  "setup": "Gin Rummy is a two-handed game using a full 52-card pack with the jokers taken out. Pick the first dealer by drawing from the shuffled pack: low card deals. After that the loser of each hand deals the next one, though plenty of players pass the deal to the winner instead, so agree which before you start.\n\nThe dealer shuffles, the opponent cuts, and ten cards go to each player one at a time, non-dealer first. Put the rest of the pack face down in the middle as the stock and turn its top card face up next to it. That upcard is the whole discard pile for now, and it leaves 31 cards in the stock.\n\nRanks run from ace low up to king, and they do not wrap. A-2-3 is a legal sequence; Q-K-A is not. For counting, an ace is 1 point, a numbered card is worth its number, and each jack, queen and king is 10. Keep your hand hidden. Nothing goes on the table until somebody ends the hand.",
+  "play": "There are two kinds of meld. A set is three or four cards of the same rank. A run is three or more cards of one suit in sequence. Each card can only work in one meld at a time, so holding 7♣ 7♠ 7♥ 8♥ 9♥ you may count the set of sevens or the heart run, not both. Everything outside your melds is deadwood, and its point total is what the whole game turns on.\n\nThe first turn has its own procedure. The non-dealer may take the upcard or refuse it. If they refuse, the dealer gets the same offer. If both refuse, the non-dealer opens by drawing the top card of the stock. Whoever takes a card then discards, and the players alternate normally from there.\n\nAn ordinary turn is two actions with nothing in between. Draw exactly one card, either the face-down top of the stock or the face-up top of the discard pile, then discard exactly one card face up onto the pile. You are back to ten cards at the end of every turn. You may not take the top discard and throw the same card straight back on that turn. Melds are never laid on the table during play; they stay in your hand until the hand ends.\n\nYou end the hand by knocking. You may knock on any turn, including your first, as long as your deadwood after discarding comes to 10 points or less. To do it, lay your final discard face down instead of face up, then spread your hand with the melds grouped separately from the deadwood and state your count. Knocking is optional. With a low count you are allowed to keep playing and hunt for a bigger score, at the risk of being knocked on first.\n\nZero deadwood is gin. Declare it the same way, spreading a hand in which every card is melded once the discard is gone.\n\nYour opponent now spreads too. They arrange their own melds and then lay off: any loose card of theirs that fits one of your melds can be pushed onto it, adding a fourth card to a set or extending either end of a run. Every card laid off comes out of their deadwood. Two restrictions matter. Nothing can be laid off against a gin hand, and nothing can ever be laid off onto the other player's deadwood.\n\nOnce the laying off is finished the two deadwood counts are compared, which decides who scores the hand.\n\nThe stock can run out. If a player draws the card that leaves only two cards in the stock and then discards without knocking, the hand is dead: neither player scores, and the same dealer deals again. Those last two stock cards are never drawn.",
+  "goal_and_scoring": "Hands are only steps toward the match target, which is 100 points.\n\nA knock that survives scores the knocker the difference between the two deadwood counts. Knock with 6 against an opponent left holding 21 and you take 15. If the opponent's count after laying off is lower than yours, or exactly equal to it, they have undercut you: they score the difference plus a 25-point undercut bonus, and an equal count still counts as an undercut, worth the flat 25. Gin scores 25 plus every point of deadwood in the opponent's hand, and it can be neither laid off against nor undercut.\n\nKeep running totals. The game ends as soon as either player's total reaches 100 at the end of a hand. Then add the bonuses: each player scores 25 for every individual hand they won, called a box or line bonus, and whoever reached 100 first adds a 100-point game bonus. If the loser never won a single hand, the winner doubles their entire total, game bonus included, which is known as a shutout, blitz or schneider. The higher total after bonuses wins the match, and the gap between the totals is the margin that gets settled.",
+  "variants": [
+    {
+      "name": "Oklahoma Gin",
+      "description": "The first upcard fixes the knock limit for the whole deal instead of the standard 10. If it is a 6, nobody may knock with more than 6 points of deadwood; face cards set the limit at 10, so an ordinary deal. Most tables add that an ace as the upcard means only gin ends the hand, and many use a spades-double rule where a spade upcard doubles everything scored that deal. This is the most widely played competitive form of the game."
+    },
+    {
+      "name": "Hollywood Gin",
+      "description": "A scoring frame rather than a rules change: three games are tracked at once in three columns. The first hand a player wins is entered in their first column only, their second win goes into the first and second columns, and every win after that goes into all three. Each column is a separate race to 100 with its own bonuses, so a match runs longer and an early lead is worth much more."
+    },
+    {
+      "name": "Straight Gin",
+      "description": "Knocking is abolished. The only way to end a hand is to go gin with all ten cards melded, which means no undercuts, no laying off and no partial scores. Hands run much longer and the whole discard-reading side of the game gets sharper, because you cannot bail out of a bad hand with a cheap knock."
+    },
+    {
+      "name": "Big Gin",
+      "description": "An extra bonus recognised at many tables. If the card you draw gives you eleven melded cards with no discard needed, you declare big gin and score 31 plus your opponent's deadwood instead of the usual 25. Some groups score it at 25 like ordinary gin, so settle the number in advance."
+    },
+    {
+      "name": "Three- and four-handed gin",
+      "description": "For three, the usual arrangement is that one player sits out each deal and the two active players use the standard rules, with the winner staying in and the loser swapping out. For four, play as two partnerships: each player faces one opponent in a separate two-handed hand, then the partners' results for that round are combined and only the net difference is entered on the score sheet."
+    }
+  ],
+  "difficulty": "easy",
+  "duration_minutes": "20-45",
+  "tags": [
+    "two-player",
+    "classic",
+    "strategy",
+    "counting",
+    "travel"
+  ],
+  "sources_consulted": [
+    "Pagat",
+    "Bicycle Cards",
+    "Wikipedia",
+    "Britannica",
+    "Denexa Games",
+    "Official Game Rules",
+    "Cool Old Games"
+  ]
+}

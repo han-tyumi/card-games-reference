@@ -1,0 +1,40 @@
+{
+  "name": "card-games-reference",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A free, openly-licensed reference for how to play traditional and popular card games — written from scratch, stored as structured data, and built to work offline.",
+  "license": "(MIT AND CC-BY-SA-4.0)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/han-tyumi/card-games-reference.git"
+  },
+  "keywords": [
+    "card-games",
+    "rules",
+    "reference",
+    "open-data"
+  ],
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "validate": "node scripts/validate.ts",
+    "render": "node scripts/render-markdown.ts",
+    "pdf": "node scripts/build-pdf.ts",
+    "build": "npm run validate && npm run render && npm run pdf",
+    "check": "node scripts/validate.ts --quiet && node scripts/render-markdown.ts --check && tsc --noEmit",
+    "typecheck": "tsc --noEmit",
+    "types": "json2ts --input schema/game.schema.json --output schema/game.types.ts --maxItems -1"
+  },
+  "dependencies": {
+    "ajv": "^8.20.0",
+    "pdfkit": "^0.19.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.2",
+    "@types/pdfkit": "^0.17.6",
+    "json-schema-to-typescript": "^15.0.4",
+    "typescript": "^7.0.2"
+  }
+}

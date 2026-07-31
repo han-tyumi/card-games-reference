@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "es2023",
+    "lib": ["es2023"],
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "types": ["node"],
+
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+
+    // Nothing is compiled: Node 22.18+ strips the types and runs the .ts files
+    // directly, so `npm run typecheck` is a pure check and the scripts are the
+    // sources. erasableSyntaxOnly keeps us inside the subset Node can strip.
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "erasableSyntaxOnly": true,
+    "verbatimModuleSyntax": true,
+
+    // pdfkit is CommonJS and sets module.exports to its class, which is exactly
+    // what interop's default import models.
+    "esModuleInterop": true,
+
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true
+  },
+  "include": ["scripts/**/*.ts", "schema/**/*.ts"]
+}

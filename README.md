@@ -17,24 +17,44 @@ website, apps, and companion tools are not built yet.
 | --- | --- |
 | `games/*.json` | One file per game. The source of truth — hand-edited. |
 | `schema/game.schema.json` | JSON Schema every entry must satisfy. |
-| `scripts/validate.py` | Schema + consistency check. Run before committing. |
-| `scripts/render_markdown.py` | Generates `rendered/`. |
-| `scripts/build_pdf.py` | Compiles every game into one printable PDF. |
-| `scripts/gamelib.py` | Shared loading/formatting used by both generators. |
+| `schema/game.types.ts` | **Generated** TypeScript types, derived from the schema. |
+| `scripts/validate.ts` | Schema + consistency check. Run before committing. |
+| `scripts/render-markdown.ts` | Generates `rendered/`. |
+| `scripts/build-pdf.ts` | Compiles every game into one printable PDF. |
+| `scripts/games.ts` | Shared loading/formatting used by both generators. |
 | `rendered/*.md` | **Generated.** Never hand-edit — your changes get overwritten. |
 | `tools/` | Placeholder for planned companion tools. |
 
 ## Quick start
 
-```sh
-pip install -r requirements.txt
+Requires **Node 22.18 or newer**, which runs TypeScript directly — there is no
+build step and nothing is compiled.
 
-python3 scripts/validate.py          # check every entry against the schema
-python3 scripts/render_markdown.py   # regenerate rendered/
-python3 scripts/build_pdf.py         # build rendered/card-games-reference.pdf
+```sh
+npm install
+
+npm run validate   # check every entry against the schema
+npm run render     # regenerate rendered/
+npm run pdf        # build rendered/card-games-reference.pdf
+
+npm run build      # all three, in order
+npm run check      # CI gate: validate + rendered/ is current + typecheck
 ```
 
-Or just `make` to run all three.
+Two more, needed only when the schema itself changes:
+
+```sh
+npm run types      # regenerate schema/game.types.ts from the schema
+npm run typecheck  # tsc --noEmit
+```
+
+### Types come from the schema
+
+`schema/game.schema.json` is the single source of truth. `npm run types`
+generates `schema/game.types.ts` from it, so the `CardGame` type — including the
+literal unions for `category`, `difficulty`, and `tags` — is never hand-written
+and cannot drift from what the validator enforces. The website and app can
+import that type directly rather than redeclaring it.
 
 ## Games in v1
 
@@ -142,8 +162,12 @@ version right matters more than covering every variation.
 4. Describe the **most widely played modern version** in the main text. Put
    notable alternatives in `variants` — two to five is right for this project.
    Exhaustive regional coverage is explicitly not the goal.
-5. Run `python3 scripts/validate.py`, then `python3 scripts/render_markdown.py`,
-   and commit the regenerated `rendered/` files along with your JSON.
+5. Run `npm run build`, and commit the regenerated `rendered/` files along with
+   your JSON.
+
+Prose fields accept a light Markdown convention: blank lines separate
+paragraphs, and lines starting with `- ` become bullets. Both the Markdown and
+the PDF renderer understand these. Nothing else — no headings, bold, or tables.
 
 ### Style
 
@@ -156,7 +180,7 @@ version right matters more than covering every variation.
 
 ### Checklist before opening a PR
 
-- [ ] `python3 scripts/validate.py` passes
+- [ ] `npm run check` passes
 - [ ] `rendered/` regenerated and committed
 - [ ] Wording is original — nothing copied or lightly reworded from a source
 - [ ] `sources_consulted` lists what you actually checked, by name
@@ -167,7 +191,7 @@ version right matters more than covering every variation.
 | What | License |
 | --- | --- |
 | Game write-ups and prose (`games/`, `rendered/`, `README.md`) | [CC BY-SA 4.0](LICENSE) |
-| Scripts and schema definition (`scripts/`, `schema/`) | [MIT](LICENSE-CODE) |
+| Tooling and schema definition (`scripts/`, `schema/`) | [MIT](LICENSE-CODE) |
 
 CC BY-SA 4.0 means anyone can use, remix, and build on the write-ups — including
 commercially — as long as they credit the project and release their version

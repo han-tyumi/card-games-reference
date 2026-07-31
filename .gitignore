@@ -1,13 +1,8 @@
-# Python
-__pycache__/
-*.py[cod]
-*.egg-info/
-.venv/
-venv/
-env/
-.mypy_cache/
-.ruff_cache/
-.pytest_cache/
+# Node
+node_modules/
+*.tsbuildinfo
+npm-debug.log*
+.npm/
 
 # Editors / OS
 .vscode/
@@ -23,5 +18,5 @@ scratch/
 
 # Note: rendered/ IS committed. It is generated output, but keeping it in the
 # repo means the Markdown and the PDF are readable straight from GitHub without
-# anyone having to install Python first. Regenerate it rather than editing it:
-#   python3 scripts/render_markdown.py && python3 scripts/build_pdf.py
+# anyone having to install anything first. Regenerate it rather than editing it:
+#   npm run render && npm run pdf
