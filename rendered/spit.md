@@ -2,7 +2,7 @@
 
 # Spit
 
-**Also known as:** Slam, Speed  
+**Also known as:** Slam  
 **Players:** 2 players  
 **Deck:** 1 standard deck (52 cards), jokers removed  
 **Time:** 10-25 minutes  

@@ -67,7 +67,7 @@ Games are usually a race to 10. Playing to 11 is common in some regions, and lea
 
 **Defending alone** — An optional rule allowing a defender to announce that they will play alone against a lone maker, sending their own partner out of the hand as well and turning it into a one-against-one duel. If the defender euchres the maker, their side scores 4 instead of 2. High variance, and worth agreeing on before the first deal, since not every group plays it.
 
-**Tags:** beginner-friendly, classic, family-friendly, partnership, quick, strategy
+**Tags:** beginner-friendly, classic, family-friendly, partnership, strategy
 
 *Rules verified against: Pagat, Bicycle Cards, Wikipedia, Britannica, World Euchre Federation, Ohio Euchre, Trickster Cards. This write-up is original text, not reproduced from those sources.*
 

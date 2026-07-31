@@ -109,6 +109,22 @@ A few conventions worth knowing:
   explaining; Go Fish is `simple`.
 - `tags` come from a fixed vocabulary defined in the schema, so filtering stays
   consistent across the collection. Adding a tag means adding it to the schema.
+- `aliases` never contains another game's real name. Where two games genuinely
+  share a name — Speed and Spit swap names regionally, and Canfield means
+  different games on different continents — the prose explains the clash instead,
+  so a search for one name cannot silently return the other.
+
+Some tags carry a defined meaning rather than a vibe, and `npm run validate`
+enforces them so a filter never lies to the user:
+
+| Tag | Means |
+| --- | --- |
+| `solo` | Exactly 1 player — and every 1-player game must carry it |
+| `two-player` | The range includes 2 |
+| `partnership` | Seats at least 4 |
+| `large-group` | Seats at least 6 |
+| `quick` | Finishes within 30 minutes |
+| `long-game` | Can run 60 minutes or more |
 
 ## Copyright: how this project handles it
 
