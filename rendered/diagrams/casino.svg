@@ -1,30 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 291.2" width="276" height="291.2" role="img" aria-label="Casino setup diagram">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 315.2" width="276" height="315.2" role="img" aria-label="Casino setup diagram">
 <title>Casino setup</title>
 <rect x="123.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
 <rect x="123.0" y="9.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
 <rect x="123.0" y="11.2" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
 <rect x="123.0" y="12.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<rect x="23.0" y="92.8" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
-<rect x="23.0" y="94.4" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
-<rect x="23.0" y="96.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
-<rect x="23.0" y="97.6" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
-<rect x="23.0" y="99.2" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
 <rect x="23.0" y="100.8" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
 <rect x="23.0" y="102.4" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
-<text x="38.0" y="127.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#5b6672">40</text>
-<rect x="103.0" y="92.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<rect x="143.0" y="92.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<rect x="183.0" y="92.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<rect x="223.0" y="92.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<rect x="123.0" y="182.4" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<rect x="123.0" y="184.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<rect x="123.0" y="185.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<rect x="123.0" y="187.2" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="138.0" y="64.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Opponent's hand</text>
-<text x="38.0" y="154.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Stock</text>
-<text x="178.0" y="154.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Table cards</text>
-<text x="138.0" y="239.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Your hand</text>
-<text x="138.0" y="255.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">The two-player deal, made in twos: four cards to each</text>
-<text x="138.0" y="267.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">player and four face up in the centre. No further cards</text>
-<text x="138.0" y="279.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">are ever added to the table.</text>
+<rect x="23.0" y="104.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="23.0" y="105.6" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="23.0" y="107.2" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="23.0" y="108.8" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="23.0" y="110.4" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<text x="38.0" y="135.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#5b6672">40</text>
+<rect x="103.0" y="100.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="143.0" y="100.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="183.0" y="100.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="223.0" y="100.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="198.4" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="200.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="201.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="203.2" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="138.0" y="62.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Opponent's</text>
+<text x="138.0" y="71.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">hand</text>
+<text x="38.0" y="160.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Stock</text>
+<text x="178.0" y="160.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Table cards</text>
+<text x="138.0" y="253.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Your</text>
+<text x="138.0" y="262.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">hand</text>
+<text x="138.0" y="279.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">The two-player deal, made in twos: four cards to each</text>
+<text x="138.0" y="291.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">player and four face up in the centre. No further cards</text>
+<text x="138.0" y="303.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">are ever added to the table.</text>
 </svg>

@@ -21,6 +21,8 @@ Do not sort your hand yet, because ranking is not fixed until trump is settled. 
 
 Keep score on paper, or with the traditional pair of spare low cards laid face down and turned to show the count.
 
+![Euchre setup diagram](diagrams/euchre.svg)
+
 ## Play
 
 First round of bidding. Beginning with the player to the dealer's left and moving clockwise, each player either passes or accepts the upcard's suit as trump. Accepting is called ordering it up if you are one of the dealer's opponents, assisting if you are the dealer's partner, and taking it up if you are the dealer. As soon as somebody accepts, bidding stops: the dealer adds the upcard to hand and buries any one card face down under the kitty, going back to five cards. The side that chose trump are the makers, the other pair the defenders.

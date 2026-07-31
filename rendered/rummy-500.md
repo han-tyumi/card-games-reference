@@ -19,6 +19,8 @@ The discard pile is the heart of this game, so lay it out properly. Stagger each
 
 Aces work high or low but never both in the same run: A-2-3 and Q-K-A are legal, K-A-2 is not. Point values are what you will be adding up all game. An ace is worth 15, except when it is melded low in a sequence with the 2, where it counts 1. Kings, queens and jacks are 10 each. Every other card is worth its number. The player to the dealer's left starts.
 
+![500 Rummy setup diagram](diagrams/rummy-500.svg)
+
 ## Play
 
 Melds come in the usual two shapes: a set of three or four matching ranks, or a run of at least three cards that follow one another within a single suit. Unlike most rummies, melds are laid face up in front of you and stay yours, because at the end of the hand you are paid for the cards sitting on the table in front of you.

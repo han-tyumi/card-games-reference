@@ -308,7 +308,6 @@ function drawDiagram(book: Booklet, layout: NonNullable<CardGame["layout"]>): vo
     doc.text(label.text, x, y, {
       width: label.width * scale,
       align: "center",
-      lineBreak: false,
     });
   }
 

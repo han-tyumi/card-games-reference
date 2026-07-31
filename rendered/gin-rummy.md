@@ -17,6 +17,8 @@ The dealer shuffles, the opponent cuts, and ten cards go to each player one at a
 
 Ranks run from ace low up to king, and they do not wrap. A-2-3 is a legal sequence; Q-K-A is not. For counting, an ace is 1 point, a numbered card is worth its number, and each jack, queen and king is 10. Keep your hand hidden. Nothing goes on the table until somebody ends the hand.
 
+![Gin Rummy setup diagram](diagrams/gin-rummy.svg)
+
 ## Play
 
 There are two kinds of meld. A set is three or four cards that share a rank. A run is three or more cards of a single suit in unbroken order. Each card can only work in one meld at a time, so holding 7♣ 7♠ 7♥ 8♥ 9♥ you may count the set of sevens or the heart run, not both. Everything outside your melds is deadwood, and its point total is what the whole game turns on.

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 296" width="276" height="296" role="img" aria-label="500 Rummy setup diagram">
+<title>500 Rummy setup</title>
+<rect x="63.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="103.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="143.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="183.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="63.0" y="96.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
+<rect x="103.0" y="96.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
+<rect x="143.0" y="96.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
+<rect x="183.0" y="96.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
+<rect x="103.0" y="184.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="143.0" y="184.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="138.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">7 each; 13 in the two-player game</text>
+<text x="138.0" y="146.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Each player's own melds, face up</text>
+<text x="118.0" y="234.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Stock</text>
+<text x="158.0" y="234.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Discard</text>
+<text x="158.0" y="243.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">pile, spread</text>
+<text x="138.0" y="260.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">The discard pile is staggered into an overlapping</text>
+<text x="138.0" y="272.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">ladder, never squared up, because any card in it can be</text>
+<text x="138.0" y="284.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">taken along with everything above it.</text>
+</svg>

@@ -42,20 +42,36 @@ function escapeXml(value: string): string {
 
 const CAPTION_SIZE = 9;
 const CAPTION_LINE = 12;
-/** Rough advance width per character for the caption font, used to wrap. */
-const CHAR_WIDTH = CAPTION_SIZE * 0.52;
+const LABEL_SIZE = 8;
+const LABEL_LINE = 9;
+/** Rough advance width per character, as a fraction of font size. */
+const CHAR_RATIO = 0.52;
 /** Narrow diagrams still get a readable caption column rather than one word per line. */
 const MIN_CAPTION_WIDTH = 260;
 
-/** SVG text does not wrap, so break the caption to fit before drawing it. */
-function wrapCaption(caption: string, width: number): string[] {
-  const maxChars = Math.max(12, Math.floor(width / CHAR_WIDTH));
+/**
+ * SVG text does not wrap, so break it to fit before drawing.
+ *
+ * `maxLines` caps the result; anything that still will not fit is left on the
+ * last line, since a clipped word is worse than a slightly wide one.
+ */
+function wrapText(
+  text: string,
+  width: number,
+  fontSize: number,
+  maxLines = Infinity,
+): string[] {
+  const maxChars = Math.max(6, Math.floor(width / (fontSize * CHAR_RATIO)));
   const lines: string[] = [];
   let line = "";
 
-  for (const word of caption.split(/\s+/)) {
+  for (const word of text.split(/\s+/)) {
     const candidate = line ? `${line} ${word}` : word;
     if (candidate.length > maxChars && line) {
+      if (lines.length + 1 >= maxLines) {
+        line = candidate;
+        continue;
+      }
       lines.push(line);
       line = word;
     } else {
@@ -75,7 +91,7 @@ export function renderDiagramSvg(layout: Layout, title: string): string {
     ? Math.max(diagram.width, MIN_CAPTION_WIDTH)
     : diagram.width;
   const captionLines = diagram.caption
-    ? wrapCaption(diagram.caption, captionWidth)
+    ? wrapText(diagram.caption, captionWidth, CAPTION_SIZE)
     : [];
   const captionHeight =
     captionLines.length > 0 ? captionLines.length * CAPTION_LINE + 6 : 0;
@@ -130,12 +146,17 @@ export function renderDiagramSvg(layout: Layout, title: string): string {
   }
 
   for (const label of diagram.labels) {
-    parts.push(
-      `<text x="${(label.x + PAD + shift + label.width / 2).toFixed(1)}" ` +
-        `y="${(label.y + PAD).toFixed(1)}" text-anchor="middle" ` +
-        `font-family="system-ui, sans-serif" font-size="8" fill="${TEXT}">` +
-        `${escapeXml(label.text)}</text>`,
-    );
+    // A label wider than the pile it sits under would run into its neighbour,
+    // so break it rather than let two captions collide.
+    const lines = wrapText(label.text, label.width, LABEL_SIZE, 2);
+    lines.forEach((line, index) => {
+      parts.push(
+        `<text x="${(label.x + PAD + shift + label.width / 2).toFixed(1)}" ` +
+          `y="${(label.y + PAD + index * LABEL_LINE).toFixed(1)}" ` +
+          `text-anchor="middle" font-family="system-ui, sans-serif" ` +
+          `font-size="${LABEL_SIZE}" fill="${TEXT}">${escapeXml(line)}</text>`,
+      );
+    });
   }
 
   captionLines.forEach((line, index) => {

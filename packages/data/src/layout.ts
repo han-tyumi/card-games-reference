@@ -21,7 +21,8 @@ export const CARD = { width: 30, height: 42 };
 
 const GAP_X = 10;
 const GAP_Y = 26;
-const LABEL_HEIGHT = 12;
+/** Room for a caption under a pile, allowing for one wrapped second line. */
+const LABEL_HEIGHT = 20;
 /** How far each card in a fanned pile is offset from the one beneath it. */
 const FAN_STEP = 5;
 /** Depth shown for a squared-up pile, so a stock reads as thicker than one card. */
@@ -193,12 +194,16 @@ export function buildDiagram(layout: Layout): Diagram {
       piles.push(pile);
     }
 
-    // Captions sit below the tallest pile in the row so they line up.
+    // Captions sit below the tallest pile in the row so they line up. The
+    // baseline goes at the TOP of the label band, not the bottom, so a caption
+    // that wraps to a second line stays inside the row instead of running into
+    // whatever is underneath.
+    const bandTop = y + row.height - LABEL_HEIGHT;
     for (const label of row.rowLabels) {
       labels.push({
         text: label.text,
         x: label.x + offset,
-        y: y + row.height - 2,
+        y: bandTop + 8,
         width: label.width,
       });
     }

@@ -39,7 +39,10 @@ than each keeping their own copy.
 | `packages/build/render-markdown.ts` | Generates `rendered/`. |
 | `packages/build/build-pdf.ts` | Compiles every game into one printable PDF. |
 | `packages/build/pick.ts` | Query the collection: "what can 5 of us play with one deck?" |
+| `packages/data/src/layout.ts` | Turns a game's `layout` into diagram geometry. |
+| `packages/build/svg.ts` | Draws that geometry as SVG. |
 | `rendered/*.md` | **Generated.** Never hand-edit — your changes get overwritten. |
+| `rendered/diagrams/*.svg` | **Generated** setup diagrams. |
 | `tools/` | Notes on planned companion packages. |
 
 Packages get added as they are built — a website, graphics, companion tools.
@@ -161,6 +164,46 @@ A few conventions worth knowing:
   share a name — Speed and Spit swap names regionally, and Canfield means
   different games on different continents — the prose explains the clash instead,
   so a search for one name cannot silently return the other.
+
+### Setup diagrams are generated, not drawn
+
+Games that benefit from a picture carry an optional `layout` describing the
+starting table as data. The diagram is drawn from it:
+
+```json
+"layout": {
+  "rows": [
+    [ { "kind": "stock", "label": "Stock", "cards": 24, "face": "down" },
+      { "kind": "waste", "label": "Waste", "cards": 0 },
+      { "kind": "gap" },
+      { "kind": "foundation", "label": "Foundations", "repeat": 4, "cards": 0 } ],
+    [ { "kind": "tableau", "label": "Tableau", "repeat": 7,
+        "cards": [1, 2, 3, 4, 5, 6, 7], "face": "last-up" } ]
+  ]
+}
+```
+
+That is the whole of Klondike's diagram. `cards: 0` draws an empty slot, a
+`tableau` fans out while other kinds stack squarely, and `last-up` means face
+down with the top card turned.
+
+Rows are **centred**, which is how shapes emerge without anyone specifying
+coordinates: Pyramid is rows of 1 to 7, and Kings in the Corner is `gap`/pile/
+`gap` rows forming a cross.
+
+Two things follow from generating rather than drawing them:
+
+- **A diagram cannot go stale.** Correct a rule and the picture updates with it.
+  A hand-drawn image quietly keeps showing the old rule.
+- **One description, every medium.** `layout.ts` computes the geometry once;
+  the SVG renderer and the PDF renderer both consume it. PDFKit cannot read
+  SVG, so the PDF genuinely draws its own — sharing the geometry is what stops
+  the two from disagreeing. The apps can use the same data again later.
+
+`layout` is **optional and often correctly omitted**. Sixteen of the thirty v1
+games have one. Pure trick-taking games do not: "everyone holds a hand and
+tricks go to the middle" is the same picture every time and teaches nobody
+anything. Add one where the arrangement is genuinely worth seeing.
 
 Some tags carry a defined meaning rather than a vibe, and `npm run validate`
 enforces them so a filter never lies to the user:

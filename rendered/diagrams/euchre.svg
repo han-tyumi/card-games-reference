@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 315.20000000000005" width="276" height="315.20000000000005" role="img" aria-label="Euchre setup diagram">
+<title>Euchre setup</title>
+<rect x="123.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="9.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="11.2" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="12.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="14.4" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="83.0" y="102.4" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="83.0" y="104.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="83.0" y="105.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="83.0" y="107.2" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="83.0" y="108.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="102.4" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="104.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="105.6" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="107.2" width="30" height="42" rx="3" fill="#dfe6ee" stroke="#5b6672" stroke-width="1"/>
+<rect x="163.0" y="102.4" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="163.0" y="104.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="163.0" y="105.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="163.0" y="107.2" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="163.0" y="108.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="196.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="198.4" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="200.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="201.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="203.2" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="138.0" y="64.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Dealer's</text>
+<text x="138.0" y="73.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">partner</text>
+<text x="98.0" y="158.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Opponent</text>
+<text x="138.0" y="158.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Kitty,</text>
+<text x="138.0" y="167.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">top card turned up</text>
+<text x="178.0" y="158.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Opponent</text>
+<text x="138.0" y="253.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Dealer</text>
+<text x="138.0" y="279.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Partners sit opposite. Twenty of the 24 cards are dealt</text>
+<text x="138.0" y="291.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">five at a time; the last four stay in the middle and</text>
+<text x="138.0" y="303.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">the upcard opens the bidding.</text>
+</svg>

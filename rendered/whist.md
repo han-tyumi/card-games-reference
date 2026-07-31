@@ -19,6 +19,8 @@ The dealer shuffles, the player to the dealer's right cuts, and the whole pack i
 
 There is no bidding, no exchange of cards and no stock. As soon as the trump is turned, play begins.
 
+![Whist setup diagram](diagrams/whist.svg)
+
 ## Play
 
 The player to the dealer's left leads any card at all to the first trick. Play then goes clockwise, one card from each player.

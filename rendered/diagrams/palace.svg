@@ -1,21 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 276.8" width="276" height="276.8" role="img" aria-label="Palace setup diagram">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 300.8" width="276" height="300.8" role="img" aria-label="Palace setup diagram">
 <title>Palace setup</title>
 <rect x="83.0" y="8.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
 <rect x="163.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
-<rect x="83.0" y="88.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
-<rect x="83.0" y="89.6" width="30" height="42" rx="3" fill="#f4f0e6" stroke="#5b6672" stroke-width="1"/>
-<rect x="123.0" y="88.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
-<rect x="123.0" y="89.6" width="30" height="42" rx="3" fill="#f4f0e6" stroke="#5b6672" stroke-width="1"/>
-<rect x="163.0" y="88.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
-<rect x="163.0" y="89.6" width="30" height="42" rx="3" fill="#f4f0e6" stroke="#5b6672" stroke-width="1"/>
-<rect x="123.0" y="169.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<rect x="123.0" y="171.2" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<rect x="123.0" y="172.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="98.0" y="60.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Stock</text>
-<text x="178.0" y="60.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Discard pile</text>
-<text x="138.0" y="141.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Your table cards</text>
-<text x="138.0" y="224.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Your hand</text>
-<text x="138.0" y="240.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Every player gets the same nine cards: three face-down</text>
-<text x="138.0" y="252.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">cards with a face-up card squared on top of each, plus</text>
-<text x="138.0" y="264.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">a hand of three. The discard pile starts empty.</text>
+<rect x="83.0" y="96.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="83.0" y="97.6" width="30" height="42" rx="3" fill="#f4f0e6" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="96.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="97.6" width="30" height="42" rx="3" fill="#f4f0e6" stroke="#5b6672" stroke-width="1"/>
+<rect x="163.0" y="96.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="163.0" y="97.6" width="30" height="42" rx="3" fill="#f4f0e6" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="185.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="187.2" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="188.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="98.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Stock</text>
+<text x="178.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Discard</text>
+<text x="178.0" y="67.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">pile</text>
+<text x="138.0" y="147.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Your table cards</text>
+<text x="138.0" y="238.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Your</text>
+<text x="138.0" y="247.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">hand</text>
+<text x="138.0" y="264.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Every player gets the same nine cards: three face-down</text>
+<text x="138.0" y="276.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">cards with a face-up card squared on top of each, plus</text>
+<text x="138.0" y="288.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">a hand of three. The discard pile starts empty.</text>
 </svg>
