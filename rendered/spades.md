@@ -42,7 +42,7 @@ A side that falls short is set and loses 10 points per trick bid, with no credit
 
 Bags accumulate for the whole game in their own tally. The moment a side reaches 10 bags, 100 points are deducted from that side's score and 10 comes off the bag count, leaving any surplus in place to start the next batch. Games are routinely decided by a sandbag penalty rather than by anything that happened in a trick, which is why deliberately underbidding a strong hand is a losing habit.
 
-A successful nil is worth 100 points to the partnership, on top of whatever the partner's contract scores. A nil that wins even one trick costs 100. Blind nil doubles both numbers to plus or minus 200. When a nil fails, the standard treatment is that tricks won by the nil bidder do not help the partner make their contract but do count as bags for the side. Some groups let those tricks count toward the contract instead, so agree which before you start.
+Bring a nil home and the partnership banks 100, with the partner's contract settled separately on its own merits. Win a single trick and that same 100 goes the other way as a loss. Where the nil was blind, both figures double to 200. What becomes of the tricks a broken nil bidder collected is the detail worth pinning down beforehand: at most tables they are dead weight, useless toward the partner's contract yet still totted up in the side's bag tally, while other groups treat them as ordinary tricks and credit them to the contract.
 
 Play continues until a side is at 500 or more at the end of a hand. If both sides cross in the same hand, the higher total wins, and a genuine tie is broken by playing one more hand. Many groups also set a floor of minus 200, at which point that side loses outright.
 

@@ -33,9 +33,9 @@ The 2 resets. You may play a 2 on absolutely any card, and once it is down the p
 
 The 7 reverses direction of the requirement. You may play a 7 on any card of 7 or lower, and the player after you must then play a 7 or lower, not higher. A 2 or a 10 still gets you out of it, because those two can be played on anything.
 
-The 10 burns. You may play a 10 on any card at all. The whole discard pile, the 10 included, is swept off the table and set aside out of the game permanently, not shuffled back. The player who burned the pile then draws back up to three and plays again, starting a brand-new pile with any card they choose.
+The 10 burns. A 10 is legal on top of anything. Everything sitting in the middle, plus the 10 that just landed on it, leaves circulation for the rest of the hand: push the lot into a dead heap at the edge of the table, where it never rejoins the stock and can never be picked up by anyone. With the middle now empty, you top your hand back up to three and take another turn immediately, leading whatever card suits you.
 
-Four of a kind burns the pile in exactly the same way as a 10. It does not matter whether one player laid all four at once or whether the fourth was added on top of three that were already there by earlier players. As soon as four cards of the same rank are showing on top of the pile, it is set aside out of the game and whoever completed it draws up and plays again.
+Four of a kind does exactly what a 10 does. It makes no difference how the four got there — one player slapping all four down together, or three of a rank already showing and somebody adding the last one. The moment the top four cards of the pile share a rank, the pile is dead and joins the same heap as a burn, and the player who supplied that fourth card refills to three and leads again.
 
 The hand runs through three stages. While the stock lasts you always refill to three cards, so you play out of your hand and the layout in front of you is untouched. Once the stock is empty you stop drawing and simply play your hand down. When your hand is empty, you start playing your three face-up cards, and you may play any of them, or two or three of the same rank together. Only when the face-up cards are also gone do you touch the face-down ones.
 
