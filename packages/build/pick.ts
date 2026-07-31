@@ -18,8 +18,8 @@
  * the companion picker described in tools/README.md.
  */
 
-import type { CardGame } from "../schema/game.types.ts";
-import { categoryLabel, durationLine, loadGames, playersLine } from "./games.ts";
+import type { CardGame } from "@card-games/data";
+import { categoryLabel, durationLine, loadGames, playersLine } from "@card-games/data";
 
 const DIFFICULTY_ORDER = ["simple", "easy", "medium", "complex"] as const;
 

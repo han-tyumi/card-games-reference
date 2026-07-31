@@ -1,8 +1,9 @@
 /**
- * Shared loading and formatting helpers for the render and PDF scripts.
+ * The card game data, plus the helpers every consumer needs to describe it.
  *
- * Both generators read the same entries and describe them the same way, so the
- * Markdown and the PDF stay in sync. Nothing here writes output.
+ * This is the package the Markdown renderer, the PDF builder, the picker, and
+ * eventually the website and apps all read from, so a game is loaded and
+ * described the same way everywhere. Nothing here writes output.
  */
 
 import { readdirSync, readFileSync } from "node:fs";
@@ -11,12 +12,14 @@ import { fileURLToPath } from "node:url";
 
 import type { CardGame } from "../schema/game.types.ts";
 
+export type { CardGame } from "../schema/game.types.ts";
+
 export type Category = CardGame["category"];
 
-export const REPO_ROOT = fileURLToPath(new URL("..", import.meta.url));
-export const GAMES_DIR = join(REPO_ROOT, "games");
-export const RENDERED_DIR = join(REPO_ROOT, "rendered");
-export const SCHEMA_PATH = join(REPO_ROOT, "schema", "game.schema.json");
+const PACKAGE_ROOT = fileURLToPath(new URL("..", import.meta.url));
+
+export const GAMES_DIR = join(PACKAGE_ROOT, "games");
+export const SCHEMA_PATH = join(PACKAGE_ROOT, "schema", "game.schema.json");
 
 /** Display labels, in the order categories appear in generated output. */
 export const CATEGORY_LABELS = {

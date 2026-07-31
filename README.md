@@ -13,18 +13,28 @@ website, apps, and companion tools are not built yet.
 
 ## What's here
 
+An npm workspaces monorepo. The data is a package in its own right, so the
+website, the apps, and the build tooling all consume one source of truth rather
+than each keeping their own copy.
+
 | Path | What it is |
 | --- | --- |
-| `games/*.json` | One file per game. The source of truth — hand-edited. |
-| `schema/game.schema.json` | JSON Schema every entry must satisfy. |
-| `schema/game.types.ts` | **Generated** TypeScript types, derived from the schema. |
-| `scripts/validate.ts` | Schema + consistency check. Run before committing. |
-| `scripts/render-markdown.ts` | Generates `rendered/`. |
-| `scripts/build-pdf.ts` | Compiles every game into one printable PDF. |
-| `scripts/pick.ts` | Query the collection: "what can 5 of us play with one deck?" |
-| `scripts/games.ts` | Shared loading/formatting used by both generators. |
+| **`packages/data/`** | **`@card-games/data`** — the source of truth. Everything else reads from it. |
+| `packages/data/games/*.json` | One file per game. Hand-edited. |
+| `packages/data/schema/game.schema.json` | JSON Schema every entry must satisfy. |
+| `packages/data/schema/game.types.ts` | **Generated** types, derived from the schema. |
+| `packages/data/src/index.ts` | Loading and formatting helpers shared by all consumers. |
+| **`packages/build/`** | Validation and output generation. Private; not published. |
+| `packages/build/validate.ts` | Schema + consistency check. Run before committing. |
+| `packages/build/render-markdown.ts` | Generates `rendered/`. |
+| `packages/build/build-pdf.ts` | Compiles every game into one printable PDF. |
+| `packages/build/pick.ts` | Query the collection: "what can 5 of us play with one deck?" |
 | `rendered/*.md` | **Generated.** Never hand-edit — your changes get overwritten. |
-| `tools/` | Placeholder for planned companion tools. |
+| `tools/` | Notes on planned companion packages. |
+
+Packages get added as they are built — a website, graphics, companion tools.
+None of them fork the data; they depend on `@card-games/data`, which means a
+rule fix reaches every one of them in a single commit.
 
 ## Quick start
 
@@ -47,9 +57,9 @@ npm run check      # CI gate: validate + rendered/ is current + typecheck
 `equipment` exists so this is a query rather than a reading exercise:
 
 ```sh
-node scripts/pick.ts --players 5 --decks 1
-node scripts/pick.ts --players 2 --minutes 20 --difficulty up-to-easy
-node scripts/pick.ts --players 4 --tag family-friendly --jokers
+npm run pick -- --players 5 --decks 1
+npm run pick -- --players 2 --minutes 20 --difficulty up-to-easy
+npm run pick -- --players 4 --tag family-friendly --jokers
 ```
 
 Filters: `--players`, `--decks`, `--jokers`, `--minutes`, `--difficulty`
@@ -67,8 +77,8 @@ npm run typecheck  # tsc --noEmit
 
 ### Types come from the schema
 
-`schema/game.schema.json` is the single source of truth. `npm run types`
-generates `schema/game.types.ts` from it, so the `CardGame` type — including the
+`packages/data/schema/game.schema.json` is the single source of truth.
+`npm run types` generates `packages/data/schema/game.types.ts` from it, so the `CardGame` type — including the
 literal unions for `category`, `difficulty`, and `tags` — is never hand-written
 and cannot drift from what the validator enforces. The website and app can
 import that type directly rather than redeclaring it.
@@ -226,7 +236,7 @@ version right matters more than covering every variation.
 
 ### Adding a game
 
-1. Create `games/<slug>.json`. The filename must match the `id` field.
+1. Create `packages/data/games/<slug>.json`. The filename must match the `id` field.
 2. Research the rules from **two or three independent sources** so you notice
    where they disagree. Then write the entry in your own words, per the
    copyright rules above.
@@ -297,8 +307,8 @@ Where a name is ambiguous across regions, say so in the prose rather than in
 
 | What | License |
 | --- | --- |
-| Game write-ups and prose (`games/`, `rendered/`, `README.md`) | [CC BY-SA 4.0](LICENSE) |
-| Tooling and schema definition (`scripts/`, `schema/`) | [MIT](LICENSE-CODE) |
+| Game write-ups and prose (`packages/data/games/`, `rendered/`) | [CC BY-SA 4.0](LICENSE) |
+| Tooling and schema definition (`packages/build/`, `packages/data/schema/`) | [MIT](LICENSE-CODE) |
 
 CC BY-SA 4.0 means anyone can use, remix, and build on the write-ups — including
 commercially — as long as they credit the project and release their version

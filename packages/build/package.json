@@ -1,0 +1,19 @@
+{
+  "name": "@card-games/build",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Validation and output generation for the card game data",
+  "license": "MIT",
+  "scripts": {
+    "validate": "node validate.ts",
+    "render": "node render-markdown.ts",
+    "pdf": "node build-pdf.ts",
+    "pick": "node pick.ts"
+  },
+  "dependencies": {
+    "@card-games/data": "*",
+    "ajv": "^8.20.0",
+    "pdfkit": "^0.19.1"
+  }
+}

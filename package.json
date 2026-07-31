@@ -18,19 +18,18 @@
   "engines": {
     "node": ">=22.18"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "validate": "node scripts/validate.ts",
-    "render": "node scripts/render-markdown.ts",
-    "pdf": "node scripts/build-pdf.ts",
-    "pick": "node scripts/pick.ts",
+    "validate": "node packages/build/validate.ts",
+    "render": "node packages/build/render-markdown.ts",
+    "pdf": "node packages/build/build-pdf.ts",
+    "pick": "node packages/build/pick.ts",
     "build": "npm run validate && npm run render && npm run pdf",
-    "check": "node scripts/validate.ts --quiet && node scripts/render-markdown.ts --check && tsc --noEmit",
+    "check": "npm run validate -- --quiet && npm run render -- --check && tsc --noEmit",
     "typecheck": "tsc --noEmit",
-    "types": "json2ts --input schema/game.schema.json --output schema/game.types.ts --maxItems -1"
-  },
-  "dependencies": {
-    "ajv": "^8.20.0",
-    "pdfkit": "^0.19.1"
+    "types": "npm run types --workspace @card-games/data"
   },
   "devDependencies": {
     "@types/node": "^26.1.2",

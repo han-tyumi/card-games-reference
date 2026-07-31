@@ -1,11 +1,36 @@
-# Companion tools — planned, not built
+# Companion packages — planned, not built
 
-Nothing in this directory is implemented yet. It exists to mark the space and to
-record what these tools are meant to be, so the data format in `games/` can be
-designed with them in mind rather than retrofitted later.
+Nothing here is implemented yet. This file records what these are meant to be, so
+the data in `packages/data` gets designed with them in mind rather than
+retrofitted later.
+
+Each of these becomes a package under `packages/` when it is built, depending on
+`@card-games/data` rather than keeping its own copy of the rules.
 
 **Out of scope for v1.** v1 is the rules data plus the build pipeline that turns
 it into Markdown and PDF. These come after.
+
+## Graphics and learning aids
+
+The largest planned addition, and the one with the biggest pull on the data
+format. The guiding principle is the same one the rest of the project runs on:
+**describe it as data and render it, rather than drawing it by hand.**
+
+A setup diagram for Klondike is really a description of piles — seven tableau
+columns dealt 1 to 7, last card face up, four foundations, a stock and a waste.
+Written that way it can be rendered to SVG for the web, to the PDF, and to a
+mobile canvas from one definition, and it stays correct when someone fixes a
+rule. Hand-drawn images do not survive to hundreds of games, and they drift
+silently out of date.
+
+That argues for an eventual `layout` field describing the table, and a renderer
+package that consumes it. Hand-authored artwork stays reserved for the places
+that genuinely need it.
+
+**Card artwork carries licences too.** Some open card face sets are GPL, which
+would force that licence onto anything that embeds them. Whatever set gets
+picked should be public domain or permissively licensed, chosen deliberately
+rather than grabbed.
 
 ## Score keeper
 

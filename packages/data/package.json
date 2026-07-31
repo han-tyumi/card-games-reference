@@ -1,0 +1,33 @@
+{
+  "name": "@card-games/data",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Original, openly-licensed rules for traditional and popular card games, as structured data",
+  "license": "(MIT AND CC-BY-SA-4.0)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/han-tyumi/card-games-reference.git",
+    "directory": "packages/data"
+  },
+  "keywords": [
+    "card-games",
+    "rules",
+    "reference",
+    "open-data"
+  ],
+  "exports": {
+    ".": "./src/index.ts",
+    "./schema": "./schema/game.schema.json",
+    "./games/*": "./games/*.json"
+  },
+  "files": [
+    "games",
+    "schema",
+    "src",
+    "LICENSE",
+    "LICENSE-CODE"
+  ],
+  "scripts": {
+    "types": "json2ts --input schema/game.schema.json --output schema/game.types.ts --maxItems -1"
+  }
+}

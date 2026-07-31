@@ -15,7 +15,7 @@ import { basename } from "node:path";
 import { Ajv2020 } from "ajv/dist/2020.js";
 import type { ErrorObject, ValidateFunction } from "ajv";
 
-import { GAMES_DIR, SCHEMA_PATH, gameFiles } from "./games.ts";
+import { GAMES_DIR, SCHEMA_PATH, gameFiles } from "@card-games/data";
 
 type Entry = Record<string, unknown>;
 

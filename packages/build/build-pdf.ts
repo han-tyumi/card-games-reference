@@ -19,15 +19,15 @@ import { dirname, join } from "node:path";
 
 import PDFDocument from "pdfkit";
 
-import type { CardGame } from "../schema/game.types.ts";
+import type { CardGame } from "@card-games/data";
 import {
-  RENDERED_DIR,
   SECTIONS,
   categoryLabel,
   facts,
   gamesByCategory,
   loadGames,
-} from "./games.ts";
+} from "@card-games/data";
+import { RENDERED_DIR } from "./paths.ts";
 
 const TITLE = "Open Card Game Rules Reference";
 const SUBTITLE = "Original write-ups of traditional and popular card games";
