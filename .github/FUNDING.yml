@@ -1,0 +1,19 @@
+# Enabling any line below puts a "Sponsor" button on the repository page.
+#
+# Every line is commented out on purpose: a funding link that points at an
+# account which is not set up yet gives visitors a 404, which is worse than no
+# button at all. Set the account up first, then uncomment the matching line.
+#
+# GitHub Sponsors (needs enabling at github.com/sponsors — takes a few days to
+# approve, and has no platform fee):
+# github: [han-tyumi]
+#
+# Alternatives, if you would rather not wait on GitHub Sponsors. Ko-fi and
+# Buy Me a Coffee both take one-off tips without the recipient needing a
+# company:
+# ko_fi: your-username
+# buy_me_a_coffee: your-username
+# open_collective: your-collective
+#
+# Or anything else, including a plain donation page:
+# custom: ["https://example.com/donate"]

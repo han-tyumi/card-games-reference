@@ -10,6 +10,26 @@ Each of these becomes a package under `packages/` when it is built, depending on
 **Out of scope for v1.** v1 is the rules data plus the build pipeline that turns
 it into Markdown and PDF. These come after.
 
+## A licensing note for whoever builds these
+
+The rules text is CC BY-SA: copy it if you like, but your version stays open and
+credits the project. There is a code equivalent worth considering when the
+website package gets built.
+
+MIT — what the build tooling uses — lets anyone take the code closed. That is
+the right call for generic scripts nobody competes on. For the **website**, the
+same reasoning that picked ShareAlike for the text points at **AGPL-3.0**: it is
+the one common licence that reaches software people run as a service, so a
+company standing up a modified copy of the site has to publish their changes.
+Plain GPL does not cover that case, because running a website is not
+distribution.
+
+The trade-off is real, so decide it deliberately rather than by default: AGPL
+deters some contributors and many companies ban it outright, which cuts both
+ways when the goal is attracting help. MIT everywhere is the friendlier,
+lower-friction option and is a perfectly defensible choice — the valuable thing
+here is the rules corpus, and that is already protected by ShareAlike.
+
 ## Graphics and learning aids
 
 The largest planned addition, and the one with the biggest pull on the data

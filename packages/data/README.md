@@ -42,9 +42,19 @@ backend to run.
 | `schema/game.types.ts` | Generated types. `npm run types` to rebuild. |
 | `src/index.ts` | Loading and formatting helpers shared by all consumers. |
 
-## Licence
+## Licence and credit
 
 Game write-ups: [CC BY-SA 4.0](LICENSE). Code: [MIT](LICENSE-CODE).
+
+Using the write-ups anywhere public means crediting the project and keeping your
+version under the same licence. A valid credit names the project, links to it,
+and states the licence:
+
+> Rules from the [Open Card Game Rules Reference](https://github.com/han-tyumi/card-games-reference),
+> licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+Commercial use is fine and needs no permission. Found a rule that is wrong?
+Please open an issue upstream rather than fixing it only in your copy.
 
 The rules of a card game are facts and free for anyone to describe. The wording
 here is the project's own — written from scratch, never copied or reworded from

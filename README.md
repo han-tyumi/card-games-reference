@@ -344,6 +344,27 @@ leaving every commercial option open to the project. If the goal ever changes to
 keeping the text itself exclusive, that is a different license and a decision to
 take deliberately — and one that gets harder once outside contributions land.
 
+### Why not a NonCommercial licence?
+
+The obvious way to stop people profiting from this work is CC BY-**NC**-SA, and
+it is usually a trap. Worth knowing why, because it looks like the answer:
+
+- **"Commercial" is dangerously vague.** A hobbyist whose site runs one ad
+  banner is arguably commercial. So is a teacher selling printed handouts at
+  cost. NonCommercial licences generate arguments, not protection.
+- **It would restrict this project too.** The instant anyone else contributes,
+  their work is NC as well — including against *this* project's own ad-supported
+  or paid app, unless every contributor grants a separate exemption. The
+  restriction is easy to aim outward and hard to keep off yourself.
+- **It is not an open licence.** NC content cannot be used by Wikipedia, most
+  open collections, or many educational projects. It would cut this reference
+  off from the audience most likely to contribute to it.
+
+ShareAlike gets the actual goal — nobody may take this and close it — without
+any of that. A rival can republish the write-ups, but they must credit this
+project and keep their version equally free, which is a poor foundation for a
+competing product and a good reason to just contribute here instead.
+
 ### Contributions
 
 Contributions are accepted under the same terms the repository already uses —
@@ -355,6 +376,43 @@ worth planning around: **relicensing later would require every contributor's
 agreement.** If the project ever wants to keep that option open — say, to
 publish a print edition on different terms — the time to add a contributor
 license agreement is before outside contributions start arriving, not after.
+
+## Crediting this project
+
+Attribution is the one thing CC BY-SA asks of you, so here is exactly how to do
+it. If you use these write-ups anywhere — a site, an app, a printed handout, a
+video — include a credit like:
+
+> Rules from the [Open Card Game Rules Reference](https://github.com/han-tyumi/card-games-reference),
+> licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+Three things make a credit valid: **name the project, link back to it, and state
+the licence.** If you changed the text, say so — and your version must also be
+CC BY-SA 4.0.
+
+You do not need permission and you do not need to ask. Commercial use is fine.
+The only things that are not fine are dropping the credit, or relicensing the
+text under terms that let someone else close it.
+
+Corrections are more useful to everyone than a fork. If a rule here is wrong,
+please open an issue or a pull request rather than fixing it only in your copy —
+that is the whole bargain this licence is built on.
+
+## Supporting the project
+
+The reference itself costs nothing to run: the data is static files, the site
+deploys to free static hosting, and the apps ship the rules inside the bundle
+rather than calling a server. That is deliberate — no backend means no bill, and
+it is also what makes the whole thing work offline.
+
+Where money does help is the incidentals: a domain name, artwork, and the time
+that goes into writing and checking entries. If sponsorship is enabled, a
+`Sponsor` button appears on the repository — see
+[`.github/FUNDING.yml`](.github/FUNDING.yml) for how to turn that on.
+
+Taking donations, running ads, or selling an app built on this data is fully
+compatible with CC BY-SA. An open licence limits what you can stop *other people*
+doing; it puts no limit on what this project does with its own work.
 
 ## Not in scope yet
 
