@@ -63,6 +63,67 @@
     "caption": "Only the exposed card of each column starts face up; the stock feeds five deals of ten."
   },
   "play": "Everything happens in the tableau. Build columns downward by rank, and by rank alone: any 9 may be placed on any 10 whatever the suits. Aces are low and kings are high, so nothing can ever be placed on an ace, and a king can never be placed on another card.\n\nSuit matters for moving, not for placing. You may always move the single exposed card at the end of a column. You may move several cards as a block only if they sit at the end of a column in unbroken descending rank order, one rank at a time with no gaps, and are all of the same suit. The 8, 7 and 6 of clubs travel together; a stack of club 8, heart 7, club 6 is a perfectly legal arrangement on the table but has to be taken apart one card at a time. Where the block lands is governed by rank only, exactly as for a single card: that run of clubs will go onto any 9 at all, or into an empty column. So the suit rule constrains what you can pick up, never what you can put it on. That single restriction is what makes the multi-suit games hard, and it is the rule newcomers most often get wrong.\n\nWhen a move uncovers a face-down card at the end of a column, turn it face up at once.\n\nAn empty column will accept any card, or any block you are allowed to move. Nothing is reserved for kings. Putting a king there is usually the strongest use of the space, though, since a column headed by a low card can only ever take a few more cards on top.\n\nWhen you have no move worth making, deal from the stock: one card face up onto the end of every one of the ten columns, all at once. Dealing is never forced and never has to wait for the tableau to dry up, so you may take a deal whenever you judge the position is as good as it is going to get. You may do this five times, which exactly exhausts the 50-card stock. There is one hard condition attached. Every column must contain at least one card before you deal. If any column is empty you cannot deal, and you have to fill it first, even with a single junk card. Players regularly lose games by clearing a column and then discovering they have locked themselves out of the stock, so plan the deal before you empty anything. Note also that a deal drops a card onto every column whether it helps or not, so it will usually bury runs you were part way through assembling.\n\nWhenever a full descending same-suit sequence from king down to ace sits at the end of a column, it is removed from the table and set aside. That sequence is finished and can never be touched again. Removing it exposes whatever was underneath, which is very often the real reason you built it. Most software lifts a completed sequence off automatically the moment it forms; where removal is offered as a choice there is never a reason to decline, since nothing can be built on an ace anyway.\n\nYou win the moment the eighth sequence comes off. You lose when the stock is exhausted and no legal move remains, though in practice a game is over well before that, as soon as the cards you still need are buried under a card of lower rank in every column that could reach them. Shuffling, undoing a deal, or restarting is not part of the rules; the deal you were given is the deal you play.",
+  "figures": [
+    {
+      "kind": "meld",
+      "caption": "Suit decides what you may pick up, never where it lands. A block must be one suit in unbroken descending order; anything else has to move one card at a time.",
+      "rows": [
+        {
+          "label": "Moves as a block",
+          "cards": [
+            {
+              "face": "8♣"
+            },
+            {
+              "face": "7♣"
+            },
+            {
+              "face": "6♣"
+            }
+          ]
+        },
+        {
+          "label": "Not a block: mixed suits",
+          "valid": false,
+          "cards": [
+            {
+              "face": "8♣"
+            },
+            {
+              "face": "7♥"
+            },
+            {
+              "face": "6♣"
+            }
+          ]
+        },
+        {
+          "label": "Not a block: rank gap",
+          "valid": false,
+          "cards": [
+            {
+              "face": "8♠"
+            },
+            {
+              "face": "6♠"
+            },
+            {
+              "face": "5♠"
+            }
+          ]
+        },
+        {
+          "label": "The block lands on any 9",
+          "cards": [
+            {
+              "face": "9♥",
+              "note": "Suit ignored"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "goal_and_scoring": "You win by assembling and removing all eight complete king-to-ace sequences, each one entirely in a single suit, which clears every card off the table. Anything short of eight is a loss; there is no partial credit in casual play.\n\nWhere software keeps score, the usual arrangement hands you 500 at the outset and then erodes it as you work: every action costs a single point, and that includes taking a deal from the stock as well as reversing yourself with undo. Running the other way is a credit of 100 for each suit sequence sent off the table. Add all eight credits to an untouched opening balance and the ceiling comes to 1,300, a figure nobody meets, because the hundreds of moves a genuine game demands have eaten into the balance long before the last sequence forms.\n\nNot every deal can be won, and the suit setting changes the odds enormously. One-suit Spider is winnable nearly every time with careful play, with competent players reporting rates around 90 percent and higher. Two-suit is a real puzzle, with skilled play landing somewhere in the 30 to 40 percent range. Four-suit is the serious version: strong players usually win well under 20 percent of deals, and casual averages sit in the single digits. Unlike FreeCell, Spider has no authoritative exhaustive solvability study, so these numbers come from large samples of actual play rather than from solvers, and you should treat them as ballpark figures.",
   "variants": [
     {

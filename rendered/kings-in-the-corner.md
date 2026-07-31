@@ -45,6 +45,8 @@ The round ends the instant a player puts down the last card from their hand. If 
 
 One alternative is worth knowing because it changes when a round is allowed to finish: a few written rule sets say nobody may go out while the stock still holds cards, so a player who puts down their last card draws again and keeps playing. Most tables do not use it. Settle which way you are going before the first deal.
 
+![Kings in the Corner card figure](diagrams/kings-in-the-corner-fig1.svg)
+
 ## Goal & scoring
 
 You are trying to empty your hand. The first player to do it wins the round and scores nothing.

@@ -31,6 +31,8 @@ The deal ends when the stock is empty and no exposed column card can legally be 
 
 A separate multiplayer game is also called Golf. That one is usually played as Six-Card Golf, where each player manages a private face-down grid, swapping and discarding to reach the lowest total over nine deals. The two games share only the golf scoring metaphor and are otherwise unrelated; the rules here are for the single-player patience.
 
+![Golf card figure](diagrams/golf-fig1.svg)
+
 ## Goal & scoring
 
 The object of a single deal is to clear all 35 cards out of the seven columns and onto the waste. Cards left in the stock do not matter.

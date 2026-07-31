@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 264" width="480" height="422" role="img" aria-label="Pyramid: Available cards are removed in pairs totalling 13, counting ace 1, jack 11 and queen 12. Each card pairs with the one directly below it. A king is 13 by itself.">
+<title>Available cards are removed in pairs totalling 13, counting ace 1, jack 11 and queen 12. Each card pairs with the one directly below it. A king is 13 by itself.</title>
+<rect x="82.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="97.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">A♠</text>
+<rect x="118.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="133.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">2♥</text>
+<rect x="154.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="169.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">3♦</text>
+<rect x="190.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="205.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">4♣</text>
+<rect x="226.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="241.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">5♠</text>
+<rect x="262.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="277.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">6♥</text>
+<rect x="82.0" y="80.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="97.0" y="105.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">Q♥</text>
+<rect x="118.0" y="80.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="133.0" y="105.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">J♠</text>
+<rect x="154.0" y="80.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="169.0" y="105.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">10♣</text>
+<rect x="190.0" y="80.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="205.0" y="105.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">9♦</text>
+<rect x="226.0" y="80.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="241.0" y="105.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">8♥</text>
+<rect x="262.0" y="80.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="277.0" y="105.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">7♠</text>
+<rect x="82.0" y="152.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="97.0" y="177.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">K♦</text>
+<text x="97.0" y="202.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Worth 13</text>
+<text x="74.0" y="32.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">One card</text>
+<text x="74.0" y="104.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Pairs with</text>
+<text x="74.0" y="176.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Goes alone</text>
+<text x="150.0" y="228.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Available cards are removed in pairs totalling 13, counting</text>
+<text x="150.0" y="240.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">ace 1, jack 11 and queen 12. Each card pairs with the one</text>
+<text x="150.0" y="252.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">directly below it. A king is 13 by itself.</text>
+</svg>

@@ -31,6 +31,8 @@ Draw at your own pace, and take any legal removal at any time. Nothing is ever c
 
 The strict traditional rule gives you a single pass through the stock and no redeal, and that is what this entry assumes. Sources genuinely differ here and most computer versions default to three passes instead, so agree a number before you deal. The deal ends when the stock is exhausted and no further pair can be removed. Since a card buried in the waste is gone for the rest of the deal under those rules, the order in which you spend stock cards matters more than anything else you do.
 
+![Pyramid card figure](diagrams/pyramid-fig1.svg)
+
 ## Goal & scoring
 
 You win by dismantling the whole pyramid: all 28 cards removed. Cards left in the stock or waste are ignored, so clearing the last pyramid card wins immediately even with a stack of unused cards beside you.

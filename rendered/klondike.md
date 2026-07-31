@@ -53,6 +53,19 @@ Vegas scoring treats the deal as a wager. You buy the deck for 52 units, one per
 
 Klondike is not always winnable, which matters more than beginners expect. Solver studies of draw-three Klondike with every face-down card revealed in advance, and unlimited redeals allowed, put the ceiling near 82 percent of deals, so something close to one deal in five cannot be won by anyone regardless of skill. Draw one is more forgiving and its ceiling is higher, but there is no equally well-established published figure for it, so treat any specific draw-one percentage you see with suspicion. Playing blind, as you actually do, real results are much lower: large samples of players come in near a third of games at draw one and around one game in ten at draw three, and those aggregate numbers vary noticeably from site to site.
 
+| Scores | Value | Notes |
+| --- | --- | --- |
+| Standard: waste to tableau | 5 | — |
+| Standard: card to a foundation | 10 | — |
+| Standard: turning up a tableau card | 5 | — |
+| Standard: foundation back to tableau | -15 | — |
+| Standard: recycling the stock, draw three | -20 | Each recycle once you are past the first pass. |
+| Standard: recycling the stock, draw one | -100 | Each recycle once you are past the first pass. |
+| Standard: lowest possible total | 0 | The running total is not allowed to fall below zero. |
+| Timed play: time cost | -2 | Every 10 seconds, plus a finishing bonus that shrinks the longer you take. |
+| Vegas: buying the deck | -52 | One unit per card, paid before the deal. |
+| Vegas: each card on a foundation | +5 | Eleven cards puts you 3 units ahead. |
+
 ## Variants
 
 **Vegas Klondike** — Klondike played as a bet. You pay 52 units for the deck, one per card, and earn 5 units for each card you get onto a foundation, so eleven cards is break-even plus a little. Passes through the stock are strictly limited: one pass and no redeal at draw one, three passes at draw three. Losing money on a deal is the normal outcome, and many players keep a cumulative bankroll across a session instead of settling each deal separately.

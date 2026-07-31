@@ -35,6 +35,8 @@ Whenever a full descending same-suit sequence from king down to ace sits at the 
 
 You win the moment the eighth sequence comes off. You lose when the stock is exhausted and no legal move remains, though in practice a game is over well before that, as soon as the cards you still need are buried under a card of lower rank in every column that could reach them. Shuffling, undoing a deal, or restarting is not part of the rules; the deal you were given is the deal you play.
 
+![Spider card figure](diagrams/spider-fig1.svg)
+
 ## Goal & scoring
 
 You win by assembling and removing all eight complete king-to-ace sequences, each one entirely in a single suit, which clears every card off the table. Anything short of eight is a loss; there is no partial credit in casual play.
