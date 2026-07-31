@@ -19,15 +19,15 @@ The remaining 24 cards form the stock, squared up face down to one side. Leave s
 
 A card is available only when nothing overlaps it. In the pyramid that means both cards below it have already been removed. The bottom row is available from the start; each removal frees the cards above once their other supporter also goes.
 
-Remove available cards in pairs that add to exactly 13. The pairings are ace with queen, 2 with jack, 3 with 10, 4 with 9, 5 with 8, and 6 with 7. Kings are worth 13 on their own, so any available king is removed by itself at any time. Removed cards are set aside for good and never come back into play.
+Remove available cards in pairs that add to exactly 13. The pairings are ace with queen, 2 with jack, 3 with 10, 4 with 9, 5 with 8, and 6 with 7. Kings are worth 13 on their own, so any available king is removed by itself at any time. That holds wherever the king is: an uncovered king in the pyramid and a king sitting on top of the waste can each be discarded singly. Removed cards are set aside for good and never come back into play.
 
 Both cards of a pair must be available at the moment you take them, but they need not be in the same place. You may pair two uncovered pyramid cards, or one pyramid card with the top card of the waste. Two pyramid cards that sit side by side in the same row can be paired normally, since neither covers the other. What you cannot do is use a card that is still covered, however visible its rank is.
 
 When you want a new card, turn the top card of the stock face up onto the waste. Only the top of the waste is live; the cards under it are buried until it is played. Play the turned card immediately if you can, or leave it and turn another. The card you just turned may be paired with the previous top of the waste, so two consecutive stock cards summing to 13 clear each other.
 
-Draw at your own pace, and take any legal removal at any time. There is no obligation to draw when useful pairings remain on the table, and holding a convenient card on top of the waste while you work through the pyramid is a normal tactic.
+Draw at your own pace, and take any legal removal at any time. Nothing is ever compulsory: you may decline a pair that is sitting right in front of you, and deliberately leaving one card of a matched pair in place to save a rank for later is a standard tactic, as is holding a convenient card on top of the waste while you work through the pyramid. Equally, there is no obligation to draw while useful pairings remain on the table.
 
-In the standard game you get one pass through the stock and no redeal. The deal ends when the stock is exhausted and no further pair can be removed. Since a card buried in the waste is gone for the rest of the deal under those rules, the order in which you spend stock cards matters more than anything else you do.
+The strict traditional rule gives you a single pass through the stock and no redeal, and that is what this entry assumes. Sources genuinely differ here and most computer versions default to three passes instead, so agree a number before you deal. The deal ends when the stock is exhausted and no further pair can be removed. Since a card buried in the waste is gone for the rest of the deal under those rules, the order in which you spend stock cards matters more than anything else you do.
 
 ## Goal & scoring
 

@@ -1,0 +1,59 @@
+{
+  "id": "blackjack",
+  "name": "Blackjack",
+  "aliases": [
+    "Twenty-One",
+    "21",
+    "Vingt-et-Un"
+  ],
+  "category": "casino",
+  "players": {
+    "min": 2,
+    "max": 8,
+    "ideal": 5
+  },
+  "decks": "1 to 8 standard decks shuffled together; six is the casino norm, one or two is fine at home",
+  "setup": "One person is the dealer and everyone else bets against them. A casino table seats up to seven players, so with a dealer you want between two and eight people. At home, either appoint a permanent dealer or rotate the role, since the dealer holds a small built-in advantage and rotating shares it around.\n\nShuffle the decks together. Casinos deal six decks from a shoe; one or two decks shuffled by hand is perfectly good for a kitchen table. Agree a minimum and maximum stake before you start, and give everyone chips or counters.\n\nCard values: 2 through 10 count face value, jacks, queens and kings count 10, and an ace counts 1 or 11, whichever suits your hand better at the moment. A hand holding an ace that can still count 11 without busting is called soft, so ace-6 is a soft 17 and can be hit without risk. Once counting the ace as 11 would put you over 21 it reverts to 1 and the hand is hard. Suits are irrelevant throughout.\n\nEvery round starts with each player placing a bet in their betting spot. Once all bets are down, the dealer deals clockwise: one card to each player, one to themselves face up, then a second card to each player and a second to themselves face down. That face-down card is the hole card, and it is what the whole game turns on. In shoe games the players' cards are dealt face up and are not touched; in hand-dealt single-deck games they come face down and players pick them up. Neither changes the odds.\n\nAn ace plus any ten-value card in your first two cards is a blackjack, also called a natural. It is the best hand in the game and is settled at a better rate than an ordinary win.",
+  "play": "Before anyone acts, the dealer checks for a natural. If the upcard is an ace, the dealer first offers insurance: any player may put up a side bet of up to half their original stake, and that bet pays 2 to 1 if the dealer's hole card turns out to be a ten-value card. A player holding a blackjack against a dealer ace may instead take even money, which is the same wager in disguise and pays their hand 1 to 1 immediately. When the upcard is an ace or a ten-value card, the dealer then peeks at the hole card. If it is a natural, the round is over at once: insurance is paid, every ordinary hand loses, and any player who also holds a blackjack pushes.\n\nOtherwise play begins with the player on the dealer's left and moves clockwise. Each player finishes their hand completely before the next one starts. Your options on your first two cards are:\n\nHit. Take another card. You may keep hitting as long as you are under 21.\n\nStand. Take nothing more and let the hand ride.\n\nDouble down. Double your original bet and take exactly one more card, then you are done whatever the total. Most tables allow this on any two cards; some restrict it to hard totals of 9, 10 or 11.\n\nSplit. If your two cards are the same rank, put out a second bet equal to the first and separate them into two hands. Each gets a second card and is then played out in turn. If a split hand pairs again you can usually split once more, up to a limit of three or four hands in total. Splitting is subject to two firm exceptions: split aces receive exactly one card each and cannot be hit again or resplit, and an ace paired with a ten after a split counts as an ordinary 21, not a blackjack. Whether you may double after splitting varies by house.\n\nSurrender. Where offered, you may abandon the hand before drawing any card and forfeit half your bet. This is late surrender, meaning it is only available after the dealer has confirmed no natural. Plenty of tables do not offer it at all.\n\nGoing over 21 is a bust. Your cards are taken and your bet is collected immediately, before the dealer plays. That is the whole basis of the house edge: you lose a bust hand even if the dealer goes on to bust as well.\n\nWhen every player has finished, the dealer turns the hole card up and plays by fixed rule, with no choices at all. The dealer draws to any total of 16 or less and stands on any total of 17 or more, counting a soft 17 such as ace-6 as a 17 and standing on it. The dealer never doubles, never splits, and never surrenders. If the dealer busts, every player still standing wins.",
+  "goal_and_scoring": "The aim is to finish with a hand closer to 21 than the dealer's without going over. You are not racing the other players; every hand is settled independently against the dealer alone.\n\nSettlement once the dealer's hand is complete:\n\nA winning hand pays 1 to 1, so a 10-chip bet returns your 10 plus 10 more. A blackjack pays 3 to 2, so a 10-chip bet returns your 10 plus 15. A tie is a push and your stake comes back untouched. A losing hand or a bust loses the stake. Insurance is settled separately from the hand it was placed alongside, so you can lose the hand and still collect on insurance, or the other way round.\n\nA blackjack beats any 21 built from three or more cards, and it is paid at the better rate; a three-card 21 against a dealer blackjack simply loses. Two blackjacks push.\n\nThere is no running score. You play as many rounds as you like and count your chips at the end. Sensible play matters: with correct basic strategy the house edge on a standard six-deck game with these rules sits well under one percent, but insurance is a losing bet at almost any count, and a table paying 6 to 5 on blackjacks instead of 3 to 2 costs you roughly an extra 1.4 percent.",
+  "variants": [
+    {
+      "name": "Dealer hits soft 17",
+      "description": "The dealer must draw on a soft 17 such as ace-6 rather than standing on it, and stands only on hard 17 or any 18 and up. This is now the more common rule on casino floors and it costs the player about a fifth of a percent, because it lets the dealer improve a weak 17 into a winner. Tables normally state which rule applies in print on the felt: \"dealer must stand on all 17s\" or \"dealer hits soft 17\"."
+    },
+    {
+      "name": "6 to 5 blackjack",
+      "description": "The natural pays 6 to 5 instead of the traditional 3 to 2, so a 10-chip bet wins 12 rather than 15. It looks like a small change and is not: it adds roughly 1.4 percent to the house edge, which is more than every other rule on the table combined. Often paired with a single deck to make the game look generous. Check the payout before you sit down."
+    },
+    {
+      "name": "Late surrender",
+      "description": "You may fold a bad hand before drawing to it and lose only half your bet, once the dealer has confirmed they do not have a natural. It is mainly used on hard 16 against a dealer 9, 10 or ace, and on hard 15 against a 10. Offered on many six and eight-deck games, rarely on single or double deck, and often not signposted, so ask the dealer."
+    },
+    {
+      "name": "Rotating banker at home",
+      "description": "Rather than appointing one permanent dealer, pass the deal around the table so everyone takes the house side in turn, either after each hand or after each shuffle. Whoever holds the deal is the banker and covers all bets from their own stack, so agree a table maximum they can actually pay. Rotating matters because the dealer side carries a real edge over a session; leaving it with one person all night is not a fair game."
+    },
+    {
+      "name": "Pontoon",
+      "description": "The British relative of the game, and a genuinely different animal. Both dealer cards go face down, hitting is called twisting, standing is sticking, and you may instead buy a card by increasing your stake. You cannot stick below 15. Five cards totalling 21 or less is a five-card trick and beats everything except a pontoon, the ace plus ten-value hand; both pay 2 to 1. The dealer wins all ties, so there is no push."
+    }
+  ],
+  "difficulty": "easy",
+  "duration_minutes": "30-60",
+  "tags": [
+    "betting",
+    "strategy",
+    "counting",
+    "luck",
+    "classic"
+  ],
+  "sources_consulted": [
+    "Wizard of Odds",
+    "Vegas Aces",
+    "Casino.org",
+    "PokerNews",
+    "BetMGM Casino Blog",
+    "Denexa Games",
+    "Wikipedia"
+  ]
+}

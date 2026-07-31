@@ -2,7 +2,7 @@
 
 # Card Game Rules — Index
 
-16 games, written from scratch and free to reuse under CC BY-SA 4.0.
+30 games, written from scratch and free to reuse under CC BY-SA 4.0.
 
 ## Solitaire (1 player)
 
@@ -20,6 +20,8 @@
 | --- | --- | --- | --- | --- |
 | [Euchre](euchre.md) | 3-6 players (best with 4) | 1 standard deck stripped to 24 cards (A, K, Q, J, 10, 9 in each suit) | 20-40 minutes | Easy |
 | [Hearts](hearts.md) | 3-6 players (best with 4) | 1 standard deck (52 cards), jokers removed; a few low cards come out for 3, 5 or 6 players | 30-60 minutes | Easy |
+| [Oh Hell](oh-hell.md) | 3-7 players (best with 5) | 1 standard deck (52 cards) | 30-60 minutes | Easy |
+| [Pinochle](pinochle.md) | 2-4 players (best with 4) | 1 pinochle deck (48 cards: two each of A, 10, K, Q, J, 9 in every suit), which you can build from two standard decks by keeping only those ranks | 45-90 minutes | Complex |
 | [Spades](spades.md) | 2-4 players (best with 4) | 1 standard deck (52 cards), jokers removed | 45-90 minutes | Medium |
 | [Whist](whist.md) | 4 players | 1 standard deck (52 cards), jokers removed | 30-60 minutes | Simple |
 
@@ -32,10 +34,37 @@
 | [Gin Rummy](gin-rummy.md) | 2 players | 1 standard deck (52 cards), jokers removed | 20-45 minutes | Easy |
 | [Rummy](rummy.md) | 2-6 players (best with 4) | 1 standard deck (52 cards) | 20-45 minutes | Easy |
 
+## Shedding
+
+| Game | Players | Deck | Time | Difficulty |
+| --- | --- | --- | --- | --- |
+| [Crazy Eights](crazy-eights.md) | 2-7 players (best with 4) | 1 standard deck (52 cards) for two to five players; 2 decks shuffled together (104 cards) for six or seven | 15-30 minutes | Simple |
+| [Egyptian Ratscrew](egyptian-ratscrew.md) | 2-8 players (best with 4) | 1 standard deck (52 cards); some groups leave the jokers in so the deal comes out even, or add a second deck above six players | 15-45 minutes | Easy |
+| [Kings in the Corner](kings-in-the-corner.md) | 2-6 players (best with 4) | 1 standard deck (52 cards), jokers removed | 15-30 minutes | Easy |
+| [Palace](palace.md) | 2-6 players (best with 4) | 1 standard deck (52 cards), jokers removed; 2 decks shuffled together for five or more players | 15-30 minutes | Easy |
+| [President](president.md) | 3-8 players (best with 5) | 1 standard deck (52 cards), jokers usually removed; add a second deck above about seven players | 20-45 minutes | Easy |
+| [Slapjack](slapjack.md) | 2-8 players (best with 4) | 1 standard deck (52 cards), jokers removed; 2 decks shuffled together for six or more players | 10-30 minutes | Simple |
+| [Speed](speed.md) | 2-4 players (best with 2) | 1 standard deck (52 cards), jokers removed | 5-15 minutes | Easy |
+| [Spit](spit.md) | 2 players | 1 standard deck (52 cards), jokers removed | 10-25 minutes | Easy |
+
 ## Matching & collecting
 
 | Game | Players | Deck | Time | Difficulty |
 | --- | --- | --- | --- | --- |
 | [Casino](casino.md) | 2-4 players (best with 2) | 1 standard deck (52 cards) | 20-40 minutes | Medium |
 | [Cribbage](cribbage.md) | 2-4 players (best with 2) | 1 standard deck (52 cards), plus a cribbage board or pencil and paper | 20-45 minutes | Medium |
+| [Go Fish](go-fish.md) | 2-6 players (best with 4) | 1 standard deck (52 cards), jokers removed | 10-20 minutes | Simple |
 | [Old Maid](old-maid.md) | 2-8 players (best with 4) | 1 standard deck with one queen removed (51 cards) | 10-20 minutes | Simple |
+| [War](war.md) | 2-4 players (best with 2) | 1 standard deck (52 cards), jokers removed | 15-45 minutes | Simple |
+
+## Bluffing
+
+| Game | Players | Deck | Time | Difficulty |
+| --- | --- | --- | --- | --- |
+| [BS](bs.md) | 2-10 players (best with 5) | 1 standard deck (52 cards), jokers removed; 2 decks shuffled together for six or more players | 15-30 minutes | Simple |
+
+## Casino
+
+| Game | Players | Deck | Time | Difficulty |
+| --- | --- | --- | --- | --- |
+| [Blackjack](blackjack.md) | 2-8 players (best with 5) | 1 to 8 standard decks shuffled together; six is the casino norm, one or two is fine at home | 30-60 minutes | Easy |

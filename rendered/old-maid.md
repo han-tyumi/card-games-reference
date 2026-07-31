@@ -13,9 +13,9 @@
 
 Take a standard 52-card deck and pull out one queen, setting it aside face down where nobody can see which one it was. That leaves 51 cards: twelve ranks still complete at four cards each, and queens reduced to three. Everything can be matched into 25 pairs except one queen, which has nothing to go with. That leftover queen is the old maid.
 
-Choose a dealer any way you like; cutting for high card works, and the deal passes to the left between games. Shuffle and deal the entire pack out one card at a time, going clockwise. It will not come out even. Some players end up with one card more than others, and that is fine and does not affect play.
+Choose a dealer any way you like; cutting for high card works, and the deal passes to the left between games. Shuffle and deal the entire pack out one card at a time, face down, going clockwise, starting with the player on the dealer's left and finishing with the dealer. It will not come out even. Some players end up with one card more than others, and that is fine and does not affect play.
 
-Everyone picks up their hand and looks at it privately. Before the first turn, each player lays down every pair they were dealt, face up in front of them, and takes no further interest in those cards. A pair is two cards of the same rank; suit and colour are irrelevant. If you hold three of a kind, you may only discard two of them and must keep the third. If you hold all four of a rank, put down two pairs.
+Everyone picks up their hand and looks at it privately. Before the first turn, each player lays down every pair they were dealt, face up in front of them, and takes no further interest in those cards. A pair is two cards of the same rank; suit and colour are irrelevant. If you hold three of a kind, you may only discard two of them and must keep the third. If you hold all four of a rank, put down two pairs. A player whose whole hand pairs off in this opening discard is left with nothing, and is out and safe before the first turn is taken.
 
 ## Play
 
