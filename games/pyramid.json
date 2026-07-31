@@ -1,0 +1,60 @@
+{
+  "id": "pyramid",
+  "name": "Pyramid",
+  "aliases": [
+    "Pyramid Solitaire",
+    "Solitaire Thirteen",
+    "Pile of Twenty-Eight"
+  ],
+  "category": "solitaire",
+  "players": {
+    "min": 1,
+    "max": 1,
+    "ideal": 1
+  },
+  "decks": "1 standard deck (52 cards)",
+  "setup": "Shuffle a full 52-card deck and build the pyramid face up in seven rows. Lay one card at the top, then two below it, then three, and so on down to a bottom row of seven, for 28 cards in all. Offset each row so that every card rests on and partly covers the two cards above it, and so that each card in turn is partly covered by the two below it. Only the seven cards of the bottom row start out completely uncovered.\n\nThe remaining 24 cards form the stock, squared up face down to one side. Leave space next to it for a waste pile and space somewhere clear for discards. Ranks count as numbers throughout: ace is 1, jack is 11, queen is 12, king is 13, and every other card is its face value. Suit and colour never matter.",
+  "play": "A card is available only when nothing overlaps it. In the pyramid that means both cards below it have already been removed. The bottom row is available from the start; each removal frees the cards above once their other supporter also goes.\n\nRemove available cards in pairs that add to exactly 13. The pairings are ace with queen, 2 with jack, 3 with 10, 4 with 9, 5 with 8, and 6 with 7. Kings are worth 13 on their own, so any available king is removed by itself at any time. Removed cards are set aside for good and never come back into play.\n\nBoth cards of a pair must be available at the moment you take them, but they need not be in the same place. You may pair two uncovered pyramid cards, or one pyramid card with the top card of the waste. Two pyramid cards that sit side by side in the same row can be paired normally, since neither covers the other. What you cannot do is use a card that is still covered, however visible its rank is.\n\nWhen you want a new card, turn the top card of the stock face up onto the waste. Only the top of the waste is live; the cards under it are buried until it is played. Play the turned card immediately if you can, or leave it and turn another. The card you just turned may be paired with the previous top of the waste, so two consecutive stock cards summing to 13 clear each other.\n\nDraw at your own pace, and take any legal removal at any time. There is no obligation to draw when useful pairings remain on the table, and holding a convenient card on top of the waste while you work through the pyramid is a normal tactic.\n\nIn the standard game you get one pass through the stock and no redeal. The deal ends when the stock is exhausted and no further pair can be removed. Since a card buried in the waste is gone for the rest of the deal under those rules, the order in which you spend stock cards matters more than anything else you do.",
+  "goal_and_scoring": "You win by dismantling the whole pyramid: all 28 cards removed. Cards left in the stock or waste are ignored, so clearing the last pyramid card wins immediately even with a stack of unused cards beside you.\n\nThe traditional game keeps no score beyond won or lost. Under the strict single-pass rules a clear is genuinely uncommon, and a great many deals are unwinnable no matter how well you play, so judging yourself on wins per session is fairer than judging a single deal.\n\nIf you want a score, the usual convention is a penalty of one point per card left in the pyramid, tallied over several deals with the lowest total best. Computer versions often add time bonuses and streak bonuses on top, which is a house scoring layer rather than part of the game.",
+  "variants": [
+    {
+      "name": "Three passes",
+      "description": "After the stock runs out, turn the waste over without shuffling to make a new stock and go again. Two redeals, for three passes in total, is the most common relaxed setting and the one most computer versions default to. It rescues cards buried early in the first pass and raises the win rate substantially."
+    },
+    {
+      "name": "Draw three",
+      "description": "Turn stock cards three at a time instead of one, with only the top of each triple available, and allow unlimited redeals to compensate. Sold as King Tut or Tut's Tomb in various solitaire collections. Buried cards become reachable eventually, but you have far less control over which card is showing at any given moment."
+    },
+    {
+      "name": "Giza",
+      "description": "An open variant by Michael Keller. The pyramid is dealt as usual, but the 24 leftover cards go face up into eight piles of three instead of a face-down stock, with the top card of each pile available. Nothing is hidden and there is no drawing, so the deal is a pure planning puzzle that you either solve or do not."
+    },
+    {
+      "name": "Apophis",
+      "description": "Deal the standard 28-card pyramid, then run the stock into three separate waste piles instead of one, choosing which pile each turned card goes on. The top card of all three piles is available at once, which gives you three live cards to work with and much better control over what you keep in reach."
+    },
+    {
+      "name": "Clear everything",
+      "description": "A harder scoring condition rather than a different layout: you must remove all 52 cards, stock and waste included, not just the pyramid. Very few deals can be beaten this way, so it is best treated as an occasional challenge rather than the default."
+    }
+  ],
+  "difficulty": "easy",
+  "duration_minutes": "5-15",
+  "tags": [
+    "solo",
+    "classic",
+    "quick",
+    "counting",
+    "strategy",
+    "luck",
+    "beginner-friendly"
+  ],
+  "sources_consulted": [
+    "Wikipedia",
+    "Solitaire Central Rulebook",
+    "Wikibooks Solitaire card games",
+    "BVS Solitaire",
+    "Bicycle Cards",
+    "PlayingCardDecks"
+  ]
+}

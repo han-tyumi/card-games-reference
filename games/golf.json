@@ -1,0 +1,59 @@
+{
+  "id": "golf",
+  "name": "Golf",
+  "aliases": [
+    "Golf Solitaire",
+    "Golf Patience",
+    "One Foundation"
+  ],
+  "category": "solitaire",
+  "players": {
+    "min": 1,
+    "max": 1,
+    "ideal": 1
+  },
+  "decks": "1 standard deck (52 cards)",
+  "setup": "Shuffle a full 52-card deck. Deal 35 cards face up into seven columns of five. Overlap the cards in each column so every rank stays readable, with the last card dealt to a column sitting at the exposed end. All 35 are visible from the start, so nothing is hidden. The 17 cards left over become the stock, kept face down in a single pile. Turn the top stock card face up beside it to start the waste pile, which is the one pile you will build on for the rest of the deal. That leaves 16 cards in the stock. Leave room for the waste to grow, since in a good deal nearly the whole pack ends up there. There are no foundations by suit and no reserve; the seven columns, the stock, and the waste are the entire layout.",
+  "play": "Only the exposed card at the open end of each column is in play. The rest are locked until the cards covering them are gone.\n\nOn your turn you may move any one exposed column card onto the waste pile, provided its rank is exactly one higher or one lower than the current top card of the waste. Suits and colours are ignored entirely. If the waste shows a 9, you may play any 8 or any 10. Moving a card exposes the one behind it in that column, which may then be playable in turn, so a single well-placed card can start a long chain.\n\nRanks do not wrap in the standard game. Aces are low and kings are high: only a 2 plays onto an ace, and only a queen plays onto a king. Playing an ace on a king, or a king on an ace, is illegal. This is the single rule that ends most deals, and the most commonly relaxed one.\n\nYou may keep making legal moves for as long as you like; you are never forced to draw. Cards never move between columns, never move back off the waste, and never go onto the stock. Once a column is emptied the gap stays empty for the rest of the deal, and nothing may be placed there.\n\nWhen you are stuck, or simply choose to, turn the next card of the stock face up onto the waste. That card becomes the new build card regardless of what it covers, so a draw can reset the sequence to any rank. Drawing is the only way to change the top of the waste other than playing a column card.\n\nThe deal ends when the stock is empty and no exposed column card can legally be played onto the waste. There is no redeal and no shuffling of the waste back into the stock. If you have cleared all 35 column cards you have holed out; otherwise the deal is over with cards still on the table.\n\nA separate multiplayer game is also called Golf. That one is usually played as Six-Card Golf, where each player manages a private face-down grid, swapping and discarding to reach the lowest total over nine deals. The two games share only the golf scoring metaphor and are otherwise unrelated; the rules here are for the single-player patience.",
+  "goal_and_scoring": "The object of a single deal is to clear all 35 cards out of the seven columns and onto the waste. Cards left in the stock do not matter.\n\nScore as in golf: count one stroke for every card still stranded in the columns when the deal ends. Clearing the tableau scores zero for the hole, and a common house rule lets you go under par by subtracting one for each card still face down in the stock when you hole out.\n\nA full round is nine deals, one per hole, with the strokes added up. Under strict no-wraparound rules most deals cannot be cleared, so a nine-hole total in the mid-thirties is a solid round and anything at or below par of about 45 is respectable. Two rounds of nine make an eighteen-hole match.",
+  "variants": [
+    {
+      "name": "Putt Putt (wraparound)",
+      "description": "Ranks wrap, so a king may be played on an ace and an ace on a king, making the sequence a continuous loop. This removes the dead ends that spoil most strict deals and lifts the win rate dramatically, which is why nearly every computer version offers it as an easy mode."
+    },
+    {
+      "name": "Relaxed stock",
+      "description": "Allow one redeal: gather the waste after the stock runs out, turn it over without shuffling, and use it as a fresh stock. Some house rules instead let you undo the last move or deal a shorter tableau of six columns of five, leaving 22 cards in the stock. All of these trade difficulty for a better chance of holing out."
+    },
+    {
+      "name": "Black Hole",
+      "description": "David Parlett's rework. Deal 17 fans of three cards around the ace of spades, which sits alone in the centre as the only foundation. Build up or down on it with wraparound, taking the exposed card of any fan, and there is no stock at all. Everything is visible from the start, so it plays as a puzzle rather than a gamble, and the great majority of deals are solvable."
+    },
+    {
+      "name": "All in a Row",
+      "description": "Also by Parlett. The whole deck is dealt into 13 overlapping fans of four cards in a single row, with no stock and no starting foundation card. The first card you take becomes the base of the waste and you build up or down with wraparound from there, aiming to absorb all 52 cards."
+    },
+    {
+      "name": "Double Golf",
+      "description": "Two shuffled decks are used, dealt into a wider tableau such as eight columns of eight, with the remainder as stock. Play is otherwise identical. Duplicated ranks give more branching options, but the larger layout means a single dead run can still leave a heavy score."
+    }
+  ],
+  "difficulty": "simple",
+  "duration_minutes": "5-15",
+  "tags": [
+    "solo",
+    "classic",
+    "quick",
+    "beginner-friendly",
+    "luck",
+    "strategy"
+  ],
+  "sources_consulted": [
+    "Wikipedia",
+    "Solitaire Central Rulebook",
+    "Solitaire Laboratory",
+    "Wikibooks Solitaire card games",
+    "Parlett Games",
+    "Bicycle Cards"
+  ]
+}
