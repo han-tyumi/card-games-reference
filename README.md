@@ -307,6 +307,32 @@ Prose fields accept a light Markdown convention: blank lines separate
 paragraphs, and lines starting with `- ` become bullets. Both the Markdown and
 the PDF renderer understand these. Nothing else — no headings, bold, or tables.
 
+### Which games belong here?
+
+The long-term aim is broad coverage, but the promise to a reader is narrower and
+more useful: **if it is in Naibi, you can probably play it tonight.** The test is
+not where a game comes from, it is what it needs on the table.
+
+- **Anything playable with an ordinary pack belongs**, including games that strip
+  it. Briscola, Scopa and Sueca use a 40-card Italian deck and Mus a Spanish one,
+  but both are a standard pack with the 8s, 9s and 10s taken out — so they are no
+  harder to reach than Euchre, which does the same thing. These are not exotic;
+  they are Tuesday.
+- **Games needing a pack of their own are a different tier.** Hanafuda cannot be
+  approximated with 52 cards. Such games carry `equipment.standard_decks: 0`, and
+  the picker hides them unless you pass `--special`, because recommending a game
+  the reader cannot play is the one thing it must never do.
+- **That tier stays small and deliberate.** Koi-Koi is here because it is a great
+  game and because it proves the format generalises. Tarot games, ganjifa and
+  commercial decks are all legitimate card games, and each needs its own argument
+  rather than arriving by default — otherwise the collection slowly fills with
+  entries nobody can act on.
+
+Geography is not the line. Cards left Mamluk Egypt, reached Florence in 1377, and
+kept going; hanafuda exists precisely because Portuguese traders carried western
+cards to Japan. A reference named after that journey should follow it. It should
+just be honest about what each stop requires.
+
 ### Is it a variant, or its own game?
 
 The long-term goal is broad coverage, which makes this the question that decides
