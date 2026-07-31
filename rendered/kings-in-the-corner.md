@@ -21,6 +21,8 @@ If a king turns up among those first four cards, most groups slide it straight i
 
 Leave plenty of space around the cross. Piles grow outward as cards are added, and whole piles get picked up and relocated during play, so a cramped table gets confusing fast.
 
+![Kings in the Corner setup diagram](diagrams/kings-in-the-corner.svg)
+
 ## Play
 
 The player to the dealer's left goes first and the turn passes clockwise.

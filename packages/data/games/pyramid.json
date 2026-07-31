@@ -21,6 +21,82 @@
     "other": []
   },
   "setup": "Shuffle a full 52-card deck and build the pyramid face up in seven rows. Lay one card at the top, then two below it, then three, and so on down to a bottom row of seven, for 28 cards in all. Offset each row so that every card rests on and partly covers the two cards above it, and so that each card in turn is partly covered by the two below it. Only the seven cards of the bottom row start out completely uncovered.\n\nThe remaining 24 cards form the stock, squared up face down to one side. Leave space next to it for a waste pile and space somewhere clear for discards. Ranks count as numbers throughout: ace is 1, jack is 11, queen is 12, king is 13, and every other card is its face value. Suit and colour never matter.",
+  "layout": {
+    "rows": [
+      [
+        {
+          "kind": "tableau",
+          "repeat": 1,
+          "cards": 1
+        }
+      ],
+      [
+        {
+          "kind": "tableau",
+          "repeat": 2,
+          "cards": 1
+        }
+      ],
+      [
+        {
+          "kind": "tableau",
+          "repeat": 3,
+          "cards": 1
+        }
+      ],
+      [
+        {
+          "kind": "tableau",
+          "repeat": 4,
+          "cards": 1
+        }
+      ],
+      [
+        {
+          "kind": "tableau",
+          "repeat": 5,
+          "cards": 1
+        }
+      ],
+      [
+        {
+          "kind": "tableau",
+          "repeat": 6,
+          "cards": 1
+        }
+      ],
+      [
+        {
+          "kind": "tableau",
+          "label": "Pyramid (28 cards)",
+          "repeat": 7,
+          "cards": 1
+        }
+      ],
+      [
+        {
+          "kind": "stock",
+          "label": "Stock",
+          "cards": 24,
+          "face": "down"
+        },
+        {
+          "kind": "waste",
+          "label": "Waste",
+          "cards": 0
+        },
+        {
+          "kind": "gap"
+        },
+        {
+          "kind": "discard",
+          "label": "Discards",
+          "cards": 0
+        }
+      ]
+    ],
+    "caption": "Every card covers the two below it, so only the seven cards of the bottom row start free."
+  },
   "play": "A card is available only when nothing overlaps it. In the pyramid that means both cards below it have already been removed. The bottom row is available from the start; each removal frees the cards above once their other supporter also goes.\n\nRemove available cards in pairs that add to exactly 13. The pairings are ace with queen, 2 with jack, 3 with 10, 4 with 9, 5 with 8, and 6 with 7. Kings are worth 13 on their own, so any available king is removed by itself at any time. That holds wherever the king is: an uncovered king in the pyramid and a king sitting on top of the waste can each be discarded singly. Removed cards are set aside for good and never come back into play.\n\nBoth cards of a pair must be available at the moment you take them, but they need not be in the same place. You may pair two uncovered pyramid cards, or one pyramid card with the top card of the waste. Two pyramid cards that sit side by side in the same row can be paired normally, since neither covers the other. What you cannot do is use a card that is still covered, however visible its rank is.\n\nWhen you want a new card, turn the top card of the stock face up onto the waste. Only the top of the waste is live; the cards under it are buried until it is played. Play the turned card immediately if you can, or leave it and turn another. The card you just turned may be paired with the previous top of the waste, so two consecutive stock cards summing to 13 clear each other.\n\nDraw at your own pace, and take any legal removal at any time. Nothing is ever compulsory: you may decline a pair that is sitting right in front of you, and deliberately leaving one card of a matched pair in place to save a rank for later is a standard tactic, as is holding a convenient card on top of the waste while you work through the pyramid. Equally, there is no obligation to draw while useful pairings remain on the table.\n\nThe strict traditional rule gives you a single pass through the stock and no redeal, and that is what this entry assumes. Sources genuinely differ here and most computer versions default to three passes instead, so agree a number before you deal. The deal ends when the stock is exhausted and no further pair can be removed. Since a card buried in the waste is gone for the rest of the deal under those rules, the order in which you spend stock cards matters more than anything else you do.",
   "goal_and_scoring": "You win by dismantling the whole pyramid: all 28 cards removed. Cards left in the stock or waste are ignored, so clearing the last pyramid card wins immediately even with a stack of unused cards beside you.\n\nThe traditional game keeps no score beyond won or lost. Under the strict single-pass rules a clear is genuinely uncommon, and a great many deals are unwinnable no matter how well you play, so judging yourself on wins per session is fairer than judging a single deal.\n\nIf you want a score, the usual convention is a penalty of one point per card left in the pyramid, tallied over several deals with the lowest total best. Computer versions often add time bonuses and streak bonuses on top, which is a house scoring layer rather than part of the game.",
   "variants": [

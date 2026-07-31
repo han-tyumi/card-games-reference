@@ -21,6 +21,8 @@ Leave a gap between the two rows, in the middle of the table, with room for two 
 
 The layout mirrors on both sides of the table, so each player can see the other's five face-up cards throughout. That visibility is the point: you can watch what your opponent is about to need and take it first.
 
+![Spit setup diagram](diagrams/spit.svg)
+
 ## Play
 
 When both players say they are ready, you both call spit together and each of you turns the top card of your reserve face up into the middle, side by side. Those two cards start the two centre piles, and play begins the moment they land.

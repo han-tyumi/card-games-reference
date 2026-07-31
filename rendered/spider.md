@@ -17,6 +17,8 @@ Shuffle all 104 cards together and deal 54 of them into ten tableau columns: six
 
 There are no foundation piles to build on. Just leave a clear area beside the tableau for completed sequences, which come off the table intact. You will need room for eight of them.
 
+![Spider setup diagram](diagrams/spider.svg)
+
 ## Play
 
 Everything happens in the tableau. Build columns downward by rank, and by rank alone: any 9 may be placed on any 10 whatever the suits. Aces are low and kings are high, so nothing can ever be placed on an ace, and a king can never be placed on another card.

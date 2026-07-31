@@ -21,7 +21,9 @@ import PDFDocument from "pdfkit";
 
 import type { CardGame } from "naibi";
 import {
+  CARD,
   SECTIONS,
+  buildDiagram,
   categoryLabel,
   facts,
   gamesByCategory,
@@ -237,6 +239,93 @@ class Booklet {
   }
 }
 
+/**
+ * Draw the setup diagram with PDFKit primitives.
+ *
+ * PDFKit cannot consume SVG, so this is a second renderer -- but it reads the
+ * same buildDiagram() geometry the SVG does, so the two pictures agree.
+ */
+function drawDiagram(book: Booklet, layout: NonNullable<CardGame["layout"]>): void {
+  const { doc, fonts } = book;
+  const diagram = buildDiagram(layout);
+
+  // Scale to fit the text column, never enlarging past natural size.
+  const scale = Math.min(1, book.contentWidth / diagram.width);
+  const width = diagram.width * scale;
+  const captionHeight = diagram.caption ? 14 : 0;
+  const height = diagram.height * scale + captionHeight;
+
+  book.ensureSpace(height + 12);
+
+  const originX = MARGINS.left + (book.contentWidth - width) / 2;
+  const originY = doc.y + 4;
+  const at = (x: number, y: number): [number, number] => [
+    originX + x * scale,
+    originY + y * scale,
+  ];
+
+  for (const pile of diagram.piles) {
+    if (pile.empty) {
+      const [x, y] = at(pile.x, pile.y);
+      doc
+        .roundedRect(x, y, CARD.width * scale, CARD.height * scale, 2)
+        .dash(3, { space: 2 })
+        .strokeColor(RULE)
+        .lineWidth(0.7)
+        .stroke()
+        .undash();
+      continue;
+    }
+
+    for (const card of pile.cards) {
+      const [x, y] = at(card.x, card.y);
+      doc
+        .roundedRect(x, y, card.width * scale, card.height * scale, 2)
+        .fillColor(card.faceUp ? "#ffffff" : "#c3ccd6")
+        .fillAndStroke(card.faceUp ? "#ffffff" : "#c3ccd6", MUTED);
+    }
+
+    if (pile.count !== undefined && pile.count > pile.cards.length) {
+      const last = pile.cards[pile.cards.length - 1];
+      if (last) {
+        const [x, y] = at(last.x, last.y + CARD.height / 2 - 3);
+        doc
+          .font(fonts.regular)
+          .fontSize(7 * scale + 2)
+          .fillColor(MUTED)
+          .text(String(pile.count), x, y, {
+            width: CARD.width * scale,
+            align: "center",
+            lineBreak: false,
+          });
+      }
+    }
+  }
+
+  doc.font(fonts.regular).fontSize(6.5).fillColor(MUTED);
+  for (const label of diagram.labels) {
+    const [x, y] = at(label.x, label.y - 6);
+    doc.text(label.text, x, y, {
+      width: label.width * scale,
+      align: "center",
+      lineBreak: false,
+    });
+  }
+
+  if (diagram.caption) {
+    doc.fontSize(7).fillColor(MUTED);
+    doc.text(
+      clean(diagram.caption, book.fonts.unicode),
+      MARGINS.left,
+      originY + diagram.height * scale + 4,
+      { width: book.contentWidth, align: "center" },
+    );
+  }
+
+  doc.x = MARGINS.left;
+  doc.y = originY + height + 8;
+}
+
 function titlePage(book: Booklet, gameCount: number): void {
   const { doc, fonts } = book;
   doc.addPage();
@@ -361,6 +450,7 @@ function gamePage(
   for (const { key, heading } of SECTIONS) {
     book.heading(heading);
     book.body(blocks(game[key]));
+    if (key === "setup" && game.layout) drawDiagram(book, game.layout);
   }
 
   book.heading("Variants");

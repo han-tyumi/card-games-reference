@@ -17,6 +17,8 @@ Above or beside the tableau, set out four free cells on one side and four founda
 
 That is the entire layout. There is no stock, no waste and no redeal, and nothing is dealt face down. From the first move to the last you are working with complete information, which is what separates FreeCell from Klondike and Spider. No new card can turn up, so a deal is a puzzle that is already either solvable or not before you touch it.
 
+![FreeCell setup diagram](diagrams/freecell.svg)
+
 ## Play
 
 The foundations are built up in suit from the ace to the king, one foundation per suit. The tableau columns are built down in alternating colours, so a black jack accepts a red 10 and that red 10 accepts a black 9.

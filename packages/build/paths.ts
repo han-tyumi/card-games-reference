@@ -5,3 +5,4 @@ import { fileURLToPath } from "node:url";
 
 export const REPO_ROOT = fileURLToPath(new URL("../..", import.meta.url));
 export const RENDERED_DIR = join(REPO_ROOT, "rendered");
+export const DIAGRAM_DIR = join(RENDERED_DIR, "diagrams");

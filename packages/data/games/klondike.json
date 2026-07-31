@@ -21,6 +21,50 @@
     "other": []
   },
   "setup": "Use a single 52-card deck with the jokers removed. Shuffle, then build seven tableau piles from left to right: one card in the first pile, two in the second, on up to seven in the seventh, for 28 cards in total. The tidy way to deal it is one card to each pile in a left-to-right sweep, skipping any pile that already holds its full count. Turn the exposed card of every pile face up and leave everything under it face down.\n\nAbove the tableau, reserve four spaces for the foundations. They start empty. The 24 cards you did not deal go face down in a single packet as the stock, with an empty space beside it for the waste. There is no dealer to choose and no opponent, so play begins the moment the layout is built.\n\nOne caution before you follow rules printed elsewhere: older British sources sometimes call this game Canfield, while North American sources use Canfield for an entirely different game, the one also known as Demon. Match the layout described above rather than the title on the page.",
+  "layout": {
+    "rows": [
+      [
+        {
+          "kind": "stock",
+          "label": "Stock",
+          "cards": 24,
+          "face": "down"
+        },
+        {
+          "kind": "waste",
+          "label": "Waste",
+          "cards": 0
+        },
+        {
+          "kind": "gap"
+        },
+        {
+          "kind": "foundation",
+          "label": "Foundations",
+          "repeat": 4,
+          "cards": 0
+        }
+      ],
+      [
+        {
+          "kind": "tableau",
+          "label": "Tableau",
+          "repeat": 7,
+          "cards": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "face": "last-up"
+        }
+      ]
+    ],
+    "caption": "Only the last card of each tableau pile starts face up."
+  },
   "play": "There are two places to build. The four foundations go up in suit starting from the ace: an ace may go up the moment it is exposed, then the 2 of that suit, and so on through the king. The seven tableau piles go down in alternating colours, so a red 9 accepts a black 8, and that black 8 accepts a red 7.\n\nPlayable cards are the exposed card at the outer end of each tableau pile and the top card of the waste. You may move one of those to a foundation, or to a tableau pile whose exposed card is one rank higher and the opposite colour. You may also lift a run of face-up tableau cards that already descends one rank at a time in alternating colours and move it as a unit onto a card that continues that sequence. Most rule sets let you take just the lower portion of a run; stricter ones make you move the whole face-up group or nothing.\n\nAny time a move leaves a face-down card at the end of a tableau pile, turn it up immediately.\n\nEmpty columns carry the one real restriction: only a king, or a run headed by a king, may be moved into a column you have cleared. Nothing else may go there, so emptying a column with no king in sight usually wastes the space.\n\nNothing is compulsory. You may leave an exposed ace sitting in the tableau, decline to fill an empty column, or go to the stock while tableau moves are still available; the only forced action is turning up a newly exposed face-down card.\n\nWhen the tableau has nothing you want, work the stock. Turn cards face up onto the waste and play from there. Only the top card of the waste is ever playable, and it leaves one card at a time. How many cards you turn per go is the setting that defines the two common versions.\n\nDraw one: turn a single card at a time. Every card in the stock reaches the top of the waste on every pass, so nothing stays out of reach and the game is far more forgiving.\n\nDraw three: turn three at once, overlapped so you can read all three but only the outermost is playable. The two behind it become available only after the card in front of them is played. Because the stock is consumed in blocks of three, roughly two thirds of it is unreachable at any given moment, and every card you take shifts which cards surface on the next pass. If fewer than three cards are left when you reach the end of the stock, turn up however many remain and treat the outermost of them as the playable one. This is the older and harder default.\n\nWhen the stock runs out, turn the waste over without shuffling to form a new stock. That is a redeal, and its limit is the other point players argue about. Casual play generally allows unlimited redeals in both draw modes. Scored versions restrict it in two different ways. Standard scoring keeps redeals unlimited but bills you for each one past the first pass. Vegas scoring caps the passes outright: one pass and no redeal at draw one, three passes and two redeals at draw three. Timed and competitive settings commonly borrow the three-pass cap for draw three. None of this is standardised, so settle the limit before you deal.\n\nTaking the top card back off a foundation into the tableau is permitted in most rule sets and is sometimes the only way to free a card you need, though scored versions charge you for it and a few rule sets forbid it outright.\n\nThe deal ends when all four foundations are complete, or when you are stuck: the stock empty with no redeal left, nothing playable off the waste, and no legal move anywhere in the tableau. There is no partial win and no reshuffle. If you lose, gather the cards, shuffle properly, and deal again.",
   "goal_and_scoring": "You win by getting all 52 cards onto the foundations, each suit built ace through king. Most people simply play win or lose and keep no score.\n\nStandard scoring, the system most software uses, awards 5 points for moving a card from the waste to the tableau, 10 for moving a card to a foundation, and 5 for turning up a face-down tableau card. Pulling a card back from a foundation costs 15. Recycling the stock costs points once you are past the first pass: 20 per recycle at draw three and 100 per recycle at draw one, where a fresh pass is worth far more. The running total is not allowed to fall below zero. Timed play adds a clock to that: you shed 2 points for every 10 seconds at the table and collect a finishing bonus that shrinks the longer you took, so a fast win scores far above a slow one.\n\nVegas scoring treats the deal as a wager. You buy the deck for 52 units, one per card, and collect 5 units for every card you land on a foundation, so eleven cards puts you 3 ahead and break-even is closer than it looks. Passes through the stock are capped rather than penalised: one at draw one, three at draw three. Many players carry a running bankroll from deal to deal instead of settling each deal on its own.\n\nKlondike is not always winnable, which matters more than beginners expect. Solver studies of draw-three Klondike with every face-down card revealed in advance, and unlimited redeals allowed, put the ceiling near 82 percent of deals, so something close to one deal in five cannot be won by anyone regardless of skill. Draw one is more forgiving and its ceiling is higher, but there is no equally well-established published figure for it, so treat any specific draw-one percentage you see with suspicion. Playing blind, as you actually do, real results are much lower: large samples of players come in near a third of games at draw one and around one game in ten at draw three, and those aggregate numbers vary noticeably from site to site.",
   "variants": [

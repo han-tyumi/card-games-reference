@@ -126,6 +126,41 @@ function checkEntry(
   }
 
   problems.push(...checkTagSemantics(data));
+  problems.push(...checkLayout(data));
+
+  return problems;
+}
+
+/**
+ * A layout that disagrees with itself draws a wrong diagram silently, which is
+ * worse than not having one. The schema cannot tie `cards` to `repeat`.
+ */
+function checkLayout(data: Entry): string[] {
+  const layout = data["layout"] as Record<string, unknown> | undefined;
+  if (!layout) return [];
+
+  const problems: string[] = [];
+  const rows = Array.isArray(layout["rows"]) ? layout["rows"] : [];
+
+  rows.forEach((row, rowIndex) => {
+    if (!Array.isArray(row)) return;
+    row.forEach((zone, zoneIndex) => {
+      if (!zone || typeof zone !== "object") return;
+      const z = zone as Record<string, unknown>;
+      const where = `layout.rows[${rowIndex}][${zoneIndex}]`;
+      const repeat = typeof z["repeat"] === "number" ? z["repeat"] : 1;
+
+      if (Array.isArray(z["cards"]) && z["cards"].length !== repeat) {
+        problems.push(
+          `${where}: cards has ${z["cards"].length} entries but repeat is ${repeat}`,
+        );
+      }
+
+      if (z["kind"] === "gap" && (z["label"] || z["cards"] || z["face"])) {
+        problems.push(`${where}: a gap is a spacer and takes no label, cards or face`);
+      }
+    });
+  });
 
   return problems;
 }

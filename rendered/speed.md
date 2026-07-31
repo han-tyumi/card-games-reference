@@ -19,6 +19,8 @@ Put your draw pile face down at your right hand, where you can reach it without 
 
 When both players say they are ready, each of you puts a hand on one of the two centre cards and you flip them face up together. The game starts the instant they land, so agree on a count first if you want it fair.
 
+![Speed setup diagram](diagrams/speed.svg)
+
 ## Play
 
 There are no turns. Both players play at the same time, as fast as they can manage, and the game runs continuously until someone goes out.

@@ -15,6 +15,8 @@ Shuffle a full 52-card deck and build the pyramid face up in seven rows. Lay one
 
 The remaining 24 cards form the stock, squared up face down to one side. Leave space next to it for a waste pile and space somewhere clear for discards. Ranks count as numbers throughout: ace is 1, jack is 11, queen is 12, king is 13, and every other card is its face value. Suit and colour never matter.
 
+![Pyramid setup diagram](diagrams/pyramid.svg)
+
 ## Play
 
 A card is available only when nothing overlaps it. In the pyramid that means both cards below it have already been removed. The bottom row is available from the start; each removal frees the cards above once their other supporter also goes.

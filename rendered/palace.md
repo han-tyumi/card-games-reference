@@ -21,6 +21,8 @@ A quicker way to reach the same layout, and the one most groups use: deal the th
 
 The player holding the lowest ordinary card in hand starts, and opens by playing that card. Ignore any 2, 7 or 10 when comparing, so in practice this comes down to whoever holds the lowest 3, 4 or 5. If two players hold the same lowest rank, the one sitting nearer the dealer's left starts. Groups that cannot be bothered to check simply let the player to the dealer's left open with anything. Play runs clockwise.
 
+![Palace setup diagram](diagrams/palace.svg)
+
 ## Play
 
 On your turn you play one card, or several cards of the same rank at once, from your hand onto the discard pile in the middle. Your card must be equal to or higher than the card showing on top of the pile. Equal is enough, so a nine covers a nine. If you play more than one card, they must all be the same rank as each other. After you play, and only while the stock still has cards in it, draw back up to three cards in hand. If you played three at once, draw three.

@@ -13,6 +13,8 @@
 
 Shuffle a full 52-card deck. Deal 35 cards face up into seven columns of five. Overlap the cards in each column so every rank stays readable, with the last card dealt to a column sitting at the exposed end. All 35 are visible from the start, so nothing is hidden. The 17 cards left over become the stock, kept face down in a single pile. Turn the top stock card face up beside it to start the waste pile, which is the one pile you will build on for the rest of the deal, leaving 16 cards in the stock. Many descriptions call that build pile the foundation, which is where the alternative name One Foundation comes from, and several of them treat turning the first card as the player's opening move rather than part of the deal. Nothing hangs on that except whether you call the stock 17 or 16 at the moment play begins. Leave room for the waste to grow, since in a good deal nearly the whole pack ends up there. There are no foundations by suit and no reserve; the seven columns, the stock, and the waste are the entire layout.
 
+![Golf setup diagram](diagrams/golf.svg)
+
 ## Play
 
 Only the exposed card at the open end of each column is in play. The rest are locked until the cards covering them are gone.

@@ -21,6 +21,32 @@
     "other": []
   },
   "setup": "Shuffle a full 52-card deck. Deal 35 cards face up into seven columns of five. Overlap the cards in each column so every rank stays readable, with the last card dealt to a column sitting at the exposed end. All 35 are visible from the start, so nothing is hidden. The 17 cards left over become the stock, kept face down in a single pile. Turn the top stock card face up beside it to start the waste pile, which is the one pile you will build on for the rest of the deal, leaving 16 cards in the stock. Many descriptions call that build pile the foundation, which is where the alternative name One Foundation comes from, and several of them treat turning the first card as the player's opening move rather than part of the deal. Nothing hangs on that except whether you call the stock 17 or 16 at the moment play begins. Leave room for the waste to grow, since in a good deal nearly the whole pack ends up there. There are no foundations by suit and no reserve; the seven columns, the stock, and the waste are the entire layout.",
+  "layout": {
+    "rows": [
+      [
+        {
+          "kind": "stock",
+          "label": "Stock",
+          "cards": 16,
+          "face": "down"
+        },
+        {
+          "kind": "waste",
+          "label": "Waste",
+          "cards": 1
+        }
+      ],
+      [
+        {
+          "kind": "tableau",
+          "label": "Tableau",
+          "repeat": 7,
+          "cards": 5
+        }
+      ]
+    ],
+    "caption": "All 35 tableau cards are face up; the first stock card is turned to start the waste."
+  },
   "play": "Only the exposed card at the open end of each column is in play. The rest are locked until the cards covering them are gone.\n\nOn your turn you may move any one exposed column card onto the waste pile, provided its rank is exactly one higher or one lower than the current top card of the waste. Suits and colours are ignored entirely. If the waste shows a 9, you may play any 8 or any 10. Moving a card exposes the one behind it in that column, which may then be playable in turn, so a single well-placed card can start a long chain.\n\nRanks do not wrap in the standard game. Aces are low and kings are high: only a 2 plays onto an ace, and only a queen plays onto a king. Playing an ace on a king, or a king on an ace, is illegal. This is the single rule that ends most deals, and the most commonly relaxed one. A harsher version appears in some rule sets: there a king is a complete dead end and nothing whatever may be packed on it, not even a queen, so a king on the waste forces you to draw. Settle which of the two you are using before you deal, because the difference is large.\n\nYou may keep making legal moves for as long as you like; you are never forced to draw. Cards never move between columns, never move back off the waste, and never go onto the stock. Once a column is emptied the gap stays empty for the rest of the deal, and nothing may be placed there.\n\nWhen you are stuck, or simply choose to, turn the next card of the stock face up onto the waste. That card becomes the new build card regardless of what it covers, so a draw can reset the sequence to any rank. Drawing is the only way to change the top of the waste other than playing a column card.\n\nThe deal ends when the stock is empty and no exposed column card can legally be played onto the waste. There is no redeal and no shuffling of the waste back into the stock. If you have cleared all 35 column cards you have holed out; otherwise the deal is over with cards still on the table.\n\nA separate multiplayer game is also called Golf. That one is usually played as Six-Card Golf, where each player manages a private face-down grid, swapping and discarding to reach the lowest total over nine deals. The two games share only the golf scoring metaphor and are otherwise unrelated; the rules here are for the single-player patience.",
   "goal_and_scoring": "The object of a single deal is to clear all 35 cards out of the seven columns and onto the waste. Cards left in the stock do not matter.\n\nScore as in golf: count one stroke for every card still stranded in the columns when the deal ends. Clearing the tableau scores zero for the hole, and a common house rule lets you go under par by subtracting one for each card still face down in the stock when you hole out.\n\nA full round is nine deals, one per hole, with the strokes added up, and two rounds of nine make an eighteen-hole match. No authority sets a par for this, so the targets players quote are convention rather than rule; the figure in general circulation is 45 strokes for nine holes, with a total in the mid-thirties counting as a good round. Under strict no-wraparound rules most deals cannot be cleared at all, so a nine-hole total of zero is not a realistic goal.",
   "variants": [

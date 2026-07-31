@@ -17,6 +17,8 @@ Above the tableau, reserve four spaces for the foundations. They start empty. Th
 
 One caution before you follow rules printed elsewhere: older British sources sometimes call this game Canfield, while North American sources use Canfield for an entirely different game, the one also known as Demon. Match the layout described above rather than the title on the page.
 
+![Klondike setup diagram](diagrams/klondike.svg)
+
 ## Play
 
 There are two places to build. The four foundations go up in suit starting from the ace: an ace may go up the moment it is exposed, then the 2 of that suit, and so on through the king. The seven tableau piles go down in alternating colours, so a red 9 accepts a black 8, and that black 8 accepts a red 7.

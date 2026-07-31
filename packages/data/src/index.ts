@@ -14,6 +14,9 @@ import type { CardGame } from "../schema/game.types.ts";
 
 export type { CardGame } from "../schema/game.types.ts";
 
+export { CARD, buildDiagram } from "./layout.ts";
+export type { Diagram, Layout, Pile, Zone, ZoneKind } from "./layout.ts";
+
 export type Category = CardGame["category"];
 
 const PACKAGE_ROOT = fileURLToPath(new URL("..", import.meta.url));

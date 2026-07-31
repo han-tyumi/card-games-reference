@@ -69,6 +69,157 @@ export interface CardGame {
    */
   setup: string;
   /**
+   * The starting table as data, so a setup diagram can be drawn rather than illustrated by hand. Optional: include it where the arrangement is worth seeing, omit it where 'everyone holds cards' says everything (most pure trick-taking games). Rows are drawn top to bottom and each row is centred, which is what makes a pyramid a pyramid and a cross a cross.
+   */
+  layout?: {
+    /**
+     * One line under the diagram, for anything the shapes cannot say.
+     */
+    caption?: string;
+    /**
+     * @minItems 1
+     * @maxItems 8
+     */
+    rows: [
+      [
+        {
+          /**
+           * What the pile is for. Drives how it is drawn. "gap" is an empty spacer used to position the others.
+           */
+          kind:
+            | "tableau"
+            | "foundation"
+            | "stock"
+            | "waste"
+            | "reserve"
+            | "free-cell"
+            | "hand"
+            | "discard"
+            | "meld"
+            | "trick"
+            | "gap";
+          /**
+           * Caption under the pile, e.g. "Foundations". Omit on gaps.
+           */
+          label?: string;
+          /**
+           * How many identical piles sit side by side. Defaults to 1.
+           */
+          repeat?: number;
+          /**
+           * Cards dealt to each pile at the start. One number for all of them, or one per pile when they differ (Klondike's tableau is [1,2,3,4,5,6,7]). Omit when the count varies with the player count or is not fixed.
+           */
+          cards?: number | [number, ...number[]];
+          /**
+           * How the cards sit. "last-up" is the Klondike case: face down with the final card turned up. Defaults to "up".
+           */
+          face?: "up" | "down" | "last-up";
+        },
+        ...{
+          /**
+           * What the pile is for. Drives how it is drawn. "gap" is an empty spacer used to position the others.
+           */
+          kind:
+            | "tableau"
+            | "foundation"
+            | "stock"
+            | "waste"
+            | "reserve"
+            | "free-cell"
+            | "hand"
+            | "discard"
+            | "meld"
+            | "trick"
+            | "gap";
+          /**
+           * Caption under the pile, e.g. "Foundations". Omit on gaps.
+           */
+          label?: string;
+          /**
+           * How many identical piles sit side by side. Defaults to 1.
+           */
+          repeat?: number;
+          /**
+           * Cards dealt to each pile at the start. One number for all of them, or one per pile when they differ (Klondike's tableau is [1,2,3,4,5,6,7]). Omit when the count varies with the player count or is not fixed.
+           */
+          cards?: number | [number, ...number[]];
+          /**
+           * How the cards sit. "last-up" is the Klondike case: face down with the final card turned up. Defaults to "up".
+           */
+          face?: "up" | "down" | "last-up";
+        }[]
+      ],
+      ...[
+        {
+          /**
+           * What the pile is for. Drives how it is drawn. "gap" is an empty spacer used to position the others.
+           */
+          kind:
+            | "tableau"
+            | "foundation"
+            | "stock"
+            | "waste"
+            | "reserve"
+            | "free-cell"
+            | "hand"
+            | "discard"
+            | "meld"
+            | "trick"
+            | "gap";
+          /**
+           * Caption under the pile, e.g. "Foundations". Omit on gaps.
+           */
+          label?: string;
+          /**
+           * How many identical piles sit side by side. Defaults to 1.
+           */
+          repeat?: number;
+          /**
+           * Cards dealt to each pile at the start. One number for all of them, or one per pile when they differ (Klondike's tableau is [1,2,3,4,5,6,7]). Omit when the count varies with the player count or is not fixed.
+           */
+          cards?: number | [number, ...number[]];
+          /**
+           * How the cards sit. "last-up" is the Klondike case: face down with the final card turned up. Defaults to "up".
+           */
+          face?: "up" | "down" | "last-up";
+        },
+        ...{
+          /**
+           * What the pile is for. Drives how it is drawn. "gap" is an empty spacer used to position the others.
+           */
+          kind:
+            | "tableau"
+            | "foundation"
+            | "stock"
+            | "waste"
+            | "reserve"
+            | "free-cell"
+            | "hand"
+            | "discard"
+            | "meld"
+            | "trick"
+            | "gap";
+          /**
+           * Caption under the pile, e.g. "Foundations". Omit on gaps.
+           */
+          label?: string;
+          /**
+           * How many identical piles sit side by side. Defaults to 1.
+           */
+          repeat?: number;
+          /**
+           * Cards dealt to each pile at the start. One number for all of them, or one per pile when they differ (Klondike's tableau is [1,2,3,4,5,6,7]). Omit when the count varies with the player count or is not fixed.
+           */
+          cards?: number | [number, ...number[]];
+          /**
+           * How the cards sit. "last-up" is the Klondike case: face down with the final card turned up. Defaults to "up".
+           */
+          face?: "up" | "down" | "last-up";
+        }[]
+      ][]
+    ];
+  };
+  /**
    * How a turn works and how the hand proceeds: turn order, legal moves, restrictions, how the hand ends.
    */
   play: string;
