@@ -1,0 +1,163 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/han-tyumi/card-games-reference/schema/game.schema.json",
+  "title": "Card Game",
+  "description": "One card game entry in the Open Card Game Rules Reference. Every field is written from scratch in the project's own words; no text is copied or closely paraphrased from any source.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "aliases",
+    "category",
+    "players",
+    "decks",
+    "setup",
+    "play",
+    "goal_and_scoring",
+    "variants",
+    "difficulty",
+    "duration_minutes",
+    "tags",
+    "sources_consulted"
+  ],
+  "properties": {
+    "id": {
+      "description": "Slug identifying the game. Must match the filename (games/<id>.json).",
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "minLength": 2,
+      "maxLength": 60
+    },
+    "name": {
+      "description": "Display name of the game.",
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 80
+    },
+    "aliases": {
+      "description": "Other names the game is commonly known by. May be empty.",
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 80 },
+      "uniqueItems": true
+    },
+    "category": {
+      "description": "Primary family the game belongs to, chosen by its core mechanic.",
+      "type": "string",
+      "enum": [
+        "trick-taking",
+        "shedding",
+        "rummy-type",
+        "solitaire",
+        "casino",
+        "matching-collecting",
+        "bluffing"
+      ]
+    },
+    "players": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["min", "max", "ideal"],
+      "properties": {
+        "min": { "type": "integer", "minimum": 1, "maximum": 12 },
+        "max": { "type": "integer", "minimum": 1, "maximum": 12 },
+        "ideal": {
+          "description": "Single best player count. Ranges belong in the prose, not here.",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 12
+        }
+      }
+    },
+    "decks": {
+      "description": "What you need to deal, in plain English, e.g. \"1 standard deck (52 cards)\" or \"2 standard decks plus 4 jokers (108 cards)\".",
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 200
+    },
+    "setup": {
+      "description": "How the table starts: deal, layout, dealer selection, anything built before the first turn.",
+      "type": "string",
+      "minLength": 120,
+      "maxLength": 3000
+    },
+    "play": {
+      "description": "How a turn works and how the hand proceeds: turn order, legal moves, restrictions, how the hand ends.",
+      "type": "string",
+      "minLength": 200,
+      "maxLength": 5000
+    },
+    "goal_and_scoring": {
+      "description": "What winning looks like and how points (if any) are counted.",
+      "type": "string",
+      "minLength": 120,
+      "maxLength": 3000
+    },
+    "variants": {
+      "description": "A few well-known variations. Not intended to be exhaustive.",
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "description"],
+        "properties": {
+          "name": { "type": "string", "minLength": 2, "maxLength": 80 },
+          "description": { "type": "string", "minLength": 40, "maxLength": 1200 }
+        }
+      }
+    },
+    "difficulty": {
+      "description": "How much there is to learn before a first game, not how hard it is to play well.",
+      "type": "string",
+      "enum": ["simple", "easy", "medium", "complex"]
+    },
+    "duration_minutes": {
+      "description": "Rough playing time as a range, e.g. \"15-30\", or an open-ended floor, e.g. \"60+\".",
+      "type": "string",
+      "pattern": "^[0-9]{1,3}-[0-9]{1,3}$|^[0-9]{1,3}\\+$"
+    },
+    "tags": {
+      "description": "Facets for filtering. Drawn from a controlled vocabulary so search stays consistent across the collection.",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 10,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "family-friendly",
+          "kids",
+          "party",
+          "partnership",
+          "solo",
+          "two-player",
+          "large-group",
+          "quick",
+          "long-game",
+          "bluffing",
+          "memory",
+          "strategy",
+          "luck",
+          "speed",
+          "reflex",
+          "counting",
+          "betting",
+          "beginner-friendly",
+          "classic",
+          "travel",
+          "no-table-needed"
+        ]
+      }
+    },
+    "sources_consulted": {
+      "description": "Names of sources checked while verifying the rules. Attribution as good practice; the write-up itself is original.",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 12,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 2, "maxLength": 120 }
+    }
+  }
+}
