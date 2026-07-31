@@ -1,5 +1,6 @@
 {
-  "name": "naibi",
+  "_comment": "Private workspace root. The published package is packages/data, which is named 'naibi'.",
+  "name": "naibi-workspace",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -29,7 +30,7 @@
     "build": "npm run validate && npm run render && npm run pdf",
     "check": "npm run validate -- --quiet && npm run render -- --check && tsc --noEmit",
     "typecheck": "tsc --noEmit",
-    "types": "npm run types --workspace @naibi/data"
+    "types": "npm run types --workspace naibi"
   },
   "devDependencies": {
     "@types/node": "^26.1.2",

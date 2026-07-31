@@ -1,5 +1,5 @@
 {
-  "name": "@naibi/build",
+  "name": "naibi-build",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -12,7 +12,7 @@
     "pick": "node pick.ts"
   },
   "dependencies": {
-    "@naibi/data": "*",
+    "naibi": "*",
     "ajv": "^8.20.0",
     "pdfkit": "^0.19.1"
   }

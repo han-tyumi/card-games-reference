@@ -11,14 +11,14 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
-import type { CardGame } from "@naibi/data";
+import type { CardGame } from "naibi";
 import {
   SECTIONS,
   categoryLabel,
   facts,
   gamesByCategory,
   loadGames,
-} from "@naibi/data";
+} from "naibi";
 import { RENDERED_DIR } from "./paths.ts";
 
 const banner = (source: string) =>

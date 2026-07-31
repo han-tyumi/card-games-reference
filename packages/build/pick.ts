@@ -18,8 +18,8 @@
  * the companion picker described in tools/README.md.
  */
 
-import type { CardGame } from "@naibi/data";
-import { categoryLabel, durationLine, loadGames, playersLine } from "@naibi/data";
+import type { CardGame } from "naibi";
+import { categoryLabel, durationLine, loadGames, playersLine } from "naibi";
 
 const DIFFICULTY_ORDER = ["simple", "easy", "medium", "complex"] as const;
 

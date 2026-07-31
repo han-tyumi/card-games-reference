@@ -29,7 +29,7 @@ than each keeping their own copy.
 
 | Path | What it is |
 | --- | --- |
-| **`packages/data/`** | **`@naibi/data`** — the source of truth. Everything else reads from it. |
+| **`packages/data/`** | **`naibi`** — the source of truth. Everything else reads from it. |
 | `packages/data/games/*.json` | One file per game. Hand-edited. |
 | `packages/data/schema/game.schema.json` | JSON Schema every entry must satisfy. |
 | `packages/data/schema/game.types.ts` | **Generated** types, derived from the schema. |
@@ -43,7 +43,7 @@ than each keeping their own copy.
 | `tools/` | Notes on planned companion packages. |
 
 Packages get added as they are built — a website, graphics, companion tools.
-None of them fork the data; they depend on `@naibi/data`, which means a
+None of them fork the data; they depend on `naibi`, which means a
 rule fix reaches every one of them in a single commit.
 
 ## Quick start

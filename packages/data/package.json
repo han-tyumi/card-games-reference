@@ -1,5 +1,5 @@
 {
-  "name": "@naibi/data",
+  "name": "naibi",
   "version": "1.0.0",
   "type": "module",
   "description": "Original, openly-licensed rules for traditional and popular card games, as structured data",

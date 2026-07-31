@@ -5,7 +5,7 @@ the data in `packages/data` gets designed with them in mind rather than
 retrofitted later.
 
 Each of these becomes a package under `packages/` when it is built, depending on
-`@naibi/data` rather than keeping its own copy of the rules.
+`naibi` rather than keeping its own copy of the rules.
 
 **Out of scope for v1.** v1 is the rules data plus the build pipeline that turns
 it into Markdown and PDF. These come after.

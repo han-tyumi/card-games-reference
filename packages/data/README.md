@@ -1,4 +1,4 @@
-# @naibi/data
+# naibi
 
 Original, openly-licensed rules for traditional and popular card games, as
 structured data. This is the source of truth the whole project builds on — the
@@ -9,7 +9,7 @@ Part of [Naibi](../../README.md).
 ## Using it
 
 ```ts
-import { loadGames, playersLine, type CardGame } from "@naibi/data";
+import { loadGames, playersLine, type CardGame } from "naibi";
 
 const games = loadGames();
 const forFive = games.filter((g) => g.players.min <= 5 && 5 <= g.players.max);
@@ -19,8 +19,8 @@ const oneDeck = forFive.filter((g) => g.equipment.standard_decks === 1);
 The raw JSON is importable directly, and the schema comes along too:
 
 ```ts
-import hearts from "@naibi/data/games/hearts";
-import schema from "@naibi/data/schema" with { type: "json" };
+import hearts from "naibi/games/hearts";
+import schema from "naibi/schema" with { type: "json" };
 ```
 
 `CardGame` is generated from `schema/game.schema.json`, so the type and the
