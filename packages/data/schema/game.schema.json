@@ -89,9 +89,9 @@
       ],
       "properties": {
         "standard_decks": {
-          "description": "How many ordinary 52-card decks you must OWN to play at the minimum player count. Games needing a stripped deck still count the packs they are built from: Euchre is 1, Pinochle is 2.",
+          "description": "How many ordinary 52-card decks you must OWN to play at the minimum player count. Games needing a stripped deck still count the packs they are built from: Euchre is 1, Pinochle is 2. Use 0 for a game that needs a purpose-built pack you cannot make from ordinary cards, such as hanafuda, and name it in special_deck.",
           "type": "integer",
-          "minimum": 1,
+          "minimum": 0,
           "maximum": 8
         },
         "jokers": {

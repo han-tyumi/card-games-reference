@@ -128,8 +128,27 @@ function checkEntry(
   problems.push(...checkTagSemantics(data));
   problems.push(...checkLayout(data));
   problems.push(...checkDeal(data));
+  problems.push(...checkEquipment(data));
 
   return problems;
+}
+
+/**
+ * Zero standard decks means the game needs a pack you cannot build from
+ * ordinary cards, so it has to say which one -- otherwise the entry claims you
+ * need no cards at all.
+ */
+function checkEquipment(data: Entry): string[] {
+  const equipment = data["equipment"] as Record<string, unknown> | undefined;
+  if (!equipment) return [];
+
+  if (equipment["standard_decks"] === 0 && !equipment["special_deck"]) {
+    return [
+      "equipment.standard_decks is 0, so equipment.special_deck must name the " +
+        "pack the game needs",
+    ];
+  }
+  return [];
 }
 
 /**

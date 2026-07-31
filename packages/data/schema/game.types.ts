@@ -42,7 +42,7 @@ export interface CardGame {
    */
   equipment: {
     /**
-     * How many ordinary 52-card decks you must OWN to play at the minimum player count. Games needing a stripped deck still count the packs they are built from: Euchre is 1, Pinochle is 2.
+     * How many ordinary 52-card decks you must OWN to play at the minimum player count. Games needing a stripped deck still count the packs they are built from: Euchre is 1, Pinochle is 2. Use 0 for a game that needs a purpose-built pack you cannot make from ordinary cards, such as hanafuda, and name it in special_deck.
      */
     standard_decks: number;
     /**
