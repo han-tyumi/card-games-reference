@@ -12,6 +12,7 @@
     "category",
     "players",
     "decks",
+    "equipment",
     "setup",
     "play",
     "goal_and_scoring",
@@ -70,10 +71,53 @@
       }
     },
     "decks": {
-      "description": "What you need to deal, in plain English, e.g. \"1 standard deck (52 cards)\" or \"2 standard decks plus 4 jokers (108 cards)\".",
+      "description": "What you need to deal, in plain English, e.g. \"1 standard deck (52 cards)\" or \"2 standard decks plus 4 jokers (108 cards)\". Written for a person to read; the machine-readable version is in \"equipment\".",
       "type": "string",
       "minLength": 5,
       "maxLength": 200
+    },
+    "equipment": {
+      "description": "The same requirement as \"decks\", but as data, so an app can answer \"what can I play with what I own?\" without parsing prose.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "standard_decks",
+        "jokers",
+        "special_deck",
+        "extra_deck_for_large_groups",
+        "other"
+      ],
+      "properties": {
+        "standard_decks": {
+          "description": "How many ordinary 52-card decks you must OWN to play at the minimum player count. Games needing a stripped deck still count the packs they are built from: Euchre is 1, Pinochle is 2.",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8
+        },
+        "jokers": {
+          "description": "How many jokers the game requires. 0 when jokers are unused or optional.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 8
+        },
+        "special_deck": {
+          "description": "Set when play uses a stripped or purpose-built pack rather than a full one, e.g. \"24-card euchre deck\". Null for ordinary play.",
+          "type": ["string", "null"],
+          "minLength": 3,
+          "maxLength": 120
+        },
+        "extra_deck_for_large_groups": {
+          "description": "True when higher player counts call for shuffling in another deck.",
+          "type": "boolean"
+        },
+        "other": {
+          "description": "Anything needed beyond cards, e.g. a cribbage board. Usually empty.",
+          "type": "array",
+          "maxItems": 4,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 3, "maxLength": 120 }
+        }
+      }
     },
     "setup": {
       "description": "How the table starts: deal, layout, dealer selection, anything built before the first turn.",

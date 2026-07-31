@@ -21,6 +21,7 @@ website, apps, and companion tools are not built yet.
 | `scripts/validate.ts` | Schema + consistency check. Run before committing. |
 | `scripts/render-markdown.ts` | Generates `rendered/`. |
 | `scripts/build-pdf.ts` | Compiles every game into one printable PDF. |
+| `scripts/pick.ts` | Query the collection: "what can 5 of us play with one deck?" |
 | `scripts/games.ts` | Shared loading/formatting used by both generators. |
 | `rendered/*.md` | **Generated.** Never hand-edit — your changes get overwritten. |
 | `tools/` | Placeholder for planned companion tools. |
@@ -40,6 +41,22 @@ npm run pdf        # build rendered/card-games-reference.pdf
 npm run build      # all three, in order
 npm run check      # CI gate: validate + rendered/ is current + typecheck
 ```
+
+### What can we play right now?
+
+`equipment` exists so this is a query rather than a reading exercise:
+
+```sh
+node scripts/pick.ts --players 5 --decks 1
+node scripts/pick.ts --players 2 --minutes 20 --difficulty up-to-easy
+node scripts/pick.ts --players 4 --tag family-friendly --jokers
+```
+
+Filters: `--players`, `--decks`, `--jokers`, `--minutes`, `--difficulty`
+(`simple`/`easy`/`medium`/`complex`, or `up-to-medium`), `--category`, and
+`--tag` (repeatable). This is a demonstration that the data supports the
+filtering a real picker needs — not the companion tool described in
+[`tools/README.md`](tools/README.md).
 
 Two more, needed only when the schema itself changes:
 
@@ -86,6 +103,13 @@ filter on:
   "category": "trick-taking",
   "players": { "min": 3, "max": 6, "ideal": 4 },
   "decks": "1 standard deck (52 cards)",
+  "equipment": {
+    "standard_decks": 1,
+    "jokers": 0,
+    "special_deck": null,
+    "extra_deck_for_large_groups": false,
+    "other": []
+  },
   "setup": "...",
   "play": "...",
   "goal_and_scoring": "...",
@@ -109,6 +133,10 @@ A few conventions worth knowing:
   explaining; Go Fish is `simple`.
 - `tags` come from a fixed vocabulary defined in the schema, so filtering stays
   consistent across the collection. Adding a tag means adding it to the schema.
+- `decks` and `equipment` say the same thing twice on purpose: `decks` is the
+  sentence a player reads, `equipment` is the version software can filter on.
+  `standard_decks` counts the packs you must **own** — Euchre is 1 and Pinochle
+  is 2, because their stripped decks get built from ordinary ones.
 - `aliases` never contains another game's real name. Where two games genuinely
   share a name — Speed and Spit swap names regionally, and Canfield means
   different games on different continents — the prose explains the clash instead,
@@ -216,6 +244,38 @@ Prose fields accept a light Markdown convention: blank lines separate
 paragraphs, and lines starting with `- ` become bullets. Both the Markdown and
 the PDF renderer understand these. Nothing else — no headings, bold, or tables.
 
+### Is it a variant, or its own game?
+
+The long-term goal is broad coverage, which makes this the question that decides
+whether the collection stays navigable. The working rule:
+
+**If you already know the parent game, could you sit down and play this one after
+a sentence of explanation?** If yes, it is a variant. If you would need the rules
+explained again, it is its own game.
+
+That resolves most cases:
+
+- **Variant** — changes a parameter: hand size, target score, which cards are
+  wild, whether an optional move is allowed. Draw-three Klondike is Klondike.
+- **Its own game** — changes the goal or the core mechanic. Hearts and Spades are
+  both trick-taking with one deck, but avoiding tricks and bidding for tricks are
+  different games, not two settings of one.
+- **Its own game** — needs a different deck or a different table layout. Spit and
+  Speed are close cousins with the same feel, and they are separate entries
+  because the layouts differ.
+
+Two rules of thumb for the awkward middle:
+
+- **Follow the players, not the taxonomy.** If two groups would each say "that's
+  not how you play it" rather than "that's a house rule," they are different
+  games. Naming follows use.
+- **When genuinely torn, prefer a variant.** A variant is easy to promote to its
+  own entry later; splitting hairs into thirty near-identical files is hard to
+  walk back, and it makes searching worse for the person who just wants to play.
+
+Where a name is ambiguous across regions, say so in the prose rather than in
+`aliases` — see the note on aliases above.
+
 ### Style
 
 - Plain and direct. Second person where it reads naturally.
@@ -247,6 +307,44 @@ letting it get absorbed into a closed product.
 
 MIT on the tooling means the scripts can be reused with no strings attached,
 which is the friendlier default for code.
+
+### What an open license does and does not give away
+
+A license is a grant of permission **to other people**. It does not transfer or
+diminish the authors' own rights, and this trips people up often enough to be
+worth stating directly:
+
+- **The authors keep their copyright.** Licensing the text under CC BY-SA does
+  not hand ownership to anyone.
+- **Running ads, taking donations, or selling an app built on this project is
+  entirely permitted** and needs no change of license. Open licensing restricts
+  what you may stop *others* doing; it puts no limit on what the project itself
+  may do with its own work.
+- **What ShareAlike actually costs you** is exclusivity: a competitor may take
+  these write-ups and publish a rival reference, provided they credit this
+  project and license their version the same way. They cannot take the text
+  closed, and they cannot stop this project from doing anything.
+- **The website and apps are separate works** in their own repositories. They
+  are not covered by this repository's licenses and may be as restrictive as
+  their authors like — even closed source — as long as the CC BY-SA text they
+  display is still credited and still offered under CC BY-SA.
+
+The short version: CC BY-SA keeps the *rules text* free for everyone while
+leaving every commercial option open to the project. If the goal ever changes to
+keeping the text itself exclusive, that is a different license and a decision to
+take deliberately — and one that gets harder once outside contributions land.
+
+### Contributions
+
+Contributions are accepted under the same terms the repository already uses —
+CC BY-SA 4.0 for prose, MIT for code — so the licensing stays uniform and the
+project never ends up with passages it cannot redistribute.
+
+Contributors keep the copyright in what they write. That has one consequence
+worth planning around: **relicensing later would require every contributor's
+agreement.** If the project ever wants to keep that option open — say, to
+publish a print edition on different terms — the time to add a contributor
+license agreement is before outside contributions start arriving, not after.
 
 ## Not in scope yet
 

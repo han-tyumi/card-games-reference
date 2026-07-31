@@ -34,9 +34,36 @@ export interface CardGame {
     ideal: number;
   };
   /**
-   * What you need to deal, in plain English, e.g. "1 standard deck (52 cards)" or "2 standard decks plus 4 jokers (108 cards)".
+   * What you need to deal, in plain English, e.g. "1 standard deck (52 cards)" or "2 standard decks plus 4 jokers (108 cards)". Written for a person to read; the machine-readable version is in "equipment".
    */
   decks: string;
+  /**
+   * The same requirement as "decks", but as data, so an app can answer "what can I play with what I own?" without parsing prose.
+   */
+  equipment: {
+    /**
+     * How many ordinary 52-card decks you must OWN to play at the minimum player count. Games needing a stripped deck still count the packs they are built from: Euchre is 1, Pinochle is 2.
+     */
+    standard_decks: number;
+    /**
+     * How many jokers the game requires. 0 when jokers are unused or optional.
+     */
+    jokers: number;
+    /**
+     * Set when play uses a stripped or purpose-built pack rather than a full one, e.g. "24-card euchre deck". Null for ordinary play.
+     */
+    special_deck: string | null;
+    /**
+     * True when higher player counts call for shuffling in another deck.
+     */
+    extra_deck_for_large_groups: boolean;
+    /**
+     * Anything needed beyond cards, e.g. a cribbage board. Usually empty.
+     *
+     * @maxItems 4
+     */
+    other: string[];
+  };
   /**
    * How the table starts: deal, layout, dealer selection, anything built before the first turn.
    */
