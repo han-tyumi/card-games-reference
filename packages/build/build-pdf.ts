@@ -1,8 +1,8 @@
 /**
  * Compile every game entry into a single printable PDF.
  *
- *   node scripts/build-pdf.ts
- *   node scripts/build-pdf.ts --output /tmp/rules.pdf
+ *   npm run pdf
+ *   npm run pdf -- --output /tmp/rules.pdf
  *
  * Produces a bookmarked, page-numbered booklet with a contents page and one
  * game per page. Like rendered/, the PDF is generated output -- edit the JSON,
@@ -19,18 +19,24 @@ import { dirname, join } from "node:path";
 
 import PDFDocument from "pdfkit";
 
-import type { CardGame } from "@card-games/data";
+import type { CardGame } from "@naibi/data";
 import {
   SECTIONS,
   categoryLabel,
   facts,
   gamesByCategory,
   loadGames,
-} from "@card-games/data";
+} from "@naibi/data";
 import { RENDERED_DIR } from "./paths.ts";
 
-const TITLE = "Open Card Game Rules Reference";
+const TITLE = "Naibi";
+const PRONUNCIATION = "NYE-bee";
 const SUBTITLE = "Original write-ups of traditional and popular card games";
+const ORIGIN =
+  "Naibi is the first European word for playing cards, recorded in Florence in " +
+  "1377. It comes from the Arabic nā'ib, “deputy” — the rank of court card in " +
+  "the Mamluk pack that every European deck descends from. Spain still calls " +
+  "them naipes.";
 
 // Core PDF fonts cannot encode card suit pips, so prefer a TrueType face that can.
 const FONT_CANDIDATES = [
@@ -153,7 +159,7 @@ class Booklet {
       autoFirstPage: false,
       info: {
         Title: TITLE,
-        Author: "Open Card Game Rules Reference contributors",
+        Author: "Naibi contributors",
         Subject: "Card game rules",
       },
     });
@@ -235,10 +241,14 @@ function titlePage(book: Booklet, gameCount: number): void {
   const { doc, fonts } = book;
   doc.addPage();
 
-  doc.y = 190;
+  doc.y = 180;
   doc.font(fonts.bold).fontSize(30).fillColor(ACCENT);
   book.text(TITLE);
-  doc.moveDown(0.35);
+  doc.moveDown(0.15);
+
+  doc.font(fonts.italic).fontSize(11).fillColor(MUTED);
+  book.text(PRONUNCIATION);
+  doc.moveDown(0.5);
 
   doc.font(fonts.regular).fontSize(13).fillColor(MUTED);
   book.text(SUBTITLE);
@@ -248,8 +258,10 @@ function titlePage(book: Booklet, gameCount: number): void {
     `${gameCount} games for 1 to 8 players, playable with the decks you already own.`,
   );
 
-  doc.y = 560;
+  doc.y = 530;
   doc.fontSize(9.5).fillColor(MUTED);
+  book.text(ORIGIN, { lineGap: 2.5 });
+  doc.moveDown(0.6);
   book.text(
     "Every entry in this book was written from scratch. Game rules are facts and " +
       "belong to everyone; the words used to explain them here are the project's " +
@@ -475,7 +487,7 @@ function drawFooters(book: Booklet): void {
 function outputPath(): string {
   const index = process.argv.indexOf("--output");
   const supplied = index !== -1 ? process.argv[index + 1] : undefined;
-  return supplied ?? join(RENDERED_DIR, "card-games-reference.pdf");
+  return supplied ?? join(RENDERED_DIR, "naibi.pdf");
 }
 
 const games = loadGames();

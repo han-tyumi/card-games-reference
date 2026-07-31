@@ -1,5 +1,5 @@
 {
-  "name": "@card-games/build",
+  "name": "@naibi/build",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -12,7 +12,7 @@
     "pick": "node pick.ts"
   },
   "dependencies": {
-    "@card-games/data": "*",
+    "@naibi/data": "*",
     "ajv": "^8.20.0",
     "pdfkit": "^0.19.1"
   }

@@ -5,8 +5,8 @@
  * filenames matching ids, ids being unique, and player counts being internally
  * consistent. Exits non-zero if anything fails, so it works as a CI gate.
  *
- *   node scripts/validate.ts            # validate everything
- *   node scripts/validate.ts --quiet    # only print problems
+ *   npm run validate              # validate everything
+ *   npm run validate -- --quiet   # only print problems
  */
 
 import { readFileSync } from "node:fs";
@@ -15,7 +15,7 @@ import { basename } from "node:path";
 import { Ajv2020 } from "ajv/dist/2020.js";
 import type { ErrorObject, ValidateFunction } from "ajv";
 
-import { GAMES_DIR, SCHEMA_PATH, gameFiles } from "@card-games/data";
+import { GAMES_DIR, SCHEMA_PATH, gameFiles } from "@naibi/data";
 
 type Entry = Record<string, unknown>;
 

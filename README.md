@@ -1,8 +1,18 @@
-# Open Card Game Rules Reference
+# Naibi
+
+*(NYE-bee)*
 
 A free, openly-licensed reference for how to play traditional and popular card
 games — written from scratch, stored as structured data, and built to work
 offline.
+
+> **naibi** — the first European word for playing cards. Florence, 1377.
+
+Cards reached Europe from the Mamluk Sultanate of Egypt in the 1370s, and the
+Italians called them *naibi*, from the Arabic **nā'ib**, "deputy" — the rank of
+court card in the Mamluk pack that every European deck descends from. Spain
+still calls them *naipes*. The name is the beginning of the story this project
+is trying to tell in full.
 
 Every game is a JSON file. Scripts turn those files into Markdown and into a
 printable PDF, and the same data will later drive a website, a mobile app, and
@@ -19,7 +29,7 @@ than each keeping their own copy.
 
 | Path | What it is |
 | --- | --- |
-| **`packages/data/`** | **`@card-games/data`** — the source of truth. Everything else reads from it. |
+| **`packages/data/`** | **`@naibi/data`** — the source of truth. Everything else reads from it. |
 | `packages/data/games/*.json` | One file per game. Hand-edited. |
 | `packages/data/schema/game.schema.json` | JSON Schema every entry must satisfy. |
 | `packages/data/schema/game.types.ts` | **Generated** types, derived from the schema. |
@@ -33,7 +43,7 @@ than each keeping their own copy.
 | `tools/` | Notes on planned companion packages. |
 
 Packages get added as they are built — a website, graphics, companion tools.
-None of them fork the data; they depend on `@card-games/data`, which means a
+None of them fork the data; they depend on `@naibi/data`, which means a
 rule fix reaches every one of them in a single commit.
 
 ## Quick start
@@ -46,7 +56,7 @@ npm install
 
 npm run validate   # check every entry against the schema
 npm run render     # regenerate rendered/
-npm run pdf        # build rendered/card-games-reference.pdf
+npm run pdf        # build rendered/naibi.pdf
 
 npm run build      # all three, in order
 npm run check      # CI gate: validate + rendered/ is current + typecheck
@@ -383,7 +393,7 @@ Attribution is the one thing CC BY-SA asks of you, so here is exactly how to do
 it. If you use these write-ups anywhere — a site, an app, a printed handout, a
 video — include a credit like:
 
-> Rules from the [Open Card Game Rules Reference](https://github.com/han-tyumi/card-games-reference),
+> Rules from [Naibi](https://github.com/han-tyumi/naibi),
 > licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
 Three things make a credit valid: **name the project, link back to it, and state

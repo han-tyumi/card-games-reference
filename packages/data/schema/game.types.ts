@@ -6,7 +6,7 @@
  */
 
 /**
- * One card game entry in the Open Card Game Rules Reference. Every field is written from scratch in the project's own words; no text is copied or closely paraphrased from any source.
+ * One card game entry in Naibi. Every field is written from scratch in the project's own words; no text is copied or closely paraphrased from any source.
  */
 export interface CardGame {
   /**

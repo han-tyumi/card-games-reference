@@ -1,5 +1,5 @@
 {
-  "name": "card-games-reference",
+  "name": "naibi",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -7,7 +7,7 @@
   "license": "(MIT AND CC-BY-SA-4.0)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/han-tyumi/card-games-reference.git"
+    "url": "git+https://github.com/han-tyumi/naibi.git"
   },
   "keywords": [
     "card-games",
@@ -29,7 +29,7 @@
     "build": "npm run validate && npm run render && npm run pdf",
     "check": "npm run validate -- --quiet && npm run render -- --check && tsc --noEmit",
     "typecheck": "tsc --noEmit",
-    "types": "npm run types --workspace @card-games/data"
+    "types": "npm run types --workspace @naibi/data"
   },
   "devDependencies": {
     "@types/node": "^26.1.2",

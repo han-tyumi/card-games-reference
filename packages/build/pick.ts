@@ -1,9 +1,9 @@
 /**
  * Answer "what can we play right now?" from the game data.
  *
- *   node scripts/pick.ts --players 5
- *   node scripts/pick.ts --players 2 --decks 1 --minutes 20
- *   node scripts/pick.ts --players 4 --difficulty simple --tag family-friendly
+ *   npm run pick -- --players 5
+ *   npm run pick -- --players 2 --decks 1 --minutes 20
+ *   npm run pick -- --players 4 --difficulty simple --tag family-friendly
  *
  * Options
  *   --players N     only games that seat exactly N
@@ -18,8 +18,8 @@
  * the companion picker described in tools/README.md.
  */
 
-import type { CardGame } from "@card-games/data";
-import { categoryLabel, durationLine, loadGames, playersLine } from "@card-games/data";
+import type { CardGame } from "@naibi/data";
+import { categoryLabel, durationLine, loadGames, playersLine } from "@naibi/data";
 
 const DIFFICULTY_ORDER = ["simple", "easy", "medium", "complex"] as const;
 

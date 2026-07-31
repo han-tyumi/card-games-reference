@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/han-tyumi/card-games-reference/schema/game.schema.json",
+  "$id": "https://github.com/han-tyumi/naibi/schema/game.schema.json",
   "title": "Card Game",
-  "description": "One card game entry in the Open Card Game Rules Reference. Every field is written from scratch in the project's own words; no text is copied or closely paraphrased from any source.",
+  "description": "One card game entry in Naibi. Every field is written from scratch in the project's own words; no text is copied or closely paraphrased from any source.",
   "type": "object",
   "additionalProperties": false,
   "required": [

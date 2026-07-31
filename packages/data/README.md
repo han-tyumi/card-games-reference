@@ -1,15 +1,15 @@
-# @card-games/data
+# @naibi/data
 
 Original, openly-licensed rules for traditional and popular card games, as
 structured data. This is the source of truth the whole project builds on — the
 Markdown, the PDF, and eventually the website and apps all read from here.
 
-Part of the [Open Card Game Rules Reference](../../README.md).
+Part of [Naibi](../../README.md).
 
 ## Using it
 
 ```ts
-import { loadGames, playersLine, type CardGame } from "@card-games/data";
+import { loadGames, playersLine, type CardGame } from "@naibi/data";
 
 const games = loadGames();
 const forFive = games.filter((g) => g.players.min <= 5 && 5 <= g.players.max);
@@ -19,8 +19,8 @@ const oneDeck = forFive.filter((g) => g.equipment.standard_decks === 1);
 The raw JSON is importable directly, and the schema comes along too:
 
 ```ts
-import hearts from "@card-games/data/games/hearts";
-import schema from "@card-games/data/schema" with { type: "json" };
+import hearts from "@naibi/data/games/hearts";
+import schema from "@naibi/data/schema" with { type: "json" };
 ```
 
 `CardGame` is generated from `schema/game.schema.json`, so the type and the
@@ -50,7 +50,7 @@ Using the write-ups anywhere public means crediting the project and keeping your
 version under the same licence. A valid credit names the project, links to it,
 and states the licence:
 
-> Rules from the [Open Card Game Rules Reference](https://github.com/han-tyumi/card-games-reference),
+> Rules from [Naibi](https://github.com/han-tyumi/naibi),
 > licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
 Commercial use is fine and needs no permission. Found a rule that is wrong?
