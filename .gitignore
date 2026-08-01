@@ -15,6 +15,11 @@ Thumbs.db
 *.log
 tmp/
 scratch/
+# Throwaway measurement scripts. They live inside the repo rather than in a
+# system temp directory because node only resolves the `naibi` workspace package
+# from in here, so anything that wants to import buildFigure or loadGames to
+# count something has to sit alongside them.
+.scratch/
 
 # Note: rendered/ IS committed. It is generated output, but keeping it in the
 # repo means the Markdown and the PDF are readable straight from GitHub without
