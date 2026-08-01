@@ -398,6 +398,44 @@ test("each filter is one labelled group, which is what the spacing relies on", (
   assert.equal(grouped, radios, "a filter chip sits outside a labelled group");
 });
 
+test("every page can tell the reader a new version has landed", () => {
+  // Cache-first means a deployment is invisible to an open page. The worker
+  // updates itself correctly; without this the reader has no way to know.
+  for (const page of pages) {
+    const html = text(page);
+    assert.ok(html.includes('id="updated"'), `${page}: no update notice`);
+    assert.ok(html.includes("controllerchange"), `${page}: nothing listens for an update`);
+    assert.ok(html.includes('id="reload"'), `${page}: no way to act on it`);
+  }
+});
+
+test("the update notice starts hidden and is not a forced reload", () => {
+  const html = text("index.html");
+  assert.match(html, /<p class="updated" id="updated" hidden>/, "notice starts visible");
+
+  // A page read at a table mid-game must not yank itself out from under someone
+  // looking up a scoring rule. The reload belongs to the button, so check the
+  // update handler's own body rather than anything merely near the word.
+  const handler = /"controllerchange", function \(\) \{([\s\S]*?)\n {4}\}\)/.exec(html);
+  assert.ok(handler, "no controllerchange handler to inspect");
+  assert.ok(
+    !handler[1]!.includes("location.reload"),
+    "the page reloads itself on update instead of offering to",
+  );
+
+  // And the reload that does exist is the one the reader asks for.
+  assert.equal((html.match(/location\.reload/g) ?? []).length, 1);
+  assert.match(html, /"click", function \(\) \{\n {2}location\.reload\(\);/);
+});
+
+test("a first install is not reported as an update", () => {
+  // controllerchange also fires when a worker claims a page that had none, so
+  // a brand new visitor would otherwise be told to reload immediately.
+  const html = text("index.html");
+  assert.match(html, /navigator\.serviceWorker\.controller;/, "prior control not captured");
+  assert.match(html, /if \(!updating\) return;/, "first install is not guarded");
+});
+
 test("the search box is labelled", () => {
   const html = text("index.html");
   const id = /<input[^>]*id="q"/.exec(html);

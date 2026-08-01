@@ -141,6 +141,38 @@ a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset:
 
 .count { margin: 0 0 0.8rem; color: var(--ink-soft); font-size: 0.9rem; }
 
+/* Shown only when a new deployment has taken over behind this page. Sits at the
+   top of the flow rather than floating over the text, so it never covers a rule
+   someone is mid-way through reading. */
+.updated {
+  margin: 1rem 0 0;
+  padding: 0.7rem 0.9rem;
+  background: var(--accent);
+  color: #fff;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+.updated[hidden] { display: none; }
+.updated button {
+  font: inherit;
+  font-weight: 600;
+  color: var(--accent);
+  background: #fff;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  min-height: 2.1rem;
+  cursor: pointer;
+}
+@media (prefers-color-scheme: dark) {
+  .updated { color: #12171c; }
+  .updated button { background: #12171c; color: var(--accent); }
+}
+
 /* ---- game list --------------------------------------------------------- */
 
 .games { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }

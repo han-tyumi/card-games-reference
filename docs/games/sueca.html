@@ -24,6 +24,8 @@
 </head>
 <body>
 <div class="wrap">
+<p class="updated" id="updated" hidden>A newer version is ready.
+<button id="reload" type="button">Reload</button></p>
 <a class="backlink" href="../">All games</a>
 <article class="game">
 <h1>Sueca</h1>
@@ -102,9 +104,39 @@
 </div>
 
 <script>
+/*
+ * Cache-first means the page you are reading came from the cache, so a new
+ * deployment is invisible until you navigate again -- and you have no way to
+ * know there was one. The worker updates itself correctly on its own; the only
+ * thing missing was saying so.
+ *
+ * Not an automatic reload: this gets read at a table mid-game, and yanking the
+ * page out from under someone looking up a scoring rule is worse than being one
+ * version behind.
+ */
 if ("serviceWorker" in navigator) {
-  addEventListener("load", () => navigator.serviceWorker.register("../sw.js"));
+  addEventListener("load", () => {
+    // Captured before registering: a first install claims an uncontrolled page
+    // and fires the same event, which is not an update to tell anyone about.
+    var updating = !!navigator.serviceWorker.controller;
+    navigator.serviceWorker.register("../sw.js").then(function (registration) {
+      // A browser only looks for a new worker when you navigate, so a page left
+      // open would never find out. Ask again on coming back to the tab, which
+      // is a conditional request for one small file.
+      document.addEventListener("visibilitychange", function () {
+        if (document.visibilityState === "visible") registration.update();
+      });
+    });
+    navigator.serviceWorker.addEventListener("controllerchange", function () {
+      if (!updating) return;
+      var banner = document.getElementById("updated");
+      if (banner) banner.hidden = false;
+    });
+  });
 }
+document.getElementById("reload").addEventListener("click", function () {
+  location.reload();
+});
 </script>
 </body>
 </html>
