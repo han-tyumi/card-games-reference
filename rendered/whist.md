@@ -15,7 +15,7 @@ Whist is for exactly four players in two fixed partnerships, partners sitting op
 
 Draw for partners and for the first deal at the same time. Spread the pack face down and have everyone take a card, counting the ace as low for this purpose only. The two lowest cards play against the two highest, and the lowest card of all deals first. Anyone who draws a duplicate rank or the bottom card of the pack draws again. After the first hand the deal moves one seat to the left.
 
-The dealer shuffles, the player to the dealer's right cuts, and the whole pack is dealt out one card at a time clockwise, starting with the player on the dealer's left, so each hand holds 13. The final card of the deal, which belongs to the dealer, is turned face up on the table instead of being tucked into the hand. Its suit is trumps for that hand. It stays face up where everyone can see it until the dealer plays to the first trick, at which point the dealer takes it into hand and it becomes an ordinary card. From that moment on, remembering what it was is your own problem.
+Shuffle, offer the cut to the right, then deal the whole pack out singly and clockwise, first card going to the dealer's left. Everyone ends up with 13. The final card of the deal, which belongs to the dealer, is turned face up on the table instead of being tucked into the hand. Its suit is trumps for that hand. It stays face up where everyone can see it until the dealer plays to the first trick, at which point the dealer takes it into hand and it becomes an ordinary card. From that moment on, remembering what it was is your own problem.
 
 There is no bidding, no exchange of cards and no stock. As soon as the trump is turned, play begins.
 
@@ -25,7 +25,7 @@ There is no bidding, no exchange of cards and no stock. As soon as the trump is 
 
 The player to the dealer's left leads any card at all to the first trick. Play then goes clockwise, one card from each player.
 
-You must follow the suit that was led if you hold a card in it. Only when you are void may you play something else, and then you may play anything: a card of a third suit, which cannot win, or a trump, which can. A trick is taken by the highest trump in it, or if no trump was played, by the highest card of the suit led. The winner of the trick leads to the next one. All thirteen tricks are played out; there is no way to end a hand early, no concession and no discard pile.
+You must follow the suit that was led if you hold a card in it. Only when you are void may you play something else, and then you may play anything: a card of a third suit, which cannot win, or a trump, which can. Trumps outrank everything else, so if any were played the highest of them takes the trick; if none were, the highest card of the led suit does. Each trick is opened by whoever won the last. All thirteen tricks are played out; there is no way to end a hand early, no concession and no discard pile.
 
 How the tricks are stored matters more than beginners expect. One player from each partnership gathers every trick that side wins and stacks them face down in front of them, squared up and countable, rather than scattering them. Once a trick has been turned over and covered by the next one it is closed, and you are not allowed to look back through earlier tricks. Remembering what has gone is the whole skill of the game. Tables vary on whether the trick just completed may be re-examined before the next card is led; the strict rule is that only the trick currently in progress is public.
 

@@ -43,7 +43,7 @@ Emptying your stock row ends the round, and everything stops the instant that fi
 
 Each player then gathers everything they own: the centre pile they claimed, whatever is left in their stock piles, and any unused spit cards. Shuffle it all together and lay out a new row for the next round, and go again.
 
-Spit is often confused with Speed, and they are close cousins, but the layouts are different. In Spit each player has a row of five stock piles with the top card of each face up and no hand at all; in Speed each player holds a hand of five cards drawn from a single face-down draw pile, and the reserve cards sit in the middle as side stacks rather than in front of each player.
+Spit is often confused with Speed, and they are close cousins, but the layouts are different. Spit gives each player five stock piles laid in a row, every one showing its top card, and no hand to hold; in Speed each player holds a hand of five cards drawn from a single face-down draw pile, and the reserve cards sit in the middle as side stacks rather than in front of each player.
 
 ## Goal & scoring
 

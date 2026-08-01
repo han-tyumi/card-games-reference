@@ -40,7 +40,7 @@ The tricks. The high bidder leads to the first trick and play runs clockwise. Gi
 
 That third rule is the one point of the play that varies: a minority of tables let a player who cannot overtrump discard instead. Settle it before the opening lead.
 
-A trick is won by the highest trump in it, or by the highest card of the suit led when no trump has been played. Between two identical cards, the one led or played earlier wins. The winner of a trick leads to the next. When all twelve tricks are gone, the side that took the last trick claims a bonus, both sides count the counters they captured, and the hand is scored.
+Any trump beats any plain card, so the trick belongs to the highest trump played to it. Where nobody trumped, it goes to whoever played the highest card of the led suit. Between two identical cards, the one led or played earlier wins. The winner of a trick leads to the next. When all twelve tricks are gone, the side that took the last trick claims a bonus, both sides count the counters they captured, and the hand is scored.
 
 One consequence of the must-beat rule worth planning for: you cannot quietly duck a trick to protect a ten. If you hold the ace and the ten of a led suit and an opponent's ace is already on the table, you are compelled to play your own ace, and your ten is exposed for the rest of the hand.
 

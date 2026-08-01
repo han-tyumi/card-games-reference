@@ -33,7 +33,7 @@ Running short of cards mid-war is the edge case that causes arguments. The usual
 
 When you play the last card of your face-down stack, pick up the cards you have won, shuffle them, and carry on with them as your new stack. If instead you have been putting winnings straight under your stack, shuffle each batch as you add it. The shuffling is not tidiness. War has no decisions in it, so a deal plus a fixed rule for returning won cards determines the whole game: if the cards always go back in the same order, a deal can enter a cycle in which the same sequence of battles repeats forever and neither player ever wins. Randomising the returned cards breaks any such cycle, and the game then ends with probability one.
 
-With three or four players everyone flips at once and the highest card takes the whole table. If two or more players tie for highest, only those players go to war; anyone who was beaten leaves their card in the pot and takes no further part in that battle. A player whose cards are gone is out, and the rest continue until one player holds everything.
+With three or four players everyone flips at once and the highest card takes the whole table. Where the highest card is tied, only the players holding it fight the war; anyone who was beaten leaves their card in the pot and takes no further part in that battle. A player whose cards are gone is out, and the rest continue until one player holds everything.
 
 ## Goal & scoring
 

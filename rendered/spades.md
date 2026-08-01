@@ -18,13 +18,13 @@ Set up the score sheet before you start. You need one column per partnership for
 
 ## Play
 
-Bidding comes first and takes exactly one round. Starting with the player to the dealer's left and moving clockwise, each player looks at their hand and names the number of tricks they expect to take, anything from 0 to 13. Bids do not have to increase, nobody may pass, and once a number is said it stands. You may not describe your hand or ask your partner anything, but every bid is public, so the last player to bid knows a great deal more than the first. The two partners' bids are added together into a single contract for the side: bids of 4 and 3 mean that partnership must take at least 7 tricks. Some groups impose a minimum team contract of 4, so check the house rule before you deal.
+Bidding comes first and takes exactly one round. Beginning left of the dealer and going clockwise, everyone reads their hand and says how many tricks they think it is worth — any figure from 0 to 13. Bids do not have to increase, nobody may pass, and once a number is said it stands. You may not describe your hand or ask your partner anything, but every bid is public, so the last player to bid knows a great deal more than the first. The two partners' bids are added together into a single contract for the side: bids of 4 and 3 mean that partnership must take at least 7 tricks. Some groups impose a minimum team contract of 4, so check the house rule before you deal.
 
 A bid of 0 is nil, a declaration that you personally will win no tricks whatsoever. Your partner bids normally and their number alone becomes the side's trick contract. Nil is scored separately and can succeed or fail independently of whether that contract is made.
 
 A blind nil is committed to sight unseen, so it has to be called out the moment the deal ends, before you fan your cards. Most tables allow it only to a side trailing by 100 points or more. Bidding then proceeds normally around the table, and once the last bid has been made, with nobody yet having led, the blind bidder slides two cards face down to their partner and takes back two that the partner sends over face down in return. That trade exists so the bidder can dump two likely winners and pick up junk, leaving the partner to carry the extra strength.
 
-The player to the dealer's left leads to the first trick and may not lead a spade. Play continues clockwise. You must follow the suit led if you can; if you are void you may play any card at all, including a spade. A trick is won by the highest spade played to it, and if no spade was played, by the highest card of the suit led. A card of some third suit never wins. The winner of each trick leads to the next.
+The player to the dealer's left leads to the first trick and may not lead a spade. Play continues clockwise. You must follow the suit led if you can; if you are void you may play any card at all, including a spade. Spades are permanent trumps: any spade beats every plain card, and the highest spade in a trick takes it. A trick nobody spaded goes to the highest card of the led suit. A card of some third suit never wins. Whoever takes a trick opens the following one.
 
 Spades may not be led until they have been broken, meaning until some spade has been played to a trick led in another suit, whether that was a deliberate ruff or a helpless discard. The one exception is a player holding nothing but spades, who may lead one. Nothing stops you trumping in the first time you are void; that is normally how spades get broken.
 
@@ -36,7 +36,7 @@ Everyone keeps their side's tricks together where both partnerships can count th
 
 The first partnership to 500 points wins.
 
-A side that takes at least as many tricks as it bid scores 10 points per trick bid, plus 1 point for each trick beyond the bid. Those extras are bags, also called sandbags, and the single point each one pays now is really a loan against a penalty later. Bid 7 and take 9 and you score 72: seventy for the contract and two for the bags.
+Make the contract and it pays 10 a trick — counted on what you bid, not on what you took — with anything over that worth 1 apiece. Those extras are bags, also called sandbags, and the single point each one pays now is really a loan against a penalty later. Bid 7 and take 9 and you score 72: seventy for the contract and two for the bags.
 
 A side that falls short is set and loses 10 points per trick bid, with no credit at all for the tricks it did win. Bid 7 and take 6 and you lose 70.
 

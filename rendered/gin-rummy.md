@@ -11,7 +11,7 @@
 
 ## Setup
 
-Gin Rummy is a two-handed game using a full 52-card pack with the jokers taken out. Pick the first dealer by drawing from the shuffled pack: low card deals. After that the loser of each hand deals the next one, though plenty of players pass the deal to the winner instead, so agree which before you start.
+Gin Rummy is a two-handed game using a full 52-card pack with the jokers taken out. Pick the first dealer by drawing from the shuffled pack: low card deals. After that whoever lost the previous hand deals, though plenty of tables hand it to the winner instead, so agree which before you start.
 
 The dealer shuffles, the opponent cuts, and ten cards go to each player one at a time, non-dealer first. Put the rest of the pack face down in the middle as the stock and turn its top card face up next to it. That upcard is the whole discard pile for now, and it leaves 31 cards in the stock.
 

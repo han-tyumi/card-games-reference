@@ -45,7 +45,7 @@ Running out of stock. When the last stock card is drawn, lift the discard pile, 
 
 ## Goal & scoring
 
-There is no winner of a deal, only a player who escapes it cheaply. When somebody goes out, everyone else counts what is still in their hand and takes it as penalty points, and the totals run cumulatively through all seven deals. The lowest score at the end of the seventh wins, and nothing standard breaks a tie — agree beforehand whether level players share it or play one more deal of the seventh contract to settle it. A player who goes out scores nothing for that deal, which is the best result available.
+There is no winner of a deal, only a player who escapes it cheaply. When somebody goes out, everyone else counts what is still in their hand and takes it as penalty points, and the totals run cumulatively through all seven deals. Whoever has fewest points once the seventh deal is scored wins, and no standard rule breaks a tie — agree beforehand whether level players share it or play one more deal of the seventh contract to settle it. A player who goes out scores nothing for that deal, which is the best result available.
 
 Cards count against you at these values:
 

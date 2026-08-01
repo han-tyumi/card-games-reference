@@ -22,7 +22,7 @@ Unusually for a partnership game of this family, there is no signalling traditio
 
 ## Play
 
-The player to the dealer's right leads to the first trick, and the winner of each trick leads to the next.
+Sueca runs anticlockwise, so the dealer's right-hand neighbour opens the first trick; thereafter the previous trick's winner opens the next.
 
 Follow suit if you can. That single restriction is the whole of the law: a player holding the suit that was led must play one, and only a player void in it is free to do anything else. There is no obligation to trump when you are void, and no obligation to beat what is already on the table. Throwing a worthless card away is always allowed once you cannot follow.
 

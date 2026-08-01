@@ -30,9 +30,9 @@ There is no layout, no stock and no discard pile. Everything sits in the players
 
 Every hand opens with a pass. Pick three cards out of your hand and lay them face down in front of the player who is to receive them. Nobody may look at the cards coming their way until they have committed their own three, so the exchange is genuinely blind on both sides. The direction rotates deal by deal: pass to the left on the first hand, to the right on the second, straight across on the third, and on the fourth hand nobody passes at all and you play what you were dealt. Then the cycle starts again. Three and five players have nobody sitting directly opposite, so their rotation drops the across pass and runs left, right, hold; six players use the full four-hand cycle.
 
-Once the passes have been picked up, whoever holds the 2 of clubs must lead it to the first trick. If the 2 of clubs was removed for the player count, the lowest club still in the pack leads instead: the 3 of clubs in a five-handed game, the 4 of clubs in a six-handed game. Play then goes clockwise, one card from each player.
+Once everyone has picked up what came their way, the 2 of clubs opens: whoever was dealt it has to lead it. If the 2 of clubs was removed for the player count, the lowest club still in the pack leads instead: the 3 of clubs in a five-handed game, the 4 of clubs in a six-handed game. Play then goes clockwise, one card from each player.
 
-You must follow the suit led if you hold anything in it. Only when you are void may you play something else, and then you may play any card you like subject to the two restrictions below. Because there is no trump suit, a trick is simply won by the highest card of the suit that was led. A card thrown off-suit cannot win the trick no matter how high it is. The winner gathers the trick face down and leads to the next one.
+You must follow the suit led if you hold anything in it. Only when you are void may you play something else, and then you may play any card you like subject to the two restrictions below. Nothing is trump, so a trick goes to whoever played the highest card in whatever suit was led. A card thrown off-suit cannot win the trick no matter how high it is. The winner gathers the trick face down and leads to the next one.
 
 Two restrictions shape the whole hand.
 

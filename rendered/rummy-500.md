@@ -41,7 +41,7 @@ Drawing is where 500 Rummy differs from everything else in the family. You may t
 
 That obligation is what makes the pile dangerous. A convenient discard early on can sit there for ten turns and then be dragged out from under a stack of eight cards by an opponent who wanted the one card underneath, and they get all eight.
 
-Taking only the top card of the discard pile is the ordinary exception: you may take it without having to use it, exactly as in basic Rummy. Some groups apply the melding obligation to the top card as well, so settle it before you deal.
+The one card you may take freely is the uppermost discard, which comes with no obligation to use it — the basic Rummy rule, unchanged. Some groups apply the melding obligation to the top card as well, so settle it before you deal.
 
 After drawing you may lay down as many melds as you like, and you may lay off cards onto any meld on the table, including melds belonging to your opponents. A card laid off onto somebody else's meld counts for you, not for them, so feeding an opponent's run is a perfectly good way to bank points; keep it in front of you rather than pushing it into their spread, because at scoring time you need to see whose card it is. Nothing has to be melded; a card kept in hand is only a liability at the end of the hand.
 

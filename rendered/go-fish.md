@@ -25,7 +25,7 @@ Pick your hand up and sort it by rank so you can see what you already hold. Some
 
 Turns pass clockwise. On your turn you ask one specific opponent, by name, for one specific rank. Say who you are asking and what you want: "Priya, do you have any sevens?"
 
-Two restrictions govern the ask. You must already hold at least one card of the rank you name, so you can only ask for sevens if there is a seven in your hand. And you must direct the question at a single named player, not at the table in general.
+Two restrictions govern the ask. Ask only for a rank you are already holding — no fishing for sevens unless a seven is sitting in your hand. And you must direct the question at a single named player, not at the table in general.
 
 If the player you asked holds any cards of that rank, they must hand over every one of them, not just one. You add them to your hand and your turn continues: ask again, of anyone at the table, for any rank you now hold. A good run can strip several opponents in one turn.
 

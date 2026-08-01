@@ -23,9 +23,9 @@ Add a second pack once you get past about seven players so hands do not shrink t
 
 ## Play
 
-The player who leads may put down any single card, or any set of cards of the same rank from their hand: two fives, three jacks, four sevens. Suits are ignored, so a pair is just two cards of matching rank. Whatever the leader plays sets the size of that round.
+Whoever is on lead sets the shape of the round: one card, or several of matching rank — a pair of fives, three jacks, four sevens. Suits are ignored, so a pair is just two cards of matching rank. Whatever the leader plays sets the size of that round.
 
-Going clockwise, each player in turn must either pass or beat the play on the table. To beat it you must put down the same number of cards as the lead, all of the same rank as each other, and of a higher rank than the cards currently on top. A single nine is beaten by a single ten or higher. A pair of nines can only be beaten by a higher pair, never by a single card and never by three of a kind. The size of the play cannot be changed part way through a round.
+Going clockwise, each player in turn must either pass or beat the play on the table. Beating it means matching the count exactly — same quantity as the lead, all one rank between them, and that rank higher than what is showing on top. A single nine is beaten by a single ten or higher. A pair of nines can only be beaten by a higher pair, never by a single card and never by three of a kind. The size of the play cannot be changed part way through a round.
 
 In the standard game passing is always allowed even when you could legally play, and passing does not shut you out. If the round comes back to you, you may play again. A great many groups play the stricter version in which a pass takes you out of the round for good, so agree on this before you deal; it makes a real difference to how you hold your twos.
 

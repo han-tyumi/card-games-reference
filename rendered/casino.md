@@ -47,7 +47,7 @@ Trailing. When you cannot capture or build, or simply prefer not to, lay a card 
 
 Sweeps. A capture that clears the table completely is a sweep. Turn one card in your capture pile face up to record it. The player after a sweep faces an empty table and can only trail.
 
-Refilling and the last trick. When every hand is empty, the dealer gives four more cards to each player from the stock, two at a time, and adds nothing to the table. Play carries on the same way. The dealer should announce "last" when dealing the final round so nobody is surprised. After the very last card is played, whoever made the most recent capture sweeps up whatever is still lying on the table — but that is not counted as a sweep. A real sweep made with the final card of the deal does count.
+Refilling and the last trick. When every hand is empty, the dealer gives four more cards to each player from the stock, two at a time, and adds nothing to the table. Play carries on the same way. Calling "last" aloud as the final round goes out is a courtesy worth keeping: play changes once there is nothing more to come. After the very last card is played, whoever made the most recent capture sweeps up whatever is still lying on the table — but that is not counted as a sweep. A real sweep made with the final card of the deal does count.
 
 ## Goal & scoring
 

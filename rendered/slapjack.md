@@ -27,7 +27,7 @@ On your turn, lift the top card off your own stack and drop it face up in the mi
 
 Almost every card does nothing. You turn it, and the turn passes to the player on your left. The pile just grows.
 
-When a jack appears, everyone races to slap the pile. The first hand flat on the pile takes the whole thing: gather it up, square it, add it face down to the bottom of your stack, and shuffle your stack if you like. That player then turns the first card of a new pile, and play continues clockwise from them. There are only four jacks in the pack, so piles can get big before one shows up.
+When a jack appears, everyone races to slap the pile. The first hand flat on the pile takes the whole thing: gather it up, square it, tuck it under your own stack face down, and shuffle that stack if you like. That player then turns the first card of a new pile, and play continues clockwise from them. There are only four jacks in the pack, so piles can get big before one shows up.
 
 If two or more hands land at what looks like the same moment, the bottom hand wins, meaning the one actually touching the cards rather than the back of somebody else's hand. If it is genuinely too close to call, do not split the pile: leave it in the middle exactly as it is, and let the player to the left of whoever turned the jack carry on turning cards onto it. The pile then goes to whoever wins the next jack.
 
