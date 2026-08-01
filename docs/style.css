@@ -143,6 +143,13 @@ a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset:
 .games a:hover { border-color: var(--accent); }
 .games h2 { margin: 0; font-size: 1.05rem; color: var(--accent); }
 .games .meta { margin: 0.25rem 0 0; color: var(--ink-soft); font-size: 0.87rem; }
+/* Why a result matched. Empty unless a search is running, so it collapses. */
+.games .where:not(:empty) {
+  margin: 0.35rem 0 0;
+  font-size: 0.78rem;
+  color: var(--accent);
+}
+.games .where:empty { display: none; }
 
 .empty { padding: 1.4rem; text-align: center; color: var(--ink-soft); }
 
