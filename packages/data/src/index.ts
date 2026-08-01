@@ -18,8 +18,17 @@ export type { CardGame } from "../schema/game.types.ts";
 export { CARD, buildDiagram } from "./layout.ts";
 export type { Diagram, Layout, Pile, Zone, ZoneKind } from "./layout.ts";
 
-export { buildFigure, isRedSuit } from "./figure.ts";
+export { MAX_FIGURE_WIDTH, buildFigure, isRedSuit, wrapCards } from "./figure.ts";
 export type { Figure, FigureCard, FigureLayout, FigureRow } from "./figure.ts";
+
+export {
+  MIN_LEGIBLE_SCALE,
+  naturalWidth,
+  renderDiagramSvg,
+  renderFigureSvg,
+  wrapText,
+} from "./svg.ts";
+export type { SvgOptions } from "./svg.ts";
 
 export { blocks } from "./prose.ts";
 export type { Block } from "./prose.ts";

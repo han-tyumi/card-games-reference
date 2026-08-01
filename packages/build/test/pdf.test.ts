@@ -18,8 +18,8 @@ import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
-import { gamesByCategory, loadGames } from "naibi";
-import { compile } from "../build-pdf.ts";
+import { buildFigure, gamesByCategory, loadGames } from "naibi";
+import { PAGE, compile } from "../build-pdf.ts";
 import type { Placement } from "../build-pdf.ts";
 
 const games = loadGames();
@@ -114,4 +114,33 @@ test("the booklet uses a font that can draw suit pips", () => {
   // The fallback spells them out, which is legible but not what the figures
   // were designed around. Worth knowing if CI loses its fonts.
   assert.equal(built.unicode, true, "fell back to a core PDF font");
+});
+
+test("a figure fits the page it is drawn on, at a size cards still read at", () => {
+  // Figures wrap themselves to a phone's column by default, and a page is not
+  // a phone. Left at the default, Hand and Foot's four seven-card melds wrapped
+  // to eight lines, MAX_ENLARGE magnified the taller result, and one figure
+  // grew from a third of a page to more than the page had left. The booklet
+  // therefore passes its own measure, and this is what says it still does.
+  /** Room drawFigure needs beyond the geometry: the caption and its gap. */
+  const CAPTION = 26;
+
+  const tall: string[] = [];
+  const shrunk: string[] = [];
+
+  for (const game of games) {
+    for (const [index, spec] of (game.figures ?? []).entries()) {
+      const built = buildFigure(spec, PAGE.contentWidth);
+      const scale = Math.min(PAGE.maxEnlarge, PAGE.contentWidth / Math.max(built.width, 1));
+      const id = `${game.id}-fig${index + 1}`;
+
+      if (built.height * scale + CAPTION > PAGE.contentHeight) tall.push(id);
+      // Below 1:1 the cards are smaller than the geometry intends, which is
+      // what the wider measure is for.
+      if (scale < 1) shrunk.push(id);
+    }
+  }
+
+  assert.deepEqual(tall, [], "these figures no longer fit a page");
+  assert.deepEqual(shrunk, [], "these figures are drawn smaller than card size");
 });

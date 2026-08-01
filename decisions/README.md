@@ -25,6 +25,7 @@ part.
 | [0007](0007-originality-is-checked-against-sources.md) | Check originality against source text, never by searching phrases | Accepted |
 | [0008](0008-booklet-is-linked-not-copied.md) | Link the booklet from the site rather than copying it in | Accepted |
 | [0009](0009-documentation-structure.md) | Split documentation by how it ages, and deviate from MADR's directory | Accepted |
+| [0010](0010-figures-wrap-in-the-geometry.md) | Wrap figures in the geometry, not in the stylesheet | Accepted |
 
 ## The format
 

@@ -63,8 +63,9 @@ than each keeping their own copy.
 | `packages/build/pick.ts` | Query the collection: "what can 5 of us play with one deck?" |
 | `packages/build/originality.ts` | Compare an entry's prose against source text. `npm run originality`. |
 | `packages/data/src/layout.ts` | Turns a game's `layout` into diagram geometry. |
+| `packages/data/src/figure.ts` | Ranking-strip and combination geometry, including where a long row wraps. |
 | `packages/data/src/prose.ts` | Parses the prose convention, shared by the PDF and the site. |
-| `packages/build/svg.ts` | Draws that geometry as SVG. |
+| `packages/data/src/svg.ts` | Draws that geometry as SVG, for Markdown and for the site. |
 | `packages/web/assets/search.js` | Search: builds the index and ranks queries. Shared by build and browser. |
 | `packages/web/assets/facets.js` | The filter chips' predicate. Shared by the page and the tests. |
 | `packages/web/records.ts` | Reduces a game to what search and the filters index. |

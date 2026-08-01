@@ -1,20 +1,16 @@
 /**
- * Draw a setup diagram as SVG, from the geometry in the data package.
+ * Draw a setup diagram as SVG, from the geometry alongside it.
  *
  * The PDF draws the same diagram with PDFKit primitives. Both read from
  * buildDiagram(), so they cannot disagree about where anything goes.
+ *
+ * This sits in the data package rather than the build one because the site
+ * needs it too, and a second copy is a second thing to keep in step -- the
+ * mistake the prose parser already made once.
  */
 
-import {
-  CARD,
-  buildDiagram,
-  buildFigure,
-  isRedSuit,
-  type Diagram,
-  type Figure,
-  type Layout,
-  type ZoneKind,
-} from "naibi";
+import { CARD, buildDiagram, type Diagram, type Layout, type ZoneKind } from "./layout.ts";
+import { buildFigure, isRedSuit, type Figure } from "./figure.ts";
 
 const PAD = 8;
 const RADIUS = 3;
@@ -97,17 +93,31 @@ export function wrapText(
   return lines;
 }
 
-export function renderDiagramSvg(layout: Layout, title: string): string {
+/**
+ * Where the caption goes.
+ *
+ * Drawn inside the image for Markdown and the PDF, which have nowhere else to
+ * put it. The site has `<figcaption>`, which sets it in the page's own type at
+ * the page's own size -- a caption baked into an image shrinks along with the
+ * image, and a phone shrinks these a long way. Off by default there, and the
+ * canvas stops reserving width it no longer needs.
+ */
+export type SvgOptions = { caption?: boolean };
+
+export function renderDiagramSvg(
+  layout: Layout,
+  title: string,
+  { caption = true }: SvgOptions = {},
+): string {
   const diagram: Diagram = buildDiagram(layout);
+  const text = caption ? diagram.caption : undefined;
 
   // A long caption under a narrow diagram would otherwise spill outside the
   // viewBox and be cropped, so the canvas widens to hold it.
-  const captionWidth = diagram.caption
+  const captionWidth = text
     ? Math.max(diagram.width, MIN_CAPTION_WIDTH)
     : diagram.width;
-  const captionLines = diagram.caption
-    ? wrapText(diagram.caption, captionWidth, CAPTION_SIZE)
-    : [];
+  const captionLines = text ? wrapText(text, captionWidth, CAPTION_SIZE) : [];
   const captionHeight =
     captionLines.length > 0 ? captionLines.length * CAPTION_LINE + 6 : 0;
 
@@ -188,20 +198,40 @@ export function renderDiagramSvg(layout: Layout, title: string): string {
   return parts.join("\n");
 }
 
+/**
+ * Least a drawing may be scaled down before it stops being readable.
+ *
+ * Labels go first. They are drawn at LABEL_SIZE and a renderer shows that at
+ * DISPLAY_SCALE, so a pile caption starts life about 13px tall; below roughly
+ * 9px "Foundations" is a grey smudge. A page with less room than this should
+ * scroll a drawing rather than shrink it further -- which is the one thing a
+ * stylesheet can decide, since it is the only part of a drawing's size that is
+ * still open once the thing has been written.
+ */
+export const MIN_LEGIBLE_SCALE = 9 / (LABEL_SIZE * DISPLAY_SCALE);
+
+/** The width a drawing asked to be shown at, in px. */
+export function naturalWidth(svg: string): number {
+  return Number(/\bwidth="(\d+)"/.exec(svg)?.[1] ?? 0);
+}
+
 const RED = "#a4243b";
 const FACE_SIZE = 12;
 
 /** Draw a ranking strip or a combination example. */
-export function renderFigureSvg(figure: Figure, title: string): string {
+export function renderFigureSvg(
+  figure: Figure,
+  title: string,
+  { caption = true }: SvgOptions = {},
+): string {
   const built = buildFigure(figure);
-  const captionLines = wrapText(
-    figure.caption,
-    Math.max(built.width, MIN_CAPTION_WIDTH),
-    CAPTION_SIZE,
-  );
-  const captionHeight = captionLines.length * CAPTION_LINE + 6;
+  const captionLines = caption
+    ? wrapText(figure.caption, Math.max(built.width, MIN_CAPTION_WIDTH), CAPTION_SIZE)
+    : [];
+  const captionHeight =
+    captionLines.length > 0 ? captionLines.length * CAPTION_LINE + 6 : 0;
 
-  const content = Math.max(built.width, MIN_CAPTION_WIDTH);
+  const content = caption ? Math.max(built.width, MIN_CAPTION_WIDTH) : built.width;
   const width = content + PAD * 2;
   const height = built.height + PAD * 2 + captionHeight;
   const shift = (content - built.width) / 2;

@@ -1,46 +1,47 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 552 180" width="883" height="288" role="img" aria-label="Big Two: Rank decides first, and the 2 sits above the ace. Suit then separates cards of equal rank, so no two cards in the pack are ever tied.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 324" width="442" height="518" role="img" aria-label="Big Two: Rank decides first, and the 2 sits above the ace. Suit then separates cards of equal rank, so no two cards in the pack are ever tied.">
 <title>Rank decides first, and the 2 sits above the ace. Suit then separates cards of equal rank, so no two cards in the pack are ever tied.</title>
-<rect x="82.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="97.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">2♠</text>
-<text x="97.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Best card</text>
-<rect x="118.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="133.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">A♠</text>
-<rect x="154.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="169.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">K♠</text>
-<rect x="190.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="205.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">Q♠</text>
-<rect x="226.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="241.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">J♠</text>
-<rect x="262.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="277.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">10♠</text>
-<rect x="298.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="313.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">9♠</text>
-<rect x="334.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="349.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">8♠</text>
-<rect x="370.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="385.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">7♠</text>
-<rect x="406.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="421.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">6♠</text>
-<rect x="442.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="457.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">5♠</text>
-<rect x="478.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="493.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">4♠</text>
-<rect x="514.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="529.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">3♠</text>
-<rect x="82.0" y="80.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="97.0" y="105.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">5♠</text>
-<rect x="118.0" y="80.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="133.0" y="105.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">5♥</text>
-<rect x="154.0" y="80.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="169.0" y="105.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">5♣</text>
-<rect x="190.0" y="80.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="205.0" y="105.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">5♦</text>
-<text x="205.0" y="130.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Lowest</text>
-<text x="205.0" y="139.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">suit</text>
-<text x="74.0" y="27.5" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Ranks, high to</text>
-<text x="74.0" y="36.5" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">low</text>
-<text x="74.0" y="99.5" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Suits, high to</text>
-<text x="74.0" y="108.5" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">low</text>
-<text x="276.0" y="156.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Rank decides first, and the 2 sits above the ace. Suit then separates cards of equal rank, so no two cards in the</text>
-<text x="276.0" y="168.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">pack are ever tied.</text>
+<rect x="88.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="103.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">2♠</text>
+<text x="103.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Best card</text>
+<rect x="124.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="139.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">A♠</text>
+<rect x="160.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="175.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">K♠</text>
+<rect x="196.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="211.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">Q♠</text>
+<rect x="232.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="247.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">J♠</text>
+<rect x="88.0" y="74.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="103.0" y="99.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">10♠</text>
+<rect x="124.0" y="74.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="139.0" y="99.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">9♠</text>
+<rect x="160.0" y="74.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="175.0" y="99.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">8♠</text>
+<rect x="196.0" y="74.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="211.0" y="99.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">7♠</text>
+<rect x="88.0" y="140.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="103.0" y="165.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">6♠</text>
+<rect x="124.0" y="140.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="139.0" y="165.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">5♠</text>
+<rect x="160.0" y="140.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="175.0" y="165.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">4♠</text>
+<rect x="196.0" y="140.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="211.0" y="165.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">3♠</text>
+<rect x="88.0" y="212.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="103.0" y="237.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">5♠</text>
+<rect x="124.0" y="212.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="139.0" y="237.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">5♥</text>
+<rect x="160.0" y="212.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="175.0" y="237.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">5♣</text>
+<rect x="196.0" y="212.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="211.0" y="237.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">5♦</text>
+<text x="211.0" y="262.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Lowest</text>
+<text x="211.0" y="271.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">suit</text>
+<text x="80.0" y="27.5" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Ranks, high to</text>
+<text x="80.0" y="36.5" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">low</text>
+<text x="80.0" y="231.5" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Suits, high to</text>
+<text x="80.0" y="240.5" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">low</text>
+<text x="138.0" y="288.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Rank decides first, and the 2 sits above the ace. Suit</text>
+<text x="138.0" y="300.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">then separates cards of equal rank, so no two cards in</text>
+<text x="138.0" y="312.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">the pack are ever tied.</text>
 </svg>

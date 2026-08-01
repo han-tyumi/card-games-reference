@@ -87,6 +87,26 @@ const MARGINS = { top: 58, bottom: 62, left: 95, right: 95 };
 /** Cap on growing a figure past its natural size, so cards stay card-shaped. */
 const MAX_ENLARGE = 1.35;
 
+/**
+ * The page, in points, for anything that needs to reason about what fits.
+ *
+ * Exported because a test that copies these numbers is a second copy of them,
+ * and this project spends most of its effort on not having those.
+ */
+export const PAGE = {
+  /** US Letter, which the document is built at. */
+  width: 612,
+  height: 792,
+  margins: MARGINS,
+  maxEnlarge: MAX_ENLARGE,
+  get contentWidth(): number {
+    return this.width - this.margins.left - this.margins.right;
+  },
+  get contentHeight(): number {
+    return this.height - this.margins.top - this.margins.bottom;
+  },
+} as const;
+
 const TOC_TITLE_HEIGHT = 46;
 const TOC_LINE = { category: 27, game: 17 };
 
@@ -135,7 +155,7 @@ class Booklet {
 
   constructor() {
     this.doc = new PDFDocument({
-      size: "LETTER",
+      size: [PAGE.width, PAGE.height],
       margins: MARGINS,
       bufferPages: true,
       autoFirstPage: false,
@@ -338,7 +358,12 @@ const RED = "#a4243b";
 /** Draw a ranking strip or combination example, mirroring the SVG figure. */
 function drawFigure(book: Booklet, figure: NonNullable<CardGame["figures"]>[number]): void {
   const { doc, fonts } = book;
-  const built = buildFigure(figure);
+  // Figures wrap themselves to a phone's column unless told otherwise, which
+  // for a page is the wrong constraint in both directions: there is room for a
+  // wider strip, and wrapping narrow trades width for height and then
+  // MAX_ENLARGE magnifies the result -- Hand and Foot's four melds went from a
+  // third of a page to nearly all of one. A page's constraint is its measure.
+  const built = buildFigure(figure, book.contentWidth);
   const widthScale = Math.min(MAX_ENLARGE, book.contentWidth / Math.max(built.width, 1));
   const scale = fitOrBreak(book, built.height * widthScale + 26, widthScale);
 

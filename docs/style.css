@@ -234,12 +234,34 @@ a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset:
 .game ul { margin: 0 0 0.9rem; padding-left: 1.15rem; }
 .game li { margin-bottom: 0.3rem; }
 
+/* A drawing's insides are laid out when it is written, so a breakpoint here can
+   only scale the whole thing down -- which is what made a thirteen-card strip
+   unreadable on a phone in the first place. The wrapping happens in the
+   geometry instead, before any of this. What is left for CSS is the two cases
+   that remain: shrink a drawing that is only a little too wide, and let a table
+   layout that genuinely cannot wrap keep its size and scroll. */
 figure { margin: 1.2rem 0; text-align: center; }
-figure svg { max-width: 100%; height: auto; }
+figure .scroll { margin: 0; }
+figure svg { max-width: 100%; min-width: var(--floor); height: auto; }
 figcaption { margin-top: 0.4rem; color: var(--ink-soft); font-size: 0.85rem; }
 
-/* Wide tables scroll on their own rather than pushing the page sideways. */
-.scroll { overflow-x: auto; margin: 0 0 1rem; -webkit-overflow-scrolling: touch; }
+/* Wide tables and drawings scroll on their own rather than pushing the page
+   sideways. A touch device hides its scrollbar until you touch it, so a cut-off
+   column otherwise just looks like the last one: these are the usual pair of
+   gradients, one anchored to the content and one to the frame, so a shadow
+   shows at an edge exactly when there is something past it. */
+.scroll {
+  overflow-x: auto;
+  margin: 0 0 1rem;
+  -webkit-overflow-scrolling: touch;
+  background:
+    linear-gradient(to right, var(--bg) 30%, transparent) left / 2rem 100% no-repeat local,
+    linear-gradient(to left, var(--bg) 30%, transparent) right / 2rem 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgba(22, 32, 43, 0.16), transparent)
+      left / 0.7rem 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgba(22, 32, 43, 0.16), transparent)
+      right / 0.7rem 100% no-repeat scroll;
+}
 table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
 th, td { text-align: left; padding: 0.5rem 0.7rem; border-bottom: 1px solid var(--rule); }
 th { color: var(--ink-soft); font-weight: 600; font-size: 0.8rem;
@@ -264,6 +286,16 @@ footer p { margin: 0; }
    Softening them stops each one burning a hole in a dim room. */
 @media (prefers-color-scheme: dark) {
   figure svg { filter: invert(0.9) hue-rotate(180deg); opacity: 0.92; }
+  /* A dark shadow on a dark page is nothing at all. */
+  .scroll {
+    background:
+      linear-gradient(to right, var(--bg) 30%, transparent) left / 2rem 100% no-repeat local,
+      linear-gradient(to left, var(--bg) 30%, transparent) right / 2rem 100% no-repeat local,
+      radial-gradient(farthest-side at 0 50%, rgba(0, 0, 0, 0.5), transparent)
+        left / 0.7rem 100% no-repeat scroll,
+      radial-gradient(farthest-side at 100% 50%, rgba(0, 0, 0, 0.5), transparent)
+        right / 0.7rem 100% no-repeat scroll;
+  }
 }
 
 @media (min-width: 34rem) {

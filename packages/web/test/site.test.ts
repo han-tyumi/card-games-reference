@@ -13,8 +13,7 @@
 
 import { test } from "node:test";
 import assert from "node:assert/strict";
-
-import { loadGames } from "naibi";
+import { loadGames, renderDiagramSvg, renderFigureSvg } from "naibi";
 import { buildSite } from "../build-web.ts";
 
 const games = loadGames();
@@ -245,6 +244,74 @@ test("figures are inlined, not linked to files that are not shipped", () => {
     assert.ok(html.includes("<svg"), `${game.id}: diagram not inlined`);
     assert.ok(!html.includes("<img"), `${game.id}: links an image instead`);
   }
+});
+
+test("the site draws its own figures rather than waiting on another build", () => {
+  // It used to inline SVGs read out of rendered/diagrams/, which made `npm run
+  // web` quietly depend on `npm run render` having gone first: build the site
+  // from a clean checkout and every page came out with its pictures missing.
+  // Drawing them here also lets the page ask for one without a baked caption.
+  const game = games.find((g) => g.figures?.length && g.layout);
+  assert.ok(game, "no game with both a layout and a figure to check");
+
+  const html = text(`games/${game.id}.html`);
+  assert.ok(
+    html.includes(renderDiagramSvg(game.layout!, game.name, { caption: false })),
+    `${game.id}: the page's diagram is not the one the data package draws`,
+  );
+  assert.ok(
+    html.includes(renderFigureSvg(game.figures![0]!, game.name, { caption: false })),
+    `${game.id}: the page's figure is not the one the data package draws`,
+  );
+});
+
+/** Every <figure> on a page, split into the drawing and the caption. */
+function figures(html: string) {
+  return [...html.matchAll(/<figure>([\s\S]*?)<\/figure>/g)].map(([, body]) => ({
+    svg: /<svg[\s\S]*?<\/svg>/.exec(body!)?.[0] ?? "",
+    caption: /<figcaption>([\s\S]*?)<\/figcaption>/.exec(body!)?.[1] ?? "",
+    floor: Number(/--floor:(\d+)px/.exec(body!)?.[1] ?? -1),
+  }));
+}
+
+test("a caption appears under a figure, and not inside it as well", () => {
+  // Both were drawn: the readable one underneath, and a copy baked into the
+  // picture at whatever size the picture had shrunk to.
+  let checked = 0;
+
+  for (const game of games) {
+    for (const fig of figures(text(`games/${game.id}.html`))) {
+      assert.ok(fig.caption.length > 0, `${game.id}: a figure with no caption`);
+
+      const drawn = [...fig.svg.matchAll(/<text[^>]*>([\s\S]*?)<\/text>/g)].map((m) => m[1]!);
+      const first = fig.caption.split(" ").slice(0, 3).join(" ");
+      assert.ok(
+        !drawn.some((t) => first.startsWith(t) && t.length > 6),
+        `${game.id}: the caption is drawn inside the picture too`,
+      );
+      checked++;
+    }
+  }
+
+  assert.ok(checked > 60, `only ${checked} figures checked`);
+});
+
+test("a drawing too wide for the column can scroll instead of shrinking away", () => {
+  // A ten-column tableau really is ten columns and cannot be wrapped, so the
+  // page has to offer the reader something other than a smaller picture.
+  for (const game of games) {
+    for (const fig of figures(text(`games/${game.id}.html`))) {
+      const natural = Number(/\bwidth="(\d+)"/.exec(fig.svg)![1]);
+      assert.ok(fig.floor > 0, `${game.id}: no floor on a figure`);
+      assert.ok(
+        fig.floor < natural,
+        `${game.id}: floor ${fig.floor}px is not below its natural ${natural}px`,
+      );
+    }
+  }
+
+  assert.match(text("style.css"), /min-width:\s*var\(--floor\)/);
+  assert.match(text("style.css"), /\.scroll\s*\{[^}]*overflow-x:\s*auto/s);
 });
 
 // --- how a shared link presents itself ------------------------------------

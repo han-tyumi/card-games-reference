@@ -1,28 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 372 108" width="595" height="173" role="img" aria-label="Mus: Card ranking, high to low. Only eight tiers, because the threes rank with the kings and the twos rank with the aces.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 186" width="442" height="298" role="img" aria-label="Mus: Card ranking, high to low. Only eight tiers, because the threes rank with the kings and the twos rank with the aces.">
 <title>Card ranking, high to low. Only eight tiers, because the threes rank with the kings and the twos rank with the aces.</title>
-<rect x="82.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="97.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">K♥</text>
-<text x="97.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Rey, and</text>
-<text x="97.0" y="67.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">the 3s</text>
-<rect x="118.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="133.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">Q♥</text>
-<text x="133.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Caballo</text>
-<rect x="154.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="169.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">J♥</text>
-<text x="169.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Sota</text>
-<rect x="190.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="205.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">7♥</text>
-<rect x="226.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="241.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">6♥</text>
-<rect x="262.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="277.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">5♥</text>
-<rect x="298.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="313.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">4♥</text>
-<rect x="334.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="349.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">A♥</text>
-<text x="349.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Ace, and</text>
-<text x="349.0" y="67.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">the 2s</text>
-<text x="74.0" y="32.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">High to low</text>
-<text x="186.0" y="84.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Card ranking, high to low. Only eight tiers, because the threes rank with</text>
-<text x="186.0" y="96.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">the kings and the twos rank with the aces.</text>
+<rect x="106.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="121.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">K♥</text>
+<text x="121.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Rey, and</text>
+<text x="121.0" y="67.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">the 3s</text>
+<rect x="142.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="157.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">Q♥</text>
+<text x="157.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Caballo</text>
+<rect x="178.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="193.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">J♥</text>
+<text x="193.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Sota</text>
+<rect x="214.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="229.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">7♥</text>
+<rect x="106.0" y="74.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="121.0" y="99.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">6♥</text>
+<rect x="142.0" y="74.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="157.0" y="99.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">5♥</text>
+<rect x="178.0" y="74.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="193.0" y="99.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">4♥</text>
+<rect x="214.0" y="74.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="229.0" y="99.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">A♥</text>
+<text x="229.0" y="124.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Ace, and</text>
+<text x="229.0" y="133.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">the 2s</text>
+<text x="98.0" y="32.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">High to low</text>
+<text x="138.0" y="150.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Card ranking, high to low. Only eight tiers, because</text>
+<text x="138.0" y="162.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">the threes rank with the kings and the twos rank with</text>
+<text x="138.0" y="174.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">the aces.</text>
 </svg>

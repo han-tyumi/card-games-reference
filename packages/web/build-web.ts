@@ -26,13 +26,17 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 
 import type { CardGame } from "naibi";
 import {
+  MIN_LEGIBLE_SCALE,
   SECTIONS,
   blocks,
   categoryLabel,
   durationLine,
   facts,
   loadGames,
+  naturalWidth,
   playersLine,
+  renderDiagramSvg,
+  renderFigureSvg,
 } from "naibi";
 // The same module the browser loads, so the words this indexes and the words a
 // query is split into cannot drift apart.
@@ -42,7 +46,6 @@ import { facetsFor, searchRecords } from "./records.ts";
 const PACKAGE_ROOT = fileURLToPath(new URL(".", import.meta.url));
 const REPO_ROOT = fileURLToPath(new URL("../..", import.meta.url));
 const ASSETS = join(PACKAGE_ROOT, "assets");
-const DIAGRAMS = join(REPO_ROOT, "rendered", "diagrams");
 const OUT = join(REPO_ROOT, "docs");
 
 const TITLE = "Naibi";
@@ -201,13 +204,43 @@ function table(headers: string[], rows: string[][]): string {
   );
 }
 
-function figureFor(id: string, caption: string): string {
-  const path = join(DIAGRAMS, `${id}.svg`);
-  if (!existsSync(path)) return "";
-  // Inlined rather than linked: one fewer request, and it inherits the page's
-  // dark-mode treatment.
-  const svg = readFileSync(path, "utf8").replace(/<\?xml[^>]*\?>\s*/, "");
-  return `<figure>${svg}<figcaption>${esc(caption)}</figcaption></figure>`;
+/**
+ * Wrap a drawing in a figure with a real caption.
+ *
+ * The SVG is drawn here rather than read out of `rendered/diagrams/`, which
+ * used to make the site silently depend on `npm run render` having gone first,
+ * and left every page carrying its caption twice: once baked into the image at
+ * a size that shrinks with it, and once underneath in `<figcaption>`. The
+ * caption belongs to the page.
+ *
+ * Inlined rather than linked: one fewer request, and it inherits the page's
+ * dark-mode treatment.
+ */
+function figure(svg: string, caption: string): string {
+  // A narrow column shrinks the drawing to fit, down to the point where the
+  // labels stop being readable; past that it keeps its size and scrolls, which
+  // is the bargain wide tables here already make. Ranking strips wrap
+  // themselves and rarely reach it. A ten-column tableau cannot wrap -- it
+  // really is ten columns -- so this is what it has instead.
+  const floor = Math.round(naturalWidth(svg) * MIN_LEGIBLE_SCALE);
+  return (
+    `<figure><div class="scroll" style="--floor:${floor}px">${svg}</div>` +
+    `<figcaption>${esc(caption)}</figcaption></figure>`
+  );
+}
+
+function diagramFor(game: CardGame): string {
+  if (!game.layout) return "";
+  return figure(
+    renderDiagramSvg(game.layout, game.name, { caption: false }),
+    game.layout.caption ?? `${game.name} setup`,
+  );
+}
+
+function figuresFor(game: CardGame): string[] {
+  return (game.figures ?? []).map((spec) =>
+    figure(renderFigureSvg(spec, game.name, { caption: false }), spec.caption),
+  );
 }
 
 function gamePage(game: CardGame): string {
@@ -233,9 +266,7 @@ function gamePage(game: CardGame): string {
     parts.push(prose(game[key]));
 
     if (key === "setup") {
-      if (game.layout) {
-        parts.push(figureFor(game.id, game.layout.caption ?? `${game.name} setup`));
-      }
+      parts.push(diagramFor(game));
       if (game.deal) {
         const hasRemoved = game.deal.some((r) => r.removed);
         const hasNote = game.deal.some((r) => r.note);
@@ -259,11 +290,7 @@ function gamePage(game: CardGame): string {
       }
     }
 
-    if (key === "play" && game.figures) {
-      game.figures.forEach((figure, index) => {
-        parts.push(figureFor(`${game.id}-fig${index + 1}`, figure.caption));
-      });
-    }
+    if (key === "play") parts.push(...figuresFor(game));
 
     if (key === "goal_and_scoring" && game.scoring_table) {
       const hasNote = game.scoring_table.some((r) => r.note);

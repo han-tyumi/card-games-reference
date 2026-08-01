@@ -12,7 +12,13 @@ import assert from "node:assert/strict";
 
 import { loadGames } from "naibi";
 import type { Figure, Layout } from "naibi";
-import { renderDiagramSvg, renderFigureSvg, wrapText } from "../svg.ts";
+import {
+  MIN_LEGIBLE_SCALE,
+  naturalWidth,
+  renderDiagramSvg,
+  renderFigureSvg,
+  wrapText,
+} from "../src/svg.ts";
 
 // --- wrapping -------------------------------------------------------------
 
@@ -181,4 +187,81 @@ test("a counter-example reads as a counter-example without the caption", () => {
   const clean = renderFigureSvg({ ...figure, rows: [figure.rows[0]!] }, "Euchre");
   assert.ok(!clean.includes("opacity="), "a valid figure dims nothing");
   assert.notEqual(label[1], /fill="(#[0-9a-f]{6})"[^>]*>Trumps/.exec(svg)?.[1]);
+});
+
+// --- who draws the caption ------------------------------------------------
+
+test("a page that has its own caption gets a drawing without one", () => {
+  // Markdown and the PDF have nowhere to put a caption but inside the picture.
+  // A web page has <figcaption>, and drew both: the readable one underneath and
+  // an unreadable copy baked into the image, shrinking along with it.
+  const withIt = renderFigureSvg(figure, "Euchre");
+  const without = renderFigureSvg(figure, "Euchre", { caption: false });
+
+  const drawn = (svg: string) =>
+    [...svg.matchAll(/<text[^>]*>(.*?)<\/text>/g)].map((m) => m[1]!);
+
+  assert.ok(drawn(withIt).some((t) => figure.caption.includes(t)));
+  assert.ok(
+    !drawn(without).some((t) => figure.caption.includes(t)),
+    "the caption is still drawn inside the picture",
+  );
+});
+
+test("dropping the caption drops the width it was reserving", () => {
+  // The canvas widens to hold a caption. A picture that is not carrying one
+  // should not still be paying for it — that width is what a phone shrinks.
+  const withIt = renderFigureSvg(figure, "Euchre");
+  const without = renderFigureSvg(figure, "Euchre", { caption: false });
+
+  assert.ok(naturalWidth(without) < naturalWidth(withIt));
+  assert.ok(Number(/height="(\d+)"/.exec(without)![1]) < Number(/height="(\d+)"/.exec(withIt)![1]));
+});
+
+test("a caption-less drawing still says what it is", () => {
+  // The picture loses its printed caption, not its accessible name.
+  const svg = renderFigureSvg(figure, "Euchre", { caption: false });
+  assert.match(svg, /role="img"/);
+  assert.ok(svg.includes(figure.caption), "no accessible name left");
+});
+
+test("a setup diagram drops its caption too", () => {
+  const layout: Layout = {
+    rows: [[{ kind: "stock", label: "Stock", face: "down" }]],
+    caption: "A caption that should not be drawn",
+  };
+
+  assert.ok(renderDiagramSvg(layout, "Klondike").includes(">A caption"));
+  const without = renderDiagramSvg(layout, "Klondike", { caption: false });
+  assert.ok(!/<text[^>]*>A caption/.test(without));
+  assert.ok(without.includes("Stock"), "the pile labels are not a caption");
+});
+
+// --- how small a drawing may get ------------------------------------------
+
+/** The px a label of `size` user units renders at, when `svg` is shown at `px`. */
+function labelAt(svg: string, size: number, px: number): number {
+  return (size * px) / Number(/viewBox="0 0 ([\d.]+)/.exec(svg)![1]);
+}
+
+test("nothing is drawn below the size its smallest labels need", () => {
+  // A page shrinks a drawing to fit and scrolls it past this point, so the
+  // point is where readability actually runs out. Card notes and pile captions
+  // are the smallest type in any of these, and 9px is the floor they were
+  // chosen against.
+  const SMALLEST = 8;
+
+  assert.ok(MIN_LEGIBLE_SCALE < 1, "a floor at full size would mean never shrinking");
+
+  for (const game of loadGames()) {
+    const drawings = [
+      ...(game.layout ? [renderDiagramSvg(game.layout, game.name, { caption: false })] : []),
+      ...(game.figures ?? []).map((f) => renderFigureSvg(f, game.name, { caption: false })),
+    ];
+
+    for (const svg of drawings) {
+      const px = labelAt(svg, SMALLEST, naturalWidth(svg) * MIN_LEGIBLE_SCALE);
+      assert.ok(px >= 8.9, `${game.id}: smallest label would be ${px.toFixed(1)}px`);
+    }
+  }
 });

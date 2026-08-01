@@ -19,9 +19,10 @@ import {
   facts,
   gamesByCategory,
   loadGames,
+  renderDiagramSvg,
+  renderFigureSvg,
 } from "naibi";
 import { DIAGRAM_DIR, RENDERED_DIR } from "./paths.ts";
-import { renderDiagramSvg, renderFigureSvg } from "./svg.ts";
 
 /** Hand size per player count, plus anything stripped from the deck. */
 export function dealTable(deal: NonNullable<CardGame["deal"]>): string[] {
