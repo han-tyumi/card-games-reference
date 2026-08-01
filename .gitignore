@@ -20,3 +20,8 @@ scratch/
 # repo means the Markdown and the PDF are readable straight from GitHub without
 # anyone having to install anything first. Regenerate it rather than editing it:
 #   npm run render && npm run pdf
+
+# Source text pulled down for an originality check. Someone else's copyrighted
+# prose, kept locally for the length of a check and deleted afterwards. Never
+# commit it -- that would be the exact thing the check exists to prevent.
+.sources/

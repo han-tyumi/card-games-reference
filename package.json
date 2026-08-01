@@ -29,6 +29,7 @@
     "web": "node packages/web/build-web.ts",
     "og": "node packages/web/build-og.ts",
     "pick": "node packages/build/pick.ts",
+    "originality": "node packages/build/originality.ts",
     "build": "npm run validate && npm run render && npm run pdf && npm run web",
     "test": "node --test",
     "check": "npm run validate -- --quiet && npm run render -- --check && npm run web -- --check && tsc --noEmit && npm test",

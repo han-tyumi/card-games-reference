@@ -49,6 +49,7 @@ than each keeping their own copy.
 | `packages/build/render-markdown.ts` | Generates `rendered/`. |
 | `packages/build/build-pdf.ts` | Compiles every game into one printable PDF. |
 | `packages/build/pick.ts` | Query the collection: "what can 5 of us play with one deck?" |
+| `packages/build/originality.ts` | Compare an entry's prose against source text. `npm run originality`. |
 | `packages/data/src/layout.ts` | Turns a game's `layout` into diagram geometry. |
 | `packages/data/src/prose.ts` | Parses the prose convention, shared by the PDF and the site. |
 | `packages/build/svg.ts` | Draws that geometry as SVG. |
@@ -356,6 +357,53 @@ So, concretely:
 
 If you ever find text in this repository that reads like it came from somewhere
 else, please open an issue. It will be rewritten.
+
+### Known gap: batch two has had one pass, and half of it was never touched
+
+Entries were added in two batches of thirty. The first batch went through three
+progressive originality passes; the second has had **one**, and that pass edited
+**15 of the 30**. These fifteen were never touched by it:
+
+`beggar-my-neighbour`, `big-two`, `concentration`, `durak`, `forty-thieves`,
+`hand-and-foot`, `koi-koi`, `mau-mau`, `mus`, `snap`, `texas-holdem`,
+`tien-len`, `tripeaks`, `truco`, `yukon`
+
+That is not evidence they are clean. The pass that ran found problems in roughly
+one entry in two of the half it did cover, and the site is live. This is the
+outstanding work on this project.
+
+### Checking wording against a source
+
+`npm run originality` compares an entry's prose against source text placed in
+`.sources/<game-id>/*.txt` — a gitignored directory, because it holds someone
+else's copyrighted prose for the length of a check and nothing more.
+
+Two things it deliberately does not do, both learned the hard way:
+
+**It does not search for phrases.** Search engines do not reliably honour
+quoting. A control query for a phrase containing invented words — nothing that
+could exist anywhere — returned ten results, so a hit list is not evidence a
+phrase was found, and "no results" cannot be observed at all. Every pass that
+counted search hits was measuring nothing.
+
+**It does not use a fixed threshold.** Card game procedure is formulaic, so
+"these two sentences are written alike" is the null hypothesis, not the signal.
+Measured against our own sixty entries, which copy nothing from each other:
+
+- at 35% shared structure: 5401 matches between our own entries
+- at 60%: 1122
+- six identical consecutive words: 834
+
+and the discrimination runs the wrong way — with rarity weighting a sentence
+rebuilt from a source's clause order scored 0.15 against an independent
+rewrite's 0.12. So the bar is *measured* instead: the tool computes what the
+best coincidental match between two unrelated passages looks like across this
+corpus, and reports only what beats it. Our own entries clear that bar 2.4% of
+the time, which is what a 99th-percentile bar should do.
+
+The output is a reading list, not a verdict. Paraphrase that swaps the
+vocabulary scores like independent writing, and nothing here can certify an
+entry clean — only find the ones worth reading beside their source.
 
 ### Check your own wording before opening a PR
 
