@@ -53,6 +53,12 @@ const REPO_URL = "https://github.com/han-tyumi/naibi";
 // it would double what every visitor downloads for something most never open.
 const PDF_URL = `${REPO_URL}/raw/main/rendered/naibi.pdf`;
 const ISSUES_URL = `${REPO_URL}/issues`;
+// Where this is served from. Only needed for the things that cannot be relative
+// -- canonical URLs, share-card metadata and the sitemap -- so a custom domain
+// would change this one line and nothing else.
+const SITE_URL = "https://han-tyumi.github.io/naibi/";
+/** Fetched by scrapers, never by the app, so it stays out of the precache. */
+const OG_IMAGE = "icons/og.png";
 
 /** Cache name changes with content, so a new build supersedes the old cache. */
 function contentHash(parts: string[]): string {
@@ -92,11 +98,16 @@ function page(opts: {
   title: string;
   description: string;
   body: string;
+  /** Site-relative path this page is written to, for its canonical URL. */
+  path: string;
   wide?: boolean;
   script?: boolean;
   depth: number;
 }): string {
   const up = opts.depth === 0 ? "" : "../";
+  // A directory and its index are one page; naming both splits whatever
+  // ranking or share count the page accumulates between two URLs.
+  const canonical = SITE_URL + opts.path.replace(/(^|\/)index\.html$/, "$1");
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -105,6 +116,17 @@ function page(opts: {
 <title>${esc(opts.title)}</title>
 <meta name="description" content="${esc(opts.description)}">
 <meta name="theme-color" content="#1f3a5f">
+<link rel="canonical" href="${esc(canonical)}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="${TITLE}">
+<meta property="og:title" content="${esc(opts.title)}">
+<meta property="og:description" content="${esc(opts.description)}">
+<meta property="og:url" content="${esc(canonical)}">
+<meta property="og:image" content="${SITE_URL}${OG_IMAGE}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="${TITLE} — ${esc(TAGLINE)}">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="manifest" href="${up}manifest.webmanifest">
 <link rel="icon" href="${up}icons/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="${up}icons/icon-192.png">
@@ -245,6 +267,7 @@ function gamePage(game: CardGame): string {
     title: `${game.name} — how to play | ${TITLE}`,
     description: `How to play ${game.name}: ${playersLine(game)}, ${durationLine(game)}, ${game.decks}.`,
     body: parts.join("\n"),
+    path: `games/${game.id}.html`,
     depth: 1,
   });
 }
@@ -344,6 +367,7 @@ page. Or just open this site once and it stays available offline.</p>
     title: `About — ${TITLE}`,
     description: `What ${TITLE} is, where the name comes from, and how to reuse it.`,
     body,
+    path: "about.html",
     depth: 0,
   });
 }
@@ -399,6 +423,7 @@ ${chipGroup("difficulty", "At most", [
     title: `${TITLE} — card game rules that work offline`,
     description: `${TAGLINE} Rules for ${games.length} card games, free to reuse, working offline.`,
     body: body.join("\n"),
+    path: "index.html",
     wide: true,
     script: true,
     depth: 0,
@@ -420,6 +445,18 @@ export function buildSite(games: CardGame[]): Map<string, string | Buffer> {
 
   files.set("index.html", indexPage(games));
   files.set("about.html", aboutPage(games));
+
+  // Sixty game pages are one click from the index, which a crawler will find on
+  // its own eventually. Listing them says so on the first visit instead.
+  const urls = ["", "about.html", ...games.map((g) => `games/${g.id}.html`)];
+  files.set(
+    "sitemap.xml",
+    `<?xml version="1.0" encoding="UTF-8"?>\n` +
+      `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+      urls.map((u) => `  <url><loc>${SITE_URL}${u}</loc></url>`).join("\n") +
+      `\n</urlset>\n`,
+  );
+  files.set("robots.txt", `Sitemap: ${SITE_URL}sitemap.xml\n`);
   files.set("search-index.json", JSON.stringify(buildIndex(searchRecords(games))));
   for (const game of games) files.set(`games/${game.id}.html`, gamePage(game));
 
@@ -464,7 +501,15 @@ export function buildSite(games: CardGame[]): Map<string, string | Buffer> {
   // that there is no reason to be clever about what to keep: install once and
   // the entire reference is available with no signal. The worker never caches
   // itself, and the manifest is fetched by the browser outside its control.
-  const precache = [...files.keys()].filter((f) => !f.endsWith(".webmanifest"));
+  const precache = [...files.keys()].filter(
+    (f) =>
+      !f.endsWith(".webmanifest") &&
+      // Fetched once by a link scraper and never by the app; precaching it
+      // would add a quarter of a megabyte to every visitor's first load.
+      f !== OG_IMAGE &&
+      f !== "sitemap.xml" &&
+      f !== "robots.txt",
+  );
   const version = contentHash(
     precache.map((f) => {
       const content = files.get(f)!;

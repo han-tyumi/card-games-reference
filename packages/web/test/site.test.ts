@@ -241,6 +241,98 @@ test("figures are inlined, not linked to files that are not shipped", () => {
   }
 });
 
+// --- how a shared link presents itself ------------------------------------
+
+test("every page names a canonical URL, and it is absolute", () => {
+  for (const page of pages) {
+    const canonical = /<link rel="canonical" href="([^"]+)">/.exec(text(page));
+    assert.ok(canonical, `${page}: no canonical URL`);
+    assert.match(canonical[1]!, /^https:\/\//, `${page}: canonical is not absolute`);
+  }
+});
+
+test("a canonical URL points back at the page it is on", () => {
+  const base = /<link rel="canonical" href="([^"]+)">/.exec(text("index.html"))![1]!;
+
+  for (const page of pages) {
+    const canonical = /<link rel="canonical" href="([^"]+)">/.exec(text(page))![1]!;
+    // The index is the directory itself; naming both it and index.html would
+    // split whatever the page accumulates between two URLs.
+    const expected = page === "index.html" ? base : base + page;
+    assert.equal(canonical, expected, `${page}: canonical does not match its path`);
+  }
+  assert.ok(base.endsWith("/"), "the site root is not a directory URL");
+});
+
+test("every page carries share-card metadata a scraper can use", () => {
+  for (const page of pages) {
+    const html = text(page);
+    for (const property of ["og:title", "og:description", "og:url", "og:image", "og:type"]) {
+      assert.match(
+        html,
+        new RegExp(`<meta property="${property}" content="[^"]+"`),
+        `${page}: no ${property}`,
+      );
+    }
+    assert.match(html, /<meta name="twitter:card" content="summary_large_image">/);
+  }
+});
+
+test("the share image is absolute, sized, and actually shipped", () => {
+  // A relative og:image is ignored by most scrapers, and one whose stated size
+  // is wrong gets cropped.
+  const html = text("index.html");
+  const image = /<meta property="og:image" content="([^"]+)">/.exec(html)![1]!;
+  assert.match(image, /^https:\/\//, "og:image is not absolute");
+
+  const path = image.slice(image.indexOf("/naibi/") + "/naibi/".length);
+  assert.ok(site.has(path), `og:image points at ${path}, which is not shipped`);
+  assert.match(html, /<meta property="og:image:width" content="1200">/);
+  assert.match(html, /<meta property="og:image:height" content="630">/);
+});
+
+test("og:title and og:description repeat what the page already says", () => {
+  // Two sources of truth for the same sentence is how one of them goes stale.
+  for (const page of pages) {
+    const html = text(page);
+    const title = /<title>([^<]+)<\/title>/.exec(html)![1];
+    const ogTitle = /<meta property="og:title" content="([^"]+)"/.exec(html)![1];
+    assert.equal(ogTitle, title, `${page}: og:title disagrees with <title>`);
+
+    const description = /<meta name="description" content="([^"]+)"/.exec(html)![1];
+    const ogDescription = /<meta property="og:description" content="([^"]+)"/.exec(html)![1];
+    assert.equal(ogDescription, description, `${page}: og:description disagrees`);
+  }
+});
+
+test("the sitemap lists every page, once, absolutely", () => {
+  const locs = [...text("sitemap.xml").matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]!);
+
+  assert.equal(locs.length, pages.length, "the sitemap and the site disagree in size");
+  assert.deepEqual(locs, [...new Set(locs)], "a URL is listed twice");
+  for (const loc of locs) assert.match(loc, /^https:\/\//);
+
+  const canonicals = pages.map(
+    (page) => /<link rel="canonical" href="([^"]+)">/.exec(text(page))![1]!,
+  );
+  assert.deepEqual([...locs].sort(), [...canonicals].sort(), "sitemap != canonical URLs");
+});
+
+test("robots.txt points at the sitemap that exists", () => {
+  const robots = text("robots.txt");
+  const sitemap = /Sitemap: (\S+)/.exec(robots);
+  assert.ok(sitemap, "robots.txt names no sitemap");
+  assert.ok(sitemap[1]!.endsWith("/sitemap.xml"));
+  assert.ok(site.has("sitemap.xml"));
+});
+
+test("the share image is not forced on every visitor", () => {
+  // A quarter of a megabyte that only link scrapers ever fetch.
+  assert.ok(!precache.includes("icons/og.png"), "the share card is precached");
+  assert.ok(!precache.includes("sitemap.xml"));
+  assert.ok(!precache.includes("robots.txt"));
+});
+
 // --- reachable to a screen reader -----------------------------------------
 
 test("every inlined figure has an accessible name", () => {
@@ -300,7 +392,12 @@ test("the precache covers everything the site is made of", () => {
   // the worker cannot usefully cache itself. Everything else must be listed,
   // or it is the one thing missing with no signal.
   const expected = [...site.keys()].filter(
-    (name) => !name.endsWith(".webmanifest") && name !== "sw.js" && name !== ".nojekyll",
+    (name) =>
+      !name.endsWith(".webmanifest") &&
+      name !== "sw.js" &&
+      name !== ".nojekyll" &&
+      // Deliberately excluded: fetched by scrapers and crawlers, not the app.
+      !["icons/og.png", "sitemap.xml", "robots.txt"].includes(name),
   );
 
   const listed = new Set(precache);

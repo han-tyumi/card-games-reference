@@ -55,6 +55,7 @@ than each keeping their own copy.
 | `packages/web/assets/search.js` | Search: builds the index and ranks queries. Shared by build and browser. |
 | `packages/web/assets/facets.js` | The filter chips' predicate. Shared by the page and the tests. |
 | `packages/web/records.ts` | Reduces a game to what search and the filters index. |
+| `packages/web/assets/og-card.html` | Source for the link preview image. `npm run og` renders it. |
 | `packages/*/test/*.test.ts` | Tests. `npm test`. |
 | `rendered/*.md` | **Generated.** Never hand-edit — your changes get overwritten. |
 | `rendered/diagrams/*.svg` | **Generated** setup diagrams. |
@@ -79,6 +80,8 @@ npm run pdf        # build rendered/naibi.pdf
 
 npm run web        # build the site into docs/
 npm run web -- --check   # fail if docs/ is stale (CI gate)
+
+npm run og         # regenerate the link preview card (needs playwright)
 
 npm run build      # all four, in order
 
