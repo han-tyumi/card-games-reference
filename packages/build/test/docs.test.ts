@@ -13,6 +13,7 @@
 
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -197,10 +198,25 @@ test("every command CLAUDE.md names actually exists", () => {
   assert.deepEqual(missing, []);
 });
 
+/** Gitignored paths are absent from a fresh clone by design, not by mistake. */
+function ignored(path: string): boolean {
+  try {
+    execFileSync("git", ["check-ignore", "--quiet", path], { cwd: REPO_ROOT });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 test("every path CLAUDE.md names actually exists", () => {
+  // Gitignored paths are exempt: .sources/ is named because an agent needs to
+  // know what it is and that it must never be committed, and it is absent from
+  // a clean checkout precisely because that rule is working. Checking existence
+  // without this passed locally and failed CI — which is the discipline this
+  // very file tells agents to follow, broken in the commit that added it.
   const missing: string[] = [];
   for (const [, path] of agentGuide.matchAll(/`([\w.-]+\/[\w./-]*)`/g)) {
-    if (!existsSync(join(REPO_ROOT, path!))) missing.push(path!);
+    if (!existsSync(join(REPO_ROOT, path!)) && !ignored(path!)) missing.push(path!);
   }
   assert.deepEqual(missing, []);
 });
