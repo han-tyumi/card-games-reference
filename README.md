@@ -37,11 +37,15 @@ than each keeping their own copy.
 | **`packages/web/`** | The site: static, installable, offline. Private. |
 | **`packages/build/`** | Validation and output generation. Private; not published. |
 | `packages/build/validate.ts` | Schema + consistency check. Run before committing. |
+| `packages/build/checks.ts` | The rules a schema cannot express. Pure functions, unit tested. |
 | `packages/build/render-markdown.ts` | Generates `rendered/`. |
 | `packages/build/build-pdf.ts` | Compiles every game into one printable PDF. |
 | `packages/build/pick.ts` | Query the collection: "what can 5 of us play with one deck?" |
 | `packages/data/src/layout.ts` | Turns a game's `layout` into diagram geometry. |
+| `packages/data/src/prose.ts` | Parses the prose convention, shared by the PDF and the site. |
 | `packages/build/svg.ts` | Draws that geometry as SVG. |
+| `packages/web/assets/search.js` | Search: builds the index and ranks queries. Shared by build and browser. |
+| `packages/*/test/*.test.ts` | Tests. `npm test`. |
 | `rendered/*.md` | **Generated.** Never hand-edit — your changes get overwritten. |
 | `rendered/diagrams/*.svg` | **Generated** setup diagrams. |
 | `docs/` | **Generated** site, served by GitHub Pages. |
@@ -66,7 +70,9 @@ npm run pdf        # build rendered/naibi.pdf
 npm run web        # build the site into docs/
 
 npm run build      # all four, in order
-npm run check      # CI gate: validate + rendered/ is current + typecheck
+
+npm test           # run the tests
+npm run check      # CI gate: validate + rendered/ is current + typecheck + tests
 ```
 
 ### What can we play right now?
@@ -84,6 +90,33 @@ Filters: `--players`, `--decks`, `--jokers`, `--minutes`, `--difficulty`
 `--tag` (repeatable). This is a demonstration that the data supports the
 filtering a real picker needs — not the companion tool described in
 [`tools/README.md`](tools/README.md).
+
+### Tests
+
+```sh
+npm test                      # everything
+node --test packages/data     # one package
+node --test --test-name-pattern="overlapping"
+```
+
+`node --test` runs the `.ts` files directly, like everything else here — no
+runner, no config, no dependency.
+
+Two things are tested, and they are not the same thing:
+
+- **`npm run validate` checks the data.** Every entry against the schema, plus
+  the rules a schema cannot express. It is what stops a bad entry being
+  committed.
+- **`npm test` checks the code.** The geometry behind every diagram, the prose
+  parser, the search ranking, the validator's own rules.
+
+The code tests exist because of how the bugs in this repo have actually been
+found: by looking at output. A pyramid drawn with its rows apart, two captions
+printed on top of one another, a search for "canast" leading with the wrong
+game — none of that throws, and none of it shows up in a type error. So each of
+those is now a test that names the thing that went wrong, and geometry and
+ranking are asserted against the real corpus rather than against fixtures that
+agree with the code by construction.
 
 Two more, needed only when the schema itself changes:
 
@@ -452,7 +485,8 @@ faster".
 
 ### Checklist before opening a PR
 
-- [ ] `npm run check` passes
+- [ ] `npm run check` passes (validation, types and tests)
+- [ ] Behaviour you changed has a test; a bug you fixed has one naming it
 - [ ] `rendered/` regenerated and committed
 - [ ] Wording is original — nothing copied or lightly reworded from a source
 - [ ] `sources_consulted` lists what you actually checked, by name

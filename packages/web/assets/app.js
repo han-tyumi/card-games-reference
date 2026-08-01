@@ -6,14 +6,14 @@
  * every word of every entry, using an index fetched once and then cached by the
  * service worker like everything else — so it keeps working with no signal.
  *
- * Sixty documents is small enough that ranking is a loop over an object. There
- * is no server, no query API and nothing to debounce.
+ * The ranking itself lives in search.js, shared with the build that writes the
+ * index. What is left here is the part that touches the page.
  */
 
-(function () {
-  const list = document.getElementById("games");
-  if (!list) return;
+import { labelsFor, score } from "./search.js";
 
+const list = document.getElementById("games");
+if (list) {
   const facets = JSON.parse(document.getElementById("facets").textContent);
   const items = Array.from(list.children);
   const count = document.getElementById("count");
@@ -27,15 +27,12 @@
   let loading = null;
 
   /** Fetched on first use so a visitor who only browses never pays for it. */
-  function loadIndex() {
+  const loadIndex = () => {
     if (index) return Promise.resolve(index);
     if (!loading) {
       loading = fetch("search-index.json")
         .then((r) => r.json())
-        .then((data) => {
-          index = data;
-          return data;
-        })
+        .then((data) => (index = data))
         .catch(() => {
           // Offline before the index was ever cached: fall back to matching
           // names and tags, which are already in the page.
@@ -44,85 +41,9 @@
         });
     }
     return loading;
-  }
+  };
 
-  function tokenise(text) {
-    return (text.toLowerCase().match(/[a-z][a-z'-]{1,}/g) || []).map((w) =>
-      w.replace(/^-+|-+$/g, ""),
-    );
-  }
-
-  /**
-   * Score every document against the query.
-   *
-   * The final word is matched as a prefix, so results narrow while you are
-   * still typing it. Earlier words must match in full — once you have finished
-   * a word, meaning it loosely is not helpful.
-   */
-  function score(query) {
-    const words = tokenise(query);
-    if (words.length === 0) return null;
-    if (!index || !index.terms) return null;
-
-    const weightOf = {};
-    for (const [bit, weight] of index.fields) weightOf[bit] = weight;
-
-    let running = null;
-
-    words.forEach((word, i) => {
-      const last = i === words.length - 1;
-      const hits = new Map();
-
-      const NAME_BIT = 1;
-      const consider = (postings, penalty) => {
-        for (let p = 0; p < postings.length; p += 2) {
-          const doc = postings[p];
-          const mask = postings[p + 1];
-          let s = 0;
-          for (const bit in weightOf) {
-            if (!(mask & bit)) continue;
-            // A prefix hit on a game's NAME is a strong signal, not a weak one:
-            // typing "canast" means Canasta, even though prose elsewhere may
-            // use the finished word more often. Only prose hits are discounted.
-            s += weightOf[bit] * (Number(bit) === NAME_BIT ? 1 : penalty);
-          }
-          const prev = hits.get(doc);
-          // penalty is already applied per field above; applying it again here
-          // would undo the name exemption.
-          const value = { s, m: mask | (prev ? prev.m : 0) };
-          if (!prev || value.s > prev.s) hits.set(doc, value);
-        }
-      };
-
-      if (index.terms[word]) consider(index.terms[word], 1);
-
-      if (last && word.length >= 2) {
-        // Prefix matches count for less than an exact one, so "spade" still
-        // ranks above "spades-something" for a completed word.
-        for (const term in index.terms) {
-          if (term !== word && term.startsWith(word)) {
-            consider(index.terms[term], 0.6);
-          }
-        }
-      }
-
-      // Every word must hit something: this is an AND, not an OR.
-      if (running === null) {
-        running = hits;
-      } else {
-        const merged = new Map();
-        for (const [doc, value] of hits) {
-          const prev = running.get(doc);
-          if (prev) merged.set(doc, { s: prev.s + value.s, m: prev.m | value.m });
-        }
-        running = merged;
-      }
-    });
-
-    return running;
-  }
-
-  function facetsMatch(game) {
+  const facetsMatch = (game) => {
     if (state.players) {
       const n = Number(state.players);
       if (game.lo > n || game.hi < n) return false;
@@ -133,22 +54,19 @@
     if (state.minutes && (game.max === null || game.max > Number(state.minutes))) return false;
     if (state.difficulty && RANK[game.diff] > RANK[state.difficulty]) return false;
     return true;
-  }
+  };
 
   /** Used when the index has not loaded yet, or could not be. */
-  function nameMatch(i) {
+  const nameMatch = (i) => {
     for (const word of state.q.split(/\s+/)) {
       if (word && !facets[i].s.includes(word)) return false;
     }
     return true;
-  }
+  };
 
-  function apply() {
-    const hits = state.q ? score(state.q) : null;
-    const labelOf = {};
-    if (index && index.fields) {
-      for (const [bit, , label] of index.fields) labelOf[bit] = label;
-    }
+  const apply = () => {
+    const hits = state.q ? score(index, state.q) : null;
+    const fields = index?.fields ?? [];
 
     const ranked = [];
     items.forEach((li, i) => {
@@ -170,8 +88,7 @@
         // a game called Slapjack and a game you slap in.
         const where = li.querySelector(".where");
         if (where) {
-          const names = [];
-          for (const bit in labelOf) if (hit.m & bit) names.push(labelOf[bit]);
+          const names = labelsFor(fields, hit.m);
           where.textContent = names.length ? `found in ${names.join(", ")}` : "";
         }
       }
@@ -190,7 +107,7 @@
     count.textContent =
       shown === items.length ? `${shown} games` : `${shown} of ${items.length} games`;
     empty.hidden = shown > 0;
-  }
+  };
 
   box.addEventListener("input", () => {
     state.q = box.value.trim().toLowerCase();
@@ -223,4 +140,4 @@
   else setTimeout(loadIndex, 1500);
 
   apply();
-})();
+}

@@ -26,6 +26,9 @@ jobs:
       - name: Type-check the tooling
         run: npm run typecheck
 
+      - name: Run the tests
+        run: npm test
+
       - name: Check rendered/ is up to date
         run: npm run render -- --check
 

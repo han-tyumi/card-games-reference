@@ -19,10 +19,11 @@ import { dirname, join } from "node:path";
 
 import PDFDocument from "pdfkit";
 
-import type { CardGame } from "naibi";
+import type { Block, CardGame } from "naibi";
 import {
   CARD,
   SECTIONS,
+  blocks,
   buildDiagram,
   buildFigure,
   isRedSuit,
@@ -121,38 +122,6 @@ function clean(text: string, unicode: boolean): string {
   for (const [glyph, replacement] of GLYPH_FALLBACKS) {
     out = out.split(glyph).join(replacement);
   }
-  return out;
-}
-
-type Block =
-  | { kind: "paragraph"; text: string }
-  | { kind: "list"; items: string[] };
-
-/**
- * Split prose on blank lines. Entries use a light Markdown convention -- blank
- * lines between paragraphs and "- " for bullets -- which the Markdown output
- * gets for free but the PDF has to interpret.
- */
-function blocks(text: string): Block[] {
-  const out: Block[] = [];
-
-  for (const chunk of text.split("\n\n")) {
-    const lines = chunk
-      .split("\n")
-      .map((line) => line.trim())
-      .filter((line) => line.length > 0);
-    if (lines.length === 0) continue;
-
-    if (lines.every((line) => /^[-*]\s+/.test(line))) {
-      out.push({
-        kind: "list",
-        items: lines.map((line) => line.replace(/^[-*]\s+/, "")),
-      });
-    } else {
-      out.push({ kind: "paragraph", text: lines.join(" ") });
-    }
-  }
-
   return out;
 }
 

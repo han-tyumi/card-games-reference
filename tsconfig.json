@@ -24,7 +24,18 @@
 
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+
+    // The browser assets are plain JavaScript because the browser has to run
+    // them as they are. allowJs lets the build import the search module rather
+    // than keeping a second copy of it in TypeScript.
+    "allowJs": true
   },
-  "include": ["packages/*/src/**/*.ts", "packages/*/*.ts", "packages/*/schema/**/*.ts"]
+  "include": [
+    "packages/*/src/**/*.ts",
+    "packages/*/*.ts",
+    "packages/*/test/**/*.ts",
+    "packages/*/schema/**/*.ts",
+    "packages/web/assets/search.js"
+  ]
 }

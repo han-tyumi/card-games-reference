@@ -1,0 +1,106 @@
+/**
+ * Properties that must hold across every entry in the corpus.
+ *
+ * The validator checks that entries are well formed. This checks that they can
+ * actually be *drawn* and *read*: that every layout produces finite geometry,
+ * every figure fits on a page, every shared figure reference resolves. A number
+ * that comes out NaN here becomes an invisible card in the PDF, which is the
+ * kind of thing nobody notices until it is printed.
+ */
+
+import { test } from "node:test";
+import assert from "node:assert/strict";
+
+import { blocks, buildDiagram, buildFigure, loadGames, loadSharedFigures } from "naibi";
+
+const games = loadGames();
+
+test("there are games to check", () => {
+  assert.ok(games.length >= 30, `only ${games.length} games loaded`);
+});
+
+test("games arrive sorted by display name", () => {
+  const sorted = [...games].sort((a, b) =>
+    a.name.localeCompare(b.name, "en", { sensitivity: "base" }),
+  );
+  assert.deepEqual(games.map((g) => g.name), sorted.map((g) => g.name));
+});
+
+test("every layout produces finite, positive geometry", () => {
+  for (const game of games) {
+    if (!game.layout) continue;
+    const diagram = buildDiagram(game.layout);
+
+    assert.ok(Number.isFinite(diagram.width) && diagram.width > 0, `${game.id}: width`);
+    assert.ok(Number.isFinite(diagram.height) && diagram.height > 0, `${game.id}: height`);
+    assert.ok(diagram.piles.length > 0, `${game.id}: drew no piles`);
+
+    for (const pile of diagram.piles) {
+      for (const card of pile.cards) {
+        assert.ok(Number.isFinite(card.x) && card.x >= 0, `${game.id}: card x`);
+        assert.ok(Number.isFinite(card.y) && card.y >= 0, `${game.id}: card y`);
+      }
+    }
+    for (const label of diagram.labels) {
+      assert.ok(Number.isFinite(label.y), `${game.id}: label y`);
+      // A caption whose baseline falls past the bottom of the diagram is drawn
+      // over whatever comes next.
+      assert.ok(label.y <= diagram.height, `${game.id}: label below the diagram`);
+    }
+  }
+});
+
+test("every figure produces finite geometry and fits the page", () => {
+  // Wider than this and the PDF has to shrink it below readable size. Fourteen
+  // cards is the schema's limit; this is the practical one.
+  const MAX_WIDTH = 14 * 36 + 74;
+
+  for (const game of games) {
+    for (const [index, figure] of (game.figures ?? []).entries()) {
+      const where = `${game.id} figure ${index + 1}`;
+      const built = buildFigure(figure);
+
+      assert.ok(Number.isFinite(built.width) && built.width > 0, `${where}: width`);
+      assert.ok(Number.isFinite(built.height) && built.height > 0, `${where}: height`);
+      assert.ok(built.cards.length > 0, `${where}: drew no cards`);
+      assert.ok(built.width <= MAX_WIDTH, `${where}: ${built.width} units wide`);
+    }
+  }
+});
+
+test("every figure_refs id resolves, and resolves into the game", () => {
+  const shared = loadSharedFigures();
+  const ids = new Set(Object.keys(shared));
+  assert.ok(ids.size > 0, "no shared figures defined");
+
+  for (const game of games) {
+    for (const ref of game.figure_refs ?? []) {
+      assert.ok(ids.has(ref), `${game.id} references unknown figure "${ref}"`);
+      assert.ok(
+        game.figures?.some((f) => f.caption === shared[ref]?.caption),
+        `${game.id} references "${ref}" but it was not spliced in`,
+      );
+    }
+  }
+});
+
+test("every prose section parses into at least one block", () => {
+  for (const game of games) {
+    for (const key of ["setup", "play", "goal_and_scoring"] as const) {
+      assert.ok(blocks(game[key]).length > 0, `${game.id}: ${key} parsed to nothing`);
+    }
+  }
+});
+
+test("no prose section ends mid-list", () => {
+  // A section whose last block is a one-item list is usually a bullet that lost
+  // its siblings to a bad paste.
+  for (const game of games) {
+    for (const key of ["setup", "play", "goal_and_scoring"] as const) {
+      const last = blocks(game[key]).at(-1);
+      if (last?.kind === "list") {
+        assert.ok(last.items.length > 1, `${game.id}: ${key} ends in a one-item list`);
+      }
+    }
+  }
+});

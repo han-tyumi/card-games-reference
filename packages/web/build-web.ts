@@ -28,12 +28,17 @@ import { fileURLToPath } from "node:url";
 import type { CardGame } from "naibi";
 import {
   SECTIONS,
+  blocks,
   categoryLabel,
   durationLine,
   facts,
   loadGames,
   playersLine,
 } from "naibi";
+// The same module the browser loads, so the words this indexes and the words a
+// query is split into cannot drift apart.
+import { buildIndex } from "./assets/search.js";
+import { searchRecords } from "./records.ts";
 
 const PACKAGE_ROOT = fileURLToPath(new URL(".", import.meta.url));
 const REPO_ROOT = fileURLToPath(new URL("../..", import.meta.url));
@@ -64,23 +69,19 @@ function esc(value: string): string {
     .replace(/"/g, "&quot;");
 }
 
-/** Entries use blank lines for paragraphs and "- " for bullets; nothing else. */
+/**
+ * Entries use blank lines for paragraphs and "- " for bullets; nothing else.
+ * The parsing is shared with the PDF, so the two cannot disagree about what a
+ * list is; only the markup below is ours.
+ */
 function prose(text: string): string {
-  const out: string[] = [];
-  for (const chunk of text.split("\n\n")) {
-    const lines = chunk.split("\n").map((l) => l.trim()).filter(Boolean);
-    if (lines.length === 0) continue;
-    if (lines.every((l) => /^[-*]\s+/.test(l))) {
-      out.push(
-        "<ul>" +
-          lines.map((l) => `<li>${esc(l.replace(/^[-*]\s+/, ""))}</li>`).join("") +
-          "</ul>",
-      );
-    } else {
-      out.push(`<p>${esc(lines.join(" "))}</p>`);
-    }
-  }
-  return out.join("\n");
+  return blocks(text)
+    .map((block) =>
+      block.kind === "list"
+        ? "<ul>" + block.items.map((i) => `<li>${esc(i)}</li>`).join("") + "</ul>"
+        : `<p>${esc(block.text)}</p>`,
+    )
+    .join("\n");
 }
 
 function page(opts: {
@@ -114,7 +115,7 @@ ${opts.body}
 <a href="${REPO_URL}">Source and corrections</a>.</p>
 </footer>
 </div>
-${opts.script ? `<script src="${up}app.js"></script>` : ""}
+${opts.script ? `<script type="module" src="${up}app.js"></script>` : ""}
 <script>
 if ("serviceWorker" in navigator) {
   addEventListener("load", () => navigator.serviceWorker.register("${up}sw.js"));
@@ -240,80 +241,6 @@ function gamePage(game: CardGame): string {
   });
 }
 
-/**
- * A full-text index over every word of every entry.
- *
- * Sixty documents is small enough that the whole index ships to the browser and
- * searching is a loop over an object -- no server, no query API, and it works
- * with no signal like the rest of the app. Terms map to positions in the games
- * array, which is the same order the page renders, so a hit is an array index.
- *
- * Each posting carries a weight and a bitmask of which sections matched, so a
- * result can say WHERE it was found rather than only that it was.
- */
-const FIELD = {
-  // The primary name outranks an alias by a wide margin. Otherwise Hand and
-  // Foot, aliased "Hand and Foot Canasta", ties with Canasta for "canasta" --
-  // and then wins on prose, which is exactly backwards.
-  name: { bit: 1, weight: 14, label: "name" },
-  alias: { bit: 64, weight: 5, label: "other names" },
-  tags: { bit: 2, weight: 6, label: "tags" },
-  setup: { bit: 4, weight: 1, label: "setup" },
-  play: { bit: 8, weight: 2, label: "play" },
-  goal_and_scoring: { bit: 16, weight: 1, label: "scoring" },
-  variants: { bit: 32, weight: 1, label: "variants" },
-} as const;
-
-function tokenise(text: string): string[] {
-  return (text.toLowerCase().match(/[a-z][a-z'-]{1,}/g) ?? []).map((w) =>
-    w.replace(/^-+|-+$/g, ""),
-  );
-}
-
-function searchIndex(games: CardGame[]): string {
-  // term -> docIndex -> field bitmask. The score is a pure function of the
-  // mask (each field contributes its weight once), so storing it too would be
-  // a third of the index spent on a number the client can derive.
-  const terms = new Map<string, Map<number, number>>();
-
-  games.forEach((game, doc) => {
-    const fields: [keyof typeof FIELD, string][] = [
-      ["name", game.name],
-      ["alias", game.aliases.join(" ")],
-      ["tags", [...game.tags, categoryLabel(game.category)].join(" ")],
-      ["setup", game.setup],
-      ["play", game.play],
-      ["goal_and_scoring", game.goal_and_scoring],
-      ["variants", game.variants.map((v) => `${v.name} ${v.description}`).join(" ")],
-    ];
-
-    for (const [field, text] of fields) {
-      const { bit } = FIELD[field];
-      for (const word of new Set(tokenise(text))) {
-        let postings = terms.get(word);
-        if (!postings) terms.set(word, (postings = new Map()));
-        postings.set(doc, (postings.get(doc) ?? 0) | bit);
-      }
-    }
-  });
-
-  // Words appearing in nearly every entry ("card", "player") cost bytes and
-  // rank nothing, so drop them.
-  const ubiquitous = Math.floor(games.length * 0.9);
-  const out: Record<string, number[]> = {};
-  for (const [word, postings] of terms) {
-    if (postings.size > ubiquitous) continue;
-    // Flattened to [doc, mask, doc, mask, ...]: half the punctuation of an
-    // array of pairs, over tens of thousands of postings.
-    out[word] = [...postings].flat();
-  }
-
-  return JSON.stringify({
-    fields: Object.values(FIELD).map((f) => [f.bit, f.weight, f.label]),
-    terms: out,
-  });
-}
-
 /** Only the facets the filters need; kept small because it ships in the page. */
 function facetsFor(games: CardGame[]): string {
   return JSON.stringify(
@@ -420,10 +347,10 @@ const write = (relative: string, content: string): void => {
 };
 
 write("index.html", indexPage(games));
-write("search-index.json", searchIndex(games));
+write("search-index.json", JSON.stringify(buildIndex(searchRecords(games))));
 for (const game of games) write(`games/${game.id}.html`, gamePage(game));
 
-for (const asset of ["style.css", "app.js"]) {
+for (const asset of ["style.css", "app.js", "search.js"]) {
   write(asset, readFileSync(join(ASSETS, asset), "utf8"));
 }
 

@@ -70,7 +70,7 @@ const MIN_CAPTION_WIDTH = 260;
  * `maxLines` caps the result; anything that still will not fit is left on the
  * last line, since a clipped word is worse than a slightly wide one.
  */
-function wrapText(
+export function wrapText(
   text: string,
   width: number,
   fontSize: number,
