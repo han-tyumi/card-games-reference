@@ -391,6 +391,8 @@ boundaries.
 Pick sentences that would be damning if they matched. Searching "Aces are low"
 proves nothing; a match there is coincidence.
 
+## Running the checks
+
 ### Tests
 
 ```sh

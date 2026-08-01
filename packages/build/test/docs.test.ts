@@ -156,3 +156,26 @@ test("every file the contributor guide links to exists", () => {
   }
   assert.deepEqual(missing, []);
 });
+
+test("no section is buried under a heading it has nothing to do with", () => {
+  // Splitting the README concatenated blocks in an order that left "Tests" and
+  // "Types come from the schema" trailing the copyright section, so they read as
+  // part of it. Nothing failed; the document just quietly said something untrue
+  // about its own structure. Cheap to check, invisible otherwise.
+  const sections = new Map<string, string[]>();
+  let current = "";
+  for (const line of contributing.split("\n")) {
+    const h2 = /^## (.+)$/.exec(line);
+    const h3 = /^### (.+)$/.exec(line);
+    if (h2) sections.set((current = h2[1]!.trim()), []);
+    else if (h3 && current) sections.get(current)!.push(h3[1]!.trim());
+  }
+
+  assert.ok(sections.size >= 3, "the guide has collapsed into one section");
+  for (const [heading, children] of sections) {
+    assert.ok(
+      children.length <= 6,
+      `"${heading}" has ${children.length} subsections — likely a split gone wrong`,
+    );
+  }
+});
