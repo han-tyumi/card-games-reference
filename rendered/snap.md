@@ -58,7 +58,7 @@ What actually wins is watching all the piles at once rather than the card in you
 
 **Tags:** beginner-friendly, classic, family-friendly, kids, luck, quick, reflex, speed
 
-*Rules verified against: Pagat, Wikipedia, Game Rules, Official Game Rules, PlayingCardDecks, Game On Family, Dummies. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Wikipedia, Game Rules, Official Game Rules, PlayingCardDecks, Game On Family, Dummies.*
 
 ---
 

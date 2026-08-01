@@ -101,7 +101,7 @@ A tournament has a definite end. Everyone starts with an identical stack, the bl
 
 **Tags:** betting, bluffing, classic, large-group, long-game, strategy, two-player
 
-*Rules verified against: Pagat, PokerNews, Upswing Poker, PokerListings, Wikipedia, World Poker Tour, Automatic Poker. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, PokerNews, Upswing Poker, PokerListings, Wikipedia, World Poker Tour, Automatic Poker.*
 
 ---
 

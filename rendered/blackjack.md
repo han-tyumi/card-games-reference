@@ -81,7 +81,7 @@ There is no running score. You play as many rounds as you like and count your ch
 
 **Tags:** betting, classic, counting, luck, strategy
 
-*Rules verified against: Wizard of Odds, Vegas Aces, Casino.org, PokerNews, BetMGM Casino Blog, Denexa Games, Wikipedia. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Wizard of Odds, Vegas Aces, Casino.org, PokerNews, BetMGM Casino Blog, Denexa Games, Wikipedia.*
 
 ---
 

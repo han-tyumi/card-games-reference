@@ -66,7 +66,7 @@ Most deals can be cleared. Solvability with the wrap allowed is usually quoted a
 
 **Tags:** beginner-friendly, classic, family-friendly, luck, quick, solo, strategy
 
-*Rules verified against: Wikipedia, Semicolon Solitaire Rules, BVS Solitaire, Solitaire Association, TrySolitaire, Solitaire Bliss, Solitaire Network. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Wikipedia, Semicolon Solitaire Rules, BVS Solitaire, Solitaire Association, TrySolitaire, Solitaire Bliss, Solitaire Network.*
 
 ---
 

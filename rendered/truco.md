@@ -93,7 +93,7 @@ Score in the traditional way if you can, with matchsticks or beans laid out in g
 
 **Tags:** bluffing, classic, counting, partnership, strategy, two-player
 
-*Rules verified against: Pagat, Wikipedia, Mundigames, Naipes Heraclio Fournier, Ludoteka, Conecta Games, GameVelvet, Arcadia Games. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Wikipedia, Mundigames, Naipes Heraclio Fournier, Ludoteka, Conecta Games, GameVelvet, Arcadia Games.*
 
 ---
 

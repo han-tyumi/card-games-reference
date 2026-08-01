@@ -107,7 +107,7 @@ There is no target score. Agree a number of hands — a multiple of the number o
 
 **Tags:** classic, counting, long-game, strategy
 
-*Rules verified against: Pagat, Wikipedia, Britannica, Parlett Games, Skatgame.net, Deutscher Skatverband, Official Game Rules. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Wikipedia, Britannica, Parlett Games, Skatgame.net, Deutscher Skatverband, Official Game Rules.*
 
 ---
 

@@ -56,6 +56,6 @@ and states the licence:
 Commercial use is fine and needs no permission. Found a rule that is wrong?
 Please open an issue upstream rather than fixing it only in your copy.
 
-The rules of a card game are facts and free for anyone to describe. The wording
-here is the project's own — written from scratch, never copied or reworded from
-another source. See the [main README](../../README.md) for the full approach.
+The rules of a card game are facts and free for anyone to describe; the wording
+a source chose belongs to that source. The text here is the project's own. See
+the [main README](../../README.md) for the full approach.

@@ -87,7 +87,7 @@ The scoring is the reason a partnership talks. Two clean canastas and a quick ex
 
 **Tags:** counting, family-friendly, large-group, long-game, partnership, strategy
 
-*Rules verified against: Pagat, Bicycle Cards, GameRules.com, Official Game Rules, Denexa Games, World of Card Games, Gambiter. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Bicycle Cards, GameRules.com, Official Game Rules, Denexa Games, World of Card Games, Gambiter.*
 
 ---
 

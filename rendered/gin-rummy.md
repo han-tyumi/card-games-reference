@@ -72,7 +72,7 @@ Keep running totals. The game ends as soon as either player's total reaches 100 
 
 **Tags:** classic, counting, strategy, travel, two-player
 
-*Rules verified against: Pagat, Bicycle Cards, Wikipedia, Britannica, Denexa Games, Official Game Rules, Cool Old Games. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Bicycle Cards, Wikipedia, Britannica, Denexa Games, Official Game Rules, Cool Old Games.*
 
 ---
 

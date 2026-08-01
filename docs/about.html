@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>About — Naibi</title>
+<meta name="description" content="What Naibi is, where the name comes from, and how to reuse it.">
+<meta name="theme-color" content="#1f3a5f">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<a class="backlink" href="./">All games</a>
+<article class="game">
+<h1>About Naibi</h1>
+
+<h2>What this is</h2>
+<p>A reference for how to play card games, for the deck you already own. Every
+game here is playable with cards you can buy anywhere — a standard 52-card pack,
+sometimes two, occasionally a named pack the entry tells you about up front.</p>
+<p>It is built for the moment it is actually needed: someone at the table asks
+how a rule works, or you are teaching a game you have not played in a year. So
+it loads fast, works with no signal once you have opened it, and can be
+installed to a home screen like an app. There is no account, no tracking and
+nothing to sign up for.</p>
+
+<h2>The name</h2>
+<p><strong>Naibi</strong> is the first European word for playing cards, recorded
+in Florence in 1377. Cards reached Europe from the Mamluk Sultanate of Egypt in
+the 1370s and the Italians called them <em>naibi</em>, from the Arabic
+<em>nā'ib</em>, "deputy" — the rank of court card in the Mamluk pack that every
+European deck descends from. Spain still calls them <em>naipes</em>.</p>
+
+<h2>How it is made</h2>
+<p>Every game is one structured file: the players, the deal, the rules, the
+scoring, the variants worth knowing. The website, the printable booklet and the
+plain-text version are all generated from those same files, so a rule corrected
+once is corrected everywhere.</p>
+<p>The text is the project's own throughout. Rules are facts and anyone may
+describe them, but the words a source chose to describe them in belong to that
+source, so nothing here is copied or reworded from one. Each entry lists what it
+was checked against.</p>
+
+<h2>Using it elsewhere</h2>
+<p>The rules text is licensed
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>: use
+it, print it, build on it, including commercially, as long as you credit Naibi
+and share what you build on the same terms. The code that generates all this is
+MIT.</p>
+
+<h2>Corrections and contributions</h2>
+<p>60 games so far, and rules vary by region and family — if
+something here disagrees with how you learned it, that is worth knowing.
+<a href="https://github.com/han-tyumi/naibi/issues">Open an issue</a> or send a change on
+<a href="https://github.com/han-tyumi/naibi">GitHub</a>.</p>
+
+<h2>Take it with you</h2>
+<p>The whole collection is also
+<a href="https://github.com/han-tyumi/naibi/raw/main/rendered/naibi.pdf">a printable booklet</a> — one PDF, bookmarked, a game to a
+page. Or just open this site once and it stays available offline.</p>
+</article>
+<footer>
+<nav class="site-nav">
+<a href="about.html">About</a>
+<a href="https://github.com/han-tyumi/naibi/raw/main/rendered/naibi.pdf">Print the booklet (PDF)</a>
+<a href="https://github.com/han-tyumi/naibi">Source on GitHub</a>
+<a href="https://github.com/han-tyumi/naibi/issues">Report a mistake</a>
+</nav>
+<p>Text licensed
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
+</footer>
+</div>
+
+<script>
+if ("serviceWorker" in navigator) {
+  addEventListener("load", () => navigator.serviceWorker.register("sw.js"));
+}
+</script>
+</body>
+</html>

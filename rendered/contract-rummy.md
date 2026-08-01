@@ -80,7 +80,7 @@ The pressure the scoring creates is specific to this game. In an ordinary rummy 
 
 **Tags:** classic, counting, family-friendly, large-group, long-game, strategy
 
-*Rules verified against: Pagat, Wikipedia, GameRules.com, Official Game Rules, Denexa Games, The Rummy Rulebook, Gambiter. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Wikipedia, GameRules.com, Official Game Rules, Denexa Games, The Rummy Rulebook, Gambiter.*
 
 ---
 

@@ -101,7 +101,7 @@ The match runs to an agreed total, 501 for a short game and 1000 for a full even
 
 **Tags:** classic, counting, partnership, strategy
 
-*Rules verified against: Pagat, Wikipedia, Britannica, Denexa Games, Fédération Française de Belote, iBelote, Nordic Card Games. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Wikipedia, Britannica, Denexa Games, Fédération Française de Belote, iBelote, Nordic Card Games.*
 
 ---
 

@@ -55,7 +55,7 @@ A full round is nine deals, one per hole, with the strokes added up, and two rou
 
 **Tags:** beginner-friendly, classic, luck, quick, solo, strategy
 
-*Rules verified against: Wikipedia, Solitaire Central Rulebook, Solitaire Laboratory, Wikibooks Solitaire card games, Parlett Games, Bicycle Cards. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Wikipedia, Solitaire Central Rulebook, Solitaire Laboratory, Wikibooks Solitaire card games, Parlett Games, Bicycle Cards.*
 
 ---
 

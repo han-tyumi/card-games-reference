@@ -87,7 +87,7 @@ If two players pass the target in the same round, settle it by counting in the t
 
 **Tags:** classic, counting, family-friendly, strategy, two-player
 
-*Rules verified against: Pagat, Wikipedia, Britannica, Hoyle's Rules of Games, Denexa Games, GameRules.com. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Wikipedia, Britannica, Hoyle's Rules of Games, Denexa Games, GameRules.com.*
 
 ---
 

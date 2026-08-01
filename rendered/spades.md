@@ -73,7 +73,7 @@ Play continues until a side is at 500 or more at the end of a hand. If both side
 
 **Tags:** classic, counting, partnership, strategy
 
-*Rules verified against: Pagat, Bicycle Cards, Trickster Cards, VIP Spades, Spades.co, DKM Games, MPL Games. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Bicycle Cards, Trickster Cards, VIP Spades, Spades.co, DKM Games, MPL Games.*
 
 ---
 

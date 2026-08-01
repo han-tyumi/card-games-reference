@@ -38,6 +38,7 @@ import { RENDERED_DIR } from "./paths.ts";
 const TITLE = "Naibi";
 const PRONUNCIATION = "NYE-bee";
 const SUBTITLE = "Original write-ups of traditional and popular card games";
+const REPO_URL = "https://github.com/han-tyumi/naibi";
 const ORIGIN =
   "Naibi is the first European word for playing cards, recorded in Florence in " +
   "1377. It comes from the Arabic nā'ib, “deputy” — the rank of court card in " +
@@ -468,15 +469,8 @@ function titlePage(book: Booklet, gameCount: number): void {
   book.text(ORIGIN, { lineGap: 2.5 });
   doc.moveDown(0.6);
   book.text(
-    "Every entry in this book was written from scratch. Game rules are facts and " +
-      "belong to everyone; the words used to explain them here are the project's " +
-      "own, not reproduced from any other rulebook or website.",
-    { lineGap: 2.5 },
-  );
-  doc.moveDown(0.6);
-  book.text(
     `Text licensed under CC BY-SA 4.0. Scripts licensed under MIT. ` +
-      `Generated ${new Date().toISOString().slice(0, 10)}.`,
+      `${REPO_URL} · Generated ${new Date().toISOString().slice(0, 10)}.`,
     { lineGap: 2.5 },
   );
 }
@@ -624,11 +618,9 @@ function gamePage(
   doc.moveDown(0.4);
   book.ensureSpace(26);
   doc.font(fonts.italic).fontSize(9).fillColor(MUTED);
-  book.text(
-    `Rules verified against: ${game.sources_consulted.join(", ")}. ` +
-      `Original text; not reproduced from those sources.`,
-    { lineGap: 1.5 },
-  );
+  book.text(`Rules checked against: ${game.sources_consulted.join(", ")}.`, {
+    lineGap: 1.5,
+  });
 }
 
 function drawContents(book: Booklet, pages: number[]): void {

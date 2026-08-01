@@ -57,7 +57,7 @@ The players who last are rarely the fastest; they are the ones taking in the spo
 
 **Tags:** beginner-friendly, classic, family-friendly, kids, large-group, luck, party, reflex, speed
 
-*Rules verified against: Pagat, Bicycle Cards, Wikipedia, Game Rules, Gambiter, Official Game Rules, Classic Games and Puzzles. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Bicycle Cards, Wikipedia, Game Rules, Gambiter, Official Game Rules, Classic Games and Puzzles.*
 
 ---
 

@@ -57,7 +57,7 @@ No exhaustive solver study has settled Forty Thieves the way one settled FreeCel
 
 **Tags:** classic, counting, luck, solo, strategy
 
-*Rules verified against: Wikipedia, Solitaire Central Rulebook, Semicolon Solitaire Rules, BVS Solitaire, Solitaire Association, Denexa Games, SuitedGames, Solitaired. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Wikipedia, Solitaire Central Rulebook, Semicolon Solitaire Rules, BVS Solitaire, Solitaire Association, Denexa Games, SuitedGames, Solitaired.*
 
 ---
 

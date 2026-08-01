@@ -69,7 +69,7 @@ If you would rather not play to a finish, agree on a fixed number of rounds and 
 
 **Tags:** beginner-friendly, classic, family-friendly, quick, reflex, speed, two-player
 
-*Rules verified against: Pagat, Wikipedia, Official Game Rules, Gamerules.com, Card Game Wiki, Game On Family. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Wikipedia, Official Game Rules, Gamerules.com, Card Game Wiki, Game On Family.*
 
 ---
 

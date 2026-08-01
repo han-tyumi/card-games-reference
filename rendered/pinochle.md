@@ -98,7 +98,7 @@ First side to 1000 points wins. The customary tie-break is that the contracting 
 
 **Tags:** classic, counting, long-game, partnership, strategy
 
-*Rules verified against: Pagat, Bicycle Cards, Wikipedia, Britannica, Trickster Cards, Denexa Games. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Bicycle Cards, Wikipedia, Britannica, Trickster Cards, Denexa Games.*
 
 ---
 

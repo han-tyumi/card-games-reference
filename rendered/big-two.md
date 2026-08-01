@@ -76,7 +76,7 @@ There is no target score in the traditional game. Play an agreed number of deals
 
 **Tags:** betting, classic, counting, strategy, two-player
 
-*Rules verified against: Pagat, Wikipedia, Cool Old Games, Gambiter, Denexa Games, Official Game Rules, Cats at Cards, Group Games 101, HobbyLark. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Wikipedia, Cool Old Games, Gambiter, Denexa Games, Official Game Rules, Cats at Cards, Group Games 101, HobbyLark.*
 
 ---
 

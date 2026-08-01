@@ -57,7 +57,7 @@ How often Yukon can be won is genuinely unsettled, and the figures in circulatio
 
 **Tags:** classic, luck, quick, solo, strategy
 
-*Rules verified against: Wikipedia, BVS Solitaire, Solitaire City, Solitaired, Solitaire Bliss, Solitaire Network, Pure Solitaire. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Wikipedia, BVS Solitaire, Solitaire City, Solitaired, Solitaire Bliss, Solitaire Network, Pure Solitaire.*
 
 ---
 

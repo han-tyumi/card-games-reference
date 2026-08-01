@@ -67,7 +67,7 @@ One finishing detail is worth agreeing in advance. If your last card is a 10, or
 
 **Tags:** beginner-friendly, classic, family-friendly, luck, party, quick, travel
 
-*Rules verified against: Pagat, Bicycle Cards, Wikipedia, Official Game Rules, Game Rules, Cats at Cards, Gambiter, Bar Games 101. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Bicycle Cards, Wikipedia, Official Game Rules, Game Rules, Cats at Cards, Gambiter, Bar Games 101.*
 
 ---
 

@@ -75,7 +75,7 @@ Games are usually a race to 10. Playing to 11 is common in some regions, and lea
 
 **Tags:** beginner-friendly, classic, family-friendly, partnership, strategy
 
-*Rules verified against: Pagat, Bicycle Cards, Wikipedia, Britannica, World Euchre Federation, Ohio Euchre, Trickster Cards. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Bicycle Cards, Wikipedia, Britannica, World Euchre Federation, Ohio Euchre, Trickster Cards.*
 
 ---
 

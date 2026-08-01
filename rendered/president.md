@@ -63,7 +63,7 @@ Two details worth settling early. A player who goes out on their last play still
 
 **Tags:** beginner-friendly, classic, large-group, party, strategy
 
-*Rules verified against: Pagat, Wikipedia, Bicycle Cards, Britannica, Game Rules, Official Game Rules, Cats at Cards, Gambiter, Denexa Games. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Wikipedia, Bicycle Cards, Britannica, Game Rules, Official Game Rules, Cats at Cards, Gambiter, Denexa Games.*
 
 ---
 

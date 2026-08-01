@@ -90,7 +90,7 @@ A deal can easily come out negative. Add each deal to the running total, since t
 
 **Tags:** classic, counting, long-game, partnership, strategy
 
-*Rules verified against: Pagat, Bicycle Cards, Wikipedia, Britannica, Hoyle's Rules of Games, Canasta League of America, GameRules.com. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Bicycle Cards, Wikipedia, Britannica, Hoyle's Rules of Games, Canasta League of America, GameRules.com.*
 
 ---
 

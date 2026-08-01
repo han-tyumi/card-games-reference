@@ -71,7 +71,7 @@ A hand claimed by an instant win, where the rules allow them, normally pays a fi
 
 **Tags:** betting, classic, counting, strategy, two-player
 
-*Rules verified against: Pagat, Gambiter, Cool Old Games, Cats at Cards, Game Rules, CardRules+, Play Party Game, Everything2, Great Group Games. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Gambiter, Cool Old Games, Cats at Cards, Game Rules, CardRules+, Play Party Game, Everything2, Great Group Games.*
 
 ---
 

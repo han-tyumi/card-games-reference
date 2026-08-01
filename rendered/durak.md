@@ -81,7 +81,7 @@ Where a running tally is wanted, write down who was the fool each deal and play 
 
 **Tags:** classic, family-friendly, quick, strategy, two-player
 
-*Rules verified against: Pagat, Official Game Rules, Gambiter, Wikibooks Card Games, Nordic Card Games, PlayJoy, Group Games 101. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Official Game Rules, Gambiter, Wikibooks Card Games, Nordic Card Games, PlayJoy, Group Games 101.*
 
 ---
 

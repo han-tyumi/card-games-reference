@@ -84,7 +84,7 @@ Nothing is scored cumulatively. Chips move pot by pot, you buy in for what you a
 
 **Tags:** betting, bluffing, classic, counting, large-group, memory, strategy, two-player
 
-*Rules verified against: Pagat, PokerNews, Card Player, Upswing Poker, Robert's Rules of Poker, PokerStars, Wikipedia. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, PokerNews, Card Player, Upswing Poker, Robert's Rules of Poker, PokerStars, Wikipedia.*
 
 ---
 

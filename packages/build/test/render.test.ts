@@ -104,10 +104,16 @@ test("a game's aids sit with the prose they support, not in a gallery", () => {
   assert.ok(table > setup && table < play, "the deal table is not under Setup");
 });
 
-test("sources are credited and the text is claimed as original", () => {
+test("sources are credited, without a speech about it", () => {
   const md = renderGame(sample);
-  assert.ok(md.includes(sample.sources_consulted[0]!));
-  assert.ok(md.includes("original text, not reproduced"));
+  assert.ok(md.includes(sample.sources_consulted[0]!), "sources not credited");
+
+  // How the project writes its entries is a contribution rule, not a fact about
+  // this game, so it belongs on the About page and in the README -- not under
+  // every single entry, where it read as protesting too much.
+  for (const claim of ["original text", "not reproduced", "written from scratch"]) {
+    assert.ok(!md.includes(claim), `still says "${claim}"`);
+  }
 });
 
 test("every generated cross-link points at a file that exists", () => {

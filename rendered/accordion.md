@@ -55,7 +55,7 @@ There is no formal scoring, but the obvious measure is the number of piles stand
 
 **Tags:** classic, luck, quick, solo, strategy
 
-*Rules verified against: Wikipedia, Solitaire Laboratory, Bicycle Cards, Wikibooks Solitaire card games, BVS Solitaire, Solitaire Association. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Wikipedia, Solitaire Laboratory, Bicycle Cards, Wikibooks Solitaire card games, BVS Solitaire, Solitaire Association.*
 
 ---
 

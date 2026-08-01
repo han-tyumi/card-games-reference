@@ -71,7 +71,7 @@ As a rough sense of the numbers, a hand in single figures is a good hole, a nega
 
 **Tags:** beginner-friendly, classic, counting, family-friendly, kids, large-group, luck, strategy, two-player
 
-*Rules verified against: Pagat, Bicycle Cards, Wikipedia, PlayingCardDecks, Game Rules, Bar Games 101, Official Game Rules. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Bicycle Cards, Wikipedia, PlayingCardDecks, Game Rules, Bar Games 101, Official Game Rules.*
 
 ---
 

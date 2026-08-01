@@ -53,7 +53,7 @@ Because the loser is decided entirely by blind draws and by how well people disg
 
 **Tags:** beginner-friendly, classic, family-friendly, kids, luck, quick, travel
 
-*Rules verified against: Pagat, Wikipedia, Bicycle Cards, Gambiter, Card Game Wiki, Ducksters. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Wikipedia, Bicycle Cards, Gambiter, Card Game Wiki, Ducksters.*
 
 ---
 

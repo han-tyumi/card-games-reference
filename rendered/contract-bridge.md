@@ -112,7 +112,7 @@ Honours are a rubber-bridge relic: a bonus for holding a clutch of top trumps in
 
 **Tags:** classic, counting, long-game, partnership, strategy
 
-*Rules verified against: Pagat, Wikipedia, Bicycle Cards, American Contract Bridge League, The Bridge World, BridgeBum, Denexa Games, Britannica. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Wikipedia, Bicycle Cards, American Contract Bridge League, The Bridge World, BridgeBum, Denexa Games, Britannica.*
 
 ---
 

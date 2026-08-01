@@ -71,7 +71,7 @@ Ties for first place are normally just shared. Some groups settle them with a si
 
 **Tags:** classic, counting, family-friendly, large-group, strategy
 
-*Rules verified against: Pagat, Wikipedia, Trickster Cards, Game Rules, Official Game Rules, PlayingCardDecks. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Wikipedia, Trickster Cards, Game Rules, Official Game Rules, PlayingCardDecks.*
 
 ---
 

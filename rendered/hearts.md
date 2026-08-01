@@ -75,7 +75,7 @@ Keep a running total for each player. The game ends at the end of the hand in wh
 
 **Tags:** beginner-friendly, classic, counting, family-friendly, strategy
 
-*Rules verified against: Pagat, Bicycle Cards, Wikipedia, Britannica, Official Game Rules, Dice Game Depot, Trickster Cards, Cool Old Games. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Bicycle Cards, Wikipedia, Britannica, Official Game Rules, Dice Game Depot, Trickster Cards, Cool Old Games.*
 
 ---
 

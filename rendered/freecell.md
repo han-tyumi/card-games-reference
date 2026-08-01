@@ -68,7 +68,7 @@ Losing a FreeCell deal is therefore almost always your mistake rather than the s
 
 **Tags:** classic, family-friendly, solo, strategy
 
-*Rules verified against: Wikipedia, Solitaire Laboratory, Solitaire Central, BVS Solitaire, PlayFreeCellOnline, Freecell Solver documentation (Shlomi Fish). This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Wikipedia, Solitaire Laboratory, Solitaire Central, BVS Solitaire, PlayFreeCellOnline, Freecell Solver documentation (Shlomi Fish).*
 
 ---
 

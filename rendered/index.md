@@ -2,7 +2,7 @@
 
 # Card Game Rules — Index
 
-60 games, written from scratch and free to reuse under CC BY-SA 4.0.
+60 games, free to reuse under CC BY-SA 4.0.
 
 ## Solitaire (1 player)
 

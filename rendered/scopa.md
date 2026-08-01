@@ -91,7 +91,7 @@ If two sides pass the target in the same round, the higher total wins; if they a
 
 **Tags:** classic, counting, family-friendly, memory, partnership, strategy, two-player
 
-*Rules verified against: Pagat, Wikipedia, Gambiter, Board Game Arena, GameRules.com, Official Game Rules. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Wikipedia, Gambiter, Board Game Arena, GameRules.com, Official Game Rules.*
 
 ---
 

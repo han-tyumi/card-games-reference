@@ -63,7 +63,7 @@ Speed matters less than people assume. What actually wins is watching the pile r
 
 **Tags:** beginner-friendly, classic, family-friendly, kids, luck, quick, reflex, speed
 
-*Rules verified against: Bicycle Cards, Pagat, Wikipedia, Game Rules, Official Game Rules, PlayingCardDecks, Learning Board Games. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Bicycle Cards, Pagat, Wikipedia, Game Rules, Official Game Rules, PlayingCardDecks, Learning Board Games.*
 
 ---
 

@@ -60,6 +60,13 @@ a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset:
 .masthead .pron { margin: 0.15rem 0 0; color: var(--ink-soft); font-size: 0.9rem; font-style: italic; }
 .masthead p.blurb { margin: 0.7rem 0 0; color: var(--ink-soft); font-size: 0.97rem; }
 
+/* Wraps to as many lines as it needs. Spacing separates the links rather than
+   punctuation: a drawn separator belongs to one item or the other, and whichever
+   you choose, wrapping eventually strands it at the start or end of a row. */
+.site-nav { display: flex; flex-wrap: wrap; gap: 0.35rem 1.15rem; margin: 0.8rem 0 0; }
+.site-nav a { font-size: 0.9rem; text-decoration: none; }
+.site-nav a:hover { text-decoration: underline; }
+
 .backlink {
   display: inline-block;
   margin: 1.2rem 0 0.4rem;
@@ -210,6 +217,8 @@ th { color: var(--ink-soft); font-weight: 600; font-size: 0.8rem;
 
 footer { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--rule);
   color: var(--ink-soft); font-size: 0.83rem; }
+footer .site-nav { margin: 0 0 0.6rem; }
+footer p { margin: 0; }
 
 /* Dark mode inverts the page but not the diagrams, which are drawn on white.
    Softening them stops each one burning a hole in a dim room. */

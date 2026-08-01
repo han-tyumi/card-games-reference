@@ -57,7 +57,7 @@ Most households therefore cap it. Play for a set time, or a set number of battle
 
 **Tags:** beginner-friendly, classic, family-friendly, kids, luck, travel, two-player
 
-*Rules verified against: Pagat, Wikipedia, Bicycle Cards, Dice Game Depot, Geeky Hobbies, Gamerules.com, Wizard of Odds, Card Game Wiki. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Wikipedia, Bicycle Cards, Dice Game Depot, Geeky Hobbies, Gamerules.com, Wizard of Odds, Card Game Wiki.*
 
 ---
 

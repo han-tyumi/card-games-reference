@@ -63,7 +63,7 @@ If you want a running score, the two simple methods are one point per round won,
 
 **Tags:** beginner-friendly, classic, family-friendly, quick, reflex, speed, two-player
 
-*Rules verified against: Wikipedia, Official Game Rules, Gambiter, Group Games 101, Learning Board Games, Gather Together Games, PlayingCardDecks. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Wikipedia, Official Game Rules, Gambiter, Group Games 101, Learning Board Games, Gather Together Games, PlayingCardDecks.*
 
 ---
 

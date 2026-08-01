@@ -35,10 +35,68 @@ const precache: string[] = JSON.parse(
 
 // --- shape ----------------------------------------------------------------
 
-test("one page per game, plus the index", () => {
-  assert.equal(pages.length, games.length + 1);
+test("one page per game, plus the index and About", () => {
+  assert.equal(pages.length, games.length + 2);
+  assert.ok(site.has("index.html"));
+  assert.ok(site.has("about.html"));
   for (const game of games) {
     assert.ok(site.has(`games/${game.id}.html`), `no page for ${game.id}`);
+  }
+});
+
+test("the repository and the booklet are reachable from every page", () => {
+  // Including a game page, which is where someone lands from a search engine
+  // and where a wrong rule is most likely to be noticed.
+  for (const page of pages) {
+    const html = text(page);
+    assert.match(html, /https:\/\/github\.com\/[\w-]+\/naibi(?:["/])/, `${page}: no repo link`);
+    assert.ok(html.includes("naibi.pdf"), `${page}: no booklet link`);
+    assert.ok(/href="(\.\.\/)?about\.html"/.test(html), `${page}: no About link`);
+  }
+});
+
+test("the booklet link points at the file the PDF build actually writes", () => {
+  // rendered/naibi.pdf is committed rather than copied into docs/, so the link
+  // leaves the site -- and a renamed output would 404 with nothing to catch it.
+  const link = /https:\/\/github\.com\/[\w-]+\/naibi\/raw\/main\/(\S+?\.pdf)/.exec(
+    text("index.html"),
+  );
+  assert.ok(link, "no raw booklet link");
+  assert.equal(link[1], "rendered/naibi.pdf");
+});
+
+test("the About page carries the things said nowhere else", () => {
+  const html = text("about.html");
+
+  for (const heading of ["What this is", "The name", "How it is made", "Using it elsewhere"]) {
+    assert.ok(html.includes(heading), `About is missing "${heading}"`);
+  }
+  // The originality policy, stated once, here.
+  assert.ok(html.includes("copied or reworded"), "About does not explain the text policy");
+  assert.ok(html.includes("CC BY-SA 4.0"), "About does not name the licence");
+  assert.ok(html.includes("naibi"), "About does not explain the name");
+});
+
+test("no page lectures the reader about the text being original", () => {
+  // It is how the project works, not a fact about Klondike. Said once on the
+  // About page; everywhere else just credits what was checked.
+  for (const page of pages) {
+    if (page === "about.html") continue;
+    const html = text(page);
+    for (const claim of ["written from scratch", "not reproduced", "original text"]) {
+      assert.ok(!html.includes(claim), `${page} still says "${claim}"`);
+    }
+  }
+});
+
+test("a game page still credits what its rules were checked against", () => {
+  for (const game of games) {
+    const html = text(`games/${game.id}.html`);
+    assert.ok(html.includes("Rules checked against"), `${game.id}: no credit line`);
+    assert.ok(
+      html.includes(game.sources_consulted[0]!.replace(/&/g, "&amp;")),
+      `${game.id}: sources not named`,
+    );
   }
 });
 

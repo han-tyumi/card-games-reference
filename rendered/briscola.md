@@ -83,7 +83,7 @@ Because at two, four and six players 61 is the only threshold, the endgame is no
 
 **Tags:** classic, counting, family-friendly, partnership, quick, strategy, two-player
 
-*Rules verified against: Pagat, Wikipedia, Board Game Arena, Denexa Games, Gambiter, Official Game Rules. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Wikipedia, Board Game Arena, Denexa Games, Gambiter, Official Game Rules.*
 
 ---
 

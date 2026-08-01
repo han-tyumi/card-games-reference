@@ -63,7 +63,7 @@ The skill in the game is memory. Every question tells the table what you hold an
 
 **Tags:** beginner-friendly, classic, family-friendly, kids, luck, memory, quick, travel
 
-*Rules verified against: Pagat, Bicycle Cards, Wikipedia, Geeky Hobbies, Ducksters, Solitaire Paradise. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Bicycle Cards, Wikipedia, Geeky Hobbies, Ducksters, Solitaire Paradise.*
 
 ---
 

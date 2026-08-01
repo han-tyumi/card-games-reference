@@ -79,7 +79,7 @@ A session ends whenever the table decides. Count the chips, settle whatever the 
 
 **Tags:** beginner-friendly, betting, bluffing, classic, strategy, two-player
 
-*Rules verified against: Pagat, PokerNews, CardPlayer, PokerListings, Pokerology, Official Game Rules, Wikipedia. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, PokerNews, CardPlayer, PokerListings, Pokerology, Official Game Rules, Wikipedia.*
 
 ---
 

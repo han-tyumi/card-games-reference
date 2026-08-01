@@ -75,7 +75,7 @@ Beyond 61 the incentive changes shape. A side already sure of the deal should be
 
 **Tags:** classic, counting, family-friendly, partnership, strategy
 
-*Rules verified against: Pagat, Wikipedia, Ludoteka, Gambiter, GameRules.com, GameVelvet. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Wikipedia, Ludoteka, Gambiter, GameRules.com, GameVelvet.*
 
 ---
 

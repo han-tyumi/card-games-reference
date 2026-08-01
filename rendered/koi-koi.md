@@ -97,7 +97,7 @@ Games are often played for a stake per point rather than a running total, which 
 
 **Tags:** classic, luck, memory, strategy, travel, two-player
 
-*Rules verified against: Wikipedia, Fuda Wiki, Board Game Arena game help, Sloperama hanafuda rules, Gambiter, Hanafuda Legends, GameDesign.jp. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Wikipedia, Fuda Wiki, Board Game Arena game help, Sloperama hanafuda rules, Gambiter, Hanafuda Legends, GameDesign.jp.*
 
 ---
 

@@ -87,7 +87,7 @@ The tension is worth stating plainly. A card played from your stock scores exact
 
 **Tags:** classic, family-friendly, large-group, party, reflex, speed, strategy, two-player
 
-*Rules verified against: Pagat, Bicycle Cards, Wikipedia, Official Game Rules, Group Games 101, Gambiter, DKM Games, Game Rules Hub. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Bicycle Cards, Wikipedia, Official Game Rules, Group Games 101, Gambiter, DKM Games, Game Rules Hub.*
 
 ---
 

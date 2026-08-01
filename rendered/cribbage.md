@@ -84,7 +84,7 @@ In match play, a loser still short of 91 is skunked and the win is usually worth
 
 **Tags:** classic, counting, family-friendly, strategy, travel, two-player
 
-*Rules verified against: Pagat, Bicycle Cards, Wikipedia, Britannica, American Cribbage Congress, Masters of Games. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Bicycle Cards, Wikipedia, Britannica, American Cribbage Congress, Masters of Games.*
 
 ---
 

@@ -84,7 +84,7 @@ Once somebody crosses the line, play the deal in progress out to its end rather 
 
 **Tags:** beginner-friendly, classic, family-friendly, kids, luck, quick, travel, two-player
 
-*Rules verified against: Pagat, Wikipedia, Game Rules, Official Game Rules, Gambiter, CardgamesHub, German Culture, Palace of Cards. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Wikipedia, Game Rules, Official Game Rules, Gambiter, CardgamesHub, German Culture, Palace of Cards.*
 
 ---
 

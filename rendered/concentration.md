@@ -55,7 +55,7 @@ Once the cards are down, very little about the result is luck. The shuffle decid
 
 **Tags:** beginner-friendly, classic, family-friendly, kids, memory, quick, two-player
 
-*Rules verified against: Pagat, Wikipedia, Gambiter, Game Rules, Classic Games and Puzzles, Card Game Database Wiki. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Wikipedia, Gambiter, Game Rules, Classic Games and Puzzles, Card Game Database Wiki.*
 
 ---
 

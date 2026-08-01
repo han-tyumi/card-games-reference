@@ -55,7 +55,7 @@ If you want a score, the usual convention is a penalty of one point per card lef
 
 **Tags:** beginner-friendly, classic, counting, luck, quick, solo, strategy
 
-*Rules verified against: Wikipedia, Solitaire Central Rulebook, Wikibooks Solitaire card games, BVS Solitaire, Bicycle Cards, PlayingCardDecks. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Wikipedia, Solitaire Central Rulebook, Wikibooks Solitaire card games, BVS Solitaire, Bicycle Cards, PlayingCardDecks.*
 
 ---
 

@@ -60,7 +60,7 @@ If you want a game that certainly ends, cap it before you start: play for a fixe
 
 **Tags:** beginner-friendly, classic, family-friendly, kids, luck, two-player
 
-*Rules verified against: Pagat, Wikipedia, Gamerules.com, Official Game Rules, Denexa Games, Dummies, Casella and others, A Non-Terminating Game of Beggar-My-Neighbor. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Wikipedia, Gamerules.com, Official Game Rules, Denexa Games, Dummies, Casella and others, A Non-Terminating Game of Beggar-My-Neighbor.*
 
 ---
 

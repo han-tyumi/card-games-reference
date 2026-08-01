@@ -76,7 +76,7 @@ A few practical points that decide games. Lie small: claiming one card is far le
 
 **Tags:** beginner-friendly, bluffing, classic, family-friendly, large-group, party, quick
 
-*Rules verified against: Pagat, Bicycle Cards, Wikipedia, Official Game Rules, Game Rules, Denexa Games, PlayingCardDecks, Gambiter. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Bicycle Cards, Wikipedia, Official Game Rules, Game Rules, Denexa Games, PlayingCardDecks, Gambiter.*
 
 ---
 

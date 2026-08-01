@@ -116,13 +116,11 @@ export function renderGame(game: CardGame): string {
   }
 
   lines.push(
-    `*Rules verified against: ${game.sources_consulted.join(", ")}. ` +
-      `This write-up is original text, not reproduced from those sources.*`,
+    `*Rules checked against: ${game.sources_consulted.join(", ")}.*`,
     "",
     "---",
     "",
-    "Part of [Naibi](../README.md). " +
-      "Text licensed [CC BY-SA 4.0](../LICENSE).",
+    "Part of [Naibi](../README.md). Text licensed [CC BY-SA 4.0](../LICENSE).",
     "",
   );
 
@@ -135,7 +133,7 @@ export function renderIndex(games: CardGame[]): string {
     "",
     "# Card Game Rules — Index",
     "",
-    `${games.length} games, written from scratch and free to reuse under CC BY-SA 4.0.`,
+    `${games.length} games, free to reuse under CC BY-SA 4.0.`,
     "",
   ];
 

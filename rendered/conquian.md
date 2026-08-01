@@ -67,7 +67,7 @@ For a session played without money, the simplest arrangement is a point to the w
 
 **Tags:** classic, quick, strategy, two-player
 
-*Rules verified against: Pagat, Wikipedia, Bicycle Cards, Denexa Games, Cool Old Games, GameRules.com, David Parlett, card game histories. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Wikipedia, Bicycle Cards, Denexa Games, Cool Old Games, GameRules.com, David Parlett, card game histories.*
 
 ---
 

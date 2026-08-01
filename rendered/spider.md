@@ -57,7 +57,7 @@ Not every deal can be won, and the suit setting changes the odds enormously. One
 
 **Tags:** classic, family-friendly, luck, solo, strategy
 
-*Rules verified against: Wikipedia, Semicolon Solitaire Rules, Solitaired, BVS Solitaire, SuitedGames, TrySolitaire, Solitaire Bliss. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Wikipedia, Semicolon Solitaire Rules, Solitaired, BVS Solitaire, SuitedGames, TrySolitaire, Solitaire Bliss.*
 
 ---
 

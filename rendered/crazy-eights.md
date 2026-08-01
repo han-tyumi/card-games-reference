@@ -75,7 +75,7 @@ Finish the deal you are in rather than stopping the instant somebody crosses the
 
 **Tags:** beginner-friendly, classic, family-friendly, kids, luck, quick, travel
 
-*Rules verified against: Pagat, Bicycle Cards, Wikipedia, Britannica, Dice Game Depot, Official Game Rules, Game Rules, Ducksters, PlayingCardDecks. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Bicycle Cards, Wikipedia, Britannica, Dice Game Depot, Official Game Rules, Game Rules, Ducksters, PlayingCardDecks.*
 
 ---
 

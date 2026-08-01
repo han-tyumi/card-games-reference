@@ -57,7 +57,7 @@ Many modern groups drop honours entirely and score tricks only, which makes the 
 
 **Tags:** beginner-friendly, classic, memory, partnership, strategy
 
-*Rules verified against: Pagat, Bicycle Cards, Britannica, Official Game Rules, Trickster Cards, Gamerules.com, Card Game Rules. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Bicycle Cards, Britannica, Official Game Rules, Trickster Cards, Gamerules.com, Card Game Rules.*
 
 ---
 

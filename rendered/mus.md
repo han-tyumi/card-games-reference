@@ -94,7 +94,7 @@ The ordago is what all of this is really for. Because a single round can be made
 
 **Tags:** bluffing, classic, counting, long-game, partnership, strategy
 
-*Rules verified against: Pagat, Wikipedia, Naipes Heraclio Fournier, Gambiter, Denexa Games, Ludoteka, Torofun, Bizkaia.eus. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Wikipedia, Naipes Heraclio Fournier, Gambiter, Denexa Games, Ludoteka, Torofun, Bizkaia.eus.*
 
 ---
 

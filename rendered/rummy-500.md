@@ -77,7 +77,7 @@ Going out is worth having but carries no bonus in the standard game. Its value i
 
 **Tags:** classic, counting, family-friendly, luck, strategy
 
-*Rules verified against: Pagat, Bicycle Cards, Wikipedia, Denexa Games, Official Game Rules, Cool Old Games, Game Rules. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Bicycle Cards, Wikipedia, Denexa Games, Official Game Rules, Cool Old Games, Game Rules.*
 
 ---
 

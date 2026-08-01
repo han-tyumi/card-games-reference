@@ -51,7 +51,7 @@ The odds are fixed and well known. Since there are no decisions to make, the res
 
 **Tags:** beginner-friendly, classic, family-friendly, kids, luck, quick, solo
 
-*Rules verified against: Wikipedia, BVS Solitaire, Wolfram MathWorld, Cats at Cards, MobilityWare, Anytime Card Games, CardGames.io. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Wikipedia, BVS Solitaire, Wolfram MathWorld, Cats at Cards, MobilityWare, Anytime Card Games, CardGames.io.*
 
 ---
 

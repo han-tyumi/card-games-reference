@@ -78,7 +78,7 @@ Klondike is not always winnable, which matters more than beginners expect. Solve
 
 **Tags:** beginner-friendly, classic, family-friendly, luck, solo, strategy
 
-*Rules verified against: Wikipedia, Solitaire Laboratory, GameRules.com, Solitaired, Solitaire.com, BVS Solitaire, Solvitaire winnability study (Blake and Gent). This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Wikipedia, Solitaire Laboratory, GameRules.com, Solitaired, Solitaire.com, BVS Solitaire, Solvitaire winnability study (Blake and Gent).*
 
 ---
 

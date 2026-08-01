@@ -103,7 +103,7 @@ The skill is not really reflexes. It is watching the pile rather than your own h
 
 **Tags:** classic, family-friendly, large-group, luck, party, reflex, speed
 
-*Rules verified against: Wikipedia, Bicycle Cards, Denexa Games, Official Game Rules, Game Rules, Gambiter, Group Games 101, Wikibooks, PlayingCardDecks. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Wikipedia, Bicycle Cards, Denexa Games, Official Game Rules, Game Rules, Gambiter, Group Games 101, Wikibooks, PlayingCardDecks.*
 
 ---
 

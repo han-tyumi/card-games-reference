@@ -48,6 +48,11 @@ const OUT = join(REPO_ROOT, "docs");
 const TITLE = "Naibi";
 const TAGLINE = "How to play, for the deck you already own.";
 const REPO_URL = "https://github.com/han-tyumi/naibi";
+// The booklet is committed to the repository rather than copied into docs/: it
+// is nearly a megabyte, it would double in git on every rebuild, and precaching
+// it would double what every visitor downloads for something most never open.
+const PDF_URL = `${REPO_URL}/raw/main/rendered/naibi.pdf`;
+const ISSUES_URL = `${REPO_URL}/issues`;
 
 /** Cache name changes with content, so a new build supersedes the old cache. */
 function contentHash(parts: string[]): string {
@@ -109,9 +114,14 @@ function page(opts: {
 <div class="wrap${opts.wide ? " wrap--wide" : ""}">
 ${opts.body}
 <footer>
-<p><strong>${TITLE}</strong> — original card game rules, free to reuse under
-<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
-<a href="${REPO_URL}">Source and corrections</a>.</p>
+<nav class="site-nav">
+<a href="${up}about.html">About</a>
+<a href="${PDF_URL}">Print the booklet (PDF)</a>
+<a href="${REPO_URL}">Source on GitHub</a>
+<a href="${ISSUES_URL}">Report a mistake</a>
+</nav>
+<p>Text licensed
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
 </footer>
 </div>
 ${opts.script ? `<script type="module" src="${up}app.js"></script>` : ""}
@@ -227,8 +237,7 @@ function gamePage(game: CardGame): string {
       `</ul>`,
   );
   parts.push(
-    `<p class="sources">Rules verified against ${esc(game.sources_consulted.join(", "))}. ` +
-      `This write-up is original text, not reproduced from those sources.</p>`,
+    `<p class="sources">Rules checked against ${esc(game.sources_consulted.join(", "))}.</p>`,
   );
   parts.push(`</article>`);
 
@@ -273,13 +282,84 @@ function chipGroup(
   );
 }
 
+/**
+ * The About page.
+ *
+ * Also the one place the project explains that it writes its own text. That
+ * used to sit under every single game, which read as protesting too much: it is
+ * how the project works, not a fact about Klondike. Said once, here.
+ */
+function aboutPage(games: CardGame[]): string {
+  const body = `<a class="backlink" href="./">All games</a>
+<article class="game">
+<h1>About ${TITLE}</h1>
+
+<h2>What this is</h2>
+<p>A reference for how to play card games, for the deck you already own. Every
+game here is playable with cards you can buy anywhere — a standard 52-card pack,
+sometimes two, occasionally a named pack the entry tells you about up front.</p>
+<p>It is built for the moment it is actually needed: someone at the table asks
+how a rule works, or you are teaching a game you have not played in a year. So
+it loads fast, works with no signal once you have opened it, and can be
+installed to a home screen like an app. There is no account, no tracking and
+nothing to sign up for.</p>
+
+<h2>The name</h2>
+<p><strong>Naibi</strong> is the first European word for playing cards, recorded
+in Florence in 1377. Cards reached Europe from the Mamluk Sultanate of Egypt in
+the 1370s and the Italians called them <em>naibi</em>, from the Arabic
+<em>nā'ib</em>, "deputy" — the rank of court card in the Mamluk pack that every
+European deck descends from. Spain still calls them <em>naipes</em>.</p>
+
+<h2>How it is made</h2>
+<p>Every game is one structured file: the players, the deal, the rules, the
+scoring, the variants worth knowing. The website, the printable booklet and the
+plain-text version are all generated from those same files, so a rule corrected
+once is corrected everywhere.</p>
+<p>The text is the project's own throughout. Rules are facts and anyone may
+describe them, but the words a source chose to describe them in belong to that
+source, so nothing here is copied or reworded from one. Each entry lists what it
+was checked against.</p>
+
+<h2>Using it elsewhere</h2>
+<p>The rules text is licensed
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>: use
+it, print it, build on it, including commercially, as long as you credit ${TITLE}
+and share what you build on the same terms. The code that generates all this is
+MIT.</p>
+
+<h2>Corrections and contributions</h2>
+<p>${games.length} games so far, and rules vary by region and family — if
+something here disagrees with how you learned it, that is worth knowing.
+<a href="${ISSUES_URL}">Open an issue</a> or send a change on
+<a href="${REPO_URL}">GitHub</a>.</p>
+
+<h2>Take it with you</h2>
+<p>The whole collection is also
+<a href="${PDF_URL}">a printable booklet</a> — one PDF, bookmarked, a game to a
+page. Or just open this site once and it stays available offline.</p>
+</article>`;
+
+  return page({
+    title: `About — ${TITLE}`,
+    description: `What ${TITLE} is, where the name comes from, and how to reuse it.`,
+    body,
+    depth: 0,
+  });
+}
+
 function indexPage(games: CardGame[]): string {
   const body: string[] = [];
   body.push(`<header class="masthead">
 <h1>${TITLE}</h1>
 <p class="pron">NYE-bee</p>
-<p class="blurb">${esc(TAGLINE)} ${games.length} games, written from scratch.
-Works offline once loaded.</p>
+<p class="blurb">${esc(TAGLINE)} ${games.length} games. Works offline once
+loaded, and installs to your home screen.</p>
+<nav class="site-nav">
+<a href="about.html">About</a>
+<a href="${PDF_URL}">Print the booklet (PDF)</a>
+<a href="${REPO_URL}">Source on GitHub</a>
+</nav>
 </header>`);
 
   body.push(`<div class="filters">
@@ -317,7 +397,7 @@ ${chipGroup("difficulty", "At most", [
 
   return page({
     title: `${TITLE} — card game rules that work offline`,
-    description: `${TAGLINE} ${games.length} card games, written from scratch and free to reuse.`,
+    description: `${TAGLINE} Rules for ${games.length} card games, free to reuse, working offline.`,
     body: body.join("\n"),
     wide: true,
     script: true,
@@ -339,6 +419,7 @@ export function buildSite(games: CardGame[]): Map<string, string | Buffer> {
   const files = new Map<string, string | Buffer>();
 
   files.set("index.html", indexPage(games));
+  files.set("about.html", aboutPage(games));
   files.set("search-index.json", JSON.stringify(buildIndex(searchRecords(games))));
   for (const game of games) files.set(`games/${game.id}.html`, gamePage(game));
 

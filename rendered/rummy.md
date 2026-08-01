@@ -73,7 +73,7 @@ Ties are settled the same way under either method: if two or more players are le
 
 **Tags:** beginner-friendly, classic, counting, family-friendly, luck, strategy
 
-*Rules verified against: Pagat, Bicycle Cards, Wikipedia, Britannica, Official Game Rules, Denexa Games. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Bicycle Cards, Wikipedia, Britannica, Official Game Rules, Denexa Games.*
 
 ---
 

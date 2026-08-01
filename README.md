@@ -2,9 +2,17 @@
 
 *(NYE-bee)*
 
+[![Read online](https://img.shields.io/badge/read-online-1f3a5f?style=flat-square)](https://han-tyumi.github.io/naibi/)
+[![Printable booklet](https://img.shields.io/badge/print-PDF%20booklet-a4243b?style=flat-square)](https://github.com/han-tyumi/naibi/raw/main/rendered/naibi.pdf)
+[![Text: CC BY-SA 4.0](https://img.shields.io/badge/text-CC%20BY--SA%204.0-1f3a5f?style=flat-square)](LICENSE)
+[![Code: MIT](https://img.shields.io/badge/code-MIT-1f3a5f?style=flat-square)](LICENSE-CODE)
+[![Checks](https://img.shields.io/github/actions/workflow/status/han-tyumi/naibi/validate.yml?branch=main&style=flat-square&label=checks)](https://github.com/han-tyumi/naibi/actions/workflows/validate.yml)
+
 A free, openly-licensed reference for how to play traditional and popular card
-games — written from scratch, stored as structured data, and built to work
-offline.
+games, stored as structured data and built to work offline.
+
+**[Read it online](https://han-tyumi.github.io/naibi/)** ·
+**[Print the booklet](https://github.com/han-tyumi/naibi/raw/main/rendered/naibi.pdf)**
 
 > **naibi** — the first European word for playing cards. Florence, 1377.
 
@@ -152,7 +160,7 @@ import that type directly rather than redeclaring it.
 | Matching & collecting | 14 |
 | Shedding | 11 |
 | Trick-taking | 11 |
-| Solitaire | 10 |
+| Solitaire (1 player) | 10 |
 | Rummy family | 7 |
 | Bluffing | 6 |
 | Casino | 1 |

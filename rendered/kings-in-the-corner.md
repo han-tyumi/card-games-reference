@@ -69,7 +69,7 @@ The 10-point king penalty drives the tactics. A king never goes on top of anythi
 
 **Tags:** beginner-friendly, classic, family-friendly, kids, luck, strategy
 
-*Rules verified against: Pagat, Bicycle Cards, Wikipedia, Geeky Hobbies, Dice Game Depot, Official Game Rules, Denexa Games. This write-up is original text, not reproduced from those sources.*
+*Rules checked against: Pagat, Bicycle Cards, Wikipedia, Geeky Hobbies, Dice Game Depot, Official Game Rules, Denexa Games.*
 
 ---
 
