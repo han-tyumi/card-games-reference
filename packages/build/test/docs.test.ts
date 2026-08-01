@@ -21,6 +21,10 @@ import { categoryLabel, gamesByCategory, loadGames } from "naibi";
 
 const REPO_ROOT = fileURLToPath(new URL("../../..", import.meta.url));
 const readme = readFileSync(join(REPO_ROOT, "README.md"), "utf8");
+const contributing = readFileSync(join(REPO_ROOT, "CONTRIBUTING.md"), "utf8");
+
+const headings = (doc: string) =>
+  [...doc.matchAll(/^#{2,3} (.+)$/gm)].map((m) => m[1]!.trim());
 const games = loadGames();
 
 test("the stated game count is the real one", () => {
@@ -102,4 +106,53 @@ test("the CI badge names a workflow that exists", () => {
     existsSync(join(REPO_ROOT, ".github", "workflows", badge[1]!)),
     `the badge names ${badge[1]}, which is not a workflow`,
   );
+});
+
+// --- the two kinds of document --------------------------------------------
+
+test("the README points at both the live guide and the historical records", () => {
+  assert.ok(readme.includes("(CONTRIBUTING.md)"), "no link to the contributor guide");
+  assert.ok(readme.includes("(decisions/README.md)"), "no link to the decision records");
+});
+
+test("no section is written in two documents at once", () => {
+  // The README claims nothing is stated in more than one place. Two copies of a
+  // rule is two things that can drift, which is the failure this project spends
+  // most of its effort avoiding — so the claim is checked rather than trusted.
+  const shared = headings(readme).filter((h) => headings(contributing).includes(h));
+  assert.deepEqual(shared, [], "these headings appear in both documents");
+});
+
+test("the contributor guide covers what a contributor actually needs", () => {
+  for (const section of [
+    "Adding a game",
+    "Which games belong here?",
+    "Is it a variant, or its own game?",
+    "Style",
+    "Checklist before opening a PR",
+  ]) {
+    assert.ok(
+      headings(contributing).includes(section),
+      `CONTRIBUTING.md is missing "${section}"`,
+    );
+  }
+});
+
+test("the contributor guide says which kind of document it is", () => {
+  // Whether a document is edited in place or superseded is the whole point of
+  // separating them, so each says which it is rather than leaving it to be
+  // inferred from where it sits.
+  assert.ok(contributing.includes("live document"), "CONTRIBUTING does not say it is live");
+  assert.ok(
+    contributing.includes("decisions/"),
+    "CONTRIBUTING does not point at the historical records",
+  );
+});
+
+test("every file the contributor guide links to exists", () => {
+  const missing: string[] = [];
+  for (const [, target] of contributing.matchAll(/\]\((?!https?:|#|mailto:)([^)#]+)\)/g)) {
+    if (!existsSync(join(REPO_ROOT, target!))) missing.push(target!);
+  }
+  assert.deepEqual(missing, []);
 });
