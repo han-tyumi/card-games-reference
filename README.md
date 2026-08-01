@@ -165,6 +165,31 @@ A few conventions worth knowing:
   different games on different continents — the prose explains the clash instead,
   so a search for one name cannot silently return the other.
 
+### Figures shared between games
+
+Poker hand rankings are the same in Hold'em, Five Card Draw and Seven Card Stud.
+Repeating them in each entry means an error has to be corrected three times, and
+sooner or later it gets corrected in two.
+
+Such figures live once in `packages/data/shared/figures.json`, and a game names
+the ones it wants:
+
+```json
+"figure_refs": ["poker-hands-strongest", "poker-hands-middle"]
+```
+
+`loadGames()` splices the real figure in, so **the source is shared but the
+output is not**: every poker page shows the rankings in full, and no consumer of
+the data has to know the indirection exists. `npm run validate` rejects a
+reference to an id that does not exist, since a dangling ref would silently drop
+a figure the entry believes it has.
+
+The unit is the *figure*, not the category. `bluffing` holds BS, Mus and Truco
+alongside the poker games, and none of those three use poker hands — a
+category-wide figure would attach hand rankings to games that have no hands.
+Share a figure when the figure is genuinely the same, not when the games seem
+related.
+
 ### Setup diagrams are generated, not drawn
 
 Games that benefit from a picture carry an optional `layout` describing the

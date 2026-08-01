@@ -120,6 +120,12 @@
       ]
     }
   ],
+  "figure_refs": [
+    "poker-hands-strongest",
+    "poker-hands-middle",
+    "poker-hands-weakest",
+    "poker-ace-straights"
+  ],
   "goal_and_scoring": "You win a pot one of two ways: everybody else folds, or you hold the best five-card hand when the cards go on their backs. Those five are the best you can pick out of your seven, and the leftovers count for nothing.\n\nAt the showdown the player who made the last bet or raise on the river turns their hand face up first, and the rest follow clockwise. Where the final round was checked all the way round, the player who opened it — the best board — shows first. Nobody is obliged to expose a hand they know is beaten; mucking it face down is allowed and forfeits any claim on the pot.\n\nRankings are the standard ones, and two hands in the same category are separated by the ranks inside them. Hands that are still identical after that split the pot. Suits do two jobs in stud and neither is ranking hands: they decide the bring-in, and they decide who gets an odd chip that will not divide. That chip goes to the tied player holding the highest card by suit, judged on all seven of their cards rather than on the five that play, and by the lowest card by suit where the half being split is a low one.\n\nNothing is scored cumulatively. Chips move pot by pot, you buy in for what you are willing to lose, and you leave when you want to. If you are playing at home for nothing, deal a fixed number of hands and see who has the biggest stack at the end.",
   "scoring_table": [
     {

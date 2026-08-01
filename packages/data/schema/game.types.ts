@@ -428,6 +428,13 @@ export interface CardGame {
     }[]
   ];
   /**
+   * Ids of shared figures from shared/figures.json to show on this game, appended after any inline `figures`. Use this where a figure is genuinely identical across several games — the poker hand rankings are the same in every poker variant — so an error gets corrected once rather than in every entry that repeats it. Readers still see the figure on every page; only the source is shared.
+   *
+   * @minItems 1
+   * @maxItems 6
+   */
+  figure_refs?: [string, ...string[]];
+  /**
    * What winning looks like and how points (if any) are counted.
    */
   goal_and_scoring: string;

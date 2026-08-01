@@ -54,11 +54,36 @@ export function gameFiles(): string[] {
     .map((name) => join(GAMES_DIR, name));
 }
 
-/** Every game entry, sorted by display name. */
+export const SHARED_FIGURES_PATH = join(PACKAGE_ROOT, "shared", "figures.json");
+
+type SharedFigures = Record<string, NonNullable<CardGame["figures"]>[number]>;
+
+/** Figures shared by several games, keyed by id. */
+export function loadSharedFigures(): SharedFigures {
+  return JSON.parse(readFileSync(SHARED_FIGURES_PATH, "utf8")) as SharedFigures;
+}
+
+/**
+ * Every game entry, sorted by display name, with shared figures resolved.
+ *
+ * A game referencing a shared figure gets the real thing spliced in, so no
+ * consumer has to know the indirection exists: the source is shared, the output
+ * is not. Unknown ids are dropped here and reported by the validator.
+ */
 export function loadGames(): CardGame[] {
-  const games = gameFiles().map(
-    (path) => JSON.parse(readFileSync(path, "utf8")) as CardGame,
-  );
+  const shared = loadSharedFigures();
+
+  const games = gameFiles().map((path) => {
+    const game = JSON.parse(readFileSync(path, "utf8")) as CardGame;
+    if (game.figure_refs && game.figure_refs.length > 0) {
+      const resolved = game.figure_refs
+        .map((id) => shared[id])
+        .filter((figure) => figure !== undefined);
+      game.figures = [...(game.figures ?? []), ...resolved] as CardGame["figures"];
+    }
+    return game;
+  });
+
   return games.sort((a, b) =>
     a.name.localeCompare(b.name, "en", { sensitivity: "base" }),
   );

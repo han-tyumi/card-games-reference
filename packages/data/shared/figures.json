@@ -1,0 +1,287 @@
+{
+  "poker-hands-strongest": {
+    "kind": "ranking",
+    "caption": "Hand rankings, part one: the four strongest categories. Any hand here beats every hand below it, whatever the individual card ranks.",
+    "rows": [
+      {
+        "label": "Royal flush",
+        "cards": [
+          {
+            "face": "A♠"
+          },
+          {
+            "face": "K♠"
+          },
+          {
+            "face": "Q♠"
+          },
+          {
+            "face": "J♠"
+          },
+          {
+            "face": "10♠"
+          }
+        ]
+      },
+      {
+        "label": "Straight flush",
+        "cards": [
+          {
+            "face": "9♥"
+          },
+          {
+            "face": "8♥"
+          },
+          {
+            "face": "7♥"
+          },
+          {
+            "face": "6♥"
+          },
+          {
+            "face": "5♥"
+          }
+        ]
+      },
+      {
+        "label": "Four of a kind",
+        "cards": [
+          {
+            "face": "Q♠"
+          },
+          {
+            "face": "Q♥"
+          },
+          {
+            "face": "Q♦"
+          },
+          {
+            "face": "Q♣"
+          },
+          {
+            "face": "3♦"
+          }
+        ]
+      },
+      {
+        "label": "Full house",
+        "cards": [
+          {
+            "face": "8♠"
+          },
+          {
+            "face": "8♥"
+          },
+          {
+            "face": "8♦"
+          },
+          {
+            "face": "4♣"
+          },
+          {
+            "face": "4♠"
+          }
+        ]
+      }
+    ]
+  },
+  "poker-hands-middle": {
+    "kind": "ranking",
+    "caption": "Hand rankings, part two: the middle four. A flush beats a straight, which is the ordering people most often get backwards.",
+    "rows": [
+      {
+        "label": "Flush",
+        "cards": [
+          {
+            "face": "K♦"
+          },
+          {
+            "face": "J♦"
+          },
+          {
+            "face": "8♦"
+          },
+          {
+            "face": "5♦"
+          },
+          {
+            "face": "2♦"
+          }
+        ]
+      },
+      {
+        "label": "Straight",
+        "cards": [
+          {
+            "face": "10♣"
+          },
+          {
+            "face": "9♦"
+          },
+          {
+            "face": "8♠"
+          },
+          {
+            "face": "7♥"
+          },
+          {
+            "face": "6♣"
+          }
+        ]
+      },
+      {
+        "label": "Three of a kind",
+        "cards": [
+          {
+            "face": "7♠"
+          },
+          {
+            "face": "7♥"
+          },
+          {
+            "face": "7♦"
+          },
+          {
+            "face": "A♣"
+          },
+          {
+            "face": "9♥"
+          }
+        ]
+      },
+      {
+        "label": "Two pair",
+        "cards": [
+          {
+            "face": "J♠"
+          },
+          {
+            "face": "J♣"
+          },
+          {
+            "face": "5♥"
+          },
+          {
+            "face": "5♦"
+          },
+          {
+            "face": "K♠"
+          }
+        ]
+      }
+    ]
+  },
+  "poker-hands-weakest": {
+    "kind": "ranking",
+    "caption": "Hand rankings, part three: the two weakest. Most showdowns are settled down here.",
+    "rows": [
+      {
+        "label": "One pair",
+        "cards": [
+          {
+            "face": "4♠"
+          },
+          {
+            "face": "4♥"
+          },
+          {
+            "face": "A♦"
+          },
+          {
+            "face": "10♣"
+          },
+          {
+            "face": "6♠"
+          }
+        ]
+      },
+      {
+        "label": "High card",
+        "cards": [
+          {
+            "face": "A♥"
+          },
+          {
+            "face": "Q♠"
+          },
+          {
+            "face": "9♦"
+          },
+          {
+            "face": "7♣"
+          },
+          {
+            "face": "3♥"
+          }
+        ]
+      }
+    ]
+  },
+  "poker-ace-straights": {
+    "kind": "ranking",
+    "caption": "The ace does duty at both ends of a straight, but only at the ends. A run through the ace from king to two is not a straight.",
+    "rows": [
+      {
+        "label": "Broadway",
+        "cards": [
+          {
+            "face": "A♣"
+          },
+          {
+            "face": "K♦"
+          },
+          {
+            "face": "Q♦"
+          },
+          {
+            "face": "J♠"
+          },
+          {
+            "face": "10♥"
+          }
+        ]
+      },
+      {
+        "label": "The wheel",
+        "cards": [
+          {
+            "face": "5♣"
+          },
+          {
+            "face": "4♦"
+          },
+          {
+            "face": "3♦"
+          },
+          {
+            "face": "2♠"
+          },
+          {
+            "face": "A♥"
+          }
+        ]
+      },
+      {
+        "label": "Not a straight",
+        "valid": false,
+        "cards": [
+          {
+            "face": "K♣"
+          },
+          {
+            "face": "A♦"
+          },
+          {
+            "face": "2♦"
+          },
+          {
+            "face": "3♠"
+          },
+          {
+            "face": "4♥"
+          }
+        ]
+      }
+    ]
+  }
+}

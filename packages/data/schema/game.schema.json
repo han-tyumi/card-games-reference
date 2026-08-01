@@ -339,6 +339,17 @@
         }
       }
     },
+    "figure_refs": {
+      "description": "Ids of shared figures from shared/figures.json to show on this game, appended after any inline `figures`. Use this where a figure is genuinely identical across several games — the poker hand rankings are the same in every poker variant — so an error gets corrected once rather than in every entry that repeats it. Readers still see the figure on every page; only the source is shared.",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+      }
+    },
     "goal_and_scoring": {
       "description": "What winning looks like and how points (if any) are counted.",
       "type": "string",

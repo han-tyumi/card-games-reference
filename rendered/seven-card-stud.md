@@ -43,6 +43,14 @@ Watching the folded cards is not a flourish, it is the skill the game rewards. E
 
 ![Seven Card Stud card figure](diagrams/seven-card-stud-fig1.svg)
 
+![Seven Card Stud card figure](diagrams/seven-card-stud-fig2.svg)
+
+![Seven Card Stud card figure](diagrams/seven-card-stud-fig3.svg)
+
+![Seven Card Stud card figure](diagrams/seven-card-stud-fig4.svg)
+
+![Seven Card Stud card figure](diagrams/seven-card-stud-fig5.svg)
+
 ## Goal & scoring
 
 You win a pot one of two ways: everybody else folds, or you hold the best five-card hand when the cards go on their backs. Those five are the best you can pick out of your seven, and the leftovers count for nothing.
