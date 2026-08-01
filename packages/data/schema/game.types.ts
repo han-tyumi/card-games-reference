@@ -621,4 +621,17 @@ export interface CardGame {
    * @maxItems 12
    */
   sources_consulted: [string, ...string[]];
+  /**
+   * When this entry's prose was last read against its sources, and a fingerprint of the prose as it stood at that moment. The fingerprint is what makes the record mean anything: edit setup, play or goal_and_scoring afterwards and the validator reports the entry as changed since it was checked, rather than letting a date sit there implying a check that no longer covers the text. Absent means never checked, which is not the same as checked and clean.
+   */
+  checked?: {
+    /**
+     * ISO date the check was made, e.g. "2026-08-01".
+     */
+    date: string;
+    /**
+     * Fingerprint of setup + play + goal_and_scoring at check time.
+     */
+    prose: string;
+  };
 }

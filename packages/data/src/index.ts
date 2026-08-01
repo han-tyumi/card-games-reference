@@ -6,6 +6,7 @@
  * described the same way everywhere. Nothing here writes output.
  */
 
+import { createHash } from "node:crypto";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -90,6 +91,23 @@ export function loadGames(): CardGame[] {
   return games.sort((a, b) =>
     a.name.localeCompare(b.name, "en", { sensitivity: "base" }),
   );
+}
+
+/**
+ * Fingerprint of the prose an originality check actually reads.
+ *
+ * A date on its own rots: it goes on claiming a check that stopped covering the
+ * text the moment somebody edited a sentence. Pairing the date with a
+ * fingerprint of what was read turns "checked on the 1st" into a statement the
+ * validator can test, and lets it say "edited since" instead of nothing.
+ *
+ * Only the three prose fields, because they are the only ones a source could be
+ * copied into. Retagging a game or fixing its deal table does not invalidate a
+ * reading of its rules.
+ */
+export function proseFingerprint(game: CardGame): string {
+  const text = [game.setup, game.play, game.goal_and_scoring].join("\u0000");
+  return createHash("sha256").update(text, "utf8").digest("hex").slice(0, 16);
 }
 
 /** Games grouped into [category, entries] pairs in display order. */

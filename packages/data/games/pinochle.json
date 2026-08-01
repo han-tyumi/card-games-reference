@@ -30,12 +30,25 @@
         {
           "label": "Any suit, high to low",
           "cards": [
-            { "face": "A♠" },
-            { "face": "10♠", "note": "Above K" },
-            { "face": "K♠" },
-            { "face": "Q♠" },
-            { "face": "J♠" },
-            { "face": "9♠" }
+            {
+              "face": "A♠"
+            },
+            {
+              "face": "10♠",
+              "note": "Above K"
+            },
+            {
+              "face": "K♠"
+            },
+            {
+              "face": "Q♠"
+            },
+            {
+              "face": "J♠"
+            },
+            {
+              "face": "9♠"
+            }
           ]
         }
       ]
@@ -47,34 +60,59 @@
         {
           "label": "Pinochle, 40",
           "cards": [
-            { "face": "Q♠" },
-            { "face": "J♦" }
+            {
+              "face": "Q♠"
+            },
+            {
+              "face": "J♦"
+            }
           ]
         },
         {
           "label": "Run in trump, 150",
           "cards": [
-            { "face": "A♦", "note": "Diamonds trump" },
-            { "face": "10♦" },
-            { "face": "K♦" },
-            { "face": "Q♦" },
-            { "face": "J♦" }
+            {
+              "face": "A♦",
+              "note": "Diamonds trump"
+            },
+            {
+              "face": "10♦"
+            },
+            {
+              "face": "K♦"
+            },
+            {
+              "face": "Q♦"
+            },
+            {
+              "face": "J♦"
+            }
           ]
         },
         {
           "label": "Royal marriage, 40",
           "cards": [
-            { "face": "K♦" },
-            { "face": "Q♦" }
+            {
+              "face": "K♦"
+            },
+            {
+              "face": "Q♦"
+            }
           ]
         },
         {
           "label": "Not two marriages",
           "valid": false,
           "cards": [
-            { "face": "K♠" },
-            { "face": "Q♠" },
-            { "face": "K♠" }
+            {
+              "face": "K♠"
+            },
+            {
+              "face": "Q♠"
+            },
+            {
+              "face": "K♠"
+            }
           ]
         }
       ]
@@ -82,19 +120,69 @@
   ],
   "goal_and_scoring": "The counters are the aces, tens and kings. In the point-count scheme most tables now use, each counter captured in a trick is worth 10 to the side that took it, and queens, jacks and nines are worth nothing. Twenty-four counters make 240, and the last trick is worth an extra 10, so exactly 250 points are available in tricks every hand. The older values, still in use, are ace 11, ten 10, king 4, queen 3, jack 2 with 10 for the last trick, which comes to the same 250.\n\nMeld values in the single-deck game:\n\n- Run in trump (A-10-K-Q-J of trump): 150. Both trump runs at once: 1500, although some tables score them simply as 150 apiece.\n- Royal marriage, the king and queen of trump: 40.\n- Plain marriage, king and queen of any other suit: 20 each.\n- Dix, the nine of trump: 10 each, so 20 for the pair.\n- Pinochle, the queen of spades with the jack of diamonds: 40. Double pinochle: 300.\n- Aces around, one ace of each suit: 100. Double: 1000.\n- Kings around: 80. Double: 800.\n- Queens around: 60. Double: 600.\n- Jacks around: 40. Double: 400.\n\nA run already contains the royal marriage, so you do not also claim the 40 for it.\n\nSettling a hand. Each side totals its meld together with the counters it captured. Where the contractors have matched or beaten the number they bid, both columns simply take what was earned. Falling short is another matter: the contract is set, everything the contracting pair earned that hand evaporates, and their column takes a penalty the size of the bid itself, which is quite capable of pushing a total into the negatives. Some groups soften that by letting a set side keep the meld it laid down and only deducting the bid; the harsher version given here is the more common one. The defending side scores its meld and counters as normal, subject to the same requirement that meld needs at least one trick to stand, which means a defending pair shut out of every trick records nothing at all for the hand.\n\nFirst side to 1000 points wins. The customary tie-break is that the contracting side's score is settled first, so if both sides cross the target in the same hand the contractors win, having taken the risk. Some groups play to 1500, and some let a side stop play mid-hand to claim the game.",
   "scoring_table": [
-    { "item": "Counter captured (ace, ten, king)", "value": "10", "note": "queens, jacks and nines count nothing" },
-    { "item": "Last trick", "value": "10", "note": "250 available in tricks each hand" },
-    { "item": "Run in trump (A-10-K-Q-J)", "value": "150", "note": "both trump runs 1500" },
-    { "item": "Royal marriage (K-Q of trump)", "value": "40", "note": "not claimed again inside a run" },
-    { "item": "Plain marriage (K-Q, other suit)", "value": "20" },
-    { "item": "Dix (nine of trump)", "value": "10", "note": "20 for the pair" },
-    { "item": "Pinochle (Q♠ with J♦)", "value": "40", "note": "double 300" },
-    { "item": "Aces around", "value": "100", "note": "double 1000" },
-    { "item": "Kings around", "value": "80", "note": "double 800" },
-    { "item": "Queens around", "value": "60", "note": "double 600" },
-    { "item": "Jacks around", "value": "40", "note": "double 400" },
-    { "item": "Contract set", "value": "minus the bid", "note": "the contractors' meld and counters are lost as well" },
-    { "item": "Game", "value": "1000" }
+    {
+      "item": "Counter captured (ace, ten, king)",
+      "value": "10",
+      "note": "queens, jacks and nines count nothing"
+    },
+    {
+      "item": "Last trick",
+      "value": "10",
+      "note": "250 available in tricks each hand"
+    },
+    {
+      "item": "Run in trump (A-10-K-Q-J)",
+      "value": "150",
+      "note": "both trump runs 1500"
+    },
+    {
+      "item": "Royal marriage (K-Q of trump)",
+      "value": "40",
+      "note": "not claimed again inside a run"
+    },
+    {
+      "item": "Plain marriage (K-Q, other suit)",
+      "value": "20"
+    },
+    {
+      "item": "Dix (nine of trump)",
+      "value": "10",
+      "note": "20 for the pair"
+    },
+    {
+      "item": "Pinochle (Q♠ with J♦)",
+      "value": "40",
+      "note": "double 300"
+    },
+    {
+      "item": "Aces around",
+      "value": "100",
+      "note": "double 1000"
+    },
+    {
+      "item": "Kings around",
+      "value": "80",
+      "note": "double 800"
+    },
+    {
+      "item": "Queens around",
+      "value": "60",
+      "note": "double 600"
+    },
+    {
+      "item": "Jacks around",
+      "value": "40",
+      "note": "double 400"
+    },
+    {
+      "item": "Contract set",
+      "value": "minus the bid",
+      "note": "the contractors' meld and counters are lost as well"
+    },
+    {
+      "item": "Game",
+      "value": "1000"
+    }
   ],
   "variants": [
     {
@@ -130,5 +218,9 @@
     "Britannica",
     "Trickster Cards",
     "Denexa Games"
-  ]
+  ],
+  "checked": {
+    "date": "2026-08-01",
+    "prose": "03230c5a38ba2c90"
+  }
 }

@@ -31,10 +31,22 @@
         {
           "label": "Cards owed",
           "cards": [
-            { "face": "A♠", "note": "4 cards" },
-            { "face": "K♥", "note": "3 cards" },
-            { "face": "Q♦", "note": "2 cards" },
-            { "face": "J♣", "note": "1 card" }
+            {
+              "face": "A♠",
+              "note": "4 cards"
+            },
+            {
+              "face": "K♥",
+              "note": "3 cards"
+            },
+            {
+              "face": "Q♦",
+              "note": "2 cards"
+            },
+            {
+              "face": "J♣",
+              "note": "1 card"
+            }
           ]
         }
       ]
@@ -77,5 +89,9 @@
     "Denexa Games",
     "Dummies",
     "Casella and others, A Non-Terminating Game of Beggar-My-Neighbor"
-  ]
+  ],
+  "checked": {
+    "date": "2026-08-01",
+    "prose": "4671da4d8a4aba8b"
+  }
 }

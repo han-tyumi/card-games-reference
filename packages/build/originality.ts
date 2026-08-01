@@ -26,12 +26,12 @@
  * which is the shape the previous passes kept finding by hand.
  */
 
-import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 import type { CardGame } from "naibi";
-import { loadGames } from "naibi";
+import { GAMES_DIR, loadGames, proseFingerprint } from "naibi";
 
 const SOURCES_DIR = fileURLToPath(new URL("../../.sources", import.meta.url));
 
@@ -389,7 +389,47 @@ function checkGame(game: CardGame, limits: Thresholds): Match[] {
   );
 }
 
+/**
+ * Record that an entry has been read against its sources.
+ *
+ * Explicit ids only, never "everything that came back quiet". Stamping is a
+ * person saying they read the pairs, and a tool that stamps whatever it failed
+ * to flag would be certifying its own blind spot — which, given that thorough
+ * paraphrase scores like independent writing, is precisely the thing it cannot
+ * see. The date is passed in rather than read from the clock so a run is
+ * reproducible.
+ */
+function stamp(ids: readonly string[], today: string): number {
+  const known = new Map(loadGames().map((g) => [g.id, g]));
+  const unknown = ids.filter((id) => !known.has(id));
+  if (unknown.length > 0) {
+    console.error(`No such game: ${unknown.join(", ")}`);
+    return 1;
+  }
+
+  for (const id of ids) {
+    const path = join(GAMES_DIR, `${id}.json`);
+    const entry = JSON.parse(readFileSync(path, "utf8")) as Record<string, unknown>;
+    entry["checked"] = { date: today, prose: proseFingerprint(known.get(id)!) };
+    writeFileSync(path, `${JSON.stringify(entry, null, 2)}\n`);
+  }
+
+  console.log(`Stamped ${ids.length} entr${ids.length === 1 ? "y" : "ies"} as checked ${today}.`);
+  return 0;
+}
+
 function main(): number {
+  if (process.argv.includes("--stamp")) {
+    const rest = process.argv.slice(process.argv.indexOf("--stamp") + 1);
+    const date = rest.find((a) => /^\d{4}-\d{2}-\d{2}$/.test(a));
+    const ids = rest.filter((a) => a !== date && !a.startsWith("--"));
+    if (!date || ids.length === 0) {
+      console.error("Usage: npm run originality -- --stamp YYYY-MM-DD <game-id>...");
+      return 1;
+    }
+    return stamp(ids, date);
+  }
+
   const argv = process.argv;
   const only = argv.includes("--game") ? argv[argv.indexOf("--game") + 1] : undefined;
 

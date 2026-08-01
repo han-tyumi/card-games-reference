@@ -234,6 +234,28 @@ export function checkLayout(data: Entry): string[] {
   return problems;
 }
 
+/**
+ * An entry whose prose moved on after it was checked.
+ *
+ * This is the one that stops the record becoming a comfortable lie. Anyone can
+ * rewrite a rule after a check and leave the date sitting there; the fingerprint
+ * makes that visible instead of silent. Re-read the entry against its sources
+ * and re-stamp it, or drop the record — but do not leave it claiming cover it
+ * no longer has.
+ */
+export function checkChecked(data: Entry, fingerprint: string | null): string[] {
+  const checked = asRecord(data["checked"]);
+  if (!checked || fingerprint === null) return [];
+
+  if (checked["prose"] !== fingerprint) {
+    return [
+      `prose has been edited since it was checked on ${checked["date"]}; ` +
+        "re-read it against its sources and re-stamp, or remove the record",
+    ];
+  }
+  return [];
+}
+
 export function checkFilename(file: string, data: Entry): string[] {
   const id = data["id"];
   const stem = basename(file, ".json");
@@ -248,9 +270,11 @@ export function checkEntry(
   file: string,
   data: Entry,
   shared: ReadonlySet<string>,
+  fingerprint: string | null = null,
 ): string[] {
   return [
     ...checkFilename(file, data),
+    ...checkChecked(data, fingerprint),
     ...checkPlayers(data),
     ...checkTagSemantics(data),
     ...checkLayout(data),

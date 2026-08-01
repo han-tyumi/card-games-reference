@@ -28,9 +28,19 @@
   "layout": {
     "rows": [
       [
-        { "kind": "stock", "label": "Stock", "face": "down" },
-        { "kind": "gap" },
-        { "kind": "discard", "label": "Discard pile", "cards": 0 }
+        {
+          "kind": "stock",
+          "label": "Stock",
+          "face": "down"
+        },
+        {
+          "kind": "gap"
+        },
+        {
+          "kind": "discard",
+          "label": "Discard pile",
+          "cards": 0
+        }
       ],
       [
         {
@@ -42,7 +52,11 @@
         }
       ],
       [
-        { "kind": "hand", "label": "Your hand", "cards": 3 }
+        {
+          "kind": "hand",
+          "label": "Your hand",
+          "cards": 3
+        }
       ]
     ],
     "caption": "Every player gets the same nine cards: three face-down cards with a face-up card squared on top of each, plus a hand of three. The discard pile starts empty."
@@ -147,5 +161,9 @@
     "Cats at Cards",
     "Gambiter",
     "Bar Games 101"
-  ]
+  ],
+  "checked": {
+    "date": "2026-08-01",
+    "prose": "217119ef86262585"
+  }
 }

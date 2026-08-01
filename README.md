@@ -26,6 +26,9 @@ Every game is a JSON file. Generators turn those files into a website, a
 printable PDF and Markdown, all from the one source, so a rule corrected once is
 corrected everywhere.
 
+Decisions with reasoning worth keeping are recorded in
+[`decisions/`](decisions/README.md) rather than restated here.
+
 **Status:** 60 games, all validating. The site is built and installable; the
 companion tools are not started.
 
@@ -61,6 +64,7 @@ than each keeping their own copy.
 | `rendered/*.md` | **Generated.** Never hand-edit — your changes get overwritten. |
 | `rendered/diagrams/*.svg` | **Generated** setup diagrams. |
 | `docs/` | **Generated** site, served by GitHub Pages. |
+| `decisions/` | Why the project is the way it is. One record per decision. |
 | `tools/` | Notes on planned companion packages. |
 
 Packages get added as they are built — a website, graphics, companion tools.
@@ -401,32 +405,25 @@ after that date has not been checked in its current form at all.
 `.sources/<game-id>/*.txt` — a gitignored directory, because it holds someone
 else's copyrighted prose for the length of a check and nothing more.
 
-Two things it deliberately does not do, both learned the hard way:
-
-**It does not search for phrases.** Search engines do not reliably honour
-quoting. A control query for a phrase containing invented words — nothing that
-could exist anywhere — returned ten results, so a hit list is not evidence a
-phrase was found, and "no results" cannot be observed at all. Every pass that
-counted search hits was measuring nothing.
-
-**It does not use a fixed threshold.** Card game procedure is formulaic, so
-"these two sentences are written alike" is the null hypothesis, not the signal.
-Measured against our own sixty entries, which copy nothing from each other:
-
-- at 35% shared structure: 5401 matches between our own entries
-- at 60%: 1122
-- six identical consecutive words: 834
-
-and the discrimination runs the wrong way — with rarity weighting a sentence
-rebuilt from a source's clause order scored 0.15 against an independent
-rewrite's 0.12. So the bar is *measured* instead: the tool computes what the
-best coincidental match between two unrelated passages looks like across this
-corpus, and reports only what beats it. Our own entries clear that bar 2.4% of
-the time, which is what a 99th-percentile bar should do.
+It does not search for phrases, and it does not use a fixed threshold. Both were
+tried and both were measured failing; the numbers and the reasoning are in
+[decision 0007](decisions/0007-originality-is-checked-against-sources.md).
 
 The output is a reading list, not a verdict. Paraphrase that swaps the
-vocabulary scores like independent writing, and nothing here can certify an
-entry clean — only find the ones worth reading beside their source.
+vocabulary scores like independent writing, so nothing here can certify an entry
+clean — only find the ones worth reading beside their source.
+
+When you have read an entry against its sources, record it:
+
+```sh
+npm run originality -- --stamp 2026-08-01 durak whist
+```
+
+That writes a date and a fingerprint of the prose you read. Edit the entry
+afterwards and `npm run validate` reports it as changed since it was checked,
+rather than leaving the date claiming cover it no longer has. Stamp only what
+you actually read — the tool will not stamp on your behalf, because certifying
+what it failed to flag would be certifying its own blind spot.
 
 ### Check your own wording before opening a PR
 

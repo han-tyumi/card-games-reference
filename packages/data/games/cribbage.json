@@ -72,37 +72,71 @@
         {
           "label": "Run of three, 3",
           "cards": [
-            { "face": "A♣" },
-            { "face": "2♥" },
-            { "face": "3♠" }
+            {
+              "face": "A♣"
+            },
+            {
+              "face": "2♥"
+            },
+            {
+              "face": "3♠"
+            }
           ]
         },
         {
           "label": "Not a run",
           "valid": false,
           "cards": [
-            { "face": "Q♦" },
-            { "face": "K♦" },
-            { "face": "A♦", "note": "Ace is low" }
+            {
+              "face": "Q♦"
+            },
+            {
+              "face": "K♦"
+            },
+            {
+              "face": "A♦",
+              "note": "Ace is low"
+            }
           ]
         },
         {
           "label": "Double run of three, 8",
           "cards": [
-            { "face": "9♠" },
-            { "face": "10♥" },
-            { "face": "J♦" },
-            { "face": "9♣", "note": "Two runs, pair" }
+            {
+              "face": "9♠"
+            },
+            {
+              "face": "10♥"
+            },
+            {
+              "face": "J♦"
+            },
+            {
+              "face": "9♣",
+              "note": "Two runs, pair"
+            }
           ]
         },
         {
           "label": "Highest hand, 29",
           "cards": [
-            { "face": "5♣" },
-            { "face": "5♠" },
-            { "face": "5♥" },
-            { "face": "J♦", "note": "His nobs" },
-            { "face": "5♦", "note": "Starter" }
+            {
+              "face": "5♣"
+            },
+            {
+              "face": "5♠"
+            },
+            {
+              "face": "5♥"
+            },
+            {
+              "face": "J♦",
+              "note": "His nobs"
+            },
+            {
+              "face": "5♦",
+              "note": "Starter"
+            }
           ]
         }
       ]
@@ -110,19 +144,68 @@
   ],
   "goal_and_scoring": "First to 121 points wins, which is twice around a standard board plus the game hole. Points are pegged continuously, and the game ends instantly when a peg reaches 121, mid-count if necessary.\n\nA hand or crib is scored as those four cards plus the starter, and every scoring combination that can be made from those five counts, including the same card used again and again in different combinations:\n\n- Fifteen: any group of cards adding to exactly 15 scores 2, and you count every distinct group.\n- Pair: 2 per pair. Three of a kind is three separate pairs and so scores 6; four of a kind scores 12.\n- Run: 3 or more in consecutive rank scores 1 per card, and each distinct run counts. A double run of three (a run plus a duplicated rank) scores 8 in all, since it is two runs of three plus a pair.\n- Flush: 4 if all four cards in hand share a suit, 5 if the starter matches too. In the crib only the full five-card flush scores; four matching crib cards on their own are worth nothing.\n- His nobs: 1 for holding the jack of the starter's suit, in hand or in the crib.\n- His heels: 2 to the dealer, pegged at once, when the starter turned is a jack.\n\nThe highest possible hand is 29: three fives and the jack matching a starter five. Zero-point hands are common enough to have their own name, a nineteen.\n\nIn match play, a loser still short of 91 is skunked and the win is usually worth double; short of 61 is a double skunk.",
   "scoring_table": [
-    { "item": "Fifteen", "value": "2", "note": "a count of exactly 15, in the play or at the show" },
-    { "item": "Thirty-one", "value": "2", "note": "in the play" },
-    { "item": "Pair", "value": "2", "note": "three of a kind 6, four of a kind 12" },
-    { "item": "Run", "value": "1 per card", "note": "three or more consecutive ranks" },
-    { "item": "Double run of three", "value": "8" },
-    { "item": "Flush in hand", "value": "4", "note": "5 if the starter matches the suit" },
-    { "item": "Flush in the crib", "value": "5", "note": "only the full five-card flush scores" },
-    { "item": "His nobs", "value": "1", "note": "jack matching the starter's suit" },
-    { "item": "His heels", "value": "2", "note": "to the dealer when the starter turned is a jack" },
-    { "item": "Go or last card", "value": "1", "note": "2 where the count stopped on exactly 31" },
-    { "item": "Game", "value": "121" },
-    { "item": "Skunk", "value": "loser under 91", "note": "the win is usually worth double" },
-    { "item": "Double skunk", "value": "loser under 61" }
+    {
+      "item": "Fifteen",
+      "value": "2",
+      "note": "a count of exactly 15, in the play or at the show"
+    },
+    {
+      "item": "Thirty-one",
+      "value": "2",
+      "note": "in the play"
+    },
+    {
+      "item": "Pair",
+      "value": "2",
+      "note": "three of a kind 6, four of a kind 12"
+    },
+    {
+      "item": "Run",
+      "value": "1 per card",
+      "note": "three or more consecutive ranks"
+    },
+    {
+      "item": "Double run of three",
+      "value": "8"
+    },
+    {
+      "item": "Flush in hand",
+      "value": "4",
+      "note": "5 if the starter matches the suit"
+    },
+    {
+      "item": "Flush in the crib",
+      "value": "5",
+      "note": "only the full five-card flush scores"
+    },
+    {
+      "item": "His nobs",
+      "value": "1",
+      "note": "jack matching the starter's suit"
+    },
+    {
+      "item": "His heels",
+      "value": "2",
+      "note": "to the dealer when the starter turned is a jack"
+    },
+    {
+      "item": "Go or last card",
+      "value": "1",
+      "note": "2 where the count stopped on exactly 31"
+    },
+    {
+      "item": "Game",
+      "value": "121"
+    },
+    {
+      "item": "Skunk",
+      "value": "loser under 91",
+      "note": "the win is usually worth double"
+    },
+    {
+      "item": "Double skunk",
+      "value": "loser under 61"
+    }
   ],
   "variants": [
     {
@@ -159,5 +242,9 @@
     "Britannica",
     "American Cribbage Congress",
     "Masters of Games"
-  ]
+  ],
+  "checked": {
+    "date": "2026-08-01",
+    "prose": "1827f2a080da4ee3"
+  }
 }

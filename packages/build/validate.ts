@@ -15,7 +15,14 @@ import { basename } from "node:path";
 import { Ajv2020 } from "ajv/dist/2020.js";
 import type { ErrorObject, ValidateFunction } from "ajv";
 
-import { GAMES_DIR, SCHEMA_PATH, gameFiles, loadSharedFigures } from "naibi";
+import type { CardGame } from "naibi";
+import {
+  GAMES_DIR,
+  SCHEMA_PATH,
+  gameFiles,
+  loadSharedFigures,
+  proseFingerprint,
+} from "naibi";
 import type { Entry, NamedEntry } from "./checks.ts";
 import { checkEntry, crossFileProblems } from "./checks.ts";
 
@@ -60,9 +67,16 @@ function main(): number {
     }
 
     parsed.push({ file, data });
+    // Computed from the entry as it stands now, so a stale `checked` record
+    // reports itself rather than sitting there claiming cover it has lost.
+    const fingerprint =
+      typeof data["setup"] === "string" ? proseFingerprint(data as unknown as CardGame) : null;
     results.push({
       file,
-      problems: [...schemaProblems(data, validate), ...checkEntry(file, data, shared)],
+      problems: [
+        ...schemaProblems(data, validate),
+        ...checkEntry(file, data, shared, fingerprint),
+      ],
     });
   }
 
@@ -83,6 +97,17 @@ function main(): number {
   }
 
   console.log(`\n${paths.length - failures}/${paths.length} entries valid.`);
+
+  // Never let silence read as coverage. An entry with no `checked` record has
+  // not been read against a source in its current form, and saying so here is
+  // cheaper than someone assuming otherwise.
+  const unchecked = parsed.filter(({ data }) => !data["checked"]).length;
+  if (unchecked > 0) {
+    console.log(
+      `${unchecked} entr${unchecked === 1 ? "y has" : "ies have"} no originality check ` +
+        `on record (npm run originality).`,
+    );
+  }
   if (failures > 0) {
     console.log(`${failures} file(s) need attention.`);
     return 1;

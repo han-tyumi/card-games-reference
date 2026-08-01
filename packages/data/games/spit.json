@@ -22,17 +22,60 @@
   "layout": {
     "rows": [
       [
-        { "kind": "stock", "label": "Opponent's stock row", "repeat": 5, "cards": [1, 2, 3, 4, 5], "face": "last-up" },
-        { "kind": "gap" },
-        { "kind": "reserve", "label": "Opponent's spit pile", "cards": 11, "face": "down" }
+        {
+          "kind": "stock",
+          "label": "Opponent's stock row",
+          "repeat": 5,
+          "cards": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "face": "last-up"
+        },
+        {
+          "kind": "gap"
+        },
+        {
+          "kind": "reserve",
+          "label": "Opponent's spit pile",
+          "cards": 11,
+          "face": "down"
+        }
       ],
       [
-        { "kind": "foundation", "label": "Centre piles", "repeat": 2, "cards": 0 }
+        {
+          "kind": "foundation",
+          "label": "Centre piles",
+          "repeat": 2,
+          "cards": 0
+        }
       ],
       [
-        { "kind": "reserve", "label": "Your spit pile", "cards": 11, "face": "down" },
-        { "kind": "gap" },
-        { "kind": "stock", "label": "Your stock row", "repeat": 5, "cards": [1, 2, 3, 4, 5], "face": "last-up" }
+        {
+          "kind": "reserve",
+          "label": "Your spit pile",
+          "cards": 11,
+          "face": "down"
+        },
+        {
+          "kind": "gap"
+        },
+        {
+          "kind": "stock",
+          "label": "Your stock row",
+          "repeat": 5,
+          "cards": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "face": "last-up"
+        }
       ]
     ],
     "caption": "Each side is identical: five squared piles of 1 to 5 cards with only the top card face up, plus an 11-card spit pile. The two centre piles are empty until the first spit."
@@ -79,5 +122,9 @@
     "Gamerules.com",
     "Card Game Wiki",
     "Game On Family"
-  ]
+  ],
+  "checked": {
+    "date": "2026-08-01",
+    "prose": "7038d3422d295104"
+  }
 }

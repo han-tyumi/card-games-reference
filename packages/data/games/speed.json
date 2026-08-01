@@ -22,19 +22,58 @@
   "layout": {
     "rows": [
       [
-        { "kind": "stock", "label": "Opponent's draw pile", "cards": 15, "face": "down" },
-        { "kind": "gap" },
-        { "kind": "hand", "label": "Opponent's hand", "cards": 5, "face": "down" }
+        {
+          "kind": "stock",
+          "label": "Opponent's draw pile",
+          "cards": 15,
+          "face": "down"
+        },
+        {
+          "kind": "gap"
+        },
+        {
+          "kind": "hand",
+          "label": "Opponent's hand",
+          "cards": 5,
+          "face": "down"
+        }
       ],
       [
-        { "kind": "reserve", "label": "Side stack", "cards": 5, "face": "down" },
-        { "kind": "foundation", "label": "Build piles", "repeat": 2, "cards": 1, "face": "down" },
-        { "kind": "reserve", "label": "Side stack", "cards": 5, "face": "down" }
+        {
+          "kind": "reserve",
+          "label": "Side stack",
+          "cards": 5,
+          "face": "down"
+        },
+        {
+          "kind": "foundation",
+          "label": "Build piles",
+          "repeat": 2,
+          "cards": 1,
+          "face": "down"
+        },
+        {
+          "kind": "reserve",
+          "label": "Side stack",
+          "cards": 5,
+          "face": "down"
+        }
       ],
       [
-        { "kind": "hand", "label": "Your hand", "cards": 5 },
-        { "kind": "gap" },
-        { "kind": "stock", "label": "Your draw pile", "cards": 15, "face": "down" }
+        {
+          "kind": "hand",
+          "label": "Your hand",
+          "cards": 5
+        },
+        {
+          "kind": "gap"
+        },
+        {
+          "kind": "stock",
+          "label": "Your draw pile",
+          "cards": 15,
+          "face": "down"
+        }
       ]
     ],
     "caption": "The middle is one row of four: side stack, the two single build cards, side stack. The build cards are flipped face up together to start, and each player owns the stack at their own left."
@@ -82,5 +121,9 @@
     "Learning Board Games",
     "Gather Together Games",
     "PlayingCardDecks"
-  ]
+  ],
+  "checked": {
+    "date": "2026-08-01",
+    "prose": "1c0e535d38f20bbb"
+  }
 }
