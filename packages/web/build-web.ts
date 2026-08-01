@@ -426,7 +426,10 @@ ${chipGroup("players", "Players", [
 ])}
 ${chipGroup("decks", "Decks on hand", [["", "Any"], ["1", "1"], ["2", "2"]])}
 ${chipGroup("minutes", "Time", [["", "Any"], ["15", "≤15 min"], ["30", "≤30 min"], ["60", "≤60 min"]])}
-${chipGroup("difficulty", "At most", [
+${/* A ceiling, not an exact match: "Easy" returns the simple games too. Time
+     says that in its chips ("≤30 min"); difficulty has nowhere to put it, so
+     the label carries it once rather than every chip repeating "up to". */ ""}
+${chipGroup("difficulty", "Difficulty (at most)", [
   ["", "Any"], ["simple", "Simple"], ["easy", "Easy"], ["medium", "Medium"],
 ])}
 </div>`);

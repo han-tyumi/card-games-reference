@@ -384,6 +384,13 @@ test("each filter is one labelled group, which is what the spacing relies on", (
   const facets = [...html.matchAll(/<div class="facet">([\s\S]*?)<\/div><\/div>/g)];
 
   assert.equal(facets.length, 4, "expected one group per filter");
+
+  // Named, so changing one is a decision rather than a slip. "At most" used to
+  // stand alone here and read as a heading with no noun -- at most WHAT.
+  assert.deepEqual(
+    facets.map(([, inner]) => /<label>([^<]+)<\/label>/.exec(inner!)![1]),
+    ["Players", "Decks on hand", "Time", "Difficulty (at most)"],
+  );
   for (const [, inner] of facets) {
     assert.match(inner!, /^<label>[^<]+<\/label><div class="chips">/, "group is malformed");
     assert.equal((inner!.match(/<div class="chips">/g) ?? []).length, 1);
