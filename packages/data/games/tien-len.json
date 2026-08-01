@@ -1,0 +1,217 @@
+{
+  "id": "tien-len",
+  "name": "Tien Len",
+  "aliases": [
+    "Tiến Lên",
+    "Thirteen",
+    "Vietnamese Cards",
+    "VC",
+    "Killer 13",
+    "Advance"
+  ],
+  "category": "shedding",
+  "players": {
+    "min": 2,
+    "max": 4,
+    "ideal": 4
+  },
+  "decks": "1 standard deck (52 cards), jokers removed",
+  "equipment": {
+    "standard_decks": 1,
+    "jokers": 0,
+    "special_deck": null,
+    "extra_deck_for_large_groups": false,
+    "other": []
+  },
+  "setup": "An ordinary 52-card pack with the jokers out. Choose a first dealer any way you like; the deal then moves one seat along in the direction of play at the end of each hand. Thirteen cards go to each player, dealt one at a time in the direction of play, and thirteen is the hand size whatever the player count: at two or three players the leftover cards are set face down to one side and take no part in the game.\n\nThe rank order runs 3, 4, 5, 6, 7, 8, 9, 10, jack, queen, king, ace, 2, so the two is the strongest rank and the three the weakest. Suits are ranked too, and unlike most Western games the ranking is used constantly: hearts are highest, then diamonds, then clubs, with spades lowest. Put the two together and every card has its own rung on one long ladder, from the three of spades at the bottom to the two of hearts at the very top. That top card is the reason the game needs bombs, since nothing in the ordinary run of play can touch it.\n\nWhoever was dealt the three of spades leads the first hand of a session, that card being the lowest in the pack. Many groups require the opening play to actually contain it; others let that player lead whatever they please. At two or three players the three of spades is often among the cards set aside, and the lead then belongs to whoever holds the lowest card that was dealt, by rank first and by suit between cards of equal rank. Later hands are opened by whoever won the previous one, though some tables hand the lead to the player who came last instead, as a small mercy.",
+  "play": "A play is one of six shapes, and only these:\n\n- A single card.\n- A pair, two cards of the same rank.\n- A triple, three of the same rank.\n- A four of a kind.\n- A run of three or more cards in consecutive ranks, suits freely mixed.\n- A chain, three or more consecutive pairs, such as 6-6-7-7-8-8.\n\nRuns and chains climb from the three up to the ace and stop there. Twos sit outside sequences altogether in the standard game, and nothing wraps around the ends, so A-2-3 is not a run and neither is Q-K-A-2.\n\nGoing round the table, each player either passes or beats what is showing. A beat must be the same shape and, for runs and chains, the same length. Comparison is by the highest card in the play, and when two plays have the same top rank the suit of that top card decides. Two runs of four therefore settle on their fourth card and, if that is a nine in both, on which nine is the better suit. Vietnamese players usually pass the turn counter-clockwise; the direction changes nothing so long as everyone agrees on it before the first lead.\n\nPassing puts you out of the round. You take no further part until the round is finished, however tempting the play that comes round afterwards. When everyone still in has passed, the last player to have put cards down clears the pile away and leads again with any shape they like.\n\nBombs, or chops. Since the two of hearts cannot be beaten by any ordinary single, the game supplies plays that break the shape-matching rule specifically to kill twos. Outside that job they are ordinary combinations: a four of a kind may be led like any other shape and answered by a higher four of a kind, and a chain of pairs the same. It is only as an answer to a two that either ignores the shape it is beating.\n\n- A four of a kind, or a chain of three consecutive pairs, beats any single two. Neither can be dropped on any other single card.\n- Between those two, the four of a kind is the stronger, so it also beats a chain of three consecutive pairs.\n- A chop that has been played can itself be chopped by a stronger one, so a four of a kind can be answered by a higher four of a kind and a chain of three pairs by a four of a kind. Whoever lays the chop that nobody answers takes the round in the ordinary way and leads next.\n- More twos demand more, and this is where tables differ most. The usual line is that a pair of twos falls only to a chain of four consecutive pairs, and three twos only to a chain of five. A common alternative sets the price of a pair of twos at five consecutive pairs; a few tables also accept two fours of a kind in consecutive ranks. Fix the schedule before dealing, because a player holding four sevens has already made plans around it.\n\nThe first player to run out of cards has won, and the rest carry on playing to sort out the remaining places, right down to the player who is left holding cards when everyone else is clear. A player who has gone out is skipped in the rotation, and if they were the one who won the last round, the lead passes on to the next player still holding cards.",
+  "figures": [
+    {
+      "kind": "ranking",
+      "caption": "The 2 is the strongest rank, above the ace, and suits are ranked as well: hearts, diamonds, clubs, spades. The 3♠ is the lowest card in the pack and the 2♥ the highest.",
+      "rows": [
+        {
+          "label": "Ranks, high to low",
+          "cards": [
+            {
+              "face": "2♥",
+              "note": "Best card"
+            },
+            {
+              "face": "A♥"
+            },
+            {
+              "face": "K♥"
+            },
+            {
+              "face": "Q♥"
+            },
+            {
+              "face": "J♥"
+            },
+            {
+              "face": "10♥"
+            },
+            {
+              "face": "9♥"
+            },
+            {
+              "face": "8♥"
+            },
+            {
+              "face": "7♥"
+            },
+            {
+              "face": "6♥"
+            },
+            {
+              "face": "5♥"
+            },
+            {
+              "face": "4♥"
+            },
+            {
+              "face": "3♥"
+            }
+          ]
+        },
+        {
+          "label": "Suits, high to low",
+          "cards": [
+            {
+              "face": "5♥"
+            },
+            {
+              "face": "5♦"
+            },
+            {
+              "face": "5♣"
+            },
+            {
+              "face": "5♠",
+              "note": "Lowest suit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "meld",
+      "caption": "Runs may mix suits, stop at the ace and never wrap round. The middle two rows are the chops that answer a single 2; neither may be played on any other single card.",
+      "rows": [
+        {
+          "label": "Run of three",
+          "cards": [
+            {
+              "face": "8♠"
+            },
+            {
+              "face": "9♦"
+            },
+            {
+              "face": "10♥"
+            }
+          ]
+        },
+        {
+          "label": "Chain of three pairs",
+          "cards": [
+            {
+              "face": "6♠"
+            },
+            {
+              "face": "6♦"
+            },
+            {
+              "face": "7♣"
+            },
+            {
+              "face": "7♥"
+            },
+            {
+              "face": "8♠"
+            },
+            {
+              "face": "8♣"
+            }
+          ]
+        },
+        {
+          "label": "Four of a kind",
+          "cards": [
+            {
+              "face": "5♠"
+            },
+            {
+              "face": "5♣"
+            },
+            {
+              "face": "5♦"
+            },
+            {
+              "face": "5♥"
+            }
+          ]
+        },
+        {
+          "label": "Not a run",
+          "valid": false,
+          "cards": [
+            {
+              "face": "A♠"
+            },
+            {
+              "face": "2♥"
+            },
+            {
+              "face": "3♦"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "goal_and_scoring": "Shedding all thirteen cards first wins the hand outright. Everything after that is about placing, because Tien Len keeps no running score of its own: what people actually record is the order of finish, and in most circles a settlement based on how much you were still holding when the hand ended.\n\nThe common measure is one unit for every card left in hand, paid by each player to the one who went out first. Since the last player standing is often sitting on twos and broken runs they never found a use for, the difference between second and last can be large even though neither of them won anything.\n\nPlenty of tables ignore units altogether and keep no score whatever, playing hand after hand purely for the order of finish and treating coming last twice running as its own punishment. If you do want a session result, agree a number of deals in advance and count first-place finishes, which suits the game better than a target score does; a target rewards whoever gets a hot deal late.\n\nA hand claimed by an instant win, where the rules allow them, normally pays a fixed premium to the holder rather than being counted card by card, on the grounds that nobody had a chance to play at all.",
+  "variants": [
+    {
+      "name": "Instant wins",
+      "description": "Certain dealt hands are shown immediately and take the hand before a card is played. The usual list is all four twos, six pairs among the thirteen cards, and a dragon: a run of all twelve ranks from the three up to the ace. Groups that use dragons often rule that only a dragon with a higher-suited ace can answer one, which makes a dragon topped by the ace of hearts unbeatable. Far from universal, so check before you fan your cards out in triumph."
+    },
+    {
+      "name": "Twos at the top of a run",
+      "description": "Some southern Vietnamese tables let a two cap a sequence, so J-Q-K-A-2 becomes a legal run and the two counts as the highest card in it. A two still may not sit at the bottom, since the three is low. Northern practice is stricter and keeps twos out of sequences entirely, which is also the more widely published rule. Allowing it noticeably weakens the bomb rules, because twos become easier to shed and less often need chopping."
+    },
+    {
+      "name": "Chopping out of turn",
+      "description": "Many groups let a bomb be dropped the moment a two is played rather than waiting for the player's proper turn, with the rotation then resuming from whoever chopped. It makes leading a two a considerably more nervous act and speeds the hand up. Tables that require bombs to be played in turn get a slower, more positional game in which the order of seats matters a great deal."
+    },
+    {
+      "name": "Penalties for what you never played",
+      "description": "An extra charge on top of the count of cards left, aimed at players who hoarded. Twos still in hand at the end are the usual target, at a couple of units each with red twos sometimes charged double, and an unplayed four of a kind or chain of pairs is charged more heavily still. Some tables also fine anyone who failed to put down a single card during the whole hand. The schedules vary wildly from group to group and are worth writing down before the first deal."
+    },
+    {
+      "name": "Two- and three-handed play",
+      "description": "Thirteen cards each and the remainder set aside unseen, exactly as at four players. It works, but a large block of unknown cards means the counting that makes the four-handed game rewarding barely functions, and bombs turn up far less predictably. The two-handed game in particular becomes a contest of who can force the other to break up a run first."
+    }
+  ],
+  "difficulty": "medium",
+  "duration_minutes": "20-45",
+  "tags": [
+    "classic",
+    "strategy",
+    "counting",
+    "two-player",
+    "betting"
+  ],
+  "sources_consulted": [
+    "Pagat",
+    "Gambiter",
+    "Cool Old Games",
+    "Cats at Cards",
+    "Game Rules",
+    "CardRules+",
+    "Play Party Game",
+    "Everything2",
+    "Great Group Games"
+  ]
+}

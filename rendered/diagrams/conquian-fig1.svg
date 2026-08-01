@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 370 120" width="592" height="192" role="img" aria-label="Conquian: The 40-card pack in sequence order. With no eight, nine or ten in it, the seven and the jack are neighbours, and the ace sits at the bottom and never wraps round to the king.">
+<title>The 40-card pack in sequence order. With no eight, nine or ten in it, the seven and the jack are neighbours, and the ace sits at the bottom and never wraps round to the king.</title>
+<rect x="8.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="23.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">A♠</text>
+<text x="23.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">always low</text>
+<rect x="44.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="59.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">2♠</text>
+<rect x="80.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="95.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">3♠</text>
+<rect x="116.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="131.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">4♠</text>
+<rect x="152.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="167.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">5♠</text>
+<rect x="188.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="203.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">6♠</text>
+<rect x="224.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="239.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">7♠</text>
+<text x="239.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">next to</text>
+<text x="239.0" y="67.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">the jack</text>
+<rect x="260.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="275.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">J♠</text>
+<rect x="296.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="311.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">Q♠</text>
+<rect x="332.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="347.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">K♠</text>
+<text x="185.0" y="84.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">The 40-card pack in sequence order. With no eight, nine or ten in it, the</text>
+<text x="185.0" y="96.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">seven and the jack are neighbours, and the ace sits at the bottom and never</text>
+<text x="185.0" y="108.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">wraps round to the king.</text>
+</svg>

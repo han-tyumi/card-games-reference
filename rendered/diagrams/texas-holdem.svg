@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 366 302.4" width="586" height="484" role="img" aria-label="Texas Hold'em setup diagram">
+<title>Texas Hold'em setup</title>
+<rect x="108.0" y="8.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="108.0" y="9.6" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="148.0" y="8.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="148.0" y="9.6" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="188.0" y="8.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="188.0" y="9.6" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="228.0" y="8.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="228.0" y="9.6" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="8.0" y="97.6" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="88.0" y="97.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="128.0" y="97.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="168.0" y="97.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="208.0" y="97.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="248.0" y="97.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="328.0" y="97.6" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="328.0" y="99.2" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="328.0" y="100.8" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="168.0" y="188.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="168.0" y="190.4" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="183.0" y="59.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Opponents' hole cards</text>
+<text x="23.0" y="150.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Deck</text>
+<text x="143.0" y="150.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Flop</text>
+<text x="223.0" y="150.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Turn</text>
+<text x="263.0" y="150.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">River</text>
+<text x="343.0" y="150.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Burn</text>
+<text x="343.0" y="159.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">cards</text>
+<text x="183.0" y="240.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Your</text>
+<text x="183.0" y="249.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">hole cards</text>
+<text x="183.0" y="266.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">The table once the board is complete. The five shared cards arrive in</text>
+<text x="183.0" y="278.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">three instalments with a betting round between each, and every player</text>
+<text x="183.0" y="290.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">builds a hand from those five plus their own two.</text>
+</svg>

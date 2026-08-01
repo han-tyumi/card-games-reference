@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 326 217.6" width="522" height="348" role="img" aria-label="Nertz setup diagram">
+<title>Nertz setup</title>
+<rect x="88.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
+<rect x="128.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
+<rect x="168.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
+<rect x="208.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
+<rect x="8.0" y="96.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="8.0" y="97.6" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="8.0" y="99.2" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="8.0" y="100.8" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="8.0" y="102.4" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="8.0" y="104.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="8.0" y="105.6" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<text x="23.0" y="130.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#5b6672">35</text>
+<rect x="88.0" y="96.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="128.0" y="96.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="168.0" y="96.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="208.0" y="96.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="288.0" y="96.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="288.0" y="97.6" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="288.0" y="99.2" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="288.0" y="100.8" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="288.0" y="102.4" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="288.0" y="104.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="288.0" y="105.6" width="30" height="42" rx="3" fill="#f4f0e6" stroke="#5b6672" stroke-width="1"/>
+<text x="303.0" y="130.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#5b6672">13</text>
+<text x="163.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Foundations, as aces appear</text>
+<text x="23.0" y="155.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Stock</text>
+<text x="163.0" y="155.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Work piles</text>
+<text x="303.0" y="155.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Nertz</text>
+<text x="303.0" y="164.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">pile</text>
+<text x="163.0" y="181.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">One player's side. Everyone builds this facing the centre, which</text>
+<text x="163.0" y="193.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">starts bare: four foundation spaces are drawn, but in play every</text>
+<text x="163.0" y="205.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">ace put out opens one of its own.</text>
+</svg>

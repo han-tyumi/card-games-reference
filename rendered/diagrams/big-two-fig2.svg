@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 336" width="442" height="538" role="img" aria-label="Big Two: Five-card hands, strongest first. A plain straight is the weakest five-card play of all and loses to every shape drawn here.">
+<title>Five-card hands, strongest first. A plain straight is the weakest five-card play of all and loses to every shape drawn here.</title>
+<rect x="88.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="103.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">9♥</text>
+<rect x="124.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="139.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">8♥</text>
+<rect x="160.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="175.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">7♥</text>
+<rect x="196.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="211.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">6♥</text>
+<rect x="232.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="247.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">5♥</text>
+<rect x="88.0" y="80.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="103.0" y="105.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">Q♠</text>
+<rect x="124.0" y="80.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="139.0" y="105.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">Q♥</text>
+<rect x="160.0" y="80.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="175.0" y="105.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">Q♣</text>
+<rect x="196.0" y="80.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="211.0" y="105.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">Q♦</text>
+<rect x="232.0" y="80.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="247.0" y="105.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">4♦</text>
+<text x="247.0" y="130.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Any odd</text>
+<text x="247.0" y="139.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">card</text>
+<rect x="88.0" y="152.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="103.0" y="177.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">8♠</text>
+<rect x="124.0" y="152.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="139.0" y="177.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">8♥</text>
+<rect x="160.0" y="152.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="175.0" y="177.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">8♣</text>
+<rect x="196.0" y="152.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="211.0" y="177.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">K♦</text>
+<rect x="232.0" y="152.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="247.0" y="177.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">K♣</text>
+<rect x="88.0" y="224.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="103.0" y="249.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">K♣</text>
+<rect x="124.0" y="224.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="139.0" y="249.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">10♣</text>
+<rect x="160.0" y="224.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="175.0" y="249.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">7♣</text>
+<rect x="196.0" y="224.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="211.0" y="249.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">5♣</text>
+<rect x="232.0" y="224.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="247.0" y="249.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">3♣</text>
+<text x="80.0" y="32.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Straight flush</text>
+<text x="80.0" y="104.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Four of a kind</text>
+<text x="80.0" y="176.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Full house</text>
+<text x="80.0" y="248.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Flush</text>
+<text x="138.0" y="300.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Five-card hands, strongest first. A plain straight is</text>
+<text x="138.0" y="312.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">the weakest five-card play of all and loses to every</text>
+<text x="138.0" y="324.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">shape drawn here.</text>
+</svg>

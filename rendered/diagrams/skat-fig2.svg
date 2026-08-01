@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 336 140" width="538" height="224" role="img" aria-label="Skat: Grand. Only the jacks are trump, in the same order, and all four suits are seven cards long.">
+<title>Grand. Only the jacks are trump, in the same order, and all four suits are seven cards long.</title>
+<rect x="82.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="97.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">J♣</text>
+<rect x="118.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="133.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">J♠</text>
+<rect x="154.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="169.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">J♥</text>
+<rect x="190.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="205.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">J♦</text>
+<rect x="82.0" y="60.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="97.0" y="85.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">A♥</text>
+<rect x="118.0" y="60.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="133.0" y="85.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">10♥</text>
+<rect x="154.0" y="60.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="169.0" y="85.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">K♥</text>
+<rect x="190.0" y="60.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="205.0" y="85.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">Q♥</text>
+<rect x="226.0" y="60.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="241.0" y="85.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">9♥</text>
+<rect x="262.0" y="60.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="277.0" y="85.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">8♥</text>
+<rect x="298.0" y="60.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="313.0" y="85.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">7♥</text>
+<text x="74.0" y="32.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Trump</text>
+<text x="74.0" y="84.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Every suit</text>
+<text x="168.0" y="116.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Grand. Only the jacks are trump, in the same order, and all four</text>
+<text x="168.0" y="128.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">suits are seven cards long.</text>
+</svg>

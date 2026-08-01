@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 327.2" width="442" height="524" role="img" aria-label="Mus setup diagram">
+<title>Mus setup</title>
+<rect x="123.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="9.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="11.2" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="12.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="83.0" y="100.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="83.0" y="102.4" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="83.0" y="104.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="83.0" y="105.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="100.8" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="102.4" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="104.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="105.6" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="107.2" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="108.8" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="110.4" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<text x="138.0" y="135.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#5b6672">24</text>
+<rect x="163.0" y="100.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="163.0" y="102.4" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="163.0" y="104.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="163.0" y="105.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="198.4" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="200.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="201.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="203.2" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="138.0" y="62.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Your</text>
+<text x="138.0" y="71.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">partner</text>
+<text x="98.0" y="160.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Mano</text>
+<text x="98.0" y="169.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">(dealer's right, speaks first)</text>
+<text x="138.0" y="160.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Stock</text>
+<text x="138.0" y="169.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">and discards</text>
+<text x="178.0" y="160.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Opponent</text>
+<text x="138.0" y="253.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Postre</text>
+<text x="138.0" y="262.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">(the dealer)</text>
+<text x="138.0" y="279.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Four cards each, twenty-four left face down for the</text>
+<text x="138.0" y="291.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">discard phase. Partners face each other, so an opponent</text>
+<text x="138.0" y="303.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">sits on either side of you and every signal you send</text>
+<text x="138.0" y="315.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">has to cross the table between them.</text>
+</svg>

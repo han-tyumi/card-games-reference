@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 336" width="442" height="538" role="img" aria-label="Durak: Beating an attack card, with spades as trump. Suit and trump are the only things that matter — nothing about rank alone will do it.">
+<title>Beating an attack card, with spades as trump. Suit and trump are the only things that matter — nothing about rank alone will do it.</title>
+<rect x="142.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="157.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">9♦</text>
+<text x="157.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Attack</text>
+<rect x="178.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="193.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">J♦</text>
+<text x="193.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Higher,</text>
+<text x="193.0" y="67.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">same suit</text>
+<rect x="142.0" y="80.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="157.0" y="105.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">9♦</text>
+<text x="157.0" y="130.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Attack</text>
+<rect x="178.0" y="80.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="193.0" y="105.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">6♠</text>
+<text x="193.0" y="130.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Any trump</text>
+<text x="193.0" y="139.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">will do</text>
+<rect x="142.0" y="152.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<text x="157.0" y="177.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">9♦</text>
+<text x="157.0" y="202.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Attack</text>
+<rect x="178.0" y="152.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<text x="193.0" y="177.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">K♣</text>
+<text x="193.0" y="202.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Wrong</text>
+<text x="193.0" y="211.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">suit, no trump</text>
+<rect x="142.0" y="224.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="157.0" y="249.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">7♠</text>
+<text x="157.0" y="274.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Trump</text>
+<text x="157.0" y="283.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">attack</text>
+<rect x="178.0" y="224.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="193.0" y="249.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">10♠</text>
+<text x="193.0" y="274.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Only a</text>
+<text x="193.0" y="283.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">higher trump</text>
+<text x="134.0" y="32.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Beaten</text>
+<text x="134.0" y="104.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Beaten</text>
+<text x="134.0" y="176.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#a4243b">Not beaten</text>
+<text x="134.0" y="248.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Beaten</text>
+<text x="138.0" y="300.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Beating an attack card, with spades as trump. Suit and</text>
+<text x="138.0" y="312.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">trump are the only things that matter — nothing about</text>
+<text x="138.0" y="324.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">rank alone will do it.</text>
+</svg>

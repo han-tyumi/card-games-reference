@@ -1,0 +1,157 @@
+{
+  "id": "scopa",
+  "name": "Scopa",
+  "aliases": [
+    "Scopa Italiana"
+  ],
+  "category": "matching-collecting",
+  "players": {
+    "min": 2,
+    "max": 6,
+    "ideal": 4
+  },
+  "decks": "1 standard deck stripped to 40 cards (A to 7 plus J, Q, K in each suit)",
+  "equipment": {
+    "standard_decks": 1,
+    "jokers": 0,
+    "special_deck": "40-card Italian pack (ace to seven plus three court cards in each suit)",
+    "extra_deck_for_large_groups": false,
+    "other": []
+  },
+  "setup": "Scopa is a fishing game: you catch cards off the table with cards from your hand, and the scoring happens once at the end of the round rather than trick by trick.\n\nThe pack is forty cards. Use an Italian deck as it comes, or take an ordinary one and remove the jokers and every eight, nine and ten. Each card has a capture value: ace 1 up through seven 7, then jack 8, queen 9, king 10. The suit of coins carries scoring weight of its own, and on a French-suited pack that job falls to diamonds — agree on this out loud before you start, because half the scoring depends on it.\n\nTwo, three, four and six can all play; five cannot, because the pack will not divide evenly once the table cards are laid out. At four and six the players form partnerships, partners spaced so that no two of them sit next to each other, and each side throws its captures into one shared pile; at two and three everybody plays alone and keeps their own pile. Deal and play run counter-clockwise, and the turn to deal passes one seat to the right each time the pack is used up. Pick the first dealer however you like — cut and give it to the low card — and have the pack cut by the player on the dealer's left before every deal.\n\nThe dealer gives three cards to each player, starting on their right, and lays four face up in the middle, then puts the undealt remainder face down to one side as the stock. Those four are the only cards the table ever starts with; nothing more is ever dealt to the middle.\n\nOne opening is thrown out. If three or four kings are among the four face-up cards, no clean sweep of the table is possible at any point in the round, so the whole deal is scrapped, the cards shuffled, and the same dealer deals again.\n\nCaptures go face down in front of you and stay unexamined until the round is scored. The player to the dealer's right goes first.",
+  "layout": {
+    "rows": [
+      [
+        {
+          "kind": "hand",
+          "label": "Opponent",
+          "cards": 3
+        }
+      ],
+      [
+        {
+          "kind": "stock",
+          "label": "Stock",
+          "cards": 30,
+          "face": "down"
+        },
+        {
+          "kind": "gap"
+        },
+        {
+          "kind": "tableau",
+          "label": "Table cards",
+          "repeat": 4,
+          "cards": 1
+        }
+      ],
+      [
+        {
+          "kind": "hand",
+          "label": "Your hand",
+          "cards": 3
+        }
+      ]
+    ],
+    "caption": "The two-handed deal: three cards each and four face up in the middle. The stock only ever refills hands, never the table."
+  },
+  "play": "A turn is one card from your hand, played face up, and nothing else. Either it catches something or it does not.\n\nCatching by rank. If the card you play has the same value as a card lying on the table, you take that card, and both go into your capture pile. Only the one card: when two cards of the same rank are lying there, a third of that rank takes whichever of them you name, not both, and picking the coin one over the other is a real decision.\n\nCatching by sum. If it has the same value as two or more table cards added together, you take that whole group. A seven lifts a five and a two, or a four, a two and an ace. Court cards join in on their numbers like everything else, so a king can be caught by a seven and a three.\n\nWhen both are available, rank wins. A player holding a six who sees a six on the table alongside a four and a two must take the six; the choice of which group to lift only exists when no single card matches. This is the standard Italian rule and the one point where house rules most often drift, so settle it first.\n\nWhen more than one group of the same total is lying there, you pick which group you take, and that choice is most of the skill in the game.\n\nCapturing is not optional in the sense you might hope. You choose freely which card to play, but a card that can catch something must do so — you cannot play a seven onto a table with a seven on it and simply leave both lying. What you can do is play a card that catches nothing at all, in which case it stays face up in the middle and joins the pool for everyone. Feeding the table on purpose, to set up a sum only you can complete, is a normal and often necessary move.\n\nSweeps. A capture that empties the table completely is a scopa. Turn one card of your pile face up so the sweep can be counted later. Whoever plays next faces bare wood and can only add a card to it, which is why leaving a table your opponent can clear is the cardinal sin.\n\nRunning the pack out. When every hand is empty, the dealer deals three more to each player from the stock, and again nothing goes to the middle. This repeats until the stock is gone. After the last card of the round is played, whatever is still lying in the middle goes to whoever made the most recent capture — a useful haul, but never counted as a sweep, even in the case where that final play genuinely cleared the table.",
+  "goal_and_scoring": "The round ends when the pack runs out, and then each side sorts the pile it has been building all round. Play continues over as many rounds as it takes to pass the target, which is 11 points in most of Italy; 21 is the other common figure, and it suits the variants that hand out extra points.\n\nFour points are contested each round, plus a point for every sweep:\n\n- Most cards captured: 1 point. There are forty, so 21 takes it and a 20-20 split scores for nobody.\n- Most coins: 1 point. Ten in the suit, so six wins it, and five apiece goes unscored.\n- The settebello, the seven of coins: 1 point to whoever caught it. Never tied, never worth giving away.\n- The best primiera: 1 point.\n- Each scopa: 1 point, banked during play rather than counted at the end.\n\nPrimiera is the one that needs explaining. Take the single best card you captured in each of the four suits, rate each on the prime scale — a scale used for nothing else in the game, on which the small pip cards outrank every court card and the order is not the one the capture values would suggest — and add the four figures. High total wins the point. A side that captured nothing at all in some suit cannot compete for it, which is why a lone seven of an otherwise ignored suit is quietly valuable — and if both sides are missing a suit, the one holding cards in more suits takes the point. An exact tie on the prime total scores for nobody, like the other two countable points.\n\nAt three players, where there are no partnerships, the same points are contested but the two counting ones turn on a plurality rather than a majority: most cards and most coins go to whoever simply has more than the other two, and a tie for the lead on either scores for nobody.\n\nSweeps are the swing. The four fixed points tend to split, so a round is usually decided by who cleared the table more often, and a player who never watches for it will lose steadily without ever understanding why.\n\nIf two sides pass the target in the same round, the higher total wins; if they are exactly level, play another round.",
+  "scoring_table": [
+    {
+      "item": "Most cards captured",
+      "value": "1",
+      "note": "forty in the pack, so 21 takes it; level scores for nobody"
+    },
+    {
+      "item": "Most coins captured",
+      "value": "1",
+      "note": "ten in the suit, so six takes it; level scores for nobody"
+    },
+    {
+      "item": "Settebello (seven of coins)",
+      "value": "1",
+      "note": "cannot be tied"
+    },
+    {
+      "item": "Best primiera",
+      "value": "1",
+      "note": "highest total on the prime scale below; level scores for nobody"
+    },
+    {
+      "item": "Each scopa (sweep)",
+      "value": "1",
+      "note": "not available on the final card of the round"
+    },
+    {
+      "item": "Prime value: seven",
+      "value": "21",
+      "note": "the scale below is used only to settle the primiera point"
+    },
+    {
+      "item": "Prime value: six",
+      "value": "18"
+    },
+    {
+      "item": "Prime value: ace",
+      "value": "16"
+    },
+    {
+      "item": "Prime value: five",
+      "value": "15"
+    },
+    {
+      "item": "Prime value: four",
+      "value": "14"
+    },
+    {
+      "item": "Prime value: three",
+      "value": "13"
+    },
+    {
+      "item": "Prime value: two",
+      "value": "12"
+    },
+    {
+      "item": "Prime value: king, queen or jack",
+      "value": "10"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Scopone and Scopone Scientifico",
+      "description": "The serious four-handed forms, always two against two with partners opposite. In Scopone the whole pack is dealt out, nine to a player, with four to the table as usual. Scopone Scientifico deals ten each and leaves the middle empty, so the opening player has no choice but to feed the table, and every card in the game is accounted for from the first move — no stock, no refills, nothing hidden but the three other hands. The scientific version also allows a sweep on the very last card of the deal, which the ordinary game does not."
+    },
+    {
+      "name": "Asso piglia tutto",
+      "description": "Also called Scopa d'Assi. An ace played from the hand takes the entire table, whatever is on it, and this counts as a sweep. The exception is a table with an ace already sitting on it, where the normal rank rule applies and your ace simply pairs with it. Four guaranteed sweeps a round makes for a much louder and much luckier game."
+    },
+    {
+      "name": "Scopa di Quindici",
+      "description": "Captures are made not by matching your card but by combining it with table cards to total exactly fifteen, court cards counting eight, nine and ten as usual. A five takes a king, or a seven and a three. The Spanish game Escoba is essentially this version, and the constant arithmetic makes it noticeably harder than plain Scopa despite the shorter rule."
+    },
+    {
+      "name": "Neapolitan extras",
+      "description": "Two bonus points seen mainly around Naples. Re bello, the king of coins, is worth a point to whoever captures it, like a second settebello. Napola pays a side that captured the ace, two and three of coins: the point value is the length of the unbroken run of coins they hold counting up from the ace, so ace through five is worth five. Both inflate the round considerably, and tables using them normally play to 21 rather than 11."
+    }
+  ],
+  "difficulty": "medium",
+  "duration_minutes": "20-40",
+  "tags": [
+    "classic",
+    "two-player",
+    "partnership",
+    "counting",
+    "memory",
+    "strategy",
+    "family-friendly"
+  ],
+  "sources_consulted": [
+    "Pagat",
+    "Wikipedia",
+    "Gambiter",
+    "Board Game Arena",
+    "GameRules.com",
+    "Official Game Rules"
+  ]
+}

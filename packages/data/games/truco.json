@@ -1,0 +1,335 @@
+{
+  "id": "truco",
+  "name": "Truco",
+  "aliases": [
+    "Truco Argentino",
+    "Truco Uruguayo",
+    "Truco Paulista",
+    "Truco Mineiro"
+  ],
+  "category": "bluffing",
+  "players": {
+    "min": 2,
+    "max": 6,
+    "ideal": 4
+  },
+  "decks": "1 standard deck stripped to 40 cards (8s, 9s and 10s removed), or a 40-card Spanish pack",
+  "equipment": {
+    "standard_decks": 1,
+    "jokers": 0,
+    "special_deck": "40-card Spanish pack: ace to seven, sota, caballo and rey in each of coins, cups, swords and clubs",
+    "extra_deck_for_large_groups": false,
+    "other": [
+      "Beans, matchsticks or counters for scoring"
+    ]
+  },
+  "setup": "Truco needs forty cards. The Spanish pack is the traditional one — coins, cups, swords and clubs, each suit running ace through seven and then sota, caballo and rey. An ordinary pack does the job once the eights, nines and tens come out: jack stands for the sota, queen for the caballo, king for the rey. Match the suits as well, because four named cards depend on it — swords are spades, clubs are clubs, cups are hearts and coins are diamonds.\n\nFour players in two partnerships is the standard table, partners facing each other so the sides alternate. Two play head to head with nothing changed at all, six play three against three, and three can play each for themselves. Five is the one number that does not work; an odd fifth player sits the game out or keeps the score.\n\nDeal three cards each, one at a time, to the right. Nothing is turned up in the Argentine game, nothing is drawn and nothing is exchanged: the three cards you are handed are the three you play. The player on the dealer's right is the mano. They lead to the first trick and — this matters far more than it sounds — their side wins every tie in the hand, at the cards and in the envido alike. The deal moves one seat right afterwards.\n\nLearn the ranking before the first hand rather than during it, because almost none of it can be guessed. Four cards stand apart at the top and are called the bravas; the aces of swords and clubs and the sevens of swords and coins have been lifted clean out of their ranks to form them, which leaves the other two aces and the other two sevens stranded lower down as the ases falsos and sietes falsos. Everything else is compared by rank alone, suits being otherwise meaningless.\n\nScore with beans or matchsticks in two visible groups. A game runs to thirty points, and the first fifteen are the malas and the second fifteen the buenas. That split is not bookkeeping — one of the envido bets is priced directly off how far the leading side still has to travel. A short game to fifteen, all of it counted as malas, is common where time is short.",
+  "play": "A hand is three tricks, and the tricks are mostly there to give the betting something to be about.\n\nThe tricks. The mano leads, play goes to the right, one card each. The highest card takes the trick and its winner leads to the next. There is no trump suit and no obligation to follow suit — play whatever you like whenever it is your turn. A trick is a parda, a tie belonging to nobody, when the highest card played is matched by an opponent; two equal cards from the same partnership are not a parda, and that side simply takes the trick.\n\nSettling the hand takes five rules, and they are worth learning as a block because pardas turn up constantly. Take two tricks and the hand is yours. If the first trick is a parda, the hand goes to whoever wins the second, and if the second is a parda too, to whoever wins the third. If you won the first trick and the second is a parda, the hand is already yours and the third is not played. If each side has taken one trick and the third is a parda, the hand goes to whoever won the first. And if all three are pardas the mano's side takes it. As soon as the outcome is settled the remaining cards are thrown in unseen.\n\nTwo separate auctions run alongside those three tricks, and both are answered the same three ways: quiero to accept, no quiero to refuse, or a raise to the next rung.\n\nEnvido, on the cards you were dealt. Envido is a bet about who holds the best two cards of a single suit, and it is settled by saying a number out loud rather than by playing anything. Two cards of the same suit are worth their pips added together plus twenty, with sota, caballo and rey worth nothing at all; hold three of a suit and you count the best two of them. A hand with no two cards alike in suit counts only its highest single card, so three court cards in three different suits count zero. The floor is 0 and the ceiling is 33.\n\nAny player may call envido when it is their turn to play, and either opponent may answer for their side. Envido belongs to the first trick: strictly it dies the moment that trick is complete, though many tables let it stand until the first card of the second trick is on the table — agree which before you deal, because it changes the whole shape of the first round. Once a call is accepted, count round from the mano: the mano says a number, and each player after them either beats it aloud or concedes with son buenas. The highest number wins and the mano's side takes any tie. The points go down immediately and the tricks carry on regardless of who won them.\n\nThe envido ladder accumulates rather than replaces. Envido is 2; a second envido on top of it makes 4; real envido adds three more, so envido then real envido is 5. Above everything sits falta envido, worth whatever the side currently ahead still needs — the points to finish the malas if that side is still inside the first fifteen, otherwise the points to finish the game outright. Refusing any of them pays the caller the amount already staked below the refused call, and never less than one, which is why a falta envido gets called far more often than it gets taken.\n\nTruco, on the tricks. Truco is a bet on winning the hand outright, not on the trick in front of you. Any player may call it when it is their turn to play, and either opponent may answer for their side. The opponents accept, refuse, or push it up to retruco, which the first side may push again to vale cuatro. Refusing does not lose you the hand — it ends the hand, and the caller banks the lower amount without another card being turned. That is the engine of the whole game: you are betting far less on your cards than on whether the other side believes you have them.\n\nPrecedence. If truco is called at any point in the first trick while the envido is still live, the opponents may answer envido primero, which forces the envido to be called and settled first. The truco call is still standing once that is done, and has to be answered then.\n\nTalking. Truco is loud and the talk is part of the game rather than decoration. Verse, taunts, and flat lies about what you are holding are all normal and none of them are cheating. Partners also traditionally signal their bravas to each other with small facial gestures across the table, which the opposing pair are entitled to watch for and call out; how far that is tolerated varies enormously from table to table, so ask before you start rather than after.",
+  "figures": [
+    {
+      "kind": "ranking",
+      "caption": "Argentine truco, every card in the pack from highest to lowest. Cups (hearts here) stand in for the ranks that hold no special card. Fourteen tiers, of which the top four are single cards.",
+      "rows": [
+        {
+          "label": "High to low",
+          "cards": [
+            {
+              "face": "A♠",
+              "note": "Ancho de espadas"
+            },
+            {
+              "face": "A♣",
+              "note": "Ancho de bastos"
+            },
+            {
+              "face": "7♠",
+              "note": "Siete de espadas"
+            },
+            {
+              "face": "7♦",
+              "note": "Siete de oros"
+            },
+            {
+              "face": "3♥",
+              "note": "All four 3s"
+            },
+            {
+              "face": "2♥",
+              "note": "All four 2s"
+            },
+            {
+              "face": "A♥",
+              "note": "Ases falsos"
+            },
+            {
+              "face": "K♥",
+              "note": "Rey"
+            },
+            {
+              "face": "Q♥",
+              "note": "Caballo"
+            },
+            {
+              "face": "J♥",
+              "note": "Sota"
+            },
+            {
+              "face": "7♥",
+              "note": "Sietes falsos"
+            },
+            {
+              "face": "6♥"
+            },
+            {
+              "face": "5♥"
+            },
+            {
+              "face": "4♥",
+              "note": "Lowest card"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "ranking",
+      "caption": "Brazilian truco instead turns a card, the vira, and promotes the four cards of the next rank up to manilhas. With a five turned, the sixes are the manilhas and no six is left in the ordinary order.",
+      "rows": [
+        {
+          "label": "Vira",
+          "cards": [
+            {
+              "face": "5♥"
+            }
+          ]
+        },
+        {
+          "label": "Manilhas",
+          "cards": [
+            {
+              "face": "6♣",
+              "note": "Zap, highest"
+            },
+            {
+              "face": "6♥"
+            },
+            {
+              "face": "6♠"
+            },
+            {
+              "face": "6♦"
+            }
+          ]
+        },
+        {
+          "label": "Everything else",
+          "cards": [
+            {
+              "face": "3♦"
+            },
+            {
+              "face": "2♦"
+            },
+            {
+              "face": "A♦"
+            },
+            {
+              "face": "K♦"
+            },
+            {
+              "face": "J♦",
+              "note": "Above the queen"
+            },
+            {
+              "face": "Q♦"
+            },
+            {
+              "face": "7♦"
+            },
+            {
+              "face": "5♦",
+              "note": "No 6s: they are manilhas"
+            },
+            {
+              "face": "4♦"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "ranking",
+      "caption": "Uruguayan truco turns a muestra and five cards of its suit become piezas, outranking even the bravas, which are called matas there. Shown with cups (hearts) as the muestra suit.",
+      "rows": [
+        {
+          "label": "Piezas",
+          "cards": [
+            {
+              "face": "2♥",
+              "note": "Counts 30 for envido"
+            },
+            {
+              "face": "4♥",
+              "note": "29"
+            },
+            {
+              "face": "5♥",
+              "note": "28"
+            },
+            {
+              "face": "Q♥",
+              "note": "27"
+            },
+            {
+              "face": "J♥",
+              "note": "27"
+            }
+          ]
+        },
+        {
+          "label": "Then the matas",
+          "cards": [
+            {
+              "face": "A♠"
+            },
+            {
+              "face": "A♣"
+            },
+            {
+              "face": "7♠"
+            },
+            {
+              "face": "7♦"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "goal_and_scoring": "A game is a race to thirty points and every one of them comes from a bet. The first fifteen are the malas and the last fifteen the buenas, a division that exists because falta envido is priced against how far the leading side still has to go: the identical call is worth a trifle early and can end the game late.\n\nThe settlements are independent. The envido, the flor if you are playing with it, and the truco are three separate accounts, and a partnership can lose the tricks having already banked more from the envido than the hand was ever going to pay. That is a perfectly ordinary way to win a game, and it is why a hand with two high cards of one suit and nothing else is not a hand to fold.\n\nTwo principles govern the whole ladder. An accepted bet pays its own value to whichever side wins the thing it was about. A refused bet pays the caller straight away, at the value of the rung below the one refused, and closes that auction with nothing shown — so refusing an envido costs you almost nothing, and refusing a vale cuatro costs nearly as much as losing it would have. The consequence is that the ladder is not really a ladder of odds; it is a ladder of how much you are willing to be wrong by.\n\nScore in the traditional way if you can, with matchsticks or beans laid out in groups and the malas kept on one side of the table and the buenas on the other. Everyone can then see at a glance what a falta envido is currently worth, which is information the game expects you to have.",
+  "scoring_table": [
+    {
+      "item": "Hand won, truco never called",
+      "value": "1"
+    },
+    {
+      "item": "Truco",
+      "value": "2",
+      "note": "1 to the caller if refused"
+    },
+    {
+      "item": "Retruco",
+      "value": "3",
+      "note": "2 if refused"
+    },
+    {
+      "item": "Vale cuatro",
+      "value": "4",
+      "note": "3 if refused"
+    },
+    {
+      "item": "Envido",
+      "value": "2",
+      "note": "1 if refused"
+    },
+    {
+      "item": "Envido called a second time",
+      "value": "4",
+      "note": "2 if refused"
+    },
+    {
+      "item": "Real envido",
+      "value": "3",
+      "note": "on its own; refusal pays whatever was already staked, at least 1"
+    },
+    {
+      "item": "Envido, then real envido",
+      "value": "5",
+      "note": "the ladder accumulates; 2 if refused"
+    },
+    {
+      "item": "Falta envido",
+      "value": "what the leaders still need",
+      "note": "to reach 15 if the leading side is in the malas, else to reach 30; refused, it pays the rung below (min 1)"
+    },
+    {
+      "item": "Flor",
+      "value": "3",
+      "note": "only at tables playing con flor; unopposed, it simply scores"
+    },
+    {
+      "item": "Contraflor",
+      "value": "6",
+      "note": "regional; some tables pay 4. Refused, it pays 3 to the caller"
+    },
+    {
+      "item": "Contraflor al resto",
+      "value": "enough to finish the game",
+      "note": "refused, it pays the flor points already staked"
+    },
+    {
+      "item": "Envido: two cards of one suit",
+      "value": "pips added, plus 20"
+    },
+    {
+      "item": "Envido: sota, caballo, rey",
+      "value": "0"
+    },
+    {
+      "item": "Envido: no two cards alike in suit",
+      "value": "highest single card"
+    },
+    {
+      "item": "Best possible envido",
+      "value": "33",
+      "note": "the 7 and 6 of one suit"
+    },
+    {
+      "item": "Worst possible envido",
+      "value": "0",
+      "note": "three court cards, no two of a suit"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Con flor",
+      "description": "Three cards of one suit is a flor, and at tables playing with it the holder must announce it during the first trick. Flor overrides the envido entirely: announcing it cancels any envido bet outstanding and replaces that account with its own, which can be pushed up to contraflor and then to contraflor al resto, staking the remainder of the game. Argentine tables divide roughly evenly between con flor and sin flor, and the choice completely changes what a suited hand is worth, so it is the first thing to agree on."
+    },
+    {
+      "name": "Truco Paulista (Brazil)",
+      "description": "The most widely played Brazilian form, and structurally a different game above the same three tricks. After the deal a card is turned as the vira, and the four cards of the rank immediately above it become the manilhas, ranked among themselves by suit: clubs highest, then hearts, spades, diamonds. The order wraps, so a turned 3 makes the 4s manilhas. Below them the ranks run 3, 2, ace, king, jack, queen, 7, 6, 5, 4, the jack sitting above the queen. There is no envido at all — the whole hand rides on the tricks. An untrucoed hand is worth 1, truco makes it 3, and the raises are seis, nove and doze; a refusal pays the caller the value of the rung below, and the game finishes at twelve points. The sting is the mão de onze: a side reaching eleven looks at its cards and chooses either to play the hand for three points or to throw it in and hand the opponents one, and no truco may be called in that hand at all. If both sides are on eleven, most tables play the hand out for three with nobody allowed to look at their cards first."
+    },
+    {
+      "name": "Truco Mineiro (Brazil)",
+      "description": "Played like the Paulista game but with no vira turned. The four manilhas are fixed for every hand: the four of clubs, the seven of hearts, the ace of spades and the seven of diamonds, in that order, known respectively as the zap, the copas, the espadilha and the ourito. Removing the turn removes the one piece of shared information the Paulista game gives you, so every hand is read blind and the four special cards are memorised rather than worked out."
+    },
+    {
+      "name": "Truco Uruguayo",
+      "description": "A card is turned as the muestra and left visible under the pack. Five cards of its suit — the two, four, five, caballo and sota — become piezas, outranking everything including the four bravas, which Uruguayans call matas. If the muestra card is itself one of those five, the rey of the suit is promoted in its place. Piezas count in the envido too, at fixed values well above anything an ordinary pair can reach, which pushes the best possible envido up to 37 and makes the envido round a far bigger part of the game than it is across the river."
+    },
+    {
+      "name": "Two-handed truco",
+      "description": "Two players, three cards each, everything else identical: the same three tricks, the same envido ladder, the same truco ladder, the same thirty points. What changes is that no information can be signalled and none can be concealed behind a partner, so the whole hand is a direct reading contest, and the mano's tie-breaking advantage becomes the single most valuable thing on the table."
+    }
+  ],
+  "difficulty": "medium",
+  "duration_minutes": "30-60",
+  "tags": [
+    "partnership",
+    "bluffing",
+    "strategy",
+    "two-player",
+    "classic",
+    "counting"
+  ],
+  "sources_consulted": [
+    "Pagat",
+    "Wikipedia",
+    "Mundigames",
+    "Naipes Heraclio Fournier",
+    "Ludoteka",
+    "Conecta Games",
+    "GameVelvet",
+    "Arcadia Games"
+  ]
+}

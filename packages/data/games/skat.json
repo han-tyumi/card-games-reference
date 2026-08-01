@@ -1,0 +1,326 @@
+{
+  "id": "skat",
+  "name": "Skat",
+  "aliases": [
+    "German Skat",
+    "Deutscher Skat"
+  ],
+  "category": "trick-taking",
+  "players": {
+    "min": 3,
+    "max": 4,
+    "ideal": 3
+  },
+  "decks": "1 standard deck stripped to 32 cards (A, K, Q, J, 10, 9, 8, 7 in each suit)",
+  "equipment": {
+    "standard_decks": 1,
+    "jokers": 0,
+    "special_deck": "32-card skat pack (A, K, Q, J, 10, 9, 8, 7 in each suit)",
+    "extra_deck_for_large_groups": false,
+    "other": []
+  },
+  "setup": "Skat is a game for three, always. Four may sit at the table, in which case whoever deals stands out of that hand and the other three play it, so a four-handed table simply gives every player one hand in four off. Take a standard pack and remove everything below the seven, leaving thirty-two cards.\n\nCut for first deal, then pass it to the left each hand. Deal in the traditional packets: three cards to each player, two face down in the middle, four more to each player, three more to each player. Everyone ends with ten, and the two cards in the middle are the skat that the game is named after.\n\nCard values are what the play is for. An ace is 11, a ten is 10, a king 4, a queen 3, a jack 2, and the nine, eight and seven count nothing at all. That puts 120 points in the pack, which is why 61 is the number that matters.\n\nNow the ranking, which has to be learned before the first hand rather than during it. The four jacks are not members of their printed suits. In a suit game they stand above everything as the top four trumps, in the fixed order clubs, spades, hearts, diamonds, and the seven cards of the chosen trump suit rank underneath them — so trump is eleven cards deep and each of the other three suits is only seven. Inside any suit the ten sits immediately below the ace and above the king. A grand game promotes nothing but the four jacks. A null game has no trump at all and hands the jack back to its own suit, where it belongs between the queen and the ten.\n\nRule a sheet with a column per player, running plus and minus. Individual tricks are never written down; each hand yields a single figure, and in the basic scheme only the declarer's column moves.",
+  "layout": {
+    "rows": [
+      [
+        {
+          "kind": "hand",
+          "label": "Middlehand",
+          "cards": 10
+        },
+        {
+          "kind": "stock",
+          "label": "The skat",
+          "cards": 2,
+          "face": "down"
+        },
+        {
+          "kind": "hand",
+          "label": "Rearhand (deals)",
+          "cards": 10
+        }
+      ],
+      [
+        {
+          "kind": "hand",
+          "label": "Forehand",
+          "cards": 10
+        }
+      ]
+    ],
+    "caption": "Ten cards each and two face down in the middle. Forehand sits to the dealer's left, speaks last in the auction and always leads to the first trick, whoever ends up declaring."
+  },
+  "play": "The auction. Seats are named for it: forehand on the dealer's left, middlehand next, rearhand last. At a four-player table the dealer takes no part in anything.\n\nBids are game values, and only numbers that a real contract can produce are legal. The ladder therefore starts at 18, the cheapest game there is — diamonds, base value 9, times a matador and the game itself — and climbs 20, 22, 23, 24, 27, 30, 33, 35, 36 and on up. A bid claims that the game you mean to play is worth at least that much. It says nothing about which game.\n\nMiddlehand speaks first and speaks to forehand, either passing or naming a number. Forehand answers with a single word — yes, meaning I will play for that too, or pass. While forehand keeps saying yes, middlehand must either climb to the next number or give up. One of the two eventually stops, and rearhand then takes over the contest against whichever of them survived, bidding upward in the same fashion. The one player nobody outbids is the declarer, and plays alone against the other two, who are partners for that hand only.\n\nForehand is the one seat that never has to bid. If middlehand and rearhand both pass at once, nobody has asked forehand for anything, and forehand may simply announce a game — worth at least the minimum 18 — or pass in turn. Should all three pass, the table either throws the cards in and redeals or plays Ramsch. Settle which before the first hand.\n\nChoosing the game. The declarer's first decision is the skat. Take it, and you hold twelve cards for a moment and must bury any two face down; those two count toward your own card points when the hand is totted up. Refuse it, and you are playing a hand game, which is worth an extra multiplier — the skat still belongs to your side either way, whether you looked at it or not. The contract is then announced: a trump suit, or grand, or null, together with any extras.\n\nThe extras nest in a fixed way, and this is where people go wrong. Announcing schneider or schwarz in advance is open only to a hand game, and each announcement drags the one below it along: schwarz announced includes schneider announced, and in suit and grand contracts ouvert requires schwarz announced on top of that, with your ten cards spread face up before the opening lead. A grand ouvert therefore carries hand, schneider, schneider announced, schwarz, schwarz announced and ouvert all at once — six factors above the matadors and the game, so with all four jacks it is (4 + 1 + 6) x 24, or 264, the largest ordinary game in Skat. Null ouvert carries no such condition: you simply lay the hand out and try to lose every trick with it visible.\n\nThe tricks. Forehand leads first, declarer or not. Follow suit if you can. The trap is the jacks: with hearts as trump, leading the jack of diamonds is a trump lead, not a diamond lead, and a player whose only trump is the jack of clubs is obliged to play it. A player who cannot follow may do anything — trump, or throw away. There is no duty to trump and no duty to beat. The trick goes to the highest trump in it, or to the highest card of the suit led if no trump appears, and its winner leads to the next. Ten tricks exhaust the hands.\n\nNull works the same way minus the trumps. Following suit is still compulsory, there is nothing that can beat a suit from outside it, and the highest card of the suit led takes the trick.\n\nReckoning up. The declarer sweeps in every trick won plus the two skat cards and counts the values. The defenders count theirs as one pile, not two. Between them the totals must come to 120, which is a useful check that nothing has gone astray.",
+  "figures": [
+    {
+      "kind": "ranking",
+      "caption": "A suit game with spades as trump. All four jacks desert their own suits to head the trump suit in an order that never changes, so trump runs eleven cards deep.",
+      "rows": [
+        {
+          "label": "Trump, high to low",
+          "cards": [
+            {
+              "face": "J♣",
+              "note": "Always highest"
+            },
+            {
+              "face": "J♠"
+            },
+            {
+              "face": "J♥"
+            },
+            {
+              "face": "J♦"
+            },
+            {
+              "face": "A♠"
+            },
+            {
+              "face": "10♠",
+              "note": "Above the king"
+            },
+            {
+              "face": "K♠"
+            },
+            {
+              "face": "Q♠"
+            },
+            {
+              "face": "9♠"
+            },
+            {
+              "face": "8♠"
+            },
+            {
+              "face": "7♠"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "ranking",
+      "caption": "Grand. Only the jacks are trump, in the same order, and all four suits are seven cards long.",
+      "rows": [
+        {
+          "label": "Trump",
+          "cards": [
+            {
+              "face": "J♣"
+            },
+            {
+              "face": "J♠"
+            },
+            {
+              "face": "J♥"
+            },
+            {
+              "face": "J♦"
+            }
+          ]
+        },
+        {
+          "label": "Every suit",
+          "cards": [
+            {
+              "face": "A♥"
+            },
+            {
+              "face": "10♥"
+            },
+            {
+              "face": "K♥"
+            },
+            {
+              "face": "Q♥"
+            },
+            {
+              "face": "9♥"
+            },
+            {
+              "face": "8♥"
+            },
+            {
+              "face": "7♥"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "ranking",
+      "caption": "Null. No trump anywhere, and the jack goes home to its own suit, between the queen and the ten. The ten is no longer promoted either.",
+      "rows": [
+        {
+          "label": "Every suit",
+          "cards": [
+            {
+              "face": "A♦"
+            },
+            {
+              "face": "K♦"
+            },
+            {
+              "face": "Q♦"
+            },
+            {
+              "face": "J♦"
+            },
+            {
+              "face": "10♦"
+            },
+            {
+              "face": "9♦"
+            },
+            {
+              "face": "8♦"
+            },
+            {
+              "face": "7♦"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "goal_and_scoring": "Two players are trying to stop one. What the declarer has to achieve depends on the contract:\n\n- Suit or grand: 61 card points or better. Sixty is a loss.\n- Schneider: 90 or better. Optional as a bonus, compulsory if it was announced.\n- Schwarz: all ten tricks.\n- Null: not one trick. A single trick ends it, and card points are beside the point.\n\nGame value is a base value multiplied by a count of factors, and the count begins with the matadors — the unbroken run of top trumps at the head of the order.\n\nCount matadors downward from the jack of clubs. If you hold it, you are with as many trumps as the run you own before the first gap: the jack of clubs on its own is with 1, the jacks of clubs and spades is with 2, and so on through the trump order. If you do not hold it, you are without as many as the run at the top you are missing. The arithmetic does not care which: with 3 and without 3 both contribute 3. Add 1 for the game itself, add a factor for every extra that applies, and multiply the total by the base value. A grand played from the hand with the two top jacks comes to (2 + 1 + 1) x 24, or 96.\n\nNull ignores that whole apparatus and uses four flat values instead, which is why a null is often the cheapest way to buy an auction with a hand full of low cards.\n\nSettling. Bring the contract home and your column gains the game value. Fail and it loses twice that, and the factors that actually happened are counted before the doubling — a declarer held to 30 card points or fewer has been schneidered and pays for that factor as well. There is also a way to lose on paper alone. If the game you actually played is worth less than the number you bid, you have overbid, and the hand is lost however many points you took. The deduction is then twice the lowest legal value of your contract that reaches your bid, which can be a great deal more than the game was ever going to pay. Counting matadors before you open your mouth in the auction is not caution, it is the whole discipline of bidding.\n\nThere is no target score. Agree a number of hands — a multiple of the number of players, three or four, so that every seat deals the same number of times and, at a four-handed table, sits out the same number of times — and the highest total at the end wins.",
+  "scoring_table": [
+    {
+      "item": "Ace",
+      "value": "11"
+    },
+    {
+      "item": "Ten",
+      "value": "10"
+    },
+    {
+      "item": "King",
+      "value": "4"
+    },
+    {
+      "item": "Queen",
+      "value": "3"
+    },
+    {
+      "item": "Jack",
+      "value": "2"
+    },
+    {
+      "item": "Nine, eight, seven",
+      "value": "0",
+      "note": "120 in the pack, so 61 wins and 90 is schneider"
+    },
+    {
+      "item": "Base value, diamonds",
+      "value": "9"
+    },
+    {
+      "item": "Base value, hearts",
+      "value": "10"
+    },
+    {
+      "item": "Base value, spades",
+      "value": "11"
+    },
+    {
+      "item": "Base value, clubs",
+      "value": "12"
+    },
+    {
+      "item": "Base value, grand",
+      "value": "24"
+    },
+    {
+      "item": "Matadors, with or without",
+      "value": "+1 each"
+    },
+    {
+      "item": "The game itself",
+      "value": "+1",
+      "note": "always counted"
+    },
+    {
+      "item": "Hand, skat left alone",
+      "value": "+1"
+    },
+    {
+      "item": "Schneider made",
+      "value": "+1"
+    },
+    {
+      "item": "Schneider announced",
+      "value": "+1",
+      "note": "hand games only, and on top of the factor for making it"
+    },
+    {
+      "item": "Schwarz made",
+      "value": "+1"
+    },
+    {
+      "item": "Schwarz announced",
+      "value": "+1",
+      "note": "hand games only"
+    },
+    {
+      "item": "Ouvert",
+      "value": "+1",
+      "note": "needs schwarz announced in suit and grand games"
+    },
+    {
+      "item": "Null",
+      "value": "23",
+      "note": "flat, no multipliers"
+    },
+    {
+      "item": "Null hand",
+      "value": "35"
+    },
+    {
+      "item": "Null ouvert",
+      "value": "46"
+    },
+    {
+      "item": "Null ouvert hand",
+      "value": "59"
+    },
+    {
+      "item": "Contract lost",
+      "value": "minus twice the value"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Ramsch",
+      "description": "What many tables play instead of redealing a passed-out hand. Nobody declares; the jacks are the only trumps, as in grand; and the aim reverses, since whoever finishes with the most card points loses that many. Taking every trick is a durchmarsch and wins outright instead, usually for 120. A player who takes no trick at all is a Jungfrau and, at most tables, doubles what the loser pays. In the shove-along form, Schieberamsch, the skat is passed round the table before play and every shove doubles the damage again. It is not part of the official rules, so the details are whatever your table says they are."
+    },
+    {
+      "name": "Kontra and Re",
+      "description": "A doubling exchange borrowed from other German games. Before the first card is led, a defender who fancies the odds may call kontra, doubling what the hand is worth; the declarer may answer re and double it again, and some tables allow a further step or two beyond that. It changes nothing about how the cards are played and everything about how loudly a marginal contract is punished. Common in casual and club play, absent from tournament rules."
+    },
+    {
+      "name": "Officers' Skat",
+      "description": "The two-player version, and a genuinely good game rather than a compromise. Nothing is held in the hand and there is no skat: all thirty-two cards go straight onto the table, sixteen to each player as eight face-down cards each covered by a face-up one, usually laid out as two rows of four pairs. Only the exposed card of a pair may be played, and playing it turns the card beneath face up, so half of what you hold is public and the other half arrives one card at a time. The auction shrinks to the non-dealer naming the game and the trump. Trumps, card values and the target of 61 are unchanged, and the deal runs to sixteen tricks rather than ten. Known in German as Offiziersskat."
+    },
+    {
+      "name": "Seeger-Fabian tournament scoring",
+      "description": "The scheme used by German and international skat associations, layered on top of ordinary game values. A declarer who wins adds 50 to the game value; a declarer who loses subtracts 50 on top of the doubled value. Each defender picks up 40 whenever a contract is beaten, cut to 30 at a four-player table so that totals made at tables of different sizes stay comparable. The effect is to reward taking on contracts rather than sitting back, since a passed hand earns nobody anything, and it makes scores from different tables comparable."
+    }
+  ],
+  "difficulty": "complex",
+  "duration_minutes": "45-90",
+  "tags": [
+    "classic",
+    "strategy",
+    "counting",
+    "long-game"
+  ],
+  "sources_consulted": [
+    "Pagat",
+    "Wikipedia",
+    "Britannica",
+    "Parlett Games",
+    "Skatgame.net",
+    "Deutscher Skatverband",
+    "Official Game Rules"
+  ]
+}

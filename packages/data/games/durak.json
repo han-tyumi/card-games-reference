@@ -1,0 +1,220 @@
+{
+  "id": "durak",
+  "name": "Durak",
+  "aliases": [
+    "Podkidnoy Durak",
+    "Perevodnoy Durak",
+    "Fool"
+  ],
+  "category": "shedding",
+  "players": {
+    "min": 2,
+    "max": 6,
+    "ideal": 4
+  },
+  "decks": "1 standard deck stripped to 36 cards (6 up to ace in each suit); five or six players use the full 52-card pack instead",
+  "equipment": {
+    "standard_decks": 1,
+    "jokers": 0,
+    "special_deck": "36-card pack (6, 7, 8, 9, 10, J, Q, K, A in each suit); the whole 52 at five or six players",
+    "extra_deck_for_large_groups": false,
+    "other": []
+  },
+  "setup": "Strip a standard pack of everything below the six, leaving thirty-six cards. Inside a suit the order is the ordinary one, six lowest through ace highest. Cards carry no point values whatever; they exist only to be compared with one another.\n\nTwo to six can play and four is the number the game sits best at. Do the arithmetic before you sit down, because six hands of six cards use all thirty-six: there is no card left to turn for trumps and no talon at all, so six players need the full 52-card pack. Five players leaves a talon of only six cards, which is why five is often moved to 52 as well.\n\nCut for the first dealer, low card dealing. Deal six cards to each player, going clockwise. Turn the next card face up, lay it on the table, and set the rest of the pack down across it so a corner of it stays in view. That card fixes the trump suit for the whole deal, and it is also the very last card anyone will be able to draw. The pile is the talon.\n\nWhoever holds the lowest trump attacks first. Claim the role, or show the card if the table wants proof; if every trump happens to be sitting in the talon and nobody can claim it, gather the cards and deal again. On later deals the previous loser attacks first, which most groups combine with making the loser deal.\n\nA courtesy rule worth adopting: the holder of the lowest trump in the pack — the six in the 36-card game — may take the turned-up trump into hand and slide the six underneath the talon in its place. Do it between bouts, and only while at least one face-down card still lies on top of the turned card.\n\nThere is no score sheet and nothing to write down. A deal simply runs until one player is left holding cards.",
+  "layout": {
+    "rows": [
+      [
+        {
+          "kind": "hand",
+          "label": "Each player",
+          "repeat": 4,
+          "cards": 6
+        }
+      ],
+      [
+        {
+          "kind": "stock",
+          "label": "Talon",
+          "cards": 12,
+          "face": "down"
+        },
+        {
+          "kind": "trick",
+          "label": "The bout in progress"
+        },
+        {
+          "kind": "discard",
+          "label": "Beaten cards",
+          "cards": 0,
+          "face": "down"
+        }
+      ]
+    ],
+    "caption": "Six cards each, shown for four players. The trump lies face up crosswise under the talon and is the last card drawn. Attack cards and the cards beating them stay paired until the bout ends."
+  },
+  "deal": [
+    {
+      "players": 2,
+      "hand": 6,
+      "note": "36-card pack; 24 cards left in the talon"
+    },
+    {
+      "players": 3,
+      "hand": 6,
+      "note": "36-card pack; 18 left in the talon"
+    },
+    {
+      "players": 4,
+      "hand": 6,
+      "note": "36-card pack; 12 left in the talon"
+    },
+    {
+      "players": 5,
+      "hand": 6,
+      "note": "36-card pack leaves a talon of 6; many switch to 52 cards here"
+    },
+    {
+      "players": 6,
+      "hand": 6,
+      "note": "52-card pack: 36 leaves no talon and no card to turn for trumps"
+    }
+  ],
+  "play": "A deal is a run of bouts. In each bout one player attacks one other, and the defender is always the player to the attacker's left. Everyone else at the table is a potential attacker.\n\nThe attack. The principal attacker puts any single card from hand face up in front of the defender. Nothing is being led and nothing is being won: no suit has to be followed, the card competes with nothing, and it is simply a problem the defender now has to solve.\n\nThe defence. A card is beaten by covering it with a higher card of the same suit, or with any trump at all. Once a trump is on the table only a higher trump will beat it. Beaten cards and the cards that beat them stay on the table in pairs where everybody can read them.\n\nThrowing in. As soon as a bout is under way, any card of a rank that already appears somewhere on the table may be added to the attack — the ranks of the defending cards count too, not just the attack cards. The principal attacker may keep throwing in, and so may the other players, which is where the game's usual name comes from: podkidnoy means thrown in. The principal attacker always has first refusal; once they pass, the others may throw in, taking their turn clockwise from the defender's left. Each new card has to be beaten separately.\n\nTwo limits, and neither is optional. A bout may never contain more than six attacking cards in total. It also may never contain more attacking cards than the defender held in hand when the bout opened — count them at that moment, not later, so a defender who started the bout with two cards faces at most two. Many tables cap the opening bout of a deal at five attacking cards, since defending first in a crowded game is punishing enough on its own.\n\nEnding a bout. There are exactly two outcomes and they could not be more different. If the defender covers everything and the attackers have nothing left to throw in or decline to continue, the defence held: the whole heap goes face down onto a discard pile that nobody ever touches again, and those cards are gone from the deal. If the defender gives up at any point, they take every card on the table into hand, including the ones they had already beaten, and are that much further from getting rid of them.\n\nRefilling. Between bouts everyone tops their hand back up to six from the talon. The order matters once the talon is nearly empty: the principal attacker draws first, then everyone else in clockwise order from them, and the defender last of all, however few cards that leaves. Nobody draws once the talon is exhausted, and the face-up trump is the final card taken.\n\nWho attacks next. A defender who held becomes the attacker for the next bout, aimed at the player on their own left. A defender who picked up is passed over: the attack skips them and falls to the player beyond.\n\nThe endgame. Any player whose hand empties, with no talon left to refill from, is finished and drops out; the rest carry on around the gap. Play continues until one person is still holding cards.",
+  "figures": [
+    {
+      "kind": "meld",
+      "caption": "Beating an attack card, with spades as trump. Suit and trump are the only things that matter — nothing about rank alone will do it.",
+      "rows": [
+        {
+          "label": "Beaten",
+          "cards": [
+            {
+              "face": "9♦",
+              "note": "Attack"
+            },
+            {
+              "face": "J♦",
+              "note": "Higher, same suit"
+            }
+          ]
+        },
+        {
+          "label": "Beaten",
+          "cards": [
+            {
+              "face": "9♦",
+              "note": "Attack"
+            },
+            {
+              "face": "6♠",
+              "note": "Any trump will do"
+            }
+          ]
+        },
+        {
+          "label": "Not beaten",
+          "valid": false,
+          "cards": [
+            {
+              "face": "9♦",
+              "note": "Attack"
+            },
+            {
+              "face": "K♣",
+              "note": "Wrong suit, no trump"
+            }
+          ]
+        },
+        {
+          "label": "Beaten",
+          "cards": [
+            {
+              "face": "7♠",
+              "note": "Trump attack"
+            },
+            {
+              "face": "10♠",
+              "note": "Only a higher trump"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "ranking",
+      "caption": "The 36-card pack, high to low within every suit. Nothing outside the trump suit ever beats anything inside it.",
+      "rows": [
+        {
+          "label": "Any suit",
+          "cards": [
+            {
+              "face": "A♥"
+            },
+            {
+              "face": "K♥"
+            },
+            {
+              "face": "Q♥"
+            },
+            {
+              "face": "J♥"
+            },
+            {
+              "face": "10♥"
+            },
+            {
+              "face": "9♥"
+            },
+            {
+              "face": "8♥"
+            },
+            {
+              "face": "7♥"
+            },
+            {
+              "face": "6♥",
+              "note": "Lowest card"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "goal_and_scoring": "Nobody wins Durak. Everyone who empties their hand while cards are still moving walks away clean, and the single player left holding cards at the end is the durak — the fool. That is the whole result of a deal.\n\nTwo things follow from a game shaped that way. There is no score, no ranking of the players who got out, and nothing to argue about afterwards; the fool traditionally shuffles and deals the next hand, often with the pack pushed at them. And because nothing is being collected, a bout you defend brilliantly is worth precisely nothing in itself. The only question that ever matters is whether cards left your hand or arrived in it.\n\nOnce the talon is empty the character of the game changes completely. Hands stop being replenished, so every pick-up is permanent damage, and the player who can force an opponent to take three cards near the end has usually decided the deal. Trumps hoarded through the early bouts are what make that possible, which is the standing tension of the game: a trump spent to defend cheaply is a trump you no longer have to attack with.\n\nA deal can also end with no fool at all. If the last two players both run out on the same bout — the defender covers the final attack with their last cards, and the attacker has nothing left either — the hand is a draw. Not every group plays it that way, so settle it before you start.\n\nWhere a running tally is wanted, write down who was the fool each deal and play an agreed number of deals, or until somebody has been the fool a set number of times.",
+  "variants": [
+    {
+      "name": "Perevodnoy Durak (passing on)",
+      "description": "The dominant form in Russia today, and the one that most changes how a bout feels. Instead of beating the attack or picking it up, a defender holding a card of the same rank as the attack card may play it alongside and shove the whole attack sideways onto the next player, who becomes the defender. That player may add a further matching card and pass it on again, so an attack of one card can arrive at the fourth seat as an attack of four. The safeguard is that you may never pass to somebody holding fewer cards than the number of undefended cards they would face. Some tables also let a defender pass simply by showing a trump of the matching rank without parting with it."
+    },
+    {
+      "name": "Podkidnoy Durak (throw-in only)",
+      "description": "The plain form described above, with no passing at all: the defender's only choices are to beat every card or to take the lot. It is the version most non-Russian players learn first and the one online implementations usually default to, and it puts far more weight on the six-card cap, since a defender who survives the opening card knows exactly how much worse the bout can get."
+    },
+    {
+      "name": "Team Durak",
+      "description": "Four players in two partnerships seated alternately, or six in two teams of three. Partners never attack one another, and they do throw in to help each other's attacks, so the six-card cap becomes a coordinated weapon rather than an individual one. A side is finished when both or all three of its members are out, and the losing partnership are the fools together. Signalling is not allowed, but discarding to help a partner obviously is, which gives the partnership game a cooperative texture the free-for-all does not have."
+    },
+    {
+      "name": "52-card Durak",
+      "description": "For five or six players, use the full pack with the two low and the ace high and still deal six cards each. The extra sixteen cards guarantee a talon exists at all, which the 36-card game cannot promise at those numbers, and they stretch every suit out so that a middling card is far less likely to hold. The swappable lowest trump becomes the two rather than the six. Everything else about attacking, defending and throwing in is unchanged."
+    }
+  ],
+  "difficulty": "easy",
+  "duration_minutes": "15-30",
+  "tags": [
+    "two-player",
+    "classic",
+    "strategy",
+    "quick",
+    "family-friendly"
+  ],
+  "sources_consulted": [
+    "Pagat",
+    "Official Game Rules",
+    "Gambiter",
+    "Wikibooks Card Games",
+    "Nordic Card Games",
+    "PlayJoy",
+    "Group Games 101"
+  ]
+}

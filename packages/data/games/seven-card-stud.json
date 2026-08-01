@@ -1,0 +1,199 @@
+{
+  "id": "seven-card-stud",
+  "name": "Seven Card Stud",
+  "aliases": [
+    "Seven-Card Stud",
+    "7-Card Stud",
+    "Down the River",
+    "Seven-Toed Pete"
+  ],
+  "category": "bluffing",
+  "players": {
+    "min": 2,
+    "max": 8,
+    "ideal": 8
+  },
+  "decks": "1 standard deck (52 cards), plus chips to bet with",
+  "equipment": {
+    "standard_decks": 1,
+    "jokers": 0,
+    "special_deck": null,
+    "extra_deck_for_large_groups": false,
+    "other": [
+      "Poker chips or counters"
+    ]
+  },
+  "setup": "One 52-card pack, a stack of chips, and anywhere from two to eight players. Eight is the ceiling, and it is a genuine limit rather than a habit: eight hands that all run to the end would want fifty-six cards, and the pack holds fifty-two.\n\nOrdinary poker rankings apply, from high card up through one pair, two pair, three of a kind, straight, flush, full house, four of a kind and straight flush. The ace sits at either end of a straight, so A-K-Q-J-10 is the highest and 5-4-3-2-A the lowest, but it does not turn the corner and Q-K-A-2-3 is nothing at all. Suits never separate two hands of equal rank.\n\nBefore any card is dealt every player puts an ante into the pot. The ante is small — around a tenth of the smaller bet is usual — but it is what makes the first round worth fighting over, since there are no blinds in stud and nothing else is at stake.\n\nNearly every stud game is fixed limit, and the two bet sizes are named before you sit down. Take a 10 and 20 game as the working example: 1 to ante, 3 to bring in, bets and raises of 10 on the first two rounds and 20 on the last three. Most rooms cap a round at a bet plus three raises.\n\nThere is no button and no blind, so position does not rotate. A card room puts a house dealer behind the cards; at home the deal passes to the left after every hand, and the seat that dealt matters only as the starting point for the rare tie in who acts first. Otherwise who speaks first is decided fresh on every round by the cards lying face up, and that is the structural difference between stud and the flop games that pushed it aside.",
+  "layout": {
+    "rows": [
+      [
+        {
+          "kind": "stock",
+          "label": "Deck",
+          "face": "down"
+        }
+      ],
+      [
+        {
+          "kind": "hand",
+          "label": "Opponents",
+          "repeat": 3,
+          "cards": 3,
+          "face": "last-up"
+        }
+      ],
+      [
+        {
+          "kind": "hand",
+          "label": "Your hole cards",
+          "cards": 2,
+          "face": "down"
+        },
+        {
+          "kind": "hand",
+          "label": "Your door card",
+          "cards": 1
+        }
+      ]
+    ],
+    "caption": "Third street, with three of the up to eight seats shown. Everyone holds two cards nobody can see and one that everybody can, and that single exposed card is all you have to read an opponent by."
+  },
+  "play": "Third street. Two cards face down and one face up to each player. The exposed one is the door card. The player showing the lowest door card has no choice about opening: they must post the bring-in, a forced part-bet. The ace counts high for this one purpose, so an ace showing is never the bring-in and a deuce nearly always is. Ties for lowest are settled by suit, ranked from the bottom up as clubs, diamonds, hearts, spades, so of two deuces the club is the one that brings it in. That player may instead put out a full small bet, which is called completing. Play then moves clockwise and each player folds, calls or raises in turn.\n\nFourth street. A fourth card, face up, to everyone still in. From here to the finish the round is opened by whoever shows the best board — the strongest poker hand among the exposed cards alone, hole cards ignored — and that player is free to check rather than being made to bet. Where two boards are exactly as strong as each other, the tied player sitting nearest the dealer's left goes first. The limit is still the small one, with a single exception peculiar to fixed limit: if any player's two exposed cards make a pair, this street may be played at either size, and the choice is open to everyone rather than to the pair alone. Whoever bets first picks the size; a player facing the small bet may raise to the big one; and once a big bet is in, every bet and raise for the rest of the street is big.\n\nFifth street. A fifth card, face up. The big bet takes over here and never goes back down.\n\nSixth street. A sixth card, face up, and another round at the big limit, opened again by the strongest board.\n\nSeventh street, or the river. The last card comes face down. A hand that goes the distance therefore holds two hidden, four exposed and one more hidden. Since the river is dark, the boards have not changed, so the player who opened the sixth street round opens this one as well — or, if that player folded, the best board still live.\n\nThe pack is the one thing that can give out. Casino dealers burn a card off the top before every new street, and a full table is tight to start with: eight players who all reach the end want fifty-six cards and the deck holds fifty-two. The remedy comes in two steps. When the stub will not cover a burn plus a card each, the dealer stops burning. When it will not cover a card each even then, nobody gets a seventh card of their own: one card is turned face up in the middle and every remaining player counts it as their seventh. Seven players still in when the last card is due always forces this, and six can force it at a table that was dealt eight-handed, so it is uncommon rather than rare.\n\nA betting round ends once every player still in has put in the same amount, or once it has been checked all the way round. A player without the chips to call is all in: they play for the portion of the pot they have matched, betting between the others carries on into a side pot beside it, and they take no further part in the betting while still being dealt their remaining cards. Should everybody but one fold at any point, that player collects the pot and is under no obligation to show anything.\n\nWatching the folded cards is not a flourish, it is the skill the game rewards. Every upcard that appears is information you keep, and it does not go away when its owner throws the hand in. Wanting the last king when three of them have already been mucked is a different proposition from wanting it when none have.",
+  "figures": [
+    {
+      "kind": "meld",
+      "caption": "A finished hand: two down, four up, one down. Five of the seven make your hand and the other two are simply left out; there is no requirement to use any particular card.",
+      "rows": [
+        {
+          "label": "The seven you hold",
+          "cards": [
+            {
+              "face": "7♣",
+              "note": "Down"
+            },
+            {
+              "face": "7♦",
+              "note": "Down"
+            },
+            {
+              "face": "K♠",
+              "note": "Up"
+            },
+            {
+              "face": "7♥",
+              "note": "Up"
+            },
+            {
+              "face": "2♣",
+              "note": "Up"
+            },
+            {
+              "face": "9♦",
+              "note": "Up"
+            },
+            {
+              "face": "Q♥",
+              "note": "Down"
+            }
+          ]
+        },
+        {
+          "label": "The five that play",
+          "cards": [
+            {
+              "face": "7♣"
+            },
+            {
+              "face": "7♦"
+            },
+            {
+              "face": "7♥"
+            },
+            {
+              "face": "K♠"
+            },
+            {
+              "face": "Q♥"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "goal_and_scoring": "You win a pot one of two ways: everybody else folds, or you hold the best five-card hand when the cards go on their backs. Those five are the best you can pick out of your seven, and the leftovers count for nothing.\n\nAt the showdown the player who made the last bet or raise on the river turns their hand face up first, and the rest follow clockwise. Where the final round was checked all the way round, the player who opened it — the best board — shows first. Nobody is obliged to expose a hand they know is beaten; mucking it face down is allowed and forfeits any claim on the pot.\n\nRankings are the standard ones, and two hands in the same category are separated by the ranks inside them. Hands that are still identical after that split the pot. Suits do two jobs in stud and neither is ranking hands: they decide the bring-in, and they decide who gets an odd chip that will not divide. That chip goes to the tied player holding the highest card by suit, judged on all seven of their cards rather than on the five that play, and by the lowest card by suit where the half being split is a low one.\n\nNothing is scored cumulatively. Chips move pot by pot, you buy in for what you are willing to lose, and you leave when you want to. If you are playing at home for nothing, deal a fixed number of hands and see who has the biggest stack at the end.",
+  "scoring_table": [
+    {
+      "item": "Ante, each player",
+      "value": "1",
+      "note": "roughly a tenth of the small bet"
+    },
+    {
+      "item": "Bring-in, lowest door card",
+      "value": "3",
+      "note": "a third to a half of the small bet"
+    },
+    {
+      "item": "Third and fourth street",
+      "value": "10",
+      "note": "the small bet"
+    },
+    {
+      "item": "Fifth, sixth and seventh street",
+      "value": "20",
+      "note": "the big bet"
+    },
+    {
+      "item": "Open pair showing on fourth street",
+      "value": "10 or 20",
+      "note": "open to any player, not just the pair; the first bettor sets the size"
+    },
+    {
+      "item": "Raises permitted per round",
+      "value": "a bet plus three raises",
+      "note": "house rules vary, and the cap is often lifted heads-up"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Razz",
+      "description": "The same seven-card structure played for the worst hand rather than the best. Straights and flushes are ignored entirely and the ace is always low, so the perfect holding is 5-4-3-2-A, called the wheel. Two rules flip with the objective: the bring-in falls on the highest door card rather than the lowest, and from fourth street onwards the round is opened by the lowest board, not the highest. Because there is no qualifier, somebody always wins the pot."
+    },
+    {
+      "name": "Seven Card Stud Hi-Lo, Eight or Better",
+      "description": "The pot is cut in half between the best high hand and the best low one. To count as a low, a hand needs five cards of different ranks with nothing above an eight; straights and flushes do not spoil it, and the ace plays low. You are free to build your high and your low out of different fives from the same seven cards, which is why a single hand can take both halves, a result called scooping. When no low qualifies, the high hand takes everything. Marked 7-Stud 8/b on most rotation lists, and part of the eight-game mix."
+    },
+    {
+      "name": "Five Card Stud",
+      "description": "The ancestor, and much starker: one card down and four up, with a betting round after each upcard, so four rounds instead of five. With four of your five cards on show there is almost nothing to conceal, which is exactly why it faded once seven-card stud arrived. It still turns up in home games and in old films, usually the one where somebody has a hidden ace."
+    },
+    {
+      "name": "Pot-limit and no-limit stud",
+      "description": "The same deal with the betting unshackled: you may wager up to the size of the pot, or in no-limit anything in front of you. The fourth-street open-pair rule disappears along with the fixed limits, since there are no longer two sizes to choose between. Rare in card rooms, because betting big into four exposed cards is a good deal less forgiving than doing it in hold'em."
+    },
+    {
+      "name": "High-low with declaration",
+      "description": "A home-game version of the split pot with no eight qualifier. After the last betting round, each player conceals chips in a fist and everyone opens at once: one chip for low, two for high, three for both. Only what you declared can win, so a player who declares both and loses either half gets nothing at all. It adds a real bluffing layer that eight-or-better does not have, and it needs a table that agrees in advance on what happens when a declaration goes wrong."
+    }
+  ],
+  "difficulty": "medium",
+  "duration_minutes": "60+",
+  "tags": [
+    "betting",
+    "bluffing",
+    "strategy",
+    "counting",
+    "memory",
+    "large-group",
+    "two-player",
+    "classic"
+  ],
+  "sources_consulted": [
+    "Pagat",
+    "PokerNews",
+    "Card Player",
+    "Upswing Poker",
+    "Robert's Rules of Poker",
+    "PokerStars",
+    "Wikipedia"
+  ]
+}

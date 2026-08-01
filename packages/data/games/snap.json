@@ -1,0 +1,65 @@
+{
+  "id": "snap",
+  "name": "Snap",
+  "aliases": [],
+  "category": "matching-collecting",
+  "players": {
+    "min": 2,
+    "max": 6,
+    "ideal": 4
+  },
+  "decks": "1 standard deck (52 cards), jokers removed",
+  "equipment": {
+    "standard_decks": 1,
+    "jokers": 0,
+    "special_deck": null,
+    "extra_deck_for_large_groups": false,
+    "other": []
+  },
+  "setup": "Snap takes two to about six players. Past six the table gets too wide to watch and too loud to judge, and the game stops being fun for whoever is refereeing it. Take the jokers out; only the thirteen ranks matter, and suit and colour are ignored from start to finish.\n\nAny method of choosing a dealer will do, since dealing carries no advantage at all, and the deal can pass to the left if you play again. Shuffle well and deal singly, face down and clockwise, until the pack is gone. Hands rarely come out even, which changes nothing.\n\nNobody looks at a card at any point in this game, their own included. Square your cards into a face-down stack in front of you, with a clear space beside it. That space is where your face-up pile will grow, and it needs to sit where the rest of the table can see it, not tucked behind your arm.\n\nThe player on the dealer's left turns first, and the turn moves clockwise from there.",
+  "play": "Your turn is one card: lift the top card of your own face-down stack and set it face up on your face-up pile. Flip it away from your body rather than toward it, so the face arrives for your eyes at the same instant it arrives for everyone else's instead of half a second early. Then the turn passes to your left.\n\nWhat you are watching is not your own pile but the top card of every pile on the table. Two piles showing the same rank is a snap, no matter whose they are and no matter how far apart they sit. Rank only: a red six and a black six match, a six and a seven do not, and a card one layer down is dead for matching purposes however well people remember it.\n\nThe first player to shout \"Snap!\" takes both matching piles, turns the lot face down and slides it under their own stack. Winning a snap gains you cards and nothing else. The rotation carries on undisturbed, from whoever was next in order after the card that was turned.\n\nCalling snap on nothing costs you, and the settlement runs outward rather than to one opponent: every other player gets a card from you, taken blind from the top of your stack and handed over face down, and each of them buries it beneath their own. If your face-down stack is empty when the bill comes, pay off the top of your face-up pile instead; if you cannot cover everybody, pay round the table to your left until you run out, and the rest is written off. If somebody swings at everything, three false calls and out is a reasonable patch.\n\nTwo people calling at once is what the game handles worst, because at real speed it is often genuinely undecidable. Where you can honestly separate the calls, the earlier one wins. Where you cannot, split nothing: push both matching piles into the middle, face up, as a snap pool, and carry on. The pool then behaves like an extra player's pile. Whenever a card turned onto any pile matches the pool's top card, the call is \"Snap pool!\", and the first player to make it collects the pool along with the pile that matched it. Pools only grow, so a table that argues a lot eventually plays for a very large prize.\n\nWhen your face-down stack runs out, turn your face-up pile over without shuffling and keep going from it. A player with nothing in front of them at all, whose face-up pile has just been snapped away and whose stack was already empty, is out, and the rotation simply skips them from then on. Plenty of families let a knocked-out player stay at the table and keep calling snaps, on the reasonable grounds that a child eliminated in the first two minutes has a bleak evening ahead; settle which you are doing before you deal rather than in the middle of the argument.\n\nPlay continues until one player holds every card, or until whatever stopping point you agreed on. A snap pool left stranded in the middle when everybody else has been emptied out goes to the last player standing, since there is nobody left to race them for it.",
+  "goal_and_scoring": "The aim is to finish holding all 52 cards, which happens once every other player has been emptied out. Nothing is scored, no rounds are played, and a tall stack earns you nothing by itself.\n\nLeft to run its course a game can take twenty minutes or end in two, depending entirely on how the ranks fall. Because a single snap moves two whole piles at once, a lead means very little until the table is down to the last two players.\n\nMost groups fix a stopping point in advance instead of playing to the bitter end: ten or fifteen minutes on a timer, or an agreed number of snaps, with the largest holding taking the win. Counting cards at the finish is the only counting the game ever asks for.\n\nWhat actually wins is watching all the piles at once rather than the card in your own hand, and resisting the pull to call on near-misses. Court cards cause most of the wasted calls, since a jack and a king read as the same shape at a glance.",
+  "variants": [
+    {
+      "name": "One pile in the middle",
+      "description": "Everyone turns their cards onto a single shared pile in the centre instead of keeping a pile each, and a snap is the top card matching the one immediately beneath it. Whoever calls first wins the entire central pile, buries it face down beneath their own stack, and then opens the next central pile with a card of their own, after which play resumes to their left. A player whose stack runs out has no face-up pile of their own to turn over, so they are out as soon as it happens unless you are using the convention that lets an empty-handed player carry on calling snaps. There is only one place to look, which makes it much kinder to very young children, and it is what a lot of households mean when they say Snap. Sources are split on which form is the real game, so say which you are playing."
+    },
+    {
+      "name": "Snap pool as the penalty",
+      "description": "Rather than paying a card to each opponent, a player who calls snap wrongly forfeits their entire face-up pile to the middle of the table, where it forms or joins the snap pool. This makes a rash call genuinely expensive rather than a minor tax, and it feeds the pool steadily, so the game builds toward a few enormous swings instead of many small ones."
+    },
+    {
+      "name": "Menagerie",
+      "description": "Each player picks an animal at the start, the sillier and longer the better. On a match you do not shout \"snap\" but the animal name belonging to the player whose pile matched yours, and only the correct name counts. The pause while you retrieve the name is the whole joke, and it puts adults and children on a far more even footing than a pure reaction test does."
+    },
+    {
+      "name": "Speed Snap",
+      "description": "Drop the turn order. Everybody counts together and turns a card at the same moment, over and over, so several new top cards appear at once and matches come thick and fast. It is chaotic and short, and it works best with three or four players, since a full table produces more simultaneous calls than anyone can adjudicate."
+    },
+    {
+      "name": "Grab instead of shout",
+      "description": "Put an object in the middle of the table, a spoon or a rolled-up handkerchief, and claim a snap by getting a hand on it rather than by calling. Ties become visible instead of audible, which is much easier to settle honestly, and the noise level drops enormously. Anyone grabbing when there is no match pays the usual false-call penalty."
+    }
+  ],
+  "difficulty": "simple",
+  "duration_minutes": "10-20",
+  "tags": [
+    "kids",
+    "family-friendly",
+    "speed",
+    "reflex",
+    "classic",
+    "beginner-friendly",
+    "quick",
+    "luck"
+  ],
+  "sources_consulted": [
+    "Pagat",
+    "Wikipedia",
+    "Game Rules",
+    "Official Game Rules",
+    "PlayingCardDecks",
+    "Game On Family",
+    "Dummies"
+  ]
+}

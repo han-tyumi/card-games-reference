@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 286 496" width="458" height="794" role="img" aria-label="Clock setup diagram">
+<title>Clock setup</title>
+<rect x="88.0" y="8.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="88.0" y="9.6" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="88.0" y="11.2" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="88.0" y="12.8" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="128.0" y="8.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="128.0" y="9.6" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="128.0" y="11.2" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="128.0" y="12.8" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="168.0" y="8.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="168.0" y="9.6" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="168.0" y="11.2" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="168.0" y="12.8" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="48.0" y="100.8" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="48.0" y="102.4" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="48.0" y="104.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="48.0" y="105.6" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="208.0" y="100.8" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="208.0" y="102.4" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="208.0" y="104.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="208.0" y="105.6" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="8.0" y="193.6" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="8.0" y="195.2" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="8.0" y="196.8" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="8.0" y="198.4" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="128.0" y="193.6" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="128.0" y="195.2" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="128.0" y="196.8" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="128.0" y="198.4" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="248.0" y="193.6" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="248.0" y="195.2" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="248.0" y="196.8" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="248.0" y="198.4" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="48.0" y="286.4" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="48.0" y="288.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="48.0" y="289.6" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="48.0" y="291.2" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="208.0" y="286.4" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="208.0" y="288.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="208.0" y="289.6" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="208.0" y="291.2" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="88.0" y="379.2" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="88.0" y="380.8" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="88.0" y="382.4" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="88.0" y="384.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="128.0" y="379.2" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="128.0" y="380.8" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="128.0" y="382.4" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="128.0" y="384.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="168.0" y="379.2" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="168.0" y="380.8" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="168.0" y="382.4" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="168.0" y="384.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<text x="103.0" y="62.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">11</text>
+<text x="143.0" y="62.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">12</text>
+<text x="183.0" y="62.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">1</text>
+<text x="63.0" y="155.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">10</text>
+<text x="223.0" y="155.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">2</text>
+<text x="23.0" y="248.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">9</text>
+<text x="143.0" y="248.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Kings</text>
+<text x="143.0" y="257.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">(start here)</text>
+<text x="263.0" y="248.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">3</text>
+<text x="63.0" y="341.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">8</text>
+<text x="223.0" y="341.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">4</text>
+<text x="103.0" y="434.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">7</text>
+<text x="143.0" y="434.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">6</text>
+<text x="183.0" y="434.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">5</text>
+<text x="143.0" y="460.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Thirteen face-down piles of four: twelve on the hours and</text>
+<text x="143.0" y="472.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">one in the middle for the kings. The first card turned</text>
+<text x="143.0" y="484.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">comes off the centre.</text>
+</svg>

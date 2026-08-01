@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 312.79999999999995" width="442" height="500" role="img" aria-label="Seven Card Stud setup diagram">
+<title>Seven Card Stud setup</title>
+<rect x="123.0" y="8.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="83.0" y="96.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="83.0" y="97.6" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="83.0" y="99.2" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="96.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="97.6" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="99.2" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="163.0" y="96.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="163.0" y="97.6" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="163.0" y="99.2" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="103.0" y="187.2" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="103.0" y="188.8" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="143.0" y="187.2" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="138.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Deck</text>
+<text x="138.0" y="149.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Opponents</text>
+<text x="118.0" y="238.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Your</text>
+<text x="118.0" y="247.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">hole cards</text>
+<text x="158.0" y="238.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Your</text>
+<text x="158.0" y="247.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">door card</text>
+<text x="138.0" y="264.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Third street, with three of the up to eight seats</text>
+<text x="138.0" y="276.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">shown. Everyone holds two cards nobody can see and one</text>
+<text x="138.0" y="288.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">that everybody can, and that single exposed card is all</text>
+<text x="138.0" y="300.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">you have to read an opponent by.</text>
+</svg>

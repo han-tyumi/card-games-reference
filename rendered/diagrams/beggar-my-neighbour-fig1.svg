@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 120" width="442" height="192" role="img" aria-label="Beggar-My-Neighbour: What each pay card costs the next player. These four ranks are the only ones that do anything; suits are irrelevant and the 2 through 10 are inert.">
+<title>What each pay card costs the next player. These four ranks are the only ones that do anything; suits are irrelevant and the 2 through 10 are inert.</title>
+<rect x="106.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="121.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">A♠</text>
+<text x="121.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">4 cards</text>
+<rect x="142.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="157.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">K♥</text>
+<text x="157.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">3 cards</text>
+<rect x="178.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="193.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">Q♦</text>
+<text x="193.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">2 cards</text>
+<rect x="214.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="229.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">J♣</text>
+<text x="229.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">1 card</text>
+<text x="98.0" y="32.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Cards owed</text>
+<text x="138.0" y="84.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">What each pay card costs the next player. These four</text>
+<text x="138.0" y="96.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">ranks are the only ones that do anything; suits are</text>
+<text x="138.0" y="108.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">irrelevant and the 2 through 10 are inert.</text>
+</svg>

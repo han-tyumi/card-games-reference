@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 132" width="442" height="211" role="img" aria-label="Contract Bridge: The five denominations a contract can be in, weakest to strongest. At the same number, each one outranks everything to its left, so anything lower has to be bid a level higher.">
+<title>The five denominations a contract can be in, weakest to strongest. At the same number, each one outranks everything to its left, so anything lower has to be bid a level higher.</title>
+<rect x="88.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="103.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">♣</text>
+<text x="103.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Lowest</text>
+<rect x="124.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="139.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">♦</text>
+<rect x="160.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="175.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">♥</text>
+<rect x="196.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="211.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">♠</text>
+<rect x="232.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="247.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">NT</text>
+<text x="247.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Highest</text>
+<text x="80.0" y="32.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Denominations</text>
+<text x="138.0" y="84.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">The five denominations a contract can be in, weakest to</text>
+<text x="138.0" y="96.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">strongest. At the same number, each one outranks</text>
+<text x="138.0" y="108.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">everything to its left, so anything lower has to be bid</text>
+<text x="138.0" y="120.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">a level higher.</text>
+</svg>

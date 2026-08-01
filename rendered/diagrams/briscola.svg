@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 324" width="442" height="518" role="img" aria-label="Briscola setup diagram">
+<title>Briscola setup</title>
+<rect x="123.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="9.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="11.2" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="103.0" y="99.2" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="103.0" y="100.8" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="103.0" y="102.4" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="103.0" y="104.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="103.0" y="105.6" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="103.0" y="107.2" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="103.0" y="108.8" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<text x="118.0" y="133.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#5b6672">33</text>
+<rect x="143.0" y="99.2" width="30" height="42" rx="3" fill="#f4f0e6" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="196.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="198.4" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="200.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="138.0" y="61.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Opponent</text>
+<text x="118.0" y="158.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Stock</text>
+<text x="158.0" y="158.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Trump</text>
+<text x="158.0" y="167.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">card (briscola)</text>
+<text x="138.0" y="250.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Your</text>
+<text x="138.0" y="259.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">hand</text>
+<text x="138.0" y="276.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">The two-handed deal. The trump card sits face up with</text>
+<text x="138.0" y="288.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">the rest of the pack laid across it, so the suit stays</text>
+<text x="138.0" y="300.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">in plain sight all game and that one card is the last</text>
+<text x="138.0" y="312.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">draw of the deal.</text>
+</svg>

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 256" width="442" height="410" role="img" aria-label="Five Card Draw: Hand rankings, part one: the four strongest categories. Any hand here beats every hand below it, whatever the individual card ranks.">
+<title>Hand rankings, part one: the four strongest categories. Any hand here beats every hand below it, whatever the individual card ranks.</title>
+<rect x="88.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="103.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">A♠</text>
+<rect x="124.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="139.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">K♠</text>
+<rect x="160.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="175.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">Q♠</text>
+<rect x="196.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="211.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">J♠</text>
+<rect x="232.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="247.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">10♠</text>
+<rect x="88.0" y="60.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="103.0" y="85.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">9♥</text>
+<rect x="124.0" y="60.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="139.0" y="85.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">8♥</text>
+<rect x="160.0" y="60.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="175.0" y="85.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">7♥</text>
+<rect x="196.0" y="60.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="211.0" y="85.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">6♥</text>
+<rect x="232.0" y="60.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="247.0" y="85.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">5♥</text>
+<rect x="88.0" y="112.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="103.0" y="137.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">Q♠</text>
+<rect x="124.0" y="112.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="139.0" y="137.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">Q♥</text>
+<rect x="160.0" y="112.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="175.0" y="137.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">Q♦</text>
+<rect x="196.0" y="112.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="211.0" y="137.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">Q♣</text>
+<rect x="232.0" y="112.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="247.0" y="137.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">3♦</text>
+<rect x="88.0" y="164.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="103.0" y="189.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">8♠</text>
+<rect x="124.0" y="164.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="139.0" y="189.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">8♥</text>
+<rect x="160.0" y="164.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="175.0" y="189.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">8♦</text>
+<rect x="196.0" y="164.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="211.0" y="189.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">4♣</text>
+<rect x="232.0" y="164.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="247.0" y="189.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">4♠</text>
+<text x="80.0" y="32.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Royal flush</text>
+<text x="80.0" y="84.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Straight flush</text>
+<text x="80.0" y="136.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Four of a kind</text>
+<text x="80.0" y="188.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Full house</text>
+<text x="138.0" y="220.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Hand rankings, part one: the four strongest categories.</text>
+<text x="138.0" y="232.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Any hand here beats every hand below it, whatever the</text>
+<text x="138.0" y="244.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">individual card ranks.</text>
+</svg>

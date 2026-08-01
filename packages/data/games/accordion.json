@@ -1,0 +1,147 @@
+{
+  "id": "accordion",
+  "name": "Accordion",
+  "aliases": [
+    "The Idle Year",
+    "Tower of Babel",
+    "Methuselah",
+    "Leapfrog",
+    "Accordion Solitaire"
+  ],
+  "category": "solitaire",
+  "players": {
+    "min": 1,
+    "max": 1,
+    "ideal": 1
+  },
+  "decks": "1 standard deck (52 cards)",
+  "equipment": {
+    "standard_decks": 1,
+    "jokers": 0,
+    "special_deck": null,
+    "extra_deck_for_large_groups": false,
+    "other": []
+  },
+  "setup": "Shuffle a full 52-card deck. Every card becomes a pile of one, and those piles sit in a single line running left to right. There are no foundations, no reserve, and no stock once the line is down. The row is the entire game.\n\nHow the row gets built is the one setup decision, and the two traditional answers produce very different games. Dealing as you go is the older habit: turn one card, put it at the right-hand end of the line, take any moves you fancy, then turn the next. You never know what is still to come. Dealing the whole pack out first spreads all 52 face up before a single move is made, which converts the deal into a puzzle you can study. The open form is enormously easier, and most computer versions use it, so it is worth being clear which one you have agreed to play.\n\nA line of 52 will not fit across a normal table. Lay it in bands, one under the next, and read it as a single line that wraps at the edge: the last pile of one band and the first pile of the next are neighbours. Only the exposed card of each pile is ever consulted, so keep the piles squared up rather than spread.",
+  "layout": {
+    "rows": [
+      [
+        {
+          "kind": "tableau",
+          "label": "One line of 52 piles",
+          "repeat": 13,
+          "cards": 1
+        }
+      ],
+      [
+        {
+          "kind": "tableau",
+          "repeat": 13,
+          "cards": 1
+        }
+      ],
+      [
+        {
+          "kind": "tableau",
+          "repeat": 13,
+          "cards": 1
+        }
+      ],
+      [
+        {
+          "kind": "tableau",
+          "repeat": 13,
+          "cards": 1
+        }
+      ]
+    ],
+    "caption": "The line once all 52 are down: one card per pile, face up, wrapping into bands of thirteen. Dealing as you go builds the same line a pile at a time."
+  },
+  "play": "Only the exposed card of a pile counts. A pile may be moved onto the pile immediately to its left, or onto the pile three places to its left, and only when the two exposed cards share a suit or share a rank. Nothing else is ever legal. Colour is irrelevant and so is rank order: a 4 does not go on a 5 for being next to it in sequence, it goes on another 4 for being a 4, or on any other club for being a club. Nothing ever moves rightwards, and the left-hand end of the line is a dead end by construction: the first pile has nothing to its left and can never move at all, while the second and third have a neighbour to slide onto but no pile three places back, so a leap is not available to them.\n\nPiles move whole. You never peel a card off the top or split a packet in two; the entire pile lifts and lands squarely on the target, and whatever was showing on the mover is now showing on the merged pile. That is where the game gets its bite, because a move both shortens the line and changes what the surviving pile offers.\n\nPlayers call the short move a slide and the long one a leap. A slide closes the line by one place and disturbs very little. A leap jumps two piles and drops the mover three back, which rearranges its whole neighbourhood at once and is usually the move that unlocks a run.\n\nGaps are what catch beginners out. When a pile leaves the middle of the line, everything to its right shifts one place left to close up, so the line stays continuous and is one pile shorter than before. Every position downstream of a move acquires a new left-hand neighbour and a new third-to-the-left. Distances are always counted on the line as it stands, never on the line as it was dealt, and forgetting that is the commonest way to talk yourself into an illegal move.\n\nNothing is compulsory in the form most people play. A legal move may be declined, and declining is frequently correct, since a cheap slide can wreck a leap that would have collapsed four piles in one stroke. The nineteenth-century rules were far stricter: they oblige you to move whenever a move exists, and to take the nearer pile whenever both distances are legal, which strips out essentially every decision.\n\nDealing as you go, you may alternate freely between turning the next card and working the line, and you may take as many moves as you like between deals or none at all. When the pack is spent there is no redeal and nothing to fall back on.\n\nThe deal ends when the pack is exhausted and no exposed card anywhere in the line matches the pile one place or three places to its left. Running dry of moves earlier does not end anything while cards remain to be turned: keep dealing, because the next card can revive a line that looked finished. Count the piles left standing.",
+  "figures": [
+    {
+      "kind": "meld",
+      "caption": "A pile moves left one place or left three places, and only when the exposed cards agree in suit or in rank. The mover is always the card on the right.",
+      "rows": [
+        {
+          "label": "Slide, same rank",
+          "cards": [
+            {
+              "face": "9♣",
+              "note": "Lands here"
+            },
+            {
+              "face": "9♠",
+              "note": "Moves left 1"
+            }
+          ]
+        },
+        {
+          "label": "Leap, same suit",
+          "cards": [
+            {
+              "face": "7♦",
+              "note": "Lands here"
+            },
+            {
+              "face": "4♠"
+            },
+            {
+              "face": "9♣"
+            },
+            {
+              "face": "2♦",
+              "note": "Moves left 3"
+            }
+          ]
+        },
+        {
+          "label": "No match",
+          "valid": false,
+          "cards": [
+            {
+              "face": "9♣",
+              "note": "Lands here"
+            },
+            {
+              "face": "2♦",
+              "note": "Moves left 1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "goal_and_scoring": "You win by gathering the whole pack into a single pile of 52. Anything short of that is a loss, and losses are overwhelmingly the normal result.\n\nAccordion has a reputation as one of the least winnable patiences ever printed and it has earned it. Played blind, one card at a time, with a program simply taking whatever move is available, wins arrive on the order of a handful per ten thousand deals. Spread all 52 face up and plan instead, and the picture changes completely: careful open play has been reported to bring games home as often as one in three. Almost the whole of that gap is information rather than cleverness, which is why the old name The Idle Year, a joke about how long you would wait for a win, describes the blind game and not the open one.\n\nThere is no formal scoring, but the obvious measure is the number of piles standing when you get stuck, with one being a win and fewer always better. Six or seven is a decent blind deal and a dozen is an ordinary bad one. Setting yourself a target, say anything at five or under, gives a session some shape without pretending the game is winnable on demand.",
+  "variants": [
+    {
+      "name": "Open Accordion",
+      "description": "Spread the whole pack face up in the line before touching anything, then work out the collapse with full information. The moves and the win condition are identical; only what you can see changes. That single difference separates a game that is very nearly hopeless from one worth thinking hard about, and it is what most software deals by default, so many players have never met the blind version at all."
+    },
+    {
+      "name": "Strict rules",
+      "description": "The oldest printed form, from the 1880s, leaves you no discretion at all. Whenever a legal move exists you are obliged to make it, and whenever a pile could go either one place left or three places left you must take the nearer. The outcome is then fixed entirely by the shuffle. It survives mainly as a baseline: comparing it against free play is how you measure what the right to decline a move is actually worth."
+    },
+    {
+      "name": "Royal Marriage",
+      "description": "A short eliminator built on the same habit of reading a row for matches, but played by throwing cards away rather than stacking them. Cards are laid out in a line and, whenever two cards of the same rank or the same suit sit with exactly one or two cards between them, the trapped cards are discarded. The king and queen of hearts start at opposite ends and the aim is to strip the row until they meet. It finishes in a couple of minutes and is a far gentler introduction to the idea."
+    }
+  ],
+  "difficulty": "simple",
+  "duration_minutes": "5-15",
+  "tags": [
+    "solo",
+    "classic",
+    "quick",
+    "luck",
+    "strategy"
+  ],
+  "sources_consulted": [
+    "Wikipedia",
+    "Solitaire Laboratory",
+    "Bicycle Cards",
+    "Wikibooks Solitaire card games",
+    "BVS Solitaire",
+    "Solitaire Association"
+  ]
+}
