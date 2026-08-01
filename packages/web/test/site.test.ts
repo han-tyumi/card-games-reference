@@ -72,7 +72,13 @@ test("the About page carries the things said nowhere else", () => {
     assert.ok(html.includes(heading), `About is missing "${heading}"`);
   }
   // The originality policy, stated once, here.
-  assert.ok(html.includes("copied or reworded"), "About does not explain the text policy");
+  assert.ok(html.includes("written rather than reworded"), "About omits the text policy");
+
+  // And stated as a rule the project holds itself to, not as a finished audit.
+  // The site is public and the checking is not complete, so the page must not
+  // read as a guarantee — it claims only what is actually known.
+  assert.ok(html.includes("not a guarantee"), "About overclaims its own originality");
+  assert.ok(html.includes("please say so"), "About does not invite correction");
   assert.ok(html.includes("CC BY-SA 4.0"), "About does not name the licence");
   assert.ok(html.includes("naibi"), "About does not explain the name");
 });
