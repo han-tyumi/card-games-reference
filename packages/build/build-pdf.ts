@@ -23,6 +23,7 @@ import PDFDocument from "pdfkit";
 import type { Block, CardGame } from "naibi";
 import {
   CARD,
+  INK,
   SECTIONS,
   blocks,
   buildDiagram,
@@ -72,7 +73,8 @@ const GLYPH_FALLBACKS: [string, string][] = [
 ];
 
 const ACCENT = "#1f3a5f";
-const MUTED = "#5b6672";
+const MUTED = INK.stroke;
+const RED = INK.red;
 const RULE = "#c8d0d8";
 const TEXT = "#111111";
 
@@ -295,9 +297,13 @@ function drawDiagram(book: Booklet, layout: NonNullable<CardGame["layout"]>): vo
       doc
         .roundedRect(x, y, CARD.width * scale, CARD.height * scale, 2)
         .dash(3, { space: 2 })
-        .strokeColor(RULE)
+        // Matches the SVG: the dashes are the whole of what says "a card goes
+        // here", so they carry SC 1.4.11's 3:1 rather than being faded out.
+        .strokeColor(MUTED)
         .lineWidth(0.7)
+        .opacity(INK.provisional)
         .stroke()
+        .opacity(1)
         .undash();
       continue;
     }
@@ -306,8 +312,8 @@ function drawDiagram(book: Booklet, layout: NonNullable<CardGame["layout"]>): vo
       const [x, y] = at(card.x, card.y);
       doc
         .roundedRect(x, y, card.width * scale, card.height * scale, 2)
-        .fillColor(card.faceUp ? "#ffffff" : "#c3ccd6")
-        .fillAndStroke(card.faceUp ? "#ffffff" : "#c3ccd6", MUTED);
+        .fillColor(card.faceUp ? INK.faceUp : INK.faceDown)
+        .fillAndStroke(card.faceUp ? INK.faceUp : INK.faceDown, MUTED);
     }
 
     if (pile.count !== undefined && pile.count > pile.cards.length) {
@@ -317,7 +323,7 @@ function drawDiagram(book: Booklet, layout: NonNullable<CardGame["layout"]>): vo
         doc
           .font(fonts.regular)
           .fontSize(7 * scale + 2)
-          .fillColor(MUTED)
+          .fillColor(last.faceUp ? MUTED : INK.faceDownInk)
           .text(String(pile.count), x, y, {
             width: CARD.width * scale,
             align: "center",
@@ -353,8 +359,6 @@ function drawDiagram(book: Booklet, layout: NonNullable<CardGame["layout"]>): vo
   doc.y = originY + height + 8;
 }
 
-const RED = "#a4243b";
-
 /** Draw a ranking strip or combination example, mirroring the SVG figure. */
 function drawFigure(book: Booklet, figure: NonNullable<CardGame["figures"]>[number]): void {
   const { doc, fonts } = book;
@@ -373,9 +377,14 @@ function drawFigure(book: Booklet, figure: NonNullable<CardGame["figures"]>[numb
   for (const card of built.cards) {
     const x = originX + card.x * scale;
     const y = originY + card.y * scale;
-    doc
-      .roundedRect(x, y, card.width * scale, card.height * scale, 2)
-      .fillAndStroke("#ffffff", MUTED);
+    // A counter-example gets a dashed outline, as in the SVG. The booklet had
+    // no cue for one at all: the red row label was carrying it alone, which is
+    // colour as the only channel, and the booklet is the output most likely to
+    // be printed in black and white.
+    doc.roundedRect(x, y, card.width * scale, card.height * scale, 2);
+    if (card.struck) doc.dash(2, { space: 1.5 });
+    doc.fillAndStroke(INK.faceUp, MUTED);
+    if (card.struck) doc.undash();
 
     doc
       .font(fonts.bold)

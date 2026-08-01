@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 300.8" width="442" height="481" role="img" aria-label="Palace setup diagram">
 <title>Palace setup</title>
-<rect x="83.0" y="8.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
-<rect x="163.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
-<rect x="83.0" y="96.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="83.0" y="8.0" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="163.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.8"/>
+<rect x="83.0" y="96.0" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
 <rect x="83.0" y="97.6" width="30" height="42" rx="3" fill="#f4f0e6" stroke="#5b6672" stroke-width="1"/>
-<rect x="123.0" y="96.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="96.0" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
 <rect x="123.0" y="97.6" width="30" height="42" rx="3" fill="#f4f0e6" stroke="#5b6672" stroke-width="1"/>
-<rect x="163.0" y="96.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="163.0" y="96.0" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
 <rect x="163.0" y="97.6" width="30" height="42" rx="3" fill="#f4f0e6" stroke="#5b6672" stroke-width="1"/>
 <rect x="123.0" y="185.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
 <rect x="123.0" y="187.2" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>

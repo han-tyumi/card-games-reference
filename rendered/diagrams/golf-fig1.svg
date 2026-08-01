@@ -4,15 +4,15 @@
 <text x="120.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">8♦</text>
 <rect x="141.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
 <text x="156.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">10♠</text>
-<rect x="105.0" y="106.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<rect x="105.0" y="106.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" stroke-dasharray="3 2"/>
 <text x="120.0" y="131.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">K♣</text>
 <text x="120.0" y="156.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Waste</text>
-<rect x="141.0" y="106.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<rect x="141.0" y="106.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" stroke-dasharray="3 2"/>
 <text x="156.0" y="131.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">A♥</text>
-<rect x="105.0" y="191.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<rect x="105.0" y="191.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" stroke-dasharray="3 2"/>
 <text x="120.0" y="216.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">A♠</text>
 <text x="120.0" y="241.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Waste</text>
-<rect x="141.0" y="191.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<rect x="141.0" y="191.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" stroke-dasharray="3 2"/>
 <text x="156.0" y="216.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">K♦</text>
 <text x="105.0" y="17.0" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Plays on a 9</text>
 <text x="105.0" y="102.0" font-family="system-ui, sans-serif" font-size="9" fill="#a4243b">Ace on a king</text>

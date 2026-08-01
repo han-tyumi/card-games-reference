@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 286 225.6" width="458" height="361" role="img" aria-label="Golf setup diagram">
 <title>Golf setup</title>
-<rect x="108.0" y="8.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
-<rect x="108.0" y="9.6" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
-<rect x="108.0" y="11.2" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
-<rect x="108.0" y="12.8" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
-<rect x="108.0" y="14.4" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
-<rect x="108.0" y="16.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
-<rect x="108.0" y="17.6" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
-<text x="123.0" y="42.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#5b6672">16</text>
+<rect x="108.0" y="8.0" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="108.0" y="9.6" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="108.0" y="11.2" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="108.0" y="12.8" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="108.0" y="14.4" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="108.0" y="16.0" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="108.0" y="17.6" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<text x="123.0" y="42.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#1b2027">16</text>
 <rect x="148.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
 <rect x="8.0" y="105.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
 <rect x="8.0" y="110.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>

@@ -14,10 +14,10 @@
 <text x="156.0" y="131.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">6♠</text>
 <text x="156.0" y="156.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Any trump</text>
 <text x="156.0" y="165.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">will do</text>
-<rect x="105.0" y="191.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<rect x="105.0" y="191.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" stroke-dasharray="3 2"/>
 <text x="120.0" y="216.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">9♦</text>
 <text x="120.0" y="241.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Attack</text>
-<rect x="141.0" y="191.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<rect x="141.0" y="191.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" stroke-dasharray="3 2"/>
 <text x="156.0" y="216.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">K♣</text>
 <text x="156.0" y="241.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Wrong</text>
 <text x="156.0" y="250.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">suit, no trump</text>

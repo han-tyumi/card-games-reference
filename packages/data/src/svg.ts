@@ -40,7 +40,20 @@ const FILL: Record<ZoneKind, string> = {
 };
 
 const STROKE = "#5b6672";
-const FACE_DOWN = "#c3ccd6";
+/**
+ * A face-down card's tint, and the ink for anything written on one.
+ *
+ * Which cards are hidden is the thing a setup picture most needs to convey, and
+ * the tint is the only thing conveying it -- so it has to clear SC 1.4.11's 3:1
+ * against the face-up white beside it. The old #c3ccd6 managed 1.62:1.
+ *
+ * Darkening it alone makes things worse, not better: the pile-depth count is
+ * written *on* this fill, and in the ordinary ink it was already failing at
+ * 3.60:1. Two levers, not one. At #7e8b9a the tint reads 3.47:1 against a
+ * face-up card and the count, in near-black, reads 4.71:1 on top of it.
+ */
+const FACE_DOWN = "#7e8b9a";
+const FACE_DOWN_INK = "#1b2027";
 const TEXT = "#5b6672";
 
 function escapeXml(value: string): string {
@@ -143,7 +156,10 @@ export function renderDiagramSvg(
         `<rect x="${(pile.x + PAD + shift).toFixed(1)}" y="${(pile.y + PAD).toFixed(1)}" ` +
           `width="${CARD.width}" height="${CARD.height}" rx="${RADIUS}" ` +
           `fill="none" stroke="${STROKE}" stroke-width="1" ` +
-          `stroke-dasharray="4 3" opacity="0.55"/>`,
+          // The dashes are the whole of what says "a card goes here", so they
+          // carry SC 1.4.11's 3:1 on their own. At 0.55 they were at 2.28:1;
+          // the dash pattern already reads as provisional without the fading.
+          `stroke-dasharray="4 3" opacity="0.8"/>`,
       );
       continue;
     }
@@ -161,11 +177,14 @@ export function renderDiagramSvg(
     if (pile.count !== undefined && pile.count > pile.cards.length) {
       const last = pile.cards[pile.cards.length - 1];
       if (last) {
+        // Written on whichever fill the top card has, so it takes its ink from
+        // that rather than always assuming the pale one.
+        const ink = last.faceUp ? TEXT : FACE_DOWN_INK;
         parts.push(
           `<text x="${(last.x + PAD + shift + CARD.width / 2).toFixed(1)}" ` +
             `y="${(last.y + PAD + CARD.height / 2 + 4).toFixed(1)}" ` +
             `text-anchor="middle" font-family="system-ui, sans-serif" ` +
-            `font-size="11" fill="${TEXT}">${pile.count}</text>`,
+            `font-size="11" fill="${ink}">${pile.count}</text>`,
         );
       }
     }
@@ -218,6 +237,32 @@ export function naturalWidth(svg: string): number {
 const RED = "#a4243b";
 const FACE_SIZE = 12;
 
+/**
+ * The ink a card drawing is made of, shared with the PDF.
+ *
+ * The booklet draws the same pictures with PDFKit primitives and had these
+ * values written out a second time, so a contrast fix here would have left the
+ * booklet failing and nothing would have said so. Same reason the geometry is
+ * shared: two copies of a number are two things that can drift.
+ *
+ * Every pairing is measured in packages/data/test/contrast.test.ts against
+ * WCAG 2.2 SC 1.4.3 and 1.4.11, so changing one of these without checking it
+ * fails the build rather than the reader.
+ */
+export const INK = {
+  stroke: STROKE,
+  text: TEXT,
+  red: RED,
+  faceDown: FACE_DOWN,
+  /** For anything written on a face-down card, which is a dark fill. */
+  faceDownInk: FACE_DOWN_INK,
+  faceUp: "#ffffff",
+  /** The page these are drawn on, which most of the labels sit against. */
+  page: "#fbfaf8",
+  /** Opacity for an empty slot's dashes and, formerly, a struck card. */
+  provisional: 0.8,
+} as const;
+
 /** Draw a ranking strip or a combination example. */
 export function renderFigureSvg(
   figure: Figure,
@@ -252,7 +297,14 @@ export function renderFigureSvg(
     parts.push(
       `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${card.width}" ` +
         `height="${card.height}" rx="${RADIUS}" fill="#ffffff" ` +
-        `stroke="${STROKE}" stroke-width="1"${card.struck ? ' opacity="0.65"' : ""}/>`,
+        // A counter-example was dimmed to 0.65, which took the card's own
+        // outline down to 2.73:1 -- it made the "not this" cue out of the same
+        // contrast the card needs to be seen at all. A dashed outline says the
+        // same thing by shape, at full strength, and survives forced-colors
+        // mode where an opacity does not. The red row label is the second
+        // channel, so it is not carried by colour alone either.
+        `stroke="${STROKE}" stroke-width="1"` +
+          `${card.struck ? ' stroke-dasharray="3 2"' : ""}/>`,
       `<text x="${(x + card.width / 2).toFixed(1)}" ` +
         `y="${(y + card.height / 2 + FACE_SIZE / 3).toFixed(1)}" ` +
         `text-anchor="middle" font-family="system-ui, sans-serif" ` +

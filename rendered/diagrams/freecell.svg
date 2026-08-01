@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 366 214" width="586" height="342" role="img" aria-label="FreeCell setup diagram">
 <title>FreeCell setup</title>
-<rect x="8.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
-<rect x="48.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
-<rect x="88.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
-<rect x="128.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
-<rect x="208.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
-<rect x="248.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
-<rect x="288.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
-<rect x="328.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
+<rect x="8.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.8"/>
+<rect x="48.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.8"/>
+<rect x="88.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.8"/>
+<rect x="128.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.8"/>
+<rect x="208.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.8"/>
+<rect x="248.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.8"/>
+<rect x="288.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.8"/>
+<rect x="328.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.8"/>
 <rect x="28.0" y="96.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
 <rect x="28.0" y="101.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
 <rect x="28.0" y="106.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>

@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 286 238" width="458" height="381" role="img" aria-label="Yukon setup diagram">
 <title>Yukon setup</title>
-<rect x="68.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
-<rect x="108.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
-<rect x="148.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
-<rect x="188.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
+<rect x="68.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.8"/>
+<rect x="108.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.8"/>
+<rect x="148.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.8"/>
+<rect x="188.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.8"/>
 <rect x="8.0" y="96.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
 <rect x="48.0" y="96.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
 <rect x="48.0" y="101.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>

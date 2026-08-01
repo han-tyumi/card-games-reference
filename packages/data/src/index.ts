@@ -22,6 +22,7 @@ export { MAX_FIGURE_WIDTH, buildFigure, isRedSuit, mayWrap, wrapCards } from "./
 export type { Figure, FigureCard, FigureLayout, FigureRow } from "./figure.ts";
 
 export {
+  INK,
   MIN_LEGIBLE_SCALE,
   naturalWidth,
   renderDiagramSvg,

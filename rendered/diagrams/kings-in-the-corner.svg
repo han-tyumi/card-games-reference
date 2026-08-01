@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 296" width="442" height="474" role="img" aria-label="Kings in the Corner setup diagram">
 <title>Kings in the Corner setup</title>
-<rect x="83.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
+<rect x="83.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.8"/>
 <rect x="123.0" y="8.0" width="30" height="42" rx="3" fill="#eef4fb" stroke="#5b6672" stroke-width="1"/>
-<rect x="163.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
+<rect x="163.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.8"/>
 <rect x="83.0" y="96.0" width="30" height="42" rx="3" fill="#eef4fb" stroke="#5b6672" stroke-width="1"/>
-<rect x="123.0" y="96.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="96.0" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
 <rect x="163.0" y="96.0" width="30" height="42" rx="3" fill="#eef4fb" stroke="#5b6672" stroke-width="1"/>
-<rect x="83.0" y="184.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
+<rect x="83.0" y="184.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.8"/>
 <rect x="123.0" y="184.0" width="30" height="42" rx="3" fill="#eef4fb" stroke="#5b6672" stroke-width="1"/>
-<rect x="163.0" y="184.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
+<rect x="163.0" y="184.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.8"/>
 <text x="98.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Corner</text>
 <text x="138.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Cross</text>
 <text x="138.0" y="67.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">arm</text>

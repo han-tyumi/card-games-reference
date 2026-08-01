@@ -26,11 +26,11 @@
 <text x="120.0" y="176.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">5♦</text>
 <rect x="141.0" y="151.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
 <text x="156.0" y="176.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">5♥</text>
-<rect x="33.0" y="216.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<rect x="33.0" y="216.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" stroke-dasharray="3 2"/>
 <text x="48.0" y="241.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">A♠</text>
-<rect x="69.0" y="216.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<rect x="69.0" y="216.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" stroke-dasharray="3 2"/>
 <text x="84.0" y="241.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">2♥</text>
-<rect x="105.0" y="216.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<rect x="105.0" y="216.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" stroke-dasharray="3 2"/>
 <text x="120.0" y="241.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">3♦</text>
 <text x="33.0" y="17.0" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Run of three</text>
 <text x="33.0" y="82.0" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Chain of three pairs</text>

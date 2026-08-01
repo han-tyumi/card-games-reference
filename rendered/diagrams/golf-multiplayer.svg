@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 276" width="442" height="442" role="img" aria-label="Six-Card Golf setup diagram">
 <title>Six-Card Golf setup</title>
-<rect x="103.0" y="8.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="103.0" y="8.0" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
 <rect x="143.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<rect x="83.0" y="96.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
-<rect x="123.0" y="96.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
-<rect x="163.0" y="96.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
-<rect x="83.0" y="164.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
-<rect x="123.0" y="164.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
-<rect x="163.0" y="164.0" width="30" height="42" rx="3" fill="#c3ccd6" stroke="#5b6672" stroke-width="1"/>
+<rect x="83.0" y="96.0" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="96.0" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="163.0" y="96.0" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="83.0" y="164.0" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="164.0" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="163.0" y="164.0" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
 <text x="118.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Stock</text>
 <text x="158.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Discard</text>
 <text x="138.0" y="214.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Your six, in three columns</text>

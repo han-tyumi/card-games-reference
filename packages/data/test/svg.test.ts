@@ -176,15 +176,19 @@ test("red suits are drawn red and black suits are not", () => {
 test("a counter-example reads as a counter-example without the caption", () => {
   const svg = renderFigureSvg(figure, "Euchre");
 
-  // Its cards are dimmed and its label is set in the warning colour, so "not
-  // this" is visible at a glance rather than only stated underneath.
-  const dimmed = [...svg.matchAll(/<rect[^>]*opacity="0.65"/g)];
-  assert.equal(dimmed.length, 1, "one card in the invalid row");
+  // Its cards are outlined in a dash pattern and its label is set in the
+  // warning colour, so "not this" is visible at a glance rather than only
+  // stated underneath. It used to be dimmed to opacity 0.65 instead, which
+  // built the cue out of the same contrast the card needs to be seen at all
+  // and took its outline to 2.73:1 — see contrast.test.ts.
+  const dashed = [...svg.matchAll(/<rect[^>]*stroke-dasharray/g)];
+  assert.equal(dashed.length, 1, "one card in the invalid row");
 
   const label = /<text[^>]*fill="(#[0-9a-f]{6})"[^>]*>Not/.exec(svg);
   assert.ok(label, "the invalid row keeps its label");
 
   const clean = renderFigureSvg({ ...figure, rows: [figure.rows[0]!] }, "Euchre");
+  assert.ok(!clean.includes("stroke-dasharray"), "a valid figure marks nothing");
   assert.ok(!clean.includes("opacity="), "a valid figure dims nothing");
   assert.notEqual(label[1], /fill="(#[0-9a-f]{6})"[^>]*>Trumps/.exec(svg)?.[1]);
 });

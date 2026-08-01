@@ -6,17 +6,17 @@
 <text x="138.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">7♣</text>
 <rect x="159.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
 <text x="174.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">6♣</text>
-<rect x="87.0" y="106.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<rect x="87.0" y="106.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" stroke-dasharray="3 2"/>
 <text x="102.0" y="131.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">8♣</text>
-<rect x="123.0" y="106.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<rect x="123.0" y="106.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" stroke-dasharray="3 2"/>
 <text x="138.0" y="131.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">7♥</text>
-<rect x="159.0" y="106.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<rect x="159.0" y="106.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" stroke-dasharray="3 2"/>
 <text x="174.0" y="131.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">6♣</text>
-<rect x="87.0" y="191.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<rect x="87.0" y="191.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" stroke-dasharray="3 2"/>
 <text x="102.0" y="216.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">8♠</text>
-<rect x="123.0" y="191.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<rect x="123.0" y="191.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" stroke-dasharray="3 2"/>
 <text x="138.0" y="216.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">6♠</text>
-<rect x="159.0" y="191.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<rect x="159.0" y="191.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" stroke-dasharray="3 2"/>
 <text x="174.0" y="216.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">5♠</text>
 <rect x="87.0" y="276.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
 <text x="102.0" y="301.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">9♥</text>
