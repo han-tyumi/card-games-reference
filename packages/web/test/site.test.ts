@@ -375,6 +375,29 @@ test("headings descend without skipping a level", () => {
   }
 });
 
+test("each filter is one labelled group, which is what the spacing relies on", () => {
+  // The chips are spaced by ".facet", and the gap ABOVE a group has to beat the
+  // gap inside it or every label reads as a caption for the control above
+  // rather than a heading for the one below. That is a CSS rule no test can
+  // check, but it depends on this markup, which one can.
+  const html = text("index.html");
+  const facets = [...html.matchAll(/<div class="facet">([\s\S]*?)<\/div><\/div>/g)];
+
+  assert.equal(facets.length, 4, "expected one group per filter");
+  for (const [, inner] of facets) {
+    assert.match(inner!, /^<label>[^<]+<\/label><div class="chips">/, "group is malformed");
+    assert.equal((inner!.match(/<div class="chips">/g) ?? []).length, 1);
+  }
+
+  // Every radio lives inside a group, so none is left unlabelled.
+  const radios = (html.match(/<input type="radio"/g) ?? []).length;
+  const grouped = facets.reduce(
+    (n, [, inner]) => n + (inner!.match(/<input type="radio"/g) ?? []).length,
+    0,
+  );
+  assert.equal(grouped, radios, "a filter chip sits outside a labelled group");
+});
+
 test("the search box is labelled", () => {
   const html = text("index.html");
   const id = /<input[^>]*id="q"/.exec(html);

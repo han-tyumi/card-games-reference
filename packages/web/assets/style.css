@@ -100,7 +100,15 @@ a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset:
 }
 #q:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
 
-.chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+/* A facet is a label and the chips it labels.
+   The gap ABOVE a facet has to be clearly bigger than the gap inside it. When
+   the spacing ran the other way the label sat flush under the previous row of
+   chips and a whole gap above its own, so every heading read as a caption for
+   the control before it. */
+.facet { margin-top: 1.15rem; }
+.facet > label { margin-bottom: 0.35rem; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 
 /* Chips are radio inputs so the whole thing works with JavaScript disabled
    and stays keyboard navigable. */

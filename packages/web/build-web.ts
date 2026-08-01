@@ -290,7 +290,7 @@ function chipGroup(
   options: [string, string][],
 ): string {
   return (
-    `<div><label>${esc(label)}</label><div class="chips">` +
+    `<div class="facet"><label>${esc(label)}</label><div class="chips">` +
     options
       .map(([value, text], i) => {
         const id = `${name}-${i}`;
