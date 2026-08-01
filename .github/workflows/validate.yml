@@ -32,6 +32,9 @@ jobs:
       - name: Build the PDF
         run: npm run pdf -- --output /tmp/naibi.pdf
 
+      - name: Build the site
+        run: npm run web
+
       - name: Upload the PDF
         uses: actions/upload-artifact@v4
         with:

@@ -1,0 +1,217 @@
+/*
+ * Naibi.
+ *
+ * Designed for a phone propped against a glass on a table, which is where this
+ * gets read. That decides most of what follows: generous type, a measure that
+ * stays comfortable, controls big enough for a thumb, and a dark mode that does
+ * not glare across a dim room.
+ */
+
+:root {
+  --ink: #16202b;
+  --ink-soft: #55636f;
+  --accent: #1f3a5f;
+  --bg: #fbfaf8;
+  --panel: #ffffff;
+  --rule: #dfe3e8;
+  --red: #a4243b;
+  --shadow: 0 1px 2px rgba(22, 32, 43, 0.06), 0 4px 14px rgba(22, 32, 43, 0.05);
+  --radius: 10px;
+  /* Roughly 66 characters, the measure book typography settled on. */
+  --measure: 34rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #e6e9ec;
+    --ink-soft: #9aa6b2;
+    --accent: #8fb4dd;
+    --bg: #14181d;
+    --panel: #1b2027;
+    --rule: #2b323b;
+    --red: #e2879a;
+    --shadow: none;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* Clear the notch and the home indicator when installed. */
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+           env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+.wrap { max-width: var(--measure); margin: 0 auto; padding: 0 1.1rem 4rem; }
+.wrap--wide { max-width: 52rem; }
+
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+
+/* ---- masthead ---------------------------------------------------------- */
+
+.masthead { padding: 1.6rem 0 1rem; }
+.masthead h1 { margin: 0; font-size: 1.9rem; letter-spacing: -0.01em; color: var(--accent); }
+.masthead .pron { margin: 0.15rem 0 0; color: var(--ink-soft); font-size: 0.9rem; font-style: italic; }
+.masthead p.blurb { margin: 0.7rem 0 0; color: var(--ink-soft); font-size: 0.97rem; }
+
+.backlink {
+  display: inline-block;
+  margin: 1.2rem 0 0.4rem;
+  font-size: 0.92rem;
+  text-decoration: none;
+}
+.backlink::before { content: "\2190\00a0"; }
+
+/* ---- filters ----------------------------------------------------------- */
+
+.filters {
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 0.9rem;
+  margin: 1rem 0 1.4rem;
+  box-shadow: var(--shadow);
+}
+
+.filters label { display: block; font-size: 0.78rem; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--ink-soft); margin-bottom: 0.3rem; }
+
+#q {
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+  font: inherit;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+}
+#q:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+
+/* Chips are radio inputs so the whole thing works with JavaScript disabled
+   and stays keyboard navigable. */
+.chips input { position: absolute; opacity: 0; pointer-events: none; }
+.chips label {
+  margin: 0;
+  padding: 0.42rem 0.72rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  text-transform: none;
+  letter-spacing: 0;
+  cursor: pointer;
+  /* Comfortable thumb target. */
+  min-height: 2.1rem;
+  display: inline-flex;
+  align-items: center;
+}
+.chips input:checked + label {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+@media (prefers-color-scheme: dark) {
+  .chips input:checked + label { color: #12171c; }
+}
+.chips input:focus-visible + label { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.count { margin: 0 0 0.8rem; color: var(--ink-soft); font-size: 0.9rem; }
+
+/* ---- game list --------------------------------------------------------- */
+
+.games { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+
+.games a {
+  display: block;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 0.85rem 0.95rem;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: var(--shadow);
+}
+.games a:hover { border-color: var(--accent); }
+.games h2 { margin: 0; font-size: 1.05rem; color: var(--accent); }
+.games .meta { margin: 0.25rem 0 0; color: var(--ink-soft); font-size: 0.87rem; }
+
+.empty { padding: 1.4rem; text-align: center; color: var(--ink-soft); }
+
+/* ---- a game ------------------------------------------------------------ */
+
+.game h1 { font-size: 1.75rem; margin: 0.2rem 0 0.1rem; color: var(--accent); letter-spacing: -0.01em; }
+.game .aka { margin: 0 0 0.9rem; color: var(--ink-soft); font-size: 0.9rem; }
+
+.facts {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.3rem 0.9rem;
+  margin: 0 0 1.4rem;
+  padding: 0.85rem 0.95rem;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  font-size: 0.92rem;
+  box-shadow: var(--shadow);
+}
+.facts dt { color: var(--ink-soft); }
+.facts dd { margin: 0; }
+
+.game h2 {
+  font-size: 1.02rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--ink-soft);
+  margin: 2rem 0 0.6rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.game p { margin: 0 0 0.85rem; }
+.game ul { margin: 0 0 0.9rem; padding-left: 1.15rem; }
+.game li { margin-bottom: 0.3rem; }
+
+figure { margin: 1.2rem 0; text-align: center; }
+figure svg { max-width: 100%; height: auto; }
+figcaption { margin-top: 0.4rem; color: var(--ink-soft); font-size: 0.85rem; }
+
+/* Wide tables scroll on their own rather than pushing the page sideways. */
+.scroll { overflow-x: auto; margin: 0 0 1rem; -webkit-overflow-scrolling: touch; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+th, td { text-align: left; padding: 0.5rem 0.7rem; border-bottom: 1px solid var(--rule); }
+th { color: var(--ink-soft); font-weight: 600; font-size: 0.8rem;
+  text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+
+.variant { margin: 0 0 0.8rem; }
+.variant b { color: var(--ink); }
+
+.sources { margin-top: 2rem; padding-top: 0.9rem; border-top: 1px solid var(--rule);
+  color: var(--ink-soft); font-size: 0.83rem; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+.tags li { font-size: 0.78rem; color: var(--ink-soft);
+  border: 1px solid var(--rule); border-radius: 999px; padding: 0.2rem 0.55rem; }
+
+footer { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--rule);
+  color: var(--ink-soft); font-size: 0.83rem; }
+
+/* Dark mode inverts the page but not the diagrams, which are drawn on white.
+   Softening them stops each one burning a hole in a dim room. */
+@media (prefers-color-scheme: dark) {
+  figure svg { filter: invert(0.9) hue-rotate(180deg); opacity: 0.92; }
+}
+
+@media (min-width: 34rem) {
+  body { font-size: 18px; }
+  .games { grid-template-columns: 1fr 1fr; }
+  .wrap { padding-left: 1.6rem; padding-right: 1.6rem; }
+}

@@ -26,8 +26,9 @@
     "validate": "node packages/build/validate.ts",
     "render": "node packages/build/render-markdown.ts",
     "pdf": "node packages/build/build-pdf.ts",
+    "web": "node packages/web/build-web.ts",
     "pick": "node packages/build/pick.ts",
-    "build": "npm run validate && npm run render && npm run pdf",
+    "build": "npm run validate && npm run render && npm run pdf && npm run web",
     "check": "npm run validate -- --quiet && npm run render -- --check && tsc --noEmit",
     "typecheck": "tsc --noEmit",
     "types": "npm run types --workspace naibi"

@@ -14,12 +14,12 @@ court card in the Mamluk pack that every European deck descends from. Spain
 still calls them *naipes*. The name is the beginning of the story this project
 is trying to tell in full.
 
-Every game is a JSON file. Scripts turn those files into Markdown and into a
-printable PDF, and the same data will later drive a website, a mobile app, and
-PDF exports without anything being rewritten.
+Every game is a JSON file. Generators turn those files into a website, a
+printable PDF and Markdown, all from the one source, so a rule corrected once is
+corrected everywhere.
 
-**Status:** v1 data set — 30 games, all validating against the schema. The
-website, apps, and companion tools are not built yet.
+**Status:** 60 games, all validating. The site is built and installable; the
+companion tools are not started.
 
 ## What's here
 
@@ -34,6 +34,7 @@ than each keeping their own copy.
 | `packages/data/schema/game.schema.json` | JSON Schema every entry must satisfy. |
 | `packages/data/schema/game.types.ts` | **Generated** types, derived from the schema. |
 | `packages/data/src/index.ts` | Loading and formatting helpers shared by all consumers. |
+| **`packages/web/`** | The site: static, installable, offline. Private. |
 | **`packages/build/`** | Validation and output generation. Private; not published. |
 | `packages/build/validate.ts` | Schema + consistency check. Run before committing. |
 | `packages/build/render-markdown.ts` | Generates `rendered/`. |
@@ -43,6 +44,7 @@ than each keeping their own copy.
 | `packages/build/svg.ts` | Draws that geometry as SVG. |
 | `rendered/*.md` | **Generated.** Never hand-edit — your changes get overwritten. |
 | `rendered/diagrams/*.svg` | **Generated** setup diagrams. |
+| `docs/` | **Generated** site, served by GitHub Pages. |
 | `tools/` | Notes on planned companion packages. |
 
 Packages get added as they are built — a website, graphics, companion tools.
@@ -61,7 +63,9 @@ npm run validate   # check every entry against the schema
 npm run render     # regenerate rendered/
 npm run pdf        # build rendered/naibi.pdf
 
-npm run build      # all three, in order
+npm run web        # build the site into docs/
+
+npm run build      # all four, in order
 npm run check      # CI gate: validate + rendered/ is current + typecheck
 ```
 
@@ -96,22 +100,46 @@ literal unions for `category`, `difficulty`, and `tags` — is never hand-writte
 and cannot drift from what the validator enforces. The website and app can
 import that type directly rather than redeclaring it.
 
-## Games in v1
+## The collection
 
-Thirty games, chosen to cover the common cases: 1 to 8 players, using one or two
-standard decks (Euchre and Pinochle use stripped decks built from standard ones).
+60 games, from Klondike to Skat, Bridge to Koi-Koi.
 
-- **Solitaire** — Klondike, Spider, FreeCell, Golf, Pyramid
-- **Trick-taking** — Hearts, Spades, Euchre, Pinochle, Whist, Oh Hell
-- **Rummy family** — Rummy, Gin Rummy, 500 Rummy, Canasta
-- **Shedding** — Crazy Eights, President, Kings in the Corner, Palace,
-  Egyptian Ratscrew, Slapjack, Spit, Speed
-- **Matching & collecting** — Go Fish, Old Maid, War, Casino, Cribbage
-- **Bluffing** — BS
-- **Casino** — Blackjack
+| Family | Games |
+| --- | --- |
+| Matching & collecting | 14 |
+| Shedding | 11 |
+| Trick-taking | 11 |
+| Solitaire | 10 |
+| Rummy family | 7 |
+| Bluffing | 6 |
+| Casino | 1 |
 
-See [`rendered/index.md`](rendered/index.md) for the full table with player
-counts, deck requirements, and playing times.
+Browse them at [`rendered/index.md`](rendered/index.md), or run the site.
+
+## The site
+
+`npm run web` generates `docs/`: a static, installable, offline-first app built
+from the same data as everything else. No framework and no bundler — the output
+is HTML, one stylesheet and about forty lines of JavaScript for filtering.
+
+It is a **progressive web app**, which suits this project unusually well. The
+whole corpus is around 220 KB gzipped, so the service worker precaches *all* of
+it on first visit: every game, every diagram. Offline here means the entire
+reference, not a cached subset. None of the usual PWA weak spots — background
+sync, native APIs, deep OS integration — apply to something read-only with no
+backend and nothing to sync.
+
+**To publish it:** repository Settings → Pages → deploy from branch `main`,
+folder `/docs`. There is nothing else to configure, and no hosting bill: the
+whole thing is static files.
+
+**One honest limitation.** iOS may evict cached storage after a few weeks
+without use, which would empty the app exactly when someone opens it offline
+having not touched it in a while. `navigator.storage.persist()` can ask for
+protection but on iOS is gated behind notification permission, a poor trade for
+a rules reference. Android is unaffected. If guaranteed offline ever matters
+more than that, a thin native wrapper reuses this same code and ships the data
+inside the app bundle — building the PWA first does not foreclose it.
 
 ## The data format
 

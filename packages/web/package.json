@@ -1,0 +1,14 @@
+{
+  "name": "naibi-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Static, installable, offline-first site generated from the game data",
+  "license": "MIT",
+  "scripts": {
+    "build": "node build-web.ts"
+  },
+  "dependencies": {
+    "naibi": "*"
+  }
+}

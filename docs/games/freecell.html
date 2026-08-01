@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FreeCell — how to play | Naibi</title>
+<meta name="description" content="How to play FreeCell: 1 player, 10-30 minutes, 1 standard deck (52 cards), jokers removed.">
+<meta name="theme-color" content="#1f3a5f">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../icons/icon-192.png">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="wrap">
+<a class="backlink" href="../">All games</a>
+<article class="game">
+<h1>FreeCell</h1>
+<p class="aka">Also known as Free Cell, FreeCell Solitaire</p>
+<dl class="facts"><dt>Players</dt><dd>1 player</dd><dt>Deck</dt><dd>1 standard deck (52 cards), jokers removed</dd><dt>Time</dt><dd>10-30 minutes</dd><dt>Difficulty</dt><dd>Easy</dd><dt>Category</dt><dd>Solitaire (1 player)</dd></dl>
+<h2>Setup</h2>
+<p>Take one 52-card deck without jokers, shuffle it, and deal the whole pack face up into eight tableau columns: seven cards each to the first four columns and six each to the last four. Spread each column so that every card in it stays readable, with the last card of the column fully exposed.</p>
+<p>Above or beside the tableau, set out four free cells on one side and four foundation spaces on the other. All eight start empty.</p>
+<p>That is the entire layout. There is no stock, no waste and no redeal, and nothing is dealt face down. From the first move to the last you are working with complete information, which is what separates FreeCell from Klondike and Spider. No new card can turn up, so a deal is a puzzle that is already either solvable or not before you touch it.</p>
+<figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 366 214" width="586" height="342" role="img" aria-label="FreeCell setup diagram">
+<title>FreeCell setup</title>
+<rect x="8.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
+<rect x="48.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
+<rect x="88.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
+<rect x="128.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
+<rect x="208.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
+<rect x="248.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
+<rect x="288.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
+<rect x="328.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
+<rect x="28.0" y="96.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="28.0" y="101.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="28.0" y="106.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="28.0" y="111.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="28.0" y="116.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="28.0" y="121.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="28.0" y="126.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="68.0" y="96.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="68.0" y="101.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="68.0" y="106.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="68.0" y="111.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="68.0" y="116.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="68.0" y="121.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="68.0" y="126.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="108.0" y="96.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="108.0" y="101.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="108.0" y="106.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="108.0" y="111.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="108.0" y="116.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="108.0" y="121.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="108.0" y="126.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="148.0" y="96.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="148.0" y="101.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="148.0" y="106.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="148.0" y="111.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="148.0" y="116.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="148.0" y="121.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="148.0" y="126.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="188.0" y="96.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="188.0" y="101.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="188.0" y="106.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="188.0" y="111.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="188.0" y="116.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="188.0" y="121.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="228.0" y="96.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="228.0" y="101.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="228.0" y="106.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="228.0" y="111.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="228.0" y="116.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="228.0" y="121.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="268.0" y="96.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="268.0" y="101.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="268.0" y="106.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="268.0" y="111.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="268.0" y="116.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="268.0" y="121.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="308.0" y="96.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="308.0" y="101.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="308.0" y="106.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="308.0" y="111.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="308.0" y="116.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="308.0" y="121.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="83.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Free cells</text>
+<text x="283.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Foundations</text>
+<text x="183.0" y="176.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Tableau</text>
+<text x="183.0" y="202.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">The whole pack is dealt face up: no stock, no waste and nothing hidden.</text>
+</svg><figcaption>The whole pack is dealt face up: no stock, no waste and nothing hidden.</figcaption></figure>
+<h2>Play</h2>
+<p>The foundations are built up in suit from the ace to the king, one foundation per suit. The tableau columns are built down in alternating colours, so a black jack accepts a red 10 and that red 10 accepts a black 9.</p>
+<p>Strictly speaking exactly one card moves at a time, and it has to be either the exposed card at the end of a column or a card sitting in a free cell. You can send it to:</p>
+<ul><li>a foundation, if it is the next rank up in that suit;</li><li>a tableau column whose end card is one rank higher and the opposite colour;</li><li>an empty free cell, which holds exactly one card and imposes no other condition;</li><li>an empty column, which accepts any single card at all. Unlike Klondike, empty columns are not reserved for kings, and this is the most powerful resource in the game.</li></ul>
+<p>A card parked in a free cell is fully available and can be played out again to a column or a foundation whenever it fits. The only cost of using a cell is that it is no longer free for manoeuvring.</p>
+<p>Almost every version lets you drag a whole run at once, which is the supermove, also called a power move. It is not a separate rule. It is shorthand for a run of ordinary single-card moves that the software performs for you: the upper cards of the run get shuffled into free cells and empty columns, the bottom card is moved, and the run is rebuilt on top of it. The number of cards you can shift this way is therefore capped by the workspace you have:</p>
+<p>maximum cards = (1 + empty free cells) x 2 ^ (empty columns)</p>
+<p>With two cells open and no empty columns you can move three cards. With all four cells open and one empty column you can move ten. There is one catch: if the destination is itself an empty column, that column cannot double as workspace, so leave it out of the exponent. Moving into your only empty column with all four cells free gets you five cards, not ten.</p>
+<p>That doubling formula is what most implementations use, and it is what a careful player can actually achieve by hand. A minority of programs are stingier and multiply instead of doubling, capping the move at (1 + empty free cells) x (1 + empty columns), which with four cells and two empty columns allows 15 cards rather than 20. If your version refuses a move you think should be legal, this is usually why. Nothing is lost either way: the supermove is only a convenience, and you can always perform the same transfer one card at a time.</p>
+<p>The run you are moving must already be a proper descending, alternating-colour sequence. A stack that merely sits together is not movable as a block, and if you do not have the storage for the whole run you have to break it up by hand.</p>
+<p>Taking a card back off a foundation into the tableau is allowed in most implementations and is occasionally the move that saves a deal, but some versions lock a foundation once a card is played there, so check before you count on it.</p>
+<p>No move is ever compulsory. You are never obliged to send an ace or any other card to a foundation, and holding a low card back in the tableau to catch the next card down is a standard technique. Many programs autoplay cards to the foundations for you once they can no longer be needed; that is a convenience setting, not a rule, and it can usually be switched off.</p>
+<p>The deal ends when all four foundations reach their kings, or when you are stuck: all four free cells occupied, no empty column, and nothing among the four cell cards and the eight column ends that fits onto a foundation or onto another column. Because nothing is hidden, being stuck is always the end of that deal; there is no redeal and no reshuffle.</p>
+<h2>Goal &amp; scoring</h2>
+<p>You win by moving all 52 cards onto the foundations, each suit in order from ace up to king. FreeCell keeps no points in its traditional form. A deal is won or lost, and players who want a finer measure compare move counts or elapsed time on the same numbered deal rather than tallying a score.</p>
+<p>The interesting number in FreeCell is how often a deal can be won at all. Because every card is visible and four cells is a generous allowance, nearly every deal has a solution: solvers put it at roughly 99.999 percent of random deals. Microsoft's original set of 32,000 numbered deals contains exactly one that has been proven impossible, deal 11,982, and establishing that took a volunteer effort running through the mid-1990s. When the same generator was extended to a million deals, only eight unwinnable ones turned up in total: 11,982, 146,692, 186,216, 455,889, 495,505, 512,118, 517,776 and 781,948.</p>
+<p>Losing a FreeCell deal is therefore almost always your mistake rather than the shuffle's, which is both the appeal and the cruelty of the game. Solvable does not mean easy, though. Deals 617 and 1,941 from the original set are notorious, and 1,941 is widely nominated as the hardest solvable deal among the 32,000. Working through the numbered deals in order is a long-running informal challenge.</p>
+<h2>Variants</h2>
+<p class="variant"><b>Baker's Game</b> — The game FreeCell was derived from. Identical layout and identical four free cells, but the tableau builds down in suit instead of alternating colours. Removing colour-based landing spots roughly halves the places any card can go, and winnability drops from near-certainty to somewhere around three quarters of deals, so a lost game here is much less likely to be your fault.</p>
+<p class="variant"><b>Eight Off</b> — Eight free cells rather than four. Deal 48 cards into eight columns of six, then place the remaining four cards one each into four of the eight cells, leaving four cells open. The tableau builds down in suit, and only a king may be moved into an empty column. The extra cells are compensation for both of those tighter restrictions.</p>
+<p class="variant"><b>Seahaven Towers</b> — Fifty cards go into ten columns of five, and the last two cards are placed into two of the four free cells, leaving two open. The tableau builds down in suit and only kings may fill an empty column. With ten short columns, two occupied cells and no colour alternation, it plays much more tightly than FreeCell and rewards planning several moves ahead.</p>
+<p class="variant"><b>ForeCell</b> — Deal four cards face up into the four free cells first, then 48 cards into eight columns of six. You start with every cell full, so your first job is emptying them. The tableau builds down in alternating colours as in FreeCell, but only a king may be moved into an empty column, which removes the escape hatch that makes standard FreeCell so forgiving.</p>
+<ul class="tags"><li>classic</li><li>family-friendly</li><li>solo</li><li>strategy</li></ul>
+<p class="sources">Rules verified against Wikipedia, Solitaire Laboratory, Solitaire Central, BVS Solitaire, PlayFreeCellOnline, Freecell Solver documentation (Shlomi Fish). This write-up is original text, not reproduced from those sources.</p>
+</article>
+<footer>
+<p><strong>Naibi</strong> — original card game rules, free to reuse under
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+<a href="https://github.com/han-tyumi/naibi">Source and corrections</a>.</p>
+</footer>
+</div>
+
+<script>
+if ("serviceWorker" in navigator) {
+  addEventListener("load", () => navigator.serviceWorker.register("../sw.js"));
+}
+</script>
+</body>
+</html>
