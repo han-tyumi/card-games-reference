@@ -55,7 +55,7 @@ Be clear about what turning three does, because it is widely misunderstood: two 
 
 THE ETIQUETTE THAT KEEPS IT HONEST
 
-One hand only. You may switch hands but never use both at once. Move a single card at a time into the centre and let go of it before reaching for the next. Nobody touches anybody else's piles for any reason. And when two players go for the same foundation in the same instant, the card that physically landed first stands: the other player takes theirs back to wherever it came from and carries on, with no penalty and no argument. That rule exists precisely so there is nothing to argue about.
+One hand only. You may switch hands but never use both at once. Move a single card at a time into the centre and let go of it before reaching for the next. Nobody touches anybody else's piles for any reason. Collisions in the middle are constant, and they settle themselves without adjudication: whichever of the two cards ended up underneath got there first, so that is the one that counts. Whoever played the loser simply retrieves it, restores it to the pile it left, and plays on. Nothing is forfeited and nobody owes anybody anything, which is the entire point of settling it by physical position rather than by argument.
 
 ENDING IT
 

@@ -240,7 +240,7 @@ export interface CardGame {
     ];
   };
   /**
-   * How a turn works and how the hand proceeds: turn order, legal moves, restrictions, how the hand ends.
+   * How a turn works and how the hand proceeds: turn order, legal moves, restrictions, how the hand ends. The ceiling is a guard against sprawl rather than a target — the median entry is around 3,000 characters. Contract Bridge sits near the top and has earned it; if a simpler game is pressing the limit, the entry probably needs editing rather than more room.
    */
   play: string;
   /**

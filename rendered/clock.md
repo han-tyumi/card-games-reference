@@ -25,7 +25,7 @@ As the game runs, every position grows a face-up group underneath its face-down 
 
 Turn the top card of the centre pile face up. After that the game runs itself.
 
-The card you have just turned goes face up underneath the pile of its hour: an eight slides under the eight o'clock pile, a jack under eleven o'clock, a king under the centre. Having fed a pile, turn that pile's top face-down card and treat it exactly the same way. Each card names the pile you visit next, and the pile you visit hands you the next card, so the whole deal is one unbroken chain.
+Read whatever card is now in your hand as an address. An eight is addressed to eight o'clock, a jack to eleven o'clock, a king to the middle. Carry it there and tuck it face up beneath the face-down packet waiting at that position. The position pays you back on the spot: help yourself to its topmost face-down card, and that card becomes the one in your hand, to be read and delivered by exactly the same procedure. Each card names the pile you visit next, and the pile you visit hands you the next card, so the whole deal is one unbroken chain.
 
 There is nothing to choose at any point. You never pick a destination, never pick which pile to open, and never decide when to turn. The chain is fixed by the shuffle from the first card onward, and two people dealt the same pack in the same order get the same result. This is why Clock is handed to children and used as a fortune-telling toy rather than played as a contest.
 

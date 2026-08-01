@@ -19,7 +19,7 @@ Two, three, four and six can all play; five cannot, because the pack will not di
 
 The dealer gives three cards to each player, starting on their right, and lays four face up in the middle, then puts the undealt remainder face down to one side as the stock. Those four are the only cards the table ever starts with; nothing more is ever dealt to the middle.
 
-One opening is thrown out. If three or four kings are among the four face-up cards, no clean sweep of the table is possible at any point in the round, so the whole deal is scrapped, the cards shuffled, and the same dealer deals again.
+One opening is thrown out. Count the kings in the middle before anybody plays: three of them, or all four, and the deal is unplayable. A king can only ever be taken singly and only by another king, and there are not enough kings left in the pack to strip that many off the table, which means no sweep can occur at any moment in the round. So the deal is abandoned rather than played out. The cards all go back together and the same dealer shuffles and starts again.
 
 Captures go face down in front of you and stay unexamined until the round is scored. The player to the dealer's right goes first.
 
@@ -41,7 +41,7 @@ Capturing is not optional in the sense you might hope. You choose freely which c
 
 Sweeps. A capture that empties the table completely is a scopa. Turn one card of your pile face up so the sweep can be counted later. Whoever plays next faces bare wood and can only add a card to it, which is why leaving a table your opponent can clear is the cardinal sin.
 
-Running the pack out. When every hand is empty, the dealer deals three more to each player from the stock, and again nothing goes to the middle. This repeats until the stock is gone. After the last card of the round is played, whatever is still lying in the middle goes to whoever made the most recent capture — a useful haul, but never counted as a sweep, even in the case where that final play genuinely cleared the table.
+Running the pack out. When every hand is empty, the dealer deals three more to each player from the stock, and again nothing goes to the middle. This repeats until the stock is gone. Once the final card of the round has gone down there is normally something still sitting in the middle. It is not left there and not returned to the pack: claiming it falls to whichever player captured most recently, who simply adds the lot to their pile. That can be a fat handful, and every card of it counts toward the majorities for cards and for coins. What it does not do is score as a scopa — nor does a genuine clearance made with that closing card.
 
 ## Goal & scoring
 

@@ -39,7 +39,7 @@ Forcing. If the face-up card could legally join a meld already in front of you a
 
 Rearranging. Cards already melded are not frozen in place. You may move them between your own melds and borrow from one to build another, as long as everything left on the table is still a legal meld of at least three cards. A five-card sequence can lend a card to start a set; a four-card set can spare one and survive.
 
-Winning. Every turn in which you use a card ends with a discard from your hand, so your total — hand plus table — sits at ten until the hand is empty. Emptying it wins nothing. With ten cards down and nothing left to throw, you keep playing until an eleventh card comes past that fits one of your melds; take that card, with no discard owed, and the deal is over.
+Winning. Because every card you take is paid for with a card you throw, ten is the ceiling on what you can hold and show: hand plus table never adds up to more. The target sits one above that ceiling deliberately. Put all ten down and you have an empty hand, a complete table, and no victory — there is simply nothing left to throw, so your turns become a matter of waiting. What settles the deal is a card that extends something already in front of you: when one is offered or turned and you take it, no discard is owed in return, and that eleventh melded card finishes the hand on the spot.
 
 Running out. The deal is a draw when the last card of the stock has been turned, both players have finished with it, and neither has eleven cards on the table. There is nothing left to turn, so play stops there and neither player has lost.
 

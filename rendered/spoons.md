@@ -23,7 +23,7 @@ Everyone picks up and looks at their four cards. Sort them fast, because nobody 
 
 There are no turns. Once the table has looked at its cards the dealer starts drawing, and from then on everybody runs continuously at whatever speed they can manage.
 
-The dealer takes the top card of the stock, is briefly holding five, keeps the four they want and pushes the odd one face down to the player on their left. That player picks it up, is briefly holding five, keeps four and passes one on, and so it travels round the circle. Two rules keep it honest: one card at a time, and never fewer than four or more than five in hand. You may not let a queue build up so you can sift through it at leisure, and you may not shove two cards at once onto a neighbour who is drowning.
+Only the dealer draws, and each draw sets off a chain down the circle. A fifth card in your hand is a card you are obliged to shed: whichever of the five does least for the set you are building goes face down to the neighbour on your left, who is now the one holding five and facing the same choice. The card keeps travelling in that direction for as long as the round lasts. Two rules keep it honest: one card at a time, and never fewer than four or more than five in hand. You may not let a queue build up so you can sift through it at leisure, and you may not shove two cards at once onto a neighbour who is drowning.
 
 The player at the end of the chain, on the dealer's right, discards face down onto their own pile instead of passing. Should the stock run dry before anyone has four of a kind, the dealer takes that discard pile, picks it up exactly as it lies without shuffling, since nobody has seen a card in it, and carries on drawing from it, so the circle never actually stops.
 
