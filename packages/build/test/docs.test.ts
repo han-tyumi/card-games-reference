@@ -13,7 +13,7 @@
 
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -22,6 +22,7 @@ import { categoryLabel, gamesByCategory, loadGames } from "naibi";
 const REPO_ROOT = fileURLToPath(new URL("../../..", import.meta.url));
 const readme = readFileSync(join(REPO_ROOT, "README.md"), "utf8");
 const contributing = readFileSync(join(REPO_ROOT, "CONTRIBUTING.md"), "utf8");
+const agentGuide = readFileSync(join(REPO_ROOT, "CLAUDE.md"), "utf8");
 
 const headings = (doc: string) =>
   [...doc.matchAll(/^#{2,3} (.+)$/gm)].map((m) => m[1]!.trim());
@@ -177,5 +178,66 @@ test("no section is buried under a heading it has nothing to do with", () => {
       children.length <= 6,
       `"${heading}" has ${children.length} subsections — likely a split gone wrong`,
     );
+  }
+});
+
+// --- the agent guide ------------------------------------------------------
+
+test("every command CLAUDE.md names actually exists", () => {
+  // It loads into every session and is followed without being questioned, so a
+  // command that has been renamed sends an agent down a path that does not work.
+  const scripts = Object.keys(
+    JSON.parse(readFileSync(join(REPO_ROOT, "package.json"), "utf8")).scripts,
+  );
+
+  const missing: string[] = [];
+  for (const [, script] of agentGuide.matchAll(/`npm run ([a-z-]+)/g)) {
+    if (!scripts.includes(script!)) missing.push(script!);
+  }
+  assert.deepEqual(missing, []);
+});
+
+test("every path CLAUDE.md names actually exists", () => {
+  const missing: string[] = [];
+  for (const [, path] of agentGuide.matchAll(/`([\w.-]+\/[\w./-]*)`/g)) {
+    if (!existsSync(join(REPO_ROOT, path!))) missing.push(path!);
+  }
+  assert.deepEqual(missing, []);
+});
+
+test("CLAUDE.md points at the other documents instead of restating them", () => {
+  for (const doc of ["README.md", "CONTRIBUTING.md", "decisions/README.md"]) {
+    assert.ok(agentGuide.includes(`(${doc})`), `CLAUDE.md does not link ${doc}`);
+  }
+
+  // Same anti-drift rule the live documents are held to.
+  const shared = headings(agentGuide).filter((h) => headings(contributing).includes(h));
+  assert.deepEqual(shared, [], "CLAUDE.md duplicates CONTRIBUTING sections");
+});
+
+test("CLAUDE.md stays short enough to be read", () => {
+  // It is prepended to every session. Past a point it stops being instructions
+  // and becomes background noise that gets skimmed.
+  const words = agentGuide.split(/\s+/).length;
+  assert.ok(words < 900, `${words} words — trim it or move detail into a skill`);
+});
+
+test("every repo skill is shaped so it can be loaded", () => {
+  const skills = join(REPO_ROOT, ".claude", "skills");
+  if (!existsSync(skills)) return;
+
+  for (const name of readdirSync(skills)) {
+    const file = join(skills, name, "SKILL.md");
+    assert.ok(existsSync(file), `${name}: no SKILL.md`);
+
+    const body = readFileSync(file, "utf8");
+    const front = /^---\n([\s\S]*?)\n---/.exec(body);
+    assert.ok(front, `${name}: no frontmatter`);
+    assert.match(front[1]!, new RegExp(`name: ${name}\\b`), `${name}: name disagrees`);
+
+    const description = /description: (.+)/.exec(front[1]!);
+    assert.ok(description, `${name}: no description`);
+    // The description is the only thing deciding whether the skill gets loaded.
+    assert.ok(description[1]!.length > 60, `${name}: description too vague to match on`);
   }
 });

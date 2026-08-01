@@ -75,6 +75,7 @@ than each keeping their own copy.
 | `docs/` | **Generated** site, served by GitHub Pages. |
 | `decisions/` | **Historical.** Why the project is the way it is; superseded, not edited. |
 | `CONTRIBUTING.md` | **Live.** How to work on this. Edited when it stops being true. |
+| `CLAUDE.md`, `.claude/skills/` | Instructions for coding agents working on this repo. |
 | `tools/` | Notes on planned companion packages. |
 
 Packages get added as they are built — a website, graphics, companion tools.
