@@ -358,19 +358,42 @@ So, concretely:
 If you ever find text in this repository that reads like it came from somewhere
 else, please open an issue. It will be rewritten.
 
-### Known gap: batch two has had one pass, and half of it was never touched
+### What has actually been checked
 
-Entries were added in two batches of thirty. The first batch went through three
-progressive originality passes; the second has had **one**, and that pass edited
-**15 of the 30**. These fifteen were never touched by it:
+All 60 entries were compared against source text on 2026-08-01 — pagat and
+Wikipedia, fetched and read side by side with our prose. That was the first
+check of this project done with the sources in front of it. Everything before it
+counted search-engine hits, which the section below explains does not work, so
+those earlier passes are not evidence of anything and are not counted here.
 
-`beggar-my-neighbour`, `big-two`, `concentration`, `durak`, `forty-thieves`,
-`hand-and-foot`, `koi-koi`, `mau-mau`, `mus`, `snap`, `texas-holdem`,
-`tien-len`, `tripeaks`, `truco`, `yukon`
+What that pass found, at a bar of 80% shared structure or 8 identical
+consecutive words: **39 of 60 entries flagged, 36 verbatim runs**. Rewritten:
+**26 passages across 19 entries**. The problems were structural rather than
+lexical — Pinochle carried eighteen consecutive words identical to pagat's,
+Hearts eleven, Spades ten, and one trick-taking formula had propagated into five
+separate entries.
 
-That is not evidence they are clean. The pass that ran found problems in roughly
-one entry in two of the half it did cover, and the site is live. This is the
-outstanding work on this project.
+**Eight verbatim runs were kept deliberately.** They are the vocabulary of the
+games and not anyone's prose: the poker hand ranks in ascending order, "right
+bower (the jack of the trump suit)", Skat's German multiplier list, "two cards
+face down and one face up", the Snap shout, "deal N cards to each player, one at
+a time". Rewording those would make the entries wrong.
+
+**What the pass does not establish**, and none of it should be glossed over:
+
+- Paraphrase that swaps the vocabulary scores like independent writing. Measured
+  on fixtures: a sentence rebuilt from a source's clause order scored 0.15,
+  an honest rewrite of the same rule 0.12. Structural reuse is caught; thorough
+  rewording is not.
+- 12 entries were compared against **one** source rather than two, because pagat
+  carries few solitaires: `accordion`, `beggar-my-neighbour`, `forty-thieves`,
+  `freecell`, `golf-multiplayer`, `klondike`, `koi-koi`, `mau-mau`, `pyramid`,
+  `speed`, `spider`, `tripeaks`. Several list further sources in
+  `sources_consulted` that were not pulled.
+- 64 lower-tier candidates were sampled, not read exhaustively.
+
+So: checked once, properly, with those limits — not certified. An entry edited
+after that date has not been checked in its current form at all.
 
 ### Checking wording against a source
 
