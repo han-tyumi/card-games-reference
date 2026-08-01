@@ -41,3 +41,36 @@ export function searchRecords(games: CardGame[]): SearchRecord[] {
     variants: game.variants.map((v) => `${v.name} ${v.description}`).join(" "),
   }));
 }
+
+/**
+ * The compact per-game facts the filter chips run on.
+ *
+ * Ships inside the index page, so it carries only what a filter reads and is
+ * keyed by position like the search index. `s` is the searchable text used by
+ * the fallback that runs before the search index has loaded.
+ */
+export type Facet = {
+  s: string;
+  lo: number;
+  hi: number;
+  d: number;
+  max: number | null;
+  diff: string;
+};
+
+export function facetsFor(games: CardGame[]): Facet[] {
+  return games.map((game) => {
+    const range = /^(\d{1,3})-(\d{1,3})$/.exec(game.duration_minutes);
+    return {
+      s: [game.name, ...game.aliases, categoryLabel(game.category), ...game.tags]
+        .join(" ")
+        .toLowerCase(),
+      lo: game.players.min,
+      hi: game.players.max,
+      d: game.equipment.standard_decks,
+      // Only a closed range promises an end; "60+" does not.
+      max: range?.[2] ? Number(range[2]) : null,
+      diff: game.difficulty,
+    };
+  });
+}

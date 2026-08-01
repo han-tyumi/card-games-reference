@@ -10,6 +10,7 @@
  * index. What is left here is the part that touches the page.
  */
 
+import { matches } from "./facets.js";
 import { labelsFor, score } from "./search.js";
 
 const list = document.getElementById("games");
@@ -21,7 +22,6 @@ if (list) {
   const box = document.getElementById("q");
 
   const state = { q: "", players: "", decks: "", minutes: "", difficulty: "" };
-  const RANK = { simple: 0, easy: 1, medium: 2, complex: 3 };
 
   let index = null;
   let loading = null;
@@ -43,19 +43,6 @@ if (list) {
     return loading;
   };
 
-  const facetsMatch = (game) => {
-    if (state.players) {
-      const n = Number(state.players);
-      if (game.lo > n || game.hi < n) return false;
-    }
-    // A game needing its own pack is unreachable for someone with a 52-card
-    // deck, so it must not surface under a deck count.
-    if (state.decks && (game.d === 0 || game.d > Number(state.decks))) return false;
-    if (state.minutes && (game.max === null || game.max > Number(state.minutes))) return false;
-    if (state.difficulty && RANK[game.diff] > RANK[state.difficulty]) return false;
-    return true;
-  };
-
   /** Used when the index has not loaded yet, or could not be. */
   const nameMatch = (i) => {
     for (const word of state.q.split(/\s+/)) {
@@ -70,7 +57,7 @@ if (list) {
 
     const ranked = [];
     items.forEach((li, i) => {
-      if (!facetsMatch(facets[i])) {
+      if (!matches(facets[i], state)) {
         li.hidden = true;
         return;
       }

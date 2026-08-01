@@ -16,6 +16,7 @@
 
 import { createWriteStream, existsSync, mkdirSync, statSync } from "node:fs";
 import { dirname, join } from "node:path";
+import { pathToFileURL } from "node:url";
 
 import PDFDocument from "pdfkit";
 
@@ -730,46 +731,94 @@ function outputPath(): string {
   return supplied ?? join(RENDERED_DIR, "naibi.pdf");
 }
 
-const games = loadGames();
-if (games.length === 0) {
-  console.error("No games found. Nothing to build.");
-  process.exit(1);
-}
+/**
+ * Where each game ended up, as the two independent records of it.
+ *
+ * They are built by different mechanisms -- the outline binds to whatever page
+ * is current when addItem() is called, the contents line records book.current
+ * after the heading is drawn -- and they are supposed to agree. When they did
+ * not, every bookmark in the PDF landed on the LAST page of its game instead of
+ * the first, which reads as working until you use one. Returning both is what
+ * lets a test say they agree.
+ */
+export type Placement = { game: string; bookmarkPage: number; contentsPage: number };
 
-const output = outputPath();
-mkdirSync(dirname(output), { recursive: true });
+export type Booklet_ = { pageCount: number; placements: Placement[]; unicode: boolean };
 
-const book = new Booklet();
-const stream = createWriteStream(output);
-book.doc.pipe(stream);
+/** Compile every game into one PDF at `output`, and report where they landed. */
+export async function compile(
+  games: CardGame[],
+  output: string,
+): Promise<Booklet_> {
+  mkdirSync(dirname(output), { recursive: true });
 
-titlePage(book, games.length);
-const contentsPages = reserveContentsPages(book, games);
+  const book = new Booklet();
+  const stream = createWriteStream(output);
+  book.doc.pipe(stream);
 
-const outline = book.doc.outline;
-for (const [category, entries] of gamesByCategory(games)) {
-  const label = categoryLabel(category);
-  let parent: PDFKit.PDFOutline | undefined;
+  titlePage(book, games.length);
+  const contentsPages = reserveContentsPages(book, games);
 
-  entries.forEach((game, index) => {
-    gamePage(book, game, index === 0 ? label : null, () => {
-      if (index === 0) parent = outline.addItem(label);
-      (parent ?? outline).addItem(game.name);
+  const bookmarkPages = new Map<string, number>();
+  const outline = book.doc.outline;
+
+  for (const [category, entries] of gamesByCategory(games)) {
+    const label = categoryLabel(category);
+    let parent: PDFKit.PDFOutline | undefined;
+
+    entries.forEach((game, index) => {
+      gamePage(book, game, index === 0 ? label : null, () => {
+        if (index === 0) parent = outline.addItem(label);
+        (parent ?? outline).addItem(game.name);
+        bookmarkPages.set(game.name, book.current);
+      });
     });
+  }
+
+  drawContents(book, contentsPages);
+  drawFooters(book);
+
+  const pageCount = book.current + 1;
+
+  book.doc.end();
+  await new Promise<void>((resolve, reject) => {
+    stream.on("finish", () => resolve());
+    stream.on("error", reject);
   });
+
+  return {
+    pageCount,
+    unicode: book.fonts.unicode,
+    placements: book.toc
+      .filter((entry) => entry.level === 1)
+      .map((entry) => ({
+        game: entry.title,
+        bookmarkPage: bookmarkPages.get(entry.title) ?? -1,
+        contentsPage: entry.page,
+      })),
+  };
 }
 
-drawContents(book, contentsPages);
-drawFooters(book);
+async function main(): Promise<number> {
+  const games = loadGames();
+  if (games.length === 0) {
+    console.error("No games found. Nothing to build.");
+    return 1;
+  }
 
-book.doc.end();
-await new Promise<void>((resolve, reject) => {
-  stream.on("finish", () => resolve());
-  stream.on("error", reject);
-});
+  const output = outputPath();
+  const { unicode } = await compile(games, output);
 
-const sizeKb = statSync(output).size / 1024;
-console.log(`Wrote ${output} (${games.length} games, ${sizeKb.toFixed(0)} KB)`);
-if (!book.fonts.unicode) {
-  console.log("Note: fell back to a core PDF font; suit symbols were spelled out.");
+  const sizeKb = statSync(output).size / 1024;
+  console.log(`Wrote ${output} (${games.length} games, ${sizeKb.toFixed(0)} KB)`);
+  if (!unicode) {
+    console.log("Note: fell back to a core PDF font; suit symbols were spelled out.");
+  }
+  return 0;
+}
+
+// Only when run as a command. Imported -- by the tests -- this file is just
+// compile() and the functions under it.
+if (import.meta.url === pathToFileURL(process.argv[1] ?? "").href) {
+  process.exit(await main());
 }

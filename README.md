@@ -45,6 +45,8 @@ than each keeping their own copy.
 | `packages/data/src/prose.ts` | Parses the prose convention, shared by the PDF and the site. |
 | `packages/build/svg.ts` | Draws that geometry as SVG. |
 | `packages/web/assets/search.js` | Search: builds the index and ranks queries. Shared by build and browser. |
+| `packages/web/assets/facets.js` | The filter chips' predicate. Shared by the page and the tests. |
+| `packages/web/records.ts` | Reduces a game to what search and the filters index. |
 | `packages/*/test/*.test.ts` | Tests. `npm test`. |
 | `rendered/*.md` | **Generated.** Never hand-edit — your changes get overwritten. |
 | `rendered/diagrams/*.svg` | **Generated** setup diagrams. |
@@ -68,11 +70,12 @@ npm run render     # regenerate rendered/
 npm run pdf        # build rendered/naibi.pdf
 
 npm run web        # build the site into docs/
+npm run web -- --check   # fail if docs/ is stale (CI gate)
 
 npm run build      # all four, in order
 
 npm test           # run the tests
-npm run check      # CI gate: validate + rendered/ is current + typecheck + tests
+npm run check      # CI gate: validate + rendered/ and docs/ current + typecheck + tests
 ```
 
 ### What can we play right now?
@@ -108,7 +111,14 @@ Two things are tested, and they are not the same thing:
   the rules a schema cannot express. It is what stops a bad entry being
   committed.
 - **`npm test` checks the code.** The geometry behind every diagram, the prose
-  parser, the search ranking, the validator's own rules.
+  parser, the search ranking, the validator's own rules, the PDF's structure,
+  and the generated site — every internal link, the offline precache, the
+  manifest, and the filter chips.
+
+Both `rendered/` and `docs/` are generated output that is *committed*, so both
+have a `--check` mode that rebuilds and compares. `docs/` is what readers are
+served, which makes a stale copy the published rules disagreeing with the source
+they came from — not a cosmetic problem.
 
 The code tests exist because of how the bugs in this repo have actually been
 found: by looking at output. A pyramid drawn with its rows apart, two captions

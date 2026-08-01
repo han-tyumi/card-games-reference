@@ -14,7 +14,6 @@
  */
 
 import {
-  copyFileSync,
   existsSync,
   mkdirSync,
   readFileSync,
@@ -23,7 +22,7 @@ import {
   writeFileSync,
 } from "node:fs";
 import { basename, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 import type { CardGame } from "naibi";
 import {
@@ -38,7 +37,7 @@ import {
 // The same module the browser loads, so the words this indexes and the words a
 // query is split into cannot drift apart.
 import { buildIndex } from "./assets/search.js";
-import { searchRecords } from "./records.ts";
+import { facetsFor, searchRecords } from "./records.ts";
 
 const PACKAGE_ROOT = fileURLToPath(new URL(".", import.meta.url));
 const REPO_ROOT = fileURLToPath(new URL("../..", import.meta.url));
@@ -241,23 +240,16 @@ function gamePage(game: CardGame): string {
   });
 }
 
-/** Only the facets the filters need; kept small because it ships in the page. */
-function facetsFor(games: CardGame[]): string {
-  return JSON.stringify(
-    games.map((g) => {
-      const range = /^(\d{1,3})-(\d{1,3})$/.exec(g.duration_minutes);
-      return {
-        s: [g.name, ...g.aliases, categoryLabel(g.category), ...g.tags]
-          .join(" ")
-          .toLowerCase(),
-        lo: g.players.min,
-        hi: g.players.max,
-        d: g.equipment.standard_decks,
-        max: range?.[2] ? Number(range[2]) : null,
-        diff: g.difficulty,
-      };
-    }),
-  );
+/**
+ * Embed JSON inside a <script> block.
+ *
+ * Script content is raw text, so an entity is not decoded there and an "&" is
+ * safe -- but a literal "</script" in the data would close the element early
+ * and spill the rest of the JSON into the page as markup. Escaping "<" to its
+ * < form is still valid JSON and cannot terminate anything.
+ */
+function embed(json: string): string {
+  return json.replace(/</g, "\\u003c");
 }
 
 function chipGroup(
@@ -319,7 +311,8 @@ ${chipGroup("difficulty", "At most", [
       `<button id="reset" type="button">Clear filters</button></p>`,
   );
   body.push(
-    `<script type="application/json" id="facets">${facetsFor(games)}</script>`,
+    `<script type="application/json" id="facets">` +
+      `${embed(JSON.stringify(facetsFor(games)))}</script>`,
   );
 
   return page({
@@ -334,69 +327,75 @@ ${chipGroup("difficulty", "At most", [
 
 // --- build ----------------------------------------------------------------
 
-const games = loadGames();
+/**
+ * The whole site as bytes, before anything touches the disk.
+ *
+ * Built into memory so `--check` can compare it against what is committed
+ * without writing anything. docs/ is generated output served straight to
+ * readers, so a stale copy is not a cosmetic problem: it is the published rules
+ * disagreeing with the source they came from.
+ */
+export function buildSite(games: CardGame[]): Map<string, string | Buffer> {
+  const files = new Map<string, string | Buffer>();
 
-rmSync(OUT, { recursive: true, force: true });
-mkdirSync(join(OUT, "games"), { recursive: true });
-mkdirSync(join(OUT, "icons"), { recursive: true });
+  files.set("index.html", indexPage(games));
+  files.set("search-index.json", JSON.stringify(buildIndex(searchRecords(games))));
+  for (const game of games) files.set(`games/${game.id}.html`, gamePage(game));
 
-const written: string[] = [];
-const write = (relative: string, content: string): void => {
-  writeFileSync(join(OUT, relative), content, "utf8");
-  written.push(relative);
-};
+  for (const asset of ["style.css", "app.js", "search.js", "facets.js"]) {
+    files.set(asset, readFileSync(join(ASSETS, asset), "utf8"));
+  }
 
-write("index.html", indexPage(games));
-write("search-index.json", JSON.stringify(buildIndex(searchRecords(games))));
-for (const game of games) write(`games/${game.id}.html`, gamePage(game));
+  for (const icon of readdirSync(join(ASSETS, "icons"))) {
+    files.set(`icons/${icon}`, readFileSync(join(ASSETS, "icons", icon)));
+  }
 
-for (const asset of ["style.css", "app.js", "search.js"]) {
-  write(asset, readFileSync(join(ASSETS, asset), "utf8"));
-}
+  files.set(
+    "manifest.webmanifest",
+    JSON.stringify(
+      {
+        name: "Naibi — card game rules",
+        short_name: "Naibi",
+        description: TAGLINE,
+        start_url: "./",
+        scope: "./",
+        display: "standalone",
+        orientation: "portrait",
+        background_color: "#fbfaf8",
+        theme_color: "#1f3a5f",
+        icons: [
+          { src: "icons/icon-192.png", sizes: "192x192", type: "image/png" },
+          { src: "icons/icon-512.png", sizes: "512x512", type: "image/png" },
+          {
+            src: "icons/icon-512.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "maskable",
+          },
+        ],
+      },
+      null,
+      2,
+    ),
+  );
 
-for (const icon of readdirSync(join(ASSETS, "icons"))) {
-  copyFileSync(join(ASSETS, "icons", icon), join(OUT, "icons", icon));
-  written.push(`icons/${icon}`);
-}
+  // The service worker precaches every page. The whole corpus is small enough
+  // that there is no reason to be clever about what to keep: install once and
+  // the entire reference is available with no signal. The worker never caches
+  // itself, and the manifest is fetched by the browser outside its control.
+  const precache = [...files.keys()].filter((f) => !f.endsWith(".webmanifest"));
+  const version = contentHash(
+    precache.map((f) => {
+      const content = files.get(f)!;
+      // latin1 round-trips the icon bytes; utf8 would fold them into U+FFFD and
+      // blind the hash to changes in them.
+      return typeof content === "string" ? content : content.toString("latin1");
+    }),
+  );
 
-write(
-  "manifest.webmanifest",
-  JSON.stringify(
-    {
-      name: "Naibi — card game rules",
-      short_name: "Naibi",
-      description: TAGLINE,
-      start_url: "./",
-      scope: "./",
-      display: "standalone",
-      orientation: "portrait",
-      background_color: "#fbfaf8",
-      theme_color: "#1f3a5f",
-      icons: [
-        { src: "icons/icon-192.png", sizes: "192x192", type: "image/png" },
-        { src: "icons/icon-512.png", sizes: "512x512", type: "image/png" },
-        {
-          src: "icons/icon-512.png",
-          sizes: "512x512",
-          type: "image/png",
-          purpose: "maskable",
-        },
-      ],
-    },
-    null,
-    2,
-  ),
-);
-
-// The service worker precaches every page. The whole corpus is small enough
-// that there is no reason to be clever about what to keep: install once and the
-// entire reference is available with no signal.
-const precache = written.filter((f) => !f.endsWith(".webmanifest"));
-const version = contentHash(precache.map((f) => readFileSync(join(OUT, f), "utf8")));
-
-write(
-  "sw.js",
-  `/* Generated by packages/web/build-web.ts. Do not edit. */
+  files.set(
+    "sw.js",
+    `/* Generated by packages/web/build-web.ts. Do not edit. */
 const CACHE = "naibi-${version}";
 const ASSETS = ${JSON.stringify(["./", ...precache], null, 0)};
 
@@ -437,16 +436,87 @@ self.addEventListener("fetch", (event) => {
   );
 });
 `,
-);
+  );
 
-// Stops GitHub Pages running the output through Jekyll.
-write(".nojekyll", "");
+  // Stops GitHub Pages running the output through Jekyll.
+  files.set(".nojekyll", "");
 
-const bytes = written.reduce(
-  (n, f) => n + readFileSync(join(OUT, f)).byteLength,
-  0,
-);
-console.log(
-  `Wrote ${written.length + 1} files to docs/ ` +
-    `(${games.length} games, ${(bytes / 1024).toFixed(0)} KB uncompressed).`,
-);
+  return files;
+}
+
+/** Every file currently under docs/, relative to it. */
+function onDisk(dir: string, prefix = ""): string[] {
+  if (!existsSync(dir)) return [];
+  return readdirSync(dir, { withFileTypes: true }).flatMap((entry) =>
+    entry.isDirectory()
+      ? onDisk(join(dir, entry.name), `${prefix}${entry.name}/`)
+      : [`${prefix}${entry.name}`],
+  );
+}
+
+function same(built: string | Buffer, path: string): boolean {
+  const disk = readFileSync(path);
+  return typeof built === "string"
+    ? disk.toString("utf8") === built
+    : disk.equals(built);
+}
+
+function main(): number {
+  const check = process.argv.includes("--check");
+  const games = loadGames();
+  if (games.length === 0) {
+    console.error("No games found. Nothing to build.");
+    return 1;
+  }
+
+  const files = buildSite(games);
+
+  if (check) {
+    const stale = [...files]
+      .filter(([name]) => !existsSync(join(OUT, name)))
+      .map(([name]) => `missing: docs/${name}`)
+      .concat(
+        [...files]
+          .filter(
+            ([name, content]) =>
+              existsSync(join(OUT, name)) && !same(content, join(OUT, name)),
+          )
+          .map(([name]) => `stale:   docs/${name}`),
+      )
+      .concat(
+        onDisk(OUT)
+          .filter((name) => !files.has(name))
+          .map((name) => `orphan:  docs/${name}`),
+      );
+
+    if (stale.length > 0) {
+      for (const line of stale.sort()) console.log(line);
+      console.log("\nRun: npm run web");
+      return 1;
+    }
+    console.log(`docs/ is up to date (${files.size} files, ${games.length} games).`);
+    return 0;
+  }
+
+  rmSync(OUT, { recursive: true, force: true });
+  mkdirSync(join(OUT, "games"), { recursive: true });
+  mkdirSync(join(OUT, "icons"), { recursive: true });
+
+  let bytes = 0;
+  for (const [name, content] of files) {
+    writeFileSync(join(OUT, name), content);
+    bytes += typeof content === "string" ? Buffer.byteLength(content) : content.byteLength;
+  }
+
+  console.log(
+    `Wrote ${files.size} files to docs/ ` +
+      `(${games.length} games, ${(bytes / 1024).toFixed(0)} KB uncompressed).`,
+  );
+  return 0;
+}
+
+// Only when run as a command. Imported -- by the tests -- this file is just
+// buildSite() and the functions under it.
+if (import.meta.url === pathToFileURL(process.argv[1] ?? "").href) {
+  process.exit(main());
+}

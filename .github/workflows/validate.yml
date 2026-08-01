@@ -32,11 +32,14 @@ jobs:
       - name: Check rendered/ is up to date
         run: npm run render -- --check
 
+      # Builds the whole site and compares it against what is committed. docs/
+      # is served straight to readers, so a stale copy is the published rules
+      # disagreeing with the source they came from.
+      - name: Check docs/ is up to date
+        run: npm run web -- --check
+
       - name: Build the PDF
         run: npm run pdf -- --output /tmp/naibi.pdf
-
-      - name: Build the site
-        run: npm run web
 
       - name: Upload the PDF
         uses: actions/upload-artifact@v4
