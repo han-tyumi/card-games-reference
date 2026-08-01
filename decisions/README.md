@@ -24,13 +24,28 @@ part.
 | [0006](0006-cache-first-with-an-update-notice.md) | Cache first, and tell the reader when a new version lands | Accepted |
 | [0007](0007-originality-is-checked-against-sources.md) | Check originality against source text, never by searching phrases | Accepted |
 | [0008](0008-booklet-is-linked-not-copied.md) | Link the booklet from the site rather than copying it in | Accepted |
+| [0009](0009-documentation-structure.md) | Split documentation by how it ages, and deviate from MADR's directory | Accepted |
 
-## Writing one
+## The format
 
-Copy the shape of any existing record: a `# NNNN. Title` heading, a Status and
-Date, then **Context**, **Decision**, **Consequences**. Keep it short. Context is
-the situation that forced a choice, not a history lesson; Consequences must
-include what the decision costs, or the record is advocacy rather than a record.
+A trimmed [MADR](https://adr.github.io/madr/): a `# NNNN. Title` heading, a
+Status and Date, then **Context**, **Considered options**, **Decision**,
+**Consequences**.
 
-`npm test` checks the numbering, the headings and this index, so a record that
-is added and not listed fails the build.
+Status is one of `Proposed`, `Accepted`, `Rejected`, `Deprecated` or
+`Superseded`. A rejected decision is worth a record — the next person to have the
+idea deserves to find out it was already weighed.
+
+MADR's YAML front matter (decision-makers, consulted, informed) is left out: it
+serves organisations with stakeholders to track, and here it would be empty
+ceremony. The directory is `decisions/` and not MADR's `docs/decisions/` because
+`docs/` is the generated site and gets deleted on every build — see
+[0009](0009-documentation-structure.md).
+
+Two rules that matter more than the shape. **Considered options** must name what
+was rejected and why, because "did you think about X?" is the question a record
+exists to answer. **Consequences** must state what the decision costs; a record
+with only upsides is advocacy, and the test rejects a stub there.
+
+`npm test` checks numbering, headings, statuses, sections and this index, so a
+record added and not listed fails the build.

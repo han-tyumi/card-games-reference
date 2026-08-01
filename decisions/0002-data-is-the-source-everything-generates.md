@@ -9,6 +9,15 @@ The same rules have to reach a website, a printable booklet and Markdown. The
 obvious failure is three copies of a rule that drift, so that a correction lands
 in one and not the others.
 
+## Considered options
+
+- **One repository, no package boundary** — simpler to start. Rejected: nothing
+  would stop a generator quietly keeping its own copy of a rule.
+- **Separate repositories per output** — rejected: a rule fix would need
+  coordinated releases across repos to reach readers.
+- **A database or API in front of the data** — rejected: it costs money to run,
+  and the whole corpus is small enough to ship as files.
+
 ## Decision
 
 `packages/data` is a published package and the only source of truth. The site,

@@ -8,6 +8,18 @@
 The site is sixty mostly-static pages with a search box and four filter chips.
 Astro or similar was the obvious alternative and was explicitly considered.
 
+## Considered options
+
+- **Astro** — the closest fit, and genuinely tempting for islands and content
+  collections. Deferred rather than dismissed: revisit if the site outgrows
+  browse, search and read.
+- **Next.js or similar** — rejected as far more framework than sixty static
+  pages need.
+- **A documentation generator (MkDocs, Docusaurus)** — rejected: the site is an
+  app over structured data, not a docs tree.
+- **Hand-rolled** — chosen, on the grounds that shared modules between build and
+  browser remove a class of drift bug that a framework would not.
+
 ## Decision
 
 Generate the HTML from a script. No framework, no bundler. Browser assets are

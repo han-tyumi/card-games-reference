@@ -10,6 +10,17 @@ matters far less than answering instantly and working offline. But cache-first
 means an open page never notices a deployment, and browsers only look for a new
 service worker on navigation, so a page left open never finds out at all.
 
+## Considered options
+
+- **Cache first, with an update notice** — chosen.
+- **Network first, cache as fallback** — rejected: costs a round trip on every
+  navigation, which is exactly what a reference consulted mid-game cannot afford.
+- **Stale-while-revalidate** — rejected: it doubles data usage for readers who
+  are often on mobile, to fix a staleness problem the update notice fixes for
+  the cost of one conditional request.
+- **Automatic reload on update** — rejected. Yanking the page out from under
+  someone reading a scoring rule is worse than being one version behind.
+
 ## Decision
 
 Precache the entire corpus and serve cache-first. Ask for a worker update when

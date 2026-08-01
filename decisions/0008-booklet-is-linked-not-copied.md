@@ -8,6 +8,16 @@
 The site should offer the printable PDF. The obvious move is to copy
 `rendered/naibi.pdf` into `docs/` so the download stays on the site.
 
+## Considered options
+
+- **Copy the PDF into `docs/`** — the obvious approach, and what keeps the
+  download on the site. Rejected on weight: roughly a megabyte, rebuilt every
+  time, doubling in git and in what every visitor precaches.
+- **Attach it to a GitHub release** — better than either option here, and the
+  natural next step. Not done yet because it needs a release process the project
+  does not have.
+- **Link the committed file** — chosen as the version that works today.
+
 ## Decision
 
 Link it at its committed path in the repository instead.

@@ -23,6 +23,19 @@ has no other phrasing. Rarity weighting made the discrimination worse, not
 better: a sentence rebuilt from a source's clause order scored 0.15 against an
 independent rewrite's 0.12.
 
+## Considered options
+
+- **Search for distinctive phrases** — used for the first several passes.
+  Rejected once measured: quoting is not honoured, so it detects nothing.
+- **A fixed similarity threshold** — rejected once measured: no threshold
+  separates copying from formulaic procedure, and rarity weighting made the
+  discrimination worse.
+- **A plagiarism-detection service** — rejected: it would mean sending the corpus
+  to a third party, and the failure mode here is structural rather than verbatim,
+  which is not what those tools are tuned for.
+- **Compare against fetched source text, with a bar measured from the corpus** —
+  chosen.
+
 ## Decision
 
 Fetch the source text, put it in `.sources/` (gitignored — it is someone else's

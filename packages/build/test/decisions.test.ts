@@ -24,7 +24,9 @@ const files = readdirSync(DIR)
 const read = (name: string) => readFileSync(join(DIR, name), "utf8");
 const index = read("README.md");
 
-const STATUSES = ["Accepted", "Superseded", "Deprecated"];
+// MADR's set. "Rejected" earns its place: the next person to have the idea
+// deserves to find out it was already weighed.
+const STATUSES = ["Proposed", "Accepted", "Rejected", "Deprecated", "Superseded"];
 
 test("there are records to check", () => {
   assert.ok(files.length > 0, "no decision records found");
@@ -71,11 +73,27 @@ test("every record has all three sections", () => {
   // into advocacy — a decision with no stated cost has not been thought through.
   for (const name of files) {
     const body = read(name);
-    for (const section of ["## Context", "## Decision", "## Consequences"]) {
+    for (const section of [
+      "## Context",
+      "## Considered options",
+      "## Decision",
+      "## Consequences",
+    ]) {
       assert.ok(body.includes(section), `${name}: missing ${section}`);
     }
     const consequences = body.slice(body.indexOf("## Consequences"));
     assert.ok(consequences.length > 200, `${name}: Consequences is a stub`);
+
+    // A record that lists one option has not considered anything.
+    const options = body.slice(
+      body.indexOf("## Considered options"),
+      body.indexOf("## Decision"),
+    );
+    assert.ok(
+      (options.match(/^- /gm) ?? []).length >= 2,
+      `${name}: Considered options names fewer than two`,
+    );
+    assert.match(options, /[Rr]ejected/, `${name}: nothing was rejected, so nothing was weighed`);
   }
 });
 
