@@ -28,6 +28,8 @@ const FAN_STEP = 5;
 /** Depth shown for a squared-up pile, so a stock reads as thicker than one card. */
 const STACK_STEP = 1.6;
 const MAX_FANNED = 7;
+/** How much of a card the row beneath it covers, in overlapping layouts. */
+const ROW_OVERLAP = 0.45;
 
 export type CardRect = {
   x: number;
@@ -78,11 +80,15 @@ function pileHeight(count: number | undefined, fanned: boolean): number {
 }
 
 /**
- * Tableau columns are spread so every card stays readable; everything else is
- * squared up into a stack.
+ * Whether a pile is spread so every card shows.
+ *
+ * A tableau column is spread and most other piles are squared, but that is a
+ * default, not a law: a 500 Rummy discard pile is staggered precisely because
+ * you may take from part-way down it. Appearance is stated on the zone rather
+ * than inferred from its kind, so nobody has to mislabel a pile to draw it.
  */
-function isFanned(kind: ZoneKind): boolean {
-  return kind === "tableau";
+function isFanned(zone: Zone): boolean {
+  return zone.fan ?? zone.kind === "tableau";
 }
 
 function buildPile(
@@ -92,7 +98,7 @@ function buildPile(
   y: number,
 ): Pile {
   const count = cardsFor(zone, index);
-  const fanned = isFanned(zone.kind);
+  const fanned = isFanned(zone);
   const face = zone.face ?? "up";
   const cards: CardRect[] = [];
 
@@ -179,9 +185,10 @@ export function buildDiagram(layout: Layout): Diagram {
   const width = Math.max(...rows.map((r) => r.width), CARD.width);
   const labels: Diagram["labels"] = [];
   const piles: Pile[] = [];
+  const overlapping = layout.overlapping_rows ?? 0;
   let y = 0;
 
-  for (const row of rows) {
+  for (const [index, row] of rows.entries()) {
     const offset = (width - row.width) / 2;
 
     for (const pile of row.piles) {
@@ -208,7 +215,12 @@ export function buildDiagram(layout: Layout): Diagram {
       });
     }
 
-    y += row.height + GAP_Y;
+    // Rows inside the overlapping block sit part-way up the row above, so the
+    // covering the rules describe is the covering you can see. Rows are pushed
+    // in order, and renderers draw in order, so a lower row correctly overlaps
+    // the one it covers.
+    const nextOverlaps = index + 1 < overlapping;
+    y += nextOverlaps ? CARD.height * (1 - ROW_OVERLAP) : row.height + GAP_Y;
   }
 
   return {

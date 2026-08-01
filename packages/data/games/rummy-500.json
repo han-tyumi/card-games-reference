@@ -45,10 +45,11 @@
           "face": "down"
         },
         {
-          "kind": "tableau",
+          "kind": "discard",
           "label": "Discard pile, spread",
-          "cards": 1,
-          "face": "up"
+          "cards": 5,
+          "face": "up",
+          "fan": true
         }
       ]
     ],

@@ -26,18 +26,65 @@
     "rows": [
       [
         {
+          "kind": "gap"
+        },
+        {
           "kind": "tableau",
-          "repeat": 3,
           "cards": 1,
           "face": "down"
+        },
+        {
+          "kind": "gap",
+          "repeat": 2
+        },
+        {
+          "kind": "tableau",
+          "cards": 1,
+          "face": "down"
+        },
+        {
+          "kind": "gap",
+          "repeat": 2
+        },
+        {
+          "kind": "tableau",
+          "cards": 1,
+          "face": "down"
+        },
+        {
+          "kind": "gap"
         }
       ],
       [
         {
+          "kind": "gap"
+        },
+        {
           "kind": "tableau",
-          "repeat": 6,
+          "repeat": 2,
           "cards": 1,
           "face": "down"
+        },
+        {
+          "kind": "gap"
+        },
+        {
+          "kind": "tableau",
+          "repeat": 2,
+          "cards": 1,
+          "face": "down"
+        },
+        {
+          "kind": "gap"
+        },
+        {
+          "kind": "tableau",
+          "repeat": 2,
+          "cards": 1,
+          "face": "down"
+        },
+        {
+          "kind": "gap"
         }
       ],
       [
@@ -72,7 +119,8 @@
         }
       ]
     ],
-    "caption": "Three peaks stand on one ten-card base. A card turns face up once both cards below it are gone, so the board opens upward and the summits fall last."
+    "caption": "Three peaks stand on one ten-card base. A card turns face up once both cards below it are gone, so the board opens upward and the summits fall last.",
+    "overlapping_rows": 4
   },
   "play": "A card is playable only when nothing overlaps it. The ten cards of the base are free from the start; every other card is pinned by the two cards below it and turns face up the instant the second of those leaves.\n\nThe move is one rule. Take any free card whose rank is one step from the card showing on the waste and lay it on the waste, where it becomes the new target. Suit is irrelevant; rank is the whole question. With a 9 showing, any free 8 and any free 10 are yours, and whichever you take is what the next card must match.\n\nRanks run in a circle for this purpose. The ace sits between the king and the 2, so a king may be played onto an ace and an ace onto a king. That hinge is what turns a chain of four cards into a chain of a dozen, and it is the rule worth agreeing before you deal: the original game allows it and nearly every computer version follows, while stricter rule sets stop the sequence dead at the king and lose a noticeable share of otherwise winnable deals by doing so.\n\nWhen nothing on the table matches, turn the top stock card face up onto the waste. It becomes the new target whether it suits you or not. There are 23 of those turns and no more. The waste is never turned over, never reshuffled, and a card buried in it is finished for the deal.\n\nDrawing is never forced and never has to wait until you are stuck, so you can spend a draw to escape a position you dislike. The whole game lives in the moments when two or more free cards would both be legal: take the wrong one and the other is stranded, costing you a draw you will want back. Looking one card ahead is rarely enough. The players who clear peaks are the ones working out which card has to go now to release the card sitting on top of it.\n\nThe deal ends when the last of the 28 peak cards reaches the waste, which is a win, or when the stock is empty and no free card matches, which is a loss. Cards still in the stock at the finish are simply ignored.",
   "figures": [

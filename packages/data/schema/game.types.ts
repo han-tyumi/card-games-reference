@@ -77,6 +77,10 @@ export interface CardGame {
      */
     caption?: string;
     /**
+     * How many rows from the top are drawn overlapping one another, for layouts where a card is physically covered by the cards below it — a pyramid, or TriPeaks. Leave unset (0) and every row is drawn clear of its neighbours, which is right for a grid or a clock face. Set it where the covering IS the rule, because a diagram that draws those cards apart contradicts the rule it is illustrating.
+     */
+    overlapping_rows?: number;
+    /**
      * @minItems 1
      * @maxItems 8
      */
@@ -114,6 +118,10 @@ export interface CardGame {
            * How the cards sit. "last-up" is the Klondike case: face down with the final card turned up. Defaults to "up".
            */
           face?: "up" | "down" | "last-up";
+          /**
+           * Whether the pile is spread so every card shows, rather than squared into a stack. Defaults to true for a tableau and false for everything else, which is usually right — set it explicitly where it is not, such as a discard pile you are allowed to take from part-way down.
+           */
+          fan?: boolean;
         },
         ...{
           /**
@@ -147,6 +155,10 @@ export interface CardGame {
            * How the cards sit. "last-up" is the Klondike case: face down with the final card turned up. Defaults to "up".
            */
           face?: "up" | "down" | "last-up";
+          /**
+           * Whether the pile is spread so every card shows, rather than squared into a stack. Defaults to true for a tableau and false for everything else, which is usually right — set it explicitly where it is not, such as a discard pile you are allowed to take from part-way down.
+           */
+          fan?: boolean;
         }[]
       ],
       ...[
@@ -182,6 +194,10 @@ export interface CardGame {
            * How the cards sit. "last-up" is the Klondike case: face down with the final card turned up. Defaults to "up".
            */
           face?: "up" | "down" | "last-up";
+          /**
+           * Whether the pile is spread so every card shows, rather than squared into a stack. Defaults to true for a tableau and false for everything else, which is usually right — set it explicitly where it is not, such as a discard pile you are allowed to take from part-way down.
+           */
+          fan?: boolean;
         },
         ...{
           /**
@@ -215,6 +231,10 @@ export interface CardGame {
            * How the cards sit. "last-up" is the Klondike case: face down with the final card turned up. Defaults to "up".
            */
           face?: "up" | "down" | "last-up";
+          /**
+           * Whether the pile is spread so every card shows, rather than squared into a stack. Defaults to true for a tableau and false for everything else, which is usually right — set it explicitly where it is not, such as a discard pile you are allowed to take from part-way down.
+           */
+          fan?: boolean;
         }[]
       ][]
     ];

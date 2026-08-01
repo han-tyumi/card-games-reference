@@ -39,7 +39,11 @@
     "aliases": {
       "description": "Other names the game is commonly known by. May be empty.",
       "type": "array",
-      "items": { "type": "string", "minLength": 1, "maxLength": 80 },
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 80
+      },
       "uniqueItems": true
     },
     "category": {
@@ -58,10 +62,22 @@
     "players": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["min", "max", "ideal"],
+      "required": [
+        "min",
+        "max",
+        "ideal"
+      ],
       "properties": {
-        "min": { "type": "integer", "minimum": 1, "maximum": 12 },
-        "max": { "type": "integer", "minimum": 1, "maximum": 12 },
+        "min": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 12
+        },
+        "max": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 12
+        },
         "ideal": {
           "description": "Single best player count. Ranges belong in the prose, not here.",
           "type": "integer",
@@ -102,7 +118,10 @@
         },
         "special_deck": {
           "description": "Set when play uses a stripped or purpose-built pack rather than a full one, e.g. \"24-card euchre deck\". Null for ordinary play.",
-          "type": ["string", "null"],
+          "type": [
+            "string",
+            "null"
+          ],
           "minLength": 3,
           "maxLength": 120
         },
@@ -115,7 +134,11 @@
           "type": "array",
           "maxItems": 4,
           "uniqueItems": true,
-          "items": { "type": "string", "minLength": 3, "maxLength": 120 }
+          "items": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 120
+          }
         }
       }
     },
@@ -129,13 +152,21 @@
       "description": "The starting table as data, so a setup diagram can be drawn rather than illustrated by hand. Optional: include it where the arrangement is worth seeing, omit it where 'everyone holds cards' says everything (most pure trick-taking games). Rows are drawn top to bottom and each row is centred, which is what makes a pyramid a pyramid and a cross a cross.",
       "type": "object",
       "additionalProperties": false,
-      "required": ["rows"],
+      "required": [
+        "rows"
+      ],
       "properties": {
         "caption": {
           "description": "One line under the diagram, for anything the shapes cannot say.",
           "type": "string",
           "minLength": 4,
           "maxLength": 200
+        },
+        "overlapping_rows": {
+          "description": "How many rows from the top are drawn overlapping one another, for layouts where a card is physically covered by the cards below it — a pyramid, or TriPeaks. Leave unset (0) and every row is drawn clear of its neighbours, which is right for a grid or a clock face. Set it where the covering IS the rule, because a diagram that draws those cards apart contradicts the rule it is illustrating.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 8
         },
         "rows": {
           "type": "array",
@@ -149,7 +180,9 @@
             "items": {
               "type": "object",
               "additionalProperties": false,
-              "required": ["kind"],
+              "required": [
+                "kind"
+              ],
               "properties": {
                 "kind": {
                   "description": "What the pile is for. Drives how it is drawn. \"gap\" is an empty spacer used to position the others.",
@@ -183,19 +216,35 @@
                 "cards": {
                   "description": "Cards dealt to each pile at the start. One number for all of them, or one per pile when they differ (Klondike's tableau is [1,2,3,4,5,6,7]). Omit when the count varies with the player count or is not fixed.",
                   "oneOf": [
-                    { "type": "integer", "minimum": 0, "maximum": 52 },
+                    {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 52
+                    },
                     {
                       "type": "array",
                       "minItems": 1,
                       "maxItems": 13,
-                      "items": { "type": "integer", "minimum": 0, "maximum": 52 }
+                      "items": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 52
+                      }
                     }
                   ]
                 },
                 "face": {
                   "description": "How the cards sit. \"last-up\" is the Klondike case: face down with the final card turned up. Defaults to \"up\".",
                   "type": "string",
-                  "enum": ["up", "down", "last-up"]
+                  "enum": [
+                    "up",
+                    "down",
+                    "last-up"
+                  ]
+                },
+                "fan": {
+                  "description": "Whether the pile is spread so every card shows, rather than squared into a stack. Defaults to true for a tableau and false for everything else, which is usually right — set it explicitly where it is not, such as a discard pile you are allowed to take from part-way down.",
+                  "type": "boolean"
                 }
               }
             }
@@ -217,12 +266,19 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["kind", "caption", "rows"],
+        "required": [
+          "kind",
+          "caption",
+          "rows"
+        ],
         "properties": {
           "kind": {
             "description": "\"ranking\" for cards in order of power, \"meld\" for a valid (or invalid) combination.",
             "type": "string",
-            "enum": ["ranking", "meld"]
+            "enum": [
+              "ranking",
+              "meld"
+            ]
           },
           "caption": {
             "description": "What the figure shows, e.g. \"Trump ranking when diamonds are trump\".",
@@ -237,7 +293,9 @@
             "items": {
               "type": "object",
               "additionalProperties": false,
-              "required": ["cards"],
+              "required": [
+                "cards"
+              ],
               "properties": {
                 "label": {
                   "description": "Caption to the left of the row, e.g. \"Valid run\".",
@@ -256,7 +314,9 @@
                   "items": {
                     "type": "object",
                     "additionalProperties": false,
-                    "required": ["face"],
+                    "required": [
+                      "face"
+                    ],
                     "properties": {
                       "face": {
                         "description": "The card as a player would say it: \"A♠\", \"10♦\", \"J♥\". Use the suit symbols. \"?\" for any card, \"Jkr\" for a joker.",
@@ -293,7 +353,10 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["players", "hand"],
+        "required": [
+          "players",
+          "hand"
+        ],
         "properties": {
           "players": {
             "description": "The player count this row applies to.",
@@ -330,7 +393,10 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["item", "value"],
+        "required": [
+          "item",
+          "value"
+        ],
         "properties": {
           "item": {
             "description": "What scores, e.g. \"Fifteen\" or \"Each ace\".",
@@ -361,17 +427,33 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["name", "description"],
+        "required": [
+          "name",
+          "description"
+        ],
         "properties": {
-          "name": { "type": "string", "minLength": 2, "maxLength": 80 },
-          "description": { "type": "string", "minLength": 40, "maxLength": 1200 }
+          "name": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 80
+          },
+          "description": {
+            "type": "string",
+            "minLength": 40,
+            "maxLength": 1200
+          }
         }
       }
     },
     "difficulty": {
       "description": "How much there is to learn before a first game, not how hard it is to play well.",
       "type": "string",
-      "enum": ["simple", "easy", "medium", "complex"]
+      "enum": [
+        "simple",
+        "easy",
+        "medium",
+        "complex"
+      ]
     },
     "duration_minutes": {
       "description": "Rough playing time as a range, e.g. \"15-30\", or an open-ended floor, e.g. \"60+\".",
@@ -417,7 +499,11 @@
       "minItems": 1,
       "maxItems": 12,
       "uniqueItems": true,
-      "items": { "type": "string", "minLength": 2, "maxLength": 120 }
+      "items": {
+        "type": "string",
+        "minLength": 2,
+        "maxLength": 120
+      }
     }
   }
 }
