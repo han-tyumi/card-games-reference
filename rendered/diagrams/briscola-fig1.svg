@@ -1,31 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 186" width="442" height="298" role="img" aria-label="Briscola: Rank order inside every suit, high to low. This is the same in trumps and in plain suits — the trump suit does not reorder itself, it simply beats everything.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 199" width="442" height="318" role="img" aria-label="Briscola: Rank order inside every suit, high to low. This is the same in trumps and in plain suits — the trump suit does not reorder itself, it simply beats everything.">
 <title>Rank order inside every suit, high to low. This is the same in trumps and in plain suits — the trump suit does not reorder itself, it simply beats everything.</title>
-<rect x="88.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="103.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">A♠</text>
-<text x="103.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Highest</text>
-<rect x="124.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="139.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">3♠</text>
-<text x="139.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Above the</text>
-<text x="139.0" y="67.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">king</text>
-<rect x="160.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="175.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">K♠</text>
-<rect x="196.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="211.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">Q♠</text>
-<rect x="232.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="247.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">J♠</text>
-<rect x="88.0" y="74.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="103.0" y="99.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">7♠</text>
-<rect x="124.0" y="74.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="139.0" y="99.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">6♠</text>
-<rect x="160.0" y="74.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="175.0" y="99.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">5♠</text>
-<rect x="196.0" y="74.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="211.0" y="99.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">4♠</text>
-<rect x="232.0" y="74.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="247.0" y="99.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">2♠</text>
-<text x="247.0" y="124.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Lowest</text>
-<text x="80.0" y="32.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">High to low</text>
-<text x="138.0" y="150.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Rank order inside every suit, high to low. This is the</text>
-<text x="138.0" y="162.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">same in trumps and in plain suits — the trump suit does</text>
-<text x="138.0" y="174.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">not reorder itself, it simply beats everything.</text>
+<rect x="51.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="66.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">A♠</text>
+<text x="66.0" y="71.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Highest</text>
+<rect x="87.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="102.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">3♠</text>
+<text x="102.0" y="71.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Above the</text>
+<text x="102.0" y="80.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">king</text>
+<rect x="123.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="138.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">K♠</text>
+<rect x="159.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="174.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">Q♠</text>
+<rect x="195.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="210.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">J♠</text>
+<rect x="51.0" y="87.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="66.0" y="112.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">7♠</text>
+<rect x="87.0" y="87.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="102.0" y="112.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">6♠</text>
+<rect x="123.0" y="87.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="138.0" y="112.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">5♠</text>
+<rect x="159.0" y="87.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="174.0" y="112.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">4♠</text>
+<rect x="195.0" y="87.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="210.0" y="112.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">2♠</text>
+<text x="210.0" y="137.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Lowest</text>
+<text x="51.0" y="17.0" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">High to low</text>
+<text x="138.0" y="163.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Rank order inside every suit, high to low. This is the</text>
+<text x="138.0" y="175.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">same in trumps and in plain suits — the trump suit does</text>
+<text x="138.0" y="187.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">not reorder itself, it simply beats everything.</text>
 </svg>

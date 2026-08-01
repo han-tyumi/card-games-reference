@@ -1,30 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 264" width="442" height="422" role="img" aria-label="Yukon: The move that defines Yukon: any face-up card travels with everything piled on it. Only the card you grab has to fit — one rank lower, opposite colour.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 303" width="442" height="485" role="img" aria-label="Yukon: The move that defines Yukon: any face-up card travels with everything piled on it. Only the card you grab has to fit — one rank lower, opposite colour.">
 <title>The move that defines Yukon: any face-up card travels with everything piled on it. Only the card you grab has to fit — one rank lower, opposite colour.</title>
-<rect x="124.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="139.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">8♦</text>
-<rect x="124.0" y="80.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="139.0" y="105.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">7♣</text>
-<text x="139.0" y="130.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Only this</text>
-<text x="139.0" y="139.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">must fit</text>
-<rect x="160.0" y="80.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="175.0" y="105.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">Q♥</text>
-<rect x="196.0" y="80.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="211.0" y="105.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">6♦</text>
-<rect x="124.0" y="152.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
-<text x="139.0" y="177.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">7♥</text>
-<text x="139.0" y="202.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Red onto</text>
-<text x="139.0" y="211.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">red</text>
-<rect x="160.0" y="152.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
-<text x="175.0" y="177.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">4♠</text>
-<rect x="196.0" y="152.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
-<text x="211.0" y="177.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">J♣</text>
-<text x="116.0" y="27.5" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">End of a</text>
-<text x="116.0" y="36.5" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">column</text>
-<text x="116.0" y="99.5" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Lands on it as</text>
-<text x="116.0" y="108.5" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">one unit</text>
-<text x="116.0" y="171.5" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#a4243b">Same colour at</text>
-<text x="116.0" y="180.5" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#a4243b">the join: illegal</text>
-<text x="138.0" y="228.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">The move that defines Yukon: any face-up card travels</text>
-<text x="138.0" y="240.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">with everything piled on it. Only the card you grab has</text>
-<text x="138.0" y="252.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">to fit — one rank lower, opposite colour.</text>
+<rect x="87.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="102.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">8♦</text>
+<rect x="87.0" y="106.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="102.0" y="131.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">7♣</text>
+<text x="102.0" y="156.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Only this</text>
+<text x="102.0" y="165.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">must fit</text>
+<rect x="123.0" y="106.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="138.0" y="131.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">Q♥</text>
+<rect x="159.0" y="106.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="174.0" y="131.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">6♦</text>
+<rect x="87.0" y="191.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<text x="102.0" y="216.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">7♥</text>
+<text x="102.0" y="241.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Red onto</text>
+<text x="102.0" y="250.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">red</text>
+<rect x="123.0" y="191.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<text x="138.0" y="216.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">4♠</text>
+<rect x="159.0" y="191.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<text x="174.0" y="216.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">J♣</text>
+<text x="87.0" y="17.0" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">End of a column</text>
+<text x="87.0" y="102.0" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Lands on it as one</text>
+<text x="87.0" y="111.0" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">unit</text>
+<text x="87.0" y="187.0" font-family="system-ui, sans-serif" font-size="9" fill="#a4243b">Same colour at the</text>
+<text x="87.0" y="196.0" font-family="system-ui, sans-serif" font-size="9" fill="#a4243b">join: illegal</text>
+<text x="138.0" y="267.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">The move that defines Yukon: any face-up card travels</text>
+<text x="138.0" y="279.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">with everything piled on it. Only the card you grab has</text>
+<text x="138.0" y="291.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">to fit — one rank lower, opposite colour.</text>
 </svg>

@@ -1,51 +1,50 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 256" width="442" height="410" role="img" aria-label="Seven Card Stud: Hand rankings, part two: the middle four. A flush beats a straight, which is the ordering people most often get backwards.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 308" width="442" height="493" role="img" aria-label="Seven Card Stud: Hand rankings, part two: the middle four. A flush beats a straight, which is the ordering people most often get backwards.">
 <title>Hand rankings, part two: the middle four. A flush beats a straight, which is the ordering people most often get backwards.</title>
-<rect x="88.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="103.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">K♦</text>
-<rect x="124.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="139.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">J♦</text>
-<rect x="160.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="175.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">8♦</text>
-<rect x="196.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="211.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">5♦</text>
-<rect x="232.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="247.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">2♦</text>
-<rect x="88.0" y="60.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="103.0" y="85.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">10♣</text>
-<rect x="124.0" y="60.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="139.0" y="85.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">9♦</text>
-<rect x="160.0" y="60.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="175.0" y="85.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">8♠</text>
-<rect x="196.0" y="60.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="211.0" y="85.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">7♥</text>
-<rect x="232.0" y="60.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="247.0" y="85.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">6♣</text>
-<rect x="88.0" y="112.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="103.0" y="137.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">7♠</text>
-<rect x="124.0" y="112.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="139.0" y="137.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">7♥</text>
-<rect x="160.0" y="112.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="175.0" y="137.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">7♦</text>
-<rect x="196.0" y="112.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="211.0" y="137.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">A♣</text>
-<rect x="232.0" y="112.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="247.0" y="137.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">9♥</text>
-<rect x="88.0" y="164.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="103.0" y="189.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">J♠</text>
-<rect x="124.0" y="164.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="139.0" y="189.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">J♣</text>
-<rect x="160.0" y="164.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="175.0" y="189.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">5♥</text>
-<rect x="196.0" y="164.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="211.0" y="189.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">5♦</text>
-<rect x="232.0" y="164.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="247.0" y="189.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">K♠</text>
-<text x="80.0" y="32.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Flush</text>
-<text x="80.0" y="84.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Straight</text>
-<text x="80.0" y="131.5" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Three of a</text>
-<text x="80.0" y="140.5" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">kind</text>
-<text x="80.0" y="188.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Two pair</text>
-<text x="138.0" y="220.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Hand rankings, part two: the middle four. A flush beats</text>
-<text x="138.0" y="232.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">a straight, which is the ordering people most often get</text>
-<text x="138.0" y="244.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">backwards.</text>
+<rect x="51.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="66.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">K♦</text>
+<rect x="87.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="102.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">J♦</text>
+<rect x="123.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="138.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">8♦</text>
+<rect x="159.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="174.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">5♦</text>
+<rect x="195.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="210.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">2♦</text>
+<rect x="51.0" y="86.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="66.0" y="111.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">10♣</text>
+<rect x="87.0" y="86.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="102.0" y="111.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">9♦</text>
+<rect x="123.0" y="86.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="138.0" y="111.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">8♠</text>
+<rect x="159.0" y="86.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="174.0" y="111.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">7♥</text>
+<rect x="195.0" y="86.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="210.0" y="111.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">6♣</text>
+<rect x="51.0" y="151.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="66.0" y="176.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">7♠</text>
+<rect x="87.0" y="151.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="102.0" y="176.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">7♥</text>
+<rect x="123.0" y="151.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="138.0" y="176.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">7♦</text>
+<rect x="159.0" y="151.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="174.0" y="176.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">A♣</text>
+<rect x="195.0" y="151.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="210.0" y="176.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">9♥</text>
+<rect x="51.0" y="216.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="66.0" y="241.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">J♠</text>
+<rect x="87.0" y="216.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="102.0" y="241.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">J♣</text>
+<rect x="123.0" y="216.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="138.0" y="241.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">5♥</text>
+<rect x="159.0" y="216.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="174.0" y="241.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">5♦</text>
+<rect x="195.0" y="216.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="210.0" y="241.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">K♠</text>
+<text x="51.0" y="17.0" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Flush</text>
+<text x="51.0" y="82.0" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Straight</text>
+<text x="51.0" y="147.0" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Three of a kind</text>
+<text x="51.0" y="212.0" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Two pair</text>
+<text x="138.0" y="272.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Hand rankings, part two: the middle four. A flush beats</text>
+<text x="138.0" y="284.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">a straight, which is the ordering people most often get</text>
+<text x="138.0" y="296.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">backwards.</text>
 </svg>

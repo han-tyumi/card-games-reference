@@ -403,9 +403,10 @@ function drawFigure(book: Booklet, figure: NonNullable<CardGame["figures"]>[numb
   for (const row of built.rowLabels) {
     doc
       .fillColor(row.struck ? RED : MUTED)
-      .text(row.text, originX, originY + row.y * scale - 8, {
+      .text(row.text, originX + row.x * scale, originY + row.y * scale - 7, {
         width: row.width * scale,
-        align: "right",
+        align: "left",
+        lineBreak: false,
       });
   }
 

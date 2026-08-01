@@ -18,8 +18,16 @@ const ROW_GAP = 10;
 const WRAP_GAP = 4;
 /** Room under a card for a note, allowing one wrapped second line. */
 const NOTE_HEIGHT = 20;
-/** Room to the left of each row for its label, when any row has one. */
-const LABEL_WIDTH = 74;
+/**
+ * Room above a row for its label.
+ *
+ * Labels used to sit in a gutter to the left, which cost 74 units -- a quarter
+ * of the whole budget on the narrowest screen that has to show one, spent on
+ * every row whether it needed it or not. Above the row the label is free of the
+ * card grid, so the cards get the full width. All 98 labels in the corpus fit
+ * one line at this size across the narrowest figure.
+ */
+const LABEL_HEIGHT = 13;
 
 /**
  * Widest a figure is drawn unless a renderer asks for more, in the abstract
@@ -31,15 +39,19 @@ const LABEL_WIDTH = 74;
  * the problem rather than the cure. So the wrap happens here, in the geometry,
  * and every renderer inherits it.
  *
- * The default is the narrow end of what has to read: a 390px phone leaves
- * about 355px of column, renderers draw these units at 1.6x, and card faces
- * stop being comfortable below about 14px. That works back to roughly 290
- * units, and the padding a renderer adds around the figure eats the rest.
+ * The default is derived from WCAG 2.2 SC 1.4.10 Reflow (AA), which requires
+ * content to work at 320 CSS px without scrolling in two directions. That is
+ * not a phone measurement -- it is what a 1280px window becomes at 400% zoom,
+ * which is the ordinary way a low-vision reader reads anything. At 320px this
+ * site leaves a 285px column; renderers draw these units at 1.6x and stop
+ * shrinking at 0.703 of that, so a figure clears the column at
+ * 285 / 0.703 / 1.6 - 16 = 237 units. Widths quantise to whole cards, and 240
+ * is the round number whose largest row still lands at 210.
  *
  * A renderer with more room should say so, because wrapping narrower than
  * necessary is not free: it trades width for height, and a page has a bottom.
  */
-export const MAX_FIGURE_WIDTH = 288;
+export const MAX_FIGURE_WIDTH = 240;
 
 /**
  * Split a row into lines that fit, as evenly as they divide.
@@ -81,27 +93,42 @@ export type FigureLayout = {
   width: number;
   height: number;
   cards: FigureCard[];
+  /** Sits above its row, left-aligned, spanning the width of the figure. */
   rowLabels: { text: string; x: number; y: number; width: number; struck: boolean }[];
   /** True when at least one row is marked invalid, so renderers can add a key. */
   hasCounterExample: boolean;
 };
 
+/**
+ * Whether a row's cards may be split across lines.
+ *
+ * A ranking is an order, and an order survives wrapping the way a sentence
+ * does -- read left to right, then down, and it still says the same thing. A
+ * meld is one combination, and a combination does not: a straight flush broken
+ * over two lines stops looking like a straight flush, and a canasta split four
+ * and three stops being seven of a rank. Those rows stay whole even when that
+ * makes the figure wider than asked for, and the page scrolls them instead.
+ *
+ * This is the one place the distinction the schema already draws -- "ranking"
+ * for cards in order of power, "meld" for a valid or invalid combination --
+ * has to be acted on rather than just recorded.
+ */
+export function mayWrap(figure: Figure): boolean {
+  return figure.kind === "ranking";
+}
+
 export function buildFigure(
   figure: Figure,
   maxWidth: number = MAX_FIGURE_WIDTH,
 ): FigureLayout {
-  const needsLabels = figure.rows.some((row) => row.label);
-  const left = needsLabels ? LABEL_WIDTH : 0;
   const anyNotes = figure.rows.some((row) => row.cards.some((c) => c.note));
   const rowHeight = CARD.height + (anyNotes ? NOTE_HEIGHT : 0);
 
-  // How many cards fit beside the label column. A labelled figure therefore
-  // wraps sooner than an unlabelled one and both finish the same width, which
-  // is the point: the constraint is the space, not the card count.
-  const perLine = Math.max(
-    1,
-    Math.floor((maxWidth - left + GAP_X) / (CARD.width + GAP_X)),
-  );
+  // Labels sit above their row, so the cards get the full width rather than
+  // what is left after a gutter. The constraint is the space, not the count.
+  const perLine = mayWrap(figure)
+    ? Math.max(1, Math.floor((maxWidth + GAP_X) / (CARD.width + GAP_X)))
+    : Infinity;
 
   const cards: FigureCard[] = [];
   const rowLabels: FigureLayout["rowLabels"] = [];
@@ -112,8 +139,21 @@ export function buildFigure(
     const struck = row.valid === false;
     const lines = wrapCards(row.cards, perLine);
 
+    if (row.label) {
+      rowLabels.push({
+        text: row.label,
+        x: 0,
+        // Baseline sits just clear of the cards below it.
+        y: y + LABEL_HEIGHT - 4,
+        // Widened to the whole figure once that is known, below.
+        width: 0,
+        struck,
+      });
+      y += LABEL_HEIGHT;
+    }
+
     lines.forEach((line, index) => {
-      let x = left;
+      let x = 0;
       for (const card of line) {
         cards.push({
           face: card.face,
@@ -128,22 +168,13 @@ export function buildFigure(
       }
       widest = Math.max(widest, x - GAP_X);
 
-      // The label belongs to the row, not to each of its lines, so it sits
-      // against the first one and the rest continue underneath it.
-      if (row.label && index === 0) {
-        rowLabels.push({
-          text: row.label,
-          x: 0,
-          // Sits against the middle of the card row rather than its top.
-          y: y + CARD.height / 2 + 3,
-          width: LABEL_WIDTH - 8,
-          struck,
-        });
-      }
-
       y += rowHeight + (index === lines.length - 1 ? ROW_GAP : WRAP_GAP);
     });
   }
+
+  // A label spans the figure rather than its own row, so a long one over a
+  // short row still gets a line to itself instead of wrapping into the cards.
+  for (const label of rowLabels) label.width = widest;
 
   return {
     width: widest,

@@ -272,15 +272,15 @@ export function renderFigureSvg(
   }
 
   // A struck row reads as "not this" at a glance, without needing the caption.
+  // The label sits above its row and starts where the cards start, so the eye
+  // reads the heading and then the hand under it.
   for (const row of built.rowLabels) {
     const lines = wrapText(row.text, row.width, LABEL_SIZE + 1, 2);
-    // Centre the block on the card row rather than hanging it off the first line.
-    const top = row.y + PAD - ((lines.length - 1) * LABEL_LINE) / 2;
     lines.forEach((line, i) => {
       parts.push(
-        `<text x="${(row.width + PAD + shift).toFixed(1)}" ` +
-          `y="${(top + i * LABEL_LINE).toFixed(1)}" ` +
-          `text-anchor="end" font-family="system-ui, sans-serif" ` +
+        `<text x="${(row.x + PAD + shift).toFixed(1)}" ` +
+          `y="${(row.y + PAD + i * LABEL_LINE).toFixed(1)}" ` +
+          `font-family="system-ui, sans-serif" ` +
           `font-size="${LABEL_SIZE + 1}" fill="${row.struck ? RED : TEXT}">` +
           `${escapeXml(line)}</text>`,
       );

@@ -1,6 +1,6 @@
 # 0010. Wrap figures in the geometry, not in the stylesheet
 
-- **Status:** Accepted
+- **Status:** Superseded by [0011](0011-target-320-css-pixels.md)
 - **Date:** 2026-08-01
 
 ## Context

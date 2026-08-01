@@ -9,10 +9,17 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
-import { CARD, MAX_FIGURE_WIDTH, buildFigure, isRedSuit, loadGames, wrapCards } from "naibi";
+import {
+  CARD,
+  MAX_FIGURE_WIDTH,
+  buildFigure,
+  isRedSuit,
+  loadGames,
+  mayWrap,
+  wrapCards,
+} from "naibi";
 import type { Figure } from "naibi";
 
-const LABEL_WIDTH = 74;
 const NOTE_HEIGHT = 20;
 const ROW_GAP = 10;
 const GAP_X = 6;
@@ -43,9 +50,11 @@ test("cards run left to right with a fixed gap", () => {
   assert.equal(built.height, CARD.height);
 });
 
-test("a labelled row moves every card right, including unlabelled ones", () => {
-  // The gutter is a property of the figure, not of the row: indenting only the
-  // labelled rows would stagger cards that are meant to line up for comparison.
+test("a label costs no width, so every row starts at the left edge", () => {
+  // Labels used to sit in a 74-unit gutter, which every row paid for whether it
+  // was labelled or not -- a quarter of the budget on the narrowest screen that
+  // has to show one. Above the row it costs height instead, which is the
+  // cheaper of the two when the constraint is a 320px column.
   const built = buildFigure(
     figure([
       { label: "Valid run", cards: [{ face: "9♦" }] },
@@ -53,19 +62,22 @@ test("a labelled row moves every card right, including unlabelled ones", () => {
     ]),
   );
 
-  assert.deepEqual(built.cards.map((c) => c.x), [LABEL_WIDTH, LABEL_WIDTH]);
+  assert.deepEqual(built.cards.map((c) => c.x), [0, 0], "cards are still flush left");
+  assert.equal(built.width, CARD.width, "a label adds nothing to the width");
   assert.equal(built.rowLabels.length, 1);
-  assert.equal(built.rowLabels[0]?.x, 0);
-  // The label ends short of the cards rather than running under them.
-  assert.ok(built.rowLabels[0]!.width < LABEL_WIDTH);
+  assert.equal(built.rowLabels[0]?.x, 0, "the label starts where the cards start");
 });
 
-test("a row label sits against the middle of its cards", () => {
+test("a row label sits above its row, not beside it", () => {
   const built = buildFigure(figure([{ label: "Trump", cards: [{ face: "J♥" }] }]));
   const [label] = built.rowLabels;
+  const [card] = built.cards;
 
-  assert.ok(label);
-  assert.ok(label.y > 0 && label.y < CARD.height, "beside the card, not above it");
+  assert.ok(label && card);
+  assert.ok(label.y <= card.y, "the label is above the card it names");
+  // Wide enough that a long label gets its own line instead of wrapping into
+  // the cards underneath it.
+  assert.ok(label.width >= built.width);
 });
 
 test("one note anywhere gives every row room for a note", () => {
@@ -153,14 +165,16 @@ test("no figure is built wider than the narrowest thing that has to show it", ()
   }
 });
 
-test("a labelled row wraps sooner, so both kinds finish the same width", () => {
-  // The gutter is part of the width. Wrapping on card count instead would make
-  // every labelled figure the wider one, which is the wrong way round.
+test("labelling a row changes nothing about how it wraps", () => {
+  // It used to: the label's gutter came out of the row's width, so a labelled
+  // strip broke two cards earlier than the same strip without one. The label is
+  // above the cards now, so the two lay out identically.
   const plain = buildFigure({ kind: "ranking", caption: "c", rows: strip(13) });
   const labelled = buildFigure({ kind: "ranking", caption: "c", rows: strip(13, "High to low") });
 
-  assert.ok(labelled.cards.filter((c) => c.y === 0).length < plain.cards.filter((c) => c.y === 0).length);
-  assert.ok(Math.abs(plain.width - labelled.width) < CARD.width + GAP_X);
+  assert.equal(labelled.width, plain.width);
+  assert.deepEqual(labelled.cards.map((c) => c.x), plain.cards.map((c) => c.x));
+  assert.ok(labelled.height > plain.height, "it costs height instead");
 });
 
 test("a wrapped row keeps its reading order", () => {
@@ -171,7 +185,7 @@ test("a wrapped row keeps its reading order", () => {
   assert.deepEqual(order.map((c) => c.face), built.cards.map((c) => c.face));
 });
 
-test("a wrapped row is labelled once, against its first line", () => {
+test("a wrapped row is labelled once, above its first line", () => {
   const built = buildFigure({
     kind: "ranking",
     caption: "c",
@@ -179,7 +193,61 @@ test("a wrapped row is labelled once, against its first line", () => {
   });
 
   assert.equal(built.rowLabels.length, 1, "the label belongs to the row, not to each line");
-  assert.ok(built.rowLabels[0]!.y < CARD.height, "it sits against the first line");
+  assert.ok(built.rowLabels[0]!.y < built.cards[0]!.y + CARD.height, "above the first line");
+});
+
+// --- what may be broken, and what may not ---------------------------------
+
+test("a combination is never split, even when that makes the figure too wide", () => {
+  // A rank order survives wrapping the way a sentence does. A meld does not: a
+  // straight flush over two lines stops looking like a straight flush. Lowering
+  // the cap without this rule turned "Four of a kind" into three cards and a
+  // pair, which is a different hand.
+  const hand = { kind: "meld", caption: "Four of a kind", rows: strip(8, "Four of a kind") } as const;
+  const built = buildFigure(hand as never, 120);
+
+  assert.equal(new Set(built.cards.map((c) => c.y)).size, 1, "the hand was split");
+  assert.ok(built.width > 120, "it is allowed to overflow rather than break");
+  assert.equal(mayWrap(hand as never), false);
+});
+
+test("an order is wrapped, because wrapping preserves it", () => {
+  const order = { kind: "ranking", caption: "High to low", rows: strip(8) } as const;
+  const built = buildFigure(order as never, 120);
+
+  assert.ok(new Set(built.cards.map((c) => c.y)).size > 1, "the strip did not wrap");
+  assert.ok(built.width <= 120);
+  assert.equal(mayWrap(order as never), true);
+});
+
+test("every ranking in the corpus fits the target column; every meld stays whole", () => {
+  // The two halves of the same decision. A ranking that overflows is a bug; a
+  // meld that overflows is the deliberate exception, and the page scrolls it.
+  const oversize: string[] = [];
+  const broken: string[] = [];
+
+  for (const game of loadGames()) {
+    for (const [index, spec] of (game.figures ?? []).entries()) {
+      const built = buildFigure(spec);
+      const id = `${game.id}-fig${index + 1}`;
+
+      if (mayWrap(spec)) {
+        if (built.width > MAX_FIGURE_WIDTH) oversize.push(`${id} (${built.width}u)`);
+      } else {
+        const lines = new Set(built.cards.map((c) => c.y)).size;
+        if (lines !== spec.rows.length) broken.push(id);
+      }
+
+      assert.equal(
+        built.cards.length,
+        spec.rows.reduce((n, row) => n + row.cards.length, 0),
+        `${id}: cards went missing in the wrap`,
+      );
+    }
+  }
+
+  assert.deepEqual(oversize, [], "these rankings are too wide for a 320px column");
+  assert.deepEqual(broken, [], "these combinations were split across lines");
 });
 
 test("the lines of one row sit closer together than two rows do", () => {
@@ -207,21 +275,6 @@ test("a renderer with more room gets a wider figure and a shorter one", () => {
   assert.ok(wide.width > narrow.width);
   assert.ok(wide.height < narrow.height);
   assert.equal(wide.cards.length, narrow.cards.length, "no card is lost either way");
-});
-
-test("every figure in the corpus fits, as built and as drawn", () => {
-  for (const game of loadGames()) {
-    for (const [index, spec] of (game.figures ?? []).entries()) {
-      const built = buildFigure(spec);
-      const id = `${game.id}-fig${index + 1}`;
-      assert.ok(built.width <= MAX_FIGURE_WIDTH, `${id}: ${built.width} units wide`);
-      assert.equal(
-        built.cards.length,
-        spec.rows.reduce((n, row) => n + row.cards.length, 0),
-        `${id}: cards went missing in the wrap`,
-      );
-    }
-  }
 });
 
 test("hearts and diamonds are red; spades, clubs and jokers are not", () => {

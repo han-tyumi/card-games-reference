@@ -1,23 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 264" width="442" height="422" role="img" aria-label="Golf: Play onto the waste one rank up or one rank down, suits ignored. Ranks do not wrap in the standard game, so a king takes only a queen and an ace takes only a 2.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 303" width="442" height="485" role="img" aria-label="Golf: Play onto the waste one rank up or one rank down, suits ignored. Ranks do not wrap in the standard game, so a king takes only a queen and an ace takes only a 2.">
 <title>Play onto the waste one rank up or one rank down, suits ignored. Ranks do not wrap in the standard game, so a king takes only a queen and an ace takes only a 2.</title>
-<rect x="142.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="157.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">8♦</text>
-<rect x="178.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="193.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">10♠</text>
-<rect x="142.0" y="80.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
-<text x="157.0" y="105.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">K♣</text>
-<text x="157.0" y="130.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Waste</text>
-<rect x="178.0" y="80.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
-<text x="193.0" y="105.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">A♥</text>
-<rect x="142.0" y="152.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
-<text x="157.0" y="177.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">A♠</text>
-<text x="157.0" y="202.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Waste</text>
-<rect x="178.0" y="152.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
-<text x="193.0" y="177.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">K♦</text>
-<text x="134.0" y="32.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Plays on a 9</text>
-<text x="134.0" y="104.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#a4243b">Ace on a king</text>
-<text x="134.0" y="176.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#a4243b">King on an ace</text>
-<text x="138.0" y="228.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Play onto the waste one rank up or one rank down, suits</text>
-<text x="138.0" y="240.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">ignored. Ranks do not wrap in the standard game, so a</text>
-<text x="138.0" y="252.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">king takes only a queen and an ace takes only a 2.</text>
+<rect x="105.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="120.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">8♦</text>
+<rect x="141.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="156.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">10♠</text>
+<rect x="105.0" y="106.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<text x="120.0" y="131.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">K♣</text>
+<text x="120.0" y="156.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Waste</text>
+<rect x="141.0" y="106.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<text x="156.0" y="131.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">A♥</text>
+<rect x="105.0" y="191.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<text x="120.0" y="216.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">A♠</text>
+<text x="120.0" y="241.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Waste</text>
+<rect x="141.0" y="191.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<text x="156.0" y="216.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">K♦</text>
+<text x="105.0" y="17.0" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Plays on a 9</text>
+<text x="105.0" y="102.0" font-family="system-ui, sans-serif" font-size="9" fill="#a4243b">Ace on a king</text>
+<text x="105.0" y="187.0" font-family="system-ui, sans-serif" font-size="9" fill="#a4243b">King on an ace</text>
+<text x="138.0" y="267.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Play onto the waste one rank up or one rank down, suits</text>
+<text x="138.0" y="279.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">ignored. Ranks do not wrap in the standard game, so a</text>
+<text x="138.0" y="291.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">king takes only a queen and an ace takes only a 2.</text>
 </svg>

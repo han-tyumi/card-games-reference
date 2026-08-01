@@ -1,42 +1,42 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 256" width="442" height="410" role="img" aria-label="Mus: What counts in the pares round. Remember that a three is a king and a two is an ace, so K-3 is a pair of kings and A-2 is a pair of aces.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 308" width="442" height="493" role="img" aria-label="Mus: What counts in the pares round. Remember that a three is a king and a two is an ace, so K-3 is a pair of kings and A-2 is a pair of aces.">
 <title>What counts in the pares round. Remember that a three is a king and a two is an ace, so K-3 is a pair of kings and A-2 is a pair of aces.</title>
-<rect x="106.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="121.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">K♠</text>
-<rect x="142.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="157.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">3♦</text>
-<rect x="178.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="193.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">5♥</text>
-<rect x="214.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="229.0" y="33.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">5♣</text>
-<rect x="106.0" y="60.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="121.0" y="85.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">Q♠</text>
-<rect x="142.0" y="60.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="157.0" y="85.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">Q♥</text>
-<rect x="178.0" y="60.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="193.0" y="85.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">Q♦</text>
-<rect x="214.0" y="60.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="229.0" y="85.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">4♣</text>
-<rect x="106.0" y="112.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="121.0" y="137.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">J♠</text>
-<rect x="142.0" y="112.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="157.0" y="137.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">J♦</text>
-<rect x="178.0" y="112.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="193.0" y="137.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">7♥</text>
-<rect x="214.0" y="112.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
-<text x="229.0" y="137.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">4♣</text>
-<rect x="106.0" y="164.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
-<text x="121.0" y="189.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">K♠</text>
-<rect x="142.0" y="164.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
-<text x="157.0" y="189.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">Q♥</text>
-<rect x="178.0" y="164.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
-<text x="193.0" y="189.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">7♦</text>
-<rect x="214.0" y="164.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
-<text x="229.0" y="189.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">4♣</text>
-<text x="98.0" y="32.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Duples</text>
-<text x="98.0" y="84.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Medias</text>
-<text x="98.0" y="136.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Pares</text>
-<text x="98.0" y="188.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#a4243b">No pares</text>
-<text x="138.0" y="220.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">What counts in the pares round. Remember that a three</text>
-<text x="138.0" y="232.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">is a king and a two is an ace, so K-3 is a pair of</text>
-<text x="138.0" y="244.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">kings and A-2 is a pair of aces.</text>
+<rect x="69.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="84.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">K♠</text>
+<rect x="105.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="120.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">3♦</text>
+<rect x="141.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="156.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">5♥</text>
+<rect x="177.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="192.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">5♣</text>
+<rect x="69.0" y="86.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="84.0" y="111.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">Q♠</text>
+<rect x="105.0" y="86.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="120.0" y="111.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">Q♥</text>
+<rect x="141.0" y="86.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="156.0" y="111.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">Q♦</text>
+<rect x="177.0" y="86.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="192.0" y="111.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">4♣</text>
+<rect x="69.0" y="151.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="84.0" y="176.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">J♠</text>
+<rect x="105.0" y="151.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="120.0" y="176.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">J♦</text>
+<rect x="141.0" y="151.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="156.0" y="176.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">7♥</text>
+<rect x="177.0" y="151.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="192.0" y="176.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">4♣</text>
+<rect x="69.0" y="216.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<text x="84.0" y="241.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">K♠</text>
+<rect x="105.0" y="216.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<text x="120.0" y="241.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">Q♥</text>
+<rect x="141.0" y="216.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<text x="156.0" y="241.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">7♦</text>
+<rect x="177.0" y="216.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" opacity="0.65"/>
+<text x="192.0" y="241.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">4♣</text>
+<text x="69.0" y="17.0" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Duples</text>
+<text x="69.0" y="82.0" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Medias</text>
+<text x="69.0" y="147.0" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Pares</text>
+<text x="69.0" y="212.0" font-family="system-ui, sans-serif" font-size="9" fill="#a4243b">No pares</text>
+<text x="138.0" y="272.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">What counts in the pares round. Remember that a three</text>
+<text x="138.0" y="284.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">is a king and a two is an ace, so K-3 is a pair of</text>
+<text x="138.0" y="296.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">kings and A-2 is a pair of aces.</text>
 </svg>

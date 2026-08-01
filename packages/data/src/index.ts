@@ -18,7 +18,7 @@ export type { CardGame } from "../schema/game.types.ts";
 export { CARD, buildDiagram } from "./layout.ts";
 export type { Diagram, Layout, Pile, Zone, ZoneKind } from "./layout.ts";
 
-export { MAX_FIGURE_WIDTH, buildFigure, isRedSuit, wrapCards } from "./figure.ts";
+export { MAX_FIGURE_WIDTH, buildFigure, isRedSuit, mayWrap, wrapCards } from "./figure.ts";
 export type { Figure, FigureCard, FigureLayout, FigureRow } from "./figure.ts";
 
 export {

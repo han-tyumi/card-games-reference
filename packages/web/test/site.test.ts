@@ -13,7 +13,7 @@
 
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { loadGames, renderDiagramSvg, renderFigureSvg } from "naibi";
+import { loadGames, mayWrap, renderDiagramSvg, renderFigureSvg } from "naibi";
 import { buildSite } from "../build-web.ts";
 
 const games = loadGames();
@@ -592,4 +592,51 @@ test("the manifest is valid JSON promising only icons that exist", () => {
     manifest.icons.some((i: { purpose?: string }) => i.purpose === "maskable"),
     "no maskable icon, so Android crops the installed icon badly",
   );
+});
+
+test("no drawing a reader could reflow is wider than a 320px column", () => {
+  // WCAG 2.2 SC 1.4.10 Reflow (AA) wants content usable at 320 CSS px without
+  // scrolling in two directions. That is not a phone measurement -- it is what
+  // a 1280px window becomes at 400% zoom, which is how a low-vision reader
+  // reads anything, so it is the number this site is built against.
+  //
+  // The exception is for content that *requires* two-dimensional layout. A rank
+  // order does not: it wraps and still says the same thing, so it must fit. A
+  // ten-column tableau and an eight-card meld do -- splitting either says
+  // something false about the game -- so those keep their width and scroll.
+  const COLUMN = 320 - 2 * 18; // .wrap horizontal padding, in px, not rem
+  const tooWide: string[] = [];
+
+  for (const game of games) {
+    const html = text(`games/${game.id}.html`);
+    const drawings = [...html.matchAll(/<figure>[\s\S]*?<\/figure>/g)].map((m) => m[0]);
+    // Figures follow the diagram, in the order gamePage writes them.
+    const offset = game.layout ? 1 : 0;
+
+    (game.figures ?? []).forEach((spec, index) => {
+      if (!mayWrap(spec)) return;
+      const body = drawings[index + offset];
+      assert.ok(body, `${game.id}: figure ${index + 1} is missing from the page`);
+      const floor = Number(/--floor:(\d+)px/.exec(body)![1]);
+      if (floor > COLUMN) tooWide.push(`${game.id}-fig${index + 1} (${floor}px)`);
+    });
+  }
+
+  assert.deepEqual(tooWide, [], "these would scroll sideways at 320px");
+});
+
+test("the column a drawing is sized against does not shrink as type grows", () => {
+  // The whole width budget is what is left after .wrap's horizontal padding.
+  // In rem that padding grows with the reader's default font size, so enlarging
+  // type handed the drawings a narrower column -- backwards, and worst for the
+  // readers the 320px target exists for. Measured 285px -> 250px between a 16px
+  // and a 32px root before this was changed.
+  const css = text("style.css");
+  const wrap = /\.wrap \{[^}]*padding:([^;]+);/.exec(css);
+  assert.ok(wrap, "the .wrap padding rule has moved");
+
+  // `padding: <top> <horizontal> <bottom>` — the middle value is the one the
+  // column width is made of. The bottom one stays in rem; it should scale.
+  const [, horizontal] = wrap[1]!.trim().split(/\s+/);
+  assert.match(horizontal ?? "", /px$/, "horizontal padding is back in rem");
 });

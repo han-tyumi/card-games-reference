@@ -43,12 +43,25 @@ body {
   background: var(--bg);
   color: var(--ink);
   font: 400 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* A word longer than the column breaks rather than pushing the page sideways.
+     It only acts when something would otherwise overflow, so ordinary text is
+     untouched. Without it "Concentration" set at 200% text was wider than a
+     320px column on its own, and the whole page scrolled to accommodate one
+     heading -- which is the exact failure SC 1.4.10 is about. */
+  overflow-wrap: break-word;
   /* Clear the notch and the home indicator when installed. */
   padding: env(safe-area-inset-top) env(safe-area-inset-right)
            env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
-.wrap { max-width: var(--measure); margin: 0 auto; padding: 0 1.1rem 4rem; }
+/* Horizontal padding in px, not rem, on purpose. The whole width budget the
+   drawings are sized against is what is left after this, and rem padding grows
+   with the reader's default font size -- so a reader who enlarges type was
+   handed a narrower column for the drawings, which is backwards. Measured at a
+   320px viewport, rem padding took the column from 285px to 250px between a
+   16px and a 32px root. The bottom padding stays in rem: that one should scale
+   with type. */
+.wrap { max-width: var(--measure); margin: 0 auto; padding: 0 18px 4rem; }
 .wrap--wide { max-width: 52rem; }
 
 a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
@@ -175,7 +188,15 @@ a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset:
 
 /* ---- game list --------------------------------------------------------- */
 
-.games { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+/* grid-template-columns rather than nothing: a grid track's floor is its
+   content's min-content width, and overflow-wrap does not lower that -- it
+   avoids overflow without changing how wide the track thinks it must be. So at
+   200% text one long game name ("Concentration") held every card open past the
+   column. Naming the track with a zero floor is what lets it shrink. */
+.games {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.6rem;
+}
 
 .games a {
   display: block;
@@ -207,7 +228,12 @@ a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset:
 
 .facts {
   display: grid;
-  grid-template-columns: auto 1fr;
+  /* minmax(0, 1fr) rather than 1fr: a grid track's implicit floor is its
+     content's min-content width, so at 200% text "Also known as" held the label
+     column open and the value column pushed the page sideways instead of
+     wrapping. Measured at a 320px viewport with a 32px root, which is what SC
+     1.4.4 asks for. */
+  grid-template-columns: auto minmax(0, 1fr);
   gap: 0.3rem 0.9rem;
   margin: 0 0 1.4rem;
   padding: 0.85rem 0.95rem;
@@ -300,6 +326,6 @@ footer p { margin: 0; }
 
 @media (min-width: 34rem) {
   body { font-size: 18px; }
-  .games { grid-template-columns: 1fr 1fr; }
-  .wrap { padding-left: 1.6rem; padding-right: 1.6rem; }
+  .games { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .wrap { padding-left: 26px; padding-right: 26px; }
 }
