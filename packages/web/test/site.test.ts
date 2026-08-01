@@ -183,6 +183,58 @@ test("figures are inlined, not linked to files that are not shipped", () => {
   }
 });
 
+// --- reachable to a screen reader -----------------------------------------
+
+test("every inlined figure has an accessible name", () => {
+  // A diagram is the one thing on these pages that carries meaning purely
+  // visually, so an unnamed <svg> is a rule a screen reader cannot reach at all.
+  const unnamed: string[] = [];
+
+  for (const page of pages) {
+    for (const [, svg] of text(page).matchAll(/<svg\b([^>]*)>/g)) {
+      const named = /aria-label="[^"]+"/.test(svg!) || /role="img"/.test(svg!);
+      if (!named) unnamed.push(page);
+    }
+  }
+
+  assert.deepEqual(unnamed, []);
+});
+
+test("every figure is captioned in text as well as drawn", () => {
+  for (const page of pages) {
+    const html = text(page);
+    const figures = (html.match(/<figure>/g) ?? []).length;
+    const captions = (html.match(/<figcaption>/g) ?? []).length;
+    assert.equal(captions, figures, `${page}: ${figures} figures, ${captions} captions`);
+  }
+});
+
+test("headings descend without skipping a level", () => {
+  // A jump from h1 to h3 makes the outline a screen reader builds nonsense.
+  for (const page of pages) {
+    const levels = [...text(page).matchAll(/<h([1-6])[ >]/g)].map((m) => Number(m[1]));
+    assert.ok(levels.length > 0, `${page}: no headings`);
+    assert.equal(levels[0], 1, `${page}: does not start at h1`);
+
+    for (let i = 1; i < levels.length; i += 1) {
+      assert.ok(
+        levels[i]! <= levels[i - 1]! + 1,
+        `${page}: h${levels[i - 1]} followed by h${levels[i]}`,
+      );
+    }
+  }
+});
+
+test("the search box is labelled", () => {
+  const html = text("index.html");
+  const id = /<input[^>]*id="q"/.exec(html);
+  assert.ok(id, "no search box");
+  assert.ok(
+    /<label[^>]*for="q"/.test(html) || /aria-label="[^"]+"[^>]*id="q"/.test(html),
+    "the search box has no label",
+  );
+});
+
 // --- offline --------------------------------------------------------------
 
 test("the precache covers everything the site is made of", () => {
