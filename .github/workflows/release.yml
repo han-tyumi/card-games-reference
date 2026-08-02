@@ -76,9 +76,14 @@ jobs:
 
       - name: Take the changelog entry for this version as the release notes
         run: |
+          # Stops at the next release heading, or at the link definitions that
+          # close the file -- the last entry has no heading after it, so v0.1.0
+          # went out with two stray `[0.1.0]: https://…` lines swept in. They
+          # render as nothing, which is precisely why it would have gone on
+          # doing it unnoticed.
           awk -v v="${{ steps.version.outputs.version }}" '
             $0 ~ "^## \\[" v "\\]" { inside = 1; next }
-            inside && /^## / { exit }
+            inside && (/^## / || /^\[/) { exit }
             inside { print }
           ' CHANGELOG.md > /tmp/notes.md
           if [ ! -s /tmp/notes.md ]; then
