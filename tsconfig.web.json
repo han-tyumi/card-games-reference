@@ -1,0 +1,18 @@
+{
+  // The browser assets, checked with the DOM available.
+  //
+  // They are .js and not .ts on purpose: docs/ ships them to the browser
+  // verbatim, and there is no build step to strip types with — see
+  // decisions/0001. checkJs plus JSDoc gets the same checking without one.
+  //
+  // A second file rather than a lib entry in the main config, because "dom"
+  // there would hand `document` and `window` to every Node script in the
+  // project, where reaching for them is a mistake worth catching.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "lib": ["es2023", "dom"],
+    "types": [],
+    "checkJs": true
+  },
+  "include": ["packages/web/assets/*.js"]
+}

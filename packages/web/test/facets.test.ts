@@ -257,8 +257,17 @@ test("difficulty is a ceiling, not an exact match", () => {
   assert.equal(matches(facet({ diff: "complex" }), { difficulty: "medium" }), false);
 });
 
+test("an unrankable difficulty is excluded rather than waved through", () => {
+  // It used to be waved through: undefined > undefined is false, so a game
+  // whose difficulty nothing ranked passed every difficulty filter there was.
+  // A chip that cannot answer the question must not answer it with yes.
+  assert.equal(matches(facet({ diff: "brutal" }), { difficulty: "medium" }), false);
+  assert.equal(matches(facet({ diff: "brutal" }), {}), true, "still browsable unfiltered");
+  assert.equal(matches(facet({ diff: "easy" }), { difficulty: "trivial" }), false);
+});
+
 test("every difficulty in the data is ranked", () => {
-  // An unranked value compares as undefined and silently passes every filter.
+  // Which is what stops the rule above from quietly hiding a real entry.
   for (const game of games) {
     assert.notEqual(
       DIFFICULTY[game.difficulty],

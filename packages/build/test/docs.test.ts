@@ -294,3 +294,36 @@ test("every repo skill is shaped so it can be loaded", () => {
     assert.ok(description[1]!.length > 60, `${name}: description too vague to match on`);
   }
 });
+
+test("every browser asset is actually type-checked", () => {
+  // The browser assets were unchecked for months without it showing: `allowJs`
+  // let the .ts files import them, `checkJs` was off, and a green typecheck
+  // looked like it covered the repository. Turning it on found two real bugs,
+  // so the thing worth guarding is that it stays on and keeps reaching every
+  // file — a second config is easy to leave behind.
+  const config = readFileSync(join(REPO_ROOT, "tsconfig.web.json"), "utf8");
+
+  assert.match(config, /"checkJs":\s*true/, "checkJs is no longer on");
+  assert.match(config, /"lib":\s*\[[^\]]*"dom"/, "the DOM lib is no longer available");
+
+  const include = /"include":\s*\[([^\]]*)\]/.exec(config);
+  assert.ok(include, "tsconfig.web.json no longer says what it covers");
+  const globs = [...include[1]!.matchAll(/"([^"]+)"/g)].map((m) => m[1]!);
+
+  const dir = join(REPO_ROOT, "packages", "web", "assets");
+  const assets = readdirSync(dir).filter((name) => name.endsWith(".js"));
+  assert.ok(assets.length > 0, "no browser assets found to check");
+
+  for (const name of assets) {
+    const covered = globs.some((glob) => {
+      const pattern = new RegExp(`^${glob.replace(/\./g, "\\.").replace(/\*/g, "[^/]*")}$`);
+      return pattern.test(`packages/web/assets/${name}`);
+    });
+    assert.ok(covered, `packages/web/assets/${name} is not covered by tsconfig.web.json`);
+  }
+
+  // And that the gate runs it. A config nothing invokes checks nothing.
+  const scripts = JSON.parse(readFileSync(join(REPO_ROOT, "package.json"), "utf8")).scripts;
+  assert.match(scripts.typecheck, /tsconfig\.web\.json/, "typecheck skips the browser assets");
+  assert.match(scripts.check, /typecheck/, "the gate no longer typechecks");
+});

@@ -539,7 +539,7 @@ Two more, needed only when the schema itself changes:
 
 ```sh
 npm run types      # regenerate schema/game.types.ts from the schema
-npm run typecheck  # tsc --noEmit
+npm run typecheck  # tsc --noEmit, twice: once for the .ts, once for the browser assets
 ```
 
 ### Types come from the schema
@@ -549,3 +549,10 @@ npm run typecheck  # tsc --noEmit
 literal unions for `category`, `difficulty`, and `tags` — is never hand-written
 and cannot drift from what the validator enforces. The website and app can
 import that type directly rather than redeclaring it.
+
+The browser assets under `packages/web/assets/` are the one place types are
+written in comments. They stay plain `.js` because `docs/` ships them to the
+browser byte for byte and there is no build step to strip types with, so they are
+typed with JSDoc and checked by a second config, `tsconfig.web.json` — which is
+why `npm run typecheck` runs `tsc` twice. Annotate new code there the same way;
+see [decision 0014](decisions/0014-type-check-the-browser-assets-in-place.md).

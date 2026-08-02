@@ -13,19 +13,31 @@
 import { plan, readQuery, writeQuery } from "./facets.js";
 import { labelsFor, score } from "./search.js";
 
+// Either the page has the whole apparatus or it has none of it: an entry page
+// carries no list, no box and no chips. Taken together rather than one at a
+// time, so a missing piece is a missing page rather than a null halfway down.
 const list = document.getElementById("games");
-if (list) {
-  const facets = JSON.parse(document.getElementById("facets").textContent);
-  const items = Array.from(list.children);
-  const count = document.getElementById("count");
-  const empty = document.getElementById("empty");
-  const box = document.getElementById("q");
+const data = document.getElementById("facets");
+const count = document.getElementById("count");
+const empty = document.getElementById("empty");
+const box = /** @type {HTMLInputElement | null} */ (document.getElementById("q"));
 
+if (list && data && count && empty && box) {
+  /** @type {import("./facets.js").Facet[]} */
+  const facets = JSON.parse(data.textContent ?? "[]");
+  const items = /** @type {HTMLElement[]} */ (Array.from(list.children));
+
+  /** @type {Record<string, string>} */
   const state = { q: "", category: "", players: "", decks: "", minutes: "", difficulty: "" };
 
-  const chips = Array.from(document.querySelectorAll(".chips input"));
+  const chips = Array.from(
+    /** @type {NodeListOf<HTMLInputElement>} */ (document.querySelectorAll(".chips input")),
+  );
 
-  /** What each chip group actually offers, so a stale URL cannot filter to nothing. */
+  /**
+   * What each chip group actually offers, so a stale URL cannot filter to nothing.
+   * @type {Record<string, Set<string>>}
+   */
   const allowed = {};
   for (const input of chips) {
     (allowed[input.name] ??= new Set()).add(input.value);
@@ -36,7 +48,9 @@ if (list) {
     history.replaceState(null, "", writeQuery(state) || location.pathname);
   };
 
+  /** @type {import("./search.js").Index | null} */
   let index = null;
+  /** @type {Promise<import("./search.js").Index> | null} */
   let loading = null;
 
   /** Fetched on first use so a visitor who only browses never pays for it. */
@@ -49,7 +63,7 @@ if (list) {
         .catch(() => {
           // Offline before the index was ever cached: fall back to matching
           // names and tags, which are already in the page.
-          index = { fields: [], terms: null };
+          index = { fields: [], common: [], exact: {}, terms: null };
           return index;
         });
     }
@@ -82,7 +96,8 @@ if (list) {
 
     // Reordering the DOM directly keeps the markup as the single source of
     // truth: no shadow list, nothing to fall out of sync.
-    for (const i of order) list.appendChild(items[i]);
+    // `order` indexes the same list the page rendered, so every index is real.
+    for (const i of order) list.appendChild(/** @type {HTMLElement} */ (items[i]));
 
     count.textContent = label;
     empty.hidden = order.length > 0;
@@ -110,9 +125,10 @@ if (list) {
   document.getElementById("reset")?.addEventListener("click", () => {
     box.value = "";
     Object.keys(state).forEach((k) => (state[k] = ""));
-    for (const el of document.querySelectorAll('.chips input[value=""]')) {
-      el.checked = true;
-    }
+    const unset = /** @type {NodeListOf<HTMLInputElement>} */ (
+      document.querySelectorAll('.chips input[value=""]')
+    );
+    for (const el of unset) el.checked = true;
     syncUrl();
     apply();
   });

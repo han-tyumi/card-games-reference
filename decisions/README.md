@@ -29,6 +29,7 @@ part.
 | [0011](0011-target-320-css-pixels.md) | Target 320 CSS pixels, and wrap orders but never combinations | Accepted |
 | [0012](0012-the-booklet-cannot-be-byte-gated.md) | Make the booklet reproducible on one machine, but do not gate it | Superseded |
 | [0013](0013-vendor-the-fonts-and-gate-the-booklet.md) | Vendor the fonts, and gate the booklet after all | Accepted |
+| [0014](0014-type-check-the-browser-assets-in-place.md) | Type-check the browser assets in place rather than converting them | Accepted |
 
 ## The format
 

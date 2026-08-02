@@ -14,7 +14,17 @@
  * it is the same set of names and the two would drift if they were apart.
  */
 
-/** Difficulty is ordered, so a filter means "up to this", not "exactly this". */
+/**
+ * Difficulty is ordered, so a filter means "up to this", not "exactly this".
+ *
+ * Typed as a plain string lookup because neither key comes from code: one is a
+ * validated field on an entry, the other the value of a chip. What keeps the two
+ * sets in step is the test "every difficulty in the data is ranked", not the
+ * type — a value this table has never heard of is a game that drops out of every
+ * difficulty filter, which is quiet enough to want a test on it.
+ *
+ * @type {Record<string, number>}
+ */
 export const DIFFICULTY = { simple: 0, easy: 1, medium: 2, complex: 3 };
 
 /**
@@ -57,8 +67,14 @@ export function matches(facet, criteria) {
     return false;
   }
 
-  if (criteria.difficulty && DIFFICULTY[facet.diff] > DIFFICULTY[criteria.difficulty]) {
-    return false;
+  if (criteria.difficulty) {
+    const ceiling = DIFFICULTY[criteria.difficulty];
+    const rank = DIFFICULTY[facet.diff];
+    // A difficulty nothing ranks used to compare as undefined, which is false
+    // both ways round, so an unrankable game passed every difficulty filter
+    // there was. Undefined on either side means the question cannot be
+    // answered, and a chip that cannot answer must not say yes.
+    if (ceiling === undefined || rank === undefined || rank > ceiling) return false;
   }
 
   return true;
@@ -84,6 +100,7 @@ export const PARAMS = ["category", "players", "decks", "minutes", "difficulty"];
  */
 export function readQuery(search, allowed) {
   const params = new URLSearchParams(search);
+  /** @type {Record<string, string>} */
   const state = {};
 
   const q = params.get("q");

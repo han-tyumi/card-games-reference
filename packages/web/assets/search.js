@@ -115,7 +115,9 @@ export function buildIndex(records) {
   records.forEach((record, doc) => {
     for (const { key, bit } of FIELDS) {
       const text = record[key];
-      if (!text) continue;
+      // A weighted field is text; `titles` is the one array a record carries,
+      // and it is read below rather than indexed.
+      if (typeof text !== "string" || !text) continue;
       for (const word of new Set(tokenise(text))) {
         let postings = terms.get(word);
         if (!postings) terms.set(word, (postings = new Map()));
@@ -123,7 +125,8 @@ export function buildIndex(records) {
       }
     }
 
-    (record.titles ?? []).forEach((title, i) => {
+    const titles = Array.isArray(record.titles) ? record.titles : [];
+    titles.forEach((title, i) => {
       const key = titleKey(title);
       if (!key) return;
       const bonus = i === 0 ? EXACT_NAME : EXACT_ALIAS;
@@ -207,18 +210,24 @@ export function score(index, query) {
   const common = new Set(index.common ?? []);
   const words = all.filter((word) => !common.has(word));
 
+  /** @type {Map<number, Hit> | null} */
   let running = null;
 
   // A query of nothing but stop words narrows nothing, so it skips the loop and
   // falls through to the exact-title check -- "Last One" is every-entry words
   // twice over, and is also an alias of Crazy Eights.
   words.forEach((word, i) => {
+    /** @type {Map<number, Hit>} */
     const hits = new Map();
 
+    /**
+     * @param {number[]} postings flattened [doc, mask, doc, mask, ...]
+     * @param {number} penalty
+     */
     const consider = (postings, penalty) => {
       for (let p = 0; p < postings.length; p += 2) {
-        const doc = postings[p];
-        const mask = postings[p + 1];
+        const doc = /** @type {number} */ (postings[p]);
+        const mask = /** @type {number} */ (postings[p + 1]);
         const s = weigh(fields, mask, penalty);
         const previous = hits.get(doc);
         // The best-scoring way this word matched, but every field it matched
@@ -236,8 +245,9 @@ export function score(index, query) {
 
     if (i === words.length - 1 && word.length >= MIN_PREFIX) {
       for (const term in terms) {
-        if (term !== word && term.startsWith(word)) {
-          consider(terms[term], PREFIX_PENALTY);
+        const postings = terms[term];
+        if (postings && term !== word && term.startsWith(word)) {
+          consider(postings, PREFIX_PENALTY);
         }
       }
     }
@@ -247,6 +257,7 @@ export function score(index, query) {
       return;
     }
 
+    /** @type {Map<number, Hit>} */
     const merged = new Map();
     for (const [doc, value] of hits) {
       const previous = running.get(doc);
@@ -262,8 +273,8 @@ export function score(index, query) {
   if (titled) {
     if (running === null) running = new Map();
     for (let p = 0; p < titled.length; p += 2) {
-      const doc = titled[p];
-      const bonus = titled[p + 1];
+      const doc = /** @type {number} */ (titled[p]);
+      const bonus = /** @type {number} */ (titled[p + 1]);
       const previous = running.get(doc);
       if (previous) previous.s += bonus;
       // A title made entirely of stop words matched nothing above. Surfacing it
