@@ -2,7 +2,7 @@
 
 # President
 
-**Also known as:** Scum, Asshole, Presidents and Assholes, Bum, Rich Man, Poor Man, Capitalism, Landlord, Warlords and Scumbags, Daifugō  
+**Also known as:** Scum, Asshole, Presidents and Assholes, Bum, Rich Man, Poor Man, Capitalism, Warlords and Scumbags, Daifugō  
 **Players:** 3-8 players (best with 5)  
 **Deck:** 1 standard deck (52 cards), jokers usually removed; add a second deck above about seven players  
 **Time:** 20-45 minutes  
