@@ -1,0 +1,143 @@
+{
+  "id": "red-dog",
+  "name": "Red Dog",
+  "aliases": [
+    "Yablon",
+    "Acey-Deucey",
+    "In-Between"
+  ],
+  "category": "casino",
+  "players": {
+    "min": 2,
+    "max": 8,
+    "ideal": 4
+  },
+  "decks": "1 to 8 standard decks shuffled together; six is the casino norm, and more packs is better for the player rather than worse",
+  "equipment": {
+    "standard_decks": 1,
+    "jokers": 0,
+    "special_deck": null,
+    "extra_deck_for_large_groups": false,
+    "other": []
+  },
+  "setup": "Red Dog is banked. One person deals and covers every bet, and the players are not competing with one another at all — in a casino the bank is the house, and at a kitchen table it should be somebody with enough chips to pay out and a willingness to hand the job on, because the bank holds the edge and nobody should keep it all evening.\n\nThe name is shared, and the older claim is the stronger one. For most of the twentieth century Red Dog meant a five-card banking game in which you bet that you held something higher in whatever suit the dealer turned; card books still print that game under this name, and under High Card Pool, Slippery Sam and Shoot. What follows is what a modern casino means by Red Dog, which also answers to Yablon, Acey-Deucey and In-Between.\n\nShuffle between one and eight packs together. Six dealt from a shoe is the usual casino arrangement, and the deck count runs the opposite way to most games: extra packs help the player, trimming the bank's share from around 3.2 percent on a single deck to around 2.8 percent on six or more. Playing with one pack at home is fine as long as everything goes back in and gets shuffled after each hand.\n\nRanks are poker ranks and the ace is always high, so the order stops dead at both ends and nothing wraps — king up to two is a shorter distance than ace down to two. Suits are ignored from start to finish.\n\nAgree a minimum and a maximum stake before the first deal, give everyone chips, and mark out a betting spot in front of each seat.",
+  "play": "A single hand is dealt for the whole table. Everyone is betting on the same three cards, and the only private decision anyone makes is whether to raise.\n\nStakes go down first. The banker then turns two cards face up with a space left between them. Nearly always those two cards have room between them, and that is the hand the game is built around: the banker calls the spread, meaning the number of ranks lying strictly in the gap. A 3 alongside a 9 leaves the 4, 5, 6, 7 and 8, so that is a spread of 5. Eleven is as wide as the gap ever gets, which takes an ace at one end and a two at the other.\n\nA spread is the only thing that gives anyone a decision. Each player may raise, adding up to as much again as their original stake and no more, or may leave the first bet standing and add nothing. The choice is individual — nobody has to match the seat beside them.\n\nThe third card then goes into the gap. A rank strictly inside the two ends wins, and the raise is paid at the same odds as the stake it was added to. A card matching either end, or falling outside the pair of them altogether, loses everything put out, raise included. Landing on an end card is a plain loss rather than a returned stake, which is the first difference to look for if you have played the pot version described below.\n\nTwo openings never reach any of that:\n\n- The two cards are neighbours, a 6 beside a 7. Nothing can come between them, so the hand is dead where it stands and every stake goes back.\n- The two cards are a pair. The third card is turned at once with no raise offered, and only a third card of the same rank does anything: it pays 11 to 1, and any other card returns the stakes untouched.\n\nThe three cards are then cleared away and the next hand dealt. A casino buries a cut card in the shoe and reshuffles at the end of whichever round turns it up; at home, shuffle the discards back in whenever the pack runs low.",
+  "figures": [
+    {
+      "kind": "meld",
+      "caption": "The two end cards fix the spread, and only a rank strictly inside them wins. Neighbouring ends leave no gap at all, so the hand is returned rather than played.",
+      "rows": [
+        {
+          "label": "Spread of 1",
+          "cards": [
+            {
+              "face": "8♥"
+            },
+            {
+              "face": "9♦",
+              "note": "The only winner"
+            },
+            {
+              "face": "10♠"
+            }
+          ]
+        },
+        {
+          "label": "Spread of 5",
+          "cards": [
+            {
+              "face": "3♦"
+            },
+            {
+              "face": "6♠",
+              "note": "Any of 4 to 8"
+            },
+            {
+              "face": "9♣"
+            }
+          ]
+        },
+        {
+          "label": "No spread",
+          "valid": false,
+          "cards": [
+            {
+              "face": "6♣"
+            },
+            {
+              "face": "7♦"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "goal_and_scoring": "You are betting that a third card will fall between two you can already see. Nothing else is scored, and one player's result has no bearing on anyone else's.\n\nWhat a hit pays is decided by the spread alone, and the two pull against each other: a narrow gap is hard to fill and pays heavily, while a wide one comes in more often than not and pays even money for it.\n\nThe raise is the whole of the strategy, and it has one correct answer. A spread of 7 or more fills more often than it fails, so money added there is money on the right side of the bet; at 6 or less the odds are against you and the extra stake should stay in front of you. That dividing line holds whatever the number of decks — raise on 7 and above, never below, and there is nothing else in the game to learn.\n\nAcross a session the bank keeps somewhere between 3.2 percent of everything wagered at a single deck and 2.8 percent at eight, so the deepest shoe on offer is the one to sit at. There is no target and no finish: play as many hands as suit you and count the chips at the end.",
+  "scoring_table": [
+    {
+      "item": "Spread of 1",
+      "value": "5 to 1"
+    },
+    {
+      "item": "Spread of 2",
+      "value": "4 to 1"
+    },
+    {
+      "item": "Spread of 3",
+      "value": "2 to 1"
+    },
+    {
+      "item": "Spread of 4 up to 11",
+      "value": "1 to 1"
+    },
+    {
+      "item": "Pair, then a third of the same rank",
+      "value": "11 to 1",
+      "note": "no raise is offered on a pair"
+    },
+    {
+      "item": "Pair, then anything else",
+      "value": "stake returned"
+    },
+    {
+      "item": "Neighbouring end cards",
+      "value": "stake returned"
+    },
+    {
+      "item": "Third card on an end or outside",
+      "value": "stake lost",
+      "note": "the raise is lost with it"
+    }
+  ],
+  "variants": [
+    {
+      "name": "In-Between, played for a pot",
+      "description": "The home version, and the one that predates the casino table. Nobody banks: everyone antes into a pot, and each player in turn is given two cards face up and bets anything from nothing up to whatever the pot holds. Fill the gap and you take that much out of it; miss and you pay that much in. Landing exactly on an end card is a post and costs double the bet, which is what the fixed casino payouts are built to replace. Where the first card is an ace its owner calls it high or low; an ace turned second is always high. There are no spread odds at all — every win pays what was staked, so the judgement is how much of the pot to chase rather than whether to raise."
+    },
+    {
+      "name": "High Card Pool",
+      "description": "The older game that the name belonged to first, still worth knowing because half the card books mean this one. Everyone antes, the dealer gives each player five cards, and in turn you bet anything from the ante up to the whole pot before the dealer turns a card face up in front of you. Show a card of that suit and higher in rank and you take your stake back plus the same again from the pot; fail and the pot takes your bet. Deal passes after everyone has bet, and the pot carries over. Slippery Sam and Shoot are the same wager with three cards each and the dealer putting up a bank instead of everyone anteing."
+    },
+    {
+      "name": "Splitting a pair",
+      "description": "Played in some pot games in place of the flat 11 to 1. When the two end cards match, the bettor antes for a second hand and the dealer draws one further card beside each of them, making two ordinary spreads out of what would otherwise have been a one-card shot. Everything then proceeds as normal on both. It turns the rarest and swingiest hand in the game into two average ones, which suits a table that would rather keep the pot moving than watch it be won or emptied on a single card."
+    }
+  ],
+  "difficulty": "simple",
+  "duration_minutes": "15-30",
+  "tags": [
+    "betting",
+    "luck",
+    "quick",
+    "beginner-friendly"
+  ],
+  "sources_consulted": [
+    "Wikipedia",
+    "Pagat",
+    "Wizard of Odds"
+  ],
+  "checked": {
+    "date": "2026-08-02",
+    "prose": "b9e957e4c3526a5e"
+  }
+}
