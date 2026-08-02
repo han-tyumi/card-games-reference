@@ -453,6 +453,15 @@ address bar; in Vivaldi, <strong>Install</strong> is on the tab's right-click
 menu. Safari on macOS has <strong>Add to Dock</strong> in its share menu.
 Firefox on the desktop does not install web apps, though Firefox on Android
 does.</p>
+<p class="vendors">Straight from the vendors:
+<a href="https://support.apple.com/guide/iphone/bookmark-a-website-iph42ab2f3a7/ios">Apple</a>,
+<a href="https://support.google.com/chrome/answer/9658361">Chrome</a>, Vivaldi
+for <a href="https://help.vivaldi.com/ios/ios-browse/web-apps-on-ios/">iPhone</a>,
+<a href="https://help.vivaldi.com/android/android-tools/progressive-web-apps-on-android/">Android</a>
+and <a href="https://help.vivaldi.com/desktop/miscellaneous/progressive-web-apps/">the
+desktop</a>. Those pages lag their apps sometimes — the step above that
+Vivaldi's own page still leaves out was found by trying it. So if a menu here
+has moved, <a href="${ISSUES_URL}">say so</a> and it gets fixed.</p>
 </details>
 </article>`;
 

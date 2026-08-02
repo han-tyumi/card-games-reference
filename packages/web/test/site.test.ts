@@ -735,3 +735,38 @@ test("every focusable control has an author-declared focus ring", () => {
     "the dark scheme leaves the banner's focus ring at the light value",
   );
 });
+
+test("the vendors' own pages are offered, in one place", () => {
+  // An escape hatch for when these steps go stale, gathered rather than
+  // threaded through each paragraph. Every one of these was checked by reading
+  // the page, not by trusting its status code — support.apple.com serves its
+  // guide landing page with a 200 for URLs that do not exist, so a status check
+  // alone would have shipped a link to nothing.
+  const html = text("about.html").replace(/\s+/g, " ");
+  const block = /<p class="vendors">[\s\S]*?<\/p>/.exec(html);
+  assert.ok(block, "no vendor links");
+
+  const links = [...block[0].matchAll(/href="(https:\/\/[^"]+)"/g)].map((m) => m[1]!);
+  assert.ok(links.length >= 4, `only ${links.length} vendor links`);
+  for (const host of ["support.apple.com", "support.google.com", "help.vivaldi.com"]) {
+    assert.ok(links.some((l) => l.includes(host)), `nothing links to ${host}`);
+  }
+
+  // Mozilla is deliberately absent: support.mozilla.org answers a bot with a
+  // challenge page, and it returns the same body for an article that does not
+  // exist — so no link there could be verified, and an unverifiable link is
+  // worse than none.
+  assert.ok(!links.some((l) => l.includes("mozilla.org")), "an unverifiable link crept in");
+});
+
+test("the vendor links are framed as fallible, and invite correction", () => {
+  // They are not authorities here. Vivaldi's own page omits a step this page
+  // has, found by walking it on a phone — so the copy says these lag, once,
+  // rather than caveating each link and having to maintain that too.
+  const html = text("about.html").replace(/\s+/g, " ");
+  assert.ok(/lag their apps/.test(html), "the vendor links read as authoritative");
+  assert.ok(
+    /if a menu here has moved, <a[^>]*>say so<\/a>/.test(html),
+    "nothing invites a correction when the steps drift",
+  );
+});

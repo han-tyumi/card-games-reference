@@ -322,6 +322,10 @@ th { color: var(--ink-soft); font-weight: 600; font-size: 0.8rem;
    the whole thing where that query misbehaves. */
 .game summary { font-weight: 600; cursor: pointer; padding: 0.2rem 0; }
 .game details p, .game details ul { margin-top: 0.6rem; }
+/* The vendors' own pages, gathered in one place rather than threaded through
+   each paragraph: an escape hatch for when these steps go stale, not the
+   instructions themselves. */
+.game .vendors { color: var(--ink-soft); font-size: 0.9rem; }
 
 .variant { margin: 0 0 0.8rem; }
 .variant b { color: var(--ink); }
