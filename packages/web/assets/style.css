@@ -185,6 +185,12 @@ a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset:
 }
 .updated[hidden] { display: none; }
 .updated button {
+  /* Pushed to the far end rather than left sitting against the text, which
+     left most of the banner empty on a phone. An auto margin rather than
+     justify-content: space-between, because the banner wraps: with the button
+     alone on a second line, space-between would drop it back to the left,
+     while an auto margin keeps it at the end either way. */
+  margin-inline-start: auto;
   font: inherit;
   font-weight: 600;
   color: var(--accent);
