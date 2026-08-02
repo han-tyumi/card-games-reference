@@ -144,3 +144,17 @@ test("a figure fits the page it is drawn on, at a size cards still read at", () 
   assert.deepEqual(tall, [], "these figures no longer fit a page");
   assert.deepEqual(shrunk, [], "these figures are drawn smaller than card size");
 });
+
+test("the same corpus always compiles to the same bytes", () => {
+  // Without this the booklet could not be gated at all: PDFKit stamps the
+  // moment of the build, so "differs from the committed copy" was true on every
+  // run, and 140 near-identical 0.9 MB revisions accumulated in git for a file
+  // whose content changed a handful of times.
+  const twin = join(dir, "twin.pdf");
+  return compile(games, twin).then(() => {
+    assert.ok(
+      readFileSync(output).equals(readFileSync(twin)),
+      "two builds of one corpus differ — something in the PDF is time or order dependent",
+    );
+  });
+});

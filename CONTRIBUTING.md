@@ -39,9 +39,9 @@ version right matters more than covering every variation.
    insists on first.
 6. Update the README's `**Status:**` count, its collection blurb and its family
    table. Three tests in `packages/build/test/docs.test.ts` fail until you do.
-7. Run `npm run build`, and commit the regenerated `rendered/` **and `docs/`**
-   files along with your JSON. `npm run build` also rewrites
-   `rendered/naibi.pdf`; commit that too, since nothing gates it.
+7. Run `npm run build`, and commit everything it regenerates: `rendered/`,
+   `docs/` **and `rendered/naibi.pdf`**. All three are gated, so a booklet left
+   behind fails the check rather than reaching a reader stale.
 8. `npm run check`.
 
 Prose fields accept a light Markdown convention: blank lines separate

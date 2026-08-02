@@ -38,6 +38,9 @@ jobs:
       - name: Check docs/ is up to date
         run: npm run web -- --check
 
+      - name: Check the booklet is up to date
+        run: npm run pdf -- --check
+
       - name: Build the PDF
         run: npm run pdf -- --output /tmp/naibi.pdf
 

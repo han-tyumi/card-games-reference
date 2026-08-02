@@ -14,7 +14,14 @@
  * fill the reserved pages in at the end.
  */
 
-import { createWriteStream, existsSync, mkdirSync, statSync } from "node:fs";
+import {
+  createWriteStream,
+  existsSync,
+  mkdirSync,
+  readFileSync,
+  rmSync,
+  statSync,
+} from "node:fs";
 import { dirname, join } from "node:path";
 import { pathToFileURL } from "node:url";
 
@@ -165,6 +172,14 @@ class Booklet {
         Title: TITLE,
         Author: "Naibi contributors",
         Subject: "Card game rules",
+        // Fixed, so the same corpus always compiles to the same bytes.
+        // PDFKit otherwise stamps the moment of the build, which made every
+        // rebuild a new 0.9 MB object in git even when not one card had moved
+        // -- 140 of them, most of a 29 MB history, for a file whose content
+        // changed a handful of times. It also made the booklet the one
+        // generated output that could not have a --check, because "differs
+        // from the committed copy" was true every single time.
+        CreationDate: new Date(0),
       },
     });
     this.fonts = resolveFonts(this.doc);
@@ -834,6 +849,26 @@ async function main(): Promise<number> {
   }
 
   const output = outputPath();
+
+  // --check earns its place now the build is deterministic: it compiles to a
+  // scratch file and compares, so a committed booklet that has fallen behind
+  // the data fails the gate instead of shipping. rendered/ and docs/ have had
+  // this; the booklet could not, and was the one output where "I forgot to
+  // rebuild" reached a reader.
+  if (process.argv.includes("--check")) {
+    const scratch = join(dirname(output), ".naibi-check.pdf");
+    await compile(games, scratch);
+    const stale = !existsSync(output) || !readFileSync(output).equals(readFileSync(scratch));
+    rmSync(scratch, { force: true });
+
+    if (stale) {
+      console.error(`${output} is out of date. Run: npm run pdf`);
+      return 1;
+    }
+    console.log(`${output} is up to date.`);
+    return 0;
+  }
+
   const { unicode } = await compile(games, output);
 
   const sizeKb = statSync(output).size / 1024;

@@ -32,7 +32,7 @@
     "originality": "node packages/build/originality.ts",
     "build": "npm run validate && npm run render && npm run pdf && npm run web",
     "test": "node --test",
-    "check": "npm run validate -- --quiet && npm run render -- --check && npm run web -- --check && tsc --noEmit && npm test",
+    "check": "npm run validate -- --quiet && npm run render -- --check && npm run web -- --check && npm run pdf -- --check && tsc --noEmit && npm test",
     "typecheck": "tsc --noEmit",
     "types": "npm run types --workspace naibi"
   },
