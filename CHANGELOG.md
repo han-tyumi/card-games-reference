@@ -28,6 +28,8 @@ release procedure is in
 
 ## [Unreleased]
 
+## [0.2.0] — 2026-08-02
+
 ### Added
 
 - **Automatic releases.** A push to main that earns one gets one, decided from
@@ -65,5 +67,6 @@ than served out of the default branch.
 - A difficulty the filter could not rank passed every difficulty filter, because
   `undefined > undefined` is false whichever way round it is written.
 
-[Unreleased]: https://github.com/han-tyumi/naibi/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/han-tyumi/naibi/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/han-tyumi/naibi/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/han-tyumi/naibi/releases/tag/v0.1.0
