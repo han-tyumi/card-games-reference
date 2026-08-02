@@ -406,11 +406,18 @@ footer p { margin: 0; }
   .backlink,
   .filters,
   .chips,
-  .count,
   #q,
   #reload,
   footer {
     display: none !important;
+  }
+
+  /* The count stays. Printing a filtered index is a real use — it is how you
+     get "the trick-taking games for four" onto paper — and the controls that
+     produced it are hidden, so without this line the sheet reads "72 games" in
+     the blurb, lists fifteen, and gives no sign it is a subset. */
+  .count {
+    font-weight: 600;
   }
 
   .wrap,

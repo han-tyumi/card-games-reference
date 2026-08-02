@@ -228,6 +228,20 @@ test("printing hides chrome that still exists in the pages", () => {
   assert.deepEqual(orphans, [], "these print rules no longer match anything in the site");
 });
 
+test("a printed filtered index still says it is filtered", () => {
+  // Printing the index with filters on is a genuine use — it is how "the
+  // trick-taking games for four" gets onto paper — and the chips that produced
+  // it are hidden on the sheet. The count is the only thing left saying "15 of
+  // 72", so hiding it too left a page reading "72 games" in the blurb above a
+  // list of fifteen, with nothing to say it was a subset. It was hidden once.
+  const hidden = [...printBlock.matchAll(/^\s*([.#][\w-]+),?\s*$/gm)].map((m) => m[1]!);
+  assert.ok(
+    !hidden.includes(".count"),
+    "the count is hidden in print, so a filtered sheet cannot say it is filtered",
+  );
+  assert.match(text("index.html"), /<p class="count"/, "the index has no count to print");
+});
+
 test("a drawing too wide for the page is not guillotined by the print styles", () => {
   // .scroll is an overflow container, which is the right answer on a phone and
   // the wrong one on paper: a sheet cannot be scrolled sideways, so anything
