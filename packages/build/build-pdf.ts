@@ -23,7 +23,7 @@ import {
   statSync,
 } from "node:fs";
 import { dirname, join } from "node:path";
-import { pathToFileURL } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 import PDFDocument from "pdfkit";
 
@@ -53,8 +53,27 @@ const ORIGIN =
   "the Mamluk pack that every European deck descends from. Spain still calls " +
   "them naipes.";
 
+/** The vendored face, and the reason the booklet can be gated at all. */
+export const VENDORED_FONT_DIR = fileURLToPath(new URL("fonts", import.meta.url));
+
 // Core PDF fonts cannot encode card suit pips, so prefer a TrueType face that can.
+//
+// The repository's own copy comes first and should always win. The font file is
+// a build input -- the PDF embeds a subset of it -- so leaving it to whatever
+// the system happens to have installed made the same corpus compile to
+// different bytes on different machines. That is what stopped the booklet being
+// gated like rendered/ and docs/, and it is why these two files are committed
+// despite being 1.4 MB of binary. See decisions/0012.
+//
+// The system paths below are kept as a fallback for a checkout that somehow
+// lacks them, not as an equal alternative: reach one and the bytes stop being
+// reproducible, which is why a test asserts the vendored copy is what got used.
 const FONT_CANDIDATES = [
+  {
+    regular: join(VENDORED_FONT_DIR, "DejaVuSans.ttf"),
+    bold: join(VENDORED_FONT_DIR, "DejaVuSans-Bold.ttf"),
+    italic: join(VENDORED_FONT_DIR, "DejaVuSans-Oblique.ttf"),
+  },
   {
     regular: "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
     bold: "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
@@ -119,7 +138,14 @@ export const PAGE = {
 const TOC_TITLE_HEIGHT = 46;
 const TOC_LINE = { category: 27, game: 17 };
 
-type FontSet = { regular: string; bold: string; italic: string; unicode: boolean };
+type FontSet = {
+  regular: string;
+  bold: string;
+  italic: string;
+  unicode: boolean;
+  /** The file the face was loaded from, so a test can prove which one won. */
+  source: string | null;
+};
 type TocEntry = { level: 0 | 1; title: string; page: number };
 
 function resolveFonts(doc: PDFKit.PDFDocument): FontSet {
@@ -136,7 +162,13 @@ function resolveFonts(doc: PDFKit.PDFDocument): FontSet {
       "italic",
       existsSync(candidate.italic) ? candidate.italic : candidate.regular,
     );
-    return { regular: "body", bold: "bold", italic: "italic", unicode: true };
+    return {
+      regular: "body",
+      bold: "bold",
+      italic: "italic",
+      unicode: true,
+      source: candidate.regular,
+    };
   }
 
   return {
@@ -144,6 +176,7 @@ function resolveFonts(doc: PDFKit.PDFDocument): FontSet {
     bold: "Helvetica-Bold",
     italic: "Helvetica-Oblique",
     unicode: false,
+    source: null,
   };
 }
 
@@ -785,7 +818,13 @@ function outputPath(): string {
  */
 export type Placement = { game: string; bookmarkPage: number; contentsPage: number };
 
-export type Booklet_ = { pageCount: number; placements: Placement[]; unicode: boolean };
+export type Booklet_ = {
+  pageCount: number;
+  placements: Placement[];
+  unicode: boolean;
+  /** The font file the booklet was built from. Null means a core PDF font. */
+  fontSource: string | null;
+};
 
 /** Compile every game into one PDF at `output`, and report where they landed. */
 export async function compile(
@@ -831,6 +870,7 @@ export async function compile(
   return {
     pageCount,
     unicode: book.fonts.unicode,
+    fontSource: book.fonts.source,
     placements: book.toc
       .filter((entry) => entry.level === 1)
       .map((entry) => ({

@@ -38,6 +38,13 @@ jobs:
       - name: Check docs/ is up to date
         run: npm run web -- --check
 
+      # The booklet is gated like rendered/ and docs/ now that the font it
+      # embeds a subset of is vendored rather than taken from the system. That
+      # was the input that made an identical corpus compile to different bytes
+      # here than on a developer machine -- see decisions/0013.
+      - name: Check the booklet is up to date
+        run: npm run pdf -- --check
+
       - name: Build the PDF
         run: npm run pdf -- --output /tmp/naibi.pdf
 

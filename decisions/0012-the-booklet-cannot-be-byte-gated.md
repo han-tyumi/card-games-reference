@@ -1,6 +1,6 @@
 # 0012. Make the booklet reproducible on one machine, but do not gate it
 
-- **Status:** Accepted
+- **Status:** Superseded by [0013](0013-vendor-the-fonts-and-gate-the-booklet.md)
 - **Date:** 2026-08-02
 
 ## Context

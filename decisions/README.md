@@ -27,7 +27,8 @@ part.
 | [0009](0009-documentation-structure.md) | Split documentation by how it ages, and deviate from MADR's directory | Accepted |
 | [0010](0010-figures-wrap-in-the-geometry.md) | Wrap figures in the geometry, not in the stylesheet | Superseded |
 | [0011](0011-target-320-css-pixels.md) | Target 320 CSS pixels, and wrap orders but never combinations | Accepted |
-| [0012](0012-the-booklet-cannot-be-byte-gated.md) | Make the booklet reproducible on one machine, but do not gate it | Accepted |
+| [0012](0012-the-booklet-cannot-be-byte-gated.md) | Make the booklet reproducible on one machine, but do not gate it | Superseded |
+| [0013](0013-vendor-the-fonts-and-gate-the-booklet.md) | Vendor the fonts, and gate the booklet after all | Accepted |
 
 ## The format
 

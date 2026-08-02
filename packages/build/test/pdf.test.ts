@@ -14,12 +14,12 @@
 
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
-import { mkdtempSync, readFileSync, rmSync } from "node:fs";
+import { existsSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
 import { buildFigure, gamesByCategory, loadGames } from "naibi";
-import { PAGE, compile } from "../build-pdf.ts";
+import { PAGE, VENDORED_FONT_DIR, compile } from "../build-pdf.ts";
 import type { Placement } from "../build-pdf.ts";
 
 const games = loadGames();
@@ -145,17 +145,38 @@ test("a figure fits the page it is drawn on, at a size cards still read at", () 
   assert.deepEqual(shrunk, [], "these figures are drawn smaller than card size");
 });
 
-test("the same corpus compiles to the same bytes on the same machine", () => {
+test("the booklet is built from the font in this repository", () => {
+  // The PDF embeds a subset of the font file, which makes that file a build
+  // input like any other. While it came from the system, two machines with
+  // different DejaVu builds produced different bytes from one corpus, and the
+  // booklet could not be gated — see decision 0012, which cost a red CI to
+  // learn. The fonts are vendored now, and this asserts the vendored copy is
+  // the one that won rather than a system copy that happens to sit earlier on
+  // some other machine. Silently falling through is the failure that would
+  // quietly un-fix all of it.
+  for (const file of ["DejaVuSans.ttf", "DejaVuSans-Bold.ttf"]) {
+    assert.ok(
+      existsSync(join(VENDORED_FONT_DIR, file)),
+      `${file} is missing from packages/build/fonts/`,
+    );
+  }
+  assert.equal(
+    built.fontSource,
+    join(VENDORED_FONT_DIR, "DejaVuSans.ttf"),
+    "the booklet was built from a font outside the repository",
+  );
+});
+
+test("the same corpus compiles to the same bytes", () => {
   // PDFKit stamps the moment of the build, so every run used to produce a new
   // 0.9 MB object in git whether or not a card had moved: 140 of them, most of
   // a 29 MB history. A fixed CreationDate stops that, and this holds the line.
   //
-  // Note what it does NOT establish. Both compiles happen here, so this is
-  // determinism on one machine. The booklet embeds a subset of whatever DejaVu
-  // the system has, and CI's differs from a developer's — which is why the
-  // booklet has no --check and cannot have one until the font is vendored.
-  // Ask this test for cross-machine reproducibility and it will lie to you;
-  // it was briefly asked, and CI went red. See decision 0012.
+  // Both compiles happen in this process, so what this proves directly is
+  // determinism here. Cross-machine reproducibility rests on the two inputs
+  // being pinned rather than on this test: the font is vendored beside this
+  // file, and pdfkit is pinned by package-lock. The gate in CI is what actually
+  // checks the claim, because it runs on a machine that is not this one.
   const twin = join(dir, "twin.pdf");
   return compile(games, twin).then(() => {
     assert.ok(

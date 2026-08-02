@@ -9,8 +9,8 @@ Orientation is in [`README.md`](README.md), how to change things in
 
 ## The gate
 
-`npm run check` — validation, `rendered/` and `docs/` freshness, typecheck,
-tests. It is the whole bar. Node 22.18+ runs the TypeScript directly; there is
+`npm run check` — validation, `rendered/`, `docs/` and booklet freshness,
+typecheck, tests. It is the whole bar. Node 22.18+ runs the TypeScript directly; there is
 no build step and nothing to compile.
 
 ## Six disciplines, each of which this project learned the hard way

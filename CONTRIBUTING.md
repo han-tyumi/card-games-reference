@@ -40,10 +40,10 @@ version right matters more than covering every variation.
 6. Update the README's `**Status:**` count, its collection blurb and its family
    table. Three tests in `packages/build/test/docs.test.ts` fail until you do.
 7. Run `npm run build`, and commit everything it regenerates: `rendered/`,
-   `docs/` **and `rendered/naibi.pdf`**. The first two are gated; the booklet is
-   not, because it embeds a subset of a system font and so is only reproducible
-   on one machine — see [0012](decisions/0012-the-booklet-cannot-be-byte-gated.md).
-   Committing a stale booklet is the one mistake nothing here will catch.
+   `docs/` **and `rendered/naibi.pdf`**. All three are gated — the booklet
+   joined them once the font it embeds was vendored into the repository, which
+   is what made it reproducible off one machine. See
+   [0013](decisions/0013-vendor-the-fonts-and-gate-the-booklet.md).
 8. `npm run check`.
 
 Prose fields accept a light Markdown convention: blank lines separate
