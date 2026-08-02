@@ -41,13 +41,30 @@ this.
 
 Of the tools that do the whole job:
 
-- **cocogitto** — the closest structural match found, and closer than Knope. Its
-  `cog bump --auto` is documented as: calculate the version from the commits,
-  run `pre_bump_hooks`, append to `CHANGELOG.md`, **create a version commit
-  containing the changes made in those steps**, tag it, then run
-  `post_bump_hooks`. That middle step is exactly the awkward requirement above —
-  a hook rebuilds the booklet and the rebuilt booklet is in the release commit.
-  One Rust binary, libgit2 its only system dependency.
+- **cocogitto** — the closest structural match, and the only option here that
+  was **actually run** rather than read about: 7.0.0, against a clone of this
+  repository, with the same commits fed to both. Findings, since a comparison
+  nobody can check is just an opinion:
+  - It picked the same bump this script did, v0.2.0 to v0.3.0 off one `feat`.
+    The version logic agrees exactly, which is worth knowing in both directions.
+  - A hand-written preamble **is** preserved. It requires a `- - -` marker in
+    the file and errors without one, keeping everything above it. That answers
+    a question its documentation does not.
+  - Its release notes list the `docs` and `chore` commits it had just announced
+    it was skipping — "skipped" means "does not move the version", not "kept out
+    of the changelog". So a reader gets `#### Miscellaneous Chores — add the
+    changelog separator - (08b55fd)`, with hash and author, where this script
+    prints nothing at all. For a changelog that is a published document in a
+    repository about curated prose, that is the wrong default.
+  - Headings are conventional-commit type names, versions are `## v0.3.0 -
+    2026-08-02`, and there are no compare-link definitions.
+
+  Reaching what exists today needs a custom Tera template for the headings, the
+  omissions and the links. That is the part that decided it: the bespoke thing
+  would still exist, just written in a template language with no way to unit-test
+  it, in place of TypeScript with twenty tests around the same decisions. The
+  template route was **not** built, so this is a judgement about cost, not a
+  measurement of it.
 - **Knope** — also a good fit, by composing `PrepareRelease`, arbitrary
   `Command` steps and `Release`. It takes hand-written prose through change
   files in `.changeset/`, each with a summary, optional detail and its own bump
@@ -108,17 +125,15 @@ This reverses the conventional-commits rejection in
 semver on `packages/data`, one version in one manifest, releases as tags with
 the booklet attached — stands unchanged.
 
-**cocogitto is the thing to revisit**, and the honest position is that this was
-decided on a narrow survey and then widened afterwards, which is the wrong
-order. What kept the script was not that it beat cocogitto on the merits — it
-loses on volume, a hundred lines of TOML-shaped configuration against a few
-hundred of TypeScript — but that it was already written, already tested, and
-already had released a version correctly. That is a real reason and a weak one,
-and it should be stated as both.
+**cocogitto is the thing to revisit**, and what to weigh is the changelog and
+nothing else. The version logic was measured to agree; the notes were measured
+to differ. Every tool in this space owns the file's format, and this file has a
+curated preamble, compare links, Keep a Changelog headings, housekeeping kept
+out, and a hand-written entry that can stand in for the generated list.
 
-The trigger for switching is specific rather than a feeling: **a second
-published package**, or the first need for prerelease or backport versions.
-Both are where hand-rolled release tooling turns bad and both are cocogitto's
-and Knope's home ground. The thing to weigh at that point is the changelog:
-every one of these tools owns the file's format, and this one has a curated
-preamble and lets a hand-written entry stand in for the generated list.
+Two triggers, both specific rather than a feeling: **a second published
+package**, or the first need for prerelease or backport versions. Both are where
+hand-rolled release tooling turns bad and both are cocogitto's and Knope's home
+ground. At that point the right move is probably to take the tool and give up
+the changelog format, rather than to grow this script — it was written to do one
+job for one package and it should not learn a second.
