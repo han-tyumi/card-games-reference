@@ -1,0 +1,171 @@
+{
+  "id": "baccarat",
+  "name": "Baccarat",
+  "aliases": [
+    "Punto Banco",
+    "Baccara"
+  ],
+  "category": "casino",
+  "players": {
+    "min": 2,
+    "max": 12,
+    "ideal": 6
+  },
+  "decks": "6 to 8 standard decks shuffled together; eight is the casino norm and six is usual online",
+  "equipment": {
+    "standard_decks": 6,
+    "jokers": 0,
+    "special_deck": null,
+    "extra_deck_for_large_groups": false,
+    "other": []
+  },
+  "setup": "The version played almost everywhere is Punto Banco, and its defining feature is worth knowing before you sit down: after the bet is placed, nobody decides anything. Not the players, not the dealer, not the house. Every card that is drawn is drawn because a printed rule says so, which makes this the only major card game where reading the rules and playing perfectly are the same act.\n\nShuffle six or eight packs together — eight on a casino floor, six in most online rooms. At home a banker deals, covers the bets and does the arithmetic; the job is mechanical, so hand it round or leave it with whoever is most willing.\n\nCards are worth their pip value, an ace counts one, and a ten or a court card counts nothing whatever. Totals are taken modulo ten: add the cards up and throw away everything except the last digit, so eight and six is four rather than fourteen. Nine is therefore the best hand available and there is no such thing as going bust.\n\nTwo hands are dealt each round and neither of them belongs to anyone at the table. They are called Player and Banker, and those are the names of two piles of cards rather than of any person present — the punter who has staked the most does the honours of turning them over at a full-size table, and it changes nothing. Before the deal, everyone puts money on Player, on Banker, or on the two of them finishing level.\n\nA casino burns cards off the top of a fresh shoe and buries a cut card sixteen from the bottom; at home, shuffle when you are running short.",
+  "layout": {
+    "rows": [
+      [
+        {
+          "kind": "stock",
+          "label": "Shoe",
+          "face": "down"
+        }
+      ],
+      [
+        {
+          "kind": "hand",
+          "label": "Player",
+          "cards": 2
+        },
+        {
+          "kind": "gap"
+        },
+        {
+          "kind": "hand",
+          "label": "Banker",
+          "cards": 2
+        }
+      ]
+    ],
+    "caption": "Two hands, owned by nobody. However many people are at the table, one Player hand is dealt and everyone backs it, backs the Banker hand, or backs the tie."
+  },
+  "play": "Two cards go to each hand and both are turned up. If either shows a total of eight or nine it is a natural, and that settles the drawing question for both hands at once: no third card is dealt to either, whatever the other one holds.\n\nFailing a natural, the Player hand is resolved first, on a rule with no exceptions. Six or seven, it stands. Five or less, it takes one card and only one.\n\nThe Banker hand then answers, and what it does depends on whether the Player hand took anything.\n\nWhere the Player stood, the Banker follows the same rule the Player just did: draw on five or less, stand on six or seven.\n\nWhere the Player drew, the Banker's rule takes account of the card the Player drew — the one piece of information a Banker hand has that a Player hand does not, and the whole reason the Banker bet is charged a commission:\n\n- 7: stand.\n- 6: draw only against a 6 or a 7.\n- 5: draw against 4, 5, 6 or 7.\n- 4: draw against anything from 2 to 7.\n- 3: draw against everything except an 8.\n- 0, 1 or 2: always draw.\n\nNo hand ever receives a fourth card, and the third card, where one is dealt, goes beside the two it is added to rather than replacing anything.\n\nThe table looks arbitrary because it is a fossil. Baccarat was once played with both two-card hands hidden and only the third card exposed, and these are the choices a good player would have made knowing exactly that much and no more. When the choices hardened into rules there was no longer any reason to hide the cards, so they came face up and the reasoning behind the table went out of view along with them.\n\nWith both hands complete, the totals are compared and the round is settled. Cards are cleared and the next round begins.",
+  "figures": [
+    {
+      "kind": "meld",
+      "caption": "Only the last digit of the total counts, so no hand is ever worth more than nine, and a court card contributes nothing at all.",
+      "rows": [
+        {
+          "label": "A natural",
+          "cards": [
+            {
+              "face": "9♠"
+            },
+            {
+              "face": "K♦",
+              "note": "Counts nothing"
+            }
+          ]
+        },
+        {
+          "label": "Fourteen scores four",
+          "cards": [
+            {
+              "face": "8♥"
+            },
+            {
+              "face": "6♣",
+              "note": "Drop the ten"
+            }
+          ]
+        },
+        {
+          "label": "Three cards, twelve",
+          "cards": [
+            {
+              "face": "4♣"
+            },
+            {
+              "face": "3♥"
+            },
+            {
+              "face": "5♠",
+              "note": "Scores two"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "goal_and_scoring": "Whichever of the two hands finishes nearer to nine takes the round. You played neither of them, so the only thing that matters is which one you put money on.\n\nThere are three things to put it on, they cost wildly different amounts, and choosing between them is the whole of the judgement this game asks for:\n\n- Banker, at a long-run cost of about 1.06 percent of what you stake. Make this bet. There is nothing to add to the advice.\n- Player, at about 1.24 percent. Entirely defensible, and the worse of the two by a whisker.\n- The tie, at about 14.4 percent — some twelve times the price of either alternative, and one of the steepest wagers anywhere in a casino. It happens to be sitting on a table otherwise known for cheap ones, which is presumably the point.\n\nWhy only one of those is taxed: the Banker hand acts last, knowing whether the Player drew and what card it drew, and that extra sight of things makes it come out ahead slightly more often. The five percent taken from a winning Banker bet is what claws the difference back. It is rarely collected hand by hand — a marker goes out against your seat and the whole lot is settled when the shoe runs out. A tie leaves Player and Banker stakes sitting where they are rather than sweeping them away.\n\nNothing further is available to a player, and it is worth being blunt about that. No decision exists that could be made well. Card counting shifts the edge by a rounding error. The scorecard the casino hands out for recording past results records exactly that and predicts nothing, because a shoe has no memory of what it has already dealt.\n\nNo score accumulates between rounds. Play as many as suit you; what is in front of you at the end is the result.",
+  "scoring_table": [
+    {
+      "item": "Ace",
+      "value": "1"
+    },
+    {
+      "item": "2 through 9",
+      "value": "pip value"
+    },
+    {
+      "item": "10, jack, queen, king",
+      "value": "0"
+    },
+    {
+      "item": "Banker bet",
+      "value": "1 to 1, less 5% commission"
+    },
+    {
+      "item": "Player bet",
+      "value": "1 to 1"
+    },
+    {
+      "item": "Tie bet",
+      "value": "8 to 1",
+      "note": "a few tables, mostly British, pay 9 to 1"
+    },
+    {
+      "item": "Tie, holding a Player or Banker bet",
+      "value": "stake returned"
+    },
+    {
+      "item": "Player pair or Banker pair",
+      "value": "10 to 1",
+      "note": "optional side bet: the first two cards of that hand match in rank"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Chemin de Fer",
+      "description": "The older game, still dealt in a few European casinos, and the one in the early Bond films. A player holds the bank rather than the house, stakes an amount, and the others bet against it up to that total; calling banco covers the whole bank single-handed. Only two hands are dealt and you cannot choose which to back — your money is on the players' side by definition. The player with the largest bet acts for everyone and, crucially, chooses whether to take a third card instead of being told, as does the banker; the two-card hands stay hidden until the decisions are made, which is what makes the choice worth anything. Win or tie and you keep the bank, with the whole of it staked again next time. Lose and it passes on."
+    },
+    {
+      "name": "Baccarat Banque",
+      "description": "Also called Baccarat à Deux Tableaux, and the oldest form of the game. The table splits into a left half and a right half, three hands are dealt — one to each side and one to the bank — and each side plays the bank independently, never each other. Betting on either side is allowed at some tables, or à cheval to split a stake across both. The bank is not passed around: one person holds it until the shoe is exhausted, they run out of money, or they choose to stand down, and they have real latitude over drawing. Usually dealt from three packs."
+    },
+    {
+      "name": "Mini-baccarat",
+      "description": "The same game and the same odds on a blackjack-sized table, with one dealer handling every card rather than passing the shoe around. It is much faster, which is a mixed blessing when the house has an edge on every hand, but the minimums are a fraction of the big table's and it sits on the main floor instead of behind a rope. Midi-baccarat is the identical arrangement on a larger table, generally in the high-limit room."
+    },
+    {
+      "name": "Reduced commission on Banker",
+      "description": "Casinos occasionally shave the five percent to draw players in. Rates of four percent and 2.75 percent have both been offered, and one Las Vegas casino briefly charged nothing at all in 1989. A related London rule waives the commission on one specific winning hand — a Banker two-card three that beats a Player who drew an 8 — which takes the Banker bet's cost down to around 0.81 percent. Any of these makes the best bet in the house better still, so it is worth reading the felt."
+    }
+  ],
+  "difficulty": "easy",
+  "duration_minutes": "30-60",
+  "tags": [
+    "betting",
+    "luck",
+    "classic",
+    "beginner-friendly",
+    "large-group"
+  ],
+  "sources_consulted": [
+    "Pagat",
+    "Wizard of Odds",
+    "Wikipedia"
+  ],
+  "checked": {
+    "date": "2026-08-02",
+    "prose": "026e5480de35f0ac"
+  }
+}

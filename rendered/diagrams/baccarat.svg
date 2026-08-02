@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 209.6" width="442" height="335" role="img" aria-label="Baccarat setup diagram">
+<title>Baccarat setup</title>
+<rect x="123.0" y="8.0" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="83.0" y="96.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="83.0" y="97.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="163.0" y="96.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="163.0" y="97.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="138.0" y="58.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Shoe</text>
+<text x="98.0" y="147.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Player</text>
+<text x="178.0" y="147.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Banker</text>
+<text x="138.0" y="173.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Two hands, owned by nobody. However many people are at</text>
+<text x="138.0" y="185.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">the table, one Player hand is dealt and everyone backs</text>
+<text x="138.0" y="197.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">it, backs the Banker hand, or backs the tie.</text>
+</svg>

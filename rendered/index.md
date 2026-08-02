@@ -2,7 +2,7 @@
 
 # Card Game Rules — Index
 
-61 games, free to reuse under CC BY-SA 4.0.
+62 games, free to reuse under CC BY-SA 4.0.
 
 ## Solitaire (1 player)
 
@@ -97,5 +97,6 @@
 
 | Game | Players | Deck | Time | Difficulty |
 | --- | --- | --- | --- | --- |
+| [Baccarat](baccarat.md) | 2-12 players (best with 6) | 6 to 8 standard decks shuffled together; eight is the casino norm and six is usual online | 30-60 minutes | Easy |
 | [Blackjack](blackjack.md) | 2-8 players (best with 5) | 1 to 8 standard decks shuffled together; six is the casino norm, one or two is fine at home | 30-60 minutes | Easy |
 | [Red Dog](red-dog.md) | 2-8 players (best with 4) | 1 to 8 standard decks shuffled together; six is the casino norm, and more packs is better for the player rather than worse | 15-30 minutes | Simple |
