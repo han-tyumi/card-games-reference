@@ -1,20 +1,29 @@
 /**
  * Cutting a release.
  *
- * The whole point of the script is that a release is one decision and not five
- * edits, so what has to be right is the four things it derives from that
- * decision: the version, where the notes move to, what the compare links point
- * at, and that it refuses to publish notes nobody wrote.
+ * Nobody cuts a release here, so everything the script infers has to be right:
+ * the bump it reads out of the commit subjects, the version that follows, where
+ * the notes move to, and what the compare links end up pointing at.
  *
- * The last one is the one worth having. A release whose body is a blank line is
- * the paper version of a check that passes by looking at nothing, and it is
- * exactly what an automated bump would produce on a quiet week.
+ * Two of these matter more than the rest, because they are what stops an
+ * automatic release from being a worthless one. A push of nothing but
+ * housekeeping must release nothing, or the version counts pushes instead of
+ * describing compatibility. And a subject with no prefix must still count for
+ * something, or a batch of sloppily-labelled work releases nothing at all and
+ * explains nothing — the silent failure this project keeps finding elsewhere.
  */
 
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
-import { latestRelease, nextVersion, rewriteChangelog } from "../release.ts";
+import {
+  bumpFromCommits,
+  latestRelease,
+  nextVersion,
+  notesFromCommits,
+  readCommit,
+  rewriteChangelog,
+} from "../release.ts";
 
 const changelog = (unreleased: string, releases = ""): string =>
   `# Changelog\n\nPreamble.\n\n## [Unreleased]\n${unreleased}${releases}\n` +
@@ -125,4 +134,96 @@ test("the result is what the release workflow reads back", () => {
 
   assert.equal(notes, "- A thing.");
   assert.equal(latestRelease(out), "0.2.0");
+});
+
+// --- reading commits ------------------------------------------------------
+
+test("a conventional subject is read into a type, a bump and its text", () => {
+  assert.deepEqual(readCommit("feat: add Piquet"), {
+    type: "feat",
+    breaking: false,
+    subject: "add Piquet",
+    bump: "minor",
+  });
+  assert.deepEqual(readCommit("fix(web): stop the filter lying"), {
+    type: "fix",
+    breaking: false,
+    subject: "stop the filter lying",
+    bump: "patch",
+  });
+  assert.equal(readCommit("chore: bump the lockfile").bump, null);
+});
+
+test("a breaking change is a major however it is written", () => {
+  assert.equal(readCommit("feat!: drop the decks field").bump, "major");
+  assert.equal(readCommit("fix(schema)!: rename a category").bump, "major");
+  // Even a type that earns nothing on its own.
+  assert.equal(readCommit("chore!: drop Node 22").bump, "major");
+});
+
+test("a subject with no prefix counts as a patch rather than vanishing", () => {
+  // The alternative is a batch of sloppily-labelled work releasing nothing and
+  // explaining nothing, which is the silent failure this repo keeps finding.
+  const change = readCommit("Stop the booklet's cover reading the clock");
+  assert.equal(change.type, "other");
+  assert.equal(change.bump, "patch");
+  assert.equal(change.subject, "Stop the booklet's cover reading the clock");
+
+  // An unrecognised type is the same case, not a crash.
+  assert.equal(readCommit("wibble: something").bump, "patch");
+});
+
+test("the largest bump in a batch wins", () => {
+  assert.equal(bumpFromCommits(["fix: a", "feat: b", "fix: c"]), "minor");
+  assert.equal(bumpFromCommits(["fix: a", "feat!: b", "feat: c"]), "major");
+  assert.equal(bumpFromCommits(["fix: a", "fix: b"]), "patch");
+});
+
+test("housekeeping alone releases nothing", () => {
+  // Without this the version counts pushes instead of describing compatibility.
+  assert.equal(bumpFromCommits(["chore: tidy", "docs: fix a typo", "ci: cache npm"]), null);
+  assert.equal(bumpFromCommits([]), null);
+});
+
+test("generated notes group by kind and drop what earns nothing", () => {
+  const notes = notesFromCommits([
+    "feat: add Piquet",
+    "chore: bump the lockfile",
+    "fix: stop the filter lying",
+    "feat: add Tarneeb",
+    "docs: reword the README",
+  ]);
+
+  assert.match(notes, /### Added\n\n- add Piquet\n- add Tarneeb/);
+  assert.match(notes, /### Fixed\n\n- stop the filter lying/);
+  assert.ok(!notes.includes("lockfile"), "housekeeping reached the release notes");
+  assert.ok(!notes.includes("README"), "housekeeping reached the release notes");
+  assert.ok(notes.indexOf("### Added") < notes.indexOf("### Fixed"), "sections are unordered");
+});
+
+test("a breaking change is called out where a reader will see it", () => {
+  const notes = notesFromCommits(["feat!: drop the decks field", "fix: a thing"]);
+  assert.match(notes, /### Changed\n\n- \*\*Breaking:\*\* drop the decks field/);
+});
+
+test("hand-written notes beat generated ones", () => {
+  // Generated notes list subjects; a written entry summarises many at once. If
+  // someone bothered to write one, replacing it with the list is a downgrade.
+  const written = changelog("\n- Written by a person.\n\n", existing);
+  const out = rewriteChangelog(written, "0.2.0", "2026-09-01", "### Added\n\n- generated");
+
+  assert.match(out, /- Written by a person\./);
+  assert.ok(!out.includes("- generated"), "the generated notes overrode a written entry");
+});
+
+test("generated notes are used when nothing was written by hand", () => {
+  const out = rewriteChangelog(changelog("\n", existing), "0.2.0", "2026-09-01", "### Added\n\n- generated");
+  assert.match(out, /## \[0\.2\.0\][^\n]*\n\n### Added\n\n- generated/);
+});
+
+test("nothing written and nothing generated is refused", () => {
+  assert.throws(
+    () => rewriteChangelog(changelog("\n", existing), "0.2.0", "2026-09-01", "   "),
+    /nothing to release/,
+  );
 });

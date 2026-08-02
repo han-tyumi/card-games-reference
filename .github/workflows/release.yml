@@ -1,16 +1,17 @@
 name: Release
 
-# Cutting a release is pushing a tag. Everything else happens here, so the
-# booklet that gets published is built by the same job that checked it rather
-# than uploaded from whoever's laptop tagged it.
+# Releases cut themselves. A push to main that earns one gets one; a push of
+# nothing but housekeeping gets nothing and says so.
 #
-# It can also be run by hand from the Actions tab, which needs no terminal and
-# so works from a phone. That path takes the version from the manifest and
-# creates the tag itself, so a manual run cannot invent one: there is exactly
-# one place a version is written either way.
+# It runs on Validate finishing rather than on the push, so a release is never
+# built from a commit that failed its own gate. Pages does deploy in parallel
+# with Validate, but a release is a durable artifact and a deploy is not, so
+# this one waits.
 on:
-  push:
-    tags: ["v*"]
+  workflow_run:
+    workflows: ["Validate"]
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -18,9 +19,19 @@ permissions:
 
 jobs:
   release:
+    # A red Validate must not produce a release. Manual runs are trusted to
+    # know what they are doing, and run the same gate anyway.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
+      # Full history and tags: the bump is read from the commits since the last
+      # release, so a shallow clone would see nothing and release nothing.
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -30,64 +41,44 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # A release is a claim about a version and up to three places state one.
-      # If they disagree the booklet's cover is wrong in a file people print,
-      # so this fails before anything is published rather than after.
-      - name: Settle the version, and check everything agrees on it
-        id: version
+      - name: Decide, and prepare the release
+        id: prepare
         run: |
-          pkg="$(node -p "require('./packages/data/package.json').version")"
-          log="$(grep -m1 -oP '^## \[\K[0-9]+\.[0-9]+\.[0-9]+' CHANGELOG.md)"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # On a tag the tag is the claim and must match. On a manual run there
-          # is no tag yet, so the manifest is the claim and the tag is made from
-          # it -- which is why a hand-run release cannot name a version nothing
-          # else knows about.
-          if [ "$GITHUB_EVENT_NAME" = "push" ]; then
-            version="${GITHUB_REF_NAME#v}"
+          before="$(node -p "require('./packages/data/package.json').version")"
+          npm run release -- --auto
+          after="$(node -p "require('./packages/data/package.json').version")"
+
+          if [ "$before" = "$after" ]; then
+            echo "No release was due. This is a correct outcome, not a failure."
+            echo "released=false" >> "$GITHUB_OUTPUT"
           else
-            version="$pkg"
+            echo "released=true" >> "$GITHUB_OUTPUT"
+            echo "version=$after" >> "$GITHUB_OUTPUT"
+            echo "tag=v$after" >> "$GITHUB_OUTPUT"
           fi
 
-          echo "version=$version package=$pkg changelog=$log"
-          if [ "$version" != "$pkg" ] || [ "$version" != "$log" ]; then
-            echo "::error::version $version, package $pkg, changelog $log — these must match"
-            exit 1
-          fi
-
-          echo "version=$version" >> "$GITHUB_OUTPUT"
-          echo "tag=v$version" >> "$GITHUB_OUTPUT"
-
-      # Refuse to publish over a release that already exists. Without this a
-      # second manual run would fail halfway, after the gate and the build.
-      - name: Check this version has not been released already
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          if gh release view "${{ steps.version.outputs.tag }}" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            echo "::error::${{ steps.version.outputs.tag }} is already released — bump the version first"
-            exit 1
-          fi
-
-      # The whole gate, not a subset. A release is the worst place to discover
-      # that docs/ or the booklet was stale.
-      - name: Run the full check
-        run: npm run check
+      # Pushed before the release is created, so the tag names a commit that is
+      # actually on main. A push from GITHUB_TOKEN does not retrigger Validate,
+      # so the release commit cannot start this again.
+      - name: Push the version bump
+        if: steps.prepare.outputs.released == 'true'
+        run: git push origin HEAD:main
 
       - name: Take the changelog entry for this version as the release notes
+        if: steps.prepare.outputs.released == 'true'
         run: |
           # Stops at the next release heading, or at the link definitions that
-          # close the file -- the last entry has no heading after it, so v0.1.0
-          # went out with two stray `[0.1.0]: https://…` lines swept in. They
-          # render as nothing, which is precisely why it would have gone on
-          # doing it unnoticed.
-          awk -v v="${{ steps.version.outputs.version }}" '
+          # close the file -- the last entry has no heading after it.
+          awk -v v="${{ steps.prepare.outputs.version }}" '
             $0 ~ "^## \\[" v "\\]" { inside = 1; next }
             inside && (/^## / || /^\[/) { exit }
             inside { print }
           ' CHANGELOG.md > /tmp/notes.md
           if [ ! -s /tmp/notes.md ]; then
-            echo "::error::no changelog entry for ${{ steps.version.outputs.version }}"
+            echo "::error::no changelog entry for ${{ steps.prepare.outputs.version }}"
             exit 1
           fi
           cat /tmp/notes.md
@@ -95,16 +86,16 @@ jobs:
       # A stable asset name, so a link to releases/latest/download never needs
       # editing again. Which release it is comes off the booklet's cover.
       - name: Name the booklet for the release
+        if: steps.prepare.outputs.released == 'true'
         run: cp rendered/naibi.pdf /tmp/naibi-booklet.pdf
 
-      # --target matters on the manual path: it is what creates the tag, on the
-      # commit that was just checked, rather than requiring one to exist.
       - name: Publish
+        if: steps.prepare.outputs.released == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release create "${{ steps.version.outputs.tag }}" /tmp/naibi-booklet.pdf \
-            --title "${{ steps.version.outputs.tag }}" \
+          gh release create "${{ steps.prepare.outputs.tag }}" /tmp/naibi-booklet.pdf \
+            --title "${{ steps.prepare.outputs.tag }}" \
             --notes-file /tmp/notes.md \
-            --target "$GITHUB_SHA" \
+            --target "$(git rev-parse HEAD)" \
             --repo "$GITHUB_REPOSITORY"

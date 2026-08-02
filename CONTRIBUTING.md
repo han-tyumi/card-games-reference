@@ -559,7 +559,7 @@ see [decision 0014](decisions/0014-type-check-the-browser-assets-in-place.md).
 
 ## Cutting a release
 
-A release is a tag. Everything else — the full check, the notes, the booklet —
+You do not cut one. Everything — the version, the notes, the booklet, the tag —
 happens in `.github/workflows/release.yml`, so what gets published is built by
 the job that verified it rather than uploaded from whoever's laptop tagged it.
 
@@ -567,39 +567,51 @@ The version lives in exactly one place, `packages/data/package.json`, and is rea
 from there by everything that needs it. What the numbers mean, and why the
 project is on `0.x`, is at the top of [CHANGELOG.md](CHANGELOG.md).
 
-**Write the notes as you go**, into `## [Unreleased]` in
-[CHANGELOG.md](CHANGELOG.md). That is the only part of a release a person has
-to do, and it is deliberately not reconstructed at release time from a list of
-commit subjects — the entries here summarise many commits at once, which no
-generator produces.
+Releases cut themselves. A push to main that earns one gets one, built by the
+job that verified it; a push of nothing but housekeeping gets nothing.
 
-Then one command, plus one button:
+What decides is the **commit subject**, which now carries a conventional prefix:
+
+| Prefix | Earns | For |
+| --- | --- | --- |
+| `feat:` | a minor | anything additive: new entries, new optional schema fields, new exports |
+| `fix:`, `perf:` | a patch | corrections that break nothing |
+| any prefix with `!` | a major | a breaking change to the schema or the exports |
+| `chore:`, `docs:`, `ci:`, `test:`, `build:`, `refactor:`, `style:` | nothing | housekeeping, which must not move the version |
+
+Write the subject the way this repository already writes them — the prefix is a
+prefix, not a replacement. `fix: stop the booklet's cover reading the clock` is
+the same subject it always was.
+
+Two rules keep the number honest, both of them tested. The largest bump in a
+batch wins, so one breaking change among a hundred fixes is still a major. And a
+subject with **no** recognisable prefix counts as a patch rather than being
+dropped: dropping it would mean a batch of sloppily-labelled work releasing
+nothing and explaining nothing.
+
+`npm run release -- --auto` is what the workflow runs, and you can run it too:
 
 ```sh
-npm run release -- minor      # or major, or patch; --dry-run to see it first
-git push
+npm run release -- --auto --dry-run   # what would happen, writing nothing
+npm run release -- minor              # override the decision, if it read the room wrong
 ```
 
-`npm run release` derives everything else from that one word. It bumps
-`packages/data/package.json` — the only manifest that carries a version, the
-other three being `private` and pinned at `0.0.0` so no meaning can be read into
-them — moves the `Unreleased` notes under `## [X.Y.Z] — YYYY-MM-DD`, repoints
+It bumps `packages/data/package.json` — the only manifest that carries a
+version, the other three being `private` and pinned at `0.0.0` so no meaning can
+be read into them — moves the notes under `## [X.Y.Z] — YYYY-MM-DD`, repoints
 the compare links, rebuilds the booklet because the version is printed on its
-cover, runs the whole gate, and commits. It refuses an empty `Unreleased`,
-because a release nobody can read what changed in is not worth cutting.
+cover, runs the whole gate, and commits.
 
-Then **Actions → Release → Run workflow**, which needs no terminal and so works
-from a phone. It takes the version from the manifest and creates the tag itself,
-so it cannot name a version the changelog has not got, and it refuses to run
-twice over one version — which a tag push gets for free by the tag already
-existing. `git tag v0.2.0 && git push origin v0.2.0` does the same thing if you
-would rather.
+**The changelog is not surrendered to the generator.** Anything you write in
+`## [Unreleased]` wins over the generated list of subjects, because an entry
+written by a person summarises many commits at once and a generator can only
+list them. Write one when a release deserves better than a list; leave it empty
+and the subjects will do.
 
-The job then checks that the tag, the manifest and the changelog all say the
-same version, runs the full gate, takes the release notes from that changelog
-entry, and attaches the booklet as `naibi-booklet.pdf`. The name is stable on
-purpose, so that a link to it never needs editing again, and which release a
-printed copy came from is on its cover.
+The workflow runs on **Validate succeeding**, not on the push, so a release is
+never built from a commit that failed its own gate. **Actions → Release → Run
+workflow** forces one by hand, which needs no terminal and so works from a
+phone.
 
 The README and the site link `releases/latest/download/naibi-booklet.pdf`, which
 resolves to whatever was released last and so never needs editing. Note what
@@ -608,13 +620,9 @@ something has been released under it, so point the links at it *after* the first
 release rather than before. Doing it the other way round publishes a broken
 download, which is how it went here.
 
-There is no changelog automation, and that is deliberate. Conventional commits
-is cheap in itself — it is a prefix, and `fix: stop the booklet's cover reading
-the clock` is a perfectly good subject — but what it buys is version-bump
-inference and generated release notes, and this project wants neither. Releases
-are cut deliberately rather than on every push, so nothing would read the
-prefixes; and generated notes are a list of commit subjects, where the entries
-here are a synthesis of many ("72 game entries across nine families…" is no
-commit's subject). Changesets solves independent versioning across many
-published packages, and there is one. The changelog is written by hand and
-checked by a test instead, the same way the README's counts are.
+Changesets was weighed again when this was automated and turned down again: it
+solves independent versioning across many published packages, and there is one.
+release-please does exactly this job and was the closest fit, but it maintains a
+release PR and takes ownership of `CHANGELOG.md`, which is more machinery than
+one package needs. The reasoning is in
+[decision 0016](decisions/0016-releases-cut-themselves-from-commit-subjects.md).

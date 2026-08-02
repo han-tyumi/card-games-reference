@@ -31,6 +31,7 @@ part.
 | [0013](0013-vendor-the-fonts-and-gate-the-booklet.md) | Vendor the fonts, and gate the booklet after all | Accepted |
 | [0014](0014-type-check-the-browser-assets-in-place.md) | Type-check the browser assets in place rather than converting them | Accepted |
 | [0015](0015-semantic-versions-cut-by-tag.md) | Semantic versions on the data package, cut by pushing a tag | Accepted |
+| [0016](0016-releases-cut-themselves-from-commit-subjects.md) | Releases cut themselves, from conventional commit subjects | Accepted |
 
 ## The format
 

@@ -6,11 +6,15 @@ versions follow [semantic versioning](https://semver.org/), with the contract
 being **`packages/data`: its schema and its exports**.
 
 - **major** — a breaking change to the schema or to what the package exports:
-  a field removed, a category renamed, a type narrowed.
+  a field removed, a category renamed, a type narrowed. Written `feat!:` or any
+  prefix with a `!`.
 - **minor** — anything additive: new entries, new optional schema fields, new
-  exports.
+  exports. Written `feat:`.
 - **patch** — corrections that break nothing: prose fixes, figure fixes,
-  tooling, generated output.
+  tooling, generated output. Written `fix:` or `perf:`.
+
+Releases are cut automatically from those prefixes when Validate goes green on
+main; housekeeping types release nothing.
 
 While the version is `0.x`, a **minor** bump may carry a breaking schema change.
 That is what `0.x` means, and it is the honest label for a schema that gained a
@@ -26,11 +30,11 @@ release procedure is in
 
 ### Added
 
-- **`npm run release -- <major|minor|patch>`**, which does everything a release
-  needs except decide what kind it is: bumps the manifest, moves these notes
-  under a dated heading, repoints the compare links, rebuilds the booklet whose
-  cover carries the version, and runs the gate. It refuses to release an empty
-  set of notes.
+- **Automatic releases.** A push to main that earns one gets one, decided from
+  the conventional prefix on each commit subject: `feat` a minor, `fix` a patch,
+  a `!` a major, housekeeping nothing at all. The release job runs on Validate
+  succeeding, so nothing is ever built from a commit that failed its own gate.
+  Anything written by hand in `Unreleased` still beats the generated list.
 
 ## [0.1.0] — 2026-08-02
 

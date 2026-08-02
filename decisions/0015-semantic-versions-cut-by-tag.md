@@ -1,6 +1,7 @@
 # 0015. Semantic versions on the data package, cut by pushing a tag
 
-- **Status:** Accepted
+- **Status:** Accepted — except the conventional-commits rejection below, which
+  [0016](0016-releases-cut-themselves-from-commit-subjects.md) reverses
 - **Date:** 2026-08-02
 
 ## Context
