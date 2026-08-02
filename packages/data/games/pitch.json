@@ -1,0 +1,154 @@
+{
+  "id": "pitch",
+  "name": "Pitch",
+  "aliases": [
+    "Setback",
+    "High-Low-Jack",
+    "Auction Pitch",
+    "Blind All Fours"
+  ],
+  "category": "trick-taking",
+  "players": {
+    "min": 3,
+    "max": 7,
+    "ideal": 4
+  },
+  "decks": "1 standard deck (52 cards)",
+  "equipment": {
+    "standard_decks": 1,
+    "jokers": 0,
+    "special_deck": null,
+    "extra_deck_for_large_groups": false,
+    "other": []
+  },
+  "setup": "Pitch is All Fours with an auction bolted on, and the auction is what makes it. The English original turned a card up to fix trump; here somebody bids for the right to choose it, and then chooses it by leading — which is what pitching means and where the name comes from.\n\nThe game runs two ways and the rules are identical for both. Four people in two partnerships, sitting opposite their partner, is the ordinary social form and plays to 21. Everyone for themselves — cutthroat — takes three to seven and plays to 11, or to 7 for something short. Fix which before you deal, along with the target, because it is the one thing this game genuinely varies on.\n\nCut for first deal; it then moves clockwise, as does play. Deal six cards to each player in packets of three. The rest of the pack is set aside and is not used, so at four players nearly half the deck never appears — which is why the whole game hinges on what happens to be in play rather than on what exists.\n\nCards rank as you would expect, ace down to two, and there is no trump suit at all until the first card of the first trick is led.\n\nOne sheet of paper, one column per side, plus and minus. Scores go negative here often enough that people say \"in the hole\" rather than \"minus three\", and if you are keeping score with counters instead, hand each side twenty-one and take them away.",
+  "play": "The bidding is a single round and then it is over. Starting to the dealer's left, each player either passes or names a number higher than the last bid. Two is the minimum anyone may bid and four is the top of the ordinary range; five is available only as smudge, which is a claim on all six tricks as well as all four points.\n\nThe dealer bids last and has two privileges for it. The dealer may steal the bid by matching the highest bid rather than beating it, and if everyone else has passed, the dealer is forced to bid at least two rather than being allowed to throw the hand in. Both are worth knowing before you sit down, because they change what a marginal hand is worth in third seat.\n\nWhoever ends up highest is the pitcher. There is no announcement of a trump suit: the pitcher leads to the first trick, and whatever suit that card is, that is trump for the hand. Naming it and playing it are the same act, which means the pitcher cannot bluff about it and the rest of the table learns the suit and the pitcher's opening card at the same moment.\n\nThe rule that makes the play unlike most trick-taking games: you may always trump. Faced with a suit you hold, you must either follow it or play a trump — those are the two legal options, and choosing the trump is entirely allowed. What you may not do is discard something else while holding the suit led. That is a revoke, and it costs the offender the value of the bid.\n\nHolding none of the suit led, you may play anything at all.\n\nTricks go to the highest trump in them, or where no trump appears, to the highest card of the suit led. The winner leads to the next. Six tricks empty the hands.\n\nBecause you may trump at will, the hand is not a contest to take tricks. It is a contest to take four specific things, and a trick with nothing in it is worth nothing. Expect people to throw away winners and to trump their own side's high card to drag a scoring trump out of the trick.",
+  "figures": [
+    {
+      "kind": "meld",
+      "caption": "The distinction that catches everyone out. In a trick the ace beats the ten; in the count for Game the ten is worth more than the ace and more than anything else in the pack.",
+      "rows": [
+        {
+          "label": "Wins the trick",
+          "cards": [
+            {
+              "face": "A♠",
+              "note": "Beats the ten"
+            },
+            {
+              "face": "10♠"
+            }
+          ]
+        },
+        {
+          "label": "Worth more for Game",
+          "cards": [
+            {
+              "face": "10♠",
+              "note": "10 pips"
+            },
+            {
+              "face": "A♠",
+              "note": "4 pips"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "goal_and_scoring": "Four points are on offer in every hand, and they are what the bidding is a bid for. All four live in or around the trump suit:\n\n- High, for the top trump that was dealt at all. Not necessarily the ace — if no ace of trumps came out, the king is high, and so on down.\n- Low, for the bottom trump that was dealt. Not necessarily the two, by the same argument.\n- Jack, for the jack of trumps. Unlike the other three this one can simply fail to exist: if the jack of trumps was never dealt, nobody gets the point and there are only three to be had that hand.\n- Game, for taking the most pips in tricks, counting tens as ten, aces four, kings three, queens two and jacks one. Eighty pips in the pack, and a tie awards nothing.\n\nHigh and Low go to whoever was dealt them, so those two points are settled before a card is played and cannot be taken away. Jack and Game go to whoever ends up with the cards, which is why a hand can be won by ambushing one trick and losing the other five.\n\nThe one place the sources genuinely part company is Low. A great many tables — most partnership play among them — instead award it to whoever wins the trick the low trump falls in, which turns the two of trumps from a card you simply hold into a card you have to shepherd home. It is a real change and not a detail: agree which rule you are using before the first deal.\n\nNow the settlement, and the mechanism the game's other name is built on. Make your bid and you score everything you took, not merely what you bid — bid two, take all four, score four. Fall short and nothing you took counts: you are set back the amount you bid, which comes straight off the total and can put you below zero. Meanwhile your opponents score whatever they picked up, whether or not they were involved in the auction. Smudge is the exception in both directions: bid it and make it for five, bid it and drop a single trick and you are five worse off, and the hand still has to be played to the end so the other side can collect.\n\nFirst to the target wins, with one condition that decides more games than it sounds like it should: you can only win on a hand you bid and made. Reaching 21 on points scavenged off somebody else's contract leaves you sitting there, unable to close it out, while they bid three, make it and win from 18. The rule keeps the last few points honest and stops the game ending by accident.\n\nWhen two sides both pass the target in one hand, award the points strictly in order — the pitcher's first, then High, Low, Jack and Game — and whoever gets there first has won.",
+  "scoring_table": [
+    {
+      "item": "High",
+      "value": "1 point",
+      "note": "highest trump dealt, to whoever was dealt it"
+    },
+    {
+      "item": "Low",
+      "value": "1 point",
+      "note": "lowest trump dealt"
+    },
+    {
+      "item": "Jack",
+      "value": "1 point",
+      "note": "jack of trumps, to whoever takes the trick; nobody scores it if it was not dealt"
+    },
+    {
+      "item": "Game",
+      "value": "1 point",
+      "note": "most pips taken in tricks; not awarded on a tie"
+    },
+    {
+      "item": "Smudge, bid and made",
+      "value": "5 points",
+      "note": "all four points and all six tricks; only scores if it was the bid"
+    },
+    {
+      "item": "Bid not made",
+      "value": "minus the bid"
+    },
+    {
+      "item": "Revoke",
+      "value": "minus the bid"
+    },
+    {
+      "item": "Each ten, for Game",
+      "value": "10 pips"
+    },
+    {
+      "item": "Each ace, for Game",
+      "value": "4 pips"
+    },
+    {
+      "item": "Each king, for Game",
+      "value": "3 pips"
+    },
+    {
+      "item": "Each queen, for Game",
+      "value": "2 pips"
+    },
+    {
+      "item": "Each jack, for Game",
+      "value": "1 pip",
+      "note": "80 pips in the pack altogether"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Draw after the pitch",
+      "description": "Once trump is out, everyone discards face down whatever they do not want and the dealer tops their hand back up to six from the undealt part of the pack. Trumps may not be thrown, and in practice most players bin everything else and hope. It is the single most popular addition to the partnership game, and it changes the character completely: the ace, the two and the jack of trumps nearly always reach the table, so High, Low and Jack stop being lotteries about what was dealt and become things you have to win."
+    },
+    {
+      "name": "Cutthroat Pitch",
+      "description": "Every player for themselves, from three to seven of them, with the bidding and play exactly as in the partnership game and a shorter target — 11 is usual, 7 for a quick session. It plays quite differently despite the identical rules, because the entire table has a shared interest in setting whoever won the auction, and an informal alliance forms and dissolves every hand. This is the version card books tend to describe, and traditionally the one played for money."
+    },
+    {
+      "name": "Ten-point Pitch",
+      "description": "The mid-western expansion, and a much bigger game. Two distinguishable jokers join the pack, and the off-jack — the other jack of the trump colour — is promoted into the trump suit. Trumps then run ace, king, queen, jack, off-jack, high joker, low joker, ten and down. Each of the three newcomers carries its own point, taking the total to seven, and awarding three more for the trey of trumps takes it to ten. Deal is nine cards each at four players, with the remainder left as a widow."
+    },
+    {
+      "name": "Pedro and Cinch",
+      "description": "Promote the five of trumps into a scoring card worth five points on its own, and the hand is suddenly worth nine rather than four; that game is Pedro. Add the other five of the same colour, also worth five, and the total reaches fourteen and the game is Cinch, or Double Pedro. Both are properly separate games rather than house rules, with their own bidding conventions, but they grew directly out of tables adding one more thing to chase."
+    },
+    {
+      "name": "No junk points",
+      "description": "Only the bidding side scores. Make the bid and take your points as usual; fail and be set back as usual, but the opposition collect nothing either way. It removes the consolation prize and with it most of the reason to fight over a hand you cannot win, so play becomes flatter and games run longer. Worth knowing because it is common enough that somebody will assume it."
+    }
+  ],
+  "difficulty": "medium",
+  "duration_minutes": "30-60",
+  "tags": [
+    "partnership",
+    "strategy",
+    "counting",
+    "classic"
+  ],
+  "sources_consulted": [
+    "Pagat",
+    "Wikipedia"
+  ],
+  "checked": {
+    "date": "2026-08-02",
+    "prose": "84d9e622baa9cd3a"
+  }
+}

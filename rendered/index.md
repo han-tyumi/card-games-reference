@@ -2,7 +2,7 @@
 
 # Card Game Rules — Index
 
-64 games, free to reuse under CC BY-SA 4.0.
+65 games, free to reuse under CC BY-SA 4.0.
 
 ## Solitaire (1 player)
 
@@ -31,6 +31,7 @@
 | [Hearts](hearts.md) | 3-6 players (best with 4) | 1 standard deck (52 cards), jokers removed; a few low cards come out for 3, 5 or 6 players | 30-60 minutes | Easy |
 | [Oh Hell](oh-hell.md) | 3-7 players (best with 5) | 1 standard deck (52 cards) | 30-90 minutes | Easy |
 | [Pinochle](pinochle.md) | 2-4 players (best with 4) | 1 pinochle deck (48 cards: two each of A, 10, K, Q, J, 9 in every suit), which you can build from two standard decks by keeping only those ranks | 45-90 minutes | Complex |
+| [Pitch](pitch.md) | 3-7 players (best with 4) | 1 standard deck (52 cards) | 30-60 minutes | Medium |
 | [Skat](skat.md) | 3-4 players (best with 3) | 1 standard deck stripped to 32 cards (A, K, Q, J, 10, 9, 8, 7 in each suit) | 45-90 minutes | Complex |
 | [Spades](spades.md) | 2-4 players (best with 4) | 1 standard deck (52 cards), jokers removed | 45-90 minutes | Medium |
 | [Sueca](sueca.md) | 4 players | 1 standard deck stripped to 40 cards (A, 7, K, J, Q, 6, 5, 4, 3, 2 in each suit) | 20-45 minutes | Easy |
