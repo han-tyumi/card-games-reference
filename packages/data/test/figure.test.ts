@@ -225,6 +225,7 @@ test("every ranking in the corpus fits the target column; every meld stays whole
   // meld that overflows is the deliberate exception, and the page scrolls it.
   const oversize: string[] = [];
   const broken: string[] = [];
+  const wide: string[] = [];
 
   for (const game of loadGames()) {
     for (const [index, spec] of (game.figures ?? []).entries()) {
@@ -236,6 +237,10 @@ test("every ranking in the corpus fits the target column; every meld stays whole
       } else {
         const lines = new Set(built.cards.map((c) => c.y)).size;
         if (lines !== spec.rows.length) broken.push(id);
+        // A meld may overflow — it must not be split — but "may" is not "should"
+        // and nothing else in the gate would notice a new one. Until this was
+        // written, a meld row of any length passed every check in the project.
+        if (built.width > MAX_FIGURE_WIDTH) wide.push(id);
       }
 
       assert.equal(
@@ -248,6 +253,15 @@ test("every ranking in the corpus fits the target column; every meld stays whole
 
   assert.deepEqual(oversize, [], "these rankings are too wide for a 320px column");
   assert.deepEqual(broken, [], "these combinations were split across lines");
+
+  // Frozen rather than bounded: these three are worth their sideways scroll and
+  // the next one should be argued for in a diff, not discovered by a reader.
+  assert.deepEqual(
+    wide.sort(),
+    ["contract-rummy-fig1", "hand-and-foot-fig1", "seven-card-stud-fig1"],
+    "a meld now overflows a 320px column — justify it, or is the row an order " +
+      "that should be tagged `ranking` and allowed to wrap?",
+  );
 });
 
 test("the lines of one row sit closer together than two rows do", () => {

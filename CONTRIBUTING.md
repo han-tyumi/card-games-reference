@@ -29,8 +29,20 @@ version right matters more than covering every variation.
 4. Describe the **most widely played modern version** in the main text. Put
    notable alternatives in `variants` — two to five is right for this project.
    Exhaustive regional coverage is explicitly not the goal.
-5. Run `npm run build`, and commit the regenerated `rendered/` files along with
-   your JSON.
+5. Check the wording against your sources **now, while the entry is fresh**, not
+   in a sweep at the end of a batch — that is how the last one went, and it was
+   painful. Put the source text in `.sources/<slug>/` (gitignored) and run
+   `npm run originality -- --game <slug>`. A run that says it checked nothing
+   still exits 0, so read what it reports rather than its exit code. Then
+   `npm run originality -- --stamp <date> <slug>`, naming only what you read.
+   The `originality-pass` skill has the fetch recipe and the network control it
+   insists on first.
+6. Update the README's `**Status:**` count, its collection blurb and its family
+   table. Three tests in `packages/build/test/docs.test.ts` fail until you do.
+7. Run `npm run build`, and commit the regenerated `rendered/` **and `docs/`**
+   files along with your JSON. `npm run build` also rewrites
+   `rendered/naibi.pdf`; commit that too, since nothing gates it.
+8. `npm run check`.
 
 Prose fields accept a light Markdown convention: blank lines separate
 paragraphs, and lines starting with `- ` become bullets. Both the Markdown and
@@ -130,8 +142,9 @@ faster".
 
 - [ ] `npm run check` passes (validation, types and tests)
 - [ ] Behaviour you changed has a test; a bug you fixed has one naming it
-- [ ] `rendered/` regenerated and committed
-- [ ] Wording is original — nothing copied or lightly reworded from a source
+- [ ] `rendered/`, `docs/` and the booklet regenerated and committed
+- [ ] `npm run originality -- --game <slug>` run against real source text, its
+      findings read, and the entry stamped
 - [ ] `sources_consulted` lists what you actually checked, by name
 - [ ] Could a stranger play the game from your entry alone?
 
@@ -187,6 +200,55 @@ A few conventions worth knowing:
   different games on different continents — the prose explains the clash instead,
   so a search for one name cannot silently return the other.
 
+### Figures, and the one field that decides how they are drawn
+
+A figure draws a few cards to make a point prose makes badly: what beats what,
+what a legal combination looks like, what an illegal one looks like.
+
+```json
+"figures": [
+  {
+    "kind": "meld",
+    "caption": "A run must be one suit and consecutive.",
+    "rows": [
+      { "label": "Valid run",
+        "cards": [{ "face": "5♥" }, { "face": "6♥" }, { "face": "7♥" }] },
+      { "label": "Not a run: two suits", "valid": false,
+        "cards": [{ "face": "5♥" }, { "face": "6♠" }, { "face": "7♥" }] }
+    ]
+  }
+]
+```
+
+`kind` belongs to the whole figure and decides its geometry, not just its
+description. It is the one thing here worth getting right:
+
+- **`ranking`** — every row is an order. A row **may be wrapped** onto more
+  lines to fit a narrow column, because an order survives wrapping the way a
+  sentence does.
+- **`meld`** — a row is one combination. It is **never** split, because a
+  straight flush over two lines stops looking like a straight flush. Such a
+  figure overflows instead, and the page scrolls it sideways.
+
+Choose by what would be lost if a row were broken, not by what the figure is
+called. A chart of poker hands in order of power is `meld`, because each *row*
+is a hand: that is why the shared poker figures are tagged that way despite
+being a ranking in the ordinary sense. Tag a combination `ranking` and it gets
+broken apart into something the game does not contain; tag a long order `meld`
+and it runs off the side of a phone. Both validate and both render.
+
+The budget is `MAX_FIGURE_WIDTH`, 240 units — about six cards on a line — in
+[`packages/data/src/figure.ts`](packages/data/src/figure.ts), derived from
+WCAG's 320px reflow target in
+[0011](decisions/0011-target-320-css-pixels.md). Three melds in the corpus
+exceed it on purpose and the test beside them freezes that list, so a fourth has
+to be argued for rather than arriving unnoticed.
+
+`valid: false` marks a counter-example: those cards get a dashed outline and the
+row label turns red. Keep `label` short — around twenty characters — because
+only one line's height is reserved above the row and a longer one is drawn over
+the cards. `cards[].note` is a small caption under one card, like "Right bower".
+
 ### Figures shared between games
 
 Poker hand rankings are the same in Hold'em, Five Card Draw and Seven Card Stud.
@@ -231,7 +293,8 @@ starting table as data. The diagram is drawn from it:
 ```
 
 That is the whole of Klondike's diagram. `cards: 0` draws an empty slot, a
-`tableau` fans out while other kinds stack squarely, and `last-up` means face
+`tableau` fans out while other kinds stack squarely, unless a zone sets `fan`
+itself, as rummy-500's discard pile does, and `last-up` means face
 down with the top card turned.
 
 Rows are **centred**, which is how shapes emerge without anyone specifying
@@ -381,15 +444,18 @@ knowing about:
   order to explain it in, everyone lands near the same sentence. Those passages
   need deliberate restructuring, not just resynonymising.
 
-So before opening a PR, take two or three of your most **specific procedural
-sentences** and search each as an exact quoted phrase. If a card game rules site
-comes back with your sentence — or with your sentence wearing different nouns —
-rewrite the passage from scratch. Keep the rule identical and change the
-expression: different clause order, different framing, different sentence
-boundaries.
+So before opening a PR, put the source text you actually used in
+`.sources/<slug>/` and run `npm run originality -- --game <slug>`. Read each
+flag beside the passage it came from. Where one is real, keep the rule identical
+and change the expression: different clause order, different framing, different
+sentence boundaries.
 
-Pick sentences that would be damning if they matched. Searching "Aces are low"
-proves nothing; a match there is coincidence.
+**Do not check this with a search engine.** Quoting is not honoured, so a hit
+list is not evidence and "no results" cannot be observed at all — a control
+search built from invented words returned ten results, which is how every
+earlier pass in this project came to be worthless. That is what
+[0007](decisions/0007-originality-is-checked-against-sources.md) records, and
+why the tool reads source text instead.
 
 ## Running the checks
 

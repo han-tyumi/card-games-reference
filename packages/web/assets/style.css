@@ -359,7 +359,11 @@ footer p { margin: 0; }
 }
 
 @media (min-width: 34rem) {
-  body { font-size: 18px; }
+  /* rem, for the same reason the base size is: a hard px here put the reader's
+     own font-size setting straight back in the bin on every screen wider than
+     34rem, which is most of them. The base is 1.0625rem; this is a nudge up
+     with more room, not a fixed size. */
+  body { font-size: 1.125rem; }
   .games { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .wrap { padding-left: 26px; padding-right: 26px; }
 }

@@ -61,6 +61,10 @@ gate on tests, so a red build can ship.
 - Editing an entry's prose invalidates its `checked` record and the validator
   will say so. Re-read it against its sources and re-stamp, or drop the record.
   Do not leave a date claiming cover it has lost.
+- A figure's `kind` decides geometry, not just description. A `ranking` may be
+  wrapped onto more lines; a `meld` is never split, because half a straight
+  flush is not one. Mis-tag it and the drawing is quietly wrong — both tags
+  validate and both render.
 - Terms of art are not paraphrasable. The poker hand ranks, "right bower (the
   jack of the trump suit)", Skat's multiplier list — rewording those makes the
   entry wrong. Shared *structure* is the problem, not shared vocabulary.

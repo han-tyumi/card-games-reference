@@ -1,6 +1,6 @@
 {
   "poker-hands-strongest": {
-    "kind": "ranking",
+    "kind": "meld",
     "caption": "Hand rankings, part one: the four strongest categories. Any hand here beats every hand below it, whatever the individual card ranks.",
     "rows": [
       {
@@ -86,7 +86,7 @@
     ]
   },
   "poker-hands-middle": {
-    "kind": "ranking",
+    "kind": "meld",
     "caption": "Hand rankings, part two: the middle four. A flush beats a straight, which is the ordering people most often get backwards.",
     "rows": [
       {
@@ -172,7 +172,7 @@
     ]
   },
   "poker-hands-weakest": {
-    "kind": "ranking",
+    "kind": "meld",
     "caption": "Hand rankings, part three: the two weakest. Most showdowns are settled down here.",
     "rows": [
       {
@@ -218,7 +218,7 @@
     ]
   },
   "poker-ace-straights": {
-    "kind": "ranking",
+    "kind": "meld",
     "caption": "The ace does duty at both ends of a straight, but only at the ends. A run through the ace from king to two is not a straight.",
     "rows": [
       {
