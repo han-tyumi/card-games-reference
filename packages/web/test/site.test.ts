@@ -13,7 +13,7 @@
 
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { loadGames, mayWrap, renderDiagramSvg, renderFigureSvg } from "naibi";
+import { CATEGORY_ORDER, loadGames, mayWrap, renderDiagramSvg, renderFigureSvg } from "naibi";
 import { buildSite } from "../build-web.ts";
 
 const games = loadGames();
@@ -120,6 +120,31 @@ test("GitHub Pages is told not to run this through Jekyll", () => {
 });
 
 // --- links ----------------------------------------------------------------
+
+test("every family in the corpus has a chip to filter by", () => {
+  // The chips are generated from CATEGORY_ORDER rather than typed out, and this
+  // is what makes that worth doing: add a category to the schema, ship games in
+  // it, and without this the family would simply be unreachable from the index
+  // with nothing failing. The count is asserted too, so a chip for a category
+  // that no longer exists is caught from the other side.
+  const index = text("index.html");
+  const group = /<div class="facet"><label>Family<\/label><div class="chips">(.*?)<\/div>/s.exec(
+    index,
+  );
+  assert.ok(group, "the index has no Family facet");
+
+  const values = [...group[1]!.matchAll(/<input[^>]*value="([^"]*)"/g)].map((m) => m[1]!);
+  assert.deepEqual(
+    values,
+    ["", ...CATEGORY_ORDER],
+    "the family chips do not match the schema's categories, in order",
+  );
+
+  const present = new Set(games.map((g) => g.category));
+  for (const category of present) {
+    assert.ok(values.includes(category), `${category} has games but no chip`);
+  }
+});
 
 // --- print ----------------------------------------------------------------
 
@@ -516,13 +541,13 @@ test("each filter is one labelled group, which is what the spacing relies on", (
   const html = text("index.html");
   const facets = [...html.matchAll(/<div class="facet">([\s\S]*?)<\/div><\/div>/g)];
 
-  assert.equal(facets.length, 4, "expected one group per filter");
+  assert.equal(facets.length, 5, "expected one group per filter");
 
   // Named, so changing one is a decision rather than a slip. "At most" used to
   // stand alone here and read as a heading with no noun -- at most WHAT.
   assert.deepEqual(
     facets.map(([, inner]) => /<label>([^<]+)<\/label>/.exec(inner!)![1]),
-    ["Players", "Decks on hand", "Time", "Difficulty (at most)"],
+    ["Players", "Decks on hand", "Time", "Difficulty (at most)", "Family"],
   );
   for (const [, inner] of facets) {
     assert.match(inner!, /^<label>[^<]+<\/label><div class="chips">/, "group is malformed");

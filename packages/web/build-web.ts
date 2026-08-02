@@ -26,6 +26,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 
 import type { CardGame } from "naibi";
 import {
+  CATEGORY_ORDER,
   MIN_LEGIBLE_SCALE,
   SECTIONS,
   blocks,
@@ -501,6 +502,15 @@ ${/* A ceiling, not an exact match: "Easy" returns the simple games too. Time
      the label carries it once rather than every chip repeating "up to". */ ""}
 ${chipGroup("difficulty", "Difficulty (at most)", [
   ["", "Any"], ["simple", "Simple"], ["easy", "Easy"], ["medium", "Medium"],
+])}
+${/* Last, because the four above answer "what can we play right now" and this
+     one answers "show me the trick-taking games" — browsing rather than
+     constraint. Built from CATEGORY_ORDER rather than typed out, so a category
+     added to the schema gets a chip instead of being quietly unfilterable, and
+     it is an exact match rather than a ceiling. */ ""}
+${chipGroup("category", "Family", [
+  ["", "Any"] as [string, string],
+  ...CATEGORY_ORDER.map((c) => [c, categoryLabel(c)] as [string, string]),
 ])}
 </div>`);
 

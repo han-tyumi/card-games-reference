@@ -51,6 +51,8 @@ export function searchRecords(games: CardGame[]): SearchRecord[] {
  */
 export type Facet = {
   s: string;
+  /** Category id, so the family chips filter on the same value the schema uses. */
+  c: string;
   lo: number;
   hi: number;
   d: number;
@@ -65,6 +67,7 @@ export function facetsFor(games: CardGame[]): Facet[] {
       s: [game.name, ...game.aliases, categoryLabel(game.category), ...game.tags]
         .join(" ")
         .toLowerCase(),
+      c: game.category,
       lo: game.players.min,
       hi: game.players.max,
       d: game.equipment.standard_decks,

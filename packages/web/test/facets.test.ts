@@ -14,7 +14,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
-import { loadGames } from "naibi";
+import { CATEGORY_ORDER, loadGames } from "naibi";
 import { DIFFICULTY, matches } from "../assets/facets.js";
 import { facetsFor } from "../records.ts";
 import type { Facet } from "../records.ts";
@@ -29,12 +29,36 @@ function shown(criteria: Parameters<typeof matches>[1]): string[] {
 
 const facet = (fields: Partial<Facet> = {}): Facet => ({
   s: "test",
+  c: "trick-taking",
   lo: 2,
   hi: 4,
   d: 1,
   max: 30,
   diff: "easy",
   ...fields,
+});
+
+test("the family chip shows that family and nothing else", () => {
+  // Family is the one facet that is an exact match rather than a ceiling, so
+  // the failure to look for is the opposite of the others': not a game wrongly
+  // included, but the whole of a family wrongly excluded.
+  for (const category of CATEGORY_ORDER) {
+    const expected = games.filter((g) => g.category === category).map((g) => g.name);
+    assert.deepEqual(
+      shown({ category }).sort(),
+      expected.sort(),
+      `the ${category} chip does not show exactly the ${category} games`,
+    );
+  }
+});
+
+test("family combines with the other chips rather than overriding them", () => {
+  // A chip that quietly widened the result once it was combined with another
+  // would be the same class of lie the rest of this file exists to catch.
+  const both = shown({ category: "solitaire", players: "1" });
+  const solo = games.filter((g) => g.category === "solitaire").map((g) => g.name);
+  assert.deepEqual(both.sort(), solo.sort());
+  assert.deepEqual(shown({ category: "solitaire", players: "4" }), []);
 });
 
 // --- extraction -----------------------------------------------------------

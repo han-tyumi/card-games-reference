@@ -21,7 +21,7 @@ if (list) {
   const empty = document.getElementById("empty");
   const box = document.getElementById("q");
 
-  const state = { q: "", players: "", decks: "", minutes: "", difficulty: "" };
+  const state = { q: "", category: "", players: "", decks: "", minutes: "", difficulty: "" };
 
   let index = null;
   let loading = null;

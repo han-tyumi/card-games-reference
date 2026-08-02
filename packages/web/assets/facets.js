@@ -17,6 +17,7 @@ export const DIFFICULTY = { simple: 0, easy: 1, medium: 2, complex: 3 };
 /**
  * @typedef {object} Facet
  * @property {string} s name, aliases, category and tags, for the offline fallback
+ * @property {string} c category id
  * @property {number} lo fewest players
  * @property {number} hi most players
  * @property {number} d standard decks needed; 0 means a purpose-built pack
@@ -26,10 +27,15 @@ export const DIFFICULTY = { simple: 0, easy: 1, medium: 2, complex: 3 };
 
 /**
  * @param {Facet} facet
- * @param {{players?: string, decks?: string, minutes?: string, difficulty?: string}} criteria
+ * @param {{category?: string, players?: string, decks?: string, minutes?: string,
+ *   difficulty?: string}} criteria
  * @returns {boolean}
  */
 export function matches(facet, criteria) {
+  // Family is an exact match, unlike difficulty and time: nobody wants
+  // trick-taking games "or simpler".
+  if (criteria.category && facet.c !== criteria.category) return false;
+
   if (criteria.players) {
     const n = Number(criteria.players);
     if (facet.lo > n || facet.hi < n) return false;
