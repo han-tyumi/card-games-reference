@@ -364,18 +364,28 @@ else, please open an issue. It will be rewritten.
 
 ### What has actually been checked
 
-All 60 entries were compared against source text on 2026-08-01 — pagat and
-Wikipedia, fetched and read side by side with our prose. That was the first
-check of this project done with the sources in front of it. Everything before it
-counted search-engine hits, which the section below explains does not work, so
-those earlier passes are not evidence of anything and are not counted here.
+Every entry in the collection has been compared against source text with the
+sources open, across two passes. Earlier work counted search-engine hits, which
+the section below explains does not work, so those passes are not evidence of
+anything and are not counted here.
 
-What that pass found, at a bar of 80% shared structure or 8 identical
+**The first 60 entries, on 2026-08-01** — pagat and Wikipedia, fetched and read
+side by side with our prose. At a bar of 80% shared structure or 8 identical
 consecutive words: **39 of 60 entries flagged, 36 verbatim runs**. Rewritten:
 **26 passages across 19 entries**. The problems were structural rather than
 lexical — Pinochle carried eighteen consecutive words identical to pagat's,
 Hearts eleven, Spades ten, and one trick-taking formula had propagated into five
 separate entries.
+
+**The 12 entries added on 2026-08-02**, each checked immediately after it was
+written rather than in a sweep at the end. **9 of the 12 were flagged: 26
+verbatim runs and 5 whole-passage order findings.** All were rewritten and the
+re-run came back clear of them. Two more entries had passages rewritten on
+reading rather than on a flag — one had reproduced a source's worked examples,
+the other had walked a source's strategy list in its order. The order findings
+were the interesting ones and four of the five were `setup` sections, which
+reach for the source's sequence because dealing a game has a natural order; each
+was reorganised rather than reworded.
 
 **Eight verbatim runs were kept deliberately.** They are the vocabulary of the
 games and not anyone's prose: the poker hand ranks in ascending order, "right
@@ -394,10 +404,15 @@ a time". Rewording those would make the entries wrong.
   `freecell`, `golf-multiplayer`, `klondike`, `koi-koi`, `mau-mau`, `pyramid`,
   `speed`, `spider`, `tripeaks`. Several list further sources in
   `sources_consulted` that were not pulled.
+- Of the 2026-08-02 batch, **9 of 12 had two sources rather than three** —
+  pagat and Wikipedia. Only `red-dog`, `baccarat` and `canfield` had a third.
+  Two sources is what the contributing steps ask for and it is still the thinner
+  end of the range.
 - 64 lower-tier candidates were sampled, not read exhaustively.
 
-So: checked once, properly, with those limits — not certified. An entry edited
-after that date has not been checked in its current form at all.
+So: checked with the sources in hand, with those limits — not certified. An
+entry edited after its `checked` date has not been checked in its current form
+at all, and `npm run validate` will say so.
 
 ### Checking wording against a source
 
