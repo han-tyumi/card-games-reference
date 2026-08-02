@@ -27,7 +27,7 @@ The name is a fossil. Dou Dizhu means fighting the landlord, and it dates from t
 
 The auction settles who plays alone. Whoever drew the face-up card speaks first, and the only bids available are 1, 2 and 3 — a number of stake units, not of cards or tricks. Each player in turn passes or names a figure above the last. It ends when two players pass in a row, or the moment somebody says 3, since nothing beats it. Everyone passing throws the hand in for a fresh deal.
 
-The highest bidder becomes the landlord and takes the three cards from the table, holding twenty against seventeen each. The other two are peasants and are allies for the hand.
+Whoever bid highest is the landlord. They pick up the three cards waiting on the table, which brings their hand to twenty against seventeen apiece, and the remaining two players are peasants allied for the duration.
 
 The landlord leads, playing any single card or any legal combination. Each player after them, going anti-clockwise, must either pass or beat what is on the table — and beating it means playing the same type of combination with the same number of cards and a higher rank. Not a different shape of the same size: the same shape. A pair answers a pair and a five-card run answers a five-card run, and nothing else will do.
 
@@ -88,7 +88,7 @@ Nothing carries over between hands. Each deal is settled in units and the next a
 
 **Tags:** betting, classic, counting, strategy
 
-*Rules checked against: Pagat, Wikipedia.*
+*Rules checked against: Pagat, Wikipedia, GameRules.com.*
 
 ---
 

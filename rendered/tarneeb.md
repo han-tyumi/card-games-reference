@@ -72,7 +72,7 @@ Scores go negative and stay on the sheet. A side that has been set twice can fin
 
 **Tags:** classic, counting, partnership, strategy
 
-*Rules checked against: Pagat, Wikipedia.*
+*Rules checked against: Pagat, Wikipedia, GameRules.com.*
 
 ---
 

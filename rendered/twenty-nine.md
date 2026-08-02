@@ -83,7 +83,7 @@ There is no running total of card points across hands. Every deal is settled and
 
 **Tags:** classic, counting, partnership, strategy
 
-*Rules checked against: Pagat, Wikipedia.*
+*Rules checked against: Pagat, Wikipedia, GameRules.com.*
 
 ---
 

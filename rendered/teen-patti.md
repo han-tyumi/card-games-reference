@@ -93,7 +93,7 @@ The pot goes to the last player standing, or to the better hand at a show. Some 
 
 **Tags:** betting, bluffing, large-group, party, strategy
 
-*Rules checked against: Pagat, Wikipedia.*
+*Rules checked against: Pagat, Wikipedia, GameRules.com.*
 
 ---
 

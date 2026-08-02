@@ -106,7 +106,7 @@ At the end of the twelve tricks, whoever took the majority scores 10 for the car
 
 **Tags:** classic, counting, long-game, strategy, two-player
 
-*Rules checked against: Pagat, Wikipedia.*
+*Rules checked against: Pagat, Wikipedia, Parlett Games.*
 
 ---
 

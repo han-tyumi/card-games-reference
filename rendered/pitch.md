@@ -33,7 +33,7 @@ The rule that makes the play unlike most trick-taking games: you may always trum
 
 Holding none of the suit led, you may play anything at all.
 
-Tricks go to the highest trump in them, or where no trump appears, to the highest card of the suit led. The winner leads to the next. Six tricks empty the hands.
+A trick belongs to whoever put the biggest trump into it; where nobody trumped at all, it belongs to the best card of whatever suit opened. Its winner leads to the next, and six tricks empty the hands.
 
 Because you may trump at will, the hand is not a contest to take tricks. It is a contest to take four specific things, and a trick with nothing in it is worth nothing. Expect people to throw away winners and to trump their own side's high card to drag a scoring trump out of the trick.
 
@@ -41,7 +41,9 @@ Because you may trump at will, the hand is not a contest to take tricks. It is a
 
 ## Goal & scoring
 
-Four points are on offer in every hand, and they are what the bidding is a bid for. All four live in or around the trump suit:
+First side to the target wins — and there is a condition on that which decides more games than it sounds like it should. You can only win on a hand you bid and made. Reaching 21 on points scavenged off somebody else's contract leaves you stuck there, unable to close it out, while they bid three, make it and win from 18. The rule keeps the last few points honest and stops a game ending by accident.
+
+So what is being bid for. Four points are on offer in every hand, and all four live in or around the trump suit:
 
 - High, for the top trump that was dealt at all. Not necessarily the ace — if no ace of trumps came out, the king is high, and so on down.
 - Low, for the bottom trump that was dealt. Not necessarily the two, by the same argument.
@@ -54,9 +56,7 @@ The one place the sources genuinely part company is Low. A great many tables —
 
 Now the settlement, and the mechanism the game's other name is built on. Make your bid and you score everything you took, not merely what you bid — bid two, take all four, score four. Fall short and nothing you took counts: you are set back the amount you bid, which comes straight off the total and can put you below zero. Meanwhile your opponents score whatever they picked up, whether or not they were involved in the auction. Smudge is the exception in both directions: bid it and make it for five, bid it and drop a single trick and you are five worse off, and the hand still has to be played to the end so the other side can collect.
 
-First to the target wins, with one condition that decides more games than it sounds like it should: you can only win on a hand you bid and made. Reaching 21 on points scavenged off somebody else's contract leaves you sitting there, unable to close it out, while they bid three, make it and win from 18. The rule keeps the last few points honest and stops the game ending by accident.
-
-When two sides both pass the target in one hand, award the points strictly in order — the pitcher's first, then High, Low, Jack and Game — and whoever gets there first has won.
+One last piece of bookkeeping, for the hand where two sides both cross the target at once. Award the points strictly in order — the pitcher's first, then High, Low, Jack and Game — and whoever arrives first has won it.
 
 | Scores | Value | Notes |
 | --- | --- | --- |
@@ -87,7 +87,7 @@ When two sides both pass the target in one hand, award the points strictly in or
 
 **Tags:** classic, counting, partnership, strategy
 
-*Rules checked against: Pagat, Wikipedia.*
+*Rules checked against: Pagat, Wikipedia, Bicycle Cards.*
 
 ---
 

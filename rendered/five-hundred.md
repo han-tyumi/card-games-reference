@@ -11,15 +11,15 @@
 
 ## Setup
 
-Five Hundred is Euchre grown up: ten cards instead of five, an auction instead of a turned-up card, a three-card kitty for whoever wins it, and a contract to lose every trick for anyone brave enough. It was invented in the United States and copyrighted there in 1904, and it is now Australia's national card game, which is a fair summary of how these things go.
+Four at the table in two partnerships, each pair facing one another. Pick a first dealer however you like; from then on everything in this game — dealing, bidding, playing — travels to the left.
 
-Build the pack by taking a standard deck and removing every 2 and every 3, plus the 4 of spades and the 4 of clubs. Add one joker. That leaves forty-three cards: the black suits run from the ace down to the five, the red suits down to the four, and the joker sits outside all of them.
-
-Two partnerships of two, each pair facing one another across the table. Pick a first dealer however you like; from then on everything in this game — dealing, bidding, playing — travels to the left.
+The pack is not one you own, so build it. Take a standard deck and throw out every 2 and every 3, then the 4 of spades and the 4 of clubs as well. Put one joker back in. Forty-three cards are left: the black suits running from the ace down to the five, the red suits down to the four, and the joker belonging to no suit at all.
 
 Deal ten cards to each player and three face down in the middle as the kitty. The traditional rhythm interleaves them: three each and one to the kitty, four each and one to the kitty, three each and the last to the kitty.
 
 One score sheet, two columns, running from zero in both directions. Both directions matters — a side can lose this game by going far enough backwards, and a column that only counts up will not show it coming.
+
+What you are setting up is Euchre grown up: ten cards in the hand rather than five, an auction in place of a turned-up card, a kitty for whoever wins that auction, and a contract to lose every trick for anyone brave enough to call it. Australia treats the game as a national institution and had nothing to do with inventing it — an American company drew it up and copyrighted it in 1904, which is a fair summary of how these things go.
 
 ![Five Hundred setup diagram](diagrams/five-hundred.svg)
 
@@ -94,7 +94,7 @@ Misère pays nothing to the defenders either way. The contractor either loses ev
 
 **Tags:** classic, counting, long-game, partnership, strategy
 
-*Rules checked against: Pagat, Wikipedia.*
+*Rules checked against: Pagat, Wikipedia, GameRules.com.*
 
 ---
 

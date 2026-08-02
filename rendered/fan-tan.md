@@ -75,7 +75,7 @@ One thing to settle before the first deal either way, rather than after the argu
 
 **Tags:** beginner-friendly, classic, family-friendly, kids, large-group, quick, strategy
 
-*Rules checked against: Pagat, Wikipedia.*
+*Rules checked against: Pagat, Wikipedia, Bicycle Cards.*
 
 ---
 

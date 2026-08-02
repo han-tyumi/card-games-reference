@@ -97,7 +97,7 @@ One hand is a complete game and settles itself. For a session, the common arrang
 
 **Tags:** classic, counting, large-group, strategy
 
-*Rules checked against: Pagat, Wikipedia.*
+*Rules checked against: Pagat, Wikipedia, GameRules.com.*
 
 ---
 

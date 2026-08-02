@@ -404,10 +404,14 @@ a time". Rewording those would make the entries wrong.
   `freecell`, `golf-multiplayer`, `klondike`, `koi-koi`, `mau-mau`, `pyramid`,
   `speed`, `spider`, `tripeaks`. Several list further sources in
   `sources_consulted` that were not pulled.
-- Of the 2026-08-02 batch, **9 of 12 had two sources rather than three** —
-  pagat and Wikipedia. Only `red-dog`, `baccarat` and `canfield` had a third.
-  Two sources is what the contributing steps ask for and it is still the thinner
-  end of the range.
+- The 2026-08-02 batch was first checked with **two** sources for 9 of its 12
+  entries and then re-checked with a third added to every one of them. That
+  second pass is the strongest evidence here for why the range in the steps
+  above says two or three: the third source found **3 more verbatim runs and 2
+  more order findings that two sources had missed**, in `pitch`, `five-hundred`
+  and `dou-dizhu`. All were rewritten. Nothing about those passages had looked
+  wrong against pagat and Wikipedia, because the wording they converged on came
+  from neither.
 - 64 lower-tier candidates were sampled, not read exhaustively.
 
 So: checked with the sources in hand, with those limits — not certified. An
