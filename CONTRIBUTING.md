@@ -567,24 +567,33 @@ The version lives in exactly one place, `packages/data/package.json`, and is rea
 from there by everything that needs it. What the numbers mean, and why the
 project is on `0.x`, is at the top of [CHANGELOG.md](CHANGELOG.md).
 
-1. **Bump `packages/data/package.json`.** Nothing else carries a version: the
-   other three manifests are `private` and sit at `0.0.0` so that no meaning can
-   be read into them.
-2. **Move the changelog's `Unreleased` items under a new heading** —
-   `## [X.Y.Z] — YYYY-MM-DD` — and add the compare link at the bottom.
-3. **Rebuild the booklet: `npm run pdf`.** The version is printed on the cover,
-   so a bump makes `rendered/naibi.pdf` stale. This is the step that is easy to
-   forget, which is why the release job runs the whole gate and fails on it
-   rather than publishing a booklet whose cover disagrees with its tag.
-4. **`npm run check`**, commit, push, and let CI go green.
-5. **Tag and push it:** `git tag v0.1.0 && git push origin v0.1.0`.
+**Write the notes as you go**, into `## [Unreleased]` in
+[CHANGELOG.md](CHANGELOG.md). That is the only part of a release a person has
+to do, and it is deliberately not reconstructed at release time from a list of
+commit subjects — the entries here summarise many commits at once, which no
+generator produces.
 
-Or, with no terminal to hand: **Actions → Release → Run workflow**. That path
-takes the version from the manifest and creates the tag itself, so it cannot
-name a version the changelog has not got. It refuses to run twice over the same
-version, which a tag push gets for free by the tag already existing. Steps 1 to
-4 still have to have happened — the job runs the same gate either way, and a
-booklet left unrebuilt after a bump fails it.
+Then one command, plus one button:
+
+```sh
+npm run release -- minor      # or major, or patch; --dry-run to see it first
+git push
+```
+
+`npm run release` derives everything else from that one word. It bumps
+`packages/data/package.json` — the only manifest that carries a version, the
+other three being `private` and pinned at `0.0.0` so no meaning can be read into
+them — moves the `Unreleased` notes under `## [X.Y.Z] — YYYY-MM-DD`, repoints
+the compare links, rebuilds the booklet because the version is printed on its
+cover, runs the whole gate, and commits. It refuses an empty `Unreleased`,
+because a release nobody can read what changed in is not worth cutting.
+
+Then **Actions → Release → Run workflow**, which needs no terminal and so works
+from a phone. It takes the version from the manifest and creates the tag itself,
+so it cannot name a version the changelog has not got, and it refuses to run
+twice over one version — which a tag push gets for free by the tag already
+existing. `git tag v0.2.0 && git push origin v0.2.0` does the same thing if you
+would rather.
 
 The job then checks that the tag, the manifest and the changelog all say the
 same version, runs the full gate, takes the release notes from that changelog

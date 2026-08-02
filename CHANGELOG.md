@@ -24,6 +24,14 @@ release procedure is in
 
 ## [Unreleased]
 
+### Added
+
+- **`npm run release -- <major|minor|patch>`**, which does everything a release
+  needs except decide what kind it is: bumps the manifest, moves these notes
+  under a dated heading, repoints the compare links, rebuilds the booklet whose
+  cover carries the version, and runs the gate. It refuses to release an empty
+  set of notes.
+
 ## [0.1.0] — 2026-08-02
 
 First tagged release, and the first booklet published as a release asset rather
