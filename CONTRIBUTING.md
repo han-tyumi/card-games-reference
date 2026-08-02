@@ -600,8 +600,12 @@ release rather than before. Doing it the other way round publishes a broken
 download, which is how it went here.
 
 There is no changelog automation, and that is deliberate. Conventional commits
-would flatten commit subjects that currently carry the reasoning — the one place
-in this repository where *why* is written down closest to the change — into
-`feat:` and `fix:`. Changesets solves independent versioning across many
+is cheap in itself — it is a prefix, and `fix: stop the booklet's cover reading
+the clock` is a perfectly good subject — but what it buys is version-bump
+inference and generated release notes, and this project wants neither. Releases
+are cut deliberately rather than on every push, so nothing would read the
+prefixes; and generated notes are a list of commit subjects, where the entries
+here are a synthesis of many ("72 game entries across nine families…" is no
+commit's subject). Changesets solves independent versioning across many
 published packages, and there is one. The changelog is written by hand and
 checked by a test instead, the same way the README's counts are.
