@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 135.2" width="442" height="216" role="img" aria-label="Teen Patti setup diagram">
+<title>Teen Patti setup</title>
+<rect x="43.0" y="8.0" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="43.0" y="9.6" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="43.0" y="11.2" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="83.0" y="8.0" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="83.0" y="9.6" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="83.0" y="11.2" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="163.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="163.0" y="9.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="163.0" y="11.2" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="203.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="203.0" y="9.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="203.0" y="11.2" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="78.0" y="61.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Playing blind</text>
+<text x="198.0" y="61.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Playing seen</text>
+<text x="138.0" y="87.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Three cards each, and the only visible difference</text>
+<text x="138.0" y="99.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">between two players is whether they have picked theirs</text>
+<text x="138.0" y="111.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">up. Blind players bet half as much and cannot be forced</text>
+<text x="138.0" y="123.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">to a show.</text>
+</svg>

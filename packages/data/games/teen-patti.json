@@ -1,0 +1,231 @@
+{
+  "id": "teen-patti",
+  "name": "Teen Patti",
+  "aliases": [
+    "Teen Pathi",
+    "Flash",
+    "Flush"
+  ],
+  "category": "bluffing",
+  "players": {
+    "min": 3,
+    "max": 8,
+    "ideal": 5
+  },
+  "decks": "1 standard deck (52 cards); chips or counters for the pot",
+  "equipment": {
+    "standard_decks": 1,
+    "jokers": 0,
+    "special_deck": null,
+    "extra_deck_for_large_groups": false,
+    "other": [
+      "chips or counters"
+    ]
+  },
+  "setup": "Teen Patti is Hindi for \"three cards\", and that is the whole of the equipment list: three cards each, a pot in the middle, and everyone playing against everyone else. Nobody banks it. It is close kin to the British game of Three Card Brag and a fixture of Diwali gatherings across India, which is where most people meet it.\n\nAny sensible number can play — four to seven is where it sits best. An ordinary 52-card pack, aces high down to twos, and no jokers unless you have agreed otherwise.\n\nAgree the minimum stake before anything else, because every number in this game is a multiple of it. Call it one unit. Everyone puts one unit into the pot as the boot, and the pot is what the hand is played for.\n\nThe dealer gives out three cards each, singly, face down.\n\nThen the choice that makes this game what it is. You may look at your cards, or you may leave them alone. A player who has looked is seen; a player who has not is blind. Blind players bet half what seen players do, which is a real and permanent discount for going in with no idea what you are holding — and going the other way is a one-way door. Once you look, you are seen for the rest of the hand.",
+  "layout": {
+    "rows": [
+      [
+        {
+          "kind": "hand",
+          "label": "Playing blind",
+          "repeat": 2,
+          "cards": 3,
+          "face": "down"
+        },
+        {
+          "kind": "gap"
+        },
+        {
+          "kind": "hand",
+          "label": "Playing seen",
+          "repeat": 2,
+          "cards": 3
+        }
+      ]
+    ],
+    "caption": "Three cards each, and the only visible difference between two players is whether they have picked theirs up. Blind players bet half as much and cannot be forced to a show."
+  },
+  "play": "Betting opens to the dealer's left and travels clockwise for as many circuits as it takes. At your turn you either put money in and stay, or fold and lose whatever you have already staked. There is no equalising of bets here and no calling: this is not poker betting, and there is no such thing as a showdown among three or more players.\n\nWhat you must pay turns on a running figure called the current stake, which starts at one unit. Both rates are ranges, and each also decides what the next player inherits:\n\n- Blind. Put in anything from one stake up to two, and no more. Whatever sum you lay down is passed on unchanged as the next player's stake.\n- Seen. Put in anything from two stakes up to four. What gets passed on is half of it.\n\nThat halving is the mechanism behind the discount. A blind player is always paying about a unit where a seen player pays two, all the way down the table, and the stake climbs only as fast as somebody deliberately pushes it. A blind player may look at their cards when their own turn arrives, and pays the seen rate from that moment on.\n\nThe hand ends one of two ways. Everybody but one folds, and that player collects without exposing a thing — which is what makes bluffing pay. Or the field narrows to two and one of them buys a show.\n\nThe show has its own rules and they are pointedly not symmetrical:\n\n- Nobody can call for one while three or more players are still in.\n- Blind, it costs you one stake, no matter what your opponent is. Your own cards stay face down until the money is in the pot.\n- Seen, against a blind opponent, you are not allowed to ask at all. Bet on, or get out. That prohibition is the blind player's protection and it is worth a great deal.\n- Two seen players: either of them may buy it, for two stakes.\n\nBoth hands then go face up and the better one takes the pot. On a tie the player who paid for the show loses, which is the price of being the one who asked.\n\nThere is one more move, available only when every player still in the hand is seen. Immediately after putting in the minimum, you may ask the player who bet just before you for a compromise, also called a sideshow. They can refuse, in which case betting simply carries on with the next player and nothing is lost but information. If they accept, the two of you compare cards privately, and whoever is lower folds on the spot — and on a tie it is the asker who goes. It is a way of removing one opponent without exposing anything to the table.",
+  "figures": [
+    {
+      "kind": "meld",
+      "caption": "The three strongest hands. A run beating a colour is the thing that catches poker players out, and it is correct: with only three cards, runs are rarer than flushes.",
+      "rows": [
+        {
+          "label": "Trio",
+          "cards": [
+            {
+              "face": "A♠"
+            },
+            {
+              "face": "A♥"
+            },
+            {
+              "face": "A♦",
+              "note": "The best hand"
+            }
+          ]
+        },
+        {
+          "label": "Straight run",
+          "cards": [
+            {
+              "face": "9♥"
+            },
+            {
+              "face": "8♥"
+            },
+            {
+              "face": "7♥",
+              "note": "A run in one suit"
+            }
+          ]
+        },
+        {
+          "label": "Normal run",
+          "cards": [
+            {
+              "face": "9♥"
+            },
+            {
+              "face": "8♠"
+            },
+            {
+              "face": "7♦",
+              "note": "Suits need not match"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "meld",
+      "caption": "The three weakest. Category always settles it before rank does, so the feeblest run there is, 4-3-2, beats the finest colour there is.",
+      "rows": [
+        {
+          "label": "Colour",
+          "cards": [
+            {
+              "face": "K♣"
+            },
+            {
+              "face": "9♣"
+            },
+            {
+              "face": "4♣",
+              "note": "One suit, no run"
+            }
+          ]
+        },
+        {
+          "label": "Pair",
+          "cards": [
+            {
+              "face": "Q♦"
+            },
+            {
+              "face": "Q♠"
+            },
+            {
+              "face": "7♥",
+              "note": "The odd card breaks ties"
+            }
+          ]
+        },
+        {
+          "label": "High card",
+          "cards": [
+            {
+              "face": "A♠"
+            },
+            {
+              "face": "K♦"
+            },
+            {
+              "face": "J♣",
+              "note": "Best of its kind"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "goal_and_scoring": "Win the pot. There is no running score and nothing carries between hands — each deal is settled in full and the cards go back in.\n\nSix kinds of hand, and any hand of a better kind beats any hand of a worse one outright. Within a kind, you compare rank:\n\n- Trio, three of a rank, ranked by that rank — aces at the top of them, twos at the bottom.\n- Straight run, a three-card run with all three in one suit.\n- Normal run, the same but with the suits not matching.\n- Colour, three cards of one suit that do not run. Compare the top card, then the next, then the last: A-K-J is the best and 5-3-2 the worst.\n- Pair. Compare the pair first and only then the spare card, so A-A-K is the best pair hand and 2-2-3 the worst.\n- High card, none of the above. A-K-J is the best of these and 5-3-2 the worst.\n\nRuns wrap at one end only. Both A-K-Q and A-2-3 are legal, and both are better than K-Q-J. Which of the two tops the other is a genuine disagreement between good sources — some rank A-2-3 highest, others A-K-Q — so settle it at your own table before the first deal rather than over an exposed hand. What nobody allows is going round the corner: K-A-2 is not a run at all, though three of a suit will still make a colour of it.\n\nThe pot goes to the last player standing, or to the better hand at a show. Some tables split the pot on a tied show instead of giving it to the player who did not ask; that is the other rule worth agreeing in advance.",
+  "scoring_table": [
+    {
+      "item": "Boot, before the deal",
+      "value": "1 unit each"
+    },
+    {
+      "item": "A blind player's bet",
+      "value": "1 to 2 times the stake"
+    },
+    {
+      "item": "A seen player's bet",
+      "value": "2 to 4 times the stake"
+    },
+    {
+      "item": "New stake after a blind bet",
+      "value": "the amount just staked"
+    },
+    {
+      "item": "New stake after a seen bet",
+      "value": "half the amount just staked"
+    },
+    {
+      "item": "Show demanded by a blind player",
+      "value": "the current stake",
+      "note": "allowed against a seen or a blind opponent"
+    },
+    {
+      "item": "Show demanded by a seen player",
+      "value": "twice the current stake",
+      "note": "only against another seen player, never against a blind one"
+    },
+    {
+      "item": "Compromise, or sideshow",
+      "value": "nothing extra",
+      "note": "only when every remaining player is seen; may be refused"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Jokers wild",
+      "description": "Shuffle in the two jokers and treat them as any card their holder likes, which lifts a middling three cards into a trio far more often than feels reasonable. It makes the game louder and shorter and materially devalues everything below a run, since a single wild card turns any pair into a trio. Some tables instead nominate an ordinary rank as wild for the hand — the deuces, or a card turned up before the deal — which has the same effect with less of the all-or-nothing feel."
+    },
+    {
+      "name": "A limit on playing blind",
+      "description": "Cap how long anybody may stay blind: three turns is a common figure, after which you must look at your cards and pay the seen rate from then on. Without a cap, a stubborn blind player at a table of cautious seen ones is genuinely hard to shift, because they pay half price for every circuit and cannot be called to a show. The limit exists to stop that becoming the entire game, and it is worth agreeing at a table where somebody already knows this."
+    },
+    {
+      "name": "Bigger bets",
+      "description": "Two ways to loosen the ceiling, often used together. Raise the caps, so a blind player may put in more than twice the current stake and a seen player more than four times it, which lets somebody with a trio actually build a pot rather than inching it upwards. And double what a show costs — the current stake becomes twice it for a blind player and four times for a seen one — which makes the final confrontation something you have to want rather than something to reach for out of impatience."
+    },
+    {
+      "name": "Suits break the tie",
+      "description": "Rank the suits, spades highest and clubs lowest, and use that to settle two hands that are otherwise identical. It removes split pots and tied shows entirely, which some tables prefer to the alternatives of the asker losing or the money being divided. Worth stating out loud, because a player who has only met the game without it will assume a tie is a tie."
+    },
+    {
+      "name": "Live Teen Patti",
+      "description": "Not really this game, and the reason people mistake Teen Patti for a casino game. Casinos offer a table game under the name that is essentially Three Card Poker played against the house: you bet against the dealer rather than the other players, there is no blind and seen distinction, no bluffing and no pot. What it borrows is the hand ranking, which is Teen Patti's rather than poker's, plus assorted side bets. Since 'teen patti' just means three cards, the name is not unfair — but the game across a kitchen table and the game in the casino have almost nothing in common."
+    }
+  ],
+  "difficulty": "easy",
+  "duration_minutes": "30-60",
+  "tags": [
+    "bluffing",
+    "betting",
+    "party",
+    "large-group",
+    "strategy"
+  ],
+  "sources_consulted": [
+    "Pagat",
+    "Wikipedia"
+  ],
+  "checked": {
+    "date": "2026-08-02",
+    "prose": "c3e20295654d5eed"
+  }
+}

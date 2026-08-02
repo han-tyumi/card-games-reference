@@ -2,7 +2,7 @@
 
 # Card Game Rules — Index
 
-68 games, free to reuse under CC BY-SA 4.0.
+69 games, free to reuse under CC BY-SA 4.0.
 
 ## Solitaire (1 player)
 
@@ -96,6 +96,7 @@
 | [Five Card Draw](five-card-draw.md) | 2-6 players (best with 5) | 1 standard deck (52 cards), plus chips or counters for everyone | 20-60 minutes | Simple |
 | [Mus](mus.md) | 4 players | 1 standard deck stripped to 40 cards (8s, 9s and 10s removed), or a 40-card Spanish pack | 45-90 minutes | Complex |
 | [Seven Card Stud](seven-card-stud.md) | 2-8 players (best with 8) | 1 standard deck (52 cards), plus chips to bet with | 60+ minutes | Medium |
+| [Teen Patti](teen-patti.md) | 3-8 players (best with 5) | 1 standard deck (52 cards); chips or counters for the pot | 30-60 minutes | Easy |
 | [Texas Hold'em](texas-holdem.md) | 2-10 players (best with 6) | 1 standard deck (52 cards), plus chips or counters for everyone | 30-120 minutes | Easy |
 | [Truco](truco.md) | 2-6 players (best with 4) | 1 standard deck stripped to 40 cards (8s, 9s and 10s removed), or a 40-card Spanish pack | 30-60 minutes | Medium |
 
