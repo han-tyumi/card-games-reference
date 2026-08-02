@@ -9,6 +9,9 @@
  * Criteria arrive as the strings the radio inputs hold; an empty string means
  * the chip is not set. Numbers are parsed here rather than at the call site so
  * the parsing cannot differ between callers.
+ *
+ * Reading and writing that same state as a query string lives here too, since
+ * it is the same set of names and the two would drift if they were apart.
  */
 
 /** Difficulty is ordered, so a filter means "up to this", not "exactly this". */
@@ -59,4 +62,53 @@ export function matches(facet, criteria) {
   }
 
   return true;
+}
+
+/**
+ * The chip groups that can be carried in a URL. `q` is handled separately
+ * because it is free text rather than one of a fixed set.
+ */
+export const PARAMS = ["category", "players", "decks", "minutes", "difficulty"];
+
+/**
+ * Filter state out of a query string, so a filtered view can be linked to.
+ *
+ * `allowed` maps each chip group to the values it actually offers. Anything
+ * outside that is dropped rather than passed through: a stale or mistyped
+ * value would match no game at all, and a shared link that opens on an empty
+ * list looks like a broken site rather than a stale link.
+ *
+ * @param {string} search location.search, with or without the leading "?"
+ * @param {Record<string, Set<string>>} allowed
+ * @returns {Record<string, string>}
+ */
+export function readQuery(search, allowed) {
+  const params = new URLSearchParams(search);
+  const state = {};
+
+  const q = params.get("q");
+  if (q && q.trim()) state.q = q.trim().toLowerCase();
+
+  for (const name of PARAMS) {
+    const value = params.get(name);
+    if (value && allowed[name]?.has(value)) state[name] = value;
+  }
+  return state;
+}
+
+/**
+ * The query string for a given filter state, empty when nothing is set so the
+ * bare URL stays clean.
+ *
+ * @param {Record<string, string>} state
+ * @returns {string}
+ */
+export function writeQuery(state) {
+  const params = new URLSearchParams();
+  if (state.q) params.set("q", state.q);
+  for (const name of PARAMS) {
+    if (state[name]) params.set(name, state[name]);
+  }
+  const query = params.toString();
+  return query ? `?${query}` : "";
 }

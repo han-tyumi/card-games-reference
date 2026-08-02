@@ -15,7 +15,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 
 import { CATEGORY_ORDER, loadGames } from "naibi";
-import { DIFFICULTY, matches } from "../assets/facets.js";
+import { DIFFICULTY, matches, readQuery, writeQuery } from "../assets/facets.js";
 import { facetsFor } from "../records.ts";
 import type { Facet } from "../records.ts";
 
@@ -59,6 +59,45 @@ test("family combines with the other chips rather than overriding them", () => {
   const solo = games.filter((g) => g.category === "solitaire").map((g) => g.name);
   assert.deepEqual(both.sort(), solo.sort());
   assert.deepEqual(shown({ category: "solitaire", players: "4" }), []);
+});
+
+// --- links ----------------------------------------------------------------
+
+const allowedChips = (): Record<string, Set<string>> => ({
+  category: new Set(["", ...CATEGORY_ORDER]),
+  players: new Set(["", "1", "2", "3", "4", "5", "6", "8"]),
+  decks: new Set(["", "1", "2"]),
+  minutes: new Set(["", "15", "30", "60"]),
+  difficulty: new Set(["", "simple", "easy", "medium"]),
+});
+
+test("a filtered view survives a round trip through the URL", () => {
+  const state = { q: "bower", category: "trick-taking", players: "4", decks: "1" };
+  const back = readQuery(writeQuery(state), allowedChips());
+  assert.deepEqual(back, state);
+});
+
+test("nothing set means a clean URL", () => {
+  assert.equal(writeQuery({}), "");
+  assert.equal(writeQuery({ q: "", category: "" }), "");
+});
+
+test("a value no chip offers is dropped rather than filtering to nothing", () => {
+  // The failure this prevents: someone shares a link, a category is later
+  // renamed, and the page opens on an empty list looking broken rather than
+  // simply unfiltered.
+  assert.deepEqual(readQuery("?category=trumps", allowedChips()), {});
+  assert.deepEqual(readQuery("?players=11", allowedChips()), {});
+  assert.deepEqual(readQuery("?nonsense=1", allowedChips()), {});
+});
+
+test("every family is linkable, and the link selects that family", () => {
+  for (const category of CATEGORY_ORDER) {
+    const parsed = readQuery(writeQuery({ category }), allowedChips());
+    assert.deepEqual(parsed, { category }, `${category} does not survive a link`);
+    const expected = games.filter((g) => g.category === category).map((g) => g.name);
+    assert.deepEqual(shown(parsed).sort(), expected.sort());
+  }
 });
 
 // --- extraction -----------------------------------------------------------

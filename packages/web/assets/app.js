@@ -10,7 +10,7 @@
  * index. What is left here is the part that touches the page.
  */
 
-import { matches } from "./facets.js";
+import { matches, readQuery, writeQuery } from "./facets.js";
 import { labelsFor, score } from "./search.js";
 
 const list = document.getElementById("games");
@@ -22,6 +22,19 @@ if (list) {
   const box = document.getElementById("q");
 
   const state = { q: "", category: "", players: "", decks: "", minutes: "", difficulty: "" };
+
+  const chips = Array.from(document.querySelectorAll(".chips input"));
+
+  /** What each chip group actually offers, so a stale URL cannot filter to nothing. */
+  const allowed = {};
+  for (const input of chips) {
+    (allowed[input.name] ??= new Set()).add(input.value);
+  }
+
+  /** Keep the address bar in step, so a filtered view can be copied and shared. */
+  const syncUrl = () => {
+    history.replaceState(null, "", writeQuery(state) || location.pathname);
+  };
 
   let index = null;
   let loading = null;
@@ -98,6 +111,7 @@ if (list) {
 
   box.addEventListener("input", () => {
     state.q = box.value.trim().toLowerCase();
+    syncUrl();
     if (state.q && !index) {
       loadIndex().then(apply);
       apply();
@@ -106,9 +120,10 @@ if (list) {
     apply();
   });
 
-  for (const input of document.querySelectorAll(".chips input")) {
+  for (const input of chips) {
     input.addEventListener("change", () => {
       state[input.name] = input.value;
+      syncUrl();
       apply();
     });
   }
@@ -119,12 +134,23 @@ if (list) {
     for (const el of document.querySelectorAll('.chips input[value=""]')) {
       el.checked = true;
     }
+    syncUrl();
     apply();
   });
 
   // Warm the index once the page is idle, so the first search is instant.
   if ("requestIdleCallback" in window) requestIdleCallback(() => loadIndex());
   else setTimeout(loadIndex, 1500);
+
+  // A link may arrive already filtered. Restore it into the controls before the
+  // first render so the page never flashes the full list, and never leaves a
+  // chip looking unset while it is doing the filtering.
+  Object.assign(state, readQuery(location.search, allowed));
+  if (state.q) box.value = state.q;
+  for (const input of chips) {
+    if (state[input.name] !== undefined) input.checked = input.value === state[input.name];
+  }
+  if (state.q) loadIndex().then(apply);
 
   apply();
 }
