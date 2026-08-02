@@ -25,20 +25,41 @@ survives contact with "this should just happen".
   whose cover still says the old version, so it would fail this repository's own
   `npm run pdf -- --check`. Fixing that needs a second bot commit pushed onto the
   release PR to rebuild the artifact.
-- **Knope** — the closest fit by some distance, and the only tool whose model
-  matches the ordering this repository needs: `PrepareRelease` bumps and writes
-  the changelog, arbitrary `Command` steps rebuild the booklet and run the gate,
-  then `Release` publishes. It takes hand-written prose through change files in
-  `.changeset/`, each carrying a summary, optional detail and its own bump level,
-  so "a generator would flatten the notes" is **not** a fair objection to it —
-  that objection was aimed at conventional commits alone and does not transfer.
-  Rejected on cost rather than on fit: a Rust toolchain in CI, a changelog that
-  moves to Knope's section format rather than this one's, and asset upload that
-  wants the Knope Bot GitHub App by its own recipe. The one thing it does not
-  appear to do is let a single hand-written entry stand in for the whole
-  generated list, which is how the 0.1.0 notes were written — though that was a
-  first release summarising work that predated the changelog, and may never
-  recur.
+The field is large — the Conventional Commits site alone lists forty-odd tools —
+but one requirement thins it out fast. This repository **commits its generated
+output and gates it**, and the booklet's cover carries the version, so a release
+must go: bump, rebuild the booklet, run the gate, commit all of it, tag,
+publish. A tool is only a candidate if arbitrary commands can run *between* the
+bump and the commit, and their output lands in the release commit.
+
+Most of the field fails that on the first clause. Linters (commitlint, gitlint,
+conform), parsers (`go-conventionalcommits`, `parse-commit-message`) and
+version calculators (git-semver, git-mkver, Conventional Commits Next Version)
+do one piece and leave the rest. Changelog generators (git-cliff, chglog,
+conventional-changelog) write prose and stop. Those were never alternatives to
+this.
+
+Of the tools that do the whole job:
+
+- **cocogitto** — the closest structural match found, and closer than Knope. Its
+  `cog bump --auto` is documented as: calculate the version from the commits,
+  run `pre_bump_hooks`, append to `CHANGELOG.md`, **create a version commit
+  containing the changes made in those steps**, tag it, then run
+  `post_bump_hooks`. That middle step is exactly the awkward requirement above —
+  a hook rebuilds the booklet and the rebuilt booklet is in the release commit.
+  One Rust binary, libgit2 its only system dependency.
+- **Knope** — also a good fit, by composing `PrepareRelease`, arbitrary
+  `Command` steps and `Release`. It takes hand-written prose through change
+  files in `.changeset/`, each with a summary, optional detail and its own bump
+  level, so "a generator would flatten the notes" is **not** a fair objection to
+  it; that objection was aimed at conventional commits alone and does not
+  transfer. Asset upload wants the Knope Bot GitHub App by its own recipe.
+- **release-it** — an `after:bump` hook runs after the version changes and
+  before the git operations, which is the same window. Rejected sooner than the
+  other two only because it is an npm dependency with a plugin chain, where they
+  are single binaries.
+- **Uplift** — a Go binary in the same space. Not evaluated in depth; its own
+  README does not answer the hook question and the two above already do.
 - **Bump a patch on every push** — rejected. It makes the version a count of
   pushes rather than a statement about compatibility, which is the one thing
   0015 established the number is for.
@@ -87,8 +108,17 @@ This reverses the conventional-commits rejection in
 semver on `packages/data`, one version in one manifest, releases as tags with
 the booklet attached — stands unchanged.
 
-Knope is the thing to revisit, and the trigger is specific rather than a
-feeling: **a second published package**, or the first need for prerelease or
-backport versions. Both are where hand-rolled release tooling turns bad, and
-both are Knope's home ground. Until then this is a few hundred lines with tests
-against a toolchain and a bot, and the tests already exist.
+**cocogitto is the thing to revisit**, and the honest position is that this was
+decided on a narrow survey and then widened afterwards, which is the wrong
+order. What kept the script was not that it beat cocogitto on the merits — it
+loses on volume, a hundred lines of TOML-shaped configuration against a few
+hundred of TypeScript — but that it was already written, already tested, and
+already had released a version correctly. That is a real reason and a weak one,
+and it should be stated as both.
+
+The trigger for switching is specific rather than a feeling: **a second
+published package**, or the first need for prerelease or backport versions.
+Both are where hand-rolled release tooling turns bad and both are cocogitto's
+and Knope's home ground. The thing to weigh at that point is the changelog:
+every one of these tools owns the file's format, and this one has a curated
+preamble and lets a hand-written entry stand in for the generated list.
