@@ -112,3 +112,68 @@ export function writeQuery(state) {
   const query = params.toString();
   return query ? `?${query}` : "";
 }
+
+/**
+ * Does this game match the query, using only what the page already has?
+ *
+ * The fallback for a visitor whose search index has not arrived — offline on a
+ * first visit, or mid-fetch. `s` carries the name, aliases, family and tags, so
+ * a name search still works with nothing loaded.
+ *
+ * @param {Facet} facet
+ * @param {string} query already lowercased and trimmed
+ * @returns {boolean}
+ */
+export function nameMatch(facet, query) {
+  for (const word of query.split(/\s+/)) {
+    if (word && !facet.s.includes(word)) return false;
+  }
+  return true;
+}
+
+/**
+ * The count under the filters. Says "of" only when something is filtered out,
+ * because a printed sheet has no chips on it to explain why it is short.
+ *
+ * @param {number} shown
+ * @param {number} total
+ * @returns {string}
+ */
+export function countLabel(shown, total) {
+  return shown === total ? `${total} games` : `${shown} of ${total} games`;
+}
+
+/**
+ * What the list should show, in what order, for a given filter state.
+ *
+ * This is the whole of the index page's behaviour that is not the DOM: which
+ * games survive the chips, which survive the query, and how they rank. It lives
+ * here rather than in app.js so it can be tested — app.js talks to the browser
+ * and nothing else, and was for a long time the only file in the project with
+ * neither tests nor type checking.
+ *
+ * @param {Facet[]} facets
+ * @param {Record<string, string>} state
+ * @param {Map<number, {s: number, m: number}> | null} hits ranked search results
+ * @returns {{order: number[], count: string}} indices in display order
+ */
+export function plan(facets, state, hits) {
+  /** @type {[number, number][]} */
+  const ranked = [];
+
+  facets.forEach((facet, i) => {
+    if (!matches(facet, state)) return;
+    if (!state.q) {
+      ranked.push([i, 0]);
+      return;
+    }
+    const hit = hits ? hits.get(i) : nameMatch(facet, state.q) ? { s: 1, m: 0 } : null;
+    if (hit) ranked.push([i, hit.s]);
+  });
+
+  // Ranking only applies when the index answered; the fallback has no scores
+  // worth sorting on and keeping source order beats shuffling by a constant.
+  if (state.q && hits) ranked.sort((a, b) => b[1] - a[1]);
+
+  return { order: ranked.map(([i]) => i), count: countLabel(ranked.length, facets.length) };
+}

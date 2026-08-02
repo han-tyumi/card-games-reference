@@ -10,7 +10,7 @@
  * index. What is left here is the part that touches the page.
  */
 
-import { matches, readQuery, writeQuery } from "./facets.js";
+import { plan, readQuery, writeQuery } from "./facets.js";
 import { labelsFor, score } from "./search.js";
 
 const list = document.getElementById("games");
@@ -56,57 +56,36 @@ if (list) {
     return loading;
   };
 
-  /** Used when the index has not loaded yet, or could not be. */
-  const nameMatch = (i) => {
-    for (const word of state.q.split(/\s+/)) {
-      if (word && !facets[i].s.includes(word)) return false;
-    }
-    return true;
-  };
-
   const apply = () => {
     const hits = state.q ? score(index, state.q) : null;
     const fields = index?.fields ?? [];
 
-    const ranked = [];
+    // Every decision about what shows and in what order is made in facets.js,
+    // which is tested. What is left here is moving DOM nodes about.
+    const { order, count: label } = plan(facets, state, hits);
+    const showing = new Set(order);
+
     items.forEach((li, i) => {
-      if (!matches(facets[i], state)) {
-        li.hidden = true;
+      li.hidden = !showing.has(i);
+      const where = li.querySelector(".where");
+      if (!where) return;
+      const hit = hits ? hits.get(i) : null;
+      if (!showing.has(i) || !state.q || !hit) {
+        where.replaceChildren();
         return;
       }
-      if (!state.q) {
-        li.hidden = false;
-        li.querySelector(".where")?.replaceChildren();
-        ranked.push([i, 0]);
-        return;
-      }
-      const hit = hits ? hits.get(i) : nameMatch(i) ? { s: 1, m: 0 } : null;
-      li.hidden = !hit;
-      if (hit) {
-        ranked.push([i, hit.s]);
-        // Say where the words were found; "in play" is the difference between
-        // a game called Slapjack and a game you slap in.
-        const where = li.querySelector(".where");
-        if (where) {
-          const names = labelsFor(fields, hit.m);
-          where.textContent = names.length ? `found in ${names.join(", ")}` : "";
-        }
-      }
+      // Say where the words were found; "in play" is the difference between
+      // a game called Slapjack and a game you slap in.
+      const names = labelsFor(fields, hit.m);
+      where.textContent = names.length ? `found in ${names.join(", ")}` : "";
     });
 
-    if (state.q && hits) {
-      // Reordering the DOM directly keeps the markup as the single source of
-      // truth: no shadow list, nothing to fall out of sync.
-      ranked.sort((a, b) => b[1] - a[1]);
-      for (const [i] of ranked) list.appendChild(items[i]);
-    } else if (!state.q) {
-      for (const li of items) list.appendChild(li);
-    }
+    // Reordering the DOM directly keeps the markup as the single source of
+    // truth: no shadow list, nothing to fall out of sync.
+    for (const i of order) list.appendChild(items[i]);
 
-    const shown = ranked.length;
-    count.textContent =
-      shown === items.length ? `${shown} games` : `${shown} of ${items.length} games`;
-    empty.hidden = shown > 0;
+    count.textContent = label;
+    empty.hidden = order.length > 0;
   };
 
   box.addEventListener("input", () => {

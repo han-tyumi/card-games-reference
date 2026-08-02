@@ -15,7 +15,15 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 
 import { CATEGORY_ORDER, loadGames } from "naibi";
-import { DIFFICULTY, matches, readQuery, writeQuery } from "../assets/facets.js";
+import {
+  DIFFICULTY,
+  countLabel,
+  matches,
+  nameMatch,
+  plan,
+  readQuery,
+  writeQuery,
+} from "../assets/facets.js";
 import { facetsFor } from "../records.ts";
 import type { Facet } from "../records.ts";
 
@@ -98,6 +106,64 @@ test("every family is linkable, and the link selects that family", () => {
     const expected = games.filter((g) => g.category === category).map((g) => g.name);
     assert.deepEqual(shown(parsed).sort(), expected.sort());
   }
+});
+
+// --- what the list shows --------------------------------------------------
+
+test("with nothing typed, every game that survives the chips is shown in order", () => {
+  const all = plan(facets, {}, null);
+  assert.equal(all.order.length, games.length);
+  assert.deepEqual(all.order, games.map((_, i) => i), "source order was not kept");
+  assert.equal(all.count, `${games.length} games`);
+
+  const solo = plan(facets, { players: "1" }, null);
+  assert.deepEqual(
+    solo.order.map((i) => games[i]!.name).sort(),
+    games.filter((g) => g.players.min <= 1 && g.players.max >= 1).map((g) => g.name).sort(),
+  );
+});
+
+test("the count says 'of' only when something is filtered out", () => {
+  // This is the string a printed sheet relies on to admit it is a subset, so
+  // it is worth pinning rather than leaving to whoever edits the template.
+  assert.equal(countLabel(72, 72), "72 games");
+  assert.equal(countLabel(15, 72), "15 of 72 games");
+  assert.equal(countLabel(0, 72), "0 of 72 games");
+  assert.equal(plan(facets, { category: "casino" }, null).count.endsWith("of 72 games"), true);
+});
+
+test("a query ranks by score, and the chips still apply on top", () => {
+  const hits = new Map([
+    [2, { s: 5, m: 0 }],
+    [0, { s: 9, m: 0 }],
+    [1, { s: 7, m: 0 }],
+  ]);
+  const { order } = plan(facets, { q: "x" }, hits);
+  assert.deepEqual(order, [0, 1, 2], "hits were not ordered by descending score");
+
+  // A game the chips exclude must not come back just because it scored.
+  const excluded = games.findIndex((g) => g.category !== "casino");
+  const scoped = plan(facets, { q: "x", category: "casino" }, new Map([[excluded, { s: 9, m: 0 }]]));
+  assert.deepEqual(scoped.order, [], "a filtered-out game was resurrected by the query");
+});
+
+test("with no index loaded, a query still matches names and families", () => {
+  // The offline case: the search index has not arrived, so only what is already
+  // in the page can be matched. Getting this wrong shows an empty list to
+  // someone on a train, which is the exact situation the app is built for.
+  const hearts = games.findIndex((g) => g.name === "Hearts");
+  const fallback = plan(facets, { q: "hearts" }, null);
+  assert.ok(fallback.order.includes(hearts), "a name search failed without the index");
+
+  const family = plan(facets, { q: "trick-taking" }, null);
+  assert.ok(family.order.length > 5, "the family label is not searchable offline");
+
+  assert.deepEqual(plan(facets, { q: "zzzznotaword" }, null).order, []);
+});
+
+test("every word of a multi-word query has to match", () => {
+  assert.equal(nameMatch({ ...facet(), s: "hearts black lady" }, "hearts lady"), true);
+  assert.equal(nameMatch({ ...facet(), s: "hearts black lady" }, "hearts spades"), false);
 });
 
 // --- extraction -----------------------------------------------------------
