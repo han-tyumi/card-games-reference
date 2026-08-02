@@ -672,8 +672,12 @@ test("the install instructions keep the step that silently fails", () => {
     "the consequence of missing the toggle is not explained",
   );
   // Vivaldi on iOS goes through the browser's own menu, not the iOS share
-  // button, which is the step a Safari-shaped instruction gets wrong.
+  // button, which is the step a Safari-shaped instruction gets wrong. And the
+  // item is one level further down than Vivaldi's own help page says: this path
+  // was walked on a real iPhone, which is why "View More" is here and is not in
+  // the vendor documentation.
   assert.ok(html.includes("Share Page"), "the Vivaldi iOS path is not named");
+  assert.ok(html.includes("View More"), "the step the vendor docs omit is missing");
 });
 
 test("the install section is reachable from somewhere", () => {
