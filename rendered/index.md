@@ -2,13 +2,14 @@
 
 # Card Game Rules — Index
 
-62 games, free to reuse under CC BY-SA 4.0.
+63 games, free to reuse under CC BY-SA 4.0.
 
 ## Solitaire (1 player)
 
 | Game | Players | Deck | Time | Difficulty |
 | --- | --- | --- | --- | --- |
 | [Accordion](accordion.md) | 1 player | 1 standard deck (52 cards) | 5-15 minutes | Simple |
+| [Canfield](canfield.md) | 1 player | 1 standard deck (52 cards), jokers removed | 10-25 minutes | Medium |
 | [Clock](clock.md) | 1 player | 1 standard deck (52 cards) | 5-10 minutes | Simple |
 | [Forty Thieves](forty-thieves.md) | 1 player | 2 standard decks (104 cards) | 20-45 minutes | Easy |
 | [FreeCell](freecell.md) | 1 player | 1 standard deck (52 cards), jokers removed | 10-30 minutes | Easy |

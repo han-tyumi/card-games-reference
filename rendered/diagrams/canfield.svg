@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 286 227.2" width="458" height="364" role="img" aria-label="Canfield setup diagram">
+<title>Canfield setup</title>
+<rect x="8.0" y="8.0" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="8.0" y="9.6" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="8.0" y="11.2" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="8.0" y="12.8" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="8.0" y="14.4" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="8.0" y="16.0" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="8.0" y="17.6" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<text x="23.0" y="42.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#1b2027">34</text>
+<rect x="48.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.8"/>
+<rect x="128.0" y="8.0" width="30" height="42" rx="3" fill="#eef4fb" stroke="#5b6672" stroke-width="1"/>
+<rect x="168.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.8"/>
+<rect x="208.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.8"/>
+<rect x="248.0" y="8.0" width="30" height="42" rx="3" fill="none" stroke="#5b6672" stroke-width="1" stroke-dasharray="4 3" opacity="0.8"/>
+<rect x="28.0" y="105.6" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="28.0" y="107.2" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="28.0" y="108.8" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="28.0" y="110.4" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="28.0" y="112.0" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="28.0" y="113.6" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="28.0" y="115.2" width="30" height="42" rx="3" fill="#f4f0e6" stroke="#5b6672" stroke-width="1"/>
+<text x="43.0" y="140.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#5b6672">13</text>
+<rect x="108.0" y="105.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="148.0" y="105.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="188.0" y="105.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="228.0" y="105.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="23.0" y="67.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Stock</text>
+<text x="63.0" y="67.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Waste</text>
+<text x="203.0" y="67.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Foundations</text>
+<text x="43.0" y="165.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Reserve</text>
+<text x="183.0" y="165.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Tableau</text>
+<text x="143.0" y="191.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">The one card already on a foundation sets the rank the</text>
+<text x="143.0" y="203.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">other three must start from. Only the bottom card of the</text>
+<text x="143.0" y="215.2" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">thirteen-card reserve is face up.</text>
+</svg>
