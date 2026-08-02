@@ -121,6 +121,66 @@ test("GitHub Pages is told not to run this through Jekyll", () => {
 
 // --- links ----------------------------------------------------------------
 
+// --- print ----------------------------------------------------------------
+
+/** The body of the `@media print` block, brace-matched out of the stylesheet. */
+const printBlock = ((): string => {
+  const css = text("style.css");
+  const start = css.indexOf("@media print");
+  assert.ok(start !== -1, "the stylesheet has no @media print block");
+  let depth = 0;
+  for (let i = css.indexOf("{", start); i < css.length; i += 1) {
+    if (css[i] === "{") depth += 1;
+    else if (css[i] === "}") {
+      depth -= 1;
+      if (depth === 0) return css.slice(start, i + 1);
+    }
+  }
+  throw new Error("the @media print block is not closed");
+})();
+
+test("printing hides chrome that still exists in the pages", () => {
+  // The site had no print styles at all: the nav, the back link and the update
+  // button from 0006 all came out on paper, and Skat took 11 sheets against the
+  // booklet's 6. The rules that hide them are only worth anything while they
+  // match something, so this fails when a class is renamed and the print block
+  // quietly stops applying to it -- which nothing else here would notice.
+  const hidden = [...printBlock.matchAll(/^\s*([.#][\w-]+),?\s*$/gm)].map((m) => m[1]!);
+  assert.ok(hidden.length > 0, "the print block hides nothing");
+
+  const markup = pages.map((name) => text(name)).join("\n");
+  const orphans = hidden.filter((selector) => {
+    const name = selector.slice(1);
+    const pattern =
+      selector[0] === "#"
+        ? new RegExp(`id="${name}"`)
+        : new RegExp(`class="[^"]*\\b${name}\\b[^"]*"`);
+    return !pattern.test(markup);
+  });
+
+  assert.deepEqual(orphans, [], "these print rules no longer match anything in the site");
+});
+
+test("a drawing too wide for the page is not guillotined by the print styles", () => {
+  // .scroll is an overflow container, which is the right answer on a phone and
+  // the wrong one on paper: a sheet cannot be scrolled sideways, so anything
+  // past the edge is simply gone. The three melds that deliberately exceed the
+  // column -- contract-rummy, hand-and-foot, seven-card-stud -- are precisely
+  // what that would have eaten, and silently.
+  const scroll = /\.scroll\s*\{([^}]*)\}/.exec(printBlock);
+  assert.ok(scroll, "the print block says nothing about .scroll");
+  assert.match(
+    scroll[1]!,
+    /overflow:\s*visible/,
+    ".scroll still clips in print, so a wide meld loses its right-hand cards",
+  );
+  assert.match(
+    printBlock,
+    /\.scroll svg\s*\{[^}]*max-width:\s*100%/,
+    "a drawing wider than the page has nothing to shrink it",
+  );
+});
+
 test("every internal link points at a file that is shipped", () => {
   const missing: string[] = [];
 

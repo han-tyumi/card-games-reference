@@ -367,3 +367,84 @@ footer p { margin: 0; }
   .games { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .wrap { padding-left: 26px; padding-right: 26px; }
 }
+
+/*
+ * Print.
+ *
+ * The site is built for a phone propped against a glass, and paper is a
+ * different medium that had been left entirely to browser defaults. Measured
+ * on Skat before this block existed: 11 sheets from the site against 6 in the
+ * booklet, for the same game and the same words.
+ *
+ * Two of the rules below are corrections rather than polish. The measure is
+ * tuned for a phone at arm's length and caps a Letter line at about two
+ * thirds, spilling the remainder onto extra sheets. And `.scroll` is an
+ * overflow container, which on paper is a guillotine: there is no scrolling a
+ * sheet sideways, so anything past the edge is simply gone. The three melds
+ * that deliberately exceed the column are exactly what that would eat.
+ */
+@media print {
+  /* Paper is white whatever the reader's system is set to. Printing dark mode
+     is an expensive way to empty a toner cartridge. */
+  :root {
+    --ink: #000;
+    --ink-soft: #333;
+    --accent: #000;
+    --bg: #fff;
+    --panel: #fff;
+    --rule: #999;
+    --shadow: none;
+  }
+
+  @page { margin: 18mm 16mm; }
+
+  body { background: #fff; font-size: 11pt; }
+
+  /* Controls and navigation mean nothing once printed. #reload is the update
+     notice from decision 0006 and comes out as an empty box. */
+  .site-nav,
+  .backlink,
+  .filters,
+  .chips,
+  .count,
+  #q,
+  #reload,
+  footer {
+    display: none !important;
+  }
+
+  .wrap,
+  .wrap--wide {
+    max-width: none;
+    padding: 0;
+  }
+
+  .scroll {
+    overflow: visible;
+    background: none;
+  }
+  .scroll svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Do not split a drawing, a fact table or a variant across a page turn, and
+     never leave a heading stranded at the foot of one. */
+  svg,
+  .facts,
+  .variant,
+  table {
+    break-inside: avoid;
+  }
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+
+  /* Underlined links and their colours cost ink and say nothing on paper. */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
