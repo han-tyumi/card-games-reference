@@ -640,3 +640,79 @@ test("the column a drawing is sized against does not shrink as type grows", () =
   const [, horizontal] = wrap[1]!.trim().split(/\s+/);
   assert.match(horizontal ?? "", /px$/, "horizontal padding is back in rem");
 });
+
+// --- installing it --------------------------------------------------------
+
+test("the About page says how to install it, per browser", () => {
+  const html = text("about.html");
+
+  assert.ok(html.includes('id="install"'), "no install section to link to");
+  assert.match(html, /<details>[\s\S]*<summary>/, "the steps are not in a disclosure");
+
+  // Named browsers rather than one generic set of steps: every one of these
+  // keeps it somewhere different, and steps that name the wrong menu are worse
+  // than none. Vivaldi in particular is neither where Safari keeps it on iOS
+  // nor where Chrome keeps it on Android.
+  for (const browser of ["Safari", "Vivaldi", "Chrome", "Edge", "Firefox"]) {
+    assert.ok(html.includes(browser), `the instructions do not mention ${browser}`);
+  }
+  for (const platform of ["iPhone and iPad", "Android", "Computer"]) {
+    assert.ok(html.includes(platform), `no instructions for ${platform}`);
+  }
+});
+
+test("the install instructions keep the step that silently fails", () => {
+  // On iOS the switch is the whole thing. Left off, the reader gets a bookmark
+  // that opens in a tab — identical on the home screen, not the same thing, and
+  // nothing tells them. Generic tutorial copy leaves this out.
+  const html = text("about.html");
+  assert.ok(html.includes("Open as Web App"), "the toggle is not mentioned");
+  assert.ok(
+    /opens in a tab/.test(html),
+    "the consequence of missing the toggle is not explained",
+  );
+  // Vivaldi on iOS goes through the browser's own menu, not the iOS share
+  // button, which is the step a Safari-shaped instruction gets wrong.
+  assert.ok(html.includes("Share Page"), "the Vivaldi iOS path is not named");
+});
+
+test("the install section is reachable from somewhere", () => {
+  // It sits near the bottom of a long page. Unlinked, it is findable only by
+  // scrolling to it, which is the problem it exists to solve.
+  const linking = pages.filter((p) => text(p).includes('href="about.html#install"'));
+  assert.ok(linking.length > 0, "nothing links to the install instructions");
+
+  // And the anchor it points at has to exist.
+  assert.ok(text("about.html").includes('id="install"'));
+});
+
+test("installing it costs no JavaScript", () => {
+  // The whole point of using <details> and prose. The only script on the About
+  // page is the service-worker bootstrap every page already carries.
+  const scripts = [...text("about.html").matchAll(/<script\b/g)];
+  assert.equal(scripts.length, 1, "the install section pulled in JavaScript");
+  assert.ok(!text("about.html").includes("beforeinstallprompt"));
+});
+
+test("the installed app is not locked to one orientation", () => {
+  // WCAG 2.2 failure F97 against SC 1.3.4: a manifest that pins orientation
+  // stops a reader who has their phone mounted, or who just wants a wide
+  // ranking strip across the screen.
+  const manifest = JSON.parse(text("manifest.webmanifest"));
+  assert.equal(manifest.orientation, undefined, "the manifest pins an orientation");
+});
+
+test("every focusable control has an author-declared focus ring", () => {
+  // Only the search field and the filter chips had one; the reset button, every
+  // link and the update banner's Reload button fell back to the UA default.
+  const css = text("style.css");
+  assert.match(css, /^:focus-visible \{[^}]*outline:/m, "no shared focus ring");
+  // The Reload button sits on the accent colour, so the shared accent ring
+  // would be invisible on its own banner. It needs a value per scheme.
+  assert.match(css, /\.updated button:focus-visible \{[^}]*outline-color/);
+  assert.match(
+    css,
+    /prefers-color-scheme: dark\)[\s\S]*?\.updated button:focus-visible \{[^}]*outline-color/,
+    "the dark scheme leaves the banner's focus ring at the light value",
+  );
+});

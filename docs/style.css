@@ -38,11 +38,25 @@
 
 html { -webkit-text-size-adjust: 100%; }
 
+/* One ring for everything focusable, rather than a rule per control. Only the
+   search field and the filter chips had one, so the reset button, every link
+   and the update banner's Reload button fell back to the UA default -- which is
+   fine in Chromium and is not something to rely on. --accent is defined in both
+   schemes, so this follows the page rather than needing a dark-mode twin. */
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
 body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font: 400 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* 1.0625rem, not 17px. A hard px size here silently ignored the reader's
+     own default-font-size setting -- measured: doubling it moved the headings
+     and the chrome and left the rules text at 17px, which is the one thing
+     they were trying to enlarge. Browser zoom always worked; this is the other
+     accommodation, and it is the commoner one on a phone. The page's
+     horizontal padding stays in px so the column does not shrink as the type
+     grows. */
+  font: 400 1.0625rem/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   /* A word longer than the column breaks rather than pushing the page sideways.
      It only acts when something would otherwise overflow, so ordinary text is
      untouched. Without it "Concentration" set at 200% text was wider than a
@@ -181,9 +195,16 @@ a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset:
   min-height: 2.1rem;
   cursor: pointer;
 }
+/* This button sits ON the accent colour, so the shared accent focus ring would
+   be invisible against its own banner. Each scheme names the value that shows:
+   white measures 11.5:1 on the light banner, and near-black 8.4:1 on the light
+   one dark mode uses. */
+.updated button:focus-visible { outline-color: #ffffff; }
+
 @media (prefers-color-scheme: dark) {
   .updated { color: #12171c; }
   .updated button { background: #12171c; color: var(--accent); }
+  .updated button:focus-visible { outline-color: #12171c; }
 }
 
 /* ---- game list --------------------------------------------------------- */
@@ -292,6 +313,15 @@ table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
 th, td { text-align: left; padding: 0.5rem 0.7rem; border-bottom: 1px solid var(--rule); }
 th { color: var(--ink-soft); font-weight: 600; font-size: 0.8rem;
   text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+
+/* The install instructions. A <details> rather than anything scripted: it is
+   the browser's own disclosure widget, so it is keyboard operable, announced
+   correctly and findable by find-in-page when open, for no JavaScript at all.
+   Deliberately NOT hidden when already installed — a rule keyed on
+   display-mode would trade a closed paragraph for the risk of silently hiding
+   the whole thing where that query misbehaves. */
+.game summary { font-weight: 600; cursor: pointer; padding: 0.2rem 0; }
+.game details p, .game details ul { margin-top: 0.6rem; }
 
 .variant { margin: 0 0 0.8rem; }
 .variant b { color: var(--ink); }

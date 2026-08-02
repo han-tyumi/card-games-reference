@@ -425,6 +425,36 @@ something here disagrees with how you learned it, that is worth knowing.
 <p>The whole collection is also
 <a href="${PDF_URL}">a printable booklet</a> — one PDF, bookmarked, a game to a
 page. Or just open this site once and it stays available offline.</p>
+
+<h3 id="install">Install it</h3>
+<p>Naibi can sit on your home screen or dock and open in its own window, with no
+address bar and no signal needed. Every browser that can do this has it in a
+menu rather than on the page, so here is where each one keeps it.</p>
+<details>
+<summary>How to install, browser by browser</summary>
+<p><strong>iPhone and iPad.</strong> Whichever browser you use, this happens
+through a share menu, and there is one switch that matters: leave
+<strong>Open as Web App</strong> turned on. Turned off you get a bookmark that
+opens in a tab, which looks identical on the home screen and is not the same
+thing.</p>
+<ul>
+<li><strong>Safari:</strong> the More (•••) button, then Share — or the Share
+button in the toolbar — then <strong>Add to Home Screen</strong>. If that is not
+in the list, scroll to the bottom, tap Edit Actions and add it.</li>
+<li><strong>Vivaldi:</strong> the Vivaldi menu, then <strong>Share Page</strong>,
+then Add to Home Screen, then Add.</li>
+<li><strong>Chrome, Edge, Firefox and others</strong> each install it from their
+own share menu the same way.</li>
+</ul>
+<p><strong>Android.</strong> Chrome, Edge, Samsung Internet, Opera and Firefox
+all offer <strong>Install</strong> or <strong>Add to Home screen</strong> in the
+browser's own menu. In Vivaldi it is the Vivaldi menu, then Add Page To, then
+Home screen, then Install.</p>
+<p><strong>Computer.</strong> Chrome and Edge show an install icon in the
+address bar. In Vivaldi, right-click this page's tab and choose Install. Safari
+on macOS: the Share button, then <strong>Add to Dock</strong>. Firefox on the
+desktop does not install web apps, though Firefox on Android does.</p>
+</details>
 </article>`;
 
   return page({
@@ -442,7 +472,7 @@ function indexPage(games: CardGame[]): string {
 <h1>${TITLE}</h1>
 <p class="pron">NYE-bee</p>
 <p class="blurb">${esc(TAGLINE)} ${games.length} games. Works offline once
-loaded, and installs to your home screen.</p>
+loaded, and <a href="about.html#install">installs to your home screen</a>.</p>
 <nav class="site-nav">
 <a href="about.html">About</a>
 <a href="${PDF_URL}">Print the booklet (PDF)</a>
@@ -545,7 +575,12 @@ export function buildSite(games: CardGame[]): Map<string, string | Buffer> {
         start_url: "./",
         scope: "./",
         display: "standalone",
-        orientation: "portrait",
+        // No `orientation`. Locking the installed app to portrait is WCAG 2.2
+        // failure F97 against SC 1.3.4 Orientation, which covers "all
+        // technologies that allow the viewing of content to be restricted to
+        // one orientation" -- and a reader with a phone mounted in a stand, or
+        // one who simply wants a wide ranking strip across the screen, is
+        // exactly who this would have stopped.
         background_color: "#fbfaf8",
         theme_color: "#1f3a5f",
         icons: [
