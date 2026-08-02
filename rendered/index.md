@@ -2,7 +2,7 @@
 
 # Card Game Rules — Index
 
-63 games, free to reuse under CC BY-SA 4.0.
+64 games, free to reuse under CC BY-SA 4.0.
 
 ## Solitaire (1 player)
 
@@ -55,6 +55,7 @@
 | [Big Two](big-two.md) | 2-4 players (best with 4) | 1 standard deck (52 cards), jokers removed | 20-45 minutes | Medium |
 | [Crazy Eights](crazy-eights.md) | 2-7 players (best with 4) | 1 standard deck (52 cards) for two to five players; 2 decks shuffled together (104 cards) for six or seven | 15-30 minutes | Simple |
 | [Durak](durak.md) | 2-6 players (best with 4) | 1 standard deck stripped to 36 cards (6 up to ace in each suit); five or six players use the full 52-card pack instead | 15-30 minutes | Easy |
+| [Fan Tan](fan-tan.md) | 3-8 players (best with 5) | 1 standard deck (52 cards); counters or chips if you want the pool | 15-30 minutes | Simple |
 | [Kings in the Corner](kings-in-the-corner.md) | 2-6 players (best with 4) | 1 standard deck (52 cards), jokers removed | 15-30 minutes | Easy |
 | [Mau-Mau](mau-mau.md) | 2-8 players (best with 4) | 1 standard deck stripped to 32 cards (A, K, Q, J, 10, 9, 8, 7 in each suit); a full 52-card pack works too, and two packs suit six or more players | 15-30 minutes | Simple |
 | [Nertz](nertz.md) | 2-8 players (best with 4) | One standard 52-card deck per player, each with a different back design; jokers removed | 30-60 minutes | Easy |

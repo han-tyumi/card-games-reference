@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 303" width="442" height="485" role="img" aria-label="Fan Tan: Each suit forms one row, opened by its seven and extended one card at a time in both directions until it runs from the two up to the ace.">
+<title>Each suit forms one row, opened by its seven and extended one card at a time in both directions until it runs from the two up to the ace.</title>
+<rect x="51.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="66.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">5♥</text>
+<rect x="87.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="102.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">6♥</text>
+<rect x="123.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="138.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">7♥</text>
+<text x="138.0" y="71.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Opened the</text>
+<text x="138.0" y="80.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">row</text>
+<rect x="159.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="174.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">8♥</text>
+<rect x="195.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="210.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">9♥</text>
+<rect x="51.0" y="106.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="66.0" y="131.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">4♥</text>
+<text x="66.0" y="156.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Extends</text>
+<text x="66.0" y="165.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">down</text>
+<rect x="87.0" y="106.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="102.0" y="131.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">10♥</text>
+<text x="102.0" y="156.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Extends up</text>
+<rect x="51.0" y="191.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" stroke-dasharray="3 2"/>
+<text x="66.0" y="216.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">2♥</text>
+<text x="66.0" y="241.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">The 3 and</text>
+<text x="66.0" y="250.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">4 first</text>
+<rect x="87.0" y="191.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" stroke-dasharray="3 2"/>
+<text x="102.0" y="216.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">J♥</text>
+<text x="51.0" y="17.0" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">A suit row in play</text>
+<text x="51.0" y="102.0" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Playable now</text>
+<text x="51.0" y="187.0" font-family="system-ui, sans-serif" font-size="9" fill="#a4243b">Not playable yet</text>
+<text x="138.0" y="267.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Each suit forms one row, opened by its seven and</text>
+<text x="138.0" y="279.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">extended one card at a time in both directions until it</text>
+<text x="138.0" y="291.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">runs from the two up to the ace.</text>
+</svg>
