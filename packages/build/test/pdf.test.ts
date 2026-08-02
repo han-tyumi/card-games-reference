@@ -185,3 +185,25 @@ test("the same corpus compiles to the same bytes", () => {
     );
   });
 });
+
+test("the booklet does not read the clock", () => {
+  // It used to, on the cover: "Generated 2026-08-02". That put the wall clock
+  // inside the bytes `npm run pdf -- --check` compares, so the same corpus
+  // compiled to a different file the next day and the gate would have gone red
+  // on a repository nobody had touched. Rebuilt under a clock seven months
+  // ahead the file is now byte-identical; this keeps it that way, because the
+  // failure it guards arrives at midnight rather than at a commit.
+  const source = readFileSync(new URL("../build-pdf.ts", import.meta.url), "utf8");
+
+  const reads = [...source.matchAll(/new Date\(([^)]*)\)|Date\.now\(\)/g)].filter(
+    // An explicit argument is a fixed instant, not the clock. `new Date(0)` is
+    // the PDF's CreationDate, pinned for exactly this reason -- decision 0013.
+    (m) => !(m[1] && m[1].trim().length > 0),
+  );
+
+  assert.deepEqual(
+    reads.map((m) => m[0]),
+    [],
+    "the booklet's bytes now depend on when it was built",
+  );
+});

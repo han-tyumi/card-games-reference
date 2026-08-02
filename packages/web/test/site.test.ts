@@ -13,6 +13,7 @@
 
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import {
   CATEGORY_ORDER,
   categoryLabel,
@@ -56,19 +57,28 @@ test("the repository and the booklet are reachable from every page", () => {
   for (const page of pages) {
     const html = text(page);
     assert.match(html, /https:\/\/github\.com\/[\w-]+\/naibi(?:["/])/, `${page}: no repo link`);
-    assert.ok(html.includes("naibi.pdf"), `${page}: no booklet link`);
+    assert.ok(html.includes("naibi-booklet.pdf"), `${page}: no booklet link`);
     assert.ok(/href="(\.\.\/)?about\.html"/.test(html), `${page}: no About link`);
   }
 });
 
-test("the booklet link points at the file the PDF build actually writes", () => {
-  // rendered/naibi.pdf is committed rather than copied into docs/, so the link
-  // leaves the site -- and a renamed output would 404 with nothing to catch it.
-  const link = /https:\/\/github\.com\/[\w-]+\/naibi\/raw\/main\/(\S+?\.pdf)/.exec(
+test("the booklet link points at the asset the release workflow attaches", () => {
+  // The booklet is not copied into docs/, so this link leaves the site. It
+  // resolves against whatever the release named, and the two are written in
+  // different files -- rename one and it 404s with nothing to catch it.
+  const link = /https:\/\/github\.com\/[\w-]+\/naibi\/releases\/latest\/download\/(\S+?\.pdf)/.exec(
     text("index.html"),
   );
-  assert.ok(link, "no raw booklet link");
-  assert.equal(link[1], "rendered/naibi.pdf");
+  assert.ok(link, "no release booklet link");
+
+  const workflow = readFileSync(
+    new URL("../../../.github/workflows/release.yml", import.meta.url),
+    "utf8",
+  );
+  assert.ok(
+    workflow.includes(`/tmp/${link[1]}`),
+    `the site links ${link[1]}, which the release workflow does not attach`,
+  );
 });
 
 test("the About page carries the things said nowhere else", () => {

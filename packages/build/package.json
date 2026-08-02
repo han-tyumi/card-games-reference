@@ -1,6 +1,6 @@
 {
   "name": "naibi-build",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "private": true,
   "type": "module",
   "description": "Validation and output generation for the card game data",
@@ -15,5 +15,10 @@
     "naibi": "*",
     "ajv": "^8.20.0",
     "pdfkit": "^0.19.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/han-tyumi/naibi.git",
+    "directory": "packages/build"
   }
 }

@@ -556,3 +556,39 @@ browser byte for byte and there is no build step to strip types with, so they ar
 typed with JSDoc and checked by a second config, `tsconfig.web.json` — which is
 why `npm run typecheck` runs `tsc` twice. Annotate new code there the same way;
 see [decision 0014](decisions/0014-type-check-the-browser-assets-in-place.md).
+
+## Cutting a release
+
+A release is a tag. Everything else — the full check, the notes, the booklet —
+happens in `.github/workflows/release.yml`, so what gets published is built by
+the job that verified it rather than uploaded from whoever's laptop tagged it.
+
+The version lives in exactly one place, `packages/data/package.json`, and is read
+from there by everything that needs it. What the numbers mean, and why the
+project is on `0.x`, is at the top of [CHANGELOG.md](CHANGELOG.md).
+
+1. **Bump `packages/data/package.json`.** Nothing else carries a version: the
+   other three manifests are `private` and sit at `0.0.0` so that no meaning can
+   be read into them.
+2. **Move the changelog's `Unreleased` items under a new heading** —
+   `## [X.Y.Z] — YYYY-MM-DD` — and add the compare link at the bottom.
+3. **Rebuild the booklet: `npm run pdf`.** The version is printed on the cover,
+   so a bump makes `rendered/naibi.pdf` stale. This is the step that is easy to
+   forget, which is why the release job runs the whole gate and fails on it
+   rather than publishing a booklet whose cover disagrees with its tag.
+4. **`npm run check`**, commit, push, and let CI go green.
+5. **Tag and push it:** `git tag v0.1.0 && git push origin v0.1.0`.
+
+The job then checks that the tag, the manifest and the changelog all say the
+same version, runs the full gate, takes the release notes from that changelog
+entry, and attaches the booklet as `naibi-booklet.pdf`. The name is stable on
+purpose: the README and the website both link
+`releases/latest/download/naibi-booklet.pdf` and never need editing again, and
+which release a printed copy came from is on its cover.
+
+There is no changelog automation, and that is deliberate. Conventional commits
+would flatten commit subjects that currently carry the reasoning — the one place
+in this repository where *why* is written down closest to the change — into
+`feat:` and `fix:`. Changesets solves independent versioning across many
+published packages, and there is one. The changelog is written by hand and
+checked by a test instead, the same way the README's counts are.

@@ -33,6 +33,7 @@ import {
   INK,
   BACKGROUND_HEADING,
   SECTIONS,
+  VERSION,
   blocks,
   buildDiagram,
   buildFigure,
@@ -561,9 +562,15 @@ function titlePage(book: Booklet, gameCount: number): void {
   doc.fontSize(9.5).fillColor(MUTED);
   book.text(ORIGIN, { lineGap: 2.5 });
   doc.moveDown(0.6);
+  // The version and not the build date. A printed booklet has to say which one
+  // it is, and "generated 2026-08-02" answered a question nobody asks while
+  // making the file a function of the clock: same corpus, next day, different
+  // bytes, and `npm run pdf -- --check` goes red on a repository nobody
+  // touched. Decision 0013 fixed the PDF's CreationDate for exactly this
+  // reason and this line went on quietly undoing it.
   book.text(
     `Text licensed under CC BY-SA 4.0. Scripts licensed under MIT. ` +
-      `${REPO_URL} · Generated ${new Date().toISOString().slice(0, 10)}.`,
+      `${REPO_URL} · Version ${VERSION}.`,
     { lineGap: 2.5 },
   );
 }

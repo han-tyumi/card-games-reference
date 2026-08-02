@@ -1,13 +1,17 @@
 {
   "name": "naibi",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "type": "module",
   "description": "Original, openly-licensed rules for traditional and popular card games, as structured data",
   "license": "(MIT AND CC-BY-SA-4.0)",
+  "homepage": "https://han-tyumi.github.io/naibi/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/han-tyumi/naibi.git",
     "directory": "packages/data"
+  },
+  "bugs": {
+    "url": "https://github.com/han-tyumi/naibi/issues"
   },
   "keywords": [
     "card-games",
@@ -15,6 +19,9 @@
     "reference",
     "open-data"
   ],
+  "engines": {
+    "node": ">=22.18"
+  },
   "exports": {
     ".": "./src/index.ts",
     "./schema": "./schema/game.schema.json",

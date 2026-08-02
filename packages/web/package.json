@@ -1,6 +1,6 @@
 {
   "name": "naibi-web",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "private": true,
   "type": "module",
   "description": "Static, installable, offline-first site generated from the game data",
@@ -10,5 +10,10 @@
   },
   "dependencies": {
     "naibi": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/han-tyumi/naibi.git",
+    "directory": "packages/web"
   }
 }

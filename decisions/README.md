@@ -30,6 +30,7 @@ part.
 | [0012](0012-the-booklet-cannot-be-byte-gated.md) | Make the booklet reproducible on one machine, but do not gate it | Superseded |
 | [0013](0013-vendor-the-fonts-and-gate-the-booklet.md) | Vendor the fonts, and gate the booklet after all | Accepted |
 | [0014](0014-type-check-the-browser-assets-in-place.md) | Type-check the browser assets in place rather than converting them | Accepted |
+| [0015](0015-semantic-versions-cut-by-tag.md) | Semantic versions on the data package, cut by pushing a tag | Accepted |
 
 ## The format
 

@@ -1,0 +1,71 @@
+name: Release
+
+# Cutting a release is pushing a tag. Everything else happens here, so the
+# booklet that gets published is built by the same job that checked it rather
+# than uploaded from whoever's laptop tagged it.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22.18"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # A tag is a claim about a version, and three places state one. If they
+      # disagree the booklet's cover is wrong in a file people print, so this
+      # fails before anything is published rather than after.
+      - name: Check the tag, the package and the changelog agree
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          pkg="$(node -p "require('./packages/data/package.json').version")"
+          log="$(grep -m1 -oP '^## \[\K[0-9]+\.[0-9]+\.[0-9]+' CHANGELOG.md)"
+          echo "tag=$tag package=$pkg changelog=$log"
+          if [ "$tag" != "$pkg" ] || [ "$tag" != "$log" ]; then
+            echo "::error::tag $tag, package $pkg, changelog $log — these must match"
+            exit 1
+          fi
+
+      # The whole gate, not a subset. A release is the worst place to discover
+      # that docs/ or the booklet was stale.
+      - name: Run the full check
+        run: npm run check
+
+      - name: Take the changelog entry for this version as the release notes
+        run: |
+          awk -v v="${GITHUB_REF_NAME#v}" '
+            $0 ~ "^## \\[" v "\\]" { inside = 1; next }
+            inside && /^## / { exit }
+            inside { print }
+          ' CHANGELOG.md > /tmp/notes.md
+          if [ ! -s /tmp/notes.md ]; then
+            echo "::error::no changelog entry for ${GITHUB_REF_NAME}"
+            exit 1
+          fi
+          cat /tmp/notes.md
+
+      # A stable asset name, so the README can link releases/latest/download
+      # and never need editing again. Which release it is comes off the cover.
+      - name: Name the booklet for the release
+        run: cp rendered/naibi.pdf /tmp/naibi-booklet.pdf
+
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" /tmp/naibi-booklet.pdf \
+            --title "$GITHUB_REF_NAME" \
+            --notes-file /tmp/notes.md \
+            --repo "$GITHUB_REPOSITORY"

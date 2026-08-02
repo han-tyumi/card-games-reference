@@ -1,7 +1,7 @@
 {
   "_comment": "Private workspace root. The published package is packages/data, which is named 'naibi'.",
   "name": "naibi-workspace",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "private": true,
   "type": "module",
   "description": "A free, openly-licensed reference for how to play traditional and popular card games, stored as structured data and built to work offline.",

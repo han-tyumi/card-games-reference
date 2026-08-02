@@ -38,6 +38,17 @@ export type Category = CardGame["category"];
 
 const PACKAGE_ROOT = fileURLToPath(new URL("..", import.meta.url));
 
+/**
+ * The released version of the corpus, from this package's own manifest.
+ *
+ * One place, because it goes on the booklet's cover and into the release, and
+ * two numbers that could disagree would eventually disagree. Read at import
+ * rather than written out, so bumping the manifest is the whole of a bump.
+ */
+export const VERSION: string = JSON.parse(
+  readFileSync(join(PACKAGE_ROOT, "package.json"), "utf8"),
+).version;
+
 export const GAMES_DIR = join(PACKAGE_ROOT, "games");
 export const SCHEMA_PATH = join(PACKAGE_ROOT, "schema", "game.schema.json");
 

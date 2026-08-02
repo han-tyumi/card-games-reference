@@ -130,11 +130,19 @@ test("the badges point at the licence files they name", () => {
 test("the site and booklet links are advertised, and agree with the build", () => {
   assert.match(readme, /https:\/\/han-tyumi\.github\.io\/naibi\//, "no link to the site");
 
-  const pdf = /https:\/\/github\.com\/[\w-]+\/naibi\/raw\/main\/(\S+?\.pdf)/.exec(readme);
+  // The booklet is a release asset, so this cannot be checked against a path on
+  // disk any more. What can be checked is that the name the README asks for is
+  // the name the release job attaches — the two live in different files, and a
+  // rename on either side is a 404 nobody notices until someone clicks it.
+  const pdf = /https:\/\/github\.com\/[\w-]+\/naibi\/releases\/latest\/download\/(\S+?\.pdf)/.exec(
+    readme,
+  );
   assert.ok(pdf, "no link to the booklet");
+
+  const release = readFileSync(join(REPO_ROOT, ".github", "workflows", "release.yml"), "utf8");
   assert.ok(
-    existsSync(join(REPO_ROOT, pdf[1]!)),
-    `README links ${pdf[1]}, which the PDF build does not produce`,
+    release.includes(`/tmp/${pdf[1]}`),
+    `README links ${pdf[1]}, which the release workflow does not attach`,
   );
 });
 
@@ -326,4 +334,62 @@ test("every browser asset is actually type-checked", () => {
   const scripts = JSON.parse(readFileSync(join(REPO_ROOT, "package.json"), "utf8")).scripts;
   assert.match(scripts.typecheck, /tsconfig\.web\.json/, "typecheck skips the browser assets");
   assert.match(scripts.check, /typecheck/, "the gate no longer typechecks");
+});
+
+// --- versioning -----------------------------------------------------------
+
+const changelog = readFileSync(join(REPO_ROOT, "CHANGELOG.md"), "utf8");
+
+/** Every released version in the changelog, newest first. */
+const releases = [...changelog.matchAll(/^## \[(\d+\.\d+\.\d+)\][^\n]*?(\d{4}-\d{2}-\d{2})/gm)].map(
+  (m) => ({ version: m[1]!, date: m[2]! }),
+);
+
+test("the changelog's newest release is the version the package claims", () => {
+  // The version reaches the booklet's cover and the release asset, so a
+  // changelog naming a different one is a released artifact mislabelled.
+  const manifest = JSON.parse(
+    readFileSync(join(REPO_ROOT, "packages", "data", "package.json"), "utf8"),
+  );
+  assert.ok(releases.length > 0, "the changelog lists no releases");
+  assert.equal(
+    releases[0]!.version,
+    manifest.version,
+    "CHANGELOG.md and packages/data/package.json disagree about the version",
+  );
+});
+
+test("the version has one home, and everything else is told", () => {
+  // Two numbers that could drift eventually do. The private packages carry
+  // 0.0.0 precisely so nobody reads a meaning into them.
+  for (const dir of ["packages/build", "packages/web", "."]) {
+    const manifest = JSON.parse(readFileSync(join(REPO_ROOT, dir, "package.json"), "utf8"));
+    assert.equal(manifest.private, true, `${dir} is not marked private`);
+    assert.equal(manifest.version, "0.0.0", `${dir} carries a version that means nothing`);
+  }
+});
+
+test("releases are listed newest first and dated", () => {
+  for (const [i, release] of releases.entries()) {
+    assert.ok(
+      !Number.isNaN(Date.parse(release.date)),
+      `${release.version} has an unparseable date`,
+    );
+    if (i === 0) continue;
+    const [a, b] = [releases[i - 1]!.version, release.version].map((v) =>
+      v.split(".").map(Number),
+    );
+    const newer = a!.some((n, j) => n > b![j]!) && !a!.some((n, j) => n < b![j]!);
+    assert.ok(newer, `${releases[i - 1]!.version} is not newer than ${release.version}`);
+  }
+});
+
+test("the published package tells consumers which Node it needs", () => {
+  // Its entry point is a .ts file the runtime strips types from itself. On an
+  // older Node that is a syntax error with nothing at all to explain it.
+  const manifest = JSON.parse(
+    readFileSync(join(REPO_ROOT, "packages", "data", "package.json"), "utf8"),
+  );
+  assert.ok(manifest.engines?.node, "packages/data states no Node requirement");
+  assert.match(manifest.exports["."], /\.ts$/, "the entry point is no longer TypeScript");
 });
