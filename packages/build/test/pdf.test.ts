@@ -145,11 +145,17 @@ test("a figure fits the page it is drawn on, at a size cards still read at", () 
   assert.deepEqual(shrunk, [], "these figures are drawn smaller than card size");
 });
 
-test("the same corpus always compiles to the same bytes", () => {
-  // Without this the booklet could not be gated at all: PDFKit stamps the
-  // moment of the build, so "differs from the committed copy" was true on every
-  // run, and 140 near-identical 0.9 MB revisions accumulated in git for a file
-  // whose content changed a handful of times.
+test("the same corpus compiles to the same bytes on the same machine", () => {
+  // PDFKit stamps the moment of the build, so every run used to produce a new
+  // 0.9 MB object in git whether or not a card had moved: 140 of them, most of
+  // a 29 MB history. A fixed CreationDate stops that, and this holds the line.
+  //
+  // Note what it does NOT establish. Both compiles happen here, so this is
+  // determinism on one machine. The booklet embeds a subset of whatever DejaVu
+  // the system has, and CI's differs from a developer's — which is why the
+  // booklet has no --check and cannot have one until the font is vendored.
+  // Ask this test for cross-machine reproducibility and it will lie to you;
+  // it was briefly asked, and CI went red. See decision 0012.
   const twin = join(dir, "twin.pdf");
   return compile(games, twin).then(() => {
     assert.ok(
