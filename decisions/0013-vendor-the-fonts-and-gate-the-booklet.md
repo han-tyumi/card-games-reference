@@ -71,10 +71,21 @@ nothing new.
 The guarantee is stronger than before and still not absolute, and it is worth
 saying which is which. The font is pinned, `pdfkit` is pinned by the lockfile,
 and the test in `pdf.test.ts` proves determinism within one process. Node's
-bundled zlib is not pinned, and CI runs a different minor version from this
-machine. If that turns out to matter, the gate will fail on the first push
-rather than silently — which is the correct failure, and the reason this was
-proved on a branch before going anywhere near `main`.
+bundled zlib is not pinned, and CI runs a different minor version from the
+machine this was written on.
+
+**That last question has now been answered, and the answer was favourable.**
+The first push of this change went to a branch precisely so CI could settle it,
+and the gate passed: a booklet built on GitHub's ubuntu-latest runner under Node
+22.18 is byte-identical to one built under Node 22.22 here. Deflate output did
+not vary between those two, so the font really was the only input that mattered,
+and 0012's diagnosis was correct as far as it went.
+
+What that does **not** establish is that zlib can never vary. It was one
+comparison across two Node minors on two platforms, not a proof. If the gate
+ever fails on a build nobody touched the data in, the Node version is the first
+place to look and pinning it exactly is the ready-made fix — which is why the
+option was weighed above rather than dismissed.
 
 The lesson from 0012 stands and is worth restating in its stronger form: it was
 right that the font was an unpinned input, and incomplete about how many
