@@ -2,7 +2,7 @@
 
 # Card Game Rules — Index
 
-69 games, free to reuse under CC BY-SA 4.0.
+70 games, free to reuse under CC BY-SA 4.0.
 
 ## Solitaire (1 player)
 
@@ -50,6 +50,7 @@
 | [Contract Rummy](contract-rummy.md) | 3-8 players (best with 4) | 2 standard decks plus jokers for 3 or 4 players; 3 decks plus jokers for 5 or more | 60-120 minutes | Medium |
 | [Gin Rummy](gin-rummy.md) | 2 players | 1 standard deck (52 cards), jokers removed | 20-45 minutes | Easy |
 | [Hand and Foot](hand-and-foot.md) | 2-6 players (best with 4) | One more deck than there are players, jokers included: 5 decks and their 10 jokers (270 cards) for the usual four-player game | 90+ minutes | Complex |
+| [Indian Rummy](indian-rummy.md) | 2-8 players (best with 4) | 2 standard decks with one printed joker each (106 cards); a third deck once there are more than six players | 30-60 minutes | Medium |
 | [Rummy](rummy.md) | 2-6 players (best with 4) | 1 standard deck (52 cards) | 20-45 minutes | Easy |
 
 ## Shedding

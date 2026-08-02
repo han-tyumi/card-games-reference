@@ -38,7 +38,7 @@ Nothing is stated in more than one of them. Two copies of a rule is two things
 that can drift, which is the failure this project spends most of its effort
 avoiding.
 
-**Status:** 69 games, all validating. The site is built and installable; the
+**Status:** 70 games, all validating. The site is built and installable; the
 companion tools are not started.
 
 ## What's here
@@ -124,7 +124,7 @@ filtering a real picker needs — not the companion tool described in
 
 ## The collection
 
-69 games, from Klondike to Skat, Bridge to Koi-Koi.
+70 games, from Klondike to Skat, Bridge to Koi-Koi.
 
 | Family | Games |
 | --- | --- |
@@ -132,7 +132,7 @@ filtering a real picker needs — not the companion tool described in
 | Shedding | 12 |
 | Trick-taking | 15 |
 | Solitaire (1 player) | 11 |
-| Rummy family | 7 |
+| Rummy family | 8 |
 | Bluffing | 7 |
 | Casino | 3 |
 

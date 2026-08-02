@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 388" width="442" height="621" role="img" aria-label="Indian Rummy: Two runs are required before any of your other cards count, and one of them must be straight — built without a wild card standing in for something missing.">
+<title>Two runs are required before any of your other cards count, and one of them must be straight — built without a wild card standing in for something missing.</title>
+<rect x="87.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="102.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">7♥</text>
+<rect x="123.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="138.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">8♥</text>
+<rect x="159.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="174.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">9♥</text>
+<text x="174.0" y="71.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">No wild</text>
+<text x="174.0" y="80.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">card in it</text>
+<rect x="87.0" y="106.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="102.0" y="131.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">7♠</text>
+<rect x="123.0" y="106.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="138.0" y="131.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">8♠</text>
+<rect x="159.0" y="106.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="174.0" y="131.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">Jkr</text>
+<text x="174.0" y="156.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Standing</text>
+<text x="174.0" y="165.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">in for 9♠</text>
+<rect x="87.0" y="191.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="102.0" y="216.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">5♦</text>
+<rect x="123.0" y="191.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="138.0" y="216.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">5♣</text>
+<rect x="159.0" y="191.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="174.0" y="216.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">5♠</text>
+<text x="174.0" y="241.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Three</text>
+<text x="174.0" y="250.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">different suits</text>
+<rect x="87.0" y="276.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" stroke-dasharray="3 2"/>
+<text x="102.0" y="301.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">7♦</text>
+<rect x="123.0" y="276.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" stroke-dasharray="3 2"/>
+<text x="138.0" y="301.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">7♦</text>
+<rect x="159.0" y="276.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1" stroke-dasharray="3 2"/>
+<text x="174.0" y="301.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">7♣</text>
+<text x="87.0" y="17.0" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Straight run</text>
+<text x="87.0" y="102.0" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Ordinary run</text>
+<text x="87.0" y="187.0" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Set</text>
+<text x="87.0" y="272.0" font-family="system-ui, sans-serif" font-size="9" fill="#a4243b">Not a set: suit</text>
+<text x="87.0" y="281.0" font-family="system-ui, sans-serif" font-size="9" fill="#a4243b">repeats</text>
+<text x="138.0" y="352.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Two runs are required before any of your other cards</text>
+<text x="138.0" y="364.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">count, and one of them must be straight — built without</text>
+<text x="138.0" y="376.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">a wild card standing in for something missing.</text>
+</svg>

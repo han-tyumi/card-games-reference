@@ -1,0 +1,198 @@
+{
+  "id": "indian-rummy",
+  "name": "Indian Rummy",
+  "aliases": [
+    "Paplu",
+    "13 Card Rummy"
+  ],
+  "category": "rummy-type",
+  "players": {
+    "min": 2,
+    "max": 8,
+    "ideal": 4
+  },
+  "decks": "2 standard decks with one printed joker each (106 cards); a third deck once there are more than six players",
+  "equipment": {
+    "standard_decks": 2,
+    "jokers": 2,
+    "special_deck": null,
+    "extra_deck_for_large_groups": true,
+    "other": []
+  },
+  "setup": "This is the rummy of Indian trains, clubs and afternoon kitty parties — thirteen cards, two decks, and one requirement that separates it from every other member of the family. It also answers to Paplu, and it is played for small stakes about as often as it is played for nothing.\n\nTwo decks and their printed jokers, 106 cards, will cover a table of up to six. Seven players or more want a third deck shuffled in.\n\nThe wild cards are appointed fresh every hand and this is the first thing to settle. One card is pulled blind from the shuffled pack and turned face up, and its rank goes wild for the hand — every card of that rank, in any suit and from either deck, along with both printed jokers. So if a nine comes up, all eight nines are wild and so are the two jokers, which makes ten cards in the pack that can be anything at all. The exception is when the card turned happens to be a printed joker: then the whole hand has exactly one wild card in it, that joker's twin, and it plays very differently.\n\nDeal thirteen cards to each player, singly. Turn one more face up to start the discard pile. What is left becomes the stock, and it does not go down flat — lay it face down at right angles across the turned-up card, so the rank that is wild stays readable to everybody for the rest of the hand and nobody has to trust their memory.\n\nOne piece of orientation before the first turn: both the deal and the play run anti-clockwise. The deal passes to the right, and the player on the dealer's right goes first. Nearly everything else in this collection goes the other way, so it is worth saying out loud at the table.\n\nSeats and the first deal are drawn for rather than argued over. Everybody takes a card; the highest picks their seat, the next highest sits to their right, and so on down; the lowest ends up on the highest's left and deals first.",
+  "layout": {
+    "rows": [
+      [
+        {
+          "kind": "stock",
+          "label": "Stock, laid crosswise",
+          "face": "down"
+        },
+        {
+          "kind": "waste",
+          "label": "Discard pile",
+          "cards": 1
+        }
+      ],
+      [
+        {
+          "kind": "hand",
+          "label": "Each player",
+          "repeat": 4,
+          "cards": 13
+        }
+      ]
+    ],
+    "caption": "Thirteen cards each. The stock lies at right angles over the turned-up card, so the rank that is wild this hand stays visible to everybody throughout."
+  },
+  "play": "Turns are the ordinary rummy pair of actions and nothing more. Take one card, either the top of the face-down stock or the top of the discard pile, and then put one card from your hand face up on the discard pile. Take from the discards and you may not throw that same card away again in the same turn; something else has to go.\n\nWhat is unusual is that nothing is ever laid on the table. No melds are put down as you go, no cards are added to anyone else's combinations, and your thirteen stay in your hand until the moment you win. Everything you learn about the other players comes from what they pick up and what they throw.\n\nThe combinations are these:\n\n- A run: three consecutive cards of one suit, or more than three. An ace can anchor either end, giving A-2-3 at the bottom and Q-K-A at the top, but it will not do both jobs in the same run — K-A-2 is nothing.\n- A set: one rank, three cards, all in different suits. With two decks on the table, two identical cards make no set between them; the suits have to differ.\n\nNo card can do two jobs. A holding of 7-8-9 in diamonds alongside two more nines is a run with two spare cards or a set with two spare cards, whichever you prefer, and never both.\n\nWild cards stand in for whatever is missing. If the turned card was an eight, then any eight, along with either printed joker, can be a card it is not.\n\nWhich brings us to the distinction the whole game is built on. A run is straight — pure — when no wild card is doing duty as something else in it. The test is not whether a wild card is present but what it is being asked to do: with eights wild, the run 7-8-9 in one suit is straight, because that eight is simply an eight, while J-Q-8 is a run only in the ordinary sense, since the eight is pretending to be a king.\n\nDeclaring requires two runs among your thirteen cards, no fewer, with a straight one among them. The rest of your hand has to be in valid combinations too — runs or sets, wild cards welcome. Those two runs have names, and the names are the point: the straight one is your original life and the other is the second life. Until the original life exists, nothing else you are holding is alive either. The usual winning shape is four combinations of four, three, three and three, though three combinations of five, four and four will do just as well.\n\nWinning is declared, not built up to. Having drawn, you discard your fourteenth card, say \"Rummy\" and lay all thirteen out for inspection.\n\nIf the stock runs out and the turn in which the last card was taken ends with nobody having declared, the hand is void and nobody wins anything.\n\nPacking. A hand going nowhere can be abandoned — packing, or dropping. There is only one moment for it, your own turn, and you do it instead of drawing rather than as well as. Do it on your very first turn, before you have drawn anything at all, and it costs 10 points; your cards are shuffled back under the stock and may come round again. Do it later and it costs 40, and your cards are set aside out of the game for good. If everyone but one player packs, that player wins on the spot and collects.",
+  "figures": [
+    {
+      "kind": "meld",
+      "caption": "Two runs are required before any of your other cards count, and one of them must be straight — built without a wild card standing in for something missing.",
+      "rows": [
+        {
+          "label": "Straight run",
+          "cards": [
+            {
+              "face": "7♥"
+            },
+            {
+              "face": "8♥"
+            },
+            {
+              "face": "9♥",
+              "note": "No wild card in it"
+            }
+          ]
+        },
+        {
+          "label": "Ordinary run",
+          "cards": [
+            {
+              "face": "7♠"
+            },
+            {
+              "face": "8♠"
+            },
+            {
+              "face": "Jkr",
+              "note": "Standing in for 9♠"
+            }
+          ]
+        },
+        {
+          "label": "Set",
+          "cards": [
+            {
+              "face": "5♦"
+            },
+            {
+              "face": "5♣"
+            },
+            {
+              "face": "5♠",
+              "note": "Three different suits"
+            }
+          ]
+        },
+        {
+          "label": "Not a set: suit repeats",
+          "valid": false,
+          "cards": [
+            {
+              "face": "7♦"
+            },
+            {
+              "face": "7♦"
+            },
+            {
+              "face": "7♣"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "goal_and_scoring": "Nobody accumulates points in this game. The winner scores nothing and everyone else pays, so the whole score sheet is a record of other people's failures.\n\nWhen somebody declares, every player who did not pack works out what their own hand is worth. Aces and the court cards and the tens are 10 apiece; everything from the nine down is worth its face value; and wild cards, printed or appointed, are worth nothing.\n\nHow much of your hand you have to count depends entirely on how far you got, and this is where the two lives earn their name:\n\n- No original life. Count every card. This is why a hand with no straight run in it is worth abandoning early — you are exposed to the full value of thirteen cards.\n- An original life and nothing more. The cards in that straight run come out of the count. Everything else is charged for, sets included.\n- Both lives. Now every valid combination in your hand is free — the two runs, any further runs, any sets — and you pay only for what is genuinely loose.\n\nSo the difference between one life and two is not a few points; it is usually most of the hand. A player holding a heart run, a spade run needing one card, and a completed set of fours can be paying for eleven cards or for two, depending on a single card in the middle.\n\nPackers pay their 10 or their 40 regardless. Nobody pays anything if the stock ran out and the hand was void.\n\nTwo rarities are worth knowing before they happen to you. A player who declares immediately after their very first draw collects only half from anybody who has not yet had a turn — they never had a chance to pack. And a player dealt thirteen cards that are already a complete valid hand may announce Hand-Rummy at their first turn instead of drawing: anyone who has already played a turn then pays double, packers still pay their 10, and anyone yet to play pays the ordinary rate.\n\nOne hand is a complete game and settles itself. For a session, the common arrangements are to fix the money value of a point and settle after every deal, to agree a number of deals and total up at the end, or to play a pool in which anybody whose running total passes 101 or 201 is out and the last player standing wins. In the pool formats a hand is usually capped, so that a total above 80 is simply recorded as 80.",
+  "scoring_table": [
+    {
+      "item": "Ace, king, queen, jack, ten",
+      "value": "10 each"
+    },
+    {
+      "item": "Nine down to two",
+      "value": "face value"
+    },
+    {
+      "item": "Any wild card",
+      "value": "0",
+      "note": "printed jokers and every card of the turned-up rank"
+    },
+    {
+      "item": "Cards in your original life",
+      "value": "not counted"
+    },
+    {
+      "item": "Every valid combination, once you have both lives",
+      "value": "not counted"
+    },
+    {
+      "item": "Packing on your first turn",
+      "value": "10"
+    },
+    {
+      "item": "Packing later",
+      "value": "40"
+    },
+    {
+      "item": "Caught by a declaration on the first draw",
+      "value": "half rate",
+      "note": "only for players who had not yet had a turn"
+    },
+    {
+      "item": "Caught by Hand-Rummy",
+      "value": "double",
+      "note": "only for players who had already taken a turn"
+    },
+    {
+      "item": "Usual cap on one hand",
+      "value": "80",
+      "note": "common in the pool formats; anything above is recorded as 80"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Tanala",
+      "description": "Where three decks are in use, three genuinely identical cards — same rank and same suit, from different packs — form a combination of their own, the tanala, and it is treated as the equal of a straight run. It is the one place in the game where duplicate suits are a virtue rather than a mistake, and since a tanala can serve as your original life, holding one turns a hand that looked dead into a live one. Not available in the two-deck game, where identical cards are simply two copies."
+    },
+    {
+      "name": "Paplu, the bonus wild card",
+      "description": "As well as making every card of the turned-up rank wild, some tables promote the next card up in that same suit to a special wild card called the Paplu. It works like any other wild, but whoever ends the hand holding one collects a bonus from each opponent — 10 points is the usual figure, rising to 25 for holding two. It rewards keeping a specific card that you might otherwise have played away, which is a small and pleasant tension to add to a hand you are already trying to close."
+    },
+    {
+      "name": "Points, Deals and Pool",
+      "description": "The three ways a session gets organised, and the difference is only in how long you are committed for. Points fixes a cash value per point and settles after every single deal, which is the quickest and the easiest to join late. Deals fixes a number of hands — two or three is usual — and the lowest total at the end wins. Pool sets a ceiling of 101 or 201, knocks out anybody whose running total reaches it, and runs until one player is left; it is much the longest of the three and the only one where a bad early hand really matters."
+    },
+    {
+      "name": "Only one run required",
+      "description": "Drop the second life and require just one straight run to validate the hand, with everything else free to be sets or ordinary runs. It makes hands close markedly faster and takes a good deal of the sting out of the scoring, since the gap between one life and two is what turns a middling hand into an expensive one. Reasonable for teaching the game, and worth being explicit about, because a player who learned it this way and a player who did not will disagree about a declaration rather than about a rule."
+    }
+  ],
+  "difficulty": "medium",
+  "duration_minutes": "30-60",
+  "tags": [
+    "strategy",
+    "counting",
+    "large-group",
+    "classic"
+  ],
+  "sources_consulted": [
+    "Pagat",
+    "Wikipedia"
+  ],
+  "checked": {
+    "date": "2026-08-02",
+    "prose": "75073bbc3652271a"
+  }
+}
