@@ -582,9 +582,16 @@ project is on `0.x`, is at the top of [CHANGELOG.md](CHANGELOG.md).
 The job then checks that the tag, the manifest and the changelog all say the
 same version, runs the full gate, takes the release notes from that changelog
 entry, and attaches the booklet as `naibi-booklet.pdf`. The name is stable on
-purpose: the README and the website both link
-`releases/latest/download/naibi-booklet.pdf` and never need editing again, and
-which release a printed copy came from is on its cover.
+purpose, so that a link to it never needs editing again, and which release a
+printed copy came from is on its cover.
+
+**One-time, after the first release exists:** point the README's two booklet
+links and `PDF_URL` in `packages/web/build-web.ts` at
+`https://github.com/han-tyumi/naibi/releases/latest/download/naibi-booklet.pdf`,
+and update the two tests that currently assert the branch URL. They still say
+`raw/main` because `releases/latest/download` 404s until something has been
+released, and a live site with a broken download is worse than a link to a
+branch. Rebuild `docs/` and commit.
 
 There is no changelog automation, and that is deliberate. Conventional commits
 would flatten commit subjects that currently carry the reasoning — the one place

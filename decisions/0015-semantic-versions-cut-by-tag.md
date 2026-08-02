@@ -53,8 +53,8 @@ Semver, meaning the schema and the exports of that package, on `0.x` for now.
 A release is cutting a tag; `.github/workflows/release.yml` checks that the tag,
 the manifest and the changelog agree, runs the full gate, takes the notes from
 that changelog entry, and attaches the booklet as `naibi-booklet.pdf`. The asset
-name is stable, so the README and the site link `releases/latest/download/…`
-once and never again.
+name is stable, so that once the README and the site are pointed at
+`releases/latest/download/…` they never need editing again.
 
 The cover carries the version and no build date. It carried
 `new Date().toISOString()`, which put the wall clock inside bytes that
@@ -76,9 +76,15 @@ The costs are real. Bumping the version makes `rendered/naibi.pdf` stale, becaus
 the number is printed on it — so a release is a commit *then* a tag, in that
 order, and forgetting the rebuild fails the job. The changelog is written by hand
 and will be forgotten at some point; the test catches a version that disagrees
-with the manifest, but nothing can catch an entry that is merely thin. And the
-README now links a release that must exist: between publishing this and pushing
-the first tag, that link is broken.
+with the manifest, but nothing can catch an entry that is merely thin.
+
+The links are the loose end. `releases/latest/download/…` 404s until a release
+exists, so the README and the site were pointed at it, the site deployed, and
+the published "Print the booklet" link broke — which is how this consequence
+came to be written from observation rather than foresight. They are back on
+`raw/main` until the first tag lands, and moving them is the last step of the
+release procedure. A link that works beats a link that is architecturally
+correct.
 
 This says nothing about publishing `naibi` to npm, which has not happened and is
 a separate decision. The version being correct is a precondition for it, not a

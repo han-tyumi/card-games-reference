@@ -56,10 +56,12 @@ const REPO_URL = "https://github.com/han-tyumi/naibi";
 // The booklet is committed to the repository rather than copied into docs/: it
 // is nearly a megabyte, it would double in git on every rebuild, and precaching
 // it would double what every visitor downloads for something most never open.
-// Pointed at the latest release rather than at the default branch: the asset
-// name is stable so this never needs editing, and what a reader downloads is a
-// booklet somebody tagged rather than whatever the branch held that minute.
-const PDF_URL = `${REPO_URL}/releases/latest/download/naibi-booklet.pdf`;
+// Still the default branch, and moving to `releases/latest/download/…` is a
+// one-line change once a release exists to point at -- see the last step of
+// CONTRIBUTING's release procedure. It is written this way round because
+// `releases/latest` 404s until the first tag lands, and a live site with a
+// broken download is worse than a link to a branch.
+const PDF_URL = `${REPO_URL}/raw/main/rendered/naibi.pdf`;
 const ISSUES_URL = `${REPO_URL}/issues`;
 // Where this is served from. Only needed for the things that cannot be relative
 // -- canonical URLs, share-card metadata and the sitemap -- so a custom domain

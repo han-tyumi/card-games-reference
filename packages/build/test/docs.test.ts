@@ -130,19 +130,26 @@ test("the badges point at the licence files they name", () => {
 test("the site and booklet links are advertised, and agree with the build", () => {
   assert.match(readme, /https:\/\/han-tyumi\.github\.io\/naibi\//, "no link to the site");
 
-  // The booklet is a release asset, so this cannot be checked against a path on
-  // disk any more. What can be checked is that the name the README asks for is
-  // the name the release job attaches — the two live in different files, and a
-  // rename on either side is a 404 nobody notices until someone clicks it.
-  const pdf = /https:\/\/github\.com\/[\w-]+\/naibi\/releases\/latest\/download\/(\S+?\.pdf)/.exec(
-    readme,
-  );
+  const pdf = /https:\/\/github\.com\/[\w-]+\/naibi\/raw\/main\/(\S+?\.pdf)/.exec(readme);
   assert.ok(pdf, "no link to the booklet");
-
-  const release = readFileSync(join(REPO_ROOT, ".github", "workflows", "release.yml"), "utf8");
   assert.ok(
-    release.includes(`/tmp/${pdf[1]}`),
-    `README links ${pdf[1]}, which the release workflow does not attach`,
+    existsSync(join(REPO_ROOT, pdf[1]!)),
+    `README links ${pdf[1]}, which the PDF build does not produce`,
+  );
+});
+
+test("the booklet link and the release asset can be moved onto each other", () => {
+  // The links still point at the branch, because `releases/latest/download`
+  // 404s until a release exists. When that changes it is a one-line edit in two
+  // files, and this is what stops them being edited to different names: the
+  // README, the site and the workflow have to agree on one filename either way.
+  const release = readFileSync(join(REPO_ROOT, ".github", "workflows", "release.yml"), "utf8");
+  const asset = /\/tmp\/(naibi[\w-]*\.pdf)/.exec(release);
+  assert.ok(asset, "the release workflow attaches no booklet");
+  assert.match(
+    contributing,
+    new RegExp(asset[1]!.replace(".", "\\.")),
+    "the release procedure does not name the asset the workflow attaches",
   );
 });
 
