@@ -592,13 +592,12 @@ entry, and attaches the booklet as `naibi-booklet.pdf`. The name is stable on
 purpose, so that a link to it never needs editing again, and which release a
 printed copy came from is on its cover.
 
-**One-time, after the first release exists:** point the README's two booklet
-links and `PDF_URL` in `packages/web/build-web.ts` at
-`https://github.com/han-tyumi/naibi/releases/latest/download/naibi-booklet.pdf`,
-and update the two tests that currently assert the branch URL. They still say
-`raw/main` because `releases/latest/download` 404s until something has been
-released, and a live site with a broken download is worse than a link to a
-branch. Rebuild `docs/` and commit.
+The README and the site link `releases/latest/download/naibi-booklet.pdf`, which
+resolves to whatever was released last and so never needs editing. Note what
+that means for the very first release of a fork or a rename: the URL 404s until
+something has been released under it, so point the links at it *after* the first
+release rather than before. Doing it the other way round publishes a broken
+download, which is how it went here.
 
 There is no changelog automation, and that is deliberate. Conventional commits
 would flatten commit subjects that currently carry the reasoning — the one place
