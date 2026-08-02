@@ -11,8 +11,6 @@
 
 ## Setup
 
-Piquet was already well established by 1650 in a form a modern player would recognise, and it is still one of the two or three best card games ever devised for exactly two people. What follows is the version the English-speaking world settled on from the late nineteenth century, codified by Cavendish in 1882 and known in the books as Rubicon Piquet — the older hundred-point game is in the variants. It asks a lot at the start — there is French vocabulary, there are three separate scoring categories before a card is played, and there are two bonuses large enough to decide a match on their own — and it repays every bit of it. Learn it over an evening rather than in ten minutes.
-
 Take a pack and throw out everything from the six down, leaving thirty-two cards running seven, eight, nine, ten, jack, queen, king, ace, with the ace high. There is no trump suit in this game at any point.
 
 Cut for the deal; whoever wins should take it, because there is a small advantage in being the non-dealer on the sixth and last hand, and dealing first is what puts you there. The deal then alternates.
@@ -103,6 +101,10 @@ At the end of the twelve tricks, whoever took the majority scores 10 for the car
 **Ten for the last trick** — Award 10 points for taking the final trick instead of the customary 1. A small change on the score sheet and a large one to the endgame: keeping a stopper back for trick twelve stops being worth a tidy extra point and becomes worth as much as the cards, so both players have to plan the closing tricks rather than simply cashing winners in order.
 
 **Claiming the cards early** — Some tables let a player announce the 10 for cards the moment seven tricks are secure, and count it towards the thirty needed for a pique. It is common enough to be worth asking about, but the standard laws are read the other way — the 10 is settled at the end of the play, by which time the opponent has almost always scored something and the question does not arise. The house rule seems to have grown out of a nineteenth-century law that mentions capot without mentioning the cards, and it makes piques a good deal easier to come by.
+
+## Background
+
+Piquet was already well established by 1650 in a form a modern player would recognise, and it is still one of the two or three best card games ever devised for exactly two people. What follows is the version the English-speaking world settled on from the late nineteenth century, codified by Cavendish in 1882 and known in the books as Rubicon Piquet — the older hundred-point game is in the variants. It asks a lot at the start — there is French vocabulary, there are three separate scoring categories before a card is played, and there are two bonuses large enough to decide a match on their own — and it repays every bit of it. Learn it over an evening rather than in ten minutes.
 
 **Tags:** classic, counting, long-game, strategy, two-player
 

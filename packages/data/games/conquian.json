@@ -21,7 +21,7 @@
     "extra_deck_for_large_groups": false,
     "other": []
   },
-  "setup": "Conquian is the oldest game in the rummy family that anyone can still put a name to. It was being played in Mexico by the middle of the nineteenth century, crossed into the English-speaking United States as Coon Can in the 1880s, and card historians — David Parlett among them — treat it as the root that every western rummy game grew out of. Playing it feels like reading a first draft of Gin Rummy, with the drawing and the hoarding not yet invented.\n\nTwo players, forty cards. A Spanish pack works exactly as it comes. From an ordinary deck, take out the jokers and every eight, nine and ten, which leaves ace through seven plus jack, queen and king in each suit. That gap is not cosmetic: with the middle ranks gone the seven and the jack are neighbours, so a sequence can run 6-7-J. Aces are always low.\n\nPick a first dealer any way you like and alternate afterwards. Deal ten cards to each player, traditionally in packets of two, and set the remaining twenty face down between you as the stock. Nothing is turned face up to begin with, and there is never a discard pile: exactly one card is on offer at any moment, and a card that both of you refuse is turned face down and is dead for the rest of the deal.\n\nMelds are laid face up in front of you as you make them and stay there for the rest of the deal, in plain view and — as you will discover — usable against you.\n\nThe target is eleven melded cards, not ten. Since you only ever hold ten, you cannot win out of your own hand: the eleventh card has to arrive from the stock or from what your opponent leaves behind.",
+  "setup": "Two players, forty cards. A Spanish pack works exactly as it comes. From an ordinary deck, take out the jokers and every eight, nine and ten, which leaves ace through seven plus jack, queen and king in each suit. That gap is not cosmetic: with the middle ranks gone the seven and the jack are neighbours, so a sequence can run 6-7-J. Aces are always low.\n\nPick a first dealer any way you like and alternate afterwards. Deal ten cards to each player, traditionally in packets of two, and set the remaining twenty face down between you as the stock. Nothing is turned face up to begin with, and there is never a discard pile: exactly one card is on offer at any moment, and a card that both of you refuse is turned face down and is dead for the rest of the deal.\n\nMelds are laid face up in front of you as you make them and stay there for the rest of the deal, in plain view and — as you will discover — usable against you.\n\nThe target is eleven melded cards, not ten. Since you only ever hold ten, you cannot win out of your own hand: the eleventh card has to arrive from the stock or from what your opponent leaves behind.",
   "layout": {
     "rows": [
       [
@@ -159,6 +159,7 @@
     }
   ],
   "goal_and_scoring": "Conquian keeps no score. A deal is won outright by whoever first has eleven cards melded face up, and that is the end of it — traditionally the game was played one deal at a time for a stake settled beforehand.\n\nDraws are frequent and they are the interesting part. When the stock is spent and the last exposed card goes begging, nobody has won; the stake stays where it is and rides on the following deal, and plenty of players double it instead. Two or three draws in a row can leave a single hand worth a great deal, which is precisely why the game rewards a player who waits rather than one who reaches.\n\nFor a session played without money, the simplest arrangement is a point to the winner of each deal and a race to a fixed number, five or seven. Some groups instead count the cards the loser never managed to get onto the table and total those across deals, with the low score winning; the effect is much the same, but it gives a losing player something to salvage from a hand that went wrong early.",
+  "background": "Conquian is the oldest game in the rummy family that anyone can still put a name to. It was being played in Mexico by the middle of the nineteenth century, crossed into the English-speaking United States as Coon Can in the 1880s, and card historians — David Parlett among them — treat it as the root that every western rummy game grew out of. Playing it feels like reading a first draft of Gin Rummy, with the drawing and the hoarding not yet invented.",
   "variants": [
     {
       "name": "Nine-card deal",
@@ -196,6 +197,6 @@
   ],
   "checked": {
     "date": "2026-08-01",
-    "prose": "54b029567b45117a"
+    "prose": "3770a6237ad72b4f"
   }
 }

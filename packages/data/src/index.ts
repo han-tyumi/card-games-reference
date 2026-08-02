@@ -61,6 +61,17 @@ export const SECTIONS = [
   { key: "goal_and_scoring", heading: "Goal & scoring" },
 ] as const satisfies readonly { key: keyof CardGame; heading: string }[];
 
+/**
+ * Background is deliberately NOT in SECTIONS.
+ *
+ * Everything in SECTIONS is required and comes before the variants, because it
+ * is what someone with a deck in hand needs. Background is optional and comes
+ * after them, so a reader reaches the deal without wading through where the
+ * game was invented. Keeping it out of the list is what stops a generator
+ * looping over the sections and quietly putting it back at the front.
+ */
+export const BACKGROUND_HEADING = "Background";
+
 export function gameFiles(): string[] {
   return readdirSync(GAMES_DIR)
     .filter((name) => name.endsWith(".json"))

@@ -31,6 +31,7 @@ import type { Block, CardGame } from "naibi";
 import {
   CARD,
   INK,
+  BACKGROUND_HEADING,
   SECTIONS,
   blocks,
   buildDiagram,
@@ -705,6 +706,11 @@ function gamePage(
       { width: book.contentWidth, lineGap: 2.6 },
     );
     doc.moveDown(0.4);
+  }
+
+  if (game.background) {
+    book.heading(BACKGROUND_HEADING);
+    book.body(blocks(game.background));
   }
 
   doc.moveDown(0.4);

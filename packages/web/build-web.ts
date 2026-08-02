@@ -28,6 +28,7 @@ import type { CardGame } from "naibi";
 import {
   CATEGORY_ORDER,
   MIN_LEGIBLE_SCALE,
+  BACKGROUND_HEADING,
   SECTIONS,
   blocks,
   categoryLabel,
@@ -311,6 +312,11 @@ function gamePage(game: CardGame): string {
     parts.push(
       `<p class="variant"><b>${esc(variant.name)}</b> — ${esc(variant.description)}</p>`,
     );
+  }
+
+  if (game.background) {
+    parts.push(`<h2>${esc(BACKGROUND_HEADING)}</h2>`);
+    parts.push(prose(game.background));
   }
 
   parts.push(

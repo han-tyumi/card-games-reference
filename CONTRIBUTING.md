@@ -173,6 +173,7 @@ filter on:
   "setup": "...",
   "play": "...",
   "goal_and_scoring": "...",
+  "background": "...",
   "variants": [{ "name": "Jack of Diamonds", "description": "..." }],
   "difficulty": "easy",
   "duration_minutes": "30-60",
@@ -183,6 +184,15 @@ filter on:
 
 A few conventions worth knowing:
 
+- `background` is optional and holds where the game came from and anything else
+  that is not a rule. It renders **after** the variants, because someone with a
+  deck in hand wants the deal rather than the eighteenth century. The test for
+  what belongs there is whether it changes what a reader does at the table:
+  Koi-Koi's warning that no Western pack will substitute, and Dou Dizhu's one
+  player against the other two, are orientation and stay in `setup`; where a
+  game was invented does not and goes here. `setup` is defined as how the table
+  starts, and it was quietly carrying history because there was nowhere else to
+  put it.
 - `category` is the game's **core mechanic**, not its mood. `casino` means
   banked gambling games; a fishing/capture game like Casino (the game) is
   `matching-collecting`.
@@ -431,6 +441,17 @@ tried and both were measured failing; the numbers and the reasoning are in
 The output is a reading list, not a verdict. Paraphrase that swaps the
 vocabulary scores like independent writing, so nothing here can certify an entry
 clean — only find the ones worth reading beside their source.
+
+**Moving prose between fields does not need re-reading, but prove it.** The
+fingerprint covers `setup`, `play` and `goal_and_scoring`, so lifting a
+paragraph out of `setup` into `background` trips the check without a word having
+changed. The rule exists to catch rewording, not relocation — so where a move is
+purely mechanical, verify it and keep the original date. Verify means: the
+paragraphs of the old field, sorted, are exactly the paragraphs of the two new
+fields, sorted; the moved text appears verbatim in the original; and the other
+prose fields are untouched. Re-stamp with the date the words were actually read,
+not the date they were moved, or the record starts claiming a check that never
+happened.
 
 When you have read an entry against its sources, record it:
 

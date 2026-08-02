@@ -11,8 +11,6 @@
 
 ## Setup
 
-Conquian is the oldest game in the rummy family that anyone can still put a name to. It was being played in Mexico by the middle of the nineteenth century, crossed into the English-speaking United States as Coon Can in the 1880s, and card historians — David Parlett among them — treat it as the root that every western rummy game grew out of. Playing it feels like reading a first draft of Gin Rummy, with the drawing and the hoarding not yet invented.
-
 Two players, forty cards. A Spanish pack works exactly as it comes. From an ordinary deck, take out the jokers and every eight, nine and ten, which leaves ace through seven plus jack, queen and king in each suit. That gap is not cosmetic: with the middle ranks gone the seven and the jack are neighbours, so a sequence can run 6-7-J. Aces are always low.
 
 Pick a first dealer any way you like and alternate afterwards. Deal ten cards to each player, traditionally in packets of two, and set the remaining twenty face down between you as the stock. Nothing is turned face up to begin with, and there is never a discard pile: exactly one card is on offer at any moment, and a card that both of you refuse is turned face down and is dead for the rest of the deal.
@@ -64,6 +62,10 @@ For a session played without money, the simplest arrangement is a point to the w
 **Three or more players** — Shuffle two 40-card packs together and deal ten each. The card in play is offered to each player in turn order, anyone who could add it to one of their own melds can be forced to take it, and the first player to eleven melded cards wins the pot. The game loses much of its shape beyond two, since the exact-card tension depends on knowing where everything is.
 
 **Panguingue** — Conquian's gambling descendant, known as Pan, played for decades in card rooms across the American southwest. Five to eight players use eight 40-card packs shuffled together — 320 cards — and melds pay out in chips the moment they are laid down rather than at the end of the deal. The melding rules acquire a thicket of exceptions about which sequences and which sets are worth a payment, and a player who does not like their hand may fold out before play begins.
+
+## Background
+
+Conquian is the oldest game in the rummy family that anyone can still put a name to. It was being played in Mexico by the middle of the nineteenth century, crossed into the English-speaking United States as Coon Can in the 1880s, and card historians — David Parlett among them — treat it as the root that every western rummy game grew out of. Playing it feels like reading a first draft of Gin Rummy, with the drawing and the hoarding not yet invented.
 
 **Tags:** classic, quick, strategy, two-player
 

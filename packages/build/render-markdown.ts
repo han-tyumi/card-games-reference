@@ -14,6 +14,7 @@ import { pathToFileURL } from "node:url";
 
 import type { CardGame } from "naibi";
 import {
+  BACKGROUND_HEADING,
   SECTIONS,
   categoryLabel,
   facts,
@@ -110,6 +111,10 @@ export function renderGame(game: CardGame): string {
   lines.push("## Variants", "");
   for (const variant of game.variants) {
     lines.push(`**${variant.name}** — ${variant.description}`, "");
+  }
+
+  if (game.background) {
+    lines.push(`## ${BACKGROUND_HEADING}`, "", game.background, "");
   }
 
   if (game.tags.length > 0) {

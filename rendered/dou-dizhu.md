@@ -19,8 +19,6 @@ The ranking takes a minute and then never troubles you again. Bottom to top: 3, 
 
 Nobody deals here; everyone draws for themselves. Somebody shuffles, the player on their left cuts, and the pack goes face down in the middle. Turn one card face up and push it back into the middle of the stack — whoever happens to draw it will open the auction. Players then take cards off the top in turn, anti-clockwise, looking at each as they go, until every hand holds seventeen. Three cards stay on the table, face down and untouched.
 
-The name is a fossil. Dou Dizhu means fighting the landlord, and it dates from the land reform campaigns of the 1950s, which set peasants against landlords in earnest. The game came out of Hubei and is now one of the most played in China, and nobody hears the name that way any more.
-
 ![Dou Dizhu setup diagram](diagrams/dou-dizhu.svg)
 
 ## Play
@@ -85,6 +83,10 @@ Nothing carries over between hands. Each deal is settled in units and the next a
 **Showing the landlord's three** — The older practice was for the landlord to pick the three face-down cards up privately, so nobody else ever learned what they were. Turning them face up for everyone to see before the landlord takes them has become the normal custom in many groups and is standard in most online rooms. It is a real change rather than a courtesy: the peasants learn three of the fifty-four cards and, more usefully, know exactly which cards the landlord did not have when they bid.
 
 **Choosing who opens the auction** — The face-up card buried in the stack is one way of picking the first bidder and not the only one. A common house rule gives the opening bid to whoever holds the three of hearts, falling to the four of hearts if nobody has it, and so on upwards. Others simply rotate the privilege one seat per deal in the direction of play, which is the tidiest arrangement for a long session. Online rooms generally just pick somebody at random. It matters more than it sounds, since bidding first means bidding with the least information.
+
+## Background
+
+The name is a fossil. Dou Dizhu means fighting the landlord, and it dates from the land reform campaigns of the 1950s, which set peasants against landlords in earnest. The game came out of Hubei and is now one of the most played in China, and nobody hears the name that way any more.
 
 **Tags:** betting, classic, counting, strategy
 

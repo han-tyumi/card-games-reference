@@ -439,6 +439,10 @@ export interface CardGame {
    */
   goal_and_scoring: string;
   /**
+   * Where the game comes from and anything else worth knowing that is not a rule: origin, age, how the name is used elsewhere, why it looks the way it does. Optional, and rendered AFTER the rules and the variants -- a reader with a deck in hand wants the deal, not the eighteenth century. Keep material that changes what someone does at the table in `setup` instead: that a game needs a pack you cannot substitute, or that one player is playing against the other two, is orientation rather than background.
+   */
+  background?: string;
+  /**
    * Hand size by player count, and anything taken out of the deck to make it come out even. Include it where this actually varies -- Hearts strips cards at 3, 5 and 6 players -- and omit it where one number covers every case, since "thirteen each" needs no table.
    *
    * @minItems 1

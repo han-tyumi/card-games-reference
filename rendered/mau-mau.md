@@ -11,8 +11,6 @@
 
 ## Setup
 
-Mau-Mau is the traditional German shedding game that the modern commercial matching-card games descend from. If you have played one of those you will recognise the shape of it within a turn or two, but this one needs nothing except an ordinary pack of cards. It appeared in Germany in the years after the Second World War, was in print by the late 1950s, and has been a fixture of family card tables in German-speaking countries ever since, which is why almost every household plays it slightly differently.
-
 The usual pack is the German 32: take a standard deck and remove everything below the seven, leaving ace, king, queen, jack, ten, nine, eight and seven in each suit. A full 52-card pack is perfectly playable and simply makes the hands longer. From six players upwards, shuffle two packs together and play them as a single deck of 64. Having a card twice over changes nothing here, because no card in this game is ever measured against another; it is only ever laid beside the one showing to see whether they agree.
 
 Rank order does nothing during play. No card outranks any other. A rank is worth knowing for two reasons only: a handful of ranks carry a special power, and every rank has a point value that is charged against whoever is still holding it when the hand ends.
@@ -81,6 +79,10 @@ Once somebody crosses the line, play the deal in progress out to its end rather 
 **The house-rule layer** — The reason no two tables play the same game. Extra ranks pick up powers: a queen may reverse direction, a ten may let you play a second card, a specific card may force everyone but you to draw. Some groups let a card be laid out of turn if it exactly matches the rank showing, which turns the game into a scramble. None of it touches the underlying matching rule, and all of it should be settled before the cards go out rather than argued over mid-hand.
 
 **Draw until you can play** — Instead of taking one card and passing, a stuck player keeps drawing from the stock until something playable appears, then plays it and ends their turn. Deals last longer, the stock is exhausted more often, and a player who has been unlucky twice in a row can end up holding a dozen cards. It rewards keeping a spread of suits in hand rather than hoarding a wild card.
+
+## Background
+
+Mau-Mau is the traditional German shedding game that the modern commercial matching-card games descend from. If you have played one of those you will recognise the shape of it within a turn or two, but this one needs nothing except an ordinary pack of cards. It appeared in Germany in the years after the Second World War, was in print by the late 1950s, and has been a fixture of family card tables in German-speaking countries ever since, which is why almost every household plays it slightly differently.
 
 **Tags:** beginner-friendly, classic, family-friendly, kids, luck, quick, travel, two-player
 
