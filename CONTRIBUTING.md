@@ -369,7 +369,7 @@ sources open, across two passes. Earlier work counted search-engine hits, which
 the section below explains does not work, so those passes are not evidence of
 anything and are not counted here.
 
-**The first 60 entries, on 2026-08-01** — pagat and Wikipedia, fetched and read
+**60 entries, checked 2026-08-01** — pagat and Wikipedia, fetched and read
 side by side with our prose. At a bar of 80% shared structure or 8 identical
 consecutive words: **39 of 60 entries flagged, 36 verbatim runs**. Rewritten:
 **26 passages across 19 entries**. The problems were structural rather than
@@ -377,7 +377,7 @@ lexical — Pinochle carried eighteen consecutive words identical to pagat's,
 Hearts eleven, Spades ten, and one trick-taking formula had propagated into five
 separate entries.
 
-**The 12 entries added on 2026-08-02**, each checked immediately after it was
+**12 entries, checked 2026-08-02** — each one immediately after it was
 written rather than in a sweep at the end. **9 of the 12 were flagged: 26
 verbatim runs and 5 whole-passage order findings.** All were rewritten and the
 re-run came back clear of them. Two more entries had passages rewritten on

@@ -73,6 +73,43 @@ test("the family table matches how the games actually group", () => {
   );
 });
 
+test("the checked-status ledger matches the corpus", () => {
+  // CONTRIBUTING states how many entries were read against their sources, and
+  // on which dates. That is the project's own honesty record about originality,
+  // and it was written by hand, so every batch of new entries makes it a little
+  // more wrong -- which is exactly what happened: it still said "All 60 entries"
+  // after twelve more had been added and stamped. The README's counts were
+  // already checked here and this one was not, so it drifted silently.
+  const stated = new Map<string, number>();
+  for (const [, count, date] of contributing.matchAll(
+    /\*\*(\d+) entries, checked (\d{4}-\d{2}-\d{2})\*\*/g,
+  )) {
+    stated.set(date!, Number(count));
+  }
+  assert.ok(stated.size > 0, "the ledger no longer states entry counts by date");
+
+  const actual = new Map<string, number>();
+  for (const game of games) {
+    const date = game.checked?.date;
+    if (date) actual.set(date, (actual.get(date) ?? 0) + 1);
+  }
+
+  const sorted = (m: Map<string, number>) => Object.fromEntries([...m].sort());
+  assert.deepEqual(
+    sorted(stated),
+    sorted(actual),
+    "CONTRIBUTING's record of what was checked, and when, no longer matches the entries",
+  );
+
+  // The section opens by claiming every entry has been compared against source
+  // text. An unstamped entry would leave that claim covering a game nobody read.
+  assert.equal(
+    [...stated.values()].reduce((a, b) => a + b, 0),
+    games.length,
+    "the ledger does not account for every entry in the collection",
+  );
+});
+
 test("every file the README links to exists", () => {
   const missing: string[] = [];
 
