@@ -1,0 +1,200 @@
+{
+  "id": "twenty-nine",
+  "name": "Twenty-Nine",
+  "aliases": [
+    "29",
+    "Twenty Nine"
+  ],
+  "category": "trick-taking",
+  "players": {
+    "min": 4,
+    "max": 4,
+    "ideal": 4
+  },
+  "decks": "1 standard deck stripped to 32 cards (A, K, Q, J, 10, 9, 8, 7 in each suit); the low cards are kept aside as markers",
+  "equipment": {
+    "standard_decks": 1,
+    "jokers": 0,
+    "special_deck": "32-card pack (A, K, Q, J, 10, 9, 8, 7 in each suit)",
+    "extra_deck_for_large_groups": false,
+    "other": []
+  },
+  "setup": "Northern India, Bangladesh and Nepal all play this, and it belongs to a South Asian family whose defining oddity is that jacks and nines outrank aces. The oddity is not local: promoting those two cards is the signature of the Dutch Jass games, and the likeliest story is that Dutch traders brought the idea to the subcontinent, where it took root and stayed.\n\nFour players in fixed partnerships, sitting opposite your partner. Play goes clockwise.\n\nTake a pack and keep the ace, king, queen, jack, ten, nine, eight and seven of each suit — thirty-two cards. Do not put the rest away. The twos, threes, fours and fives are the trump indicators, one set of four to each player, and the two sixes are the scoreboard.\n\nThe ranking is the first thing to learn and the last thing anyone remembers, because it is not the ranking of any European game you know. In every suit, trump or not, the order runs jack, nine, ace, ten, king, queen, eight, seven. The jack is the boss and the nine is next, and the ace is a distant third.\n\nCard points follow the same idea: a jack is worth 3, a nine 2, an ace 1 and a ten 1, and the king, queen, eight and seven are worth nothing at all. That comes to 28 points in the pack.\n\nSo where does 29 come from? Two answers, both current. Some tables award an extra point for taking the last trick, making 29 in all, and that is where the name began — but most players have dropped it and kept the name. The other explanation is arithmetic: with 28 on the table and a bid of, say, 16, the defenders need 13 to beat it, and 16 and 13 make 29. Take your pick.",
+  "layout": {
+    "rows": [
+      [
+        {
+          "kind": "hand",
+          "label": "Partner",
+          "cards": 8
+        }
+      ],
+      [
+        {
+          "kind": "hand",
+          "label": "Left opponent",
+          "cards": 8
+        },
+        {
+          "kind": "stock",
+          "label": "Trump indicator",
+          "cards": 1,
+          "face": "down"
+        },
+        {
+          "kind": "hand",
+          "label": "Right opponent",
+          "cards": 8
+        }
+      ],
+      [
+        {
+          "kind": "hand",
+          "label": "You",
+          "cards": 8
+        }
+      ]
+    ],
+    "caption": "Eight cards each once the deal is finished. The face-down card in the middle names the trump suit, and only the player who won the auction knows what it is."
+  },
+  "play": "The deal comes in two halves with the auction wedged between them, which is the structural idea the whole game hangs on: you bid on four cards and receive four more afterwards.\n\nEach player gets four cards, dealt singly. Then bidding opens to the dealer's left and runs clockwise for as many rounds as it takes, each player either raising or passing out for good. A bid is a number of card points your side undertakes to win. Fifteen is the floor and 28 the ceiling. Three passes in a row settle it, and if the first three all pass, the dealer has to take it at 15 rather than throw the hand in.\n\nThe winner now chooses trumps in secret. Take your four indicator cards, square them into a face-down pile, and put a card of the chosen suit at the bottom of it. Nobody else sees it. The dealer then gives everyone four more cards, bringing each hand to eight.\n\nThe player to the dealer's left leads. Follow suit while you can. Until trumps are out in the open they do nothing at all: a trick played before the reveal goes to whoever put down the best card in whichever suit opened it, and a card belonging to the still-hidden trump suit is, for that trick, just a card.\n\nThe reveal is triggered by shortage, not by choice. The first player who cannot follow suit asks the bidder to declare, and the bidder turns the indicator over for everybody to see. If it is the bidder who runs out first, they must announce it themselves. From that trick onwards the game behaves normally — a trump beats any plain card, the biggest trump beats the other trumps, and where nobody trumps at all the trick goes to whoever played highest in the suit that opened it.\n\nTwo things about the reveal catch people out. It costs nothing to be the one who asks — you may still play any card you like to the trick, and there is no obligation to trump even though you are the reason everyone now knows what trumps are. And it is possible for the reveal never to happen at all, if every player holds two cards of every suit. In that case the deal is dead: neither side scores and the cards are gathered up.\n\nRoyals. A player still holding both the king and the queen of trumps may declare them — the pair is called Royals — but only once trumps have been shown, and only immediately after their own side has won a trick. Both cards must still be in hand; declaring is impossible if either has already been played. What Royals does is move the target rather than score anything: declared by the bidding side it takes 4 points off what they need, and declared by a defender it adds 4 to what the bidders need. Neither adjustment can push the requirement below the minimum bid or above 28.",
+  "figures": [
+    {
+      "kind": "ranking",
+      "caption": "Every suit ranks this way, trump or not, and it is the one thing to fix in mind before the first hand: the jack and the nine both climb over the ace.",
+      "rows": [
+        {
+          "label": "High to low",
+          "cards": [
+            {
+              "face": "J♠",
+              "note": "Top of every suit"
+            },
+            {
+              "face": "9♠",
+              "note": "Second"
+            },
+            {
+              "face": "A♠",
+              "note": "Only third"
+            },
+            {
+              "face": "10♠"
+            },
+            {
+              "face": "K♠"
+            },
+            {
+              "face": "Q♠"
+            },
+            {
+              "face": "8♠"
+            },
+            {
+              "face": "7♠"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "goal_and_scoring": "Once the eighth trick is over, each side adds up the card points it has taken. The bidding side has one question to answer — did they reach the number they promised, adjusted for any Royals — and the answer is worth exactly one game point either way. Making it earns one; missing it costs one. The defenders' score does not move at all: they are playing to stop a contract, not to build a total of their own.\n\nThat single game point is what makes the bidding sharp. A side is never rewarded for overshooting, so bidding 16 and taking 24 is no better than bidding 16 and taking 16 — while bidding 24 and taking 23 is a disaster. The auction is a judgement about four cards you have seen and four you have not.\n\nThe scoreboard is a pleasing piece of physical design, and worth doing properly. Each partnership takes one red six and one black six from the discarded cards and overlaps them so that a number of pips shows: red pips for a positive score, black pips for a negative one. Nothing showing means zero. Win a hand and you uncover another red pip, or cover a black one if you are below the line; lose and do the reverse. The first side to show six red pips has won the match. A side that reaches six black pips has lost it, which is the same event from the other direction and happens often enough to be worth watching for.\n\nThere is no running total of card points across hands. Every deal is settled and forgotten, and only the sixes remember.",
+  "scoring_table": [
+    {
+      "item": "Each jack",
+      "value": "3",
+      "note": "and the top card of its suit"
+    },
+    {
+      "item": "Each nine",
+      "value": "2",
+      "note": "second in its suit, above the ace"
+    },
+    {
+      "item": "Each ace",
+      "value": "1"
+    },
+    {
+      "item": "Each ten",
+      "value": "1"
+    },
+    {
+      "item": "Kings, queens, eights, sevens",
+      "value": "0",
+      "note": "28 card points in the pack altogether"
+    },
+    {
+      "item": "The last trick",
+      "value": "1 extra",
+      "note": "the original 29th point; most tables no longer count it"
+    },
+    {
+      "item": "Lowest bid allowed",
+      "value": "15",
+      "note": "some tables start at 16"
+    },
+    {
+      "item": "Highest bid allowed",
+      "value": "28"
+    },
+    {
+      "item": "Royals, declared by the bidders",
+      "value": "4 off their target"
+    },
+    {
+      "item": "Royals, declared by a defender",
+      "value": "4 onto the bidders' target"
+    },
+    {
+      "item": "Contract made",
+      "value": "1 game point"
+    },
+    {
+      "item": "Contract failed",
+      "value": "minus 1 game point"
+    },
+    {
+      "item": "Winning the match",
+      "value": "6 game points",
+      "note": "six black pips instead means the match is lost"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Double, redouble and set",
+      "description": "A doubling ladder, and the commonest addition to the game. Once trumps have been chosen but before the second four cards are dealt, either defender may call double if they fancy the contract will fail, which makes the hand worth two game points instead of one, won or lost. The bidding side may answer redouble for four. Where the ladder goes further, a defender may then call set, taking it to six — enough to decide the whole match in one deal from a standing start. Tables that give the trump maker the entire pile of spare low cards use it as a counter, flipping one card face up for a double and two for a redouble; which cards they are means nothing."
+    },
+    {
+      "name": "No trumps and reverse",
+      "description": "Two escapes for a bidder holding a flat hand, indicated by which spare card goes under the pile. A joker at the bottom means no trump suit at all, and Royals cannot be declared because there is no trump king or queen to hold. In West Bengal a two is used to mean reverse: still no trumps, but the ranking of every suit turns upside down from the moment it is revealed, so the seven becomes the best card in its suit and the jack the worst. Point values are untouched, which is the joke — the jack is still worth 3 and now cannot win a trick with it. Some Delhi tables combine the two, using twos for reverse with the two's own suit as trump and jokers or threes for the no-trump forms."
+    },
+    {
+      "name": "Seventh card",
+      "description": "For a bidder who wants the contract but has one card of each suit and no basis for choosing. Instead of naming a suit, call for the seventh card: when the deal resumes, your penultimate card goes under the indicator pile and its suit is trumps. You may look at it; nobody else may. It is not part of your hand for following suit until trumps are declared, so you cannot lead it — except to the very last trick, when there is nothing else left — and if its suit is led you must follow from your hand if you can. Unable to follow from hand, you may either discard or turn the seventh card over, declaring trumps and playing it."
+    },
+    {
+      "name": "Single hand",
+      "description": "After all eight cards are dealt but before the opening lead, a player holding something extraordinary may declare single hand: an undertaking to take all eight tricks alone, with no trump suit, their partner's cards laid face down and out of the game. The lone player leads. Bring it home for three game points, fail for minus three, and in parts of West Bengal both figures are doubled to six. Some tables add a sporting condition — you may not declare it on a hand that literally cannot lose, so at least one card must be beatable in principle."
+    },
+    {
+      "name": "Under half",
+      "description": "Played across Bengal, Bihar and Jharkhand. A bidding side that finishes with less than half the points it called loses two game points rather than one. It punishes the specific failure of bidding on four good cards and being handed four useless ones, which is otherwise the cheapest kind of disaster in this game, and it makes an ambitious auction meaningfully riskier than a cautious one."
+    }
+  ],
+  "difficulty": "medium",
+  "duration_minutes": "30-60",
+  "tags": [
+    "partnership",
+    "strategy",
+    "counting",
+    "classic"
+  ],
+  "sources_consulted": [
+    "Pagat",
+    "Wikipedia"
+  ],
+  "checked": {
+    "date": "2026-08-02",
+    "prose": "43a6344681c573bc"
+  }
+}

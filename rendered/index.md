@@ -2,7 +2,7 @@
 
 # Card Game Rules — Index
 
-67 games, free to reuse under CC BY-SA 4.0.
+68 games, free to reuse under CC BY-SA 4.0.
 
 ## Solitaire (1 player)
 
@@ -37,6 +37,7 @@
 | [Skat](skat.md) | 3-4 players (best with 3) | 1 standard deck stripped to 32 cards (A, K, Q, J, 10, 9, 8, 7 in each suit) | 45-90 minutes | Complex |
 | [Spades](spades.md) | 2-4 players (best with 4) | 1 standard deck (52 cards), jokers removed | 45-90 minutes | Medium |
 | [Sueca](sueca.md) | 4 players | 1 standard deck stripped to 40 cards (A, 7, K, J, Q, 6, 5, 4, 3, 2 in each suit) | 20-45 minutes | Easy |
+| [Twenty-Nine](twenty-nine.md) | 4 players | 1 standard deck stripped to 32 cards (A, K, Q, J, 10, 9, 8, 7 in each suit); the low cards are kept aside as markers | 30-60 minutes | Medium |
 | [Whist](whist.md) | 4 players | 1 standard deck (52 cards), jokers removed | 30-60 minutes | Simple |
 
 ## Rummy family
