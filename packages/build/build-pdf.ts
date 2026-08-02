@@ -105,10 +105,19 @@ const RULE = "#c8d0d8";
 const TEXT = "#111111";
 
 // Left/right margins are set by READABILITY, not by fitting the most words on
-// the page: they give a measure of roughly 70 characters, near the 66 that
-// centuries of book typography converged on. A wider column costs the reader
-// their place on every return sweep.
-const MARGINS = { top: 58, bottom: 62, left: 95, right: 95 };
+// the page. Measured with the vendored face at the body size: this column runs
+// to about 77 characters, against the 66 that centuries of book typography
+// converged on, so it is already at the wide end and must not be widened
+// further -- a longer line costs the reader their place on every return sweep.
+//
+// 84pt and 11.5pt were chosen together and only make sense together. The
+// booklet was 95pt margins at 11pt, which is the same 77-character measure with
+// smaller type and more white space either side. Swapping to a slightly larger
+// face and correspondingly narrower margins holds the measure and the page
+// count exactly -- 364 pages both ways, measured -- while making every word
+// bigger. Change one of the two and the measure moves: 84pt at 11pt gives 81
+// characters, which is worse to read even though it saves ten pages.
+const MARGINS = { top: 58, bottom: 62, left: 84, right: 84 };
 
 // Contents-page metrics. Used both to reserve pages and to draw them, so the
 // two cannot disagree.
@@ -258,7 +267,7 @@ class Booklet {
 
   body(content: Block[]): void {
     const { doc, fonts } = this;
-    doc.font(fonts.regular).fontSize(11).fillColor(TEXT);
+    doc.font(fonts.regular).fontSize(11.5).fillColor(TEXT);
 
     for (const block of content) {
       if (block.kind === "paragraph") {
