@@ -428,35 +428,31 @@ page. Or just open this site once and it stays available offline.</p>
 
 <h3 id="install">Install it</h3>
 <p>Naibi can sit on your home screen or dock and open in its own window, with no
-address bar and no signal needed. Every browser that can do this has it in a
-menu rather than on the page, so here is where each one keeps it.</p>
+address bar and no signal needed. Every browser that can do this keeps it in a
+menu rather than on the page.</p>
 <details>
-<summary>How to install, browser by browser</summary>
-<p><strong>iPhone and iPad.</strong> Whichever browser you use, this happens
-through a share menu, and there is one switch that matters: leave
-<strong>Open as Web App</strong> turned on. Turned off you get a bookmark that
-opens in a tab, which looks identical on the home screen and is not the same
-thing.</p>
-<ul>
-<li><strong>Safari:</strong> the More (•••) button, then Share — or the Share
-button in the toolbar — then <strong>Add to Home Screen</strong>.</li>
-<li><strong>Vivaldi:</strong> the Vivaldi logo, then
-<strong>Share Page</strong>, then <strong>View More</strong>, then Add to Home
-Screen, then Add.</li>
-<li><strong>Chrome, Edge, Firefox and others</strong> each install it from their
-own share menu the same way.</li>
-</ul>
-<p>If Add to Home Screen is not in the share sheet, it is buried rather than
-missing: tap <strong>View More</strong>, or scroll the actions to the bottom
-— in Safari, Edit Actions from there adds it to the top of the list.</p>
-<p><strong>Android.</strong> Chrome, Edge, Samsung Internet, Opera and Firefox
-all offer <strong>Install</strong> or <strong>Add to Home screen</strong> in the
-browser's own menu. In Vivaldi it is the Vivaldi menu, then Add Page To, then
-Home screen, then Install.</p>
+<summary>Where to find it</summary>
+<p>The <strong>bold words</strong> are what to look for. Exactly where a menu
+item sits moves between browser versions, phone versions and your own settings,
+so treat the routes below as the usual way there rather than the only one — the
+names are the part that stays put.</p>
+<p><strong>iPhone and iPad.</strong> Open your browser's share menu and choose
+<strong>Add to Home Screen</strong>, leaving <strong>Open as Web App</strong>
+switched on. It normally is; switched off you get a bookmark that opens in a
+tab, which looks identical on the home screen and is not the same thing. The
+share menu is usually the share button in the toolbar, or behind a ••• or the
+browser's own logo — in Vivaldi it is <strong>Share Page</strong>. If Add to
+Home Screen is not in the list it is more likely buried than missing: look for
+<strong>View More</strong>, or scroll the actions to the bottom.</p>
+<p><strong>Android.</strong> Look for <strong>Install</strong> or
+<strong>Add to Home screen</strong> in the browser's own menu. Chrome, Edge,
+Samsung Internet, Opera and Firefox all have it; Vivaldi keeps it under
+<strong>Add Page To</strong>.</p>
 <p><strong>Computer.</strong> Chrome and Edge show an install icon in the
-address bar. In Vivaldi, right-click this page's tab and choose Install. Safari
-on macOS: the Share button, then <strong>Add to Dock</strong>. Firefox on the
-desktop does not install web apps, though Firefox on Android does.</p>
+address bar; in Vivaldi, <strong>Install</strong> is on the tab's right-click
+menu. Safari on macOS has <strong>Add to Dock</strong> in its share menu.
+Firefox on the desktop does not install web apps, though Firefox on Android
+does.</p>
 </details>
 </article>`;
 

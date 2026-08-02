@@ -661,11 +661,26 @@ test("the About page says how to install it, per browser", () => {
   }
 });
 
+test("the install instructions say the routes vary", () => {
+  // The names of the menu items are stable; where they sit is not. Vivaldi's
+  // own help page was already a step out of date when this was written, so the
+  // page promises landmarks rather than a tap sequence — which is what makes
+  // naming specific browsers safe rather than a hostage to the next release.
+  const html = text("about.html").replace(/\s+/g, " ");
+  assert.ok(
+    /moves between browser versions/.test(html),
+    "the instructions read as exact when they cannot be",
+  );
+  assert.ok(html.includes("what to look for"), "the landmark framing is gone");
+});
+
 test("the install instructions keep the step that silently fails", () => {
   // On iOS the switch is the whole thing. Left off, the reader gets a bookmark
   // that opens in a tab — identical on the home screen, not the same thing, and
   // nothing tells them. Generic tutorial copy leaves this out.
-  const html = text("about.html");
+  // Whitespace-normalised: the assertions are about the sentence, not about
+  // where the generated HTML happens to wrap it.
+  const html = text("about.html").replace(/\s+/g, " ");
   assert.ok(html.includes("Open as Web App"), "the toggle is not mentioned");
   assert.ok(
     /opens in a tab/.test(html),
