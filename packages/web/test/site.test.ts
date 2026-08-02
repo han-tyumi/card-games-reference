@@ -188,6 +188,32 @@ test("shortening the chips did not shorten the labels everywhere else", () => {
   );
 });
 
+test("a subheading is not styled louder than the section it sits inside", () => {
+  // There was no `.game h3` rule, so About's "Install it" fell back to the UA
+  // default and came out bigger and bolder than the "TAKE IT WITH YOU" above
+  // it. Nothing failed; the page just said the wrong thing about its own
+  // structure. Both sizes are literal rem in the stylesheet, so the ordering
+  // that matters can be compared rather than eyeballed.
+  const css = text("style.css");
+  const sizeOf = (selector: string): number => {
+    const rule = new RegExp(`\\${selector}\\s*\\{([^}]*)\\}`).exec(css);
+    assert.ok(rule, `${selector} has no rule, so it falls back to the browser default`);
+    const size = /font-size:\s*([\d.]+)rem/.exec(rule[1]!);
+    assert.ok(size, `${selector} sets no font-size`);
+    return Number(size[1]);
+  };
+
+  assert.ok(
+    sizeOf(".game h3") <= sizeOf(".game h2"),
+    "a subheading is larger than the heading above it",
+  );
+
+  // And the h2's two loudest signals stay its own, or the two read as peers.
+  const h3 = /\.game h3\s*\{([^}]*)\}/.exec(css)![1]!;
+  assert.doesNotMatch(h3, /text-transform:\s*uppercase/, "the subheading took the h2's caps");
+  assert.doesNotMatch(h3, /border-bottom/, "the subheading took the h2's rule");
+});
+
 // --- print ----------------------------------------------------------------
 
 /** The body of the `@media print` block, brace-matched out of the stylesheet. */

@@ -283,6 +283,19 @@ a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset:
   border-bottom: 1px solid var(--rule);
 }
 
+/* There was no h3 rule at all, so a subheading fell back to the UA default --
+   larger and heavier than the .game h2 above it, which left a subsection
+   out-shouting the section containing it. Game prose has no headings by design
+   (the format is paragraphs and bullets only), so this only ever surfaced on
+   About, which reuses this article shell. Kept below the h2's size and given
+   neither the caps nor the rule, so the hierarchy reads in the right order. */
+.game h3 {
+  margin: 1.5rem 0 0.4rem;
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
 .game p { margin: 0 0 0.85rem; }
 .game ul { margin: 0 0 0.9rem; padding-left: 1.15rem; }
 .game li { margin-bottom: 0.3rem; }
