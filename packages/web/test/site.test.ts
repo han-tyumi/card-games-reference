@@ -13,7 +13,14 @@
 
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { CATEGORY_ORDER, loadGames, mayWrap, renderDiagramSvg, renderFigureSvg } from "naibi";
+import {
+  CATEGORY_ORDER,
+  categoryLabel,
+  loadGames,
+  mayWrap,
+  renderDiagramSvg,
+  renderFigureSvg,
+} from "naibi";
 import { buildSite } from "../build-web.ts";
 
 const games = loadGames();
@@ -144,6 +151,41 @@ test("every family in the corpus has a chip to filter by", () => {
   for (const category of present) {
     assert.ok(values.includes(category), `${category} has games but no chip`);
   }
+});
+
+test("a family chip does not repeat the heading it sits under", () => {
+  // "Rummy family" under a heading reading FAMILY says it twice, and
+  // "Solitaire (1 player)" repeats the Players chips two rows above.
+  const group = /<label>Family<\/label><div class="chips">(.*?)<\/div>/s.exec(text("index.html"));
+  assert.ok(group);
+  const labels = [...group[1]!.matchAll(/<label for="category-\d+">([^<]+)<\/label>/g)]
+    .map((m) => m[1]!)
+    .filter((l) => l !== "Any");
+
+  for (const label of labels) {
+    assert.doesNotMatch(label, / family$/i, `"${label}" repeats the group heading`);
+    assert.doesNotMatch(label, /\($/, `"${label}" has a dangling bracket`);
+    assert.doesNotMatch(label, / \([^)]*\)$/, `"${label}" carries a parenthetical`);
+    assert.ok(label.trim().length > 0, "a chip lost its whole label");
+  }
+  assert.equal(new Set(labels).size, labels.length, "two families shortened to one label");
+});
+
+test("shortening the chips did not shorten the labels everywhere else", () => {
+  // The full labels stand alone on a game card, in the booklet contents and in
+  // rendered/index.md, and "Rummy" on its own would collide with the game
+  // called Rummy. The shortening is for the chip row and nowhere else.
+  const rummy = games.find((g) => g.category === "rummy-type")!;
+  assert.match(
+    text("index.html"),
+    new RegExp(`<p class="meta">[^<]*${categoryLabel("rummy-type")}</p>`),
+    "the index card lost the full family label",
+  );
+  assert.match(
+    text(`games/${rummy.id}.html`),
+    new RegExp(categoryLabel("rummy-type")),
+    "the game page lost the full family label",
+  );
 });
 
 // --- print ----------------------------------------------------------------

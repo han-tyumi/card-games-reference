@@ -344,6 +344,22 @@ function embed(json: string): string {
   return json.replace(/</g, "\\u003c");
 }
 
+/**
+ * A category label with the chip group's own words taken out.
+ *
+ * CATEGORY_LABELS are written to stand alone — beside a game on the index, as
+ * a heading in the booklet contents, in rendered/index.md — and "Rummy family"
+ * has to say "family" in those places because there is also a game called
+ * Rummy. Under a heading that already reads FAMILY it says it twice, and
+ * "(1 player)" repeats the Players chips two rows above. Both are dropped
+ * here and only here; everywhere else keeps the full label.
+ */
+function chipLabel(category: string): string {
+  return categoryLabel(category)
+    .replace(/ family$/i, "")
+    .replace(/ \([^)]*\)$/, "");
+}
+
 function chipGroup(
   name: string,
   label: string,
@@ -510,7 +526,7 @@ ${/* Last, because the four above answer "what can we play right now" and this
      it is an exact match rather than a ceiling. */ ""}
 ${chipGroup("category", "Family", [
   ["", "Any"] as [string, string],
-  ...CATEGORY_ORDER.map((c) => [c, categoryLabel(c)] as [string, string]),
+  ...CATEGORY_ORDER.map((c) => [c, chipLabel(c)] as [string, string]),
 ])}
 </div>`);
 
