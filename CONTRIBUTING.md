@@ -579,6 +579,13 @@ project is on `0.x`, is at the top of [CHANGELOG.md](CHANGELOG.md).
 4. **`npm run check`**, commit, push, and let CI go green.
 5. **Tag and push it:** `git tag v0.1.0 && git push origin v0.1.0`.
 
+Or, with no terminal to hand: **Actions → Release → Run workflow**. That path
+takes the version from the manifest and creates the tag itself, so it cannot
+name a version the changelog has not got. It refuses to run twice over the same
+version, which a tag push gets for free by the tag already existing. Steps 1 to
+4 still have to have happened — the job runs the same gate either way, and a
+booklet left unrebuilt after a bump fails it.
+
 The job then checks that the tag, the manifest and the changelog all say the
 same version, runs the full gate, takes the release notes from that changelog
 entry, and attaches the booklet as `naibi-booklet.pdf`. The name is stable on

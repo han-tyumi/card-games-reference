@@ -3,9 +3,15 @@ name: Release
 # Cutting a release is pushing a tag. Everything else happens here, so the
 # booklet that gets published is built by the same job that checked it rather
 # than uploaded from whoever's laptop tagged it.
+#
+# It can also be run by hand from the Actions tab, which needs no terminal and
+# so works from a phone. That path takes the version from the manifest and
+# creates the tag itself, so a manual run cannot invent one: there is exactly
+# one place a version is written either way.
 on:
   push:
     tags: ["v*"]
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -24,17 +30,42 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # A tag is a claim about a version, and three places state one. If they
-      # disagree the booklet's cover is wrong in a file people print, so this
-      # fails before anything is published rather than after.
-      - name: Check the tag, the package and the changelog agree
+      # A release is a claim about a version and up to three places state one.
+      # If they disagree the booklet's cover is wrong in a file people print,
+      # so this fails before anything is published rather than after.
+      - name: Settle the version, and check everything agrees on it
+        id: version
         run: |
-          tag="${GITHUB_REF_NAME#v}"
           pkg="$(node -p "require('./packages/data/package.json').version")"
           log="$(grep -m1 -oP '^## \[\K[0-9]+\.[0-9]+\.[0-9]+' CHANGELOG.md)"
-          echo "tag=$tag package=$pkg changelog=$log"
-          if [ "$tag" != "$pkg" ] || [ "$tag" != "$log" ]; then
-            echo "::error::tag $tag, package $pkg, changelog $log — these must match"
+
+          # On a tag the tag is the claim and must match. On a manual run there
+          # is no tag yet, so the manifest is the claim and the tag is made from
+          # it -- which is why a hand-run release cannot name a version nothing
+          # else knows about.
+          if [ "$GITHUB_EVENT_NAME" = "push" ]; then
+            version="${GITHUB_REF_NAME#v}"
+          else
+            version="$pkg"
+          fi
+
+          echo "version=$version package=$pkg changelog=$log"
+          if [ "$version" != "$pkg" ] || [ "$version" != "$log" ]; then
+            echo "::error::version $version, package $pkg, changelog $log — these must match"
+            exit 1
+          fi
+
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "tag=v$version" >> "$GITHUB_OUTPUT"
+
+      # Refuse to publish over a release that already exists. Without this a
+      # second manual run would fail halfway, after the gate and the build.
+      - name: Check this version has not been released already
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if gh release view "${{ steps.version.outputs.tag }}" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "::error::${{ steps.version.outputs.tag }} is already released — bump the version first"
             exit 1
           fi
 
@@ -45,27 +76,30 @@ jobs:
 
       - name: Take the changelog entry for this version as the release notes
         run: |
-          awk -v v="${GITHUB_REF_NAME#v}" '
+          awk -v v="${{ steps.version.outputs.version }}" '
             $0 ~ "^## \\[" v "\\]" { inside = 1; next }
             inside && /^## / { exit }
             inside { print }
           ' CHANGELOG.md > /tmp/notes.md
           if [ ! -s /tmp/notes.md ]; then
-            echo "::error::no changelog entry for ${GITHUB_REF_NAME}"
+            echo "::error::no changelog entry for ${{ steps.version.outputs.version }}"
             exit 1
           fi
           cat /tmp/notes.md
 
-      # A stable asset name, so the README can link releases/latest/download
-      # and never need editing again. Which release it is comes off the cover.
+      # A stable asset name, so a link to releases/latest/download never needs
+      # editing again. Which release it is comes off the booklet's cover.
       - name: Name the booklet for the release
         run: cp rendered/naibi.pdf /tmp/naibi-booklet.pdf
 
+      # --target matters on the manual path: it is what creates the tag, on the
+      # commit that was just checked, rather than requiring one to exist.
       - name: Publish
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release create "$GITHUB_REF_NAME" /tmp/naibi-booklet.pdf \
-            --title "$GITHUB_REF_NAME" \
+          gh release create "${{ steps.version.outputs.tag }}" /tmp/naibi-booklet.pdf \
+            --title "${{ steps.version.outputs.tag }}" \
             --notes-file /tmp/notes.md \
+            --target "$GITHUB_SHA" \
             --repo "$GITHUB_REPOSITORY"
