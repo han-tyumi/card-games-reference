@@ -20,10 +20,25 @@ survives contact with "this should just happen".
 - **Changesets** — rejected again, and for the same reason as before: it solves
   independent versioning across many published packages, and there is one. It
   would also take ownership of the changelog's format.
-- **release-please** — the closest fit, and it does exactly this job. Rejected
-  because it maintains a release PR and takes over `CHANGELOG.md`, which is more
-  machinery than a single-package repository needs, and because the same result
-  is about eighty lines of a script that is already half-written.
+- **release-please** — rejected on a concrete mismatch rather than on taste. It
+  opens a release PR carrying the version bump, and that PR would hold a booklet
+  whose cover still says the old version, so it would fail this repository's own
+  `npm run pdf -- --check`. Fixing that needs a second bot commit pushed onto the
+  release PR to rebuild the artifact.
+- **Knope** — the closest fit by some distance, and the only tool whose model
+  matches the ordering this repository needs: `PrepareRelease` bumps and writes
+  the changelog, arbitrary `Command` steps rebuild the booklet and run the gate,
+  then `Release` publishes. It takes hand-written prose through change files in
+  `.changeset/`, each carrying a summary, optional detail and its own bump level,
+  so "a generator would flatten the notes" is **not** a fair objection to it —
+  that objection was aimed at conventional commits alone and does not transfer.
+  Rejected on cost rather than on fit: a Rust toolchain in CI, a changelog that
+  moves to Knope's section format rather than this one's, and asset upload that
+  wants the Knope Bot GitHub App by its own recipe. The one thing it does not
+  appear to do is let a single hand-written entry stand in for the whole
+  generated list, which is how the 0.1.0 notes were written — though that was a
+  first release summarising work that predated the changelog, and may never
+  recur.
 - **Bump a patch on every push** — rejected. It makes the version a count of
   pushes rather than a statement about compatibility, which is the one thing
   0015 established the number is for.
@@ -71,3 +86,9 @@ This reverses the conventional-commits rejection in
 [0015](0015-semantic-versions-cut-by-tag.md). Everything else in that record —
 semver on `packages/data`, one version in one manifest, releases as tags with
 the booklet attached — stands unchanged.
+
+Knope is the thing to revisit, and the trigger is specific rather than a
+feeling: **a second published package**, or the first need for prerelease or
+backport versions. Both are where hand-rolled release tooling turns bad, and
+both are Knope's home ground. Until then this is a few hundred lines with tests
+against a toolchain and a bot, and the tests already exist.
