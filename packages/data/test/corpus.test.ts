@@ -168,8 +168,20 @@ test("a per-player game climbs with every seat", () => {
 
 test("a game with no map needs the same packs at every count", () => {
   const hearts = games.find((g) => g.id === "hearts")!;
-  assert.equal(decksNeeded(hearts, 3), hearts.equipment.standard_decks);
-  assert.equal(decksNeeded(hearts, 6), hearts.equipment.standard_decks);
+  assert.equal(decksNeeded(hearts, 3), 1);
+  assert.equal(decksNeeded(hearts, 6), 1);
+});
+
+test("standard_decks is the requirement decksNeeded gives at the minimum table, for every entry", () => {
+  // The schema defines standard_decks as the requirement at a game's minimum
+  // player count -- decksNeeded's own doc comment repeats the claim, and
+  // pick.ts repeats it again, but nothing before this checked it. A step map
+  // that keyed its own minimum to something other than standard_decks would
+  // make the field's definition false for that entry, and stay silent until
+  // someone read the two side by side.
+  for (const game of games) {
+    assert.equal(decksNeeded(game, game.players.min), game.equipment.standard_decks, game.id);
+  }
 });
 
 test("a purpose-built pack is never playable from standard decks", () => {
