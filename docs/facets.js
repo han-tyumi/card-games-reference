@@ -33,6 +33,7 @@ export const DIFFICULTY = { simple: 0, easy: 1, medium: 2, complex: 3 };
  * @property {string} c category id
  * @property {number} lo fewest players
  * @property {number} hi most players
+ * @property {number} i the count the game is best with; orders, never filters
  * @property {number} d standard decks needed; 0 means a purpose-built pack
  * @property {number[] | null} dn decks needed at each seat from `lo` upward
  * @property {number | null} max longest run in minutes, null if open-ended
@@ -40,9 +41,40 @@ export const DIFFICULTY = { simple: 0, easy: 1, medium: 2, complex: 3 };
  */
 
 /**
+ * The table the reader is asking about: the headcount they chose, and how far
+ * down they said they might shrink.
+ *
+ * The headcount is the top of the range because both reasons a table shrinks —
+ * no-shows and sitting out — reduce from a number you already know. The floor
+ * is optional and defaults to the headcount, which is why an existing
+ * `?players=5` link still means exactly five without a compatibility branch.
+ *
+ * **This is the only place a range is built, and therefore the whole of "the
+ * range cannot invert".** A floor above the count clamps to the count rather
+ * than swapping the two, so there is no push rule for a reader to learn and no
+ * unreachable state for a URL to name.
+ *
+ * Returns null when no count was given, and also when the count does not parse.
+ * The second case keeps behaviour the page has always had: the index drops
+ * unknown chip values through `allowed` before they reach here, so only the
+ * print sheet can see one, and there it has always been inert. The deck branch
+ * below refuses it on purpose, which is a different question.
+ *
+ * @param {{players?: string, from?: string}} criteria
+ * @returns {{lo: number, hi: number} | null}
+ */
+export function playerRange(criteria) {
+  if (!criteria.players) return null;
+  const hi = Number(criteria.players);
+  if (!Number.isFinite(hi)) return null;
+  const floor = criteria.from ? Number(criteria.from) : hi;
+  return { lo: Number.isFinite(floor) ? Math.min(Math.max(floor, 1), hi) : hi, hi };
+}
+
+/**
  * @param {Facet} facet
- * @param {{category?: string, players?: string, decks?: string, minutes?: string,
- *   difficulty?: string}} criteria
+ * @param {{category?: string, players?: string, from?: string, decks?: string,
+ *   minutes?: string, difficulty?: string}} criteria
  * @returns {boolean}
  */
 export function matches(facet, criteria) {
@@ -50,10 +82,14 @@ export function matches(facet, criteria) {
   // trick-taking games "or simpler".
   if (criteria.category && facet.c !== criteria.category) return false;
 
-  if (criteria.players) {
-    const n = Number(criteria.players);
-    if (facet.lo > n || facet.hi < n) return false;
-  }
+  // A game matches when its span OVERLAPS the range, not when it covers it.
+  // Containment is the stricter reading and is a strict subset of this one, so
+  // gating on it hides games the reader can actually play — belote, canasta and
+  // contract-bridge are perfect if four of the six turn up. Coverage is a real
+  // signal and it is not thrown away: plan() ranks on it, which is the same
+  // treatment `ideal` gets, and for the same reason.
+  const range = playerRange(criteria);
+  if (range && (facet.lo > range.hi || facet.hi < range.lo)) return false;
 
   // A game needing its own pack is unreachable for someone holding a 52-card
   // deck, so "0 decks <= 1 deck" must NOT read as playable. This was a real
@@ -107,7 +143,7 @@ export function matches(facet, criteria) {
  * The chip groups that can be carried in a URL. `q` is handled separately
  * because it is free text rather than one of a fixed set.
  */
-export const PARAMS = ["category", "players", "decks", "minutes", "difficulty"];
+export const PARAMS = ["category", "players", "from", "decks", "minutes", "difficulty"];
 
 /**
  * Filter state out of a query string, so a filtered view can be linked to.
