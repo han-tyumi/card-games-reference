@@ -111,6 +111,41 @@ test("the checked-status ledger matches the corpus", () => {
   );
 });
 
+test("how many sources each check had is recorded, and the gap is counted", () => {
+  // CONTRIBUTING claims no entry rests on a single source. For a long time that
+  // claim had nothing behind it: `sources_consulted` is attribution, lists
+  // sources that were never pulled, and is byte-identical before and after the
+  // pass that supposedly fixed twelve entries -- so a test of its length would
+  // have passed on the day the claim was false, which is worse than no test.
+  // `checked.sources` is the field that can answer it, and the entries with no
+  // such record are counted here rather than passing quietly: a check whose
+  // source count is unknown must not read as a check with enough of them.
+  const stated = /\*\*(\d+) of (\d+) checks record which sources they had\*\*/.exec(contributing);
+  assert.ok(stated, "CONTRIBUTING no longer states how many checks record their sources");
+
+  const checks = games.filter((game) => game.checked);
+  const recorded = checks.filter((game) => game.checked?.sources);
+
+  assert.equal(
+    recorded.length,
+    Number(stated[1]),
+    "CONTRIBUTING's count of checks recording their sources no longer matches the entries",
+  );
+  assert.equal(
+    checks.length,
+    Number(stated[2]),
+    "CONTRIBUTING's count of checks on record no longer matches the entries",
+  );
+
+  // The claim itself, for every entry that can answer it. One source cannot
+  // corroborate itself, so a recorded check naming fewer than two is the exact
+  // failure the bullet says does not exist.
+  const thin = recorded
+    .filter((game) => (game.checked?.sources?.length ?? 0) < 2)
+    .map((game) => game.id);
+  assert.deepEqual(thin, [], "entries recording a check against fewer than two sources");
+});
+
 test("every file the README links to exists", () => {
   const missing: string[] = [];
 

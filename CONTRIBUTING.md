@@ -408,6 +408,16 @@ verbatim runs, 1 passage scoring 86% in order, and 1 whole-passage order
 finding.** The order finding was a `setup` section again, which is now five of
 six across two passes.
 
+**38 of 72 checks record which sources they had**, in `checked.sources`. Those
+38 are 2026-08-01 entries whose own `sources_consulted` names both of the two
+that pass read, so the record is reconstructed from the pass description and
+corroborated by the entry — not logged at the time. The other 34 carry a date
+and a fingerprint but no source count. That is not a check with one source; it
+is a check whose source count nobody wrote down, and the two must not be allowed
+to read alike. Checks made from here on record their sources as they are made,
+so the gap closes by re-reading rather than by guessing. `npm test` holds both
+counts to the corpus.
+
 Two of the four would not have been found by adding sources alone. FreeCell's
 came out of the Solitaire Laboratory FAQ, which is served hard-wrapped at about
 70 columns; the checker splits on newlines, so every sentence in that source was
@@ -434,8 +444,10 @@ thing is not a collision on how the rule was explained.
   on fixtures: a sentence rebuilt from a source's clause order scored 0.15,
   an honest rewrite of the same rule 0.12. Structural reuse is caught; thorough
   rewording is not.
-- No entry now rests on a single source; the twelve that did were the
-  2026-08-03 pass. What that pass could not do is use the sources those entries
+- No entry is *known* to rest on a single source, and for 34 checks the record
+  cannot say either way — see the source counts above. The twelve that did rest
+  on one were re-read by the 2026-08-03 pass. What that pass could not do is use
+  the sources those entries
   name. pagat carries few solitaires and has no Mau-Mau page at all, and
   gamerules.com and officialgamerules.org served a stub after the first request
   and never returned the page again, so Speed was read against three sources

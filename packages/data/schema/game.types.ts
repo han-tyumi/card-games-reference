@@ -637,5 +637,12 @@ export interface CardGame {
      * Fingerprint of setup + play + goal_and_scoring at check time.
      */
     prose: string;
+    /**
+     * Which of `sources_consulted` this entry was actually read against at check time, by name. `sources_consulted` is attribution and lists everything looked at; several entries name sources that were never pulled, so it cannot answer how many sources a check really had. This can. Two is the floor because one source cannot corroborate itself. Absent means the check predates this record and how many sources it had is not known, which is not the same as one.
+     *
+     * @minItems 2
+     * @maxItems 12
+     */
+    sources?: [string, string, ...string[]];
   };
 }

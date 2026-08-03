@@ -253,6 +253,24 @@ export function checkChecked(data: Entry, fingerprint: string | null): string[] 
         "re-read it against its sources and re-stamp, or remove the record",
     ];
   }
+
+  // A source that was read but never attributed is a source the reader cannot
+  // follow, so `checked.sources` has to draw from `sources_consulted` rather
+  // than name something of its own. The schema can require two names; only this
+  // can require they be the entry's own.
+  const read = checked["sources"];
+  if (Array.isArray(read)) {
+    const attributed = new Set(
+      Array.isArray(data["sources_consulted"]) ? (data["sources_consulted"] as string[]) : [],
+    );
+    const stray = read.filter((name) => !attributed.has(name as string));
+    if (stray.length > 0) {
+      return [
+        `checked.sources names ${stray.map((s) => `"${s}"`).join(", ")}, ` +
+          "which sources_consulted does not list; add it there or correct the name",
+      ];
+    }
+  }
   return [];
 }
 
