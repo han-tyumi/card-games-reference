@@ -20,10 +20,33 @@
  * the companion picker described in tools/README.md.
  */
 
+import { pathToFileURL } from "node:url";
+
 import type { CardGame } from "naibi";
-import { categoryLabel, durationLine, loadGames, playersLine } from "naibi";
+import { categoryLabel, durationLine, loadGames, playableWith, playersLine } from "naibi";
 
 const DIFFICULTY_ORDER = ["simple", "easy", "medium", "complex"] as const;
+
+/**
+ * The games a reader holding `decks` packs can play, at `players` if they said.
+ *
+ * Extracted from `main` so it can be tested: everything else here reads
+ * `process.argv`, which is why the deck filter went wrong unnoticed. A
+ * purpose-built pack (`standard_decks: 0`) is never playable from ordinary
+ * decks however many are held, and without a player count the smallest table
+ * is the only thing knowable.
+ */
+export function withDecksOnHand(
+  games: readonly CardGame[],
+  decks: number,
+  players?: number,
+): CardGame[] {
+  return games.filter((game) =>
+    players === undefined
+      ? game.equipment.standard_decks > 0 && game.equipment.standard_decks <= decks
+      : playableWith(game, players, decks),
+  );
+}
 
 function argValue(flag: string): string | undefined {
   const index = process.argv.indexOf(flag);
@@ -89,12 +112,7 @@ function main(): number {
   }
 
   if (decks !== undefined) {
-    // standard_decks 0 means a pack you cannot build from ordinary cards, so
-    // "0 <= 1" must NOT read as playable by someone holding a 52-card deck.
-    games = games.filter(
-      (g) =>
-        g.equipment.standard_decks > 0 && g.equipment.standard_decks <= decks,
-    );
+    games = withDecksOnHand(games, decks, players);
     reasons.push(`${decks} deck${decks === 1 ? "" : "s"}`);
   }
 
@@ -162,4 +180,8 @@ function main(): number {
   return 0;
 }
 
-process.exit(main());
+// Only when run as a command. Imported -- by the tests -- this file is just
+// the filter above.
+if (import.meta.url === pathToFileURL(process.argv[1] ?? "").href) {
+  process.exit(main());
+}
