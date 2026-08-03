@@ -21,6 +21,9 @@ const data = document.getElementById("facets");
 const count = document.getElementById("count");
 const empty = document.getElementById("empty");
 const box = /** @type {HTMLInputElement | null} */ (document.getElementById("q"));
+// Optional: the index is the only page that has one, and it is not worth
+// failing the whole page over.
+const printlink = /** @type {HTMLAnchorElement | null} */ (document.getElementById("printlink"));
 
 if (list && data && count && empty && box) {
   /** @type {import("./facets.js").Facet[]} */
@@ -101,6 +104,18 @@ if (list && data && count && empty && box) {
 
     count.textContent = label;
     empty.hidden = order.length > 0;
+
+    // The print sheet takes the same query, so what comes out of the printer is
+    // what is on the screen. Its label says how many, because "Print these"
+    // beside a list of sixteen should not need counting.
+    if (printlink) {
+      printlink.hidden = order.length === 0;
+      printlink.href = `print.html${writeQuery(state)}`;
+      printlink.textContent =
+        order.length === facets.length
+          ? `Print all ${order.length}`
+          : `Print these ${order.length}`;
+    }
   };
 
   box.addEventListener("input", () => {

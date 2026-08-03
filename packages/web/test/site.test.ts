@@ -42,10 +42,11 @@ const precache: string[] = JSON.parse(
 
 // --- shape ----------------------------------------------------------------
 
-test("one page per game, plus the index and About", () => {
-  assert.equal(pages.length, games.length + 2);
+test("one page per game, plus the index, About and the print sheet", () => {
+  assert.equal(pages.length, games.length + 3);
   assert.ok(site.has("index.html"));
   assert.ok(site.has("about.html"));
+  assert.ok(site.has("print.html"));
   for (const game of games) {
     assert.ok(site.has(`games/${game.id}.html`), `no page for ${game.id}`);
   }
@@ -557,14 +558,32 @@ test("og:title and og:description repeat what the page already says", () => {
   }
 });
 
-test("the sitemap lists every page, once, absolutely", () => {
-  const locs = [...text("sitemap.xml").matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]!);
+test("the print sheet is kept out of search results", () => {
+  // It carries all seventy-two games, every one of which is already published
+  // at its own URL. Indexed, it is a megabyte of duplicate content competing
+  // with the pages people should actually land on -- so it is noindex, and it
+  // is not in the sitemap. Both halves, because either alone is a half-measure.
+  assert.match(text("print.html"), /<meta name="robots" content="noindex">/);
+  assert.ok(
+    !text("sitemap.xml").includes("print.html"),
+    "the sitemap offers the print sheet to crawlers",
+  );
 
-  assert.equal(locs.length, pages.length, "the sitemap and the site disagree in size");
+  // And nothing else picked the flag up by accident.
+  for (const page of pages.filter((p) => p !== "print.html")) {
+    assert.ok(!text(page).includes("noindex"), `${page} is unexpectedly noindex`);
+  }
+});
+
+test("the sitemap lists every indexable page, once, absolutely", () => {
+  const locs = [...text("sitemap.xml").matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]!);
+  const indexable = pages.filter((page) => !text(page).includes("noindex"));
+
+  assert.equal(locs.length, indexable.length, "the sitemap and the site disagree in size");
   assert.deepEqual(locs, [...new Set(locs)], "a URL is listed twice");
   for (const loc of locs) assert.match(loc, /^https:\/\//);
 
-  const canonicals = pages.map(
+  const canonicals = indexable.map(
     (page) => /<link rel="canonical" href="([^"]+)">/.exec(text(page))![1]!,
   );
   assert.deepEqual([...locs].sort(), [...canonicals].sort(), "sitemap != canonical URLs");
@@ -716,8 +735,11 @@ test("the precache covers everything the site is made of", () => {
       !name.endsWith(".webmanifest") &&
       name !== "sw.js" &&
       name !== ".nojekyll" &&
-      // Deliberately excluded: fetched by scrapers and crawlers, not the app.
-      !["icons/og.png", "sitemap.xml", "robots.txt"].includes(name),
+      // Deliberately excluded: fetched by scrapers and crawlers, not the app,
+      // plus the print sheet -- a megabyte holding every game, which would land
+      // on every visitor's first load for a page most will never open. It is
+      // the one page that needs a connection.
+      !["icons/og.png", "sitemap.xml", "robots.txt", "print.html"].includes(name),
   );
 
   const listed = new Set(precache);

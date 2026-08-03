@@ -166,7 +166,31 @@ a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset:
 }
 .chips input:focus-visible + label { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-.count { margin: 0 0 0.8rem; color: var(--ink-soft); font-size: 0.9rem; }
+/* The count and the print link share a line: the link is an action on exactly
+   what the count describes, and separating them would make that less obvious. */
+.countrow { display: flex; align-items: baseline; gap: 1rem; margin: 0 0 0.8rem; }
+.count { margin: 0; color: var(--ink-soft); font-size: 0.9rem; }
+
+.printlink {
+  margin-inline-start: auto;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  text-decoration: none;
+  border: 1px solid var(--rule);
+  border-radius: 0.4rem;
+  padding: 0.2rem 0.7rem;
+  color: var(--ink-soft);
+}
+.printlink:hover, .printlink:focus-visible { color: var(--ink); border-color: var(--accent); }
+.printlink[hidden] { display: none; }
+
+/* The sheet's own header, which is chrome on screen and a title on paper. */
+.sheet { margin: 0 0 1.5rem; }
+.sheet h1 { margin-bottom: 0.2rem; }
+.sheet-what { margin: 0 0 0.8rem; color: var(--ink-soft); font-size: 0.9rem; }
+.sheet-note { font-size: 0.9rem; color: var(--ink-soft); }
+.sheet .game[hidden], .sheet-actions[hidden] { display: none; }
+article.game[hidden] { display: none; }
 
 /* Shown only when a new deployment has taken over behind this page. Sits at the
    top of the flow rather than floating over the text, so it never covers a rule
@@ -427,6 +451,11 @@ footer p { margin: 0; }
   .chips,
   #q,
   #reload,
+  /* On the sheet these are how you got here, not part of what you asked to
+     print. The line saying what was selected is not in this list -- see below. */
+  .printlink,
+  .sheet-actions,
+  .sheet-note,
   footer {
     display: none !important;
   }
@@ -435,7 +464,7 @@ footer p { margin: 0; }
      get "the trick-taking games for four" onto paper — and the controls that
      produced it are hidden, so without this line the sheet reads "72 games" in
      the blurb, lists fifteen, and gives no sign it is a subset. */
-  .count {
+  .count, .sheet-what {
     font-weight: 600;
   }
 

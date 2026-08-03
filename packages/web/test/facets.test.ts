@@ -17,6 +17,7 @@ import assert from "node:assert/strict";
 import { CATEGORY_ORDER, loadGames } from "naibi";
 import {
   DIFFICULTY,
+  PARAMS,
   countLabel,
   matches,
   nameMatch,
@@ -97,6 +98,24 @@ test("a value no chip offers is dropped rather than filtering to nothing", () =>
   assert.deepEqual(readQuery("?category=trumps", allowedChips()), {});
   assert.deepEqual(readQuery("?players=11", allowedChips()), {});
   assert.deepEqual(readQuery("?nonsense=1", allowedChips()), {});
+});
+
+test("with no chip list to check against, every filter survives", () => {
+  // The print sheet has no chips, so it passes no allowed-values map. It was
+  // briefly given one built from the facets instead, which got `difficulty`
+  // wrong and dropped it silently -- so a printed sheet carried games the index
+  // had filtered out, and nothing failed. Every parameter, every time.
+  const state = { q: "bower", category: "trick-taking", players: "4", decks: "1",
+    minutes: "30", difficulty: "easy" };
+  assert.deepEqual(readQuery(writeQuery(state)), state);
+
+  for (const name of PARAMS) {
+    const parsed = readQuery(`?${name}=simple`);
+    assert.equal(parsed[name], "simple", `${name} was dropped without a chip list`);
+  }
+
+  // And a value nothing matches shows nothing, rather than being ignored.
+  assert.deepEqual(plan(facets, readQuery("?difficulty=banana"), null).order, []);
 });
 
 test("every family is linkable, and the link selects that family", () => {

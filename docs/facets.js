@@ -94,8 +94,14 @@ export const PARAMS = ["category", "players", "decks", "minutes", "difficulty"];
  * value would match no game at all, and a shared link that opens on an empty
  * list looks like a broken site rather than a stale link.
  *
+ * Omit it where there are no chips to be stale against — the print sheet has
+ * none. It was briefly given a map built from the facets instead, which got
+ * `difficulty` wrong and dropped that filter silently, so a printed sheet held
+ * games the index had excluded. Knowing the chips in two places is what caused
+ * that; the second place is gone rather than corrected.
+ *
  * @param {string} search location.search, with or without the leading "?"
- * @param {Record<string, Set<string>>} allowed
+ * @param {Record<string, Set<string>>} [allowed]
  * @returns {Record<string, string>}
  */
 export function readQuery(search, allowed) {
@@ -108,7 +114,7 @@ export function readQuery(search, allowed) {
 
   for (const name of PARAMS) {
     const value = params.get(name);
-    if (value && allowed[name]?.has(value)) state[name] = value;
+    if (value && (!allowed || allowed[name]?.has(value))) state[name] = value;
   }
   return state;
 }

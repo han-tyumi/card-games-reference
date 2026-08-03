@@ -110,7 +110,10 @@ function page(opts: {
   /** Site-relative path this page is written to, for its canonical URL. */
   path: string;
   wide?: boolean;
-  script?: boolean;
+  /** Module to load, if any: the index and the print sheet want different ones. */
+  script?: string;
+  /** Keep it out of search results. For pages that duplicate content. */
+  noindex?: boolean;
   depth: number;
 }): string {
   const up = opts.depth === 0 ? "" : "../";
@@ -126,6 +129,7 @@ function page(opts: {
 <meta name="description" content="${esc(opts.description)}">
 <meta name="theme-color" content="#1f3a5f">
 <link rel="canonical" href="${esc(canonical)}">
+${opts.noindex ? `<meta name="robots" content="noindex">` : ""}
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="${TITLE}">
 <meta property="og:title" content="${esc(opts.title)}">
@@ -157,7 +161,7 @@ ${opts.body}
 <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
 </footer>
 </div>
-${opts.script ? `<script type="module" src="${up}app.js"></script>` : ""}
+${opts.script ? `<script type="module" src="${up}${opts.script}"></script>` : ""}
 <script>
 /*
  * Cache-first means the page you are reading came from the cache, so a new
@@ -249,10 +253,16 @@ function figuresFor(game: CardGame): string[] {
   );
 }
 
-function gamePage(game: CardGame): string {
+/**
+ * One game, as it appears on its own page and on the print sheet.
+ *
+ * Shared rather than written twice: the two renderings must agree exactly, and
+ * a second copy of this would drift the first time a section moved. It is the
+ * same reason the search tokeniser is one function -- see decision 0005.
+ */
+function gameArticle(game: CardGame): string {
   const parts: string[] = [];
-  parts.push(`<a class="backlink" href="../">All games</a>`);
-  parts.push(`<article class="game">`);
+  parts.push(`<article class="game" id="${esc(game.id)}">`);
   parts.push(`<h1>${esc(game.name)}</h1>`);
   if (game.aliases.length > 0) {
     parts.push(`<p class="aka">Also known as ${esc(game.aliases.join(", "))}</p>`);
@@ -332,11 +342,14 @@ function gamePage(game: CardGame): string {
     `<p class="sources">Rules checked against ${esc(game.sources_consulted.join(", "))}.</p>`,
   );
   parts.push(`</article>`);
+  return parts.join("\n");
+}
 
+function gamePage(game: CardGame): string {
   return page({
     title: `${game.name} — how to play | ${TITLE}`,
     description: `How to play ${game.name}: ${playersLine(game)}, ${durationLine(game)}, ${game.decks}.`,
-    body: parts.join("\n"),
+    body: `<a class="backlink" href="../">All games</a>\n${gameArticle(game)}`,
     path: `games/${game.id}.html`,
     depth: 1,
   });
@@ -501,6 +514,68 @@ has moved, <a href="${ISSUES_URL}">say so</a> and it gets fixed.</p>
   });
 }
 
+/**
+ * Every game on one page, for printing a selection of them.
+ *
+ * The booklet already prints *everything*, and prints it better -- typeset,
+ * paginated, with a contents page. What it cannot do is print a subset, and
+ * "the four-player trick-taking games" is a real thing to want on paper. So the
+ * filters arrive in the query string and the page hides the rest.
+ *
+ * Every entry ships in the HTML because the alternative is fetching seventy-two
+ * pages from the browser. That is a megabyte, so this page is deliberately left
+ * out of the service worker's precache: it costs nothing until someone asks for
+ * it, at the price of being the one page that does not work offline.
+ */
+function printPage(games: CardGame[]): string {
+  const parts: string[] = [];
+  parts.push(`<a class="backlink" href="./">All games</a>`);
+  parts.push(`<header class="sheet">`);
+  parts.push(`<h1>${TITLE}</h1>`);
+  // Written by print.js once it has read the query. Without JavaScript the page
+  // still holds every game, which is the honest fallback: more than you asked
+  // for rather than less.
+  parts.push(`<p class="sheet-what" id="what">${games.length} games</p>`);
+  parts.push(
+    `<p class="sheet-actions"><button id="print" type="button">Print</button></p>`,
+  );
+  // Shown only when nothing is filtered, because that is the case the booklet
+  // does better and there is no sense pretending otherwise.
+  parts.push(
+    `<p class="sheet-note" id="whole" hidden>Printing all ${games.length}? ` +
+      `<a href="${PDF_URL}">The typeset booklet</a> is nicer for that — ` +
+      `paginated, with a contents page.</p>`,
+  );
+  parts.push(`</header>`);
+  for (const game of games) parts.push(gameArticle(game));
+
+  // The same facets the index filters on, so the two cannot disagree about
+  // which games a set of chips selects, plus the family names for the line
+  // that says what was printed.
+  parts.push(
+    `<script type="application/json" id="facets">` +
+      `${embed(JSON.stringify(facetsFor(games)))}</script>`,
+  );
+  parts.push(
+    `<script type="application/json" id="labels">` +
+      `${embed(
+        JSON.stringify(Object.fromEntries(CATEGORY_ORDER.map((c) => [c, categoryLabel(c)]))),
+      )}</script>`,
+  );
+
+  return page({
+    title: `Print — ${TITLE}`,
+    description: `Print a selection of card game rules from ${TITLE}.`,
+    body: parts.join("\n"),
+    path: "print.html",
+    depth: 0,
+    script: "print.js",
+    // It carries every game already published at its own URL. Indexed, it
+    // would compete with seventy-two real pages and win on nothing.
+    noindex: true,
+  });
+}
+
 function indexPage(games: CardGame[]): string {
   const body: string[] = [];
   body.push(`<header class="masthead">
@@ -540,7 +615,16 @@ ${chipGroup("category", "Family", [
 ])}
 </div>`);
 
-  body.push(`<p class="count" id="count">${games.length} games</p>`);
+  // Beside the count rather than in the footer: the thought "put this on
+  // paper" happens while looking at the list you just narrowed, and the link
+  // carries whatever is currently filtered. An <a> and not a button, so it
+  // opens in a new tab like any other link.
+  body.push(
+    `<div class="countrow">` +
+      `<p class="count" id="count">${games.length} games</p>` +
+      `<a class="printlink" id="printlink" href="print.html">Print all ${games.length}</a>` +
+      `</div>`,
+  );
   body.push(`<ul class="games" id="games">`);
   for (const game of games) {
     body.push(
@@ -566,7 +650,7 @@ ${chipGroup("category", "Family", [
     body: body.join("\n"),
     path: "index.html",
     wide: true,
-    script: true,
+    script: "app.js",
     depth: 0,
   });
 }
@@ -586,6 +670,7 @@ export function buildSite(games: CardGame[]): Map<string, string | Buffer> {
 
   files.set("index.html", indexPage(games));
   files.set("about.html", aboutPage(games));
+  files.set("print.html", printPage(games));
 
   // Sixty game pages are one click from the index, which a crawler will find on
   // its own eventually. Listing them says so on the first visit instead.
@@ -601,7 +686,7 @@ export function buildSite(games: CardGame[]): Map<string, string | Buffer> {
   files.set("search-index.json", JSON.stringify(buildIndex(searchRecords(games))));
   for (const game of games) files.set(`games/${game.id}.html`, gamePage(game));
 
-  for (const asset of ["style.css", "app.js", "search.js", "facets.js"]) {
+  for (const asset of ["style.css", "app.js", "search.js", "facets.js", "print.js"]) {
     files.set(asset, readFileSync(join(ASSETS, asset), "utf8"));
   }
 
@@ -654,7 +739,11 @@ export function buildSite(games: CardGame[]): Map<string, string | Buffer> {
       // would add a quarter of a megabyte to every visitor's first load.
       f !== OG_IMAGE &&
       f !== "sitemap.xml" &&
-      f !== "robots.txt",
+      f !== "robots.txt" &&
+      // Every game in one file, a megabyte of it. Precaching would put that on
+      // every visitor's first load for a page most will never open, so this is
+      // the one page that needs a connection -- see printPage.
+      f !== "print.html",
   );
   const version = contentHash(
     precache.map((f) => {
