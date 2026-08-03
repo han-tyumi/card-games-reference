@@ -158,7 +158,11 @@
     "Solitaire-Play"
   ],
   "checked": {
-    "date": "2026-08-02",
-    "prose": "903df92b1cc7fca9"
+    "date": "2026-08-03",
+    "prose": "903df92b1cc7fca9",
+    "sources": [
+      "Solitaired",
+      "Wikipedia"
+    ]
   }
 }

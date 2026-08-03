@@ -230,7 +230,11 @@
     "GameRules.com"
   ],
   "checked": {
-    "date": "2026-08-02",
-    "prose": "933857e45abf8bcc"
+    "date": "2026-08-03",
+    "prose": "933857e45abf8bcc",
+    "sources": [
+      "Pagat",
+      "Wikipedia"
+    ]
   }
 }

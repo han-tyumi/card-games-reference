@@ -262,6 +262,10 @@
   ],
   "checked": {
     "date": "2026-08-03",
-    "prose": "b8c82cf6acda2cd8"
+    "prose": "b8c82cf6acda2cd8",
+    "sources": [
+      "TrySolitaire",
+      "Wikipedia"
+    ]
   }
 }

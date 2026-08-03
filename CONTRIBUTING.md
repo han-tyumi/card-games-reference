@@ -375,7 +375,7 @@ else, please open an issue. It will be rewritten.
 ### What has actually been checked
 
 Every entry in the collection has been compared against source text with the
-sources open, across three passes. Earlier work counted search-engine hits, which
+sources open, across four passes. Earlier work counted search-engine hits, which
 the section below explains does not work, so those passes are not evidence of
 anything and are not counted here.
 
@@ -392,17 +392,19 @@ lexical — Pinochle carried eighteen consecutive words identical to pagat's,
 Hearts eleven, Spades ten, and one trick-taking formula had propagated into five
 separate entries.
 
-**12 entries, checked 2026-08-02** — each one immediately after it was
-written rather than in a sweep at the end. **9 of the 12 were flagged: 26
+Twelve entries were first checked on 2026-08-02, each one immediately after it
+was written rather than in a sweep at the end. **9 of the 12 were flagged: 26
 verbatim runs and 5 whole-passage order findings.** All were rewritten and the
 re-run came back clear of them. Two more entries had passages rewritten on
 reading rather than on a flag — one had reproduced a source's worked examples,
 the other had walked a source's strategy list in its order. The order findings
 were the interesting ones and four of the five were `setup` sections, which
 reach for the source's sequence because dealing a game has a natural order; each
-was reorganised rather than reworded.
+was reorganised rather than reworded. Those twelve carry 2026-08-03 now — they
+were re-read to record which sources a check actually had, and are the third
+group below.
 
-**22 entries, checked 2026-08-03**, in two groups. The first twelve are the
+**34 entries, checked 2026-08-03**, in three groups. The first twelve are the
 ones the 2026-08-01 pass had only
 one source for, re-read one at a time against a second and a third rather than
 in a sweep: `accordion`, `beggar-my-neighbour`, `forty-thieves`, `freecell`,
@@ -428,21 +430,36 @@ headings impose and the order a reader needs to sit down and play. Reorganising
 ours to break it would have put the pack after the deal — a worse entry bought
 with a better score.
 
-**48 of 72 checks record which sources they had**, in `checked.sources`. They
-come from two different places and are not equally strong. The ten stamped by
-the 2026-08-03 re-read were logged as they were made: the tool writes the files
+The last twelve are the batch written on 2026-08-02 and the twelve of the first
+group above, re-read together to close the last of the missing source records:
+`accordion`, `baccarat`, `beggar-my-neighbour`, `canfield`, `dou-dizhu`,
+`fan-tan`, `five-hundred`, `forty-thieves`, `freecell`, `golf-multiplayer`,
+`indian-rummy`, `klondike`, `koi-koi`, `mau-mau`, `piquet`, `pitch`, `pyramid`,
+`red-dog`, `speed`, `spider`, `tarneeb`, `teen-patti`, `tripeaks`,
+`twenty-nine` — 24 entries in all, each fetched fresh and read against two of
+the sources it attributes, Mau-Mau against three. **12 of the 24 were flagged
+and none was rewritten.** All four verbatim findings were noun phrases already
+on the kept list below — "the top card of the draw pile" in `koi-koi`, "the top
+card of the discard pile" and "face up on the discard pile" in
+`golf-multiplayer` — and in each the source sentence they matched was stating a
+different rule from ours, which is what a collision on the name of a thing looks
+like. The order findings were `setup` and `goal_and_scoring` sections against
+the sequence the games themselves impose, judged the way Spades was and left.
+
+**72 of 72 checks record which sources they had**, in `checked.sources`. They
+come from two different places and are not equally strong. The 34 stamped by
+the 2026-08-03 passes were logged as they were made: the tool writes the files
 it actually compared against, matched back to the attributed names, and refuses
 to stamp a source it cannot match or a check with fewer than two. The other 38
 are 2026-08-01 entries whose own `sources_consulted` names both of the two that
 pass read, so that record is reconstructed from the pass description and
 corroborated by the entry rather than logged at the time.
 
-The remaining 24 — the 2026-08-02 and 2026-08-03 batches — carry a date and a
-fingerprint but no source count. That is not a check with one source; it is a
-check whose source count nobody wrote down, and the two must not be allowed to
-read alike. Checks made from here on record their sources as they are made, so
-the gap closes by re-reading rather than by guessing. `npm test` holds both
-counts to the corpus.
+No check now carries a date and a fingerprint with no source count beside it.
+That gap was closed by re-reading rather than by guessing — a check whose source
+count nobody wrote down is not a check with one source, and the two were never
+allowed to read alike. Checks made from here on record their sources as they are
+made. `npm test` holds both counts to the corpus.
 
 Two of the four would not have been found by adding sources alone. FreeCell's
 came out of the Solitaire Laboratory FAQ, which is served hard-wrapped at about
@@ -470,15 +487,15 @@ thing is not a collision on how the rule was explained.
   on fixtures: a sentence rebuilt from a source's clause order scored 0.15,
   an honest rewrite of the same rule 0.12. Structural reuse is caught; thorough
   rewording is not.
-- No entry is *known* to rest on a single source, and for 24 checks the record
-  cannot say either way — see the source counts above. The twelve that did rest
-  on one were re-read by the 2026-08-03 pass. What that pass could not do is use
-  the sources those entries
-  name. pagat carries few solitaires and has no Mau-Mau page at all, and
-  gamerules.com and officialgamerules.org served a stub after the first request
-  and never returned the page again, so Speed was read against three sources
-  that did not include either. Several entries still list further sources in
-  `sources_consulted` that were never pulled.
+- No entry rests on a single source, and every check now records which sources
+  it had. What none of these passes could do is use every source those entries
+  name. pagat carries few solitaires and has no Mau-Mau page at all — the
+  re-read confirmed that again, 404 at both spellings. officialgamerules.org
+  answers 202 with an empty body, gamerules.com has no Speed page, and
+  gambiter.com returns a byte-identical 8 KB page for unrelated URLs, so a run
+  that trusted status codes would have recorded three sources it never read.
+  Several entries still list further sources in `sources_consulted` that were
+  never pulled.
 - The 2026-08-02 batch was first checked with **two** sources for 9 of its 12
   entries and then re-checked with a third added to every one of them. That
   second pass is the strongest evidence here for why the range in the steps

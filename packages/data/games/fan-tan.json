@@ -144,7 +144,11 @@
     "Bicycle Cards"
   ],
   "checked": {
-    "date": "2026-08-02",
-    "prose": "333cbba87612486a"
+    "date": "2026-08-03",
+    "prose": "333cbba87612486a",
+    "sources": [
+      "Pagat",
+      "Wikipedia"
+    ]
   }
 }
