@@ -19,6 +19,7 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { categoryLabel, gamesByCategory, loadGames } from "naibi";
+import { isNewer } from "../release.ts";
 
 const REPO_ROOT = fileURLToPath(new URL("../../..", import.meta.url));
 const readme = readFileSync(join(REPO_ROOT, "README.md"), "utf8");
@@ -376,11 +377,13 @@ test("releases are listed newest first and dated", () => {
       `${release.version} has an unparseable date`,
     );
     if (i === 0) continue;
-    const [a, b] = [releases[i - 1]!.version, release.version].map((v) =>
-      v.split(".").map(Number),
+    // Compared by the same function the release script uses, rather than by a
+    // second implementation written here -- which is what this line used to be,
+    // and it was wrong in a way that would have blocked every minor release.
+    assert.ok(
+      isNewer(releases[i - 1]!.version, release.version),
+      `${releases[i - 1]!.version} is not newer than ${release.version}`,
     );
-    const newer = a!.some((n, j) => n > b![j]!) && !a!.some((n, j) => n < b![j]!);
-    assert.ok(newer, `${releases[i - 1]!.version} is not newer than ${release.version}`);
   }
 });
 

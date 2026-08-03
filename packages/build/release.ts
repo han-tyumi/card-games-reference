@@ -55,6 +55,27 @@ export function nextVersion(current: string, bump: Bump): string {
   return `${major}.${minor}.${patch + 1}`;
 }
 
+/**
+ * Is `a` a later version than `b`?
+ *
+ * First difference decides, which is the whole of semver ordering and is easy
+ * to get subtly wrong. The version this replaces asked "is any part bigger and
+ * no part smaller", which is true for 0.2.1 over 0.2.0 and false for 0.3.0 over
+ * 0.2.1 — a bump that zeroes the parts below it looks like a step backwards.
+ * It sat green because the changelog had never yet had a minor bump follow a
+ * patch release, and it would have blocked every minor and major from then on.
+ */
+export function isNewer(a: string, b: string): boolean {
+  const left = a.split(".").map(Number);
+  const right = b.split(".").map(Number);
+  for (let i = 0; i < Math.max(left.length, right.length); i += 1) {
+    const x = left[i] ?? 0;
+    const y = right[i] ?? 0;
+    if (x !== y) return x > y;
+  }
+  return false;
+}
+
 /** The version a changelog's newest release heading names, if it has one. */
 export function latestRelease(changelog: string): string | null {
   return /^## \[(\d+\.\d+\.\d+)\]/m.exec(changelog)?.[1] ?? null;

@@ -18,6 +18,7 @@ import assert from "node:assert/strict";
 
 import {
   bumpFromCommits,
+  isNewer,
   latestRelease,
   nextVersion,
   notesFromCommits,
@@ -226,4 +227,31 @@ test("nothing written and nothing generated is refused", () => {
     () => rewriteChangelog(changelog("\n", existing), "0.2.0", "2026-09-01", "   "),
     /nothing to release/,
   );
+});
+
+test("a version that zeroes the parts below it is still newer", () => {
+  // The case that broke a release: 0.3.0 follows 0.2.1, and a comparison of
+  // "some part bigger, no part smaller" reads the trailing 0 as a step back.
+  // First difference decides, and nothing else does.
+  assert.equal(isNewer("0.3.0", "0.2.1"), true);
+  assert.equal(isNewer("1.0.0", "0.9.3"), true);
+  assert.equal(isNewer("0.3.0", "0.2.9"), true);
+
+  assert.equal(isNewer("0.2.1", "0.2.0"), true);
+  assert.equal(isNewer("0.2.0", "0.2.1"), false);
+  assert.equal(isNewer("0.2.1", "0.2.1"), false, "a version is not newer than itself");
+  assert.equal(isNewer("0.9.3", "1.0.0"), false);
+});
+
+test("every bump this produces is newer than what it came from", () => {
+  // The two halves have to agree: nextVersion decides what comes next and
+  // isNewer decides whether the changelog is in order. If they disagree, a
+  // release the script itself produced would fail the gate -- which is exactly
+  // what happened.
+  for (const from of ["0.0.0", "0.1.0", "0.2.1", "0.9.9", "1.0.0", "2.13.4"]) {
+    for (const bump of ["major", "minor", "patch"] as const) {
+      const to = nextVersion(from, bump);
+      assert.equal(isNewer(to, from), true, `${from} --${bump}--> ${to} is not newer`);
+    }
+  }
 });
