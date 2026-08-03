@@ -618,8 +618,15 @@ claude plugin install superpowers@claude-plugins-official || true
 
 Both commands are idempotent, and from a cold container the pair takes about
 five seconds. The `|| true` matters: a setup script that exits non-zero fails the
-session. A `SessionStart` hook is not an alternative — it runs *after* Claude
-Code launches, which is too late for the skills to register.
+session.
+
+Installing part-way through a session does eventually work, so a `SessionStart`
+hook is not useless — but the skills appear at some unannounced later point
+rather than at the prompt. Measured once: forty minutes, with nothing on disk
+changing in between, so the delay is Claude Code re-reading what was already
+installed rather than anything the session did. Prefer the setup script, which is
+the only hook point that runs before Claude Code launches and therefore the only
+one that has the skills present from the first turn.
 
 Neither of the two is needed to contribute — the checks are plain `npm` scripts
 and the guide above is written for a person.
