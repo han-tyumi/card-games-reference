@@ -340,3 +340,33 @@ test("a per-player game is refused once the table outgrows the decks held", () =
   assert.equal(matches(nertz, { decks: "2", players: "2" }), true);
   assert.equal(matches(nertz, { decks: "2", players: "6" }), false);
 });
+
+test("a non-numeric player count refuses on purpose, not by an array miss", () => {
+  // print.js calls readQuery with no `allowed` map -- unlike the index page, a
+  // garbled value like "?players=abc" is never dropped upstream, so it reaches
+  // this predicate as NaN. A game with a decks_by_players map used to be
+  // refused only because `dn[NaN]` happens to be undefined; a game with no
+  // map ignored the garbage entirely and answered from `d` alone.
+  const slapjack = facets[games.findIndex((g) => g.id === "slapjack")]!; // has dn
+  const hearts = facets[games.findIndex((g) => g.id === "hearts")]!; // has no dn
+  assert.equal(matches(slapjack, { decks: "1", players: "abc" }), false);
+  assert.equal(matches(hearts, { decks: "1", players: "abc" }), false);
+});
+
+test("a non-numeric deck count refuses rather than comparing false against everything", () => {
+  const hearts = facets[games.findIndex((g) => g.id === "hearts")]!;
+  assert.equal(matches(hearts, { decks: "abc" }), false);
+});
+
+test("print.js's own call path: a garbled players value drops every game, not just the mapped ones", () => {
+  // Reproduces the measured regression: ?decks=1 alone matched 62 games, and
+  // adding a garbled ?players dropped only the 10 with a decks_by_players map
+  // because the rest never looked at the invalid value. Now nothing is
+  // reachable through a query string this malformed -- refusing everything is
+  // the safe reading of "the table size cannot be determined", stated on
+  // purpose rather than falling out of an accidental array miss.
+  const decksOnly = shown(readQuery("?decks=1"));
+  const withGarbage = shown(readQuery("?players=abc&decks=1"));
+  assert.ok(decksOnly.length > 0, "nothing exercises ?decks=1 to compare against");
+  assert.deepEqual(withGarbage, []);
+});

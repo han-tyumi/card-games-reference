@@ -68,11 +68,17 @@ export function matches(facet, criteria) {
     if (facet.d === 0) return false;
     const held = Number(criteria.decks);
     // Falls back to the smallest table when no count was given, because
-    // nothing else is knowable then. The players chip is checked above, so a
-    // count outside the range has already returned; the clamp is here so an
-    // out-of-range index can never read as undefined, which would compare
-    // false and pass a game that should have been refused.
+    // nothing else is knowable then. On the index page the players chip above
+    // has already dropped anything outside the game's range, via `allowed` in
+    // readQuery -- but print.js calls readQuery with no `allowed` map (it has
+    // no chips to check against), so a garbled players value such as
+    // "?players=abc" reaches this branch unfiltered. `Number("abc")` is NaN,
+    // both range comparisons above are false, and the old code let that fall
+    // through to `facet.dn[NaN]` being `undefined` by accident. Refuse it here
+    // on purpose instead, so the safe outcome does not depend on an array
+    // returning undefined for a key that was never a valid index.
     const at = criteria.players ? Number(criteria.players) : facet.lo;
+    if (!Number.isFinite(at) || !Number.isFinite(held)) return false;
     const seat = Math.min(Math.max(at, facet.lo), facet.hi) - facet.lo;
     const needed = facet.dn ? facet.dn[seat] : facet.d;
     if (needed === undefined || needed > held) return false;
