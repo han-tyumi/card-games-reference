@@ -324,6 +324,90 @@ export function floorOptions(facets, state, hits) {
 }
 
 /**
+ * What the reader asked for, said in words, one fragment per control.
+ *
+ * Shared by the index's empty state and the print sheet's header line, because
+ * they are the same sentence for the same reason — a list that is short, or
+ * absent, with no controls visible to explain why. Written twice they would
+ * disagree, and the printed one is the copy nobody looks at until it is on
+ * paper.
+ *
+ * Fragments are in the order the controls appear on the page, so reading the
+ * line and scanning the column agree with each other.
+ *
+ * @param {Record<string, string>} state
+ * @param {Record<string, string>} families category id to label
+ * @returns {string[]}
+ */
+export function describe(state, families) {
+  const said = [];
+
+  const range = playerRange(state);
+  if (range) {
+    said.push(
+      range.lo === range.hi
+        ? `${range.hi} player${range.hi === 1 ? "" : "s"}`
+        : `${range.lo}-${range.hi} players`,
+    );
+  }
+  if (state.decks) said.push(`${state.decks} deck${state.decks === "1" ? "" : "s"}`);
+  if (state.prep) {
+    const owned = state.prep
+      .split(",")
+      .filter((token) => token in PREP)
+      .map((token) => (token === "jokers" ? "jokers on hand" : "a deck you can strip"));
+    if (owned.length) said.push(owned.join(" and "));
+  }
+  if (state.minutes) said.push(`${state.minutes} minutes or less`);
+  if (state.difficulty) said.push(`${state.difficulty} or simpler`);
+  // Several families are an OR, and the word has to say so: "trick-taking,
+  // rummy" reads as a narrowing everywhere else on the page.
+  if (state.category) {
+    said.push(state.category.split(",").map((c) => families[c] ?? c).join(" or "));
+  }
+  if (state.q) said.push(`matching “${state.q}”`);
+
+  return said;
+}
+
+/**
+ * "a", "a and b", "a, b and c" — an English list, not a comma-joined array.
+ * @param {string[]} parts
+ * @returns {string}
+ */
+function listed(parts) {
+  if (parts.length < 2) return parts.join("");
+  return `${parts.slice(0, -1).join(", ")} and ${parts[parts.length - 1]}`;
+}
+
+/**
+ * Why the list is empty, in one sentence.
+ *
+ * An empty list with a row of controls above it is a puzzle: the reader has to
+ * work out which of six things they set is the one that did it. Naming them
+ * costs a sentence.
+ *
+ * Solitaire against a player count gets its own, because it is not a mistake
+ * the reader made. All eleven solitaire games are one-player, and no one-player
+ * game sits outside the family, so the two controls agreeing is redundant and
+ * the two disagreeing is always empty — a fact about the corpus, which the
+ * reader has no way to know and no reason to guess at.
+ *
+ * @param {Record<string, string>} state
+ * @param {Record<string, string>} families
+ * @returns {string}
+ */
+export function emptyReason(state, families) {
+  const range = playerRange(state);
+  if (state.category === "solitaire" && range && range.lo > 1) {
+    return "Every solitaire game here is played by exactly one person, so none of them seats that many.";
+  }
+
+  const said = describe(state, families);
+  return said.length ? `Nothing matches ${listed(said)}.` : "Nothing matches.";
+}
+
+/**
  * Does this game match the query, using only what the page already has?
  *
  * The fallback for a visitor whose search index has not arrived — offline on a

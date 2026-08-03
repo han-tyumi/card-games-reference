@@ -14,7 +14,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
-import { CATEGORY_ORDER, loadGames } from "naibi";
+import { CATEGORY_ORDER, categoryLabel, loadGames } from "naibi";
 import {
   DIFFICULTY,
   MULTI,
@@ -22,6 +22,8 @@ import {
   PREP,
   PREP_OWN_PACK,
   countLabel,
+  describe,
+  emptyReason,
   floorOptions,
   matches,
   nameMatch,
@@ -415,6 +417,149 @@ test("the fallback text carries the name, aliases, category and tags", () => {
   assert.ok(text.includes("canasta"));
   assert.ok(text.includes("rummy"), "the category label is searchable");
   assert.equal(text, text.toLowerCase(), "compared against a lowercased query");
+});
+
+// --- the empty state -------------------------------------------------------
+
+const FAMILIES = Object.fromEntries(CATEGORY_ORDER.map((c) => [c, categoryLabel(c)]));
+
+test("the empty state names every filter that is set", () => {
+  const state = {
+    players: "6",
+    from: "4",
+    decks: "1",
+    prep: "jokers",
+    minutes: "30",
+    difficulty: "easy",
+    category: "casino",
+    q: "bower",
+  };
+  const said = emptyReason(state, FAMILIES);
+  for (const fragment of ["4-6 players", "1 deck", "jokers", "30 minutes", "easy", "Casino", "bower"]) {
+    assert.ok(said.includes(fragment), `the reason does not mention ${fragment}: ${said}`);
+  }
+});
+
+test("a filter that is not set is not mentioned", () => {
+  // The point is telling the reader which control to reach for. A sentence
+  // listing controls they never touched sends them to the wrong one.
+  const said = emptyReason({ decks: "6" }, FAMILIES);
+  assert.equal(said, "Nothing matches 6 decks.");
+});
+
+test("a range is said as a count when it is one, and as a span when it is not", () => {
+  // A collapsed range is the ordinary case -- it is what every chip produces
+  // before the floor is touched -- so "4-4 players" would be the common
+  // reading, not the rare one.
+  assert.deepEqual(describe({ players: "1" }, FAMILIES), ["1 player"]);
+  assert.deepEqual(describe({ players: "5" }, FAMILIES), ["5 players"]);
+  assert.deepEqual(describe({ players: "6", from: "6" }, FAMILIES), ["6 players"]);
+  assert.deepEqual(describe({ players: "6", from: "4" }, FAMILIES), ["4-6 players"]);
+  assert.deepEqual(describe({ decks: "1" }, FAMILIES), ["1 deck"]);
+  assert.deepEqual(describe({ decks: "2" }, FAMILIES), ["2 decks"]);
+});
+
+test("several families read as a choice, not as a narrowing", () => {
+  // Every other group narrows as you add to it, so a comma would read wrong.
+  const said = emptyReason({ category: "casino,bluffing", decks: "6" }, FAMILIES);
+  assert.ok(said.includes("Casino or Bluffing"), said);
+});
+
+test("the sentence names families by label, not by id", () => {
+  const said = emptyReason({ category: "rummy-type", players: "12" }, FAMILIES);
+  assert.ok(said.includes(categoryLabel("rummy-type")), said);
+  assert.ok(!said.includes("rummy-type"), `the raw id leaked into the sentence: ${said}`);
+});
+
+test("solitaire above one player is explained as a fact, not a typo", () => {
+  // Not the reader's mistake: all eleven solitaire games are one-player and no
+  // one-player game sits outside the family, so the two controls agreeing is
+  // redundant and disagreeing is always empty. Nothing on the page says so.
+  const solitaire = games.filter((g) => g.category === "solitaire");
+  assert.ok(solitaire.length > 0);
+  assert.ok(
+    solitaire.every((g) => g.players.min === 1 && g.players.max === 1),
+    "a solitaire game now seats more than one, so this sentence has become a lie",
+  );
+
+  const said = emptyReason({ category: "solitaire", players: "4" }, FAMILIES);
+  assert.ok(/exactly one/.test(said), said);
+  assert.deepEqual(shown({ category: "solitaire", players: "4" }), [], "the premise is wrong");
+});
+
+test("a floor reaching one makes solitaire reachable again, and says nothing special", () => {
+  const state = { category: "solitaire", players: "4", from: "1" };
+  assert.ok(shown(state).length > 0, "solitaire is unreachable from a range including one");
+  assert.ok(!/exactly one/.test(emptyReason(state, FAMILIES)));
+});
+
+test("solitaire plus another family gets the ordinary sentence", () => {
+  // The list is no longer solitaire's fault alone once something else is
+  // ticked, and blaming it would send the reader to the wrong control.
+  const said = emptyReason({ category: "solitaire,casino", players: "4" }, FAMILIES);
+  assert.ok(!/exactly one/.test(said), said);
+  assert.ok(said.includes("4 players"), said);
+});
+
+test("no single chip value can empty the list on its own", () => {
+  // Worth stating rather than discovering: it is why the sweep below has to
+  // use pairs, and it is the design's "every game is reachable by some setting
+  // of every control" seen from the other side.
+  const chips = allowedChips();
+  for (const name of PARAMS) {
+    for (const value of chips[name] ?? []) {
+      if (!value) continue;
+      assert.ok(
+        plan(facets, { [name]: value }, null).order.length > 0,
+        `${name}=${value} empties the list by itself`,
+      );
+    }
+  }
+});
+
+test("every pair of filters that empties the list names a real cause", () => {
+  // Driven from the controls rather than from a handful of examples, so a
+  // control added without a phrase is caught here rather than shipping a
+  // sentence that omits the very thing that did it.
+  const chips = allowedChips();
+  const values = PARAMS.flatMap((name) =>
+    [...(chips[name] ?? [])].filter(Boolean).map((value) => [name, value] as const),
+  );
+
+  let checked = 0;
+  for (const [aName, aValue] of values) {
+    for (const [bName, bValue] of values) {
+      if (aName === bName) continue;
+      const state = { [aName]: aValue, [bName]: bValue };
+      if (plan(facets, state, null).order.length > 0) continue;
+      checked++;
+      const said = emptyReason(state, FAMILIES);
+      assert.notEqual(
+        said,
+        "Nothing matches.",
+        `${aName}=${aValue} + ${bName}=${bValue} emptied the list silently`,
+      );
+      // And the sentence has to name at least one of the two that did it,
+      // rather than being merely non-empty.
+      const named = describe(state, FAMILIES).length;
+      assert.ok(named > 0, `${aName}=${aValue} + ${bName}=${bValue} described nothing`);
+    }
+  }
+  assert.ok(checked > 20, `only ${checked} pairs empty the list, so this barely proves anything`);
+});
+
+test("with nothing set at all, the sentence does not pretend to a reason", () => {
+  assert.equal(emptyReason({}, FAMILIES), "Nothing matches.");
+});
+
+test("describe is the same list the reason is built from", () => {
+  // print.js prints these fragments beside a count; the index joins them into
+  // a sentence. One function, so a printed sheet and an empty index cannot
+  // disagree about what was asked for.
+  const state = { players: "5", decks: "2", q: "bower" };
+  for (const fragment of describe(state, FAMILIES)) {
+    assert.ok(emptyReason(state, FAMILIES).includes(fragment), fragment);
+  }
 });
 
 // --- the floor -------------------------------------------------------------
