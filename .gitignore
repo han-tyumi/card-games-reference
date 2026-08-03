@@ -30,3 +30,6 @@ scratch/
 # prose, kept locally for the length of a check and deleted afterwards. Never
 # commit it -- that would be the exact thing the check exists to prevent.
 .sources/
+
+# Subagent-driven-development scratch: ledgers, briefs and review packages.
+.superpowers/
