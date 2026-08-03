@@ -107,9 +107,12 @@ export function playerRange(criteria) {
  * @returns {boolean}
  */
 export function matches(facet, criteria) {
-  // Family is an exact match, unlike difficulty and time: nobody wants
-  // trick-taking games "or simpler".
-  if (criteria.category && facet.c !== criteria.category) return false;
+  // Family is an exact match per value, unlike difficulty and time: nobody
+  // wants trick-taking games "or simpler". Several combine with OR, because
+  // this group is browsing rather than constraint -- every other control here
+  // narrows as you add to it and this one widens, which is the difference
+  // between "what can we play" and "show me the rummy games".
+  if (criteria.category && !criteria.category.split(",").includes(facet.c)) return false;
 
   // A game matches when its span OVERLAPS the range, not when it covers it.
   // Containment is the stricter reading and is a strict subset of this one, so

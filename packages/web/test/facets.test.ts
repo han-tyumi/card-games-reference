@@ -79,12 +79,21 @@ test("family combines with the other chips rather than overriding them", () => {
 
 // --- links ----------------------------------------------------------------
 
+/**
+ * What the page's controls offer, as app.js reads them out of the DOM.
+ *
+ * The multi-select groups carry no "" value: a checkbox group says "any" by
+ * having nothing ticked, so there is no chip to represent it.
+ */
+const counts = (n: number) => Array.from({ length: n }, (_, i) => String(i + 1));
 const allowedChips = (): Record<string, Set<string>> => ({
-  category: new Set(["", ...CATEGORY_ORDER]),
-  players: new Set(["", "1", "2", "3", "4", "5", "6", "8"]),
-  decks: new Set(["", "1", "2"]),
+  category: new Set(CATEGORY_ORDER),
+  players: new Set(["", ...counts(12)]),
+  from: new Set(counts(12)),
+  decks: new Set(["", "1", "2", "3", "6"]),
   minutes: new Set(["", "15", "30", "60"]),
   difficulty: new Set(["", "simple", "easy", "medium"]),
+  prep: new Set(["jokers", "strip"]),
 });
 
 test("a filtered view survives a round trip through the URL", () => {
@@ -103,7 +112,8 @@ test("a value no chip offers is dropped rather than filtering to nothing", () =>
   // renamed, and the page opens on an empty list looking broken rather than
   // simply unfiltered.
   assert.deepEqual(readQuery("?category=trumps", allowedChips()), {});
-  assert.deepEqual(readQuery("?players=11", allowedChips()), {});
+  assert.deepEqual(readQuery("?players=13", allowedChips()), {});
+  assert.deepEqual(readQuery("?prep=sleeving", allowedChips()), {});
   assert.deepEqual(readQuery("?nonsense=1", allowedChips()), {});
 });
 
@@ -131,6 +141,69 @@ test("every family is linkable, and the link selects that family", () => {
     assert.deepEqual(parsed, { category }, `${category} does not survive a link`);
     const expected = games.filter((g) => g.category === category).map((g) => g.name);
     assert.deepEqual(shown(parsed).sort(), expected.sort());
+  }
+});
+
+test("two families show both and nothing else", () => {
+  // Family is browsing rather than constraint, so values combine with OR.
+  // Every other group narrows as you add to it; this one widens, and the
+  // failure to look for is the same as the single-value case magnified -- a
+  // whole family missing from a list that says it is showing it.
+  for (const a of CATEGORY_ORDER) {
+    for (const b of CATEGORY_ORDER) {
+      if (a >= b) continue;
+      const expected = games
+        .filter((g) => g.category === a || g.category === b)
+        .map((g) => g.name);
+      assert.deepEqual(
+        shown({ category: `${a},${b}` }).sort(),
+        expected.sort(),
+        `${a},${b} does not show exactly those two families`,
+      );
+    }
+  }
+});
+
+test("adding a family to the selection can only widen the list", () => {
+  for (const a of CATEGORY_ORDER) {
+    for (const b of CATEGORY_ORDER) {
+      if (a === b) continue;
+      assert.ok(
+        shown({ category: `${a},${b}` }).length >= shown({ category: a }).length,
+        `${a} shrank when ${b} was added`,
+      );
+    }
+  }
+});
+
+test("a family list round-trips through the URL", () => {
+  const state = { category: "solitaire,trick-taking", players: "6", from: "4", prep: "jokers" };
+  assert.deepEqual(readQuery(writeQuery(state), allowedChips()), state);
+});
+
+test("a stale family in a list is dropped without dropping the rest", () => {
+  // The whole reason readQuery validates token by token. Checking the joined
+  // string against `allowed` would match nothing and silently drop the filter
+  // entirely -- a control that stops working rather than one that errors.
+  assert.deepEqual(readQuery("?category=trumps,solitaire", allowedChips()), {
+    category: "solitaire",
+  });
+  assert.deepEqual(readQuery("?category=trumps,nonsense", allowedChips()), {});
+  assert.deepEqual(readQuery("?prep=sleeving,jokers", allowedChips()), { prep: "jokers" });
+});
+
+test("a repeated value in a list collapses rather than doubling", () => {
+  // Otherwise writeQuery(readQuery(s)) grows on every round trip.
+  const once = readQuery("?category=solitaire,solitaire", allowedChips());
+  assert.deepEqual(once, { category: "solitaire" });
+  assert.deepEqual(readQuery(writeQuery(once), allowedChips()), once);
+});
+
+test("every family is linkable in a pair, not just alone", () => {
+  const [first, ...rest] = CATEGORY_ORDER;
+  for (const category of rest) {
+    const state = { category: `${first},${category}` };
+    assert.deepEqual(readQuery(writeQuery(state), allowedChips()), state, `${category} pair`);
   }
 });
 
