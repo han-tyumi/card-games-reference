@@ -204,8 +204,21 @@ A few conventions worth knowing:
   consistent across the collection. Adding a tag means adding it to the schema.
 - `decks` and `equipment` say the same thing twice on purpose: `decks` is the
   sentence a player reads, `equipment` is the version software can filter on.
-  `standard_decks` counts the packs you must **own** — Euchre is 1 and Pinochle
-  is 2, because their stripped decks get built from ordinary ones.
+  `standard_decks` counts the packs you must **own** to play at the game's
+  **minimum** player count — Euchre is 1 and Pinochle is 2, because their
+  stripped decks get built from ordinary ones. It is not the requirement at
+  every table: a game that wants more decks as the table grows says so with
+  `decks_by_players` instead of a bigger `standard_decks`, because the field
+  means the smallest table or it means nothing consistent.
+- `decks_by_players` is how many decks a game needs from a given player count
+  upward, e.g. `{"6": 2}` for a game that wants a second pack from six players
+  on. It is read as the value for the largest key at or below the table size,
+  falling back to `standard_decks` when the table is smaller than every key.
+  Add it whenever the requirement climbs with the table — Nertz needs one deck
+  per player, so every count from its minimum up gets an entry — and omit it
+  otherwise. The field it replaced was a boolean saying a big group wanted a
+  second pack, without saying how many or from what count, so nothing could
+  ever filter on it.
 - `aliases` never contains another game's real name. Where two games genuinely
   share a name — Speed and Spit swap names regionally, and Canfield means
   different games on different continents — the prose explains the clash instead,

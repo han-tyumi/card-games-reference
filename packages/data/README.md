@@ -9,11 +9,11 @@ Part of [Naibi](../../README.md).
 ## Using it
 
 ```ts
-import { loadGames, playersLine, type CardGame } from "naibi";
+import { loadGames, playableWith, playersLine, type CardGame } from "naibi";
 
 const games = loadGames();
 const forFive = games.filter((g) => g.players.min <= 5 && 5 <= g.players.max);
-const oneDeck = forFive.filter((g) => g.equipment.standard_decks === 1);
+const oneDeck = forFive.filter((g) => playableWith(g, 5, 1));
 ```
 
 The raw JSON is importable directly, and the schema comes along too:
