@@ -20,10 +20,10 @@
     "standard_decks": 1,
     "jokers": 0,
     "special_deck": null,
-    "other": [],
     "decks_by_players": {
       "6": 2
-    }
+    },
+    "other": []
   },
   "setup": "Take the jokers out. One 52-card pack handles up to five players; with six or seven, shuffle two packs together and treat them as a single deck of 104. Duplicate cards cause no trouble, since suits and ranks only ever have to be matched, never compared.\n\nRank order is irrelevant while you are playing. Nothing beats anything else, and an ace is neither high nor low. Rank matters only at the end of the hand, when you count up what is left in the losers' hands.\n\nPick a first dealer any way you like; cutting for the high card is the usual method. The deal then moves one seat to the left after each hand. The dealer shuffles and deals one card at a time, clockwise, starting with the player on their left. In a two-player game each side gets seven cards. With three or more, everyone gets five.\n\nPut the undealt cards face down in the middle as the stock, then turn the top one face up next to it. That card is the starter and it forms the beginning of the discard pile. If the starter happens to be an eight, slide it back into the middle of the stock and turn a fresh card, because nobody wants the hand to open on a wild card. Repeat until you get an ordinary starter.\n\nThe player to the dealer's left goes first, and play runs clockwise.",
   "deal": [

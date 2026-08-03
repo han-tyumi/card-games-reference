@@ -17,10 +17,10 @@
     "standard_decks": 1,
     "jokers": 0,
     "special_deck": null,
-    "other": [],
     "decks_by_players": {
       "5": 2
-    }
+    },
+    "other": []
   },
   "setup": "Two to eight can play. Up to four players use a single 52-card pack; from five players up, shuffle two packs together and treat identical cards as interchangeable. Draw for the first deal, high card deals, and pass the deal to the left after each hand.\n\nDeal 7 cards to each player, one at a time, clockwise from the dealer's left. In the two-player game deal 13 each instead. Place the remainder face down as the stock and turn its top card face up to begin the discard pile.\n\nThe discard pile is the heart of this game, so lay it out properly. Stagger each new discard against the one beneath it, building a long overlapping ladder in which no card ever hides another. Anyone at the table should be able to read the pile from top to bottom at any point in the hand, which means it must never be squared up or gathered into a neat stack.\n\nAces work high or low but never both in the same run: A-2-3 and Q-K-A are legal, K-A-2 is not. Point values are what you will be adding up all game. An ace is worth 15, except when it is melded low in a sequence with the 2, where it counts 1. Kings, queens and jacks are 10 each. Every other card is worth its number. The player to the dealer's left starts.",
   "layout": {

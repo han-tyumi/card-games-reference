@@ -16,14 +16,14 @@
     "standard_decks": 3,
     "jokers": 6,
     "special_deck": null,
-    "other": [],
     "decks_by_players": {
       "2": 3,
       "3": 4,
       "4": 5,
       "5": 6,
       "6": 7
-    }
+    },
+    "other": []
   },
   "setup": "Hand and Foot is the North American Canasta that took over the kitchen table. It keeps Canasta's melds of seven, its wild twos and jokers and its red threes, and adds one idea of its own: you are dealt two packets of cards instead of one, and you have to work your way out of the first before you are allowed to look at the second.\n\nTwo to six can play. Four is the standard game, two partnerships sitting opposite one another; six splits into three pairs, and at two, three or five everyone plays alone. The usual formula for the pack is one deck more than there are players, jokers left in, so four players shuffle five decks together and get 270 cards. Plenty of groups simply keep five or six decks bagged up and use them whatever the turnout.\n\nCut for the first deal, high card taking it, and pass the deal one seat to the left for each of the four hands; play runs clockwise throughout. Deal two packets of eleven to every player. The first is the hand, which you pick up and sort. The second is the foot, which goes face down in front of you untouched, and stays there until the hand is gone. Many tables skip the dealing entirely and have each player cut their own two packets out of the shuffled pile, counting them afterwards to check.\n\nWhat is left goes face down as the stock — with a pack this size it is normally split into two or three separate draw piles so everyone can reach one. Turn one card face up to start the discard pile; if it is a red three or a wild card, bury it and turn another.\n\nBefore anyone plays, each player lays any red threes from their dealt hand face up in front of them and draws a replacement from the stock for each, repeating if a replacement is itself a red three; red threes that turn up later in a foot are treated the same way when that foot is picked up. The player to the dealer's left takes the first turn.\n\nMelds belong to the partnership rather than the player, so keep them in one group between you where both can reach. A full game is four deals with a rising entry price, and the score is cumulative.",
   "layout": {

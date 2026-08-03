@@ -16,10 +16,10 @@
     "standard_decks": 2,
     "jokers": 2,
     "special_deck": null,
-    "other": [],
     "decks_by_players": {
       "7": 3
-    }
+    },
+    "other": []
   },
   "setup": "This is the rummy of Indian trains, clubs and afternoon kitty parties — thirteen cards, two decks, and one requirement that separates it from every other member of the family. It also answers to Paplu, and it is played for small stakes about as often as it is played for nothing.\n\nTwo decks and their printed jokers, 106 cards, will cover a table of up to six. Seven players or more want a third deck shuffled in.\n\nThe wild cards are appointed fresh every hand and this is the first thing to settle. One card is pulled blind from the shuffled pack and turned face up, and its rank goes wild for the hand — every card of that rank, in any suit and from either deck, along with both printed jokers. So if a nine comes up, all eight nines are wild and so are the two jokers, which makes ten cards in the pack that can be anything at all. The exception is when the card turned happens to be a printed joker: then the whole hand has exactly one wild card in it, that joker's twin, and it plays very differently.\n\nDeal thirteen cards to each player, singly. Turn one more face up to start the discard pile. What is left becomes the stock, and it does not go down flat — lay it face down at right angles across the turned-up card, so the rank that is wild stays readable to everybody for the rest of the hand and nobody has to trust their memory.\n\nOne piece of orientation before the first turn: both the deal and the play run anti-clockwise. The deal passes to the right, and the player on the dealer's right goes first. Nearly everything else in this collection goes the other way, so it is worth saying out loud at the table.\n\nSeats and the first deal are drawn for rather than argued over. Everybody takes a card; the highest picks their seat, the next highest sits to their right, and so on down; the lowest ends up on the highest's left and deals first.",
   "layout": {

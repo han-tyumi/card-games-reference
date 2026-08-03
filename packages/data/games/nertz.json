@@ -19,7 +19,6 @@
     "standard_decks": 2,
     "jokers": 0,
     "special_deck": null,
-    "other": [],
     "decks_by_players": {
       "2": 2,
       "3": 3,
@@ -28,7 +27,8 @@
       "6": 6,
       "7": 7,
       "8": 8
-    }
+    },
+    "other": []
   },
   "setup": "Every player needs a full 52-card deck of their own with the jokers out, and the backs must be visibly different from one another. That is not a nicety: everybody's cards end up jumbled together in the middle of the table, and at the end of each round you sort them out again by back design in order to score. Matching packs make a round unscoreable.\n\nYou also need a table everyone can reach across at once, which is the real limit on how many can play. Four is comfortable, six is crowded, and beyond that you want a partnership game or a bigger table.\n\nEveryone shuffles their own deck and builds an identical layout in front of themselves, at the same time:\n\n- Count thirteen cards face down into a pile on your right and turn the top one face up. This is your Nertz pile, and emptying it is the object of the game.\n- Deal four cards face up in a row beside it. These are your work piles, one card deep to begin with.\n- The remaining thirty-five cards are your stock. Keep them face down; most players hold them in one hand.\n\nThe centre of the table stays bare. Foundations are never dealt — they appear during play as aces are put out, and they belong to everybody.\n\nWhen every player says they are set, somebody counts down and the whole table starts on the same word. There is no dealer, no first player and no turn order at any point.",
   "layout": {
