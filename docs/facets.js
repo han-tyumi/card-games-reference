@@ -28,15 +28,20 @@
 export const DIFFICULTY = { simple: 0, easy: 1, medium: 2, complex: 3 };
 
 /**
- * What a game asks you to do to a deck, as independent capabilities.
+ * What a game asks you to do to a deck before you can play it.
  *
- * Bits and a subset test rather than a ceiling, because these are not degrees
- * of one thing. A ceiling claims that accepting the strictest accepts
- * everything milder, and someone whose deck has no jokers can strip cards
- * happily while still being unable to add one — so "willing to strip" does not
- * contain "can add jokers" in either direction. Modelled as a ceiling, that
- * reader is handed games they cannot play, which is the false yes this whole
- * module exists to remove.
+ * Two independent obstacles, not degrees of one thing. A ceiling would claim
+ * that accepting the strictest accepts everything milder, and someone whose
+ * deck has no jokers can remove cards happily while still being unable to add
+ * one — neither obstacle contains the other in either direction.
+ *
+ * Each box **excludes** the games carrying its bit, so ticking more shows
+ * fewer, which is how every other control on the page behaves. The first draft
+ * had these as capabilities — "I have jokers", matched by subset — and that
+ * model could not express the most common request on the axis at all: nothing
+ * ticked meant "no claim" and showed all 72, ticking both showed 71, and the 50
+ * games playable with a plain 52 were unreachable at every setting. The sets
+ * for a single box are the same either way round; only the polarity was wrong.
  *
  * This is the entire vocabulary the checkboxes offer, so an unknown token from
  * a URL contributes nothing rather than being read as a number.
@@ -46,12 +51,14 @@ export const DIFFICULTY = { simple: 0, easy: 1, medium: 2, complex: 3 };
 export const PREP = { jokers: 1, strip: 2 };
 
 /**
- * A pack that no standard deck becomes and no checkbox can offer — hanafuda.
+ * A pack that no standard deck becomes — hanafuda.
  *
- * Deliberately outside PREP: a game carrying it is unreachable the moment the
- * control is touched at all, which is how `standard_decks: 0` already behaves
- * under the deck count. It is not "stripping plus jokers"; it is a different
- * kind of obstacle, and pretending otherwise is the modelling error again.
+ * Deliberately outside PREP: it is not "removing cards plus adding jokers", it
+ * is a thing you either own or do not, and pretending otherwise is the
+ * modelling error again. A game carrying it is excluded the moment either box
+ * is ticked, because both of them say "my own deck, as it is", which a
+ * purpose-built pack is not. That is how `standard_decks: 0` already behaves
+ * under the deck count.
  */
 export const PREP_OWN_PACK = 4;
 
@@ -171,16 +178,18 @@ export function matches(facet, criteria) {
     if (!playable) return false;
   }
 
-  // Untouched means no claim was made, so it constrains nothing -- the same
-  // reading an unset chip gets everywhere else here. Once anything is ticked
-  // the reader has said what they can do, and a game qualifies when everything
-  // it asks for is among it. That is why ticking both boxes shows one game
-  // fewer than ticking neither: koi-koi wants a pack neither box offers, and
-  // "I can do these two things" is a claim that excludes it.
+  // Each ticked box rules out the games carrying its bit, so ticking more
+  // shows fewer -- the same direction as every other control here. Untouched
+  // rules out nothing, which is the same reading an unset chip gets everywhere
+  // else. Ticking both is "a plain 52 and nothing done to it", the most common
+  // request on this axis and the one the first draft could not express.
+  //
+  // A purpose-built pack goes with either box, because both of them say "my
+  // own deck, as it is", and hanafuda is not that.
   if (criteria.prep) {
-    let held = 0;
-    for (const token of criteria.prep.split(",")) held |= PREP[token] ?? 0;
-    if ((facet.p & ~held) !== 0) return false;
+    let refused = 0;
+    for (const token of criteria.prep.split(",")) refused |= PREP[token] ?? 0;
+    if (refused && facet.p & (refused | PREP_OWN_PACK)) return false;
   }
 
   // An open-ended game ("60+") has no upper bound, so it can never be promised
@@ -352,11 +361,14 @@ export function describe(state, families) {
   }
   if (state.decks) said.push(`${state.decks} deck${state.decks === "1" ? "" : "s"}`);
   if (state.prep) {
-    const owned = state.prep
+    const refused = state.prep
       .split(",")
       .filter((token) => token in PREP)
-      .map((token) => (token === "jokers" ? "jokers on hand" : "a deck you can strip"));
-    if (owned.length) said.push(owned.join(" and "));
+      .map((token) => (token === "jokers" ? "no jokers" : "no cards removed"));
+    // Both together are the plain-52 case, and saying it as one phrase beats
+    // reciting the two exclusions that add up to it.
+    if (refused.length === 2) said.push("a plain deck, as it is");
+    else if (refused[0]) said.push(refused[0]);
   }
   if (state.minutes) said.push(`${state.minutes} minutes or less`);
   if (state.difficulty) said.push(`${state.difficulty} or simpler`);
