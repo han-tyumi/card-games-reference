@@ -13,6 +13,8 @@
 import type { CardGame } from "naibi";
 import { categoryLabel, decksNeeded } from "naibi";
 
+import { PREP, PREP_OWN_PACK } from "./assets/facets.js";
+
 /** Field keys match search.js's FIELDS; `titles` feeds the exact-title bonus. */
 export type SearchRecord = {
   name: string;
@@ -64,9 +66,29 @@ export type Facet = {
    * copy of the rule that reads the step map.
    */
   dn: number[] | null;
+  /**
+   * What must be done to a deck before this can be played: PREP bits, or
+   * PREP_OWN_PACK for a pack no standard deck becomes. Derived from
+   * `equipment` so it cannot drift from what the entry actually says.
+   */
+  p: number;
   max: number | null;
   diff: string;
 };
+
+/**
+ * `special_deck` does two unrelated jobs and the field name tells them apart
+ * for nobody. For piquet it is a setup instruction — strip a 52 down to 32.
+ * For koi-koi it is an equipment barrier. `standard_decks: 0` is what actually
+ * distinguishes them, so it is read first and answers alone: a hanafuda pack is
+ * not "stripping plus jokers", it is a thing you either own or do not.
+ */
+function preparation(game: CardGame): number {
+  if (game.equipment.standard_decks === 0) return PREP_OWN_PACK;
+  return (
+    (game.equipment.special_deck ? PREP.strip! : 0) | (game.equipment.jokers > 0 ? PREP.jokers! : 0)
+  );
+}
 
 export function facetsFor(games: CardGame[]): Facet[] {
   return games.map((game) => {
@@ -85,6 +107,7 @@ export function facetsFor(games: CardGame[]): Facet[] {
             decksNeeded(game, game.players.min + i),
           )
         : null,
+      p: preparation(game),
       // Only a closed range promises an end; "60+" does not.
       max: range?.[2] ? Number(range[2]) : null,
       diff: game.difficulty,
