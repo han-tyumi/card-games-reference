@@ -36,7 +36,7 @@ Almost every version lets you drag a whole run at once, which is the supermove, 
 
 maximum cards = (1 + empty free cells) x 2 ^ (empty columns)
 
-With two cells open and no empty columns you can move three cards. With all four cells open and one empty column you can move ten. There is one catch: if the destination is itself an empty column, that column cannot double as workspace, so leave it out of the exponent. Moving into your only empty column with all four cells free gets you five cards, not ten.
+Read it as two separate effects: every free cell adds one to what you can carry, and every empty column doubles whatever that comes to. Four cells with nothing else spare will therefore shift five cards, and freeing a single column on top of them takes the same four cells to ten. The exception is the destination itself. A column you are moving into cannot double as workspace, so it drops out of the exponent — dropping a run into your only empty column with all four cells free gets you five cards rather than ten.
 
 That doubling formula is what most implementations use, and it is what a careful player can actually achieve by hand. A minority of programs are stingier and multiply instead of doubling, capping the move at (1 + empty free cells) x (1 + empty columns), which with four cells and two empty columns allows 15 cards rather than 20. If your version refuses a move you think should be legal, this is usually why. Nothing is lost either way: the supermove is only a convenience, and you can always perform the same transfer one card at a time.
 
@@ -54,7 +54,7 @@ You win by moving all 52 cards onto the foundations, each suit in order from ace
 
 The interesting number in FreeCell is how often a deal can be won at all. Because every card is visible and four cells is a generous allowance, nearly every deal has a solution: solvers put it at roughly 99.999 percent of random deals. Microsoft's original set of 32,000 numbered deals contains exactly one that has been proven impossible, deal 11,982, and establishing that took a volunteer effort running through the mid-1990s. When the same generator was extended to a million deals, only eight unwinnable ones turned up in total: 11,982, 146,692, 186,216, 455,889, 495,505, 512,118, 517,776 and 781,948.
 
-Losing a FreeCell deal is therefore almost always your mistake rather than the shuffle's, which is both the appeal and the cruelty of the game. Solvable does not mean easy, though. Deals 617 and 1,941 from the original set are notorious, and 1,941 is widely nominated as the hardest solvable deal among the 32,000. Working through the numbered deals in order is a long-running informal challenge.
+Losing a FreeCell deal is therefore almost always your mistake rather than the shuffle's, which is both the appeal and the cruelty of the game. Solvable does not mean easy, though. Deals 617 and 1,941 from the original set are the notorious ones, and 1,941 is the answer solvers usually give when asked which of the 32,000 is hardest without being impossible. Working through the numbered deals in order is a long-running informal challenge.
 
 ## Variants
 
