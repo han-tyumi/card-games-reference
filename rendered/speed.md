@@ -35,7 +35,7 @@ When neither player can play anything, the game is stuck. Both players then take
 
 Work through the side stacks a card at a time as further jams occur. When both side stacks are empty and play jams again, gather the two centre piles, shuffle each one, set them face down as new side stacks, and turn one card from each into the middle to start two fresh build piles. Play then continues exactly as before. If by then the middle holds only two or three cards in total, just split them as evenly as you can and carry on; late in a round the middle is thin because most of the pack is sitting in the losing player's hand and draw pile.
 
-Nothing here is compulsory. You may hold a playable card back if you can see a better use for it, and you need not top your hand up the instant a slot opens. The only hard constraints are that a card must fit the pile you put it on, that you never hold more than five cards, and that the side stacks come out only when both players are stuck.
+Nothing here is compulsory. You may hold a playable card back if you can see a better use for it, and you need not top your hand up the instant a slot opens. The only hard constraints are that a card must fit the pile you put it on, that your hand stays inside its five-card limit, and that the side stacks come out only when both players are stuck.
 
 A round ends the moment a player puts down the last card they have, meaning both hand and draw pile are empty. That player calls out Speed, or in some circles slams a hand down on a centre pile, and the round is over immediately. Anything still in the other player's hand is irrelevant; there is no consolation for being close.
 
