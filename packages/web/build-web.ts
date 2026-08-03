@@ -592,7 +592,10 @@ loaded, and <a href="about.html#install">installs to your home screen</a>.</p>
 
   body.push(`<div class="filters">
 <label for="q">Search</label>
-<input id="q" type="search" placeholder="Search every rule — try bower, or slap" autocomplete="off">
+${/* "Search every rule" undersold an index that has always carried names,
+     aliases, families and tags as well, and now carries the deck. A reader who
+     believes the placeholder will not think to type a game's name into it. */ ""}
+<input id="q" type="search" placeholder="Search names, families, tags, decks and rules — try bower, or slap" autocomplete="off">
 ${chipGroup("players", "Players", [
   ["", "Any"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["8", "8"],
 ])}

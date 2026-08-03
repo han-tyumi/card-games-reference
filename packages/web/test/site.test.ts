@@ -714,6 +714,19 @@ test("a first install is not reported as an update", () => {
   assert.match(html, /if \(!updating\) return;/, "first install is not guarded");
 });
 
+test("the search box does not undersell what it searches", () => {
+  // It said "Search every rule" while the index has always covered names,
+  // aliases, families and tags too, and now covers the deck. A reader who
+  // believes the placeholder will not think to type a game's name into it,
+  // which is the most common thing anyone types into a search box.
+  const placeholder = /<input id="q"[^>]*placeholder="([^"]*)"/.exec(text("index.html"))?.[1];
+  assert.ok(placeholder, "the search box has no placeholder");
+  assert.doesNotMatch(placeholder, /^Search every rule/, "the placeholder still claims only rules");
+  for (const covered of ["names", "families", "tags", "decks"]) {
+    assert.ok(placeholder.includes(covered), `the placeholder does not mention ${covered}`);
+  }
+});
+
 test("the search box is labelled", () => {
   const html = text("index.html");
   const id = /<input[^>]*id="q"/.exec(html);

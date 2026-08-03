@@ -42,6 +42,12 @@ export const FIELDS = [
   { key: "goal_and_scoring", bit: 16, weight: 1, label: "scoring" },
   { key: "variants", bit: 32, weight: 1, label: "variants" },
   { key: "alias", bit: 64, weight: 5, label: "other names" },
+  // "euchre deck", "piquet pack" and "skat pack" are verbatim in the data and
+  // returned nothing at all, because the pack was the one thing about a game
+  // this index did not carry. Weighted between prose and aliases: typing a
+  // pack should find the games that use it, but a game merely mentioning one
+  // in its variants must not outrank the game named after it.
+  { key: "pack", bit: 128, weight: 3, label: "the deck" },
 ];
 
 const NAME_BIT = 1;

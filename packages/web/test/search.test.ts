@@ -291,3 +291,126 @@ test("searching an alias finds the game that carries it", () => {
   }
   assert.deepEqual(misses, []);
 });
+
+
+// --- the pack -------------------------------------------------------------
+
+test("a query for words in no entry returns nothing", () => {
+  // The control, and it comes first deliberately: every assertion below is
+  // worth nothing if this harness answers everything. A verification pass in
+  // this project once reported 22 of 30 entries checked with its network down,
+  // and the phrase searching that "cleared" the earlier passes had never
+  // worked at all.
+  //
+  // Read together with the tests below, which fail if it answers NOTHING, this
+  // pins the harness from both sides.
+  for (const absent of ["quorbling", "zaxflutter", "backgammon", "mahjong"]) {
+    assert.deepEqual(results(absent), [], `"${absent}" matched something`);
+  }
+});
+
+test("a word that lives only in the deck line is findable at all", () => {
+  // Measured, and the reason `decks` is indexed and not merely
+  // `special_deck`: "pencil" appears in no searchable field anywhere in the
+  // corpus except cribbage's deck line -- "plus a cribbage board (or pencil
+  // and paper)" -- and returned nothing whatsoever before this.
+  assert.deepEqual(results("pencil"), ["Cribbage"]);
+});
+
+test("a reader who knows their deck must be stripped can search for that", () => {
+  // "stripped" went from 2 games to 15. The word is how the corpus describes
+  // the operation, and it was almost entirely unsearchable.
+  const found = results("stripped");
+  const expected = games
+    .filter((g) => /\bstripped\b/i.test(searchRecords(games)[games.indexOf(g)]!.pack))
+    .map((g) => g.name);
+  assert.ok(expected.length > 5, "the corpus no longer describes stripping, so this proves nothing");
+  for (const name of expected) {
+    assert.ok(found.includes(name), `${name} is described as stripped and was not found`);
+  }
+});
+
+test("every distinctive word of a game's pack finds that game", () => {
+  // Derived from the corpus rather than from a list of examples, so an entry
+  // added with an unusual pack is covered without anyone remembering this file.
+  // Words the index deliberately ranks nothing -- those in nearly every entry,
+  // like "card" and "deck" -- are excluded, since not ranking them is the
+  // point of that rule rather than a failure of this one.
+  const records = searchRecords(games);
+  const frequency = new Map<string, number>();
+  for (const record of records) {
+    for (const word of new Set(tokenise(Object.values(record).flat().join(" ")))) {
+      frequency.set(word, (frequency.get(word) ?? 0) + 1);
+    }
+  }
+
+  const misses: string[] = [];
+  for (const [i, record] of records.entries()) {
+    for (const word of new Set(tokenise(record.pack))) {
+      if (word.length < 3 || (frequency.get(word) ?? 0) >= games.length * 0.9) continue;
+      if (!results(word).includes(games[i]!.name)) misses.push(`${games[i]!.id}: "${word}"`);
+    }
+  }
+  assert.deepEqual(misses, []);
+});
+
+test("naming a pack still leads with the game that uses it", () => {
+  // These already worked before the pack was indexed, because each query
+  // carries the game's own name -- the design document's claim that they
+  // "return nothing" was wrong, and was checked here rather than repeated.
+  // Pinned so the new field cannot displace them.
+  for (const [query, name] of [
+    ["euchre deck", "Euchre"],
+    ["piquet pack", "Piquet"],
+    ["skat pack", "Skat"],
+    ["hanafuda", "Koi-Koi"],
+  ] as const) {
+    assert.equal(results(query)[0], name, `"${query}" no longer leads with ${name}`);
+  }
+});
+
+test("a pack match does not outrank a name match", () => {
+  // Weight 3 sits above prose and below aliases on purpose: a game whose deck
+  // line mentions a pinochle deck must not beat the game called Pinochle.
+  assert.equal(results("pinochle")[0], "Pinochle");
+  assert.equal(results("euchre")[0], "Euchre");
+  assert.equal(results("canasta")[0], "Canasta");
+});
+
+test("every game with a named pack carries it in the index", () => {
+  const records = searchRecords(games);
+  for (const [i, game] of games.entries()) {
+    if (!game.equipment.special_deck) continue;
+    assert.ok(
+      records[i]!.pack.includes(game.equipment.special_deck),
+      `${game.id}'s pack is not in its search record`,
+    );
+    assert.ok(records[i]!.pack.includes(game.decks), `${game.id}'s deck line is not in its record`);
+  }
+});
+
+test("the pack took the next free bit, and the published ones did not move", () => {
+  // The bits are baked into every index already cached on someone's phone, so
+  // a renumbering would mislabel where every existing hit was found.
+  assert.deepEqual(
+    FIELDS.map((f) => [f.key, f.bit]),
+    [
+      ["name", 1],
+      ["tags", 2],
+      ["setup", 4],
+      ["play", 8],
+      ["goal_and_scoring", 16],
+      ["variants", 32],
+      ["alias", 64],
+      ["pack", 128],
+    ],
+  );
+});
+
+test("a pack hit says it was found in the deck", () => {
+  const hits = hitsFor("stripped");
+  const belote = games.findIndex((g) => g.id === "belote");
+  const mask = hits.get(belote)?.m ?? 0;
+  assert.ok(mask & 128, "a stripped-pack hit is not attributed to the deck");
+  assert.ok(labelsFor(index.fields, mask).includes("the deck"));
+});
