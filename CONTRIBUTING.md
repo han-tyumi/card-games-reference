@@ -379,7 +379,7 @@ sources open, across three passes. Earlier work counted search-engine hits, whic
 the section below explains does not work, so those passes are not evidence of
 anything and are not counted here.
 
-**54 entries, checked 2026-08-01** — pagat and Wikipedia, fetched and read
+**53 entries, checked 2026-08-01** — pagat and Wikipedia, fetched and read
 side by side with our prose. The pass covered 60 entries on the day; the ones
 since re-read against further sources carry a later date, so the count above is
 what still rests on this pass alone. At a bar of 80% shared structure or 8
@@ -399,17 +399,18 @@ were the interesting ones and four of the five were `setup` sections, which
 reach for the source's sequence because dealing a game has a natural order; each
 was reorganised rather than reworded.
 
-**6 entries, checked 2026-08-03** — the solitaires and light games the
+**7 entries, checked 2026-08-03** — the solitaires and light games the
 2026-08-01 pass had only one source for, re-read one at a time against a second
 and a third rather than in a sweep. Covered so far: `accordion`,
 `beggar-my-neighbour`, `forty-thieves`, `freecell`, `golf-multiplayer`,
-`klondike`.
+`klondike`, `koi-koi`.
 
-**Ten verbatim runs were kept deliberately.** They are the vocabulary of the
+**Eleven verbatim runs were kept deliberately.** They are the vocabulary of the
 games and not anyone's prose: the poker hand ranks in ascending order, "right
 bower (the jack of the trump suit)", Skat's German multiplier list, "two cards
 face down and one face up", the Snap shout, "deal N cards to each player, one at
-a time", "the top card of the discard pile", "face up on the discard pile".
+a time", "the top card of the discard pile", "the top card of the draw pile",
+"face up on the discard pile".
 Rewording those would make the entries wrong. Each is a noun phrase with no
 second form, and each was checked for shared structure around it before being
 left: a collision on the name of a thing is not a collision on how the rule was
