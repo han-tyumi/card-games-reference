@@ -403,9 +403,10 @@ was reorganised rather than reworded.
 one source for, re-read one at a time against a second and a third rather than
 in a sweep: `accordion`, `beggar-my-neighbour`, `forty-thieves`, `freecell`,
 `golf-multiplayer`, `klondike`, `koi-koi`, `mau-mau`, `pyramid`, `speed`,
-`spider`, `tripeaks`. **4 of the 12 were rewritten: 3 verbatim runs, 1 order
-finding and 1 restated rule.** The order finding was a `setup` section again,
-which is now five of six across two passes.
+`spider`, `tripeaks`. **4 of the 12 were rewritten, 5 passages in all: 3
+verbatim runs, 1 passage scoring 86% in order, and 1 whole-passage order
+finding.** The order finding was a `setup` section again, which is now five of
+six across two passes.
 
 Two of the four would not have been found by adding sources alone. FreeCell's
 came out of the Solitaire Laboratory FAQ, which is served hard-wrapped at about
