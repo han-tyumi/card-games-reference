@@ -246,6 +246,120 @@ test("a query ranks by score, and the chips still apply on top", () => {
   assert.deepEqual(scoped.order, [], "a filtered-out game was resurrected by the query");
 });
 
+// --- ranking ---------------------------------------------------------------
+
+test("ideal and coverage order the list, they never shorten it", () => {
+  // The claim that stops a ranking becoming a filter by accident. `ideal` would
+  // be a terrible gate -- no game in the corpus is ideal at 7, so filtering on
+  // it would empty the list there while looking like it was working -- and
+  // coverage would hide the twenty titles overlap exists to keep.
+  for (let hi = 1; hi <= 12; hi++) {
+    for (const from of ["", "1", String(Math.max(1, hi - 2))]) {
+      const state = { players: String(hi), from };
+      const survivors = facets.map((f, i) => (matches(f, state) ? i : -1)).filter((i) => i >= 0);
+      const { order } = plan(facets, state, null);
+      assert.deepEqual(
+        [...order].sort((a, b) => a - b),
+        survivors,
+        `players=${hi} from=${from || "(none)"} changed WHICH games show, not just their order`,
+      );
+    }
+  }
+});
+
+test("a game covering the whole range sorts above one that merely overlaps it", () => {
+  // And coverage outranks ideal: the covering game here is ideal outside the
+  // range and still comes first, because "we can definitely play this whatever
+  // happens" beats "this is at its best at a number we might not reach".
+  const covering = facet({ lo: 2, hi: 8, i: 2 });
+  const partial = facet({ lo: 5, hi: 5, i: 5 });
+  const { order } = plan([partial, covering], { players: "6", from: "4" }, null);
+  assert.deepEqual(order, [1, 0]);
+});
+
+test("ideal breaks ties inside a coverage group", () => {
+  // Neither of these covers 4-6, so coverage cannot separate them and only
+  // `ideal` is left. The game at its best inside the range comes first even
+  // though it was declared second.
+  const outside = facet({ lo: 3, hi: 5, i: 3 });
+  const inside = facet({ lo: 5, hi: 5, i: 5 });
+  assert.deepEqual(plan([outside, inside], { players: "6", from: "4" }, null).order, [1, 0]);
+
+  // The same two with nothing asked: source order, because a ranking that
+  // engages before the reader chooses is a filter that starts engaged.
+  assert.deepEqual(plan([outside, inside], {}, null).order, [0, 1]);
+});
+
+test("with a query, score wins and coverage breaks its ties", () => {
+  const covering = facet({ lo: 2, hi: 8, i: 4 });
+  const partial = facet({ lo: 5, hi: 5, i: 5 });
+  const list = [partial, covering, facet({ lo: 4, hi: 6, i: 5 })];
+
+  // Different scores: the score decides, whatever the coverage.
+  const byScore = new Map([
+    [0, { s: 9, m: 0 }],
+    [1, { s: 1, m: 0 }],
+    [2, { s: 5, m: 0 }],
+  ]);
+  assert.deepEqual(plan(list, { q: "x", players: "6", from: "4" }, byScore).order, [0, 2, 1]);
+
+  // Equal scores: coverage separates them and the partial one sinks.
+  const tied = new Map([
+    [0, { s: 4, m: 0 }],
+    [1, { s: 4, m: 0 }],
+    [2, { s: 4, m: 0 }],
+  ]);
+  assert.deepEqual(plan(list, { q: "x", players: "6", from: "4" }, tied).order, [1, 2, 0]);
+});
+
+test("with no range chosen, nothing reorders", () => {
+  // A filter that starts engaged hides games from a reader who never touched
+  // it, and so does a ranking. Until a count is chosen the page is in source
+  // order, which is what the index has always shown.
+  const list = [facet({ lo: 5, hi: 5, i: 5 }), facet({ lo: 2, hi: 8, i: 2 })];
+  assert.deepEqual(plan(list, {}, null).order, [0, 1]);
+  assert.deepEqual(plan(facets, {}, null).order, facets.map((_, i) => i));
+});
+
+test("only covering games are badged, and the badge names the range", () => {
+  const covering = facet({ lo: 2, hi: 8, i: 4 });
+  const partial = facet({ lo: 5, hi: 5, i: 5 });
+  const { order, marks } = plan([partial, covering], { players: "6", from: "4" }, null);
+  assert.equal(order.length, 2, "the badge is not a filter");
+  assert.equal(marks.get(1), "plays with any of 4-6");
+  assert.equal(marks.get(0), undefined, "a game that only overlaps was badged as covering");
+});
+
+test("an exact count badges nothing, because every match would carry it", () => {
+  // At one count, coverage and overlap are the same set: the badge would be on
+  // every card and would say nothing at all.
+  const { order, marks } = plan(facets, { players: "4" }, null);
+  assert.ok(order.length > 0, "nothing to badge, so this proves nothing");
+  assert.equal(marks.size, 0);
+  assert.equal(plan(facets, { players: "4", from: "4" }, null).marks.size, 0);
+});
+
+test("nothing is badged before a count is chosen", () => {
+  assert.equal(plan(facets, {}, null).marks.size, 0);
+  assert.equal(plan(facets, { decks: "1" }, null).marks.size, 0);
+});
+
+test("every badged game really does seat every count in the range", () => {
+  // Against the corpus, so the badge cannot become a decoration that survives
+  // the rule it describes.
+  const { marks } = plan(facets, { players: "6", from: "3" }, null);
+  assert.ok(marks.size > 0, "nothing was badged, so this proves nothing");
+  for (const [i] of marks) {
+    for (let n = 3; n <= 6; n++) {
+      const game = games[i]!;
+      assert.ok(
+        game.players.min <= n && n <= game.players.max,
+        `${game.id} is badged as covering 3-6 but cannot seat ${n}`,
+      );
+    }
+  }
+});
+
 test("with no index loaded, a query still matches names and families", () => {
   // The offline case: the search index has not arrived, so only what is already
   // in the page can be matched. Getting this wrong shows an empty list to

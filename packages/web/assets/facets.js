@@ -325,28 +325,68 @@ export function countLabel(shown, total) {
  * and nothing else, and was for a long time the only file in the project with
  * neither tests nor type checking.
  *
+ * Two signals order the list besides the search score, and NEITHER filters.
+ * `ideal` would be a terrible gate — no game in the corpus is ideal at seven,
+ * so filtering on it would empty the list there while looking like it was
+ * working — and coverage would hide exactly the games overlap exists to keep.
+ * They are stated as one comparator with a declared winner because two sorts
+ * arriving in the same function with no precedence is how one of them silently
+ * stops working:
+ *
+ *     with a query:  score ↓ · covers ↓ · ideal ↓ · source order
+ *     without one:            covers ↓ · ideal ↓ · source order
+ *
+ * The sort is stable, so source order is what holds inside every group rather
+ * than something arbitrary.
+ *
  * @param {Facet[]} facets
  * @param {Record<string, string>} state
  * @param {Map<number, {s: number, m: number}> | null} hits ranked search results
- * @returns {{order: number[], count: string}} indices in display order
+ * @returns {{order: number[], count: string, marks: Map<number, string>}}
  */
 export function plan(facets, state, hits) {
-  /** @type {[number, number][]} */
+  const range = playerRange(state);
+  /** @type {[number, number, number, number][]} index, score, covers, ideal */
   const ranked = [];
 
   facets.forEach((facet, i) => {
     if (!matches(facet, state)) return;
-    if (!state.q) {
-      ranked.push([i, 0]);
-      return;
+    let score = 0;
+    if (state.q) {
+      const hit = hits ? hits.get(i) : nameMatch(facet, state.q) ? { s: 1, m: 0 } : null;
+      if (!hit) return;
+      score = hit.s;
     }
-    const hit = hits ? hits.get(i) : nameMatch(facet, state.q) ? { s: 1, m: 0 } : null;
-    if (hit) ranked.push([i, hit.s]);
+    ranked.push([
+      i,
+      score,
+      range && facet.lo <= range.lo && facet.hi >= range.hi ? 1 : 0,
+      range && facet.i >= range.lo && facet.i <= range.hi ? 1 : 0,
+    ]);
   });
 
-  // Ranking only applies when the index answered; the fallback has no scores
-  // worth sorting on and keeping source order beats shuffling by a constant.
-  if (state.q && hits) ranked.sort((a, b) => b[1] - a[1]);
+  // The score only ranks when the index answered; the fallback has no scores
+  // worth sorting on. Coverage and ideal still do, which is why they are not
+  // inside that condition — they are facts about the game, not about the query.
+  const scored = Boolean(state.q && hits);
+  ranked.sort((a, b) => (scored ? b[1] - a[1] : 0) || b[2] - a[2] || b[3] - a[3]);
 
-  return { order: ranked.map(([i]) => i), count: countLabel(ranked.length, facets.length) };
+  // Said on the card, not just sorted for, because "these sort first" is
+  // invisible. Only when the range is wider than one: at a single count,
+  // coverage and overlap are the same set, so every card would carry it and it
+  // would mean nothing. The wording lives here rather than in app.js for the
+  // same reason countLabel does — it is testable here and not there.
+  /** @type {Map<number, string>} */
+  const marks = new Map();
+  if (range && range.hi > range.lo) {
+    for (const [i, , covers] of ranked) {
+      if (covers) marks.set(i, `plays with any of ${range.lo}-${range.hi}`);
+    }
+  }
+
+  return {
+    order: ranked.map(([i]) => i),
+    count: countLabel(ranked.length, facets.length),
+    marks,
+  };
 }
