@@ -42,8 +42,9 @@ something hand-installed is not green. This broke CI once already: a script
 imported an optional package, the typecheck passed locally because it had been
 copied into `node_modules` by hand, and every other environment failed.
 
-**Watch CI land before calling a push done.** Same incident. Pages deploys do not
-gate on tests, so a red build can ship.
+**Watch CI land before calling a push done.** Same incident. The site and the
+releases both wait on Validate now, so a red commit ships nothing — but a green
+push is still not a finished one until you have looked.
 
 ## Things that will bite
 

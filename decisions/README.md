@@ -32,6 +32,7 @@ part.
 | [0014](0014-type-check-the-browser-assets-in-place.md) | Type-check the browser assets in place rather than converting them | Accepted |
 | [0015](0015-semantic-versions-cut-by-tag.md) | Semantic versions on the data package, cut by pushing a tag | Accepted |
 | [0016](0016-releases-cut-themselves-from-commit-subjects.md) | Releases cut themselves, from conventional commit subjects | Accepted |
+| [0017](0017-deploy-the-site-from-actions-after-the-tests.md) | Deploy the site from Actions, after the tests rather than beside them | Accepted |
 
 ## The format
 

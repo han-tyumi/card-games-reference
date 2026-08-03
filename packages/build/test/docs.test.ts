@@ -393,3 +393,31 @@ test("the published package tells consumers which Node it needs", () => {
   assert.ok(manifest.engines?.node, "packages/data states no Node requirement");
   assert.match(manifest.exports["."], /\.ts$/, "the entry point is no longer TypeScript");
 });
+
+test("nothing reaches readers without passing first", () => {
+  // CLAUDE.md now claims the site and the releases both wait on Validate. That
+  // claim was false until today: Pages built from the branch, so it deployed in
+  // parallel with the tests -- on one commit the deploy started a second before
+  // they did. If either workflow stops waiting, the claim silently becomes a
+  // lie again, and the symptom is a red commit on a site people read offline.
+  const workflows = join(REPO_ROOT, ".github", "workflows");
+
+  for (const name of ["deploy.yml", "release.yml"]) {
+    const body = readFileSync(join(workflows, name), "utf8");
+    assert.match(body, /workflow_run:/, `${name} no longer waits for anything`);
+    assert.match(body, /workflows: \["Validate"\]/, `${name} does not wait on Validate`);
+    assert.match(
+      body,
+      /workflow_run\.conclusion == 'success'/,
+      `${name} does not check that Validate passed`,
+    );
+  }
+
+  // And that the thing deployed is the directory the build actually writes.
+  const deploy = readFileSync(join(workflows, "deploy.yml"), "utf8");
+  assert.match(deploy, /path: docs/, "the deploy no longer publishes docs/");
+  assert.ok(
+    !/npm run web/.test(deploy),
+    "the deploy rebuilds the site instead of shipping the gated copy",
+  );
+});
