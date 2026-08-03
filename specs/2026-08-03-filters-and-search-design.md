@@ -55,6 +55,17 @@ exceeds the top of the slider, and the largest minimum in the corpus is 4, a
 slider ending at 4 would already leave nothing unfilterable. It runs to 12 so
 that twelve people can *say* twelve.
 
+**Two stacked native `<input type="range">` controls, labelled "At least" and
+"At most" — not one dual-thumb widget.** This matters more than it looks. The
+chips being replaced are native radios, so they are keyboard- and
+screen-reader-accessible for free, and the site has a test asserting every
+focusable control declares its own focus ring. A dual-thumb slider has no native
+element: it is two overlaid inputs plus hand-written ARIA, in a project that
+deliberately has no framework to borrow it from (decision 0005). Two separate
+native sliders keep every accessibility guarantee the radios had, cost nothing
+to style, and still read as a range. The full span is the unset state, so it is
+omitted from the URL and the page opens unfiltered.
+
 ### 2. Decks derives its thresholds, and reads the extra-deck rule
 
 The chip values become the distinct non-zero deck counts: `1, 2, 3, 6`. Because
@@ -82,7 +93,7 @@ This keeps `slapjack` for two players with one deck and drops it for eight,
 which the current filter and both rejected alternatives get wrong in one
 direction or the other.
 
-### 3. A preparation axis, ordered like difficulty
+### 3. A preparation axis, as capabilities rather than degrees
 
 `special_deck` is doing two unrelated jobs. For `piquet` it is a setup
 instruction — strip a 52 down to 32. For `koi-koi` it is an equipment barrier.
@@ -96,11 +107,21 @@ does not, and the page surfaces neither. Measured:
 | Strip cards from a standard deck | 16 |
 | Obtain a different pack | 1 (`koi-koi`) |
 
-This becomes a fourth ceiling control ("at most this much preparation"),
-classified in that precedence order so `five-hundred`, which needs both a
-stripped pack and a joker, lands under stripping. It is derived from
-`equipment`, so it cannot drift, and it answers the reader who owns one plain
-deck and does not want to sit there pulling cards out of it.
+This is **not** a ceiling, and that was the first draft's mistake. A ceiling
+claims the states are degrees of one thing, so that accepting the strictest
+accepts everything milder. These are different kinds of obstacle: someone whose
+deck has no jokers can strip cards happily but cannot add jokers, so "willing to
+strip" does not contain "can add jokers" in either direction. Modelled as a
+ceiling, that reader gets a list containing games they cannot play — the same
+false yes this document exists to remove.
+
+Two independent capability checkboxes instead — *I have jokers* and *I can strip
+a deck* — with a game shown when its requirements are a subset of what is
+ticked. `five-hundred`, needing both a stripped pack and a joker, requires both.
+`koi-koi` requires a capability no checkbox offers, so it appears only when the
+control is untouched, which is the same treatment `standard_decks: 0` already
+gets from the deck count. Requirements are derived from `equipment`, so they
+cannot drift.
 
 This is deliberately **not** a reason to drop games from the corpus. Restricting
 to standard decks would remove exactly one entry, because sixteen of the
@@ -119,12 +140,21 @@ field, so someone holding a 32-card pack can find the five games that use one.
 The placeholder changes from "Search every rule" — which undersells an index
 already covering names, aliases, families and tags — to name those too.
 
-### 6. Empty states explain themselves
+### 6. The empty state explains itself
 
-A zero result names the filters that produced it and offers to clear them. The
-solitaire-versus-players case gets a specific sentence, because "no solitaire
-game seats more than one" is a fact about the corpus rather than a mistake by
-the reader.
+One already exists — "Nothing matches." with a Clear filters button. It gains
+the reason: which filters produced the empty list, and for the
+solitaire-versus-players case a specific sentence, because "no solitaire game
+seats more than one" is a fact about the corpus rather than a mistake by the
+reader. The button stays.
+
+### 7. Ranking has a stated precedence
+
+`plan()` already sorts by search score when a query is present, and `ideal` now
+wants to sort too. Search score wins, with `ideal`-in-range breaking ties; with
+no query, games ideal within the range come first and source order holds inside
+each group. Stated here because two sorts arriving in the same function with no
+declared winner is how one of them silently stops working.
 
 ## The schema change
 
@@ -142,6 +172,13 @@ keeps `null` and is treated as needing no extra deck, which is the honest
 reading of "nobody wrote it down" and matches how unstamped checks are handled
 elsewhere.
 
+**A known limit, stated rather than hidden:** one threshold can only express one
+extra deck. A game spanning 2 to 10 might want a third pack at the very top, and
+`extra_deck_above` cannot say so. The boolean it replaces could not say so
+either and could not say *when* either, so this is strictly more truthful than
+today — but if a source turns out to specify two steps, the field wants to
+become a list of thresholds rather than gain a second boolean.
+
 ## Derivation, and the claims that get tests
 
 Generated values are derived; claims get tests. The chip and slider bounds are
@@ -150,12 +187,13 @@ generated output, so they come from the corpus. These are the claims:
 - **Every game is reachable by some setting of every control.** Names no
   literal, so it cannot go stale, and it catches a future entry that the
   derivation rule mishandles however the values were produced.
-- **The derived player span stays inside sane presentation bounds.** This is the
-  one place a static assertion belongs: deriving a slider from data means one
-  outlier can wreck it, and a 60-player entry would stretch the control useless
-  for the 2-6 bulk where nearly everything lives. The test fails loudly so a
-  person decides whether the control should change, rather than the page quietly
-  reshaping itself.
+- **The derived player span stays at or under 16 seats.** This is the one place
+  a static assertion belongs: deriving a slider from data means one outlier can
+  wreck it, and a 60-player entry would stretch the control useless for the 2-6
+  bulk where nearly everything lives. Sixteen is a judgement, not a measurement —
+  it is four above the current maximum, which leaves room for ordinary growth and
+  fails on an outlier. The test names the number so a person decides whether the
+  control should change, rather than the page quietly reshaping itself.
 - **The deck thresholds equal the distinct non-zero deck counts in the corpus.**
 - **A purpose-built pack never matches any deck count.** Existing test, kept.
 - **A flagged game is excluded above its threshold and kept below it** — the
@@ -168,6 +206,11 @@ generated output, so they come from the corpus. These are the claims:
 - **URLs round-trip**, including ranges and multi-valued families, and existing
   single-value `players=5` links still parse.
 - **A game is findable by its pack** — "euchre deck" returns `euchre`.
+- **Preparation is a subset test, not a ceiling.** Ticking "I can strip a deck"
+  alone never returns a game that needs jokers. This is the assertion that would
+  have caught the first draft's modelling error.
+- **A game needing a pack nobody can improvise is offered only when the control
+  is untouched** — `koi-koi`, matching how `standard_decks: 0` already behaves.
 
 ## Not in scope
 
