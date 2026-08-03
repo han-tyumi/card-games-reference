@@ -167,7 +167,6 @@ filter on:
     "standard_decks": 1,
     "jokers": 0,
     "special_deck": null,
-    "extra_deck_for_large_groups": false,
     "other": []
   },
   "setup": "...",

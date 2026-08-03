@@ -110,22 +110,26 @@ test("a game whose prose calls for another deck says so as data", () => {
   // "yes, sometimes" for years without a filter noticing. This asserts the
   // other direction: prose promising a second pack must be backed by a map,
   // or the filter goes on offering the game to someone who cannot play it.
-  const promises = /\b(two|three|second|third|another|more) (?:52-card |standard )?(?:packs?|decks?)\b/i;
-  // The heuristic catches "another deck" wording that is not actually a promise
-  // tied to player count, and measurement (not a threshold guess) is what showed
-  // it: contract-bridge is fixed at 4 players and already lists its second pack
-  // as "customary, not required" in equipment.other; pinochle's standard_decks
-  // is 2 across its whole 2-4 range because that's how its 48-card special pack
-  // is built, not a step-up; red-dog's "more packs" is a casino house style that
-  // favors the player, independent of table size. None of the three has a
-  // requirement that varies with player count for decks_by_players to record.
-  const notAPlayerCountPromise = new Set(["contract-bridge", "pinochle", "red-dog"]);
+  // "More decks than the baseline, tied to a number of players." Both halves
+  // are needed. Without the player count, contract-bridge's convenience second
+  // pack and red-dog's casino house style match; without the floor of two, the
+  // baseline "1 standard deck" in every entry matches. Durak and Hearts change
+  // the PACK with the count rather than the number of decks, and are correctly
+  // not caught. Verified against all 72 entries: exactly the 14 with a map.
+  const MORE = "[2-9]|1[0-2]|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|second|third|another|more";
+  const ANY = "\\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve";
+  const promisesMoreDecks = new RegExp(
+    `\\b(?:${MORE})\\s+(?:52-card |standard )?(?:packs?|decks?)\\b|\\b(?:packs?|decks?) per player\\b`,
+    "i",
+  );
+  const tiedToPlayerCount = new RegExp(
+    `\\b(?:${ANY})[- ](?:or more )?players?\\b|\\bper player\\b|\\bthan there are players\\b|\\b\\d+-player\\b`,
+    "i",
+  );
   const missing = games
-    .filter(
-      (g) => promises.test(g.decks) && !g.equipment.decks_by_players && !notAPlayerCountPromise.has(g.id),
-    )
+    .filter((g) => promisesMoreDecks.test(g.decks) && tiedToPlayerCount.test(g.decks) && !g.equipment.decks_by_players)
     .map((g) => g.id);
-  assert.deepEqual(missing, [], "prose calls for another deck with no decks_by_players");
+  assert.deepEqual(missing, [], "prose promises more decks at a player count, with no decks_by_players");
 });
 
 test("every step map is keyed inside the game's player range", () => {
