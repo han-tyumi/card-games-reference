@@ -424,3 +424,25 @@ test("nothing reaches readers without passing first", () => {
     "the deploy rebuilds the site instead of shipping the gated copy",
   );
 });
+
+test("the plugin the guide names is the plugin the repo enables", () => {
+  // CONTRIBUTING tells contributors what .claude/ turns on for them. A rename
+  // or a removal there is invisible -- the plugin simply stops loading, and the
+  // guide goes on describing a session nobody is getting.
+  const settings = JSON.parse(
+    readFileSync(join(REPO_ROOT, ".claude", "settings.json"), "utf8"),
+  );
+  const enabled = Object.entries(settings.enabledPlugins ?? {})
+    .filter(([, on]) => on !== false)
+    .map(([id]) => id);
+
+  assert.ok(enabled.length > 0, ".claude/settings.json enables no plugins");
+  for (const id of enabled) {
+    const [name] = id.split("@");
+    assert.match(
+      contributing,
+      new RegExp(name!, "i"),
+      `${id} is enabled but the contributor guide never mentions it`,
+    );
+  }
+});

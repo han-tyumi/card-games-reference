@@ -557,6 +557,23 @@ typed with JSDoc and checked by a second config, `tsconfig.web.json` — which i
 why `npm run typecheck` runs `tsc` twice. Annotate new code there the same way;
 see [decision 0014](decisions/0014-type-check-the-browser-assets-in-place.md).
 
+### If you work on this with Claude
+
+`.claude/` carries two things, both checked in so that anyone working on the
+repository gets them rather than having to know about them:
+
+- **`skills/originality-pass/`** — the fetch recipe and the network control for
+  checking an entry's wording against its sources, which step 5 above depends on.
+- **`settings.json`** — enables the [Superpowers](https://github.com/obra/superpowers)
+  plugin from Anthropic's official marketplace. It is a general skills library
+  rather than anything specific to card games, and nothing here requires it; it
+  is enabled because it is the toolkit this project has been built with. Claude
+  Code asks before trusting a plugin, so it does not install itself behind your
+  back, and removing that one key is the whole of opting out.
+
+Neither is needed to contribute — the checks are plain `npm` scripts and the
+guide above is written for a person.
+
 ## Cutting a release
 
 You do not cut one. Everything — the version, the notes, the booklet, the tag —
