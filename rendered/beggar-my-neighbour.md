@@ -13,7 +13,7 @@
 
 One 52-card pack with the jokers taken out, two players for the standard game, and a clear patch of table between them. Shuffle and hand the pack round singly until none is left, which comes to twenty-six apiece. No card is looked at by anybody at any stage, including its owner. Square your half into a face-down stack and keep it squared.
 
-Four ranks carry the entire game. Ace, king, queen and jack are pay cards; everything from the 2 to the 10 is an ordinary card that does nothing at all. Ordinary cards are completely interchangeable, because no card ever beats another and rank order never enters into it, and suits are ignored from the first card to the last.
+Only four ranks do anything at all. Everything from the 2 up to the 10 is an ordinary card: inert, interchangeable, no different in play from any other. The jack, queen, king and ace are the exceptions, and the game calls them pay cards because turning one puts the other player in debt. Beyond that distinction nothing about a card matters — no card beats another, sequence never comes into it, and suits are ignored from the first turn to the last.
 
 Whoever shuffles deals, and the non-dealer turns the very first card of the game. Fix that between you before you shuffle rather than after, because although neither player will make a single choice all game, who starts is one of the two things — the shuffle being the other — that decides the whole result. Leave the middle clear: a single face-up pile grows there and changes hands over and over until somebody is cleaned out.
 
