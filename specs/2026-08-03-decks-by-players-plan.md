@@ -289,52 +289,92 @@ only copy of the right one."
 
 **Interfaces:**
 - Consumes: `playableWith(game, players, decksHeld)` from Task 2.
-- Produces: nothing new.
+- Produces: `withDecksOnHand(games: readonly CardGame[], decks: number,
+  players?: number): CardGame[]`, exported from `packages/build/pick.ts`.
+
+**Why the filter must be extracted first.** All of the picker's filtering is
+inline inside `main()`, reading `process.argv` directly, so nothing can test it.
+A test that only asserts on `playableWith` would pass the moment Task 2 landed
+and would not notice `pick.ts` regressing at all — a test that does not cover
+its own change. One small extraction makes the picker's behaviour testable
+without restructuring `main()`.
 
 - [ ] **Step 1: Write the failing test**
+
+Create `packages/build/test/pick.test.ts`:
 
 ```ts
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { loadGames, playableWith } from "naibi";
+import { loadGames } from "naibi";
+import { withDecksOnHand } from "../pick.ts";
 
 const games = loadGames();
+const has = (list: { id: string }[], id: string) => list.some((g) => g.id === id);
 
-test("--decks 1 --players 8 does not offer a game that wants two packs", () => {
+test("one deck and eight players does not offer a game that wants two packs", () => {
   // The picker filtered on standard_decks alone, which is the requirement at
   // the SMALLEST table. At eight players slapjack wants a second pack and was
   // offered anyway.
-  const slapjack = games.find((g) => g.id === "slapjack")!;
-  assert.equal(playableWith(slapjack, 8, 1), false);
-  assert.equal(playableWith(slapjack, 3, 1), true, "and is still offered small");
+  assert.equal(has(withDecksOnHand(games, 1, 8), "slapjack"), false);
+});
+
+test("the same game is still offered at a table it fits", () => {
+  assert.equal(has(withDecksOnHand(games, 1, 3), "slapjack"), true);
+});
+
+test("with no player count, the smallest table is judged", () => {
+  // Nothing else is knowable: the reader has not said how many they are.
+  assert.equal(has(withDecksOnHand(games, 1), "slapjack"), true);
+});
+
+test("a purpose-built pack is never offered for a count of standard decks", () => {
+  assert.equal(has(withDecksOnHand(games, 8, 2), "koi-koi"), false);
 });
 ```
 
 - [ ] **Step 2: Run it and watch it fail**
 
 Run: `node --test packages/build/test/pick.test.ts`
-Expected: PASS for the assertions above once Task 2 landed — this test guards
-the helper. The failure this task fixes is in `pick.ts` itself, so also run:
+Expected: FAIL — `withDecksOnHand` is not exported from `pick.ts`.
 
-`npm run pick -- --players 8 --decks 1`
-Expected before the fix: `slapjack` appears in the output. That is the bug.
+Also confirm the bug is live at the command line:
+Run: `npm run pick -- --players 8 --decks 1`
+Expected before the fix: `slapjack` appears in the output.
 
-- [ ] **Step 3: Rewire the filter**
+- [ ] **Step 3: Extract the filter and rewire it**
 
-In `packages/build/pick.ts`, add `playableWith` to the existing `naibi` import,
-then replace the `--decks` filter body (currently lines 91-98):
+In `packages/build/pick.ts`, add `playableWith` to the existing `naibi` import
+and add this above `main()`:
+
+```ts
+/**
+ * The games a reader holding `decks` packs can play, at `players` if they said.
+ *
+ * Extracted from `main` so it can be tested: everything else here reads
+ * `process.argv`, which is why the deck filter went wrong unnoticed. A
+ * purpose-built pack (`standard_decks: 0`) is never playable from ordinary
+ * decks however many are held, and without a player count the smallest table
+ * is the only thing knowable.
+ */
+export function withDecksOnHand(
+  games: readonly CardGame[],
+  decks: number,
+  players?: number,
+): CardGame[] {
+  return games.filter((game) =>
+    players === undefined
+      ? game.equipment.standard_decks > 0 && game.equipment.standard_decks <= decks
+      : playableWith(game, players, decks),
+  );
+}
+```
+
+Then replace the `--decks` filter body in `main()` (currently lines 91-98):
 
 ```ts
   if (decks !== undefined) {
-    // standard_decks is the requirement at the minimum table, so it cannot
-    // answer this on its own; playableWith reads the step map at the size
-    // actually being asked for. A purpose-built pack stays excluded, which is
-    // the defect this filter had first.
-    games = games.filter((g) =>
-      players === undefined
-        ? g.equipment.standard_decks > 0 && g.equipment.standard_decks <= decks
-        : playableWith(g, players, decks),
-    );
+    games = withDecksOnHand(games, decks, players);
     reasons.push(`${decks} deck${decks === 1 ? "" : "s"}`);
   }
 ```
