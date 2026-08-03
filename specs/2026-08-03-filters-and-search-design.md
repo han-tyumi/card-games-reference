@@ -55,16 +55,40 @@ exceeds the top of the slider, and the largest minimum in the corpus is 4, a
 slider ending at 4 would already leave nothing unfilterable. It runs to 12 so
 that twelve people can *say* twelve.
 
-**Two stacked native `<input type="range">` controls, labelled "At least" and
-"At most" — not one dual-thumb widget.** This matters more than it looks. The
-chips being replaced are native radios, so they are keyboard- and
-screen-reader-accessible for free, and the site has a test asserting every
-focusable control declares its own focus ring. A dual-thumb slider has no native
-element: it is two overlaid inputs plus hand-written ARIA, in a project that
-deliberately has no framework to borrow it from (decision 0005). Two separate
-native sliders keep every accessibility guarantee the radios had, cost nothing
-to style, and still read as a range. The full span is the unset state, so it is
-omitted from the URL and the page opens unfiltered.
+**One track with two thumbs, built from two overlaid native
+`<input type="range">` elements.** The earlier draft proposed two stacked
+sliders on the grounds that a dual-thumb control has no native element. That was
+a false choice: the alternative to stacking them is not hand-rolled `div`s with
+written-out ARIA, it is two *real* range inputs positioned on the same track.
+Each keeps native keyboard handling, native focus, and a native screen-reader
+announcement, so the guarantees the radios gave up are all retained — the work
+moves into CSS rather than into re-implementing a widget.
+
+The implementation notes that matter, because each is a known way this technique
+goes wrong:
+
+- The inputs need `pointer-events: none`, re-enabled on the thumb pseudo-element
+  (`::-webkit-slider-thumb`, `::-moz-range-thumb`), so a click reaches the thumb
+  the reader aimed at rather than whichever input is on top.
+- When both thumbs sit on the same value, one becomes ungrabbable. Raise the
+  lower input's stacking order once the two coincide, so the range can always be
+  reopened.
+- The two need distinct accessible names ("Fewest players", "Most players"), or
+  a screen reader announces one control twice.
+- Thumbs push rather than pass, so the range cannot invert.
+
+**The common case gets one gesture.** Most readers know their party size
+exactly; the range exists for the minority who might bench someone. So a click
+or tap anywhere on the track collapses both thumbs to that value — "we are
+four" in one action — and dragging a thumb away from the point is what opens a
+range. The label reads "4 players" when the thumbs coincide and "4-6 players"
+when they do not, so the control says which question it is currently answering.
+Arrow keys move the focused thumb alone; Home and End send it to its limit.
+
+The page still opens on the full span, because a filter that starts engaged
+hides games from a reader who never touched it. Four would otherwise be the
+tempting default: it is the most accommodated count at 56 games and the most
+common `ideal` at 37.
 
 ### 2. Decks derives its thresholds, and reads the extra-deck rule
 
@@ -172,12 +196,39 @@ keeps `null` and is treated as needing no extra deck, which is the honest
 reading of "nobody wrote it down" and matches how unstamped checks are handled
 elsewhere.
 
-**A known limit, stated rather than hidden:** one threshold can only express one
-extra deck. A game spanning 2 to 10 might want a third pack at the very top, and
-`extra_deck_above` cannot say so. The boolean it replaces could not say so
-either and could not say *when* either, so this is strictly more truthful than
-today — but if a source turns out to specify two steps, the field wants to
-become a list of thresholds rather than gain a second boolean.
+**Twelve of the fourteen already state their threshold in their own prose**, so
+the numbers come from text that has been read against sources and stamped, not
+from anybody's estimate: `dou-dizhu` 3; `contract-rummy`, `golf-multiplayer`,
+`palace` and `rummy-500` 4; `bs`, `crazy-eights`, `mau-mau` and `slapjack` 5;
+`egyptian-ratscrew` and `indian-rummy` 6; `president` 7.
+
+**The other two have no threshold at all — they have a formula**, which the
+first draft missed. `hand-and-foot` needs "one deck more than there are
+players" and `nertz` "one standard deck per player", so their requirement climbs
+with every seat rather than stepping once. They get a second optional field:
+
+```
+decksNeeded(game, n) =
+  decks_per_player != null  ?  n + decks_per_player
+                           :  standard_decks + (extra_deck_above != null && n > extra_deck_above ? 1 : 0)
+```
+
+with `nertz` at `0` and `hand-and-foot` at `1`. The two fields are mutually
+exclusive and a validator rule should say so.
+
+This also exposes something already wrong. `standard_decks` records **3** for
+`hand-and-foot` while the entry's own prose says five decks for the usual
+four-player game — because the number means "decks needed at the minimum player
+count", which no field name anywhere says. The filter has therefore been
+understating both of these games all along, and the formula field is what makes
+the reading explicit rather than merely correcting one number.
+
+**A known limit, stated rather than hidden:** a single threshold expresses a
+single extra deck. A game spanning 2 to 10 might want a third pack at the very
+top, and `extra_deck_above` cannot say so. The boolean it replaces could say
+neither how many nor when, so this is strictly more truthful than today — but if
+a source specifies two steps, the field wants to become a list of thresholds
+rather than gain a second boolean.
 
 ## Derivation, and the claims that get tests
 
@@ -211,6 +262,13 @@ generated output, so they come from the corpus. These are the claims:
   have caught the first draft's modelling error.
 - **A game needing a pack nobody can improvise is offered only when the control
   is untouched** — `koi-koi`, matching how `standard_decks: 0` already behaves.
+- **The range cannot invert**, however the two thumbs are driven.
+- **Coinciding thumbs mean an exact count**, and the count label says so.
+- **The two thumbs carry distinct accessible names** in the built HTML, so a
+  screen reader does not announce one control twice. Assertable against the
+  generated page, like the existing focus-ring test.
+- **A per-player game's requirement climbs with the count** — `nertz` needs 8
+  decks at 8 players, and one deck held never offers it above one player.
 
 ## Not in scope
 
