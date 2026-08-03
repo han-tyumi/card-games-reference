@@ -55,6 +55,8 @@ export type Facet = {
   c: string;
   lo: number;
   hi: number;
+  /** The count the game is best with. Orders the list; never filters it. */
+  i: number;
   d: number;
   /**
    * Decks needed at each seat from `lo` upward, or null when the requirement
@@ -76,6 +78,7 @@ export function facetsFor(games: CardGame[]): Facet[] {
       c: game.category,
       lo: game.players.min,
       hi: game.players.max,
+      i: game.players.ideal,
       d: game.equipment.standard_decks,
       dn: game.equipment.decks_by_players
         ? Array.from({ length: game.players.max - game.players.min + 1 }, (_, i) =>

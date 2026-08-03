@@ -22,6 +22,7 @@ import {
   matches,
   nameMatch,
   plan,
+  playerRange,
   readQuery,
   writeQuery,
 } from "../assets/facets.js";
@@ -41,6 +42,7 @@ const facet = (fields: Partial<Facet> = {}): Facet => ({
   c: "trick-taking",
   lo: 2,
   hi: 4,
+  i: 3,
   d: 1,
   dn: null,
   max: 30,
@@ -236,6 +238,88 @@ test("a player count has to fall inside the game's range", () => {
   assert.equal(matches(facet({ lo: 2, hi: 4 }), { players: "4" }), true, "inclusive high");
   assert.equal(matches(facet({ lo: 2, hi: 4 }), { players: "1" }), false);
   assert.equal(matches(facet({ lo: 2, hi: 4 }), { players: "5" }), false);
+});
+
+// --- the players range ----------------------------------------------------
+
+test("a game seating exactly 5 matches the range 5-6", () => {
+  // Overlap, stated as a test so it cannot quietly become containment. The
+  // design rejects containment as a gate because it hides twenty titles a
+  // party of six can play by benching two, and twenty a party of four gets
+  // outright.
+  assert.equal(matches(facet({ lo: 5, hi: 5 }), { players: "6", from: "5" }), true);
+  assert.equal(matches(facet({ lo: 6, hi: 6 }), { players: "6", from: "5" }), true, "the top");
+  assert.equal(matches(facet({ lo: 2, hi: 5 }), { players: "6", from: "5" }), true, "from below");
+  assert.equal(matches(facet({ lo: 7, hi: 9 }), { players: "6", from: "5" }), false, "above");
+  assert.equal(matches(facet({ lo: 1, hi: 4 }), { players: "6", from: "5" }), false, "below");
+});
+
+test("overlap is what the range filters on, and it is wider than containment", () => {
+  // Against the corpus rather than a fixture, and derived rather than pinned
+  // to a literal: what matters is that the filter admits every game touching
+  // the range, not that today's number is 56.
+  const overlap = games.filter((g) => g.players.min <= 6 && g.players.max >= 4).length;
+  const contained = games.filter((g) => g.players.min <= 4 && g.players.max >= 6).length;
+
+  assert.equal(shown({ players: "6", from: "4" }).length, overlap);
+  assert.ok(overlap > contained, "the corpus no longer distinguishes the two readings");
+  assert.notEqual(
+    shown({ players: "6", from: "4" }).length,
+    contained,
+    "the range filters by containment, which hides games the reader can play",
+  );
+});
+
+test("a range whose floor is the count is exactly that count", () => {
+  assert.deepEqual(playerRange({ players: "5", from: "5" }), { lo: 5, hi: 5 });
+  assert.deepEqual(shown({ players: "5", from: "5" }), shown({ players: "5" }));
+});
+
+test("an existing single-value players link still means exactly that count", () => {
+  // Phase 1's links are in the wild. `?players=5` has to keep meaning 5-5, and
+  // it does so by construction rather than by a compatibility branch: an
+  // absent floor defaults to the count.
+  for (let n = 1; n <= 12; n++) {
+    assert.deepEqual(playerRange({ players: String(n) }), { lo: n, hi: n }, `players=${n}`);
+    assert.deepEqual(
+      shown({ players: String(n) }),
+      games.filter((g) => g.players.min <= n && n <= g.players.max).map((g) => g.name),
+      `players=${n} stopped meaning exactly ${n}`,
+    );
+  }
+});
+
+test("a floor above the count is clamped, not inverted", () => {
+  assert.deepEqual(playerRange({ players: "4", from: "9" }), { lo: 4, hi: 4 });
+});
+
+test("no reachable combination of chip and floor produces an inverted range", () => {
+  // Every pair the controls can produce, not a sampled few. This is the whole
+  // of "the range cannot invert": clamping happens in playerRange and there is
+  // no other path to a range.
+  for (let count = 1; count <= 12; count++) {
+    for (let floor = 1; floor <= 12; floor++) {
+      const range = playerRange({ players: String(count), from: String(floor) })!;
+      assert.ok(range, `${floor}-${count} produced no range`);
+      assert.ok(range.lo <= range.hi, `${floor}-${count} inverted to ${range.lo}-${range.hi}`);
+      assert.equal(range.hi, count, `${floor}-${count} moved the count`);
+    }
+  }
+});
+
+test("a floor with no count is not a filter", () => {
+  // The floor lives inside a collapsed panel under the chip row and means
+  // nothing on its own. A URL carrying only one must not filter by it.
+  assert.equal(playerRange({ from: "3" }), null);
+  assert.equal(shown({ from: "3" }).length, games.length);
+});
+
+test("a garbled count leaves the players filter inert, as it always has", () => {
+  // Not a new decision: the index drops unknown values through `allowed`, and
+  // only the print sheet can see one. Pinned so the rewrite does not quietly
+  // start emptying a printed sheet instead.
+  assert.equal(playerRange({ players: "abc" }), null);
+  assert.equal(shown({ players: "abc" }).length, games.length);
 });
 
 test("a game needing its own pack never shows under a deck count", () => {
