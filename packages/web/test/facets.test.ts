@@ -42,6 +42,7 @@ const facet = (fields: Partial<Facet> = {}): Facet => ({
   lo: 2,
   hi: 4,
   d: 1,
+  dn: null,
   max: 30,
   diff: "easy",
   ...fields,
@@ -316,4 +317,26 @@ test("a solitaire shows for one player and a partnership game does not", () => {
 
   const four = games.filter((g) => g.players.min >= 4).map((g) => g.name);
   for (const name of four) assert.ok(!solo.includes(name));
+});
+
+test("a deck count is judged at the player count asked for", () => {
+  // The chips are read together, not one at a time: "one deck" and "eight
+  // players" is a single question, and slapjack is a yes to each separately
+  // and a no to both.
+  const slapjack = facets[games.findIndex((g) => g.id === "slapjack")]!;
+  assert.equal(matches(slapjack, { decks: "1", players: "8" }), false);
+  assert.equal(matches(slapjack, { decks: "1", players: "3" }), true);
+  assert.equal(matches(slapjack, { decks: "2", players: "8" }), true);
+});
+
+test("with no player count, a deck count judges the smallest table", () => {
+  // Nothing else is knowable: the reader has not said how many they are.
+  const slapjack = facets[games.findIndex((g) => g.id === "slapjack")]!;
+  assert.equal(matches(slapjack, { decks: "1" }), true);
+});
+
+test("a per-player game is refused once the table outgrows the decks held", () => {
+  const nertz = facets[games.findIndex((g) => g.id === "nertz")]!;
+  assert.equal(matches(nertz, { decks: "2", players: "2" }), true);
+  assert.equal(matches(nertz, { decks: "2", players: "6" }), false);
 });

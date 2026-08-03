@@ -11,7 +11,7 @@
  */
 
 import type { CardGame } from "naibi";
-import { categoryLabel } from "naibi";
+import { categoryLabel, decksNeeded } from "naibi";
 
 /** Field keys match search.js's FIELDS; `titles` feeds the exact-title bonus. */
 export type SearchRecord = {
@@ -56,6 +56,12 @@ export type Facet = {
   lo: number;
   hi: number;
   d: number;
+  /**
+   * Decks needed at each seat from `lo` upward, or null when the requirement
+   * never changes. Precomputed because the browser must not carry a second
+   * copy of the rule that reads the step map.
+   */
+  dn: number[] | null;
   max: number | null;
   diff: string;
 };
@@ -71,6 +77,11 @@ export function facetsFor(games: CardGame[]): Facet[] {
       lo: game.players.min,
       hi: game.players.max,
       d: game.equipment.standard_decks,
+      dn: game.equipment.decks_by_players
+        ? Array.from({ length: game.players.max - game.players.min + 1 }, (_, i) =>
+            decksNeeded(game, game.players.min + i),
+          )
+        : null,
       // Only a closed range promises an end; "60+" does not.
       max: range?.[2] ? Number(range[2]) : null,
       diff: game.difficulty,

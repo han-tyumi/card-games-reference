@@ -34,6 +34,7 @@ export const DIFFICULTY = { simple: 0, easy: 1, medium: 2, complex: 3 };
  * @property {number} lo fewest players
  * @property {number} hi most players
  * @property {number} d standard decks needed; 0 means a purpose-built pack
+ * @property {number[] | null} dn decks needed at each seat from `lo` upward
  * @property {number | null} max longest run in minutes, null if open-ended
  * @property {string} diff difficulty
  */
@@ -57,8 +58,24 @@ export function matches(facet, criteria) {
   // A game needing its own pack is unreachable for someone holding a 52-card
   // deck, so "0 decks <= 1 deck" must NOT read as playable. This was a real
   // defect in the command-line picker before it was one here.
-  if (criteria.decks && (facet.d === 0 || facet.d > Number(criteria.decks))) {
-    return false;
+  //
+  // The requirement is read at the player count the reader gave, because `d`
+  // is what the game needs at its SMALLEST table: slapjack is one pack at
+  // three players and two at eight, and answering from `d` alone offered it
+  // to someone with one deck and eight friends. `dn` is computed at build
+  // time so the rule behind it lives in one place, which is not this file.
+  if (criteria.decks) {
+    if (facet.d === 0) return false;
+    const held = Number(criteria.decks);
+    // Falls back to the smallest table when no count was given, because
+    // nothing else is knowable then. The players chip is checked above, so a
+    // count outside the range has already returned; the clamp is here so an
+    // out-of-range index can never read as undefined, which would compare
+    // false and pass a game that should have been refused.
+    const at = criteria.players ? Number(criteria.players) : facet.lo;
+    const seat = Math.min(Math.max(at, facet.lo), facet.hi) - facet.lo;
+    const needed = facet.dn ? facet.dn[seat] : facet.d;
+    if (needed === undefined || needed > held) return false;
   }
 
   // An open-ended game ("60+") has no upper bound, so it can never be promised
