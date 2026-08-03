@@ -169,11 +169,14 @@ filter on:
     "special_deck": null,
     "other": []
   },
-  "setup": "...",
-  "play": "...",
-  "goal_and_scoring": "...",
-  "background": "...",
-  "variants": [{ "name": "Jack of Diamonds", "description": "..." }],
+  "setup": "Deal the full 52-card deck out evenly, one card at a time; at three or five players, remove enough low cards first that the deal comes out even. Whoever holds the two of clubs leads it to open the first trick.",
+  "play": "Players follow suit if they can. A player with none of the suit led may play anything, including a heart or the queen of spades. The trick's highest card of the suit led wins it and its winner leads the next one, continuing until every card has been played.",
+  "goal_and_scoring": "Each heart taken is worth one penalty point and the queen of spades is worth thirteen. Hands are replayed until somebody reaches 100 points; whoever has the fewest points at that point wins.",
+  "background": "Hearts descends from a family of European trick-avoidance games and became a fixture of American card rooms in the twentieth century, well before it shipped as a default game on early Windows PCs.",
+  "variants": [
+    { "name": "Jack of Diamonds", "description": "The jack of diamonds is worth ten bonus points instead of a penalty, rewarding a player willing to risk holding it." },
+    { "name": "Omnibus Hearts", "description": "The ten of clubs is added as a second bonus card, worth minus ten points to whoever takes it in a trick." }
+  ],
   "difficulty": "easy",
   "duration_minutes": "30-60",
   "tags": ["classic", "strategy", "family-friendly"],

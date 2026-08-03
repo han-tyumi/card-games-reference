@@ -18,7 +18,9 @@ import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { categoryLabel, gamesByCategory, loadGames } from "naibi";
+import { Ajv2020 } from "ajv/dist/2020.js";
+
+import { SCHEMA_PATH, categoryLabel, gamesByCategory, loadGames } from "naibi";
 import { isNewer } from "../release.ts";
 
 const REPO_ROOT = fileURLToPath(new URL("../../..", import.meta.url));
@@ -265,6 +267,42 @@ test("every file the contributor guide links to exists", () => {
     if (!existsSync(join(REPO_ROOT, target!))) missing.push(target!);
   }
   assert.deepEqual(missing, []);
+});
+
+test("the worked entry example validates against the real schema", () => {
+  // The guide's data-format example claims to be a complete, valid entry. That
+  // claim went stale once already: extra_deck_for_large_groups stayed in the
+  // JSON block for a session after the field was renamed to decks_by_players,
+  // and only reading the block by eye caught it -- the gate never looked. This
+  // runs the fenced block through the same Ajv schema validate.ts compiles for
+  // the corpus, so a stale or invalid field in the example fails the gate
+  // instead of waiting to be noticed.
+  const candidates = [...contributing.matchAll(/```json\n([\s\S]*?)\n```/g)]
+    .map((m) => {
+      try {
+        return JSON.parse(m[1]!) as Record<string, unknown>;
+      } catch {
+        return null;
+      }
+    })
+    .filter((data): data is Record<string, unknown> => data !== null && "setup" in data);
+
+  assert.equal(
+    candidates.length,
+    1,
+    "expected exactly one complete worked entry (object with a setup field) in CONTRIBUTING.md",
+  );
+
+  const schema = JSON.parse(readFileSync(SCHEMA_PATH, "utf8")) as object;
+  const ajv = new Ajv2020({ allErrors: true, strict: false });
+  const validate = ajv.compile(schema);
+
+  const valid = validate(candidates[0]);
+  const errors = (validate.errors ?? []).map(
+    (e) => `${e.instancePath || "(root)"}: ${e.message}`,
+  );
+  assert.deepEqual(errors, [], "the worked example no longer validates against game.schema.json");
+  assert.ok(valid);
 });
 
 test("no section is buried under a heading it has nothing to do with", () => {
