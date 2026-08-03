@@ -591,15 +591,38 @@ repository gets them rather than having to know about them:
 
 - **`skills/originality-pass/`** — the fetch recipe and the network control for
   checking an entry's wording against its sources, which step 5 above depends on.
-- **`settings.json`** — enables the [Superpowers](https://github.com/obra/superpowers)
-  plugin from Anthropic's official marketplace. It is a general skills library
-  rather than anything specific to card games, and nothing here requires it; it
-  is enabled because it is the toolkit this project has been built with. Claude
-  Code asks before trusting a plugin, so it does not install itself behind your
-  back, and removing that one key is the whole of opting out.
+- **`settings.json`** — names the [Superpowers](https://github.com/obra/superpowers)
+  plugin and the official marketplace it comes from. It is a general skills
+  library rather than anything specific to card games, and nothing here requires
+  it; it is named because it is the toolkit this project has been built with.
+  Claude Code asks before trusting a plugin, so it does not install itself behind
+  your back, and deleting the file is the whole of opting out.
 
-Neither is needed to contribute — the checks are plain `npm` scripts and the
-guide above is written for a person.
+**`enabledPlugins` does not install anything.** Since Claude Code v2.1.195 a
+plugin that only a project's `settings.json` enables, and that comes from an
+external source, does not load until someone installs it — the prompt to do so
+needs a person to answer. In a terminal you get that prompt. In a Claude Code
+cloud session nobody can answer it, so the plugin is quietly absent, and
+`claude plugin list` reports nothing installed while the marketplace sits cloned
+on disk. Note that this contradicts the cloud-environments page, which claims
+plugins declared this way are installed at session start; the behaviour above is
+what actually happens.
+
+To have it in cloud sessions, install it from the environment's **setup script**,
+which is the one hook point that runs before Claude Code launches:
+
+```sh
+claude plugin marketplace add anthropics/claude-plugins-official || true
+claude plugin install superpowers@claude-plugins-official || true
+```
+
+Both commands are idempotent, and from a cold container the pair takes about
+five seconds. The `|| true` matters: a setup script that exits non-zero fails the
+session. A `SessionStart` hook is not an alternative — it runs *after* Claude
+Code launches, which is too late for the skills to register.
+
+Neither of the two is needed to contribute — the checks are plain `npm` scripts
+and the guide above is written for a person.
 
 ## Cutting a release
 
