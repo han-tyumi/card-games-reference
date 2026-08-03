@@ -459,6 +459,14 @@ test("a range is said as a count when it is one, and as a span when it is not", 
   assert.deepEqual(describe({ decks: "2" }, FAMILIES), ["2 decks"]);
 });
 
+test("both boxes read as the plain-deck case, not as two exclusions recited", () => {
+  // "no jokers and no cards removed" is a plain 52 said the long way round.
+  assert.deepEqual(describe({ prep: "jokers,strip" }, FAMILIES), ["a plain deck, as it is"]);
+  assert.deepEqual(describe({ prep: "jokers" }, FAMILIES), ["no jokers"]);
+  assert.deepEqual(describe({ prep: "strip" }, FAMILIES), ["no cards removed"]);
+  assert.deepEqual(describe({ prep: "" }, FAMILIES), [], "an untouched control said something");
+});
+
 test("several families read as a choice, not as a narrowing", () => {
   // Every other group narrows as you add to it, so a comma would read wrong.
   const said = emptyReason({ category: "casino,bluffing", decks: "6" }, FAMILIES);
@@ -763,42 +771,75 @@ test("a deck count means what you have, not what the game wants exactly", () => 
   assert.equal(matches(facet({ d: 2 }), { decks: "2" }), true);
 });
 
-// --- what the reader can do to a deck -------------------------------------
+// --- what must be done to a deck -------------------------------------------
 
 /** What an entry's own equipment says it asks of a deck. */
 const ownPack = (g: (typeof games)[number]) => g.equipment.standard_decks === 0;
 const needsJokers = (g: (typeof games)[number]) => !ownPack(g) && g.equipment.jokers > 0;
 const needsStrip = (g: (typeof games)[number]) => !ownPack(g) && Boolean(g.equipment.special_deck);
+const plainDeck = (g: (typeof games)[number]) => !ownPack(g) && !needsJokers(g) && !needsStrip(g);
 
-test("preparation is a subset test, not a ceiling", () => {
-  // The assertion that would have caught the design's first draft. A ceiling
-  // claims these are degrees of one thing, so that accepting the strictest
-  // accepts everything milder -- but someone whose deck has no jokers can strip
-  // cards happily and still cannot add jokers. Ticking one must never hand back
-  // a game needing the other.
-  const stripOnly = shown({ prep: "strip" });
-  for (const game of games.filter(needsJokers)) {
-    assert.ok(!stripOnly.includes(game.name), `${game.id} needs jokers and was offered anyway`);
-  }
-  const jokersOnly = shown({ prep: "jokers" });
-  for (const game of games.filter(needsStrip)) {
-    assert.ok(!jokersOnly.includes(game.name), `${game.id} needs stripping and was offered anyway`);
+test("ticking both boxes is the plain-52 case", () => {
+  // The request this axis exists to answer, and the one the first draft could
+  // not express at any setting: capabilities matched by subset meant nothing
+  // ticked showed all 72 and both ticked showed 71, with the 50 plain-deck
+  // games unreachable in between.
+  const plain = games.filter(plainDeck);
+  assert.ok(plain.length > 0);
+  assert.deepEqual(shown({ prep: "jokers,strip" }).sort(), plain.map((g) => g.name).sort());
+});
+
+test("each box excludes exactly the games carrying its obstacle", () => {
+  // Expectations read off `equipment`, not off `p`, so this checks the
+  // derivation rather than restating it.
+  const cases: [string, (g: (typeof games)[number]) => boolean][] = [
+    ["jokers", (g) => !ownPack(g) && !needsJokers(g)],
+    ["strip", (g) => !ownPack(g) && !needsStrip(g)],
+    ["jokers,strip", plainDeck],
+  ];
+  for (const [ticked, playable] of cases) {
+    const list = shown({ prep: ticked });
+    for (const game of games) {
+      assert.equal(list.includes(game.name), playable(game), `${game.id} under "${ticked}"`);
+    }
   }
 });
 
-test("a game needing both capabilities requires both to be ticked", () => {
-  // five-hundred: a 43-card pack built by stripping, plus a joker.
+test("ticking more shows fewer, like every other control on the page", () => {
+  // The first draft ran the other way -- ticking both showed one game FEWER
+  // than ticking neither, which reads as an off-by-one however true it was.
+  const none = shown({}).length;
+  const one = shown({ prep: "jokers" }).length;
+  const both = shown({ prep: "jokers,strip" }).length;
+  assert.ok(none > one, `nothing ticked (${none}) did not beat one box (${one})`);
+  assert.ok(one > both, `one box (${one}) did not beat both (${both})`);
+});
+
+test("the two obstacles are independent, not degrees of one thing", () => {
+  // A ceiling would claim that accepting the strictest accepts everything
+  // milder. Neither box's exclusions contain the other's: someone with no
+  // jokers can still remove cards, and someone unwilling to remove cards may
+  // well own jokers.
+  const noJokers = new Set(shown({ prep: "jokers" }));
+  const noStrip = new Set(shown({ prep: "strip" }));
+  assert.ok([...noJokers].some((n) => !noStrip.has(n)), "one box's list contains the other's");
+  assert.ok([...noStrip].some((n) => !noJokers.has(n)), "one box's list contains the other's");
+});
+
+test("a game needing both obstacles is ruled out by either box", () => {
+  // five-hundred: a 43-card pack built by removing cards, plus a joker.
   const five = facets[games.findIndex((g) => g.id === "five-hundred")]!;
   assert.equal(five.p, PREP.jokers! | PREP.strip!, "five-hundred no longer needs both");
   assert.equal(matches(five, { prep: "jokers" }), false);
   assert.equal(matches(five, { prep: "strip" }), false);
-  assert.equal(matches(five, { prep: "jokers,strip" }), true);
+  assert.equal(matches(five, { prep: "jokers,strip" }), false);
   assert.equal(matches(five, {}), true, "still browsable untouched");
 });
 
-test("a pack nobody can improvise is offered only when the control is untouched", () => {
-  // koi-koi needs a hanafuda pack, which no checkbox offers and no 52 becomes.
-  // The same treatment standard_decks: 0 already gets from the deck count.
+test("a pack that is not your deck at all goes with either box", () => {
+  // koi-koi needs a hanafuda pack. Both boxes say "my own deck, as it is",
+  // which that is not -- the same treatment standard_decks: 0 already gets
+  // from the deck count.
   const koi = facets[games.findIndex((g) => g.id === "koi-koi")]!;
   assert.equal(koi.p, PREP_OWN_PACK);
   assert.equal(matches(koi, {}), true);
@@ -812,29 +853,13 @@ test("an untouched control is not a filter", () => {
   assert.equal(shown({}).length, games.length);
 });
 
-test("what each ticked combination offers is decided by the entry's own equipment", () => {
-  // Expectations read off `equipment`, not off `p`, so this checks the
-  // derivation rather than restating it.
-  const cases: [string, (g: (typeof games)[number]) => boolean][] = [
-    ["jokers", (g) => !ownPack(g) && !needsStrip(g)],
-    ["strip", (g) => !ownPack(g) && !needsJokers(g)],
-    ["jokers,strip", (g) => !ownPack(g)],
-  ];
-  for (const [ticked, playable] of cases) {
-    const list = shown({ prep: ticked });
-    for (const game of games) {
-      assert.equal(list.includes(game.name), playable(game), `${game.id} under "${ticked}"`);
-    }
-  }
-});
-
 test("the preparation axis partitions the whole corpus, with every state populated", () => {
-  // The design's four rows, which are exclusive: a game needing both a strip
-  // and a joker is counted under strip. Derived rather than pinned to
-  // literals, so growth is not a failure. The sizes when this was written:
-  // 50 plain, 5 jokers alone, 16 stripped, 1 own pack.
+  // Exclusive buckets: a game needing both a removal and a joker is counted
+  // under removal. Derived rather than pinned to literals, so growth is not a
+  // failure. The sizes when this was written: 50 plain, 5 jokers alone,
+  // 16 with cards removed, 1 own pack.
   const buckets = [
-    games.filter((g) => !ownPack(g) && !needsJokers(g) && !needsStrip(g)),
+    games.filter(plainDeck),
     games.filter((g) => needsJokers(g) && !needsStrip(g)),
     games.filter(needsStrip),
     games.filter(ownPack),
@@ -845,27 +870,16 @@ test("the preparation axis partitions the whole corpus, with every state populat
     games.length,
     "the four states do not partition the corpus -- a game is in two or none",
   );
-
-  // Everything a reader with both capabilities can play is everything that
-  // does not need a pack they cannot make.
-  assert.equal(shown({ prep: "jokers,strip" }).length, games.length - buckets[3]!.length);
 });
 
-test("ticking everything on offer still refuses what no box covers", () => {
-  // The counter-intuitive one, and it is correct: ticking both boxes says what
-  // the reader can do, and koi-koi is not among it. Untouched says nothing at
-  // all, so it shows everything. Fewer games with both ticked than with neither
-  // is the honest answer, not an off-by-one.
-  assert.ok(shown({ prep: "jokers,strip" }).length < shown({}).length);
-});
-
-test("a capability no checkbox offers cannot be smuggled in through the URL", () => {
+test("an obstacle no checkbox names cannot be smuggled in through the URL", () => {
   // PREP is the whole vocabulary. An unknown token contributes nothing rather
-  // than being parsed as a number, so ?prep=4 cannot unlock the own-pack bit.
+  // than being parsed as a number, so ?prep=4 cannot address the own-pack bit
+  // directly -- and, being unknown, it excludes nothing at all.
   const koi = facets[games.findIndex((g) => g.id === "koi-koi")]!;
-  assert.equal(matches(koi, { prep: "4" }), false);
-  assert.equal(matches(koi, { prep: "own-pack" }), false);
-  assert.equal(matches(koi, { prep: "jokers,strip,4" }), false);
+  assert.equal(matches(koi, { prep: "4" }), true, "an unknown token acted as a filter");
+  assert.equal(matches(koi, { prep: "own-pack" }), true);
+  assert.equal(matches(koi, { prep: "jokers,4" }), false, "a known token stopped working");
 });
 
 test("a game with no ending is never promised to finish in time", () => {
