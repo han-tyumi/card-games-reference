@@ -11,11 +11,11 @@
 
 ## Setup
 
-Shuffle a full 52-card deck and build three peaks that share a single base. Start with three separated cards along the top, one for each peak. Beneath them place a row of six, two tucked under each summit so that each summit rests on both. Beneath that a row of nine, three under each peak. Finally a row of ten running the full width of the layout, and this is where the peaks interlock: the fourth and seventh cards of the bottom row each help support two neighbouring peaks at once.
+Shuffle a full 52-card deck. The tableau takes 28 of it, arranged as three peaks that share a single base, and everything except the bottom row goes down face down — eighteen hidden cards in all.
 
-That is 28 cards. Deal the first three rows face down and the bottom row of ten face up, so eighteen cards start hidden.
+Three separated cards along the top, one to a peak. A row of six beneath them, two tucked under each summit so that each summit rests on both. A row of nine below that, three to a peak. Then the bottom row of ten, face up, running the full width of the layout. That last row is where the peaks interlock: its fourth and seventh cards each help support two neighbouring peaks at once, which is why clearing one peak so often opens another.
 
-Of the 24 cards remaining, turn one face up beside the peaks to open the waste pile. The other 23 sit face down as the stock. Ranks matter and suits never do, so there is no need to keep the layout tidy by colour.
+That leaves 24 cards. One of them goes face up beside the peaks to open the waste pile and the other 23 stay face down as the stock. Ranks matter and suits never do, so there is no need to keep the layout tidy by colour.
 
 ![TriPeaks setup diagram](diagrams/tripeaks.svg)
 

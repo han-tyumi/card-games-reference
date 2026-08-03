@@ -379,7 +379,7 @@ sources open, across three passes. Earlier work counted search-engine hits, whic
 the section below explains does not work, so those passes are not evidence of
 anything and are not counted here.
 
-**49 entries, checked 2026-08-01** — pagat and Wikipedia, fetched and read
+**48 entries, checked 2026-08-01** — pagat and Wikipedia, fetched and read
 side by side with our prose. The pass covered 60 entries on the day; the ones
 since re-read against further sources carry a later date, so the count above is
 what still rests on this pass alone. At a bar of 80% shared structure or 8
@@ -399,22 +399,33 @@ were the interesting ones and four of the five were `setup` sections, which
 reach for the source's sequence because dealing a game has a natural order; each
 was reorganised rather than reworded.
 
-**11 entries, checked 2026-08-03** — the solitaires and light games the
-2026-08-01 pass had only one source for, re-read one at a time against a second
-and a third rather than in a sweep. Covered so far: `accordion`,
-`beggar-my-neighbour`, `forty-thieves`, `freecell`, `golf-multiplayer`,
-`klondike`, `koi-koi`, `mau-mau`, `pyramid`, `speed`, `spider`.
+**12 entries, checked 2026-08-03** — the twelve the 2026-08-01 pass had only
+one source for, re-read one at a time against a second and a third rather than
+in a sweep: `accordion`, `beggar-my-neighbour`, `forty-thieves`, `freecell`,
+`golf-multiplayer`, `klondike`, `koi-koi`, `mau-mau`, `pyramid`, `speed`,
+`spider`, `tripeaks`. **4 of the 12 were rewritten: 3 verbatim runs, 1 order
+finding and 1 restated rule.** The order finding was a `setup` section again,
+which is now five of six across two passes.
+
+Two of the four would not have been found by adding sources alone. FreeCell's
+came out of the Solitaire Laboratory FAQ, which is served hard-wrapped at about
+70 columns; the checker splits on newlines, so every sentence in that source was
+reaching the comparison in fragments and the seven-word run only appeared once
+the file was unwrapped. Forty Thieves' order finding went the other way and was
+an artefact: the pairs it had aligned were a play site's navigation, not its
+prose, and trimming the page to its rules text cleared the finding rather than
+confirming it. **Prepare the source text before trusting the comparison** —
+unwrap it, and cut the chrome.
 
 **Eleven verbatim runs were kept deliberately.** They are the vocabulary of the
 games and not anyone's prose: the poker hand ranks in ascending order, "right
 bower (the jack of the trump suit)", Skat's German multiplier list, "two cards
 face down and one face up", the Snap shout, "deal N cards to each player, one at
 a time", "the top card of the discard pile", "the top card of the draw pile",
-"face up on the discard pile".
-Rewording those would make the entries wrong. Each is a noun phrase with no
-second form, and each was checked for shared structure around it before being
-left: a collision on the name of a thing is not a collision on how the rule was
-explained.
+"face up on the discard pile". Rewording those would make the entries wrong.
+The last three are noun phrases with no second form, and each was checked for
+shared structure around it before being left: a collision on the name of a
+thing is not a collision on how the rule was explained.
 
 **What the pass does not establish**, and none of it should be glossed over:
 
@@ -422,11 +433,13 @@ explained.
   on fixtures: a sentence rebuilt from a source's clause order scored 0.15,
   an honest rewrite of the same rule 0.12. Structural reuse is caught; thorough
   rewording is not.
-- 8 entries are still resting on **one** source rather than two, because pagat
-  carries few solitaires: `golf-multiplayer`, `klondike`, `koi-koi`, `mau-mau`,
-  `pyramid`, `speed`, `spider`, `tripeaks`. Several list further sources in
-  `sources_consulted` that were not pulled. The 2026-08-03 pass above is working
-  through them.
+- No entry now rests on a single source; the twelve that did were the
+  2026-08-03 pass. What that pass could not do is use the sources those entries
+  name. pagat carries few solitaires and has no Mau-Mau page at all, and
+  gamerules.com and officialgamerules.org served a stub after the first request
+  and never returned the page again, so Speed was read against three sources
+  that did not include either. Several entries still list further sources in
+  `sources_consulted` that were never pulled.
 - The 2026-08-02 batch was first checked with **two** sources for 9 of its 12
   entries and then re-checked with a third added to every one of them. That
   second pass is the strongest evidence here for why the range in the steps
