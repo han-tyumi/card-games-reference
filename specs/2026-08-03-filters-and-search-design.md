@@ -254,12 +254,15 @@ Someone who does own eight cannot say so and tops out at `6`, which under-offers
 game the reader could play rather than offering one they cannot — which is the
 direction this filter is required to fail in.
 
-This also exposes something already wrong. `standard_decks` records **3** for
-`hand-and-foot` while the entry's own prose says five decks for the usual
-four-player game — because the number means "decks needed at the minimum player
-count", which no field name anywhere says. The filter has therefore been
-understating both of these games all along, and the formula field is what makes
-the reading explicit rather than merely correcting one number.
+`standard_decks` itself is **not** wrong for these two, and an earlier draft of
+this document said it was. The schema already defines it as "how many ordinary
+52-card decks you must own to play **at the minimum player count**", so
+`hand-and-foot` recording 3 for its two-player game is exactly right under that
+definition, as is `nertz` recording 2. No entry needs correcting. What is wrong
+is only the reading: `matches()` treats a minimum-count requirement as the
+requirement at every count, which is the same bug for these two as the ignored
+boolean is for the other twelve. `decks_by_players` supplies the counts the
+minimum cannot.
 
 `extra_deck_for_large_groups` is removed rather than kept alongside: a boolean
 that says neither how many nor when, next to a map that says both, is two
