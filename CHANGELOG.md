@@ -28,6 +28,31 @@ release procedure is in
 
 ## [Unreleased]
 
+## [0.3.1] — 2026-08-03
+
+### Fixed
+
+- re-check accordion against a second and third source
+- rewrite Beggar-My-Neighbour's card classes, found against pagat
+- re-check Forty Thieves against Solitaired and Semicolon Software
+- rewrite two FreeCell passages found against Solitaired and the FAQ
+- re-check Six-Card Golf against Wikipedia and Bicycle
+- re-check Klondike against Bicycle and gamerules
+- re-check Koi-Koi against Fuda Wiki and Sloperama
+- re-check Mau-Mau against gamerules and pagat's Crazy Eights page
+- re-check Pyramid against Solitaired and Wikibooks
+- re-check Speed, and drop a restated hand limit
+- re-check Spider against Semicolon Software and Solitaired
+- reorganise TriPeaks' setup, and close out the 2026-08-03 ledger
+
+### Changed
+
+- Record which sources each check actually had, and test it
+- State what the 2026-08-01 pass actually had per entry, and test it
+- Hold every stated Node version to the one packages/data promises
+- Re-read the ten entries whose source count was unknown, and record it
+- Test the two rules that decide what a stamp may record
+
 ## [0.3.0] — 2026-08-03
 
 ### Added
@@ -83,7 +108,8 @@ than served out of the default branch.
 - A difficulty the filter could not rank passed every difficulty filter, because
   `undefined > undefined` is false whichever way round it is written.
 
-[Unreleased]: https://github.com/han-tyumi/naibi/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/han-tyumi/naibi/compare/v0.3.1...HEAD
+[0.3.1]: https://github.com/han-tyumi/naibi/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/han-tyumi/naibi/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/han-tyumi/naibi/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/han-tyumi/naibi/compare/v0.1.0...v0.2.0
