@@ -379,7 +379,7 @@ sources open, across three passes. Earlier work counted search-engine hits, whic
 the section below explains does not work, so those passes are not evidence of
 anything and are not counted here.
 
-**52 entries, checked 2026-08-01** — pagat and Wikipedia, fetched and read
+**51 entries, checked 2026-08-01** — pagat and Wikipedia, fetched and read
 side by side with our prose. The pass covered 60 entries on the day; the ones
 since re-read against further sources carry a later date, so the count above is
 what still rests on this pass alone. At a bar of 80% shared structure or 8
@@ -399,11 +399,11 @@ were the interesting ones and four of the five were `setup` sections, which
 reach for the source's sequence because dealing a game has a natural order; each
 was reorganised rather than reworded.
 
-**8 entries, checked 2026-08-03** — the solitaires and light games the
+**9 entries, checked 2026-08-03** — the solitaires and light games the
 2026-08-01 pass had only one source for, re-read one at a time against a second
 and a third rather than in a sweep. Covered so far: `accordion`,
 `beggar-my-neighbour`, `forty-thieves`, `freecell`, `golf-multiplayer`,
-`klondike`, `koi-koi`, `mau-mau`.
+`klondike`, `koi-koi`, `mau-mau`, `pyramid`.
 
 **Eleven verbatim runs were kept deliberately.** They are the vocabulary of the
 games and not anyone's prose: the poker hand ranks in ascending order, "right
