@@ -375,13 +375,15 @@ else, please open an issue. It will be rewritten.
 ### What has actually been checked
 
 Every entry in the collection has been compared against source text with the
-sources open, across two passes. Earlier work counted search-engine hits, which
+sources open, across three passes. Earlier work counted search-engine hits, which
 the section below explains does not work, so those passes are not evidence of
 anything and are not counted here.
 
-**60 entries, checked 2026-08-01** — pagat and Wikipedia, fetched and read
-side by side with our prose. At a bar of 80% shared structure or 8 identical
-consecutive words: **39 of 60 entries flagged, 36 verbatim runs**. Rewritten:
+**59 entries, checked 2026-08-01** — pagat and Wikipedia, fetched and read
+side by side with our prose. The pass covered 60 entries on the day; the ones
+since re-read against further sources carry a later date, so the count above is
+what still rests on this pass alone. At a bar of 80% shared structure or 8
+identical consecutive words: **39 of the 60 flagged, 36 verbatim runs**. Rewritten:
 **26 passages across 19 entries**. The problems were structural rather than
 lexical — Pinochle carried eighteen consecutive words identical to pagat's,
 Hearts eleven, Spades ten, and one trick-taking formula had propagated into five
@@ -397,6 +399,11 @@ were the interesting ones and four of the five were `setup` sections, which
 reach for the source's sequence because dealing a game has a natural order; each
 was reorganised rather than reworded.
 
+**1 entries, checked 2026-08-03** — the solitaires and light games the
+2026-08-01 pass had only one source for, re-read one at a time against a second
+and a third rather than in a sweep. Covered so far: `accordion`. Findings and
+what each was checked against are recorded as the pass proceeds.
+
 **Eight verbatim runs were kept deliberately.** They are the vocabulary of the
 games and not anyone's prose: the poker hand ranks in ascending order, "right
 bower (the jack of the trump suit)", Skat's German multiplier list, "two cards
@@ -409,11 +416,11 @@ a time". Rewording those would make the entries wrong.
   on fixtures: a sentence rebuilt from a source's clause order scored 0.15,
   an honest rewrite of the same rule 0.12. Structural reuse is caught; thorough
   rewording is not.
-- 12 entries were compared against **one** source rather than two, because pagat
-  carries few solitaires: `accordion`, `beggar-my-neighbour`, `forty-thieves`,
-  `freecell`, `golf-multiplayer`, `klondike`, `koi-koi`, `mau-mau`, `pyramid`,
-  `speed`, `spider`, `tripeaks`. Several list further sources in
-  `sources_consulted` that were not pulled.
+- 11 entries are still resting on **one** source rather than two, because pagat
+  carries few solitaires: `beggar-my-neighbour`, `forty-thieves`, `freecell`,
+  `golf-multiplayer`, `klondike`, `koi-koi`, `mau-mau`, `pyramid`, `speed`,
+  `spider`, `tripeaks`. Several list further sources in `sources_consulted` that
+  were not pulled. The 2026-08-03 pass above is working through them.
 - The 2026-08-02 batch was first checked with **two** sources for 9 of its 12
   entries and then re-checked with a third added to every one of them. That
   second pass is the strongest evidence here for why the range in the steps
