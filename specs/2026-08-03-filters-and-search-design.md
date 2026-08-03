@@ -102,7 +102,7 @@ The false yes is fixed by making the requirement a function of the count rather
 than a constant:
 
 ```
-decksNeeded(game, n) = standard_decks + (extra_deck_above != null && n > extra_deck_above ? 1 : 0)
+decksNeeded(game, n) = decks_by_players[largest key ≤ n] ?? standard_decks
 ```
 
 and a game matches when **some** seatable count in the selected range can be
@@ -183,9 +183,9 @@ declared winner is how one of them silently stops working.
 ## The schema change
 
 `equipment.extra_deck_for_large_groups: boolean` becomes
-`equipment.extra_deck_above: integer | null` — the player count above which a
-further deck is needed. Fourteen entries carry the flag today and each needs a
-real number.
+`equipment.decks_by_players: {integer: integer} | null` — how many decks are
+needed from each player count upward. Fourteen entries carry the flag today and
+each needs real numbers.
 
 Two things make this cheaper than it looks. `proseFingerprint` covers only
 `setup`, `play` and `goal_and_scoring`, so **changing equipment does not
@@ -196,25 +196,63 @@ keeps `null` and is treated as needing no extra deck, which is the honest
 reading of "nobody wrote it down" and matches how unstamped checks are handled
 elsewhere.
 
-**Twelve of the fourteen already state their threshold in their own prose**, so
-the numbers come from text that has been read against sources and stamped, not
-from anybody's estimate: `dou-dizhu` 3; `contract-rummy`, `golf-multiplayer`,
-`palace` and `rummy-500` 4; `bs`, `crazy-eights`, `mau-mau` and `slapjack` 5;
-`egyptian-ratscrew` and `indian-rummy` 6; `president` 7.
+**Twelve of the fourteen already state the step in their own prose**, so the
+numbers come from text that has been read against sources and stamped rather
+than from anybody's estimate. Written as the map, and read as "from this many
+players, this many decks":
+
+| Entry | `decks_by_players` | The sentence it comes from |
+| --- | --- | --- |
+| `dou-dizhu` | `{"4": 2}` | "the four-player version wants two decks" |
+| `contract-rummy` | `{"5": 3}` | "3 decks plus jokers for 5 or more" |
+| `golf-multiplayer` | `{"5": 2}` | "2 decks shuffled together for five or six" |
+| `palace` | `{"5": 2}` | "at five or more the stock runs dry" |
+| `rummy-500` | `{"5": 2}` | "from five players up, shuffle two packs" |
+| `bs` | `{"6": 2}` | "from six up, shuffle two packs together" |
+| `crazy-eights` | `{"6": 2}` | "with six or seven, shuffle two packs" |
+| `mau-mau` | `{"6": 2}` | "from six players upwards" |
+| `slapjack` | `{"6": 2}` | "2 decks shuffled together for six or more" |
+| `egyptian-ratscrew` | `{"7": 2}` | "add a second deck above six players" |
+| `indian-rummy` | `{"7": 3}` | "seven players or more want a third deck" |
+| `president` | `{"8": 2}` | "add a second pack once you get past about seven" |
 
 **The other two have no threshold at all — they have a formula**, which the
 first draft missed. `hand-and-foot` needs "one deck more than there are
 players" and `nertz` "one standard deck per player", so their requirement climbs
-with every seat rather than stepping once. They get a second optional field:
+with every seat rather than stepping once.
+
+Rather than a second field for the formula case, **one field covers both
+shapes**: a step map from player count to decks needed.
+
+```json
+"decks_by_players": { "6": 2 }                                          // bs
+"decks_by_players": { "2":2, "3":3, "4":4, "5":5, "6":6, "7":7, "8":8 }  // nertz
+```
 
 ```
-decksNeeded(game, n) =
-  decks_per_player != null  ?  n + decks_per_player
-                           :  standard_decks + (extra_deck_above != null && n > extra_deck_above ? 1 : 0)
+decksNeeded(game, n) = value for the largest key ≤ n, else standard_decks
 ```
 
-with `nertz` at `0` and `hand-and-foot` at `1`. The two fields are mutually
-exclusive and a validator rule should say so.
+A formula *string* with placeholders was considered and rejected. It is code
+living in data: it needs a parser, every consumer needs the same parser — the
+site, the booklet and the validator — which is the "two generators both need it"
+drift this project keeps fighting, and JSON Schema cannot check it, so
+`"player + 1"` with the `s` missing would validate and fail later. A step map is
+inert data, validates as an object of integers, and states plainly what is
+needed at each size.
+
+It also removes a limitation the earlier draft accepted as permanent: a single
+threshold could only ever express a single extra deck, so a game wanting a third
+pack at ten players was inexpressible. One step, five steps and a per-player
+formula are now the same mechanism.
+
+**A consequence, chosen rather than solved:** the deck chips derive from the
+distinct `standard_decks` values (`1, 2, 3, 6`) and *not* from the maps, because
+`nertz` would otherwise contribute chips up to 8 and nobody owns eight decks.
+Someone who does own eight cannot say so and tops out at `6`, which under-offers
+`nertz` at seven and eight players. That fails in the safe direction — hiding a
+game the reader could play rather than offering one they cannot — which is the
+direction this filter is required to fail in.
 
 This also exposes something already wrong. `standard_decks` records **3** for
 `hand-and-foot` while the entry's own prose says five decks for the usual
@@ -223,12 +261,9 @@ count", which no field name anywhere says. The filter has therefore been
 understating both of these games all along, and the formula field is what makes
 the reading explicit rather than merely correcting one number.
 
-**A known limit, stated rather than hidden:** a single threshold expresses a
-single extra deck. A game spanning 2 to 10 might want a third pack at the very
-top, and `extra_deck_above` cannot say so. The boolean it replaces could say
-neither how many nor when, so this is strictly more truthful than today — but if
-a source specifies two steps, the field wants to become a list of thresholds
-rather than gain a second boolean.
+`extra_deck_for_large_groups` is removed rather than kept alongside: a boolean
+that says neither how many nor when, next to a map that says both, is two
+records of one fact waiting to disagree.
 
 ## Derivation, and the claims that get tests
 
