@@ -460,6 +460,53 @@ test("the published package tells consumers which Node it needs", () => {
   assert.match(manifest.exports["."], /\.ts$/, "the entry point is no longer TypeScript");
 });
 
+test("everything that names a Node version names the same one", () => {
+  // The floor is stated in seven places and was tested in one: that `engines`
+  // exists. Bumping it would have left the README, CLAUDE.md, tsconfig's note
+  // and both workflows behind, and the workflows are the ones that matter --
+  // CI pins the floor on purpose so the oldest supported Node is what gets
+  // verified. Drift there means CI quietly stops testing what we promise.
+  // `decisions/` is excluded: those records are written once and superseded,
+  // so an old version named in one is history, not a stale claim.
+  const engines = JSON.parse(
+    readFileSync(join(REPO_ROOT, "packages", "data", "package.json"), "utf8"),
+  ).engines.node;
+  const floor = /(\d+\.\d+)/.exec(engines)?.[1];
+  assert.ok(floor, `packages/data engines "${engines}" states no version to check against`);
+
+  const named: { where: string; version: string }[] = [];
+
+  // Manifests are parsed rather than searched: `@types/node` carries a version
+  // of its own and has nothing to do with the runtime floor.
+  for (const where of ["package.json", "packages/build/package.json"]) {
+    const declared = JSON.parse(readFileSync(join(REPO_ROOT, where), "utf8")).engines?.node;
+    if (declared) named.push({ where, version: /(\d+\.\d+)/.exec(declared)![1]! });
+  }
+
+  // Prose says it in words; workflows say it in a field.
+  for (const where of ["README.md", "CLAUDE.md", "CONTRIBUTING.md", "tsconfig.json"]) {
+    const text = readFileSync(join(REPO_ROOT, where), "utf8");
+    for (const [, version] of text.matchAll(/[Nn]ode (\d+\.\d+)/g)) {
+      named.push({ where, version: version! });
+    }
+  }
+  for (const file of readdirSync(join(REPO_ROOT, ".github", "workflows"))) {
+    const where = `.github/workflows/${file}`;
+    const text = readFileSync(join(REPO_ROOT, where), "utf8");
+    for (const [, version] of text.matchAll(/node-version:\s*"?(\d+\.\d+)"?/g)) {
+      named.push({ where, version: version! });
+    }
+  }
+
+  assert.ok(named.length > 1, "nothing outside packages/data names a Node version any more");
+  const wrong = named.filter((n) => n.version !== floor);
+  assert.deepEqual(
+    wrong,
+    [],
+    `these name a Node version other than the ${floor} floor in packages/data`,
+  );
+});
+
 test("nothing reaches readers without passing first", () => {
   // CLAUDE.md now claims the site and the releases both wait on Validate. That
   // claim was false until today: Pages built from the branch, so it deployed in
