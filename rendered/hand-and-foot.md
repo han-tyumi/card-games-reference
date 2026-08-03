@@ -29,7 +29,7 @@ Melds belong to the partnership rather than the player, so keep them in one grou
 
 There are no sequences in this game. A meld is three or more cards of one rank, four up to ace, and suits never matter. Jokers and twos are wild. Once a meld reaches seven cards it is a canasta and takes no more; to go on melding that rank, start a fresh pile beside it. The two kinds are counted separately all game: a clean canasta is seven natural cards with no wild among them, a dirty canasta is seven cards with at least one wild in it. Most tables cap a dirty meld at two wild cards and insist the naturals always outnumber them; a few allow three. Square a finished canasta up and mark it — a red card on top for clean, a black one for dirty — so both partnerships can see at a glance where each side stands.
 
-A turn is draw, meld if you like, discard one. Drawing means taking two cards off the stock, not one.
+A turn is draw, meld if you like, discard one. You draw two each turn rather than one.
 
 Taking the pile instead. Rather than drawing, you may claim the discard pile, but you only get the top card and the six beneath it — seven cards, not the whole heap, and only what is there if the pile is shorter. The price is that you must hold two natural cards of the top card's rank and put all three down as a meld straight away; the other six cards go into your hand. Wild cards are no help in qualifying, which means a wild card on top is as untakeable as a black three on top, and a black three on top blocks the pile completely — the only thing black threes are good for. Taking the pile replaces your draw, and the turn still ends with a discard.
 

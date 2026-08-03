@@ -37,9 +37,9 @@ There is no score sheet and nothing to write down. A deal simply runs until one 
 
 A deal is a run of bouts. In each bout one player attacks one other, and the defender is always the player to the attacker's left. Everyone else at the table is a potential attacker.
 
-The attack. The principal attacker puts any single card from hand face up in front of the defender. Nothing is being led and nothing is being won: no suit has to be followed, the card competes with nothing, and it is simply a problem the defender now has to solve.
+The attack. The principal attacker lays one card from hand, face up, where the defender can reach it. Nothing is being led and nothing is being won: no suit has to be followed, the card competes with nothing, and it is simply a problem the defender now has to solve.
 
-The defence. A card is beaten by covering it with a higher card of the same suit, or with any trump at all. Once a trump is on the table only a higher trump will beat it. Beaten cards and the cards that beat them stay on the table in pairs where everybody can read them.
+The defence. To beat a card, cover it with something stronger: within its own suit, anything ranking above it; failing that, any trump. Once a trump is on the table only a higher trump will beat it. Beaten cards and the cards that beat them stay on the table in pairs where everybody can read them.
 
 Throwing in. As soon as a bout is under way, any card of a rank that already appears somewhere on the table may be added to the attack — the ranks of the defending cards count too, not just the attack cards. The principal attacker may keep throwing in, and so may the other players, which is where the game's usual name comes from: podkidnoy means thrown in. The principal attacker always has first refusal; once they pass, the others may throw in, taking their turn clockwise from the defender's left. Each new card has to be beaten separately.
 
@@ -49,7 +49,7 @@ Ending a bout. There are exactly two outcomes and they could not be more differe
 
 Refilling. Between bouts everyone tops their hand back up to six from the talon. The order matters once the talon is nearly empty: the principal attacker draws first, then everyone else in clockwise order from them, and the defender last of all, however few cards that leaves. Nobody draws once the talon is exhausted, and the face-up trump is the final card taken.
 
-Who attacks next. A defender who held becomes the attacker for the next bout, aimed at the player on their own left. A defender who picked up is passed over: the attack skips them and falls to the player beyond.
+Who attacks next. A defender who held takes over the attack, aiming the next bout at the player on their own left. A defender who picked up is passed over: the attack skips them and falls to the player beyond.
 
 The endgame. Any player whose hand empties, with no talon left to refill from, is finished and drops out; the rest carry on around the gap. Play continues until one person is still holding cards.
 

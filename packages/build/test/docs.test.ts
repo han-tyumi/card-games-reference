@@ -147,31 +147,30 @@ test("how many sources each check had is recorded, and the gap is counted", () =
 });
 
 test("the 2026-08-01 pass is described as it was, not as it reads", () => {
-  // "pagat and Wikipedia" describes what the pass worked from, and for ten of
-  // its entries the attribution names only one of them. That gap is why the
-  // source counts above stop at 38 rather than 48, so it is stated rather than
-  // left for the next reader to rediscover -- and stated means tested.
-  const stated = /\*\*(\d+) of the 48 attribute only one of the two\*\*/.exec(contributing);
-  assert.ok(stated, "CONTRIBUTING no longer states how many of the pass attribute one source");
-
+  // "pagat and Wikipedia" describes what the pass worked from, and it used to
+  // read as though it described every entry in it -- ten attributed only one of
+  // the two, so whether those ten ever had a second source was unknown. They
+  // were re-read and carry a later date now, which is what lets this say
+  // "every one" rather than a count. The reconstruction behind those 38 source
+  // records is only sound while that stays true.
   const pass = games.filter((game) => game.checked?.date === "2026-08-01");
-  const partial = pass.filter((game) => {
-    const named = new Set(game.sources_consulted);
-    return !named.has("Pagat") || !named.has("Wikipedia");
-  });
+  assert.ok(pass.length > 0, "no entry carries the 2026-08-01 check date any more");
 
-  assert.equal(
-    partial.length,
-    Number(stated[1]),
-    "CONTRIBUTING's count of 2026-08-01 entries attributing one source no longer matches",
+  const partial = pass
+    .filter((game) => {
+      const named = new Set(game.sources_consulted);
+      return !named.has("Pagat") || !named.has("Wikipedia");
+    })
+    .map((game) => game.id);
+  assert.deepEqual(
+    partial,
+    [],
+    "2026-08-01 entries attributing only one of pagat/Wikipedia -- the pass description no " +
+      "longer holds per entry, so either re-read them or stop claiming both",
   );
-  // The ten are exactly the ones the source record has to skip. If a backfill
-  // ever covers them, both numbers move together or this fails.
-  assert.equal(
-    pass.length - partial.length,
-    pass.filter((game) => game.checked?.sources).length,
-    "the entries attributing both sources are no longer the entries recording them",
-  );
+
+  const unrecorded = pass.filter((game) => !game.checked?.sources).map((game) => game.id);
+  assert.deepEqual(unrecorded, [], "2026-08-01 entries with no source record");
 });
 
 test("every file the README links to exists", () => {

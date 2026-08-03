@@ -135,7 +135,11 @@
     "Bicycle Cards"
   ],
   "checked": {
-    "date": "2026-08-01",
-    "prose": "a47aa2095c0b52f6"
+    "date": "2026-08-03",
+    "prose": "a47aa2095c0b52f6",
+    "sources": [
+      "Wikibooks Solitaire card games",
+      "Wikipedia"
+    ]
   }
 }

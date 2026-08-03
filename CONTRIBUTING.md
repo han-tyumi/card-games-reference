@@ -379,12 +379,11 @@ sources open, across three passes. Earlier work counted search-engine hits, whic
 the section below explains does not work, so those passes are not evidence of
 anything and are not counted here.
 
-**48 entries, checked 2026-08-01** — pagat and Wikipedia, fetched and read
-side by side with our prose. That describes the pass, not every entry in it:
-**10 of the 48 attribute only one of the two**, five naming pagat without
-Wikipedia and five the reverse, so whatever the pass had for those ten is not
-recorded and they are the ten this section's source counts leave unaccounted
-for. The pass covered 60 entries on the day; the ones
+**38 entries, checked 2026-08-01** — pagat and Wikipedia, fetched and read
+side by side with our prose, and every one of the 38 attributes both. Ten
+others that this pass covered attributed only one of the two, which meant
+nobody could say what the pass had actually had for them; they were re-read on
+2026-08-03 and carry that date now. The pass covered 60 entries on the day; the ones
 since re-read against further sources carry a later date, so the count above is
 what still rests on this pass alone. At a bar of 80% shared structure or 8
 identical consecutive words: **39 of the 60 flagged, 36 verbatim runs**. Rewritten:
@@ -403,7 +402,8 @@ were the interesting ones and four of the five were `setup` sections, which
 reach for the source's sequence because dealing a game has a natural order; each
 was reorganised rather than reworded.
 
-**12 entries, checked 2026-08-03** — the twelve the 2026-08-01 pass had only
+**22 entries, checked 2026-08-03**, in two groups. The first twelve are the
+ones the 2026-08-01 pass had only
 one source for, re-read one at a time against a second and a third rather than
 in a sweep: `accordion`, `beggar-my-neighbour`, `forty-thieves`, `freecell`,
 `golf-multiplayer`, `klondike`, `koi-koi`, `mau-mau`, `pyramid`, `speed`,
@@ -412,14 +412,36 @@ verbatim runs, 1 passage scoring 86% in order, and 1 whole-passage order
 finding.** The order finding was a `setup` section again, which is now five of
 six across two passes.
 
-**38 of 72 checks record which sources they had**, in `checked.sources`. Those
-38 are 2026-08-01 entries whose own `sources_consulted` names both of the two
-that pass read, so the record is reconstructed from the pass description and
-corroborated by the entry — not logged at the time. The other 34 carry a date
-and a fingerprint but no source count. That is not a check with one source; it
-is a check whose source count nobody wrote down, and the two must not be allowed
-to read alike. Checks made from here on record their sources as they are made,
-so the gap closes by re-reading rather than by guessing. `npm test` holds both
+The other ten are `blackjack`, `clock`, `durak`, `egyptian-ratscrew`, `golf`,
+`hand-and-foot`, `spades`, `tien-len`, `whist` and `yukon` — the entries the
+2026-08-01 pass covered but attributed only one of its two sources, so that
+whether they ever had two was unknown rather than merely unrecorded. Each was
+re-read against two it does attribute. **6 of the 10 were flagged, 9 verbatim
+runs in all**, every one rewritten; four more passages went on a READ finding
+rather than a verbatim one. Two sources had to be replaced after fetching:
+Britannica returned 403 and officialgamerules.org an empty 202, and MathWorld's
+Clock Solitaire page turned out to be a probability note with no rules in it —
+a page can return 200 and still be no use as a source. Spades kept two `setup`
+and `goal_and_scoring` order findings against Bicycle: the shared sequence is
+pack, then ranking, then trump, then the deal, which is the order Bicycle's own
+headings impose and the order a reader needs to sit down and play. Reorganising
+ours to break it would have put the pack after the deal — a worse entry bought
+with a better score.
+
+**48 of 72 checks record which sources they had**, in `checked.sources`. They
+come from two different places and are not equally strong. The ten stamped by
+the 2026-08-03 re-read were logged as they were made: the tool writes the files
+it actually compared against, matched back to the attributed names, and refuses
+to stamp a source it cannot match or a check with fewer than two. The other 38
+are 2026-08-01 entries whose own `sources_consulted` names both of the two that
+pass read, so that record is reconstructed from the pass description and
+corroborated by the entry rather than logged at the time.
+
+The remaining 24 — the 2026-08-02 and 2026-08-03 batches — carry a date and a
+fingerprint but no source count. That is not a check with one source; it is a
+check whose source count nobody wrote down, and the two must not be allowed to
+read alike. Checks made from here on record their sources as they are made, so
+the gap closes by re-reading rather than by guessing. `npm test` holds both
 counts to the corpus.
 
 Two of the four would not have been found by adding sources alone. FreeCell's
@@ -448,7 +470,7 @@ thing is not a collision on how the rule was explained.
   on fixtures: a sentence rebuilt from a source's clause order scored 0.15,
   an honest rewrite of the same rule 0.12. Structural reuse is caught; thorough
   rewording is not.
-- No entry is *known* to rest on a single source, and for 34 checks the record
+- No entry is *known* to rest on a single source, and for 24 checks the record
   cannot say either way — see the source counts above. The twelve that did rest
   on one were re-read by the 2026-08-03 pass. What that pass could not do is use
   the sources those entries

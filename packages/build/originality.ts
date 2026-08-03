@@ -407,10 +407,48 @@ function stamp(ids: readonly string[], today: string): number {
     return 1;
   }
 
+  const stamps = new Map<string, string[]>();
+  for (const id of ids) {
+    // What was read is the files that were on disk for the comparison, not
+    // whatever the entry attributes -- `sources_consulted` lists pages that
+    // were never pulled. Filenames are slugs, so they are matched back to the
+    // attributed names rather than written raw, and an unmatched file stops the
+    // stamp: a source nobody can trace back to an attribution is worse than no
+    // record, because it reads like one.
+    const attributed = known.get(id)!.sources_consulted;
+    const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
+    const read: string[] = [];
+    const stray: string[] = [];
+    for (const file of [...sourcesFor(id).keys()].sort()) {
+      const stem = file.replace(/\.txt$/, "");
+      const match = attributed.find((name) => slug(name) === slug(stem));
+      (match ? read : stray).push(match ?? stem);
+    }
+    if (stray.length > 0) {
+      console.error(
+        `${id}: source file(s) ${stray.map((s) => `"${s}"`).join(", ")} match nothing in ` +
+          `sources_consulted. Rename the file to the attributed name, or add the source there.`,
+      );
+      return 1;
+    }
+    if (read.length < 2) {
+      console.error(
+        `${id}: only ${read.length} source read. A check needs two -- one source cannot ` +
+          "corroborate itself. Fetch another, or leave the entry unstamped.",
+      );
+      return 1;
+    }
+    stamps.set(id, read);
+  }
+
   for (const id of ids) {
     const path = join(GAMES_DIR, `${id}.json`);
     const entry = JSON.parse(readFileSync(path, "utf8")) as Record<string, unknown>;
-    entry["checked"] = { date: today, prose: proseFingerprint(known.get(id)!) };
+    entry["checked"] = {
+      date: today,
+      prose: proseFingerprint(known.get(id)!),
+      sources: stamps.get(id),
+    };
     writeFileSync(path, `${JSON.stringify(entry, null, 2)}\n`);
   }
 

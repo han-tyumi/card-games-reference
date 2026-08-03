@@ -25,9 +25,9 @@ An ace plus any ten-value card in your first two cards is a blackjack, also call
 
 ## Play
 
-Before anyone acts, the dealer checks for a natural. If the upcard is an ace, the dealer first offers insurance: any player may put up a side bet of up to half their original stake, and that bet pays 2 to 1 if the dealer's hole card turns out to be a ten-value card. A player holding a blackjack against a dealer ace may instead take even money, which is the same wager in disguise and pays their hand 1 to 1 immediately. When the upcard is an ace or a ten-value card, the dealer then peeks at the hole card. If it is a natural, the round is over at once: insurance is paid, every ordinary hand loses, and any player who also holds a blackjack pushes.
+Before anyone acts, the dealer checks for a natural. If the upcard is an ace, the dealer first offers insurance: any player may put up a side bet of up to half their original stake, and it pays 2 to 1 whenever the hidden card proves to be worth ten. A player holding a blackjack against a dealer ace may instead take even money, which is the same wager in disguise and pays their hand 1 to 1 immediately. When the upcard is an ace or a ten-value card, the dealer then peeks at the hole card. If it is a natural, the round is over at once: insurance is paid, every ordinary hand loses, and any player who also holds a blackjack pushes.
 
-Otherwise play begins with the player on the dealer's left and moves clockwise. Each player finishes their hand completely before the next one starts. Your options on your first two cards are:
+Otherwise the first decision falls to whoever sits on the dealer's left, and the turn passes clockwise. Each player finishes their hand completely before the next one starts. Your options on your first two cards are:
 
 Hit. Take another card. You may keep hitting as long as you are under 21. Where the cards are dealt face up you signal this by tapping the felt beside them rather than saying it out loud, so the decision is on camera.
 
@@ -41,7 +41,7 @@ Surrender. Where offered, you may abandon the hand before drawing any card and f
 
 Going over 21 is a bust. Your cards are taken and your bet is collected immediately, before the dealer plays. That is the whole basis of the house edge: you lose a bust hand even if the dealer goes on to bust as well.
 
-When every player has finished, the dealer turns the hole card up and plays by fixed rule, with no choices at all. The one exception is that if every player has already busted there is nothing left to beat, so the dealer collects the bets and the round ends without another card being drawn. The dealer draws to any total of 16 or less and stands on any total of 17 or more, counting a soft 17 such as ace-6 as a 17 and standing on it. The dealer never doubles, never splits, and never surrenders. If the dealer busts, every player still standing wins.
+When every player has finished, the dealer turns the hole card up and plays by fixed rule, with no choices at all. The one exception is that if every player has already busted there is nothing left to beat, so the dealer collects the bets and the round ends without another card being drawn. The dealer draws to any total of 16 or less and stands on any total of 17 or more, counting a soft 17 such as ace-6 as a 17 and standing on it. None of those options belong to the dealer: no doubling, no splitting, no surrender. If the dealer busts, every player still standing wins.
 
 Rounds run back to back for as long as you want to keep playing. Casinos bury a cut card partway down the shoe and reshuffle at the end of whichever round reaches it, so the shoe is never dealt to the bottom. At home, play out the round you are in, then collect the discards and reshuffle everything before the next deal. If the cards do run out part-way through a round, shuffle the discard pile at once, leaving the cards already on the table where they are, and carry on dealing from it.
 

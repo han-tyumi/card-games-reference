@@ -34,11 +34,11 @@ Going round the table, each player either passes or beats what is showing. A bea
 
 Passing puts you out of the round. You take no further part until the round is finished, however tempting the play that comes round afterwards. When everyone still in has passed, the last player to have put cards down clears the pile away and leads again with any shape they like.
 
-Bombs, or chops. Since the two of hearts cannot be beaten by any ordinary single, the game supplies plays that break the shape-matching rule specifically to kill twos. Outside that job they are ordinary combinations: a four of a kind may be led like any other shape and answered by a higher four of a kind, and a chain of pairs the same. It is only as an answer to a two that either ignores the shape it is beating.
+Bombs, or chops. Since the two of hearts cannot be beaten by any ordinary single, the game supplies plays that break the shape-matching rule specifically to kill twos. Outside that job they are ordinary combinations: a four of a kind may be led like any other shape, and a chain of pairs the same. It is only as an answer to a two that either ignores the shape it is beating.
 
 - A four of a kind, or a chain of three consecutive pairs, beats any single two. Neither can be dropped on any other single card.
 - Between those two, the four of a kind is the stronger, so it also beats a chain of three consecutive pairs.
-- A chop that has been played can itself be chopped by a stronger one, so a four of a kind can be answered by a higher four of a kind and a chain of three pairs by a four of a kind. Whoever lays the chop that nobody answers takes the round in the ordinary way and leads next.
+- A chop that has been played can itself be chopped by a stronger one, four of a kind over four of a kind, ranked by the quad itself, and a four of a kind over a chain of three pairs. Whoever lays the chop that nobody answers takes the round in the ordinary way and leads next.
 - More twos demand more, and this is where tables differ most. The usual line is that a pair of twos falls only to a chain of four consecutive pairs, and three twos only to a chain of five. A common alternative sets the price of a pair of twos at five consecutive pairs; a few tables also accept two fours of a kind in consecutive ranks. Fix the schedule before dealing, because a player holding four sevens has already made plans around it.
 
 The first player to run out of cards has won, and the rest carry on playing to sort out the remaining places, right down to the player who is left holding cards when everyone else is clear. A player who has gone out is skipped in the rotation, and if they were the one who won the last round, the lead passes on to the next player still holding cards.

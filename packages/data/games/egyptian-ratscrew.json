@@ -190,7 +190,11 @@
     "PlayingCardDecks"
   ],
   "checked": {
-    "date": "2026-08-01",
-    "prose": "d7d68acf02646d69"
+    "date": "2026-08-03",
+    "prose": "d7d68acf02646d69",
+    "sources": [
+      "Wikibooks",
+      "Wikipedia"
+    ]
   }
 }

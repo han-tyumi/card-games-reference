@@ -11,11 +11,11 @@
 
 ## Setup
 
-Whist is for exactly four players in two fixed partnerships, partners sitting opposite each other. Use a 52-card pack with the jokers taken out. In play the cards rank ace high down to 2 low.
+Whist seats exactly four, playing as two fixed partnerships, with partners opposite each other. Use a 52-card pack with the jokers taken out. In play the cards rank ace high down to 2 low.
 
 Draw for partners and for the first deal at the same time. Spread the pack face down and have everyone take a card, counting the ace as low for this purpose only. The two lowest cards play against the two highest, and the lowest card of all deals first. Anyone who draws a duplicate rank or the bottom card of the pack draws again. After the first hand the deal moves one seat to the left.
 
-Shuffle, offer the cut to the right, then deal the whole pack out singly and clockwise, first card going to the dealer's left. Everyone ends up with 13. The final card of the deal, which belongs to the dealer, is turned face up on the table instead of being tucked into the hand. Its suit is trumps for that hand. It stays face up where everyone can see it until the dealer plays to the first trick, at which point the dealer takes it into hand and it becomes an ordinary card. From that moment on, remembering what it was is your own problem.
+Shuffle, offer the cut to the right, then deal the whole pack out singly and clockwise, first card going to the dealer's left. Everyone ends up with 13. The last card dealt belongs to the dealer, but rather than being tucked into their hand it is laid face up on the table. Its suit is trumps for that hand. It stays face up where everyone can see it until the dealer plays to the first trick, at which point the dealer takes it into hand and it becomes an ordinary card. From that moment on, remembering what it was is your own problem.
 
 There is no bidding, no exchange of cards and no stock. As soon as the trump is turned, play begins.
 
@@ -23,7 +23,7 @@ There is no bidding, no exchange of cards and no stock. As soon as the trump is 
 
 ## Play
 
-The player to the dealer's left leads any card at all to the first trick. Play then goes clockwise, one card from each player.
+Whoever sits to the dealer's left opens the first trick, and may lead absolutely any card. Play then goes clockwise, one card from each player.
 
 You must follow the suit that was led if you hold a card in it. Only when you are void may you play something else, and then you may play anything: a card of a third suit, which cannot win, or a trump, which can. Trumps outrank everything else, so if any were played the highest of them takes the trick; if none were, the highest card of the led suit does. Each trick is opened by whoever won the last. All thirteen tricks are played out; there is no way to end a hand early, no concession and no discard pile.
 
@@ -39,7 +39,7 @@ When the thirteenth trick is done, each side counts the tricks it won and the de
 
 Six tricks is the book and is worth nothing at all. Only tricks beyond six count, at 1 point each, which means a single hand is worth at most 7 points and only one side can ever take trick points from a given deal.
 
-A game is 5 points in the standard British short whist. American play traditionally used 7 and dropped honours altogether, while the older long whist ran to 10, which is where the game's reputation for endless sessions comes from. Whichever target you use, a rubber is the best of three games: the first side to win two games takes the rubber and adds 2 bonus points. If one side wins the first two games the third is not played. The rubber is settled by the difference between the two sides' point totals once the bonus is added.
+A game is 5 points in the standard British short whist. American play traditionally used 7 and dropped honours altogether, while the older long whist ran to 10, which is where the game's reputation for endless sessions comes from. Whichever target you use, a rubber runs until one side has won two games, and taking it adds 2 bonus points. If one side wins the first two games the third is not played. The rubber is settled by the difference between the two sides' point totals once the bonus is added.
 
 Honours are the ace, king, queen and jack of the trump suit, and what counts is where they were dealt, not who captured them during play. Add up what the two partners held once the hand is over: holding three of them pays the pair 2 extra points, and holding the lot pays 4. Two limits apply. Trick points are always counted before honours, so a side that reaches the target on tricks wins immediately. And a side already standing at 4 points towards a 5-point game may not score honours at all, on the principle that you should not be carried over the line by cards you merely held. Because tricks are settled before honours and only one side can score tricks in a deal, a game can never finish level: whichever side reaches the target on tricks has already won before any honours are added.
 
