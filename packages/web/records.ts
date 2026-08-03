@@ -24,6 +24,8 @@ export type SearchRecord = {
   play: string;
   goal_and_scoring: string;
   variants: string;
+  /** What you play it with: the deck line, plus any named pack. */
+  pack: string;
   titles: string[];
 };
 
@@ -37,6 +39,11 @@ export function searchRecords(games: CardGame[]): SearchRecord[] {
     // The category reads as a tag to a searcher: "trick-taking" should find
     // trick-taking games whether or not any of them carries it as a tag.
     tags: [...game.tags, categoryLabel(game.category)].join(" "),
+    // Someone holding a 32-card pack has no way to find the games that use
+    // one. `decks` is the sentence the card already prints; `special_deck`
+    // names the pack itself, and is where "euchre deck" and "piquet pack"
+    // actually live.
+    pack: [game.decks, game.equipment.special_deck].filter(Boolean).join(" "),
     setup: game.setup,
     play: game.play,
     goal_and_scoring: game.goal_and_scoring,
