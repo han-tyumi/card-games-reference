@@ -28,6 +28,26 @@ release procedure is in
 
 ## [Unreleased]
 
+## [0.3.2] — 2026-08-03
+
+### Changed
+
+- Re-read the last 24 entries whose source count was unknown, and record it
+- Replace the extra-deck boolean with a map of decks by player count
+- Fix round 1: replace the id exclusion with a rule, fix a stale example
+- Read the deck requirement in one place, at the count being asked
+- Stop the picker offering games that want a deck you did not say you had
+- Fix round 1: route the no-player-count branch through playableWith too
+- Judge the deck chip at the player count the reader gave
+- Teach the docs about decks_by_players, and stop the README modelling the bug
+- Validate CONTRIBUTING's worked example against the real schema
+- Print the deck count decksNeeded gives, not standard_decks
+- Refuse a garbled deck query on purpose, not by an accidental array miss
+- Test that standard_decks is what decksNeeded gives at players.min
+- Reorder decks_by_players to schema order in the migrated entries
+- Reorder decks_by_players in bs.json too
+- Bring the decks-by-players specs in line with what shipped
+
 ## [0.3.1] — 2026-08-03
 
 ### Fixed
@@ -108,7 +128,8 @@ than served out of the default branch.
 - A difficulty the filter could not rank passed every difficulty filter, because
   `undefined > undefined` is false whichever way round it is written.
 
-[Unreleased]: https://github.com/han-tyumi/naibi/compare/v0.3.1...HEAD
+[Unreleased]: https://github.com/han-tyumi/naibi/compare/v0.3.2...HEAD
+[0.3.2]: https://github.com/han-tyumi/naibi/compare/v0.3.1...v0.3.2
 [0.3.1]: https://github.com/han-tyumi/naibi/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/han-tyumi/naibi/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/han-tyumi/naibi/compare/v0.2.0...v0.2.1
