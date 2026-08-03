@@ -25,6 +25,8 @@ import {
   longestRun,
   orderedOverlap,
   sentences,
+  SOURCES_PER_CHECK,
+  sourcesRead,
   words,
 } from "../originality.ts";
 
@@ -328,4 +330,50 @@ test("paraphrase that replaces the vocabulary scores like independent writing", 
 
   const found = compare(ours, theirs, "f", { ...DEFAULTS, order: 0 });
   assert.ok(found[0]!.order < DEFAULTS.order, "if this now scores high, tighten the docs");
+});
+
+// --- what a stamp is allowed to record ------------------------------------
+
+test("source files are recorded under the names the entry attributes", () => {
+  // The files are slugs and the attribution is prose. Recording the slug would
+  // leave a name no reader could match to anything, so they are mapped back.
+  const { read, stray } = sourcesRead(
+    ["Pagat", "Bicycle Cards", "Wikibooks Solitaire card games"],
+    ["bicycle-cards.txt", "pagat.txt"],
+  );
+  assert.deepEqual(read, ["Bicycle Cards", "Pagat"]);
+  assert.deepEqual(stray, [], "a file that matches an attribution was treated as stray");
+});
+
+test("punctuation and case in an attribution do not stop it matching", () => {
+  const { read, stray } = sourcesRead(["CardGames.io", "Wikipedia"], ["cardgames-io.txt"]);
+  assert.deepEqual(read, ["CardGames.io"]);
+  assert.deepEqual(stray, []);
+});
+
+test("a source the entry does not attribute comes back as stray, not dropped", () => {
+  // Dropping it would record a shorter list than was actually read, which is
+  // the failure mode worth guarding: the record would look complete and be
+  // wrong. The caller refuses the whole stamp on any stray.
+  const { read, stray } = sourcesRead(
+    ["Pagat", "Wikipedia"],
+    ["pagat.txt", "some-random-blog.txt", "wikipedia.txt"],
+  );
+  assert.deepEqual(read, ["Pagat", "Wikipedia"]);
+  assert.deepEqual(stray, ["some-random-blog"], "an unattributed source was silently accepted");
+});
+
+test("one source is never enough for a check", () => {
+  // Not a style rule. One source cannot corroborate itself, so a check with a
+  // single source is the exact thing `checked.sources` exists to make visible.
+  const { read } = sourcesRead(["Pagat", "Wikipedia"], ["pagat.txt"]);
+  assert.equal(read.length, 1);
+  assert.ok(read.length < SOURCES_PER_CHECK, "the floor no longer rejects a single source");
+});
+
+test("no sources on disk records nothing rather than an empty check", () => {
+  const { read, stray } = sourcesRead(["Pagat"], []);
+  assert.deepEqual(read, []);
+  assert.deepEqual(stray, []);
+  assert.ok(read.length < SOURCES_PER_CHECK, "an entry with no source text could be stamped");
 });

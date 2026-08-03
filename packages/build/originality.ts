@@ -399,6 +399,37 @@ function checkGame(game: CardGame, limits: Thresholds): Match[] {
  * see. The date is passed in rather than read from the clock so a run is
  * reproducible.
  */
+/**
+ * Which attributed sources a set of source files stands for.
+ *
+ * What a check actually had is the files that were on disk for the comparison,
+ * not whatever the entry attributes — `sources_consulted` lists pages that were
+ * never pulled, which is the whole reason it cannot answer the question. The
+ * filenames are slugs, so they are matched back to the attributed names rather
+ * than written raw: a recorded source nobody can trace to an attribution is
+ * worse than no record, because it reads like one.
+ *
+ * Anything unmatched comes back in `stray` rather than being dropped, so the
+ * caller refuses instead of silently recording a shorter list than was read.
+ */
+export function sourcesRead(
+  attributed: readonly string[],
+  files: readonly string[],
+): { read: string[]; stray: string[] } {
+  const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
+  const read: string[] = [];
+  const stray: string[] = [];
+  for (const file of [...files].sort()) {
+    const stem = file.replace(/\.txt$/, "");
+    const match = attributed.find((name) => slug(name) === slug(stem));
+    (match ? read : stray).push(match ?? stem);
+  }
+  return { read, stray };
+}
+
+/** Two, because one source cannot corroborate itself. */
+export const SOURCES_PER_CHECK = 2;
+
 function stamp(ids: readonly string[], today: string): number {
   const known = new Map(loadGames().map((g) => [g.id, g]));
   const unknown = ids.filter((id) => !known.has(id));
@@ -409,21 +440,9 @@ function stamp(ids: readonly string[], today: string): number {
 
   const stamps = new Map<string, string[]>();
   for (const id of ids) {
-    // What was read is the files that were on disk for the comparison, not
-    // whatever the entry attributes -- `sources_consulted` lists pages that
-    // were never pulled. Filenames are slugs, so they are matched back to the
-    // attributed names rather than written raw, and an unmatched file stops the
-    // stamp: a source nobody can trace back to an attribution is worse than no
-    // record, because it reads like one.
-    const attributed = known.get(id)!.sources_consulted;
-    const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
-    const read: string[] = [];
-    const stray: string[] = [];
-    for (const file of [...sourcesFor(id).keys()].sort()) {
-      const stem = file.replace(/\.txt$/, "");
-      const match = attributed.find((name) => slug(name) === slug(stem));
-      (match ? read : stray).push(match ?? stem);
-    }
+    const { read, stray } = sourcesRead(known.get(id)!.sources_consulted, [
+      ...sourcesFor(id).keys(),
+    ]);
     if (stray.length > 0) {
       console.error(
         `${id}: source file(s) ${stray.map((s) => `"${s}"`).join(", ")} match nothing in ` +
@@ -431,10 +450,10 @@ function stamp(ids: readonly string[], today: string): number {
       );
       return 1;
     }
-    if (read.length < 2) {
+    if (read.length < SOURCES_PER_CHECK) {
       console.error(
-        `${id}: only ${read.length} source read. A check needs two -- one source cannot ` +
-          "corroborate itself. Fetch another, or leave the entry unstamped.",
+        `${id}: only ${read.length} source read. A check needs ${SOURCES_PER_CHECK} -- one ` +
+          "source cannot corroborate itself. Fetch another, or leave the entry unstamped.",
       );
       return 1;
     }
