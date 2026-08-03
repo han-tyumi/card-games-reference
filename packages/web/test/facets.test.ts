@@ -425,6 +425,57 @@ test("a per-player game is refused once the table outgrows the decks held", () =
   assert.equal(matches(nertz, { decks: "2", players: "6" }), false);
 });
 
+test("one deck and a range spanning the threshold still offers the game", () => {
+  // slapjack wants a second pack from six players. A party of six who might be
+  // four can play it -- they seat four -- so a range straddling the threshold
+  // is a yes. Reading the requirement at the TOP of the range would refuse it,
+  // which is the same "answer from one seat" mistake phase 1 fixed for `d`,
+  // moved up a level.
+  const slapjack = facets[games.findIndex((g) => g.id === "slapjack")]!;
+  assert.equal(matches(slapjack, { decks: "1", players: "6", from: "4" }), true);
+  assert.equal(matches(slapjack, { decks: "1", players: "6", from: "6" }), false, "six only");
+  assert.equal(matches(slapjack, { decks: "1", players: "8", from: "7" }), false, "clear of it");
+});
+
+test("the deck question is asked of every seat the range and the game share", () => {
+  // The seats to try are the INTERSECTION, not the range's own floor and not
+  // the game's. A game seating 6-8 asked about by a party of 2-8 must be
+  // answered at 6, 7 and 8; asking at seat 2 indexes off the front of `dn`.
+  const late = facet({ lo: 6, hi: 8, d: 2, dn: [2, 2, 3] });
+  assert.equal(matches(late, { decks: "1", players: "8", from: "2" }), false, "nothing fits");
+  assert.equal(matches(late, { decks: "2", players: "8", from: "2" }), true, "six and seven fit");
+});
+
+test("a per-player game's requirement climbs with the count", () => {
+  // nertz needs one deck per player. One deck held never offers it above one
+  // player, however the range is expressed.
+  const nertz = facets[games.findIndex((g) => g.id === "nertz")]!;
+  assert.equal(nertz.dn?.[8 - nertz.lo], 8, "nertz no longer needs 8 decks at 8 players");
+  assert.equal(matches(nertz, { decks: "8", players: "8", from: "8" }), true);
+  assert.equal(matches(nertz, { decks: "7", players: "8", from: "8" }), false);
+  for (let n = nertz.lo + 1; n <= nertz.hi; n++) {
+    assert.equal(
+      matches(nertz, { decks: "1", players: String(n), from: String(n) }),
+      false,
+      `one deck offered nertz at ${n} players`,
+    );
+  }
+});
+
+test("a game whose step map dips is judged at every seat, not the smallest", () => {
+  // Synthetic, because no entry dips today -- which is exactly the point. The
+  // schema types decks_by_players as an object of integers and nothing stops
+  // {"4":2,"6":1}, so "check the smallest seat, the requirement only climbs" is
+  // correct under an assumption no validator enforces. The loop needs no such
+  // assumption, and this is what would catch its removal.
+  // Seats 2-6 need 1, 2, 3, 1, 2. The seat that fits one deck inside the range
+  // 3-6 is FIVE -- neither the smallest nor the largest -- so an implementation
+  // that answers from either end gets this wrong in one direction or the other.
+  const dips = facet({ lo: 2, hi: 6, d: 1, dn: [1, 2, 3, 1, 2] });
+  assert.equal(matches(dips, { decks: "1", players: "6", from: "3" }), true, "seat 5 fits");
+  assert.equal(matches(dips, { decks: "1", players: "4", from: "3" }), false, "3 and 4 do not");
+});
+
 test("a non-numeric player count refuses on purpose, not by an array miss", () => {
   // print.js calls readQuery with no `allowed` map -- unlike the index page, a
   // garbled value like "?players=abc" is never dropped upstream, so it reaches

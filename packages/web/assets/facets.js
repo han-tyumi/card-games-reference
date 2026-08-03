@@ -103,21 +103,40 @@ export function matches(facet, criteria) {
   if (criteria.decks) {
     if (facet.d === 0) return false;
     const held = Number(criteria.decks);
-    // Falls back to the smallest table when no count was given, because
-    // nothing else is knowable then. On the index page the players chip above
-    // has already dropped anything outside the game's range, via `allowed` in
-    // readQuery -- but print.js calls readQuery with no `allowed` map (it has
-    // no chips to check against), so a garbled players value such as
-    // "?players=abc" reaches this branch unfiltered. `Number("abc")` is NaN,
-    // both range comparisons above are false, and the old code let that fall
-    // through to `facet.dn[NaN]` being `undefined` by accident. Refuse it here
-    // on purpose instead, so the safe outcome does not depend on an array
-    // returning undefined for a key that was never a valid index.
-    const at = criteria.players ? Number(criteria.players) : facet.lo;
-    if (!Number.isFinite(at) || !Number.isFinite(held)) return false;
-    const seat = Math.min(Math.max(at, facet.lo), facet.hi) - facet.lo;
-    const needed = facet.dn ? facet.dn[seat] : facet.d;
-    if (needed === undefined || needed > held) return false;
+    if (!Number.isFinite(held)) return false;
+    // A garbled players value never reaches the index -- `allowed` in readQuery
+    // drops it -- but print.js has no chips to check against and calls
+    // readQuery without that map, so "?players=abc" arrives here intact. It
+    // used to fall through to `facet.dn[NaN]` being undefined by accident.
+    // Refused on purpose instead: the table size cannot be determined, and a
+    // chip that cannot answer must not say yes.
+    if (criteria.players && !range) return false;
+
+    // The reader can play this if ANY seat they might sit fits the decks they
+    // hold, so the seats to try are the ones the range and the game share.
+    // Without a range that is the smallest table, because nothing else is
+    // knowable -- which is the behaviour this replaces, unchanged.
+    //
+    // A loop rather than "check the smallest seat, the requirement only
+    // climbs": decks_by_players is typed as an object of integers and nothing
+    // in the schema forbids {"4":2,"6":1}, so the shortcut would be correct
+    // only under an assumption no validator enforces. The intersection is at
+    // most twelve wide.
+    //
+    // Clamping to the game's own range is deliberately NOT load-bearing: drop
+    // it and the extra seats index off the front of `dn`, come back undefined,
+    // and get skipped, so every answer is the same and no test can tell the
+    // difference. It stays because that is precisely the shape this branch was
+    // burned by once -- a safe outcome resting on an out-of-bounds read
+    // returning undefined -- and the bounds are stated rather than stumbled on.
+    const first = range ? Math.max(range.lo, facet.lo) : facet.lo;
+    const last = range ? Math.min(range.hi, facet.hi) : facet.lo;
+    let playable = false;
+    for (let n = first; n <= last && !playable; n++) {
+      const needed = facet.dn ? facet.dn[n - facet.lo] : facet.d;
+      playable = needed !== undefined && needed <= held;
+    }
+    if (!playable) return false;
   }
 
   // An open-ended game ("60+") has no upper bound, so it can never be promised
