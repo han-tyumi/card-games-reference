@@ -20,7 +20,6 @@
     "standard_decks": 1,
     "jokers": 0,
     "special_deck": null,
-    "extra_deck_for_large_groups": false,
     "other": []
   },
   "setup": "Shuffle a full 52-card deck and deal it into thirteen face-down piles of four without looking at anything. Dealing one card at a time and going round the layout four times is the tidy way to do it and keeps the piles honest.\n\nTwelve of the piles form a ring in the positions of the numerals on a clock face, one at twelve o'clock, one at one o'clock, and so on round to eleven. The thirteenth pile sits in the middle of the ring. That centre pile belongs to the kings, and it is also where play starts.\n\nRanks map onto the hours the obvious way. An ace is one o'clock, each numeral card is its own number, the jack is eleven and the queen is twelve. Kings have no hour on a dial, so they go to the centre. Suit and colour never matter for anything.\n\nAs the game runs, every position grows a face-up group underneath its face-down packet, so leave each pile enough room for a spread below it. Nothing else is needed: no stock, no waste, no foundations.",

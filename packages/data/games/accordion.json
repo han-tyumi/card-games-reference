@@ -19,7 +19,6 @@
     "standard_decks": 1,
     "jokers": 0,
     "special_deck": null,
-    "extra_deck_for_large_groups": false,
     "other": []
   },
   "setup": "Shuffle a full 52-card deck. Every card becomes a pile of one, and those piles sit in a single line running left to right. There are no foundations, no reserve, and no stock once the line is down. The row is the entire game.\n\nHow the row gets built is the one setup decision, and the two traditional answers produce very different games. Dealing as you go is the older habit: turn one card, put it at the right-hand end of the line, take any moves you fancy, then turn the next. You never know what is still to come. Dealing the whole pack out first spreads all 52 face up before a single move is made, which converts the deal into a puzzle you can study. The open form is enormously easier, and most computer versions use it, so it is worth being clear which one you have agreed to play.\n\nA line of 52 will not fit across a normal table. Lay it in bands, one under the next, and read it as a single line that wraps at the edge: the last pile of one band and the first pile of the next are neighbours. Only the exposed card of each pile is ever consulted, so keep the piles squared up rather than spread.",

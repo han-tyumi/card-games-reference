@@ -17,7 +17,6 @@
     "standard_decks": 1,
     "jokers": 0,
     "special_deck": null,
-    "extra_deck_for_large_groups": false,
     "other": []
   },
   "setup": "Use one 52-card pack with the jokers removed. Any fair method picks the first dealer; drawing cards and giving the deal to the highest is common, with tied drawers drawing again. The deal then passes to the left after each hand, which means it simply alternates in the two-player game.\n\nHow many cards you get depends on the size of the table. With two players, deal 10 each. With three or four, deal 7 each. With five or six, deal 6 each. Deal one card at a time, face down, clockwise, starting with the player on the dealer's left.\n\nPut the rest of the pack face down in the middle as the stock, then turn its top card face up beside it to start the discard pile. Only the top card of that pile is ever available, so keep it squared up rather than spread.\n\nAces are low. A-2-3 is a run and Q-K-A is not, unless you agree otherwise before the first deal. For scoring, an ace is 1 point, each numbered card is worth its number, and a jack, queen or king is 10. The player to the dealer's left takes the first turn.",

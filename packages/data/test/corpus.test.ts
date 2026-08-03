@@ -104,3 +104,39 @@ test("no prose section ends mid-list", () => {
     }
   }
 });
+
+test("a game whose prose calls for another deck says so as data", () => {
+  // The boolean this replaces was never read by anything, so it could say
+  // "yes, sometimes" for years without a filter noticing. This asserts the
+  // other direction: prose promising a second pack must be backed by a map,
+  // or the filter goes on offering the game to someone who cannot play it.
+  const promises = /\b(two|three|second|third|another|more) (?:52-card |standard )?(?:packs?|decks?)\b/i;
+  // The heuristic catches "another deck" wording that is not actually a promise
+  // tied to player count, and measurement (not a threshold guess) is what showed
+  // it: contract-bridge is fixed at 4 players and already lists its second pack
+  // as "customary, not required" in equipment.other; pinochle's standard_decks
+  // is 2 across its whole 2-4 range because that's how its 48-card special pack
+  // is built, not a step-up; red-dog's "more packs" is a casino house style that
+  // favors the player, independent of table size. None of the three has a
+  // requirement that varies with player count for decks_by_players to record.
+  const notAPlayerCountPromise = new Set(["contract-bridge", "pinochle", "red-dog"]);
+  const missing = games
+    .filter(
+      (g) => promises.test(g.decks) && !g.equipment.decks_by_players && !notAPlayerCountPromise.has(g.id),
+    )
+    .map((g) => g.id);
+  assert.deepEqual(missing, [], "prose calls for another deck with no decks_by_players");
+});
+
+test("every step map is keyed inside the game's player range", () => {
+  const strays: string[] = [];
+  for (const game of games) {
+    for (const key of Object.keys(game.equipment.decks_by_players ?? {})) {
+      const n = Number(key);
+      if (!Number.isInteger(n) || n < game.players.min || n > game.players.max) {
+        strays.push(`${game.id}:${key}`);
+      }
+    }
+  }
+  assert.deepEqual(strays, [], "step map keyed outside the game's player range");
+});

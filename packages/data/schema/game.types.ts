@@ -54,9 +54,11 @@ export interface CardGame {
      */
     special_deck: string | null;
     /**
-     * True when higher player counts call for shuffling in another deck.
+     * How many decks are needed from a given player count upward, e.g. {"6": 2} for a game that wants a second pack from six players. Read as: the value for the largest key at or below the table size, falling back to standard_decks. Omit when the requirement never changes. Use it for per-player games too -- Nertz needs one deck each, so every count gets an entry.
      */
-    extra_deck_for_large_groups: boolean;
+    decks_by_players?: {
+      [k: string]: number;
+    };
     /**
      * Anything needed beyond cards, e.g. a cribbage board. Usually empty.
      *

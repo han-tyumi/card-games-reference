@@ -18,7 +18,6 @@
     "standard_decks": 2,
     "jokers": 0,
     "special_deck": null,
-    "extra_deck_for_large_groups": false,
     "other": []
   },
   "setup": "Shuffle two full 52-card decks together into a single 104-card pack. Deal 40 cards face up into ten columns of four, going across the row so each column takes one card per pass, and overlap them so every rank stays readable. Nothing is concealed: all forty are in plain sight before you touch anything.\n\nThe rest of the pack goes face down as the stock, with a space beside it for the waste. Above the tableau, leave room for eight foundations — each suit is built twice, once from each deck.\n\nClear a broad table first. Two decks in ten columns need considerably more space than any one-deck game, and by mid-play a single column can run past a dozen cards.",

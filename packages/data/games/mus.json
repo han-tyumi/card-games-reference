@@ -15,7 +15,6 @@
     "standard_decks": 1,
     "jokers": 0,
     "special_deck": "40-card Spanish pack: ace to seven, sota, caballo and rey in each of coins, cups, swords and clubs",
-    "extra_deck_for_large_groups": false,
     "other": [
       "Counters per side: 8 large for amarrekos and 4 small for loose stones, or 40 identical ones"
     ]

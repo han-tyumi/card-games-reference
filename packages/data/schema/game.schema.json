@@ -100,7 +100,6 @@
         "standard_decks",
         "jokers",
         "special_deck",
-        "extra_deck_for_large_groups",
         "other"
       ],
       "properties": {
@@ -125,9 +124,12 @@
           "minLength": 3,
           "maxLength": 120
         },
-        "extra_deck_for_large_groups": {
-          "description": "True when higher player counts call for shuffling in another deck.",
-          "type": "boolean"
+        "decks_by_players": {
+          "description": "How many decks are needed from a given player count upward, e.g. {\"6\": 2} for a game that wants a second pack from six players. Read as: the value for the largest key at or below the table size, falling back to standard_decks. Omit when the requirement never changes. Use it for per-player games too -- Nertz needs one deck each, so every count gets an entry.",
+          "type": "object",
+          "propertyNames": { "pattern": "^[1-9][0-9]?$" },
+          "additionalProperties": { "type": "integer", "minimum": 1, "maximum": 12 },
+          "minProperties": 1
         },
         "other": {
           "description": "Anything needed beyond cards, e.g. a cribbage board. Usually empty.",

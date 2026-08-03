@@ -16,7 +16,6 @@
     "standard_decks": 2,
     "jokers": 0,
     "special_deck": null,
-    "extra_deck_for_large_groups": false,
     "other": []
   },
   "setup": "Spider is played with 104 cards, the equivalent of two standard decks. Which suits those cards come from is the difficulty setting. The four-suit game uses two full decks, two of each suit. The two-suit game uses four copies each of two suits, usually spades and hearts. The one-suit game uses eight copies of a single suit. With real cards you are effectively playing four-suit unless you go to the trouble of assembling a stripped pack, which is why the easier settings are mainly a computer thing.\n\nShuffle all 104 cards together and deal 54 of them into ten tableau columns: six cards each to the first four columns and five cards each to the remaining six. Deal them face down, then turn the exposed card of each column face up. The 50 cards left over become the stock, set aside face down. It will feed the tableau in five deals of ten.\n\nThere are no foundation piles to build on. Just leave a clear area beside the tableau for completed sequences, which come off the table intact. You will need room for eight of them.",

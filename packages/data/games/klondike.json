@@ -17,7 +17,6 @@
     "standard_decks": 1,
     "jokers": 0,
     "special_deck": null,
-    "extra_deck_for_large_groups": false,
     "other": []
   },
   "setup": "Use a single 52-card deck with the jokers removed. Shuffle, then build seven tableau piles from left to right: one card in the first pile, two in the second, on up to seven in the seventh, for 28 cards in total. The tidy way to deal it is one card to each pile in a left-to-right sweep, skipping any pile that already holds its full count. Turn the exposed card of every pile face up and leave everything under it face down.\n\nAbove the tableau, reserve four spaces for the foundations. They start empty. The 24 cards you did not deal go face down in a single packet as the stock, with an empty space beside it for the waste. There is no dealer to choose and no opponent, so play begins the moment the layout is built.\n\nOne caution before you follow rules printed elsewhere: older British sources sometimes call this game Canfield, while North American sources use Canfield for an entirely different game, the one also known as Demon. Match the layout described above rather than the title on the page.",

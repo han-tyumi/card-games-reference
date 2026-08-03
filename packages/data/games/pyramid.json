@@ -17,7 +17,6 @@
     "standard_decks": 1,
     "jokers": 0,
     "special_deck": null,
-    "extra_deck_for_large_groups": false,
     "other": []
   },
   "setup": "Shuffle a full 52-card deck and build the pyramid face up in seven rows. Lay one card at the top, then two below it, then three, and so on down to a bottom row of seven, for 28 cards in all. Offset each row so that every card rests on and partly covers the two cards above it, and so that each card in turn is partly covered by the two below it. Only the seven cards of the bottom row start out completely uncovered.\n\nThe remaining 24 cards form the stock, squared up face down to one side. Leave space next to it for a waste pile and space somewhere clear for discards. Ranks count as numbers throughout: ace is 1, jack is 11, queen is 12, king is 13, and every other card is its face value. Suit and colour never matter.",

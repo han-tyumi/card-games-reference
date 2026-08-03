@@ -18,7 +18,6 @@
     "standard_decks": 1,
     "jokers": 0,
     "special_deck": "40-card Spanish pack (ace to seven plus three court cards in each suit)",
-    "extra_deck_for_large_groups": false,
     "other": []
   },
   "setup": "Two players, forty cards. A Spanish pack works exactly as it comes. From an ordinary deck, take out the jokers and every eight, nine and ten, which leaves ace through seven plus jack, queen and king in each suit. That gap is not cosmetic: with the middle ranks gone the seven and the jack are neighbours, so a sequence can run 6-7-J. Aces are always low.\n\nPick a first dealer any way you like and alternate afterwards. Deal ten cards to each player, traditionally in packets of two, and set the remaining twenty face down between you as the stock. Nothing is turned face up to begin with, and there is never a discard pile: exactly one card is on offer at any moment, and a card that both of you refuse is turned face down and is dead for the rest of the deal.\n\nMelds are laid face up in front of you as you make them and stay there for the rest of the deal, in plain view and — as you will discover — usable against you.\n\nThe target is eleven melded cards, not ten. Since you only ever hold ten, you cannot win out of your own hand: the eleventh card has to arrive from the stock or from what your opponent leaves behind.",

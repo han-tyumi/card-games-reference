@@ -16,7 +16,6 @@
     "standard_decks": 1,
     "jokers": 0,
     "special_deck": null,
-    "extra_deck_for_large_groups": false,
     "other": []
   },
   "setup": "Take one 52-card deck without jokers, shuffle it, and deal the whole pack face up into eight tableau columns: seven cards each to the first four columns and six each to the last four. Spread each column so that every card in it stays readable, with the last card of the column fully exposed.\n\nAbove or beside the tableau, set out four free cells on one side and four foundation spaces on the other. All eight start empty.\n\nThat is the entire layout. There is no stock, no waste and no redeal, and nothing is dealt face down. From the first move to the last you are working with complete information, which is what separates FreeCell from Klondike and Spider. No new card can turn up, so a deal is a puzzle that is already either solvable or not before you touch it.",

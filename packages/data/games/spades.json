@@ -13,7 +13,6 @@
     "standard_decks": 1,
     "jokers": 0,
     "special_deck": null,
-    "extra_deck_for_large_groups": false,
     "other": []
   },
   "setup": "Spades is a four-player partnership game. Partners sit opposite each other so that the two sides alternate around the table. Use a 52-card pack with the jokers taken out. Cards rank ace high down to 2 low in every suit, and spades are permanently trump. Nothing is turned or named to decide the trump suit; it is spades in every hand of every game.\n\nChoose the first dealer by cutting, high card taking the deal, and move the deal one seat to the left after each hand. The dealer shuffles, offers a cut to the player on their right, then deals the whole pack out one card at a time clockwise starting with the player on their left, so everyone finishes with 13 cards. Each hand is therefore 13 tricks.\n\nSet up the score sheet before you start. You need one column per partnership for points and, next to each, a small separate running tally of bags. The bag count carries across the entire game rather than resetting each hand, and forgetting to track it is the single most common way a Spades game goes wrong.",

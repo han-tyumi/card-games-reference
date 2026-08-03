@@ -18,7 +18,6 @@
     "standard_decks": 1,
     "jokers": 0,
     "special_deck": null,
-    "extra_deck_for_large_groups": false,
     "other": []
   },
   "setup": "Shuffle a full 52-card deck. The tableau takes 28 of it, arranged as three peaks that share a single base, and everything except the bottom row goes down face down — eighteen hidden cards in all.\n\nThree separated cards along the top, one to a peak. A row of six beneath them, two tucked under each summit so that each summit rests on both. A row of nine below that, three to a peak. Then the bottom row of ten, face up, running the full width of the layout. That last row is where the peaks interlock: its fourth and seventh cards each help support two neighbouring peaks at once, which is why clearing one peak so often opens another.\n\nThat leaves 24 cards. One of them goes face up beside the peaks to open the waste pile and the other 23 stay face down as the stock. Ranks matter and suits never do, so there is no need to keep the layout tidy by colour.",

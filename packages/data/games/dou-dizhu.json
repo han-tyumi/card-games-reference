@@ -17,8 +17,10 @@
     "standard_decks": 1,
     "jokers": 2,
     "special_deck": null,
-    "extra_deck_for_large_groups": true,
-    "other": []
+    "other": [],
+    "decks_by_players": {
+      "4": 2
+    }
   },
   "setup": "Three players, and the shape of the game is one of them against the other two. Whoever wins the auction becomes the landlord, picks up three extra cards nobody else has seen, and plays a hand of twenty alone; the other two are peasants, allied for that hand and no longer. Those three face-down cards are what the auction is really for.\n\nThe pack is all fifty-four cards, both jokers included, and the jokers have to be distinguishable from one another — one red and one black. Suits are irrelevant everywhere in this game, for combinations, for beating and for anything else.\n\nThe ranking takes a minute and then never troubles you again. Bottom to top: 3, 4, 5, 6, 7, 8, 9, 10, jack, queen, king, ace, two, black joker, red joker. The two sitting above the ace is the piece that catches people, and the twos are correspondingly precious.\n\nNobody deals here; everyone draws for themselves. Somebody shuffles, the player on their left cuts, and the pack goes face down in the middle. Turn one card face up and push it back into the middle of the stack — whoever happens to draw it will open the auction. Players then take cards off the top in turn, anti-clockwise, looking at each as they go, until every hand holds seventeen. Three cards stay on the table, face down and untouched.",
   "layout": {
