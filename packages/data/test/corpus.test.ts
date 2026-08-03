@@ -11,7 +11,15 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
-import { blocks, buildDiagram, buildFigure, loadGames, loadSharedFigures } from "naibi";
+import {
+  blocks,
+  buildDiagram,
+  buildFigure,
+  decksNeeded,
+  loadGames,
+  loadSharedFigures,
+  playableWith,
+} from "naibi";
 
 const games = loadGames();
 
@@ -143,4 +151,38 @@ test("every step map is keyed inside the game's player range", () => {
     }
   }
   assert.deepEqual(strays, [], "step map keyed outside the game's player range");
+});
+
+test("a step map raises the requirement from its key upward", () => {
+  const bs = games.find((g) => g.id === "bs")!;
+  assert.equal(decksNeeded(bs, 5), 1, "five players still fit one pack");
+  assert.equal(decksNeeded(bs, 6), 2, "six is where the second pack starts");
+  assert.equal(decksNeeded(bs, 10), 2, "and it stays at two above that");
+});
+
+test("a per-player game climbs with every seat", () => {
+  const nertz = games.find((g) => g.id === "nertz")!;
+  assert.equal(decksNeeded(nertz, 2), 2);
+  assert.equal(decksNeeded(nertz, 8), 8, "everyone plays their own deck");
+});
+
+test("a game with no map needs the same packs at every count", () => {
+  const hearts = games.find((g) => g.id === "hearts")!;
+  assert.equal(decksNeeded(hearts, 3), hearts.equipment.standard_decks);
+  assert.equal(decksNeeded(hearts, 6), hearts.equipment.standard_decks);
+});
+
+test("a purpose-built pack is never playable from standard decks", () => {
+  // standard_decks 0 means a pack ordinary cards cannot stand in for, so no
+  // number of decks held may answer yes. This was a real defect in the picker
+  // before it was one on the site.
+  const koiKoi = games.find((g) => g.id === "koi-koi")!;
+  assert.equal(playableWith(koiKoi, 2, 8), false);
+});
+
+test("the decks a table needs are the decks it is asked for", () => {
+  const slapjack = games.find((g) => g.id === "slapjack")!;
+  assert.equal(playableWith(slapjack, 2, 1), true, "two players, one pack");
+  assert.equal(playableWith(slapjack, 8, 1), false, "eight players want two");
+  assert.equal(playableWith(slapjack, 8, 2), true);
 });

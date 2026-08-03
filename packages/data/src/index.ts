@@ -188,6 +188,43 @@ function titleCase(value: string): string {
   return value.charAt(0).toUpperCase() + value.slice(1);
 }
 
+/**
+ * How many standard decks a game needs at a given table size.
+ *
+ * `standard_decks` is the requirement at the *minimum* player count, which is
+ * what the schema has always said it was — so on its own it understates every
+ * game that wants another pack as the table grows. `decks_by_players` supplies
+ * the counts it cannot, and this is the only place that reading exists: the
+ * site and the picker both ask here, because two copies of it drifted once
+ * already.
+ *
+ * Keys are sorted rather than trusted in insertion order, so a hand-edited
+ * entry cannot change the answer by listing its steps out of order.
+ */
+export function decksNeeded(game: CardGame, players: number): number {
+  const steps = game.equipment.decks_by_players;
+  if (!steps) return game.equipment.standard_decks;
+
+  let needed = game.equipment.standard_decks;
+  for (const key of Object.keys(steps).sort((a, b) => Number(a) - Number(b))) {
+    if (players >= Number(key)) needed = steps[key]!;
+  }
+  return needed;
+}
+
+/**
+ * Can a reader holding this many decks play this game at this table size?
+ *
+ * A purpose-built pack (`standard_decks: 0`) is never yes, however many decks
+ * are held — hanafuda is not something a 52-card deck stands in for. The way
+ * this function fails badly is by saying yes when the answer is no, which
+ * looks like a working filter until someone reaches for a deck they do not own.
+ */
+export function playableWith(game: CardGame, players: number, decksHeld: number): boolean {
+  if (game.equipment.standard_decks === 0) return false;
+  return decksNeeded(game, players) <= decksHeld;
+}
+
 /** The at-a-glance rows shown above the rules in every output format. */
 export function facts(game: CardGame): [string, string][] {
   const rows: [string, string][] = [
