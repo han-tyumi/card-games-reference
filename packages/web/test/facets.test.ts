@@ -22,6 +22,7 @@ import {
   PREP,
   PREP_OWN_PACK,
   countLabel,
+  floorOptions,
   matches,
   nameMatch,
   plan,
@@ -414,6 +415,84 @@ test("the fallback text carries the name, aliases, category and tags", () => {
   assert.ok(text.includes("canasta"));
   assert.ok(text.includes("rummy"), "the category label is searchable");
   assert.equal(text, text.toLowerCase(), "compared against a lowercased query");
+});
+
+// --- the floor -------------------------------------------------------------
+
+test("the floor offers every value at or below the count, and no more", () => {
+  for (let count = 1; count <= 12; count++) {
+    const options = floorOptions(facets, { players: String(count) }, null);
+    assert.deepEqual(
+      options.map((o) => o.value),
+      counts(count),
+      `a party of ${count} was offered the wrong floors`,
+    );
+  }
+});
+
+test("no count chosen means no options", () => {
+  // The control has nothing to be below, and the page hides it.
+  assert.deepEqual(floorOptions(facets, {}, null), []);
+  assert.deepEqual(floorOptions(facets, { decks: "1" }, null), []);
+});
+
+test("an option's count is the number of games that floor actually shows", () => {
+  // Cross-checked against plan() for the same state rather than against a
+  // literal, so the number on the option cannot promise a different list from
+  // the one the page then renders.
+  const states: Record<string, string>[] = [
+    { players: "6" },
+    { players: "8", decks: "1" },
+    { players: "4" },
+  ];
+  for (const state of states) {
+    for (const option of floorOptions(facets, state, null)) {
+      const { order } = plan(facets, { ...state, from: option.value }, null);
+      assert.equal(option.count, order.length, `floor ${option.value} of ${state.players}`);
+      assert.ok(option.label.includes(String(option.count)), "the label hides its own count");
+      assert.ok(option.label.startsWith(option.value), "the label does not lead with the count");
+    }
+  }
+});
+
+test("the counts rise as the floor falls, because a wider range can only add games", () => {
+  const options = floorOptions(facets, { players: "8" }, null);
+  for (let i = 1; i < options.length; i++) {
+    assert.ok(
+      options[i - 1]!.count >= options[i]!.count,
+      `dropping the floor from ${options[i]!.value} to ${options[i - 1]!.value} lost games`,
+    );
+  }
+});
+
+test("the cliff the control exists to show is real", () => {
+  // A table of six has no way to discover that dropping to four widens the
+  // list substantially. If it ever stops being worth saying, this fails and
+  // somebody decides, rather than the control quietly costing a click for
+  // nothing.
+  const options = floorOptions(facets, { players: "6" }, null);
+  const atSix = options.find((o) => o.value === "6")!.count;
+  const atFour = options.find((o) => o.value === "4")!.count;
+  assert.ok(atFour > atSix, "widening 6 down to 4 no longer changes the list");
+});
+
+test("the option counts respect the other chips", () => {
+  // Not the whole corpus filtered by players alone: the number offered has to
+  // be the number the reader will get, with everything else they have set.
+  const plain = floorOptions(facets, { players: "6" }, null);
+  const narrowed = floorOptions(facets, { players: "6", difficulty: "simple" }, null);
+  assert.equal(plain.length, narrowed.length);
+  assert.ok(
+    narrowed.some((o, i) => o.count < plain[i]!.count),
+    "adding a difficulty ceiling changed none of the floor's counts",
+  );
+});
+
+test("the option for the count itself is the unwidened list", () => {
+  const options = floorOptions(facets, { players: "5" }, null);
+  const top = options.at(-1)!;
+  assert.equal(top.value, "5");
+  assert.equal(top.count, plan(facets, { players: "5" }, null).order.length);
 });
 
 // --- the predicate --------------------------------------------------------

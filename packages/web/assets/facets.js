@@ -287,6 +287,43 @@ export function writeQuery(state) {
 }
 
 /**
+ * The floors the reader may widen down to, each labelled with what it would show.
+ *
+ * Only values at or below the chosen count, so no invalid combination is
+ * reachable from the control at all — there is no push rule to learn, which is
+ * what two free bounds would have required.
+ *
+ * The counts are live because the cliff is otherwise invisible: a table of six
+ * has no way to discover that dropping to four takes them from 36 games to 56,
+ * and the payoff sits at irregular cliffs rather than a fixed offset, because
+ * the corpus clusters at maxima of 4 and 6.
+ *
+ * Each count comes from plan() run with that floor and everything else the
+ * reader has already set, so an option cannot promise a different list from the
+ * one the page then renders. Twelve passes over the facets per keystroke.
+ *
+ * @param {Facet[]} facets
+ * @param {Record<string, string>} state
+ * @param {Map<number, {s: number, m: number}> | null} hits
+ * @returns {{value: string, label: string, count: number}[]}
+ */
+export function floorOptions(facets, state, hits) {
+  const range = playerRange(state);
+  if (!range) return [];
+
+  const options = [];
+  for (let n = 1; n <= range.hi; n++) {
+    const { order } = plan(facets, { ...state, from: String(n) }, hits);
+    options.push({
+      value: String(n),
+      label: `${n} — ${order.length} game${order.length === 1 ? "" : "s"}`,
+      count: order.length,
+    });
+  }
+  return options;
+}
+
+/**
  * Does this game match the query, using only what the page already has?
  *
  * The fallback for a visitor whose search index has not arrived — offline on a
