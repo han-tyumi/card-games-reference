@@ -14,7 +14,7 @@ below was found by counting the corpus rather than by reading the code.
 | Solitaire and Players=1 are the same filter | All 11 solitaire games are `1-1`; no 1-player game sits outside the family. Agreement is redundant, disagreement is always empty. |
 | Players skips 7 | Chips are `1,2,3,4,5,6,8`. **22 games seat 7** and cannot be asked for. |
 | Players stops at 8 | 4 games seat 9-10 and 2 seat 11-12 (`baccarat` and `spoons` at 12, `bs` and `texas-holdem` at 10). |
-| Decks stops at 2 | Distinct deck counts are `0,1,2,3,6`. `hand-and-foot` needs 3 and `baccarat` 6. |
+| Decks stops at 2 | Distinct deck counts are `0,1,2,3,6`. `baccarat` needs 6 and `hand-and-foot` 3, so neither is reachable by any chip. Three more — `contract-rummy`, `indian-rummy`, `nertz` — fit a chip at their smallest table but need more than two decks by their largest, so a chip answers for part of their range only. Five games in total that the chips cannot ask for. |
 | The decks filter gives a false yes | 10 games declaring one deck are flagged `extra_deck_for_large_groups` and need a second near the top of their range. `matches()` never reads the flag, so "1 deck, 8 players" offers `bs`, `egyptian-ratscrew`, `mau-mau`, `rummy-500` and `slapjack`. |
 | The pack is unsearchable | `records.ts` indexes name, aliases, tags and the three prose fields. `equipment.special_deck` is not among them, so "euchre deck", "piquet pack" and "skat pack" return nothing though those exact phrases are in the data. |
 
@@ -33,62 +33,92 @@ pattern already in the same file, applied to the groups that never got it.
 
 ## What changes
 
-### 1. Players becomes a range over "supports", ranked by "ideal"
+### 1. Players: a headcount chip, widened only when asked
 
-A two-handle slider. A game matches when its span **overlaps** the selected
-range — not when it contains it. Overlap is what answers "we are six but one
-might sit out": a range of 5-6 should offer games seating exactly 5 and games
-seating exactly 6. Containment cannot express that, and asking whether a
-2-player game belongs in a 2-8 span has several defensible answers, which is how
-you know it is the wrong question.
+A row of chips for the count, derived `1` to `12`. One click finishes the most
+common input on the page — "we are five" — and that is the whole design
+constraint the earlier drafts kept losing.
 
-`ideal` is used for **ordering, never for filtering**. Every game has one and it
-always falls inside `min..max`, but no game is ideal at 7 and only two at each
-of 6 and 8 — so filtering on it would empty the list at 7 while looking like it
-was working. Instead, games whose `ideal` falls in the selected range sort
-first and carry a "best with N" marker. Seven players then yields 22 playable
-games with none falsely promoted; four yields 56 with the 37 best-fits on top.
+Three controls were tried and rejected against it, each for a measured reason:
 
-The slider spans 1 to 12, derived. Note that correctness and expressiveness want
-different bounds here: because a game is unreachable only when its **minimum**
-exceeds the top of the slider, and the largest minimum in the corpus is 4, a
-slider ending at 4 would already leave nothing unfilterable. It runs to 12 so
-that twelve people can *say* twelve.
+- **A two-thumb slider.** The general control, but it spends its entire
+  interaction budget on a number the reader already knows exactly, and on a
+  mouse it asks them to drag a ~25px thumb onto a precise tick. It also has no
+  native element, so it costs hand-written ARIA, `pointer-events` juggling on
+  thumb pseudo-elements, restacking when the thumbs coincide, and per-engine
+  thumb styling.
+- **A "someone can sit out" checkbox.** Fixed depth, wildly uneven value: it
+  gains a party of five **19 games** and a party of six **one**, with nothing in
+  the control to say which. The corpus clusters at maxima of 4 and 6, so the
+  payoff is at irregular cliffs, not a fixed offset.
+- **Two symmetric bounds.** Makes "we are five" a two-step operation — set the
+  lower, set the upper — for the most frequent input there is.
 
-**One track with two thumbs, built from two overlaid native
-`<input type="range">` elements.** The earlier draft proposed two stacked
-sliders on the grounds that a dual-thumb control has no native element. That was
-a false choice: the alternative to stacking them is not hand-rolled `div`s with
-written-out ARIA, it is two *real* range inputs positioned on the same track.
-Each keeps native keyboard handling, native focus, and a native screen-reader
-announcement, so the guarantees the radios gave up are all retained — the work
-moves into CSS rather than into re-implementing a widget.
+**The range is anchored at the top, because both reasons a table shrinks reduce
+from a number you know.** No-shows and sitting-out are the same input: you can
+always name the largest group who might turn up. So the chip is that number, and
+one optional control widens downward.
 
-The implementation notes that matter, because each is a known way this technique
-goes wrong:
+```
+Players   [Any] 1 2 3 4 [5] 6 7 8 9 10 11 12
+          ▸ Might you be fewer?
+```
 
-- The inputs need `pointer-events: none`, re-enabled on the thumb pseudo-element
-  (`::-webkit-slider-thumb`, `::-moz-range-thumb`), so a click reaches the thumb
-  the reader aimed at rather than whichever input is on top.
-- When both thumbs sit on the same value, one becomes ungrabbable. Raise the
-  lower input's stacking order once the two coincide, so the range can always be
-  reopened.
-- The two need distinct accessible names ("Fewest players", "Most players"), or
-  a screen reader announces one control twice.
-- Thumbs push rather than pass, so the range cannot invert.
+The widening control lives inside a native `<details>`, collapsed. It is a
+`<select>` offering only values at or below the chosen count, defaulting to the
+count itself, so it does nothing until touched and **no invalid combination is
+reachable** — raising the count leaves a lower floor alone, lowering the count
+below the floor clamps it. There is no push rule for a reader to learn, which
+two free bounds would have required.
 
-**The common case gets one gesture.** Most readers know their party size
-exactly; the range exists for the minority who might bench someone. So a click
-or tap anywhere on the track collapses both thumbs to that value — "we are
-four" in one action — and dragging a thumb away from the point is what opens a
-range. The label reads "4 players" when the thumbs coincide and "4-6 players"
-when they do not, so the control says which question it is currently answering.
-Arrow keys move the focused thumb alone; Home and End send it to its limit.
+`<details>` rather than a scripted toggle: it is native, keyboard-operable, and
+works with JavaScript off, matching every other control here. **It must open on
+load when the URL carries a floor** — a shared link that applies a filter from a
+collapsed panel is this document's own "says yes when the answer is no" in a new
+costume.
 
-The page still opens on the full span, because a filter that starts engaged
+Options carry live counts, because the cliff is otherwise invisible: a table of
+six has no way to discover that dropping to four takes them from 36 games to 56.
+
+### The range filters by overlap and ranks by coverage
+
+A game matches when its span **overlaps** the requested range. For 4-6, that is
+56 games; the 36 that play at *every* count in 4-6 are a strict subset.
+
+Neither set is the right filter on its own, and making the reader choose is a
+false choice. Containment as a gate hides 20 titles — `belote`, `canasta`,
+`contract-bridge` — that are perfect if four turn up, or that a party of six can
+play by benching two. Overlap alone leaves the safe-whatever-happens games
+unmarked.
+
+So: **filter on overlap, rank by coverage.** Games covering the whole range sort
+first and say so; partial ones follow, and the card already prints each game's
+own player range, so no extra explanation is needed. This is the same rule
+`ideal` gets, and for the same reason — a real signal that makes a terrible
+gate.
+
+That also keeps the control neutral about *why* the number varies. "As few as"
+says nothing about no-shows versus benching, and the two want opposite readings
+of the same result: with uncertain turnout, "plays any 4-6" is what you can
+commit to; with benching, the partial group is available too. The reader maps it
+to their own situation; the tool does not guess.
+
+### `ideal` orders, never filters
+
+Every game has one and it always falls inside `min..max`, but no game is ideal at
+7 and only two at each of 6 and 8 — filtering on it would empty the list at 7
+while looking like it was working. Games whose `ideal` falls in the range sort
+first within their coverage group and carry a "best with N" marker.
+
+The chips span 1 to 12, derived. Correctness and expressiveness want different
+bounds: a game is unreachable only when its **minimum** exceeds the top, and the
+largest minimum in the corpus is 4, so a row ending at 4 would already leave
+nothing unfilterable. It runs to 12 so that twelve people can *say* twelve.
+
+The page opens with no count selected, because a filter that starts engaged
 hides games from a reader who never touched it. Four would otherwise be the
-tempting default: it is the most accommodated count at 56 games and the most
-common `ideal` at 37.
+tempting default: the most accommodated count at 56 games, and the most common
+`ideal` at 37.
 
 ### 2. Decks derives its thresholds, and reads the extra-deck rule
 
@@ -105,9 +135,9 @@ than a constant:
 decksNeeded(game, n) = decks_by_players[largest key ≤ n] ?? standard_decks
 ```
 
-and a game matches when **some** seatable count in the selected range can be
-played with the decks in hand — the same existential reading the players range
-already uses:
+and a game matches when **some** seatable count in the requested range can be
+played with the decks in hand — the same overlap reading the players control
+uses, so the two chips agree about what "in range" means:
 
 ```
 ∃ n ∈ [range.lo, range.hi] ∩ [game.min, game.max] : decksNeeded(game, n) ≤ decksHeld
@@ -275,16 +305,16 @@ records of one fact waiting to disagree.
 
 ## Derivation, and the claims that get tests
 
-Generated values are derived; claims get tests. The chip and slider bounds are
-generated output, so they come from the corpus. These are the claims:
+Generated values are derived; claims get tests. The chip values are generated
+output, so they come from the corpus. These are the claims:
 
 - **Every game is reachable by some setting of every control.** Names no
   literal, so it cannot go stale, and it catches a future entry that the
   derivation rule mishandles however the values were produced.
 - **The derived player span stays at or under 16 seats.** This is the one place
-  a static assertion belongs: deriving a slider from data means one outlier can
-  wreck it, and a 60-player entry would stretch the control useless for the 2-6
-  bulk where nearly everything lives. Sixteen is a judgement, not a measurement —
+  a static assertion belongs: deriving the row from data means one outlier can
+  wreck it, and a 60-player entry would give the page a chip row useless for the
+  2-6 bulk where nearly everything lives. Sixteen is a judgement, not a measurement —
   it is four above the current maximum, which leaves room for ordinary growth and
   fails on an outlier. The test names the number so a person decides whether the
   control should change, rather than the page quietly reshaping itself.
