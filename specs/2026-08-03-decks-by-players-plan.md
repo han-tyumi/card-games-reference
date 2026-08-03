@@ -370,6 +370,22 @@ export function withDecksOnHand(
 }
 ```
 
+> **Record, not instruction:** this two-branch version is what actually landed
+> first, but it re-implemented `playableWith`'s own `standard_decks === 0` rule
+> in the one file told not to re-derive deck logic. "Fix round 1" (commit
+> `7928879`) replaced it with the single line below, because judging a game at
+> its own `players.min` calls `playableWith` correctly by construction — the
+> no-count branch does not need its own copy of a rule `playableWith` already
+> enforces:
+>
+> ```ts
+> return games.filter((game) => playableWith(game, players ?? game.players.min, decks));
+> ```
+>
+> What shipped is the single-line version. The two-branch code above is left as
+> written because this document describes what was built, in the order it was
+> built, not what should be built next.
+
 Then replace the `--decks` filter body in `main()` (currently lines 91-98):
 
 ```ts
@@ -525,7 +541,7 @@ Expected: PASS.
 - [ ] **Step 6: Run the gate**
 
 Run: `npm run check`
-Expected: exit 0. `docs/` changes because the embedded facet JSON gained `dk`;
+Expected: exit 0. `docs/` changes because the embedded facet JSON gained `dn`;
 run `npm run build` and commit the regenerated site with the change.
 
 - [ ] **Step 7: Commit**

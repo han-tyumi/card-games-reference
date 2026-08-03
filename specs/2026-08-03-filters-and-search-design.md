@@ -183,16 +183,21 @@ declared winner is how one of them silently stops working.
 ## The schema change
 
 `equipment.extra_deck_for_large_groups: boolean` becomes
-`equipment.decks_by_players: {integer: integer} | null` — how many decks are
+`equipment.decks_by_players: {integer: integer}` — how many decks are
 needed from each player count upward. Fourteen entries carry the flag today and
 each needs real numbers.
+
+> **As shipped:** the schema types this `{ "type": "object", "minProperties": 1 }`,
+> not `{integer: integer} | null`, so the field is **omitted** rather than set to
+> a literal `null`. A `null` fails schema validation. The rest of this section
+> predates that decision; read "keeps `null`" below as "omits the field".
 
 Two things make this cheaper than it looks. `proseFingerprint` covers only
 `setup`, `play` and `goal_and_scoring`, so **changing equipment does not
 invalidate any of the 72 `checked` records**. And the number is a fact about the
 game, so it comes from the sources the entry already attributes — it is not a
 figure anyone may estimate. An entry whose sources do not state a threshold
-keeps `null` and is treated as needing no extra deck, which is the honest
+omits the field and is treated as needing no extra deck, which is the honest
 reading of "nobody wrote it down" and matches how unstamped checks are handled
 elsewhere.
 
