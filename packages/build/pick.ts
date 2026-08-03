@@ -31,21 +31,17 @@ const DIFFICULTY_ORDER = ["simple", "easy", "medium", "complex"] as const;
  * The games a reader holding `decks` packs can play, at `players` if they said.
  *
  * Extracted from `main` so it can be tested: everything else here reads
- * `process.argv`, which is why the deck filter went wrong unnoticed. A
- * purpose-built pack (`standard_decks: 0`) is never playable from ordinary
- * decks however many are held, and without a player count the smallest table
- * is the only thing knowable.
+ * `process.argv`, which is why the deck filter went wrong unnoticed. Without a
+ * player count the smallest table is the only thing knowable, and that is
+ * exactly what `standard_decks` already means, so judging a game at its own
+ * `players.min` is correct by construction, not merely a shortcut for it.
  */
 export function withDecksOnHand(
   games: readonly CardGame[],
   decks: number,
   players?: number,
 ): CardGame[] {
-  return games.filter((game) =>
-    players === undefined
-      ? game.equipment.standard_decks > 0 && game.equipment.standard_decks <= decks
-      : playableWith(game, players, decks),
-  );
+  return games.filter((game) => playableWith(game, players ?? game.players.min, decks));
 }
 
 function argValue(flag: string): string | undefined {
