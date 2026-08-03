@@ -23,7 +23,7 @@
 import { pathToFileURL } from "node:url";
 
 import type { CardGame } from "naibi";
-import { categoryLabel, durationLine, loadGames, playableWith, playersLine } from "naibi";
+import { categoryLabel, decksNeeded, durationLine, loadGames, playableWith, playersLine } from "naibi";
 
 const DIFFICULTY_ORDER = ["simple", "easy", "medium", "complex"] as const;
 
@@ -42,6 +42,28 @@ export function withDecksOnHand(
   players?: number,
 ): CardGame[] {
   return games.filter((game) => playableWith(game, players ?? game.players.min, decks));
+}
+
+/**
+ * The deck requirement as the picker prints it, at the table size asked for
+ * (or the game's minimum, if none was given).
+ *
+ * Extracted for the same reason `withDecksOnHand` was: reading
+ * `standard_decks` straight off the entry prints the requirement at the
+ * SMALLEST table, which understates every other one -- 500 Rummy, BS,
+ * Egyptian Ratscrew and President all want a second pack by eight players and
+ * printed "1 deck" regardless, even after the filter itself was fixed to know
+ * better. A `special_deck` that also scales (mau-mau, at six or more players)
+ * needs both halves said, because `??` alone means the reader sees the pack
+ * name and never learns the count doubles.
+ */
+export function deckLabel(game: CardGame, players?: number): string {
+  const n = decksNeeded(game, players ?? game.players.min);
+  const count = `${n} deck${n === 1 ? "" : "s"}`;
+  if (!game.equipment.special_deck) return count;
+  return game.equipment.decks_by_players
+    ? `${game.equipment.special_deck}; ${count} at this table`
+    : game.equipment.special_deck;
 }
 
 function argValue(flag: string): string | undefined {
@@ -161,9 +183,7 @@ function main(): number {
 
   const width = Math.max(...games.map((g) => g.name.length));
   for (const game of games) {
-    const needs =
-      game.equipment.special_deck ??
-      `${game.equipment.standard_decks} deck${game.equipment.standard_decks === 1 ? "" : "s"}`;
+    const needs = deckLabel(game, players);
     console.log(
       `  ${game.name.padEnd(width)}  ${durationLine(game).padEnd(14)} ` +
         `${game.difficulty.padEnd(8)} ${needs}`,
