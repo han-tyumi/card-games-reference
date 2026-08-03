@@ -380,7 +380,11 @@ the section below explains does not work, so those passes are not evidence of
 anything and are not counted here.
 
 **48 entries, checked 2026-08-01** — pagat and Wikipedia, fetched and read
-side by side with our prose. The pass covered 60 entries on the day; the ones
+side by side with our prose. That describes the pass, not every entry in it:
+**10 of the 48 attribute only one of the two**, five naming pagat without
+Wikipedia and five the reverse, so whatever the pass had for those ten is not
+recorded and they are the ten this section's source counts leave unaccounted
+for. The pass covered 60 entries on the day; the ones
 since re-read against further sources carry a later date, so the count above is
 what still rests on this pass alone. At a bar of 80% shared structure or 8
 identical consecutive words: **39 of the 60 flagged, 36 verbatim runs**. Rewritten:

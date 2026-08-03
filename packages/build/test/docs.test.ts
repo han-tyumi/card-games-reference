@@ -146,6 +146,34 @@ test("how many sources each check had is recorded, and the gap is counted", () =
   assert.deepEqual(thin, [], "entries recording a check against fewer than two sources");
 });
 
+test("the 2026-08-01 pass is described as it was, not as it reads", () => {
+  // "pagat and Wikipedia" describes what the pass worked from, and for ten of
+  // its entries the attribution names only one of them. That gap is why the
+  // source counts above stop at 38 rather than 48, so it is stated rather than
+  // left for the next reader to rediscover -- and stated means tested.
+  const stated = /\*\*(\d+) of the 48 attribute only one of the two\*\*/.exec(contributing);
+  assert.ok(stated, "CONTRIBUTING no longer states how many of the pass attribute one source");
+
+  const pass = games.filter((game) => game.checked?.date === "2026-08-01");
+  const partial = pass.filter((game) => {
+    const named = new Set(game.sources_consulted);
+    return !named.has("Pagat") || !named.has("Wikipedia");
+  });
+
+  assert.equal(
+    partial.length,
+    Number(stated[1]),
+    "CONTRIBUTING's count of 2026-08-01 entries attributing one source no longer matches",
+  );
+  // The ten are exactly the ones the source record has to skip. If a backfill
+  // ever covers them, both numbers move together or this fails.
+  assert.equal(
+    pass.length - partial.length,
+    pass.filter((game) => game.checked?.sources).length,
+    "the entries attributing both sources are no longer the entries recording them",
+  );
+});
+
 test("every file the README links to exists", () => {
   const missing: string[] = [];
 
