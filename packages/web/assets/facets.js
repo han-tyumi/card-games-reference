@@ -28,6 +28,34 @@
 export const DIFFICULTY = { simple: 0, easy: 1, medium: 2, complex: 3 };
 
 /**
+ * What a game asks you to do to a deck, as independent capabilities.
+ *
+ * Bits and a subset test rather than a ceiling, because these are not degrees
+ * of one thing. A ceiling claims that accepting the strictest accepts
+ * everything milder, and someone whose deck has no jokers can strip cards
+ * happily while still being unable to add one — so "willing to strip" does not
+ * contain "can add jokers" in either direction. Modelled as a ceiling, that
+ * reader is handed games they cannot play, which is the false yes this whole
+ * module exists to remove.
+ *
+ * This is the entire vocabulary the checkboxes offer, so an unknown token from
+ * a URL contributes nothing rather than being read as a number.
+ *
+ * @type {Record<string, number>}
+ */
+export const PREP = { jokers: 1, strip: 2 };
+
+/**
+ * A pack that no standard deck becomes and no checkbox can offer — hanafuda.
+ *
+ * Deliberately outside PREP: a game carrying it is unreachable the moment the
+ * control is touched at all, which is how `standard_decks: 0` already behaves
+ * under the deck count. It is not "stripping plus jokers"; it is a different
+ * kind of obstacle, and pretending otherwise is the modelling error again.
+ */
+export const PREP_OWN_PACK = 4;
+
+/**
  * @typedef {object} Facet
  * @property {string} s name, aliases, category and tags, for the offline fallback
  * @property {string} c category id
@@ -35,6 +63,7 @@ export const DIFFICULTY = { simple: 0, easy: 1, medium: 2, complex: 3 };
  * @property {number} hi most players
  * @property {number} i the count the game is best with; orders, never filters
  * @property {number} d standard decks needed; 0 means a purpose-built pack
+ * @property {number} p what must be done to a deck: PREP bits, or PREP_OWN_PACK
  * @property {number[] | null} dn decks needed at each seat from `lo` upward
  * @property {number | null} max longest run in minutes, null if open-ended
  * @property {string} diff difficulty
@@ -74,7 +103,7 @@ export function playerRange(criteria) {
 /**
  * @param {Facet} facet
  * @param {{category?: string, players?: string, from?: string, decks?: string,
- *   minutes?: string, difficulty?: string}} criteria
+ *   minutes?: string, difficulty?: string, prep?: string}} criteria
  * @returns {boolean}
  */
 export function matches(facet, criteria) {
@@ -139,6 +168,18 @@ export function matches(facet, criteria) {
     if (!playable) return false;
   }
 
+  // Untouched means no claim was made, so it constrains nothing -- the same
+  // reading an unset chip gets everywhere else here. Once anything is ticked
+  // the reader has said what they can do, and a game qualifies when everything
+  // it asks for is among it. That is why ticking both boxes shows one game
+  // fewer than ticking neither: koi-koi wants a pack neither box offers, and
+  // "I can do these two things" is a claim that excludes it.
+  if (criteria.prep) {
+    let held = 0;
+    for (const token of criteria.prep.split(",")) held |= PREP[token] ?? 0;
+    if ((facet.p & ~held) !== 0) return false;
+  }
+
   // An open-ended game ("60+") has no upper bound, so it can never be promised
   // to finish inside one.
   if (criteria.minutes && (facet.max === null || facet.max > Number(criteria.minutes))) {
@@ -162,7 +203,18 @@ export function matches(facet, criteria) {
  * The chip groups that can be carried in a URL. `q` is handled separately
  * because it is free text rather than one of a fixed set.
  */
-export const PARAMS = ["category", "players", "from", "decks", "minutes", "difficulty"];
+export const PARAMS = ["category", "players", "from", "decks", "minutes", "difficulty", "prep"];
+
+/**
+ * The params holding a list rather than one value, comma-separated.
+ *
+ * Named here rather than inferred from the markup, because readQuery has to
+ * validate a list token by token and the print sheet has no markup to infer
+ * from. A group that becomes multi-select without joining this set would have
+ * its whole value checked against `allowed` as one string, match nothing, and
+ * be dropped silently — a filter that stops working rather than one that errors.
+ */
+export const MULTI = new Set(["category", "prep"]);
 
 /**
  * Filter state out of a query string, so a filtered view can be linked to.
@@ -192,7 +244,24 @@ export function readQuery(search, allowed) {
 
   for (const name of PARAMS) {
     const value = params.get(name);
-    if (value && (!allowed || allowed[name]?.has(value))) state[name] = value;
+    if (!value) continue;
+
+    if (!MULTI.has(name)) {
+      if (!allowed || allowed[name]?.has(value)) state[name] = value;
+      continue;
+    }
+
+    // Token by token, so one stale value in a list does not take the rest of
+    // the list with it. Order is the order given and duplicates collapse, which
+    // is what makes writeQuery(readQuery(s)) settle rather than oscillate.
+    /** @type {string[]} */
+    const kept = [];
+    for (const token of value.split(",")) {
+      if (!token || kept.includes(token)) continue;
+      if (allowed && !allowed[name]?.has(token)) continue;
+      kept.push(token);
+    }
+    if (kept.length) state[name] = kept.join(",");
   }
   return state;
 }
