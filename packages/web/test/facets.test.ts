@@ -570,6 +570,31 @@ test("describe is the same list the reason is built from", () => {
   }
 });
 
+test("every control the index offers can be said in words", () => {
+  // Driven from PARAMS, so a control added without a phrase fails here rather
+  // than printing a sheet that quietly understates what it is. The print
+  // sheet's own phrase map was never extended when a control was added, which
+  // is exactly the failure this replaces -- and it is the copy nobody looks at
+  // until it is on paper.
+  const chips = allowedChips();
+  for (const name of PARAMS) {
+    // `from` has no phrase of its own: it widens `players`, and the two are
+    // said together as one range.
+    if (name === "from") continue;
+    for (const value of chips[name] ?? []) {
+      if (!value) continue;
+      const said = describe({ [name]: value }, FAMILIES);
+      assert.ok(said.length > 0, `${name}=${value} cannot be said in words`);
+    }
+  }
+});
+
+test("a range is said as a range on the printed sheet too", () => {
+  // The sheet used to read "6 players" for a filter that was really 4-6, which
+  // is the printed version of saying yes when the answer is no.
+  assert.deepEqual(describe({ players: "6", from: "4" }, FAMILIES), ["4-6 players"]);
+});
+
 // --- the floor -------------------------------------------------------------
 
 test("the floor offers every value at or below the count, and no more", () => {
