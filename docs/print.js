@@ -10,18 +10,7 @@
  * paper.
  */
 
-import { countLabel, plan, readQuery } from "./facets.js";
-
-/**
- * How a chip's value reads in a sentence, for the line above the games.
- * @type {Record<string, (value: string) => string>}
- */
-const PHRASE = {
-  players: (/** @type {string} */ v) => `${v} player${v === "1" ? "" : "s"}`,
-  decks: (/** @type {string} */ v) => `${v} deck${v === "1" ? "" : "s"}`,
-  minutes: (/** @type {string} */ v) => `${v} minutes or less`,
-  difficulty: (/** @type {string} */ v) => `${v} or simpler`,
-};
+import { countLabel, describe, plan, readQuery } from "./facets.js";
 
 const data = document.getElementById("facets");
 const labels = document.getElementById("labels");
@@ -43,19 +32,6 @@ if (data && labels && what && whole && button) {
   // index had filtered out. A value nothing matches simply shows nothing.
   const state = readQuery(location.search);
 
-  /** The filters, said in words, so a printed sheet explains itself. */
-  const describe = () => {
-    const said = [];
-    if (state.category) said.push(families[state.category] ?? state.category);
-    for (const name of ["players", "decks", "minutes", "difficulty"]) {
-      const value = state[name];
-      const phrase = PHRASE[name];
-      if (value && phrase) said.push(phrase(value));
-    }
-    if (state.q) said.push(`matching “${state.q}”`);
-    return said;
-  };
-
   /** @param {Map<number, {s: number, m: number}> | null} hits */
   const apply = (hits) => {
     const { order } = plan(facets, state, hits);
@@ -64,7 +40,13 @@ if (data && labels && what && whole && button) {
       article.hidden = !showing.has(i);
     });
 
-    const said = describe();
+    // The filters, said in words, so a printed sheet explains itself. The same
+    // describe() the index's empty state uses: they are the same sentence for
+    // the same reason -- a short list with no controls visible to explain it --
+    // and this page used to say it separately, in a map that had to be extended
+    // by hand for every new control. It was never extended, which is how a
+    // printed sheet would have gone on claiming to be unfiltered.
+    const said = describe(state, families);
     what.textContent =
       countLabel(order.length, facets.length) + (said.length ? ` · ${said.join(" · ")}` : "");
     // The booklet does the whole corpus better, and saying so costs nothing.
