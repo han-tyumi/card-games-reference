@@ -1,5 +1,7 @@
 # Naibi — phase 2 of the filters work
 
+- **Status:** Done — the work it hands over shipped in v0.3.3
+
 ## Where things stand (verified, not assumed)
 
 `main` is at **v0.3.2**, tagged, released, booklet attached. Everything from the

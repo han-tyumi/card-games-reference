@@ -422,7 +422,8 @@ classifies effort. Building the axis would mean inventing a per-entry judgement
 sourced from nothing, which is the same objection that keeps the time chips out,
 and it would need a new field on all 72 entries. The Family chip meanwhile
 already selects the eleven solitaire games, which are exactly the setup-heavy
-ones — all eleven carry a `layout`. Equipment
-beyond the deck — the cribbage board, the chips, the spoons — is not filterable
+ones — all eleven carry a `layout`.
+
+Equipment beyond the deck — the cribbage board, the chips, the spoons — is not filterable
 here; ten games declare something, which is too few to earn a control and enough
 to be worth a line on the card.
