@@ -28,6 +28,7 @@
     "pdf": "node packages/build/build-pdf.ts",
     "web": "node packages/web/build-web.ts",
     "og": "node packages/web/build-og.ts",
+    "update-notice": "node packages/web/check-update-notice.ts",
     "release": "node packages/build/release.ts",
     "pick": "node packages/build/pick.ts",
     "originality": "node packages/build/originality.ts",

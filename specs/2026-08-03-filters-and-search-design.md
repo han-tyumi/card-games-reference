@@ -406,6 +406,13 @@ expensive recurring mistake. Chromium is not in CI, so **a green `npm run check`
 does not cover these three**, and a change to `app.js` needs the browser pass
 again.
 
+A fourth behaviour is in the same position and now has a committed check:
+whether a deploy reaches a reader at all — the service worker taking over and
+the page raising its update notice. `npm run update-notice` drives both paths
+(a tab left open, and a navigation after a deploy), carries its own controls,
+and was reddened by three separate breakages. Same caveat as the three above:
+it needs `npm install --no-save playwright` and is not in the gate.
+
 ## Not in scope
 
 Time chips have the same hand-typed literals and should get the same derivation,
