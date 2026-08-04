@@ -171,7 +171,7 @@ test("every family in the corpus has a chip to filter by", () => {
   // it, and without this the family would simply be unreachable from the index
   // with nothing failing. The count is asserted too, so a chip for a category
   // that no longer exists is caught from the other side.
-  const group = filterGroups(text("index.html")).find((g) => g.label === "Family");
+  const group = filterGroups(text("index.html")).find((g) => g.label === "Family (any of)");
   assert.ok(group, "the index has no Family facet");
 
   const values = [...group.inner.matchAll(/<input[^>]*value="([^"]*)"/g)].map((m) => m[1]!);
@@ -197,7 +197,7 @@ test("every family in the corpus has a chip to filter by", () => {
 test("a family chip does not repeat the heading it sits under", () => {
   // "Rummy family" under a heading reading FAMILY says it twice, and
   // "Solitaire (1 player)" repeats the Players chips two rows above.
-  const group = filterGroups(text("index.html")).find((g) => g.label === "Family");
+  const group = filterGroups(text("index.html")).find((g) => g.label === "Family (any of)");
   assert.ok(group);
   const labels = [...group.inner.matchAll(/<label for="category-\d+">([^<]+)<\/label>/g)]
     .map((m) => m[1]!)
@@ -686,7 +686,7 @@ test("each filter is one labelled group, which is what the spacing relies on", (
   // stand alone here and read as a heading with no noun -- at most WHAT.
   assert.deepEqual(
     groups.map((g) => g.label),
-    ["Players", "Decks on hand", "Your deck", "Time", "Difficulty (at most)", "Family"],
+    ["Players", "Decks on hand", "Your deck", "Time", "Difficulty (at most)", "Family (any of)"],
   );
   for (const group of groups) {
     assert.match(group.inner, /^<span class="facetlabel"[^>]*>[^<]+<\/span><div class="chips"/);

@@ -684,9 +684,14 @@ ${/* Last, because the four above answer "what can we play right now" and this
      constraint. Built from CATEGORY_ORDER rather than typed out, so a category
      added to the schema gets a chip instead of being quietly unfilterable, and
      it is an exact match rather than a ceiling. */ ""}
+${/* "(any of)" for the same reason difficulty says "(at most)": the heading is
+     where this page states a group's semantics, and a ticked checkbox chip
+     looks exactly like a selected radio chip. Driving it in a browser is what
+     showed that -- nothing on the page said these two rows behave differently
+     from the four above them. */ ""}
 ${chipGroup(
   "category",
-  "Family",
+  "Family (any of)",
   CATEGORY_ORDER.map((c) => [c, chipLabel(c)] as [string, string]),
   "checkbox",
 )}
