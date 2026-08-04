@@ -686,7 +686,7 @@ test("each filter is one labelled group, which is what the spacing relies on", (
   // stand alone here and read as a heading with no noun -- at most WHAT.
   assert.deepEqual(
     groups.map((g) => g.label),
-    ["Players", "Decks on hand", "Your deck", "Time", "Difficulty (at most)", "Family (any of)"],
+    ["Players", "Decks on hand", "Your deck (standard 52)", "Time", "Difficulty (at most)", "Family (any of)"],
   );
   for (const group of groups) {
     assert.match(group.inner, /^<span class="facetlabel"[^>]*>[^<]+<\/span><div class="chips"/);
@@ -821,7 +821,7 @@ test("the preparation boxes are checkboxes, and say what they rule out", () => {
   // than claims, so ticking both is "a plain 52 and nothing done to it" -- the
   // most common request on this axis, which the capability model could not
   // express at any setting.
-  const group = filterGroups(text("index.html")).find((g) => g.label === "Your deck");
+  const group = filterGroups(text("index.html")).find((g) => g.label === "Your deck (standard 52)");
   assert.ok(group, "the index has no preparation group");
   assert.equal((group.inner.match(/<input type="checkbox"/g) ?? []).length, 2);
   assert.equal((group.inner.match(/<input type="radio"/g) ?? []).length, 0);
@@ -836,6 +836,31 @@ test("the preparation boxes are checkboxes, and say what they rule out", () => {
   for (const label of labels) {
     assert.match(label, /^No /, `"${label}" reads as a capability rather than an exclusion`);
   }
+});
+
+test("the preparation heading states the premise its chips are read under", () => {
+  // Either box also rules out a game needing a purpose-built pack -- koi-koi,
+  // which removes no cards at all. Without "standard 52" in the heading,
+  // "No cards removed" excludes that game for a reason its own label does not
+  // give, and a control whose effect outruns its label is the same class of
+  // problem as one that says yes when the answer is no.
+  const groups = filterGroups(text("index.html"));
+  const prep = groups.find((g) => g.label.startsWith("Your deck"));
+  assert.ok(prep, "the index has no preparation group");
+  assert.match(prep.label, /standard 52/, "the preparation heading states no premise");
+
+  // The corpus fact the premise covers, so this stops mattering honestly if it
+  // ever stops being true rather than by the heading quietly going stale.
+  const ownPack = games.filter((g) => g.equipment.standard_decks === 0);
+  assert.ok(
+    ownPack.length > 0,
+    "no game needs a purpose-built pack any more, so the premise covers nothing",
+  );
+
+  // Stating semantics in the heading is this page's own convention, not a
+  // one-off: two other groups already do it.
+  const stated = groups.filter((g) => /\(.+\)$/.test(g.label)).map((g) => g.label);
+  assert.ok(stated.length >= 3, `only ${stated.length} groups state their semantics: ${stated}`);
 });
 
 test("the empty state has somewhere to put its reason, and keeps its button", () => {

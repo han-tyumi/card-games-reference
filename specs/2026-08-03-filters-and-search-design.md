@@ -187,6 +187,16 @@ offers and goes with either one, which is the same treatment `standard_decks: 0`
 already gets from the deck count. Requirements are derived from `equipment`, so
 they cannot drift.
 
+The group is headed **Your deck (standard 52)**, and the parenthetical is
+load-bearing rather than decorative. Measured, the two boxes overlap on exactly
+two entries: `five-hundred`, which genuinely carries both obstacles, and
+`koi-koi`, which carries neither and is excluded by both. Without the premise in
+the heading, *No cards removed* would be removing a game that removes no cards —
+a control whose effect outruns its own label, which is a quieter version of the
+fault this document exists to fix. Stating a group's semantics in its heading is
+the page's existing convention, shared with *Difficulty (at most)* and
+*Family (any of)*.
+
 > **As shipped, and a correction.** This section first specified the boxes as
 > *capabilities* — "I have jokers", matched by subset — and that model could not
 > express the most common request on the axis at all. Nothing ticked meant "no

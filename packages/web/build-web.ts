@@ -699,10 +699,16 @@ ${/* Two independent obstacles, each box ruling out the games that carry it, so
      ticking both is "a plain 52 and nothing done to it" -- 50 games, and the
      most common request on this axis. Checkboxes rather than a ceiling because
      neither obstacle contains the other: a deck with no jokers can still have
-     cards taken out of it. */ ""}
+     cards taken out of it.
+
+     "(standard 52)" states the premise both chips are read under, the way
+     "(at most)" and "(any of)" do for the groups below. It is not decoration:
+     either box also rules out koi-koi, which needs a hanafuda pack and so
+     removes no cards at all -- without the premise, "No cards removed" would
+     be excluding a game for a reason its own label does not give. */ ""}
 ${chipGroup(
   "prep",
-  "Your deck",
+  "Your deck (standard 52)",
   [
     ["jokers", "No jokers needed"],
     ["strip", "No cards removed"],
