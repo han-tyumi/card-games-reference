@@ -1,0 +1,85 @@
+name: Clean up previews
+
+# A preview outlives the branch that made it unless something removes it. Each
+# is a copy of the whole site -- three megabytes -- so left alone they pile up
+# in the `site` branch's history for no one's benefit.
+#
+# On close rather than on merge: a pull request that was abandoned has no more
+# use for its preview than one that landed.
+on:
+  pull_request:
+    types: [closed]
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: "Preview slug to remove (the branch name, slashes as dashes)"
+        required: true
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+# Shares the deploy workflow's group so a cleanup cannot race a publish and
+# upload a half-written tree.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  remove:
+    # Same rule as Deploy: a fork's branch never had a preview to remove.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Remove the preview, if it has one
+        id: remove
+        env:
+          BRANCH: ${{ github.event.pull_request.head.ref }}
+          GIVEN: ${{ inputs.slug }}
+        run: |
+          set -euo pipefail
+          SLUG=$(printf '%s' "${GIVEN:-$BRANCH}" | tr '/' '-' | tr -cd 'A-Za-z0-9._-')
+          # Alphanumeric first, so "." and ".." can never reach `git rm -r`.
+          case "$SLUG" in
+            [A-Za-z0-9]*) ;;
+            *) echo "Refusing to clean a preview slot named '$SLUG'"; exit 1 ;;
+          esac
+          REMOTE="https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          if ! git clone --depth 1 --branch site "$REMOTE" site 2>/dev/null; then
+            echo "No site branch, so nothing to clean."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          cd site
+          if [ ! -d "preview/$SLUG" ]; then
+            echo "No preview for $SLUG."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git rm -rq "preview/$SLUG"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Remove the preview for $SLUG"
+          git push origin site
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+          echo "Removed preview/$SLUG" >> "$GITHUB_STEP_SUMMARY"
+
+      # Only when something actually went: a deploy that changes nothing still
+      # costs a Pages deployment and a minute of everyone's concurrency group.
+      - uses: actions/configure-pages@v5
+        if: steps.remove.outputs.changed == 'true'
+
+      - uses: actions/upload-pages-artifact@v3
+        if: steps.remove.outputs.changed == 'true'
+        with:
+          path: site
+
+      - id: deploy
+        if: steps.remove.outputs.changed == 'true'
+        uses: actions/deploy-pages@v4

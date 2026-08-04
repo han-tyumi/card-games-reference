@@ -1178,3 +1178,87 @@ test("the vendor links are framed as fallible, and invite correction", () => {
     "nothing invites a correction when the steps drift",
   );
 });
+
+// --- preview builds --------------------------------------------------------
+
+const preview = buildSite(games, true);
+const previewText = (name: string): string => {
+  const content = preview.get(name);
+  assert.ok(content !== undefined, `${name} was not generated in the preview`);
+  return typeof content === "string" ? content : content.toString("utf8");
+};
+
+test("a preview ships no service worker, and no page registers one", () => {
+  // Not a nicety. The worker's activate step deletes every cache that is not
+  // its own, and the Cache API is scoped to an origin rather than a path -- so
+  // a preview served at /naibi/preview/x/ wipes the offline copy of the real
+  // app at /naibi/. Measured in a shared browser profile before this existed:
+  // visiting the preview left one cache where production's had been.
+  assert.ok(!preview.has("sw.js"), "the preview ships a service worker");
+  for (const name of [...preview.keys()].filter((n) => n.endsWith(".html"))) {
+    assert.ok(
+      !previewText(name).includes("serviceWorker"),
+      `${name} registers a service worker in a preview`,
+    );
+  }
+});
+
+test("a preview is not installable", () => {
+  // Two entries on a home screen with the same name and icon, one of them a
+  // branch, is a worse outcome than not being installable at all.
+  assert.ok(!preview.has("manifest.webmanifest"));
+  for (const name of [...preview.keys()].filter((n) => n.endsWith(".html"))) {
+    assert.doesNotMatch(previewText(name), /rel="manifest"/, `${name} links a manifest`);
+  }
+});
+
+test("a preview keeps itself out of search results and out of the sitemap", () => {
+  assert.ok(!preview.has("sitemap.xml"), "a preview advertises a sitemap");
+  assert.ok(!preview.has("robots.txt"));
+  for (const name of [...preview.keys()].filter((n) => n.endsWith(".html"))) {
+    assert.match(previewText(name), /name="robots" content="noindex"/, `${name} is indexable`);
+  }
+});
+
+test("a preview still points its canonical URLs at the published site", () => {
+  // A preview is a copy of a page that lives at the real URL. Saying so is what
+  // stops the two competing in a search index, and it is why noindex above is a
+  // belt beside this brace rather than the only measure.
+  assert.match(previewText("index.html"), /<link rel="canonical" href="https:\/\/[^"]+\/">/);
+  const game = games[0]!;
+  assert.match(
+    previewText(`games/${game.id}.html`),
+    new RegExp(`<link rel="canonical" href="https://[^"]+/games/${game.id}\\.html">`),
+  );
+});
+
+test("a preview says on the page that it is not the published site", () => {
+  // The URL says /preview/ and nobody reads URLs on a phone.
+  assert.match(previewText("index.html"), /id="preview-banner"/);
+  assert.match(previewText("index.html"), /not the published site/);
+});
+
+test("a preview carries every page the site does", () => {
+  // The point is previewing the site, so a preview that quietly dropped pages
+  // would be worth less than nothing.
+  const sitePages = [...site.keys()].filter((n) => n.endsWith(".html")).sort();
+  const previewPages = [...preview.keys()].filter((n) => n.endsWith(".html")).sort();
+  assert.deepEqual(previewPages, sitePages);
+});
+
+test("preview mode cannot change what the published site is", () => {
+  // buildSite gained a parameter, and the failure that would matter is the
+  // default drifting. Byte-for-byte against a build that names no argument.
+  const published = buildSite(games);
+  const plain = buildSite(games, false);
+  assert.deepEqual([...published.keys()], [...plain.keys()]);
+  for (const [name, content] of published) {
+    const other = plain.get(name)!;
+    const equal =
+      typeof content === "string"
+        ? content === other
+        : content.equals(other as Buffer);
+    assert.ok(equal, `${name} differs between buildSite(games) and buildSite(games, false)`);
+  }
+  assert.ok(published.has("sw.js") && published.has("manifest.webmanifest"));
+});
