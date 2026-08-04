@@ -34,6 +34,7 @@ part.
 | [0016](0016-releases-cut-themselves-from-commit-subjects.md) | Releases cut themselves, from conventional commit subjects | Accepted |
 | [0017](0017-deploy-the-site-from-actions-after-the-tests.md) | Deploy the site from Actions, after the tests rather than beside them | Accepted |
 | [0018](0018-branch-previews-at-a-subpath.md) | Branch previews at a Pages subpath, from a composed `site` branch | Accepted |
+| [0019](0019-the-worker-declines-the-preview-subtree.md) | The site's service worker declines the preview subtree | Accepted |
 
 ## The format
 

@@ -15,6 +15,22 @@ self.addEventListener("activate", (event) => {
 });
 
 /*
+ * Branch previews are not this worker's to answer. Its scope is the site root,
+ * which CONTAINS preview/<branch>/, so without this it governs every preview
+ * URL -- and cache-first plus the permanent put below means the first version
+ * of a preview a browser ever loads is the version it keeps. Measured, not
+ * feared: with the server serving a changed preview, the page kept rendering
+ * the old one; offline, a preview URL was answered 200 with THIS site's
+ * index.html while the address bar still said preview; and a preview deleted
+ * from the branch went on being served long after the origin returned 404.
+ *
+ * Declining is the whole fix. It is not enough for a preview to ship no worker
+ * of its own -- that was the reasoning, and it only ever covered the other
+ * direction.
+ */
+const PREVIEWS = new URL("preview/", self.registration.scope).href;
+
+/*
  * Cache first. The content only changes when a new build is deployed, and a
  * reference that answers instantly beside a card table is worth more than one
  * that is a few hours fresher.
@@ -22,6 +38,7 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   const request = event.request;
   if (request.method !== "GET" || new URL(request.url).origin !== location.origin) return;
+  if (request.url.startsWith(PREVIEWS)) return;
 
   event.respondWith(
     caches.match(request).then((hit) => {

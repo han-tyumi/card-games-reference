@@ -21,6 +21,15 @@ name: Deploy
 # assumed. `--preview` in build-web.ts drops the worker, the manifest and the
 # sitemap, and marks every page noindex. Canonical URLs still point at
 # production, which is what keeps the two out of each other's search results.
+#
+# That reasoning is one-directional and used to stop here, which was a bug.
+# Containment runs the other way too: production's worker is registered from the
+# site root, so its scope CONTAINS preview/<branch>/ and it answered for every
+# preview URL -- cache-first, permanently, so a browser kept whichever build it
+# loaded first. Republishing a slot changed nothing a reviewer could see, and a
+# deleted slot went on being served after the origin returned 404. The worker
+# declines the preview subtree now (see PREVIEWS in build-web.ts); this file
+# publishes the bytes and never controlled what a browser does with them.
 on:
   workflow_run:
     workflows: ["Validate"]
@@ -231,7 +240,7 @@ jobs:
             '' \
             "Built from \`${SHA:0:7}\`. Updated in place on every push to this branch, and removed when this pull request closes." \
             '' \
-            'It is the real site at a subpath, with three deliberate differences: it does not work offline, it cannot be installed, and it is marked `noindex`. A preview ships no service worker, because the worker deletes every cache that is not its own and the Cache API is scoped to an origin rather than a path -- so one that had a worker would wipe the offline copy of the installed app.' \
+            'It is the real site at a subpath, with three deliberate differences: it does not work offline, it cannot be installed, and it is marked `noindex`. A preview ships no service worker, because the worker deletes every cache that is not its own and the Cache API is scoped to an origin rather than a path -- so one that had a worker would wipe the offline copy of the installed app. The published site'"'"'s worker also declines this path, which is what makes the line above true and this comment worth trusting: without that it served previews from its cache, and you would be reading whichever build you opened first.' \
             '' \
             '<sub>Posted by the Deploy workflow.</sub>')
 

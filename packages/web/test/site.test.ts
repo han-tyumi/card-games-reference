@@ -993,7 +993,9 @@ test("the precache covers everything the site is made of", () => {
       // Deliberately excluded: fetched by scrapers and crawlers, not the app,
       // plus the print sheet -- a megabyte holding every game, which would land
       // on every visitor's first load for a page most will never open. It is
-      // the one page that needs a connection.
+      // the one page that needs a connection the FIRST time; the fetch handler
+      // puts what it fetches, so it is offline-capable after one visit. Out of
+      // the install, not out of the cache.
       !["icons/og.png", "sitemap.xml", "robots.txt", "print.html"].includes(name),
   );
 
@@ -1016,6 +1018,95 @@ test("the precache includes the start URL itself", () => {
   // A visitor who installs from "/" and then goes offline requests "/", not
   // "/index.html".
   assert.ok(precache.includes("./"));
+});
+
+/**
+ * What the generated worker actually does with a URL.
+ *
+ * The worker is run, not read. Every question below is about behaviour -- does
+ * it answer this request or leave it to the network -- and a regex over the
+ * source answers a different question badly. `base` is where the site is
+ * mounted, because that is the whole of what the worker knows: `/naibi/` on
+ * Pages, `/` in every local server this project has used.
+ *
+ * @returns "handled" if the worker took the request, "declined" if it passed.
+ */
+function workerTakes(url: string, base = "https://example.test/naibi/"): "handled" | "declined" {
+  const listeners: Record<string, (event: unknown) => void> = {};
+  const fakeSelf = {
+    addEventListener: (type: string, fn: (event: unknown) => void) => void (listeners[type] = fn),
+    registration: { scope: base },
+    skipWaiting: () => {},
+    clients: { claim: () => {} },
+  };
+  const fakeCaches = {
+    match: async () => undefined,
+    open: async () => ({ put: () => {}, addAll: async () => {} }),
+    keys: async () => [],
+  };
+
+  // eslint-disable-next-line no-new-func -- the point is to run the shipped text
+  new Function("self", "caches", "fetch", "location", text("sw.js"))(
+    fakeSelf,
+    fakeCaches,
+    async () => ({ ok: true, clone: () => ({}) }),
+    new URL(base),
+  );
+
+  const fetchListener = listeners["fetch"];
+  assert.ok(fetchListener, "the worker registers no fetch listener at all");
+
+  let handled = false;
+  fetchListener({
+    request: { method: "GET", url },
+    respondWith: (answer: unknown) => {
+      handled = true;
+      // Swallow: the stubs above make it resolve, and an unhandled rejection
+      // here would fail a different test than the one that caused it.
+      void Promise.resolve(answer).catch(() => {});
+    },
+  });
+  return handled ? "handled" : "declined";
+}
+
+test("the worker answers for the site and leaves branch previews alone", () => {
+  // The worker's scope is the site root, which CONTAINS preview/<branch>/. Left
+  // to itself it therefore governs every preview URL, and cache-first with a
+  // permanent put means the first version of a preview a browser loads is the
+  // version it keeps. All three consequences were measured in Chromium before
+  // this existed: a redeployed preview kept rendering the old build; offline, a
+  // preview URL came back 200 with the published site's index.html while the
+  // address bar still said preview; and a preview deleted from the branch went
+  // on being served long after the origin returned 404.
+  //
+  // A preview shipping no worker of its own does not help and never did. That
+  // was the reasoning, it is in the test above, and it only covers the other
+  // direction.
+  assert.equal(workerTakes("https://example.test/naibi/"), "handled");
+  assert.equal(workerTakes("https://example.test/naibi/index.html"), "handled");
+  assert.equal(workerTakes("https://example.test/naibi/games/war.html"), "handled");
+
+  assert.equal(workerTakes("https://example.test/naibi/preview/a-branch/"), "declined");
+  assert.equal(workerTakes("https://example.test/naibi/preview/a-branch/app.js"), "declined");
+  assert.equal(
+    workerTakes("https://example.test/naibi/preview/a-branch/games/war.html"),
+    "declined",
+  );
+
+  // A page whose name merely starts with the word is the site's own, and a
+  // prefix test written without the slash would quietly stop caching it.
+  assert.equal(workerTakes("https://example.test/naibi/previews-explained.html"), "handled");
+
+  // Mounted at the root, which is how every local server here serves it. A
+  // hardcoded "/naibi/preview/" passes every line above and fails these.
+  assert.equal(workerTakes("https://example.test/", "https://example.test/"), "handled");
+  assert.equal(
+    workerTakes("https://example.test/preview/a-branch/", "https://example.test/"),
+    "declined",
+  );
+
+  // Still nothing to do with another origin, which was already true.
+  assert.equal(workerTakes("https://elsewhere.test/naibi/index.html"), "declined");
 });
 
 test("the cache name changes when the content does, and only then", () => {
@@ -1242,6 +1333,13 @@ test("a preview ships no service worker, and no page registers one", () => {
   // a preview served at /naibi/preview/x/ wipes the offline copy of the real
   // app at /naibi/. Measured in a shared browser profile before this existed:
   // visiting the preview left one cache where production's had been.
+  //
+  // This tests the ARTIFACT: what the build wrote. It says nothing about which
+  // worker serves a preview URL, and for a while this comment was cited as
+  // though it did -- a real measurement of one direction closing the file on
+  // the other. Production's worker covers the site root, and covered previews
+  // with it. "The worker answers for the site and leaves branch previews
+  // alone" is the test for that, and it runs the worker rather than reading it.
   assert.ok(!preview.has("sw.js"), "the preview ships a service worker");
   for (const name of [...preview.keys()].filter((n) => n.endsWith(".html"))) {
     assert.ok(
@@ -1286,6 +1384,12 @@ test("a preview does not promise what it has taken away", () => {
   // preview that sentence is false -- and a page saying yes when the answer is
   // no is the exact failure the filters below it exist to remove. Found by
   // looking at a built preview, not by a test, which is why there is one now.
+  //
+  // The offline half of that was true of the build and false of the URL until
+  // the worker stopped answering for previews: a reader carrying production's
+  // worker got a preview offline, so this suite was pinning the wrong sentence.
+  // It is right again, and it is only right because of the worker test above --
+  // which is why that one names this one.
   const previewIndex = previewText("index.html");
   assert.doesNotMatch(previewIndex, /Works offline/, "a preview claims to work offline");
   assert.doesNotMatch(previewIndex, /installs to your home screen/, "a preview claims to install");
@@ -1294,6 +1398,27 @@ test("a preview does not promise what it has taken away", () => {
   // And the published site still says it, because there it is true.
   assert.match(text("index.html"), /Works offline once/);
   assert.match(text("index.html"), /installs to your home screen/);
+});
+
+test("the preview's offline claim is true only because the worker declines it", () => {
+  // The two are one fact written in two places, and they were allowed to
+  // disagree for a whole release: the banner said a preview does not work
+  // offline while production's worker was serving previews from its cache, so
+  // for anyone who had the site it did. Asserting them separately is what let
+  // that happen -- each was checked against its own file and neither against
+  // the other.
+  //
+  // So the claim is tied to the mechanism. Take the exclusion out of the worker
+  // and this fails naming the sentence that became a lie, rather than leaving
+  // the sentence sitting there passing its own test.
+  const claim = /does not work offline/;
+  if (claim.test(previewText("index.html"))) {
+    assert.equal(
+      workerTakes("https://example.test/naibi/preview/a-branch/"),
+      "declined",
+      "a preview says it does not work offline while the site's worker still answers for it",
+    );
+  }
 });
 
 test("a preview says on the page that it is not the published site", () => {

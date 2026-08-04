@@ -124,6 +124,14 @@ function page(opts: {
    * Measured, not inferred: visiting a preview in a shared profile left one
    * cache where there had been the production one.
    *
+   * **That is only half of it, and the other half cost a bug.** Shipping no
+   * worker keeps a preview from destroying production's cache. It does nothing
+   * about production's worker, whose scope is the site root and therefore
+   * contains preview/<branch>/ — so it governed every preview URL, cache-first,
+   * and froze each one at the first build a browser happened to load. The fix is
+   * in the worker (search PREVIEWS in this file), not here. Both directions have
+   * to be said or the next reader concludes what this paragraph used to.
+   *
    * No manifest either, since an installable preview is a way to end up with
    * two apps on a home screen that look identical.
    */
@@ -138,6 +146,13 @@ function page(opts: {
   // worker would register under the preview's own scope and then delete the
   // real app's cache, because activate drops every cache that is not its own
   // and the Cache API is scoped to the origin rather than the path.
+  //
+  // The update notice goes with it, which is a cost rather than a consequence:
+  // a preview is the build most likely to change under a reader, and it is the
+  // one page that cannot tell them. It stays out because the notice is raised
+  // by a controllerchange on a worker a preview does not have. What made the
+  // staleness invisible was production's worker answering for preview URLs;
+  // that is fixed in the worker itself rather than by registering one here.
   const worker = opts.preview
     ? ""
     : `<script>
@@ -606,7 +621,12 @@ has moved, <a href="${ISSUES_URL}">say so</a> and it gets fixed.</p>
  * Every entry ships in the HTML because the alternative is fetching seventy-two
  * pages from the browser. That is a megabyte, so this page is deliberately left
  * out of the service worker's precache: it costs nothing until someone asks for
- * it, at the price of being the one page that does not work offline.
+ * it, at the price of being the one page that needs a connection the first time.
+ * Only the first time -- the fetch handler puts what it fetches, so it is in the
+ * cache from then on. This used to say "the one page that does not work
+ * offline", which the runtime put had made false: measured, print.html was
+ * absent from the cache before a visit, present after, and rendered all 72
+ * entries with the server killed.
  */
 function printPage(games: CardGame[], preview: boolean): string {
   const parts: string[] = [];
@@ -665,6 +685,15 @@ function indexPage(games: CardGame[], preview: boolean): string {
   // promise is false on one. Saying a page works offline when it does not is
   // the exact failure the filters below exist to remove, and it does not stop
   // being one because the page is a preview.
+  //
+  // "Has no service worker" is a fact about the build, and for a while it was
+  // being used as a fact about the URL, which it is not: production's worker
+  // covers the whole site root and was answering for previews too. For a reader
+  // carrying it, a preview DID work offline, and the sentence removed here was
+  // true while the banner put in its place was false. Both are right again now
+  // the worker declines the preview subtree -- measured: offline at a preview
+  // URL is an honest browser error, where it used to be production's own index
+  // page returned at 200 under a preview address.
   const promise = preview
     ? ""
     : ` Works offline once
@@ -831,6 +860,13 @@ ${chipGroup(
  * `noindex` on every page. See `page()` for why the worker in particular is not
  * optional — it would delete the installed app's offline cache.
  *
+ * What this function controls is the bytes written into a directory. What a
+ * returning reader is served is a separate question with a separate answer, and
+ * reading the first as the second is how production's worker came to be serving
+ * previews from its cache for as long as it did. The worker declines the preview
+ * subtree now; nothing here can decide that, and nothing here should be read as
+ * deciding it.
+ *
  * Canonical URLs still point at production, which is correct: a preview is a
  * copy of a page that lives there, and saying so is what keeps the two from
  * competing in a search index.
@@ -918,8 +954,10 @@ export function buildSite(
       f !== "sitemap.xml" &&
       f !== "robots.txt" &&
       // Every game in one file, a megabyte of it. Precaching would put that on
-      // every visitor's first load for a page most will never open, so this is
-      // the one page that needs a connection -- see printPage.
+      // every visitor's first load for a page most will never open, so it is
+      // left out of the install -- see printPage. Not out of the cache: the
+      // fetch handler puts every response it gets, so one visit is enough and
+      // it works offline from then on.
       f !== "print.html",
   );
   const version = contentHash(
@@ -950,6 +988,22 @@ self.addEventListener("activate", (event) => {
 });
 
 /*
+ * Branch previews are not this worker's to answer. Its scope is the site root,
+ * which CONTAINS preview/<branch>/, so without this it governs every preview
+ * URL -- and cache-first plus the permanent put below means the first version
+ * of a preview a browser ever loads is the version it keeps. Measured, not
+ * feared: with the server serving a changed preview, the page kept rendering
+ * the old one; offline, a preview URL was answered 200 with THIS site's
+ * index.html while the address bar still said preview; and a preview deleted
+ * from the branch went on being served long after the origin returned 404.
+ *
+ * Declining is the whole fix. It is not enough for a preview to ship no worker
+ * of its own -- that was the reasoning, and it only ever covered the other
+ * direction.
+ */
+const PREVIEWS = new URL("preview/", self.registration.scope).href;
+
+/*
  * Cache first. The content only changes when a new build is deployed, and a
  * reference that answers instantly beside a card table is worth more than one
  * that is a few hours fresher.
@@ -957,6 +1011,7 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   const request = event.request;
   if (request.method !== "GET" || new URL(request.url).origin !== location.origin) return;
+  if (request.url.startsWith(PREVIEWS)) return;
 
   event.respondWith(
     caches.match(request).then((hit) => {
