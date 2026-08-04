@@ -627,6 +627,38 @@ test("nothing to be fewer than means no options", () => {
   );
 });
 
+test("the floor's one is labelled alone, because it is not a smaller party", () => {
+  // Every other step of this control widens the party. The step to one does
+  // not: no game in the corpus seats one AND more than one, so dropping the
+  // floor there adds the solitaire games and nothing else -- the same ones
+  // whatever the ceiling. The bare number hid that, and "might you be fewer?"
+  // does not ask whether there might be nobody else.
+  //
+  // The reason is checked, not just the wording. A game seating 1-4 would make
+  // the step a real widening and the word an overstatement, and nobody would
+  // otherwise notice.
+  assert.deepEqual(
+    games.filter((g) => g.players.min === 1 && g.players.max > 1).map((g) => g.id),
+    [],
+    "a game now seats one and more, so the floor's one is a widening after all",
+  );
+
+  const options = floorOptions(facets, { players: "6" }, null);
+  const one = options.find((o) => o.value === "1")!;
+  assert.match(one.label, /alone/, "the step out of company reads as just another count");
+  for (const other of options.filter((o) => o.value !== "1")) {
+    assert.doesNotMatch(other.label, /alone/, `a floor of ${other.value} is not alone`);
+  }
+
+  // And it adds exactly the games that seat nobody else.
+  const two = options.find((o) => o.value === "2")!;
+  assert.equal(
+    one.count - two.count,
+    games.filter((g) => g.players.max === 1).length,
+    "the step to one no longer adds exactly the solitaire games",
+  );
+});
+
 test("an option's count is the number of games that floor actually shows", () => {
   // Cross-checked against plan() for the same state rather than against a
   // literal, so the number on the option cannot promise a different list from

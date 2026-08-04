@@ -330,7 +330,13 @@ export function floorOptions(facets, state, hits) {
     const { order } = plan(facets, { ...state, from: String(n) }, hits);
     options.push({
       value: String(n),
-      label: `${n} — ${order.length} game${order.length === 1 ? "" : "s"}`,
+      // One is not a smaller party, and the bare number hid that. No game in
+      // the corpus seats one AND more than one, so this step does not widen the
+      // list the way every other step does -- it adds the solitaire games and
+      // nothing else, the same ones whatever the ceiling. Saying "alone" is the
+      // difference between "there might be fewer of us" and "there might be
+      // nobody else", which is what the reader is actually choosing.
+      label: `${n}${n === 1 ? " (alone)" : ""} — ${order.length} game${order.length === 1 ? "" : "s"}`,
       count: order.length,
     });
   }

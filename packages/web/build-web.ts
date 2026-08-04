@@ -472,7 +472,12 @@ function playersFloor(values: string[]): string {
   return (
     `<details class="floor" id="floor" hidden>` +
     `<summary>Might you be fewer?</summary>` +
-    `<div class="floorrow"><label for="from">As few as</label>` +
+    // "Down to" rather than "As few as", which is two characters too long: the
+    // widest option is the one for a floor of 1, and once it gained "(alone)"
+    // the select pushed "As few as" onto a second line at 320px. Measured at
+    // 320 and 390 -- "Down to 1 (alone) — 72 games" sits on one line at both,
+    // and reads at least as well for a control that lowers a bound.
+    `<div class="floorrow"><label for="from">Down to</label>` +
     `<select id="from" name="from">` +
     values.map((v) => `<option value="${v}">${v}</option>`).join("") +
     `</select></div></details>`
