@@ -1,0 +1,556 @@
+/*
+ * Naibi.
+ *
+ * Designed for a phone propped against a glass on a table, which is where this
+ * gets read. That decides most of what follows: generous type, a measure that
+ * stays comfortable, controls big enough for a thumb, and a dark mode that does
+ * not glare across a dim room.
+ */
+
+:root {
+  --ink: #16202b;
+  --ink-soft: #55636f;
+  --accent: #1f3a5f;
+  --bg: #fbfaf8;
+  --panel: #ffffff;
+  --rule: #dfe3e8;
+  --red: #a4243b;
+  --shadow: 0 1px 2px rgba(22, 32, 43, 0.06), 0 4px 14px rgba(22, 32, 43, 0.05);
+  --radius: 10px;
+  /* Roughly 66 characters, the measure book typography settled on. */
+  --measure: 34rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #e6e9ec;
+    --ink-soft: #9aa6b2;
+    --accent: #8fb4dd;
+    --bg: #14181d;
+    --panel: #1b2027;
+    --rule: #2b323b;
+    --red: #e2879a;
+    --shadow: none;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+/* One ring for everything focusable, rather than a rule per control. Only the
+   search field and the filter chips had one, so the reset button, every link
+   and the update banner's Reload button fell back to the UA default -- which is
+   fine in Chromium and is not something to rely on. --accent is defined in both
+   schemes, so this follows the page rather than needing a dark-mode twin. */
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  /* 1.0625rem, not 17px. A hard px size here silently ignored the reader's
+     own default-font-size setting -- measured: doubling it moved the headings
+     and the chrome and left the rules text at 17px, which is the one thing
+     they were trying to enlarge. Browser zoom always worked; this is the other
+     accommodation, and it is the commoner one on a phone. The page's
+     horizontal padding stays in px so the column does not shrink as the type
+     grows. */
+  font: 400 1.0625rem/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* A word longer than the column breaks rather than pushing the page sideways.
+     It only acts when something would otherwise overflow, so ordinary text is
+     untouched. Without it "Concentration" set at 200% text was wider than a
+     320px column on its own, and the whole page scrolled to accommodate one
+     heading -- which is the exact failure SC 1.4.10 is about. */
+  overflow-wrap: break-word;
+  /* Clear the notch and the home indicator when installed. */
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+           env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+/* Horizontal padding in px, not rem, on purpose. The whole width budget the
+   drawings are sized against is what is left after this, and rem padding grows
+   with the reader's default font size -- so a reader who enlarges type was
+   handed a narrower column for the drawings, which is backwards. Measured at a
+   320px viewport, rem padding took the column from 285px to 250px between a
+   16px and a 32px root. The bottom padding stays in rem: that one should scale
+   with type. */
+.wrap { max-width: var(--measure); margin: 0 auto; padding: 0 18px 4rem; }
+.wrap--wide { max-width: 52rem; }
+
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+
+/* ---- masthead ---------------------------------------------------------- */
+
+.masthead { padding: 1.6rem 0 1rem; }
+.masthead h1 { margin: 0; font-size: 1.9rem; letter-spacing: -0.01em; color: var(--accent); }
+.masthead .pron { margin: 0.15rem 0 0; color: var(--ink-soft); font-size: 0.9rem; font-style: italic; }
+.masthead p.blurb { margin: 0.7rem 0 0; color: var(--ink-soft); font-size: 0.97rem; }
+
+/* Wraps to as many lines as it needs. Spacing separates the links rather than
+   punctuation: a drawn separator belongs to one item or the other, and whichever
+   you choose, wrapping eventually strands it at the start or end of a row. */
+.site-nav { display: flex; flex-wrap: wrap; gap: 0.35rem 1.15rem; margin: 0.8rem 0 0; }
+.site-nav a { font-size: 0.9rem; text-decoration: none; }
+.site-nav a:hover { text-decoration: underline; }
+
+.backlink {
+  display: inline-block;
+  margin: 1.2rem 0 0.4rem;
+  font-size: 0.92rem;
+  text-decoration: none;
+}
+.backlink::before { content: "\2190\00a0"; }
+
+/* ---- filters ----------------------------------------------------------- */
+
+.filters {
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 0.9rem;
+  margin: 1rem 0 1.4rem;
+  box-shadow: var(--shadow);
+}
+
+/* A group heading is a <span class="facetlabel"> rather than a <label>: it
+   names a group of controls, and a <label> with no `for` labels nothing. It
+   shares the styling because it is the same thing to look at. */
+.filters label, .filters .facetlabel { display: block; font-size: 0.78rem;
+  text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft);
+  margin-bottom: 0.3rem; }
+
+#q {
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+  font: inherit;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+}
+#q:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+/* A facet is a label and the chips it labels.
+   The gap ABOVE a facet has to be clearly bigger than the gap inside it. When
+   the spacing ran the other way the label sat flush under the previous row of
+   chips and a whole gap above its own, so every heading read as a caption for
+   the control before it. */
+.facet { margin-top: 1.15rem; }
+.facet > .facetlabel { margin-bottom: 0.35rem; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+/* Chips are radio inputs so the whole thing works with JavaScript disabled
+   and stays keyboard navigable. */
+.chips input { position: absolute; opacity: 0; pointer-events: none; }
+.chips label {
+  margin: 0;
+  padding: 0.42rem 0.72rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  text-transform: none;
+  letter-spacing: 0;
+  cursor: pointer;
+  /* Comfortable thumb target. */
+  min-height: 2.1rem;
+  display: inline-flex;
+  align-items: center;
+}
+.chips input:checked + label {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+@media (prefers-color-scheme: dark) {
+  .chips input:checked + label { color: #12171c; }
+}
+.chips input:focus-visible + label { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* The optional floor under the players row.
+   A native <details> for the same reasons the install instructions use one: it
+   is the browser's own disclosure widget, so it is keyboard operable and
+   announced correctly for no JavaScript at all. It is `hidden` until a count is
+   chosen, and no `display` is set on .floor itself, because a display rule here
+   would win against the hidden attribute and show an empty control. */
+.floor { margin-top: 0.5rem; }
+.floor summary {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  cursor: pointer;
+  padding: 0.2rem 0;
+  /* A marker plus text is the disclosure affordance; leaving it to the UA is
+     the point of using <details>. */
+  width: fit-content;
+}
+.floorrow { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.4rem; }
+/* Inline and sentence-case, unlike a group heading: it labels one control and
+   reads as the first half of a phrase the <select> finishes. */
+.filters .floorrow label {
+  display: inline;
+  margin: 0;
+  font-size: 0.85rem;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.floorrow select {
+  font: inherit;
+  font-size: 0.85rem;
+  padding: 0.3rem 0.4rem;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+}
+
+/* Said on the card when a range is set and this game seats every count in it.
+   Quieter than the meta line above it: it is a reassurance, not a fact about
+   the game the reader came for. */
+.covers:empty { display: none; }
+.covers {
+  margin: 0.2rem 0 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* The count and the print link share a line: the link is an action on exactly
+   what the count describes, and separating them would make that less obvious. */
+.countrow { display: flex; align-items: baseline; gap: 1rem; margin: 0 0 0.8rem; }
+.count { margin: 0; color: var(--ink-soft); font-size: 0.9rem; }
+
+.printlink {
+  margin-inline-start: auto;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  text-decoration: none;
+  border: 1px solid var(--rule);
+  border-radius: 0.4rem;
+  padding: 0.2rem 0.7rem;
+  color: var(--ink-soft);
+}
+.printlink:hover, .printlink:focus-visible { color: var(--ink); border-color: var(--accent); }
+.printlink[hidden] { display: none; }
+
+/* The sheet's own header, which is chrome on screen and a title on paper. */
+.sheet { margin: 0 0 1.5rem; }
+.sheet h1 { margin-bottom: 0.2rem; }
+.sheet-what { margin: 0 0 0.8rem; color: var(--ink-soft); font-size: 0.9rem; }
+.sheet-note { font-size: 0.9rem; color: var(--ink-soft); }
+.sheet .game[hidden], .sheet-actions[hidden] { display: none; }
+article.game[hidden] { display: none; }
+
+/* Shown only when a new deployment has taken over behind this page. Sits at the
+   top of the flow rather than floating over the text, so it never covers a rule
+   someone is mid-way through reading. */
+.updated {
+  margin: 1rem 0 0;
+  padding: 0.7rem 0.9rem;
+  background: var(--accent);
+  color: #fff;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+.updated[hidden] { display: none; }
+.updated button {
+  /* Pushed to the far end rather than left sitting against the text, which
+     left most of the banner empty on a phone. An auto margin rather than
+     justify-content: space-between, because the banner wraps: with the button
+     alone on a second line, space-between would drop it back to the left,
+     while an auto margin keeps it at the end either way. */
+  margin-inline-start: auto;
+  font: inherit;
+  font-weight: 600;
+  color: var(--accent);
+  background: #fff;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  min-height: 2.1rem;
+  cursor: pointer;
+}
+/* This button sits ON the accent colour, so the shared accent focus ring would
+   be invisible against its own banner. Each scheme names the value that shows:
+   white measures 11.5:1 on the light banner, and near-black 8.4:1 on the light
+   one dark mode uses. */
+.updated button:focus-visible { outline-color: #ffffff; }
+
+@media (prefers-color-scheme: dark) {
+  .updated { color: #12171c; }
+  .updated button { background: #12171c; color: var(--accent); }
+  .updated button:focus-visible { outline-color: #12171c; }
+}
+
+/* ---- game list --------------------------------------------------------- */
+
+/* grid-template-columns rather than nothing: a grid track's floor is its
+   content's min-content width, and overflow-wrap does not lower that -- it
+   avoids overflow without changing how wide the track thinks it must be. So at
+   200% text one long game name ("Concentration") held every card open past the
+   column. Naming the track with a zero floor is what lets it shrink. */
+.games {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.6rem;
+}
+
+.games a {
+  display: block;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 0.85rem 0.95rem;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: var(--shadow);
+}
+.games a:hover { border-color: var(--accent); }
+.games h2 { margin: 0; font-size: 1.05rem; color: var(--accent); }
+.games .meta { margin: 0.25rem 0 0; color: var(--ink-soft); font-size: 0.87rem; }
+/* Why a result matched. Empty unless a search is running, so it collapses. */
+.games .where:not(:empty) {
+  margin: 0.35rem 0 0;
+  font-size: 0.78rem;
+  color: var(--accent);
+}
+.games .where:empty { display: none; }
+
+.empty { padding: 1.4rem; text-align: center; color: var(--ink-soft); }
+
+/* ---- a game ------------------------------------------------------------ */
+
+.game h1 { font-size: 1.75rem; margin: 0.2rem 0 0.1rem; color: var(--accent); letter-spacing: -0.01em; }
+.game .aka { margin: 0 0 0.9rem; color: var(--ink-soft); font-size: 0.9rem; }
+
+.facts {
+  display: grid;
+  /* minmax(0, 1fr) rather than 1fr: a grid track's implicit floor is its
+     content's min-content width, so at 200% text "Also known as" held the label
+     column open and the value column pushed the page sideways instead of
+     wrapping. Measured at a 320px viewport with a 32px root, which is what SC
+     1.4.4 asks for. */
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.3rem 0.9rem;
+  margin: 0 0 1.4rem;
+  padding: 0.85rem 0.95rem;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  font-size: 0.92rem;
+  box-shadow: var(--shadow);
+}
+.facts dt { color: var(--ink-soft); }
+.facts dd { margin: 0; }
+
+.game h2 {
+  font-size: 1.02rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--ink-soft);
+  margin: 2rem 0 0.6rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* There was no h3 rule at all, so a subheading fell back to the UA default --
+   larger and heavier than the .game h2 above it, which left a subsection
+   out-shouting the section containing it. Game prose has no headings by design
+   (the format is paragraphs and bullets only), so this only ever surfaced on
+   About, which reuses this article shell. Kept below the h2's size and given
+   neither the caps nor the rule, so the hierarchy reads in the right order. */
+.game h3 {
+  margin: 1.5rem 0 0.4rem;
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.game p { margin: 0 0 0.85rem; }
+.game ul { margin: 0 0 0.9rem; padding-left: 1.15rem; }
+.game li { margin-bottom: 0.3rem; }
+
+/* A drawing's insides are laid out when it is written, so a breakpoint here can
+   only scale the whole thing down -- which is what made a thirteen-card strip
+   unreadable on a phone in the first place. The wrapping happens in the
+   geometry instead, before any of this. What is left for CSS is the two cases
+   that remain: shrink a drawing that is only a little too wide, and let a table
+   layout that genuinely cannot wrap keep its size and scroll. */
+figure { margin: 1.2rem 0; text-align: center; }
+figure .scroll { margin: 0; }
+figure svg { max-width: 100%; min-width: var(--floor); height: auto; }
+figcaption { margin-top: 0.4rem; color: var(--ink-soft); font-size: 0.85rem; }
+
+/* Wide tables and drawings scroll on their own rather than pushing the page
+   sideways. A touch device hides its scrollbar until you touch it, so a cut-off
+   column otherwise just looks like the last one: these are the usual pair of
+   gradients, one anchored to the content and one to the frame, so a shadow
+   shows at an edge exactly when there is something past it. */
+.scroll {
+  overflow-x: auto;
+  margin: 0 0 1rem;
+  -webkit-overflow-scrolling: touch;
+  background:
+    linear-gradient(to right, var(--bg) 30%, transparent) left / 2rem 100% no-repeat local,
+    linear-gradient(to left, var(--bg) 30%, transparent) right / 2rem 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgba(22, 32, 43, 0.16), transparent)
+      left / 0.7rem 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgba(22, 32, 43, 0.16), transparent)
+      right / 0.7rem 100% no-repeat scroll;
+}
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+th, td { text-align: left; padding: 0.5rem 0.7rem; border-bottom: 1px solid var(--rule); }
+th { color: var(--ink-soft); font-weight: 600; font-size: 0.8rem;
+  text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+
+/* The install instructions. A <details> rather than anything scripted: it is
+   the browser's own disclosure widget, so it is keyboard operable, announced
+   correctly and findable by find-in-page when open, for no JavaScript at all.
+   Deliberately NOT hidden when already installed — a rule keyed on
+   display-mode would trade a closed paragraph for the risk of silently hiding
+   the whole thing where that query misbehaves. */
+.game summary { font-weight: 600; cursor: pointer; padding: 0.2rem 0; }
+.game details p, .game details ul { margin-top: 0.6rem; }
+/* The vendors' own pages, gathered in one place rather than threaded through
+   each paragraph: an escape hatch for when these steps go stale, not the
+   instructions themselves. */
+.game .vendors { color: var(--ink-soft); font-size: 0.9rem; }
+
+.variant { margin: 0 0 0.8rem; }
+.variant b { color: var(--ink); }
+
+.sources { margin-top: 2rem; padding-top: 0.9rem; border-top: 1px solid var(--rule);
+  color: var(--ink-soft); font-size: 0.83rem; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+.tags li { font-size: 0.78rem; color: var(--ink-soft);
+  border: 1px solid var(--rule); border-radius: 999px; padding: 0.2rem 0.55rem; }
+
+footer { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--rule);
+  color: var(--ink-soft); font-size: 0.83rem; }
+footer .site-nav { margin: 0 0 0.6rem; }
+footer p { margin: 0; }
+
+/* Dark mode inverts the page but not the diagrams, which are drawn on white.
+   Softening them stops each one burning a hole in a dim room. */
+@media (prefers-color-scheme: dark) {
+  figure svg { filter: invert(0.9) hue-rotate(180deg); opacity: 0.92; }
+  /* A dark shadow on a dark page is nothing at all. */
+  .scroll {
+    background:
+      linear-gradient(to right, var(--bg) 30%, transparent) left / 2rem 100% no-repeat local,
+      linear-gradient(to left, var(--bg) 30%, transparent) right / 2rem 100% no-repeat local,
+      radial-gradient(farthest-side at 0 50%, rgba(0, 0, 0, 0.5), transparent)
+        left / 0.7rem 100% no-repeat scroll,
+      radial-gradient(farthest-side at 100% 50%, rgba(0, 0, 0, 0.5), transparent)
+        right / 0.7rem 100% no-repeat scroll;
+  }
+}
+
+@media (min-width: 34rem) {
+  /* rem, for the same reason the base size is: a hard px here put the reader's
+     own font-size setting straight back in the bin on every screen wider than
+     34rem, which is most of them. The base is 1.0625rem; this is a nudge up
+     with more room, not a fixed size. */
+  body { font-size: 1.125rem; }
+  .games { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .wrap { padding-left: 26px; padding-right: 26px; }
+}
+
+/*
+ * Print.
+ *
+ * The site is built for a phone propped against a glass, and paper is a
+ * different medium that had been left entirely to browser defaults. Measured
+ * on Skat before this block existed: 11 sheets from the site against 6 in the
+ * booklet, for the same game and the same words.
+ *
+ * Two of the rules below are corrections rather than polish. The measure is
+ * tuned for a phone at arm's length and caps a Letter line at about two
+ * thirds, spilling the remainder onto extra sheets. And `.scroll` is an
+ * overflow container, which on paper is a guillotine: there is no scrolling a
+ * sheet sideways, so anything past the edge is simply gone. The three melds
+ * that deliberately exceed the column are exactly what that would eat.
+ */
+@media print {
+  /* Paper is white whatever the reader's system is set to. Printing dark mode
+     is an expensive way to empty a toner cartridge. */
+  :root {
+    --ink: #000;
+    --ink-soft: #333;
+    --accent: #000;
+    --bg: #fff;
+    --panel: #fff;
+    --rule: #999;
+    --shadow: none;
+  }
+
+  @page { margin: 18mm 16mm; }
+
+  body { background: #fff; font-size: 11pt; }
+
+  /* Controls and navigation mean nothing once printed. #reload is the update
+     notice from decision 0006 and comes out as an empty box. */
+  .site-nav,
+  .backlink,
+  .filters,
+  .chips,
+  #q,
+  #reload,
+  /* On the sheet these are how you got here, not part of what you asked to
+     print. The line saying what was selected is not in this list -- see below. */
+  .printlink,
+  .sheet-actions,
+  .sheet-note,
+  footer {
+    display: none !important;
+  }
+
+  /* The count stays. Printing a filtered index is a real use — it is how you
+     get "the trick-taking games for four" onto paper — and the controls that
+     produced it are hidden, so without this line the sheet reads "72 games" in
+     the blurb, lists fifteen, and gives no sign it is a subset. */
+  .count, .sheet-what {
+    font-weight: 600;
+  }
+
+  .wrap,
+  .wrap--wide {
+    max-width: none;
+    padding: 0;
+  }
+
+  .scroll {
+    overflow: visible;
+    background: none;
+  }
+  .scroll svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Do not split a drawing, a fact table or a variant across a page turn, and
+     never leave a heading stranded at the foot of one. */
+  svg,
+  .facts,
+  .variant,
+  table {
+    break-inside: avoid;
+  }
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+
+  /* Underlined links and their colours cost ink and say nothing on paper. */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
