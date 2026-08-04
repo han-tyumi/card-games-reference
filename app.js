@@ -102,13 +102,17 @@ if (list && data && count && empty && box) {
    */
   const renderFloor = (hits) => {
     if (!floor || !from) return;
-    // Meaningless with no count chosen: there is nothing for it to be below.
-    floor.hidden = !state.players;
-    if (!state.players) return;
+    // Shown when it has something to offer, and not otherwise. Which cases
+    // those are is floorOptions' to decide -- no count chosen and a count of
+    // one both come back empty -- so this cannot disagree with the list it is
+    // about to render, the way a separate `!state.players` rule here did.
+    const options = floorOptions(facets, state, hits);
+    floor.hidden = options.length === 0;
+    if (!options.length) return;
 
     const selected = state.from || state.players;
     from.replaceChildren(
-      ...floorOptions(facets, state, hits).map((option) => {
+      ...options.map((option) => {
         const el = document.createElement("option");
         el.value = option.value;
         el.textContent = option.label;

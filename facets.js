@@ -318,14 +318,25 @@ export function writeQuery(state) {
  */
 export function floorOptions(facets, state, hits) {
   const range = playerRange(state);
-  if (!range) return [];
+  // No count chosen: there is nothing for a floor to be below. A count of one:
+  // there is nothing below it. Both leave a control that cannot change the
+  // list, and a solitaire player was being asked "might you be fewer?" — so
+  // both return nothing and the page hides the control on an empty list rather
+  // than on a rule of its own.
+  if (!range || range.hi < 2) return [];
 
   const options = [];
   for (let n = 1; n <= range.hi; n++) {
     const { order } = plan(facets, { ...state, from: String(n) }, hits);
     options.push({
       value: String(n),
-      label: `${n} — ${order.length} game${order.length === 1 ? "" : "s"}`,
+      // One is not a smaller party, and the bare number hid that. No game in
+      // the corpus seats one AND more than one, so this step does not widen the
+      // list the way every other step does -- it adds the solitaire games and
+      // nothing else, the same ones whatever the ceiling. Saying "alone" is the
+      // difference between "there might be fewer of us" and "there might be
+      // nobody else", which is what the reader is actually choosing.
+      label: `${n}${n === 1 ? " (alone)" : ""} — ${order.length} game${order.length === 1 ? "" : "s"}`,
       count: order.length,
     });
   }
