@@ -85,6 +85,16 @@ results.
 **Previews are deleted when their pull request closes**, merged or not. Each is
 a copy of the whole site.
 
+The cleanup **edits the `site` branch and deploys nothing**, which its first run
+taught rather than its design. It originally declared the `github-pages`
+environment so it could publish the removal immediately; only the default branch
+may deploy to that environment, a `pull_request` event does not run there, and
+the job was rejected in two seconds without ever reaching a runner. Not
+deploying is the better shape anyway: the next Deploy publishes the branch as it
+then stands, and after a merge that follows within a minute or two on its own —
+which is exactly what happened on the first merge, cleanup at 12:04 and the
+deploy at 12:06. It also drops the job to `contents: write` alone.
+
 ## Consequences
 
 Every branch that goes green now triggers a Pages deployment, where before only
@@ -108,6 +118,11 @@ Previews do not work offline and cannot be installed. That is the point of them
 not shipping a worker, and it is worth the trade: an installable preview is also
 a way to end up with two identical-looking apps on a home screen, one of which
 is a branch.
+
+A pull request closed **without** merging leaves its preview served until
+something else deploys, since the cleanup no longer publishes its own removal.
+What lingers carries `noindex` and says on the page that it is not the published
+site, so it is stale rather than misleading.
 
 A branch name is not a path. Slugs keep `[A-Za-z0-9._-]`, turn `/` into `-`, and
 must begin with an alphanumeric — so no branch can name its way to `..` and have
