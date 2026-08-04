@@ -1,6 +1,6 @@
 # What to do before adding more games
 
-- **Status:** Open — nothing started
+- **Status:** Open — §1 done, §§2-4 untouched
 - **Date:** 2026-08-04
 
 Main is at **v0.3.5**. The corpus is 72 games, `npm run check` exits 0 at 466
@@ -12,6 +12,11 @@ machine at 72 games. The measurements are the valuable part — the conclusions
 follow from them and can be rechecked.
 
 ## 1. The originality tests are quadratic — do this first
+
+**Done.** The bar is now measured over a bounded sample of pairs;
+[0020](../decisions/0020-the-bar-is-measured-from-a-bounded-sample.md) records
+what that was weighed against and what it costs. The measurements below are kept
+as they were taken — they are the before half of the comparison.
 
 Three tests take **61 of the test suite's 62 seconds**:
 
