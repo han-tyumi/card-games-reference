@@ -35,6 +35,7 @@ part.
 | [0017](0017-deploy-the-site-from-actions-after-the-tests.md) | Deploy the site from Actions, after the tests rather than beside them | Accepted |
 | [0018](0018-branch-previews-at-a-subpath.md) | Branch previews at a Pages subpath, from a composed `site` branch | Accepted |
 | [0019](0019-the-worker-declines-the-preview-subtree.md) | The site's service worker declines the preview subtree | Accepted |
+| [0020](0020-the-bar-is-measured-from-a-bounded-sample.md) | Measure the originality bar from a bounded sample of pairs | Accepted |
 
 ## The format
 

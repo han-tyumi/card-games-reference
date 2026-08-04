@@ -38,7 +38,11 @@ npm run originality -- --game durak
 ```
 
 The bar is computed from the corpus, not chosen: the 99th percentile of the best
-coincidental match between two of our own unrelated passages.
+coincidental match between two of our own unrelated passages. It is measured
+over a bounded sample of those pairs rather than all of them — the run prints how
+many — so it is an estimate, and
+[0020](../../../decisions/0020-the-bar-is-measured-from-a-bounded-sample.md)
+records what that costs.
 
 ## 3. Read every finding against its source
 

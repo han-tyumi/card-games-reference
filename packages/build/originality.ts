@@ -151,21 +151,28 @@ export function rarity(df: Map<string, number>, documents: number): Weigher {
 /**
  * Weight of the longest common subsequence -- order-sensitive, gaps allowed.
  * With UNIFORM this is plain LCS length.
+ *
+ * Two rows rather than the whole table, because this runs once per sentence
+ * pair and the full table was allocating a fresh array per row of every call.
+ * The values are identical -- a row only ever reads the row above it.
  */
 export function orderedOverlap(a: string[], b: string[], weigh: Weigher = UNIFORM): number {
-  const table: number[][] = Array.from({ length: a.length + 1 }, () =>
-    new Array<number>(b.length + 1).fill(0),
-  );
+  let previous = new Array<number>(b.length + 1).fill(0);
+  let current = new Array<number>(b.length + 1).fill(0);
 
-  for (let i = 1; i <= a.length; i += 1) {
-    for (let j = 1; j <= b.length; j += 1) {
-      table[i]![j] =
-        a[i - 1] === b[j - 1]
-          ? table[i - 1]![j - 1]! + weigh(a[i - 1]!)
-          : Math.max(table[i - 1]![j]!, table[i]![j - 1]!);
+  for (let i = 0; i < a.length; i += 1) {
+    const word = a[i]!;
+    // Once per row, not once per cell: rarity() is a map lookup and a log.
+    const weight = weigh(word);
+    for (let j = 0; j < b.length; j += 1) {
+      current[j + 1] =
+        word === b[j] ? previous[j]! + weight : Math.max(previous[j + 1]!, current[j]!);
     }
+    const spent = previous;
+    previous = current;
+    current = spent;
   }
-  return table[a.length]![b.length]!;
+  return previous[b.length]!;
 }
 
 /** Total weight of a sentence, for normalising an overlap against it. */
@@ -225,37 +232,103 @@ export type Thresholds = {
 export const DEFAULTS: Thresholds = { order: 0.35, run: 6, minWords: 5 };
 
 /**
+ * How many pairs a measurement over the corpus is allowed to look at.
+ *
+ * This number is the difference between a cost that is flat in the size of the
+ * corpus and one that is quadratic in it. The bar below is a percentile of a
+ * distribution, and a percentile is estimated from a representative sample —
+ * it does not need every pair, and taking every pair is what made this the
+ * slowest thing in the project.
+ *
+ * Set where the estimate stops moving, not at the smallest number that runs
+ * fast. Corpus sizes of 18, 36, 54 and 72 games were each scored exhaustively —
+ * every ordered pair, 46,440 of them at 72 games — and then sampled at eight
+ * different phases and compared against that. At this many pairs the order bar
+ * came out at the exhaustive value in 30 of those 32 combinations and one step
+ * above it in the other two, the run bar within a word, and the share of
+ * held-out pairs clearing the result stayed between 1.6% and 2.9% against
+ * exhaustive values of 1.9% to 2.5%.
+ *
+ * At 3,600 none of that holds: 36 games gave bars from 0.71 to 0.83 depending
+ * on which pairs were drawn, and rates from 0.6% to 5.8% against an exhaustive
+ * 1.9% — the last of those close enough to the 6% the tests assert to fail on a
+ * corpus nobody had changed.
+ *
+ * The reason the fall-off is so sharp is that scores near the top of this
+ * distribution are small ratios — 5/7, 7/9, 4/5 — so a sample that misses a few
+ * of the highest pairs does not land slightly low, it lands a whole step low.
+ */
+export const PAIR_SAMPLE = 5400;
+
+/**
+ * A deterministic, fixed-size sample of ordered pairs drawn from `count` items.
+ *
+ * Three properties, each of which the sampler is built around:
+ *
+ * - **Bounded.** At most `budget` pairs, however large the corpus gets, which
+ *   is the whole point. The one exception is deliberate: every item is paired
+ *   at least once, so past `budget` *items* — 1,800 games — the count grows
+ *   with the corpus rather than dropping entries out of the measurement.
+ * - **Spread.** The partners of item `i` are taken at a wide stride and shifted
+ *   by `i`, not taken from among its neighbours. That matters here because
+ *   neighbouring passages are the same game's other fields: the stride-7 sweep
+ *   this replaces always included `i + 1`, which made 2.15% of its pairs
+ *   same-game against 0.93% of all pairs. This sampler measures 0.93%.
+ * - **Deterministic.** No clock, no randomness — the same corpus gives the same
+ *   bar on every machine and every run, which a measured threshold has to.
+ *
+ * `phase` shifts which partners are drawn. Phases 0 and 1 have no pair in
+ * common (nor does any pair of phases below the stride), so a caller wanting to
+ * check a measurement against pairs it was not measured from can ask for one.
+ */
+export function* samplePairs(
+  count: number,
+  budget = PAIR_SAMPLE,
+  phase = 0,
+): Generator<[number, number]> {
+  if (count < 2) return;
+
+  const offsets = count - 1;
+  const partners = Math.min(offsets, Math.max(1, Math.floor(budget / count)));
+  const stride = Math.max(1, Math.floor(offsets / partners));
+
+  for (let i = 0; i < count; i += 1) {
+    for (let p = 0; p < partners; p += 1) {
+      yield [i, (i + 1 + ((p * stride + i + phase) % offsets)) % count];
+    }
+  }
+}
+
+/**
  * What "written alike by coincidence" looks like, measured on this corpus.
  *
- * Every pair of our own entries is compared, and the high percentile of what
- * that produces becomes the bar a real source has to clear. It is a null
- * distribution built from writing that is known not to be copied, which is the
- * only honest reference available without a labelled corpus.
+ * A sample of our own entries is compared pair by pair, and the high percentile
+ * of what that produces becomes the bar a real source has to clear. It is a
+ * null distribution built from writing that is known not to be copied, which is
+ * the only honest reference available without a labelled corpus.
  *
- * Deterministic, and slow enough to be worth doing once: a stride keeps it to a
- * sample rather than every pair.
+ * Deterministic, and worth doing once per run rather than once per question.
  */
 export function baseline(
   passages: readonly string[],
   percentile = 0.99,
-  stride = 7,
+  budget = PAIR_SAMPLE,
 ): Thresholds {
   const orders: number[] = [];
   const runs: number[] = [];
   const wide: Thresholds = { order: 0, run: Number.MAX_SAFE_INTEGER, minWords: 5 };
+  // Tokenised once each rather than once per pair: at this many pairs every
+  // passage is read a dozen times over, and splitting it is not free.
+  const ready = passages.map((text) => prepare(text, wide));
 
-  for (let i = 0; i < passages.length; i += 1) {
-    for (let k = 1; k < passages.length; k += stride) {
-      const j = (i + k) % passages.length;
-      if (j === i) continue;
-      // The BEST coincidental match between two unrelated passages is the right
-      // null: the question is whether a source match is unusual, and every weak
-      // match counted separately would just drag the percentile down.
-      const found = compare(passages[i]!, passages[j]!, "baseline", wide);
-      if (found.length === 0) continue;
-      orders.push(Math.max(...found.map((m) => m.order)));
-      runs.push(Math.max(...found.map((m) => m.run)));
-    }
+  for (const [i, j] of samplePairs(passages.length, budget)) {
+    // The BEST coincidental match between two unrelated passages is the right
+    // null: the question is whether a source match is unusual, and every weak
+    // match counted separately would just drag the percentile down.
+    const found = comparePrepared(ready[i]!, ready[j]!, "baseline", wide);
+    if (found.length === 0) continue;
+    orders.push(Math.max(...found.map((m) => m.order)));
+    runs.push(Math.max(...found.map((m) => m.run)));
   }
 
   const at = (values: number[], fallback: number) => {
@@ -271,29 +344,121 @@ export function baseline(
   };
 }
 
+/** One sentence, tokenised once, with what a comparison needs to skip it cheaply. */
+type Tokens = {
+  text: string;
+  content: string[];
+  raw: string[];
+  contentSet: Set<string>;
+  rawSet: Set<string>;
+  mass: number;
+};
+
+/** A passage's sentences, tokenised. Only the ones long enough to mean anything. */
+export type Tokenised = readonly Tokens[];
+
+/**
+ * Split and tokenise a passage once.
+ *
+ * compare() does this for both sides on every call, which is right for the
+ * handful of calls a real check makes and wrong for the thousands baseline()
+ * makes — there, every passage would be re-split a dozen times over.
+ */
+export function prepare(
+  text: string,
+  limits: Thresholds = DEFAULTS,
+  weigh: Weigher = UNIFORM,
+): Tokenised {
+  return sentences(text)
+    .map((sentence) => {
+      const content = contentWords(sentence);
+      const raw = words(sentence);
+      return {
+        text: sentence,
+        content,
+        raw,
+        contentSet: new Set(content),
+        rawSet: new Set(raw),
+        mass: mass(content, weigh),
+      };
+    })
+    .filter((s) => s.content.length >= limits.minWords);
+}
+
+/**
+ * The most a pair of sentences could possibly score, from the words they share.
+ *
+ * A subsequence can only be built from words both sentences have, and a run of
+ * identical words is a subsequence too, so counting the shorter sentence's
+ * words that appear in the longer one at all bounds both of the measures below.
+ * It is loose — it ignores order entirely, which is the thing being measured —
+ * but it is O(words) against the O(words²) it lets us skip, and card-game
+ * sentences overwhelmingly share nothing but a verb.
+ *
+ * Counting the shorter sentence's words is what makes it a ceiling and not a
+ * guess: a subsequence can use a word no more often than the sentence with
+ * fewer copies of it has it, and the shorter sentence has at least that many.
+ * It holds for any weigher that never returns a negative, which rarity() is
+ * clamped to be — a negative weight would already have made the score itself
+ * nonsense, as rarity() says.
+ */
+function ceiling(a: Tokens, b: Tokens, weigh: Weigher): { order: number; run: number } {
+  const [short, long] = a.content.length <= b.content.length ? [a, b] : [b, a];
+  let shared = 0;
+  for (const word of short.content) if (long.contentSet.has(word)) shared += weigh(word);
+
+  const [shortRaw, longRaw] = a.raw.length <= b.raw.length ? [a, b] : [b, a];
+  let sharedRaw = 0;
+  for (const word of shortRaw.raw) if (longRaw.rawSet.has(word)) sharedRaw += 1;
+
+  return { order: shared / Math.min(a.mass, b.mass), run: sharedRaw };
+}
+
+/**
+ * Slack on the ceiling, so no rounding can hide a match.
+ *
+ * With UNIFORM the ceiling and the overlap are both sums of ones and agree
+ * exactly. A weigher returning reals could round the two sums differently, by
+ * an ulp or so — orders of magnitude below the smallest gap between two real
+ * scores, but free to allow for.
+ */
+const CEILING_SLACK = 1e-9;
+
 /** Every one of our sentences that tracks a source sentence too closely. */
-export function compare(
-  ours: string,
-  theirs: string,
+export function comparePrepared(
+  ours: Tokenised,
+  theirs: Tokenised,
   source: string,
   limits: Thresholds = DEFAULTS,
   weigh: Weigher = UNIFORM,
 ): Match[] {
-  const mine = sentences(ours).map((s) => ({ s, c: contentWords(s), w: words(s) }));
-  const source_ = sentences(theirs).map((s) => ({ s, c: contentWords(s), w: words(s) }));
-
   const found: Match[] = [];
 
-  for (const a of mine) {
-    if (a.c.length < limits.minWords) continue;
+  for (const a of ours) {
     let worst: Match | null = null;
 
-    for (const b of source_) {
-      if (b.c.length < limits.minWords) continue;
+    for (const b of theirs) {
+      // Skip the two O(words²) scans when the words on the page already say
+      // they cannot matter. Exact, not approximate: once a match is in hand,
+      // only a higher score can replace it, and until then only a score that
+      // clears one of the thresholds is reported at all.
+      const most = ceiling(a, b, weigh);
+      if (
+        worst
+          ? most.order + CEILING_SLACK < worst.order
+          : most.order + CEILING_SLACK < limits.order && most.run < limits.run
+      ) {
+        continue;
+      }
 
-      const order =
-        orderedOverlap(a.c, b.c, weigh) / Math.min(mass(a.c, weigh), mass(b.c, weigh));
-      const run = longestRun(a.w, b.w);
+      const order = orderedOverlap(a.content, b.content, weigh) / Math.min(a.mass, b.mass);
+
+      // The run is only ever needed for a match that could still be kept: it
+      // breaks ties and it decides the tier of whatever wins. A source sentence
+      // already beaten on order does neither, so it does not get scanned.
+      if (worst && order < worst.order) continue;
+
+      const run = longestRun(a.raw, b.raw);
       if (order < limits.order && run < limits.run) continue;
 
       // Keep the single worst source sentence per sentence of ours: a passage
@@ -301,8 +466,8 @@ export function compare(
       if (!worst || order > worst.order || (order === worst.order && run > worst.run)) {
         worst = {
           tier: run >= limits.run ? "reuse" : "candidate",
-          ours: a.s,
-          theirs: b.s,
+          ours: a.text,
+          theirs: b.text,
           source,
           order,
           run,
@@ -314,6 +479,23 @@ export function compare(
   }
 
   return found;
+}
+
+/** The same, from raw prose. */
+export function compare(
+  ours: string,
+  theirs: string,
+  source: string,
+  limits: Thresholds = DEFAULTS,
+  weigh: Weigher = UNIFORM,
+): Match[] {
+  return comparePrepared(
+    prepare(ours, limits, weigh),
+    prepare(theirs, limits, weigh),
+    source,
+    limits,
+    weigh,
+  );
 }
 
 /**
@@ -493,15 +675,26 @@ function main(): number {
   // The bar is measured, not chosen: whatever our own entries manage against
   // each other, a real source has to beat.
   const all = loadGames();
-  const limits: Thresholds = argv.includes("--min")
+  const passages = all.flatMap((g) => [g.setup, g.play, g.goal_and_scoring]);
+  const chosen = argv.includes("--min");
+  const limits: Thresholds = chosen
     ? { ...DEFAULTS, order: Number(argv[argv.indexOf("--min") + 1]) }
-    : baseline(all.flatMap((g) => [g.setup, g.play, g.goal_and_scoring]));
+    : baseline(passages);
 
-  console.log(
-    `Bar: ${(limits.order * 100).toFixed(0)}% in order, or ${limits.run} words verbatim — ` +
-      `the 99th percentile of what\n${all.length} entries that copy nothing from each other ` +
-      `already score against each other.\n`,
-  );
+  // Say what the bar was measured over, not just what it came out at. A sample
+  // is the honest thing to take a percentile from, but a reader told only the
+  // number would reasonably assume every pair went into it. And a bar given on
+  // the command line was not measured at all, which this used to claim it was.
+  const bar = `Bar: ${(limits.order * 100).toFixed(0)}% in order, or ${limits.run} words verbatim`;
+  if (chosen) {
+    console.log(`${bar} — given with --min, not measured.\n`);
+  } else {
+    const drawn = [...samplePairs(passages.length)].length;
+    console.log(
+      `${bar} — the 99th percentile of\n${drawn} passage pairs sampled from ${all.length} ` +
+        "entries that copy nothing from each other.\n",
+    );
+  }
 
   if (!existsSync(SOURCES_DIR)) {
     console.error(
