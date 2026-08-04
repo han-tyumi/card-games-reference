@@ -318,7 +318,12 @@ export function writeQuery(state) {
  */
 export function floorOptions(facets, state, hits) {
   const range = playerRange(state);
-  if (!range) return [];
+  // No count chosen: there is nothing for a floor to be below. A count of one:
+  // there is nothing below it. Both leave a control that cannot change the
+  // list, and a solitaire player was being asked "might you be fewer?" — so
+  // both return nothing and the page hides the control on an empty list rather
+  // than on a rule of its own.
+  if (!range || range.hi < 2) return [];
 
   const options = [];
   for (let n = 1; n <= range.hi; n++) {
