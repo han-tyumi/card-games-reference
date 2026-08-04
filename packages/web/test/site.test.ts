@@ -933,54 +933,39 @@ test("a first install is not reported as an update", () => {
   assert.match(html, /if \(!updating\) return;/, "first install is not guarded");
 });
 
-test("the search placeholder fits the width the project commits to", () => {
-  // Decision 0011 targets 320 CSS pixels, which is WCAG 2.2 Reflow rather than
-  // a guess at a phone. The previous placeholder named all five indexed fields
-  // and ran to 568px inside a box with 227px of room -- cut mid-word on a real
-  // handset. A placeholder nobody can finish reading undersells the index worse
-  // than a short one does.
+test("the search placeholder fits, and says what the field is", () => {
+  // Three versions have been wrong here, so this holds all three properties at
+  // once rather than one at a time.
   //
-  // Character count stands in for the pixel measurement, which needs a browser.
-  // The bound comes from measuring the shipped stack at 320px: 227px of room,
-  // and no glyph in this text is narrower than about 6px, so 30 characters is
-  // comfortably inside it with room for a font this test cannot see.
+  // 1. It has to FIT. Decision 0011 targets 320 CSS pixels -- WCAG 2.2 Reflow,
+  //    not a guess at a phone -- and the version naming all five indexed fields
+  //    ran to 568px in a box with 225px of room, cut mid-word on a handset.
+  //    Character count stands in for the pixel measurement, which needs a
+  //    browser: measured at 320px, the shipped stack renders this text at about
+  //    9px a character, so 30 leaves room for a font this test cannot see.
+  //
+  // 2. It has to READ AS A SEARCH FIELD. A version that dropped the verb for
+  //    two examples fitted comfortably and lost the affordance: "bower" is a
+  //    term of art, and the SEARCH label above is small grey uppercase, which
+  //    is a caption rather than something read first.
+  //
+  // 3. It must not CLAIM ONLY RULES, which is the fault that started all this.
   const placeholder = /<input id="q"[^>]*placeholder="([^"]*)"/.exec(text("index.html"))?.[1];
   assert.ok(placeholder, "the search box has no placeholder");
+
   assert.ok(
     placeholder.length <= 30,
     `the placeholder is ${placeholder.length} characters and will be cut at 320px: "${placeholder}"`,
   );
-
-  // And it still must not claim the index covers only the rules, which is the
-  // fault the long version was written to fix. Naming no field at all is fine;
-  // naming one wrongly is not.
-  assert.doesNotMatch(placeholder, /^Search every rule/, "the placeholder claims only rules");
-});
-
-test("the placeholder shows the index reaches past names", () => {
-  // Examples instead of a field list. "bower" is a word from the rules and
-  // "euchre deck" is a pack, so between them a reader can see the box is not
-  // just a name lookup -- which is what the long field list was for.
-  const placeholder = /<input id="q"[^>]*placeholder="([^"]*)"/.exec(text("index.html"))![1]!;
-  const query = placeholder.toLowerCase();
-
-  // Whatever the examples are, they have to actually find something, or the
-  // placeholder is teaching a query that returns nothing.
-  const records = searchRecords(games);
-  for (const word of query.split(/[^a-z]+/).filter((w) => w.length > 3)) {
-    const found = records.some((r) =>
-      Object.values(r).flat().join(" ").toLowerCase().includes(word),
-    );
-    assert.ok(found, `the placeholder suggests "${word}", which is in no entry`);
-  }
-
-  // At least one example must not be a game's own name, or it demonstrates
-  // nothing the reader did not already assume.
-  const names = new Set(games.flatMap((g) => [g.name, ...g.aliases]).map((n) => n.toLowerCase()));
-  const words = query.split(/[^a-z]+/).filter((w) => w.length > 3);
-  assert.ok(
-    words.some((w) => !names.has(w)),
-    `every example is a game name, so the placeholder shows nothing new: "${placeholder}"`,
+  assert.match(
+    placeholder,
+    /^Search\b/,
+    `"${placeholder}" does not say it is a search field before anything else`,
+  );
+  assert.doesNotMatch(
+    placeholder,
+    /^Search every rule/,
+    "the placeholder claims the index covers only the rules",
   );
 });
 

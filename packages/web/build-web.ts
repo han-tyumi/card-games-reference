@@ -677,24 +677,22 @@ loaded, and <a href="about.html#install">installs to your home screen</a>.`;
 
   body.push(`<div class="filters">
 <label for="q">Search</label>
-${/* Two examples rather than a list of fields.
+${/* Short enough to fit, and it still leads with the verb.
 
-     "Search every rule" undersold an index that has always carried names,
-     aliases, families and tags, and now carries the deck -- but the fix for
-     that was a sentence naming all five, which ran to 568px and was cut
-     mid-word inside a box with 227px of room at the 320px width decision 0011
-     commits to. A placeholder nobody can finish reading undersells it worse.
+     Three versions have been wrong here. "Search every rule" undersold an index
+     that has always carried names, aliases, families and tags, and now carries
+     the deck. Naming all five ran to 568px inside a box with 225px of room at
+     the 320px width decision 0011 commits to, and was cut mid-word on a real
+     handset. Dropping the verb for two examples -- "bower, or euchre deck" --
+     fitted, but "bower" is a term of art, so to anyone who does not play Euchre
+     it was an unexplained word sitting in a box, and the small grey SEARCH
+     label above is a caption rather than something read first. A placeholder
+     has to say what the field is before it says anything clever.
 
-     Examples do the same job shorter: "bower" is a word from the rules and
-     "euchre deck" is a pack, so between them they show the index reaches past
-     names without naming a single field. The <label> above already says
-     Search, so the placeholder does not repeat it.
-
-     Measured at 320px: 190px against 227px of room, and still inside it under
-     every fallback in the stack. The variant beginning "try" fits the stack as
-     specified but only by 7px, which is not enough to survive a system font
-     this cannot measure from here. */ ""}
-<input id="q" type="search" placeholder="bower, or euchre deck" autocomplete="off">
+     "names and rules" names the two ends of what is indexed without claiming to
+     be the whole list, which is what "every rule" got wrong. 205px against
+     225px of room. */ ""}
+<input id="q" type="search" placeholder="Search names and rules" autocomplete="off">
 ${/* Derived from the corpus, not typed out. The hand-typed row skipped 7 while
      22 games seat 7, and stopped at 8 while six games seat more. The floor
      below widens the count downward and is the whole of the range control. */ ""}
