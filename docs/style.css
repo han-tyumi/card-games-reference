@@ -113,8 +113,12 @@ a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset:
   box-shadow: var(--shadow);
 }
 
-.filters label { display: block; font-size: 0.78rem; text-transform: uppercase;
-  letter-spacing: 0.06em; color: var(--ink-soft); margin-bottom: 0.3rem; }
+/* A group heading is a <span class="facetlabel"> rather than a <label>: it
+   names a group of controls, and a <label> with no `for` labels nothing. It
+   shares the styling because it is the same thing to look at. */
+.filters label, .filters .facetlabel { display: block; font-size: 0.78rem;
+  text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft);
+  margin-bottom: 0.3rem; }
 
 #q {
   width: 100%;
@@ -133,7 +137,7 @@ a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset:
    chips and a whole gap above its own, so every heading read as a caption for
    the control before it. */
 .facet { margin-top: 1.15rem; }
-.facet > label { margin-bottom: 0.35rem; }
+.facet > .facetlabel { margin-bottom: 0.35rem; }
 
 .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 
@@ -165,6 +169,53 @@ a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset:
   .chips input:checked + label { color: #12171c; }
 }
 .chips input:focus-visible + label { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* The optional floor under the players row.
+   A native <details> for the same reasons the install instructions use one: it
+   is the browser's own disclosure widget, so it is keyboard operable and
+   announced correctly for no JavaScript at all. It is `hidden` until a count is
+   chosen, and no `display` is set on .floor itself, because a display rule here
+   would win against the hidden attribute and show an empty control. */
+.floor { margin-top: 0.5rem; }
+.floor summary {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  cursor: pointer;
+  padding: 0.2rem 0;
+  /* A marker plus text is the disclosure affordance; leaving it to the UA is
+     the point of using <details>. */
+  width: fit-content;
+}
+.floorrow { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.4rem; }
+/* Inline and sentence-case, unlike a group heading: it labels one control and
+   reads as the first half of a phrase the <select> finishes. */
+.filters .floorrow label {
+  display: inline;
+  margin: 0;
+  font-size: 0.85rem;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.floorrow select {
+  font: inherit;
+  font-size: 0.85rem;
+  padding: 0.3rem 0.4rem;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+}
+
+/* Said on the card when a range is set and this game seats every count in it.
+   Quieter than the meta line above it: it is a reassurance, not a fact about
+   the game the reader came for. */
+.covers:empty { display: none; }
+.covers {
+  margin: 0.2rem 0 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent);
+}
 
 /* The count and the print link share a line: the link is an action on exactly
    what the count describes, and separating them would make that less obvious. */

@@ -84,6 +84,38 @@ export type Facet = {
 };
 
 /**
+ * The values each numeric chip row offers, taken from the corpus.
+ *
+ * The family chips have always been built from CATEGORY_ORDER, with a comment
+ * saying it is done that way "so a category added to the schema gets a chip
+ * instead of being quietly unfilterable". Players and decks were hand-typed
+ * literals and drifted exactly as that comment predicted: the players row
+ * skipped 7 while 22 games seat 7, and the decks row stopped at 2 while five
+ * games need more. This is that same pattern applied to the rows that never
+ * got it.
+ *
+ * Decks are the distinct non-zero counts and nothing else, because the filter
+ * is an "at most" ceiling: a "4" chip would return a list identical to "3".
+ * Zero is excluded from every deck count -- a purpose-built pack is not
+ * something a 52-card deck stands in for.
+ *
+ * Players run from 1 to the largest table in the corpus. Correctness would
+ * allow a much shorter row -- a game is unreachable only when its MINIMUM
+ * exceeds the top, and the largest minimum here is 4 -- but the row runs to
+ * the maximum so that twelve people can say twelve.
+ */
+export function chipValues(games: CardGame[]): { players: string[]; decks: string[] } {
+  const seats = Math.max(...games.map((game) => game.players.max));
+  const decks = [...new Set(games.map((game) => game.equipment.standard_decks))]
+    .filter((n) => n > 0)
+    .sort((a, b) => a - b);
+  return {
+    players: Array.from({ length: seats }, (_, i) => String(i + 1)),
+    decks: decks.map(String),
+  };
+}
+
+/**
  * `special_deck` does two unrelated jobs and the field name tells them apart
  * for nobody. For piquet it is a setup instruction — strip a 52 down to 32.
  * For koi-koi it is an equipment barrier. `standard_decks: 0` is what actually
