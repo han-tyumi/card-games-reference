@@ -277,9 +277,9 @@ doing; it puts no limit on what this project does with its own work.
 ## Not in scope yet
 
 The mobile app and the companion tools described in
-[`tools/README.md`](tools/README.md) are planned but unbuilt.
+[`tools/README.md`](tools/README.md) are planned but unbuilt. This repository is
+the data and the build pipeline that feeds them.
 
-The website is not among them any more: it is [live](https://han-tyumi.github.io/naibi/),
+The website is not among them: it is [live](https://han-tyumi.github.io/naibi/),
 installable, works offline, and is built from this repository by
-[`packages/web/`](packages/web/). This section said otherwise for as long as it
-took someone to read it and the Status line above in the same sitting.
+[`packages/web/`](packages/web/).

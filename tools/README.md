@@ -7,6 +7,9 @@ retrofitted later.
 Each of these becomes a package under `packages/` when it is built, depending on
 `naibi` rather than keeping its own copy of the rules.
 
+**Out of scope for v1.** v1 is the rules data plus the build pipeline that turns
+it into Markdown and PDF. These come after.
+
 **The website is no longer one of these.** It was described here as a later
 thing; it now exists as [`packages/web/`](../packages/web/) and is
 [published](https://han-tyumi.github.io/naibi/). What is left below is the
@@ -15,16 +18,21 @@ graphics work and the apps.
 ## A licensing note for whoever builds these
 
 The rules text is CC BY-SA: copy it if you like, but your version stays open and
-credits the project. There is a code equivalent worth considering when the
-website package gets built.
+credits the project. There is a code equivalent worth considering for anything
+here that ends up hosted rather than downloaded.
 
 MIT — what the build tooling uses — lets anyone take the code closed. That is
-the right call for generic scripts nobody competes on. For the **website**, the
-same reasoning that picked ShareAlike for the text points at **AGPL-3.0**: it is
-the one common licence that reaches software people run as a service, so a
-company standing up a modified copy of the site has to publish their changes.
-Plain GPL does not cover that case, because running a website is not
-distribution.
+the right call for generic scripts nobody competes on. For **software people run
+as a service**, the same reasoning that picked ShareAlike for the text points at
+**AGPL-3.0**: it is the one common licence that reaches that case, so a company
+standing up a modified copy has to publish their changes. Plain GPL does not
+cover it, because running a website is not distribution.
+
+This was written with the website in mind and the website shipped before the
+question was taken up, so it went out under the repository's MIT with everything
+else — see [0003](../decisions/0003-licensing.md). Recorded rather than quietly
+dropped: the argument here still applies to whatever gets hosted next, and it
+is a choice that was made by default rather than weighed.
 
 The trade-off is real, so decide it deliberately rather than by default: AGPL
 deters some contributors and many companies ban it outright, which cuts both
