@@ -1,6 +1,6 @@
 # Filters and search: what the reader has, and what they can play
 
-- **Status:** Proposed
+- **Status:** Accepted — shipped in phase 2
 - **Date:** 2026-08-03
 
 The index page asks "what can we play right now". Five of its controls answer a
@@ -16,7 +16,17 @@ below was found by counting the corpus rather than by reading the code.
 | Players stops at 8 | 4 games seat 9-10 and 2 seat 11-12 (`baccarat` and `spoons` at 12, `bs` and `texas-holdem` at 10). |
 | Decks stops at 2 | Distinct deck counts are `0,1,2,3,6`. `baccarat` needs 6 and `hand-and-foot` 3, so neither is reachable by any chip. Three more — `contract-rummy`, `indian-rummy`, `nertz` — fit a chip at their smallest table but need more than two decks by their largest, so a chip answers for part of their range only. Five games in total that the chips cannot ask for. |
 | The decks filter gives a false yes | 10 games declaring one deck are flagged `extra_deck_for_large_groups` and need a second near the top of their range. `matches()` never reads the flag, so "1 deck, 8 players" offers `bs`, `egyptian-ratscrew`, `mau-mau`, `rummy-500` and `slapjack`. |
-| The pack is unsearchable | `records.ts` indexes name, aliases, tags and the three prose fields. `equipment.special_deck` is not among them, so "euchre deck", "piquet pack" and "skat pack" return nothing though those exact phrases are in the data. |
+| The pack is unsearchable | `records.ts` indexes name, aliases, tags and the three prose fields. Neither `decks` nor `equipment.special_deck` is among them, so nothing about what a game is played *with* is searchable. |
+
+> **Corrected after measuring.** This row first claimed that "euchre deck", "piquet pack"
+> and "skat pack" returned nothing. They did not: each query carries the game's own
+> name, and each already led with the right game. Five of the first six tests written
+> against this claim passed with the pack field removed, which is how it surfaced.
+> What indexing the pack actually buys, measured against an index built both ways:
+> "pencil" went from nothing at all to Cribbage — it is in no searchable field
+> anywhere except cribbage's deck line — "stripped" from 2 games to 15, "removed"
+> from 12 to 33, "counters" from 5 to 9. The gain is the pack *description*, and
+> most of it comes from indexing `decks` rather than only `special_deck`.
 
 Two things were checked and are **not** faults, recorded so nobody re-opens
 them. Difficulty stopping at "Medium" is correct, because the chip is a ceiling
@@ -169,13 +179,22 @@ strip" does not contain "can add jokers" in either direction. Modelled as a
 ceiling, that reader gets a list containing games they cannot play — the same
 false yes this document exists to remove.
 
-Two independent capability checkboxes instead — *I have jokers* and *I can strip
-a deck* — with a game shown when its requirements are a subset of what is
-ticked. `five-hundred`, needing both a stripped pack and a joker, requires both.
-`koi-koi` requires a capability no checkbox offers, so it appears only when the
-control is untouched, which is the same treatment `standard_decks: 0` already
-gets from the deck count. Requirements are derived from `equipment`, so they
-cannot drift.
+Two independent checkboxes instead, each **excluding** the games that carry its
+obstacle — *No jokers needed* and *No cards removed* — so that ticking both is
+"a plain 52 and nothing done to it". `five-hundred`, needing both a stripped
+pack and a joker, is ruled out by either. `koi-koi` needs a pack neither box
+offers and goes with either one, which is the same treatment `standard_decks: 0`
+already gets from the deck count. Requirements are derived from `equipment`, so
+they cannot drift.
+
+> **As shipped, and a correction.** This section first specified the boxes as
+> *capabilities* — "I have jokers", matched by subset — and that model could not
+> express the most common request on the axis at all. Nothing ticked meant "no
+> claim" and showed all 72; ticking both showed 71; and the 50 games playable
+> with a plain 52 were unreachable at every setting. The single-box sets are
+> identical either way round, so only the polarity was wrong. Excluding also
+> means more ticked shows fewer, which is the direction every other control on
+> the page runs.
 
 This is deliberately **not** a reason to drop games from the corpus. Restricting
 to standard decks would remove exactly one entry, because sixteen of the
@@ -204,11 +223,21 @@ reader. The button stays.
 
 ### 7. Ranking has a stated precedence
 
-`plan()` already sorts by search score when a query is present, and `ideal` now
-wants to sort too. Search score wins, with `ideal`-in-range breaking ties; with
-no query, games ideal within the range come first and source order holds inside
-each group. Stated here because two sorts arriving in the same function with no
-declared winner is how one of them silently stops working.
+`plan()` already sorts by search score when a query is present, and coverage and
+`ideal` now want to sort too. Stated here because two sorts arriving in the same
+function with no declared winner is how one of them silently stops working:
+
+```
+with a query:  score ↓ · covers ↓ · ideal ↓ · source order
+without one:            covers ↓ · ideal ↓ · source order
+```
+
+The sort is stable, so source order is what holds inside every group rather than
+something arbitrary. Coverage and `ideal` sit outside the has-a-query condition
+because they are facts about the game, not about the query — an earlier draft of
+this section predated the coverage rule and left it unsaid, which would have let
+a card badged "plays with any of 4-6" sort below one that does not, in the same
+list.
 
 ## The schema change
 
@@ -330,24 +359,60 @@ output, so they come from the corpus. These are the claims:
 - **URLs round-trip**, including ranges and multi-valued families, and existing
   single-value `players=5` links still parse.
 - **A game is findable by its pack** — "euchre deck" returns `euchre`.
-- **Preparation is a subset test, not a ceiling.** Ticking "I can strip a deck"
-  alone never returns a game that needs jokers. This is the assertion that would
-  have caught the first draft's modelling error.
+- **Preparation excludes; it is not a ceiling.** Ticking one box alone never
+  returns a game carrying the other obstacle, and ticking both returns exactly
+  the games playable with a plain 52. This is the assertion that would have
+  caught the first draft's modelling error, and the second half of it is what
+  caught the second draft's.
 - **A game needing a pack nobody can improvise is offered only when the control
   is untouched** — `koi-koi`, matching how `standard_decks: 0` already behaves.
-- **The range cannot invert**, however the two thumbs are driven.
-- **Coinciding thumbs mean an exact count**, and the count label says so.
-- **The two thumbs carry distinct accessible names** in the built HTML, so a
-  screen reader does not announce one control twice. Assertable against the
+- **The range cannot invert**, however the chip and the floor are driven. All
+  144 reachable pairs are checked, not a sampled few: clamping happens in one
+  place and there is no other path to a range.
+- **A floor equal to the count is an exact count**, behaving identically to the
+  count alone — which is why an existing `?players=5` link still means five
+  without a compatibility branch.
+- **The floor carries its own accessible name**, distinct from the chip group's,
+  so a screen reader does not announce one control twice. Assertable against the
   generated page, like the existing focus-ring test.
+- **The floor opens on load when the URL carries one.** A filter applied from a
+  panel the reader cannot see is this document's own fault in a new costume.
+  Held by **driving the built site, not by the gate** — see below.
 - **A per-player game's requirement climbs with the count** — `nertz` needs 8
   decks at 8 players, and one deck held never offers it above one player.
+
+### What the gate cannot hold
+
+Three of the behaviours above live in `app.js`, which talks to the browser and
+has no DOM to be tested against: the floor opening from a shared link, the
+coverage badge reaching the cards that earned it, and the empty state's sentence
+reaching the page. The rules behind all three are in `facets.js` and are tested;
+the wiring is not.
+
+They are verified instead by driving the built site in Chromium, and each was
+broken on purpose to confirm the driver reports the difference — a check that
+cannot distinguish a working page from a dead one is this project's most
+expensive recurring mistake. Chromium is not in CI, so **a green `npm run check`
+does not cover these three**, and a change to `app.js` needs the browser pass
+again.
 
 ## Not in scope
 
 Time chips have the same hand-typed literals and should get the same derivation,
 but the thresholds there are a judgement about useful buckets rather than a
-property of the data, so they are left alone rather than guessed at. Equipment
+property of the data, so they are left alone rather than guessed at.
+
+**A "needs setting up" axis** — tableau games against shuffle-and-deal games —
+was asked for and measured, and there is nothing in the corpus to derive it
+from. A prose probe for tableau and layout language fires on 43 of 72 entries
+including Hearts, Euchre and Oh Hell, because it is catching "deal thirteen
+cards face-down". The schema's `layout` field also covers 43 of 72, but it is a
+drawing of the table and so fires on Blackjack, Whist and Texas Hold'em. Neither
+classifies effort. Building the axis would mean inventing a per-entry judgement
+sourced from nothing, which is the same objection that keeps the time chips out,
+and it would need a new field on all 72 entries. The Family chip meanwhile
+already selects the eleven solitaire games, which are exactly the setup-heavy
+ones — all eleven carry a `layout`. Equipment
 beyond the deck — the cribbage board, the chips, the spoons — is not filterable
 here; ten games declare something, which is too few to earn a control and enough
 to be worth a line on the card.
