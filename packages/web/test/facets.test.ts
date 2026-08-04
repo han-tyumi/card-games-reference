@@ -598,7 +598,7 @@ test("a range is said as a range on the printed sheet too", () => {
 // --- the floor -------------------------------------------------------------
 
 test("the floor offers every value at or below the count, and no more", () => {
-  for (let count = 1; count <= 12; count++) {
+  for (let count = 2; count <= 12; count++) {
     const options = floorOptions(facets, { players: String(count) }, null);
     assert.deepEqual(
       options.map((o) => o.value),
@@ -608,10 +608,23 @@ test("the floor offers every value at or below the count, and no more", () => {
   }
 });
 
-test("no count chosen means no options", () => {
-  // The control has nothing to be below, and the page hides it.
+test("nothing to be fewer than means no options", () => {
+  // Two ways to have nothing to offer, and the page hides the control on the
+  // empty list rather than on a rule of its own.
+  //
+  // No count chosen: nothing for a floor to be below.
   assert.deepEqual(floorOptions(facets, {}, null), []);
   assert.deepEqual(floorOptions(facets, { decks: "1" }, null), []);
+  // A count of one: nothing below it. It offered a single option reading
+  // "1 — 11 games", which is a <select> that cannot change anything, under a
+  // summary asking a solitaire player whether they might be fewer.
+  assert.deepEqual(floorOptions(facets, { players: "1" }, null), []);
+  assert.deepEqual(floorOptions(facets, { players: "1", from: "1" }, null), []);
+  // Two is the first count with somewhere to go, and it still works.
+  assert.deepEqual(
+    floorOptions(facets, { players: "2" }, null).map((o) => o.value),
+    ["1", "2"],
+  );
 });
 
 test("an option's count is the number of games that floor actually shows", () => {
