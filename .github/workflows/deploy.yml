@@ -33,6 +33,10 @@ permissions:
   contents: write
   pages: write
   id-token: write
+  # So a preview can leave its link on the pull request. Without it the URL
+  # exists only in this run's step summary, which is three clicks into the
+  # Actions tab and so is not somewhere anyone looks.
+  pull-requests: write
 
 # One deploy at a time, and never cancel one in flight -- a half-finished
 # deployment of a site people read offline is worse than a slightly late one.
@@ -196,4 +200,47 @@ jobs:
             echo "Published the site: $URL" >> "$GITHUB_STEP_SUMMARY"
           else
             echo "Preview: ${URL%/}/$SLOT/" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      # One comment per pull request, edited in place on every push rather than
+      # a new one each time. A branch with no open pull request gets nothing --
+      # there is nowhere to put it, and that is not a failure.
+      - name: Leave the preview link on the pull request
+        if: steps.slot.outputs.preview == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          BRANCH: ${{ github.event.workflow_run.head_branch || github.ref_name }}
+          SLOT: ${{ steps.slot.outputs.path }}
+          URL: ${{ steps.deploy.outputs.page_url }}
+          SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
+        run: |
+          set -euo pipefail
+          PR=$(gh pr list --repo "$REPO" --head "$BRANCH" --state open \
+                 --json number --jq '.[0].number // empty')
+          if [ -z "$PR" ]; then
+            echo "No open pull request for $BRANCH; nothing to comment on."
+            exit 0
+          fi
+
+          # printf rather than a heredoc: a heredoc body has to sit at column
+          # zero, which ends the YAML block scalar this step is written in.
+          BODY=$(printf '%s\n' \
+            '<!-- naibi-preview -->' \
+            "**Preview:** ${URL%/}/$SLOT/" \
+            '' \
+            "Built from \`${SHA:0:7}\`. Updated in place on every push to this branch, and removed when this pull request closes." \
+            '' \
+            'It is the real site at a subpath, with three deliberate differences: it does not work offline, it cannot be installed, and it is marked `noindex`. A preview ships no service worker, because the worker deletes every cache that is not its own and the Cache API is scoped to an origin rather than a path -- so one that had a worker would wipe the offline copy of the installed app.' \
+            '' \
+            '<sub>Posted by the Deploy workflow.</sub>')
+
+          ID=$(gh api "repos/$REPO/issues/$PR/comments" --paginate \
+                 --jq '.[] | select(.body | contains("<!-- naibi-preview -->")) | .id' | head -1)
+          if [ -n "$ID" ]; then
+            gh api -X PATCH "repos/$REPO/issues/comments/$ID" -f body="$BODY" --silent
+            echo "Updated the preview comment on #$PR."
+          else
+            gh api -X POST "repos/$REPO/issues/$PR/comments" -f body="$BODY" --silent
+            echo "Commented the preview link on #$PR."
           fi

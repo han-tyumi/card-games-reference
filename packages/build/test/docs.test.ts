@@ -634,6 +634,37 @@ test("nothing reaches readers without passing first", () => {
   );
 });
 
+test("a preview leaves exactly one comment, edited rather than repeated", () => {
+  // The preview URL used to exist only in the run's step summary, three clicks
+  // into the Actions tab. It goes on the pull request now -- but a workflow
+  // that comments on every push is a workflow people mute, so it upserts: find
+  // the marked comment, edit it, or create one if there is none.
+  const workflows = join(REPO_ROOT, ".github", "workflows");
+  const deploy = readFileSync(join(workflows, "deploy.yml"), "utf8");
+  const cleanup = readFileSync(join(workflows, "preview-cleanup.yml"), "utf8");
+
+  const MARKER = "<!-- naibi-preview -->";
+  for (const [name, body] of [["deploy.yml", deploy], ["preview-cleanup.yml", cleanup]]) {
+    assert.ok(body!.includes(MARKER), `${name} cannot find its own comment to edit`);
+    assert.match(body!, /pull-requests: write/, `${name} cannot comment`);
+  }
+
+  // Both halves of the upsert have to be there. With only the create it
+  // comments on every push; with only the edit the first one never appears.
+  assert.match(deploy, /-X PATCH/, "the deploy never edits, so it comments on every push");
+  assert.match(deploy, /-X POST/, "the deploy never creates the first comment");
+
+  // Only previews, and only when there is somewhere to put it.
+  const step = deploy.slice(deploy.indexOf("Leave the preview link"));
+  assert.match(step, /if: steps\.slot\.outputs\.preview == 'true'/, "main would comment too");
+  assert.match(step, /nothing to comment on/, "a branch with no pull request would fail");
+
+  // The cleanup edits rather than deletes: a comment that vanishes when a
+  // preview is removed reads as something having gone wrong.
+  assert.match(cleanup, /-X PATCH/, "the cleanup does not retire the comment");
+  assert.doesNotMatch(cleanup, /-X DELETE/, "the cleanup deletes the comment instead of editing it");
+});
+
 test("the preview cleanup edits the branch and deploys nothing", () => {
   // Its first run failed in two seconds without reaching a runner. It declared
   // the github-pages environment, which only the default branch may deploy to,
