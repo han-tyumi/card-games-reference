@@ -7,8 +7,10 @@ retrofitted later.
 Each of these becomes a package under `packages/` when it is built, depending on
 `naibi` rather than keeping its own copy of the rules.
 
-**Out of scope for v1.** v1 is the rules data plus the build pipeline that turns
-it into Markdown and PDF. These come after.
+**The website is no longer one of these.** It was described here as a later
+thing; it now exists as [`packages/web/`](../packages/web/) and is
+[published](https://han-tyumi.github.io/naibi/). What is left below is the
+graphics work and the apps.
 
 ## A licensing note for whoever builds these
 

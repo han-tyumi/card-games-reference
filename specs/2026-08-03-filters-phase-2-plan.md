@@ -1,5 +1,7 @@
 # Filters and search — Implementation Plan (phase 2 of 2)
 
+- **Status:** Done — shipped in v0.3.3, with the branch previews added along the way
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Ship everything in

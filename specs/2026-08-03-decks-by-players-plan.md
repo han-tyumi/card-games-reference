@@ -1,5 +1,7 @@
 # Decks by player count — Implementation Plan (phase 1 of 2)
 
+- **Status:** Done — shipped in v0.3.2
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Make "can I play this with the decks I own?" answerable at every player

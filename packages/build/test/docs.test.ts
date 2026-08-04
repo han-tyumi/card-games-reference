@@ -175,6 +175,44 @@ test("the 2026-08-01 pass is described as it was, not as it reads", () => {
   assert.deepEqual(unrecorded, [], "2026-08-01 entries with no source record");
 });
 
+test("nothing built is described as unbuilt", () => {
+  // The README said "The site is built and installable" on one line and "The
+  // website ... planned but unbuilt" two hundred lines later, and both were
+  // true of different moments. Whether a thing exists is a fact on disk, so
+  // this is checkable rather than a matter of remembering to edit two places
+  // when something ships.
+  const claims: [string, string, RegExp][] = [
+    ["the website", join("packages", "web", "build-web.ts"), /\bweb ?site\b/i],
+    ["the booklet", join("packages", "build", "build-pdf.ts"), /\bbooklet\b|\bPDF\b/],
+  ];
+
+  const sections: [string, string][] = [
+    ["README.md", readme.slice(readme.indexOf("## Not in scope yet"))],
+    ["tools/README.md", readFileSync(join(REPO_ROOT, "tools", "README.md"), "utf8")],
+  ];
+
+  for (const [what, path, mentions] of claims) {
+    const exists = existsSync(join(REPO_ROOT, path));
+    if (!exists) continue;
+    for (const [file, section] of sections) {
+      // By paragraph with the wrapping flattened, not by line. The defect this
+      // exists for spanned two lines -- "The website, the mobile app, and the
+      // companion tools described in" / "[tools/README.md] are all planned but
+      // unbuilt" -- so a line-by-line version passed against the exact sentence
+      // it was written to catch. Which it did, on its first run.
+      const paragraphs = section.split(/\n\s*\n/).map((p) => p.replace(/\s+/g, " ").trim());
+      for (const paragraph of paragraphs) {
+        if (!mentions.test(paragraph)) continue;
+        assert.doesNotMatch(
+          paragraph,
+          /\b(planned but unbuilt|not built|unbuilt|not started|out of scope)\b/i,
+          `${file} calls ${what} unbuilt, but ${path} exists:\n  ${paragraph}`,
+        );
+      }
+    }
+  }
+});
+
 test("every file the README links to exists", () => {
   const missing: string[] = [];
 
