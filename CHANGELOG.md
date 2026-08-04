@@ -28,6 +28,26 @@ release procedure is in
 
 ## [Unreleased]
 
+## [0.3.3] — 2026-08-04
+
+### Changed
+
+- Filter players by overlap with a range, not an exact count
+- Read the deck requirement at every seat in range, not just the smallest
+- Filter on what the reader can do to a deck, by subset
+- Let the family chips select more than one family
+- Rank by coverage and ideal, and say which games cover the range
+- Offer the range floor with the counts it would produce
+- Say which filters emptied the list
+- Index the pack, and stop underselling the search box
+- Invert the preparation axis: exclude obstacles rather than claim capabilities
+- Derive every chip row, and add the floor and the preparation checkboxes
+- Say the new filters in words on the printed sheet
+- Say in the Family heading that it takes more than one
+- Serve branch previews at a Pages subpath, from a composed site branch
+- Seed the site root from main before a preview can publish an empty one
+- Stop a preview promising offline and installability it does not have
+
 ## [0.3.2] — 2026-08-03
 
 ### Changed
@@ -128,7 +148,8 @@ than served out of the default branch.
 - A difficulty the filter could not rank passed every difficulty filter, because
   `undefined > undefined` is false whichever way round it is written.
 
-[Unreleased]: https://github.com/han-tyumi/naibi/compare/v0.3.2...HEAD
+[Unreleased]: https://github.com/han-tyumi/naibi/compare/v0.3.3...HEAD
+[0.3.3]: https://github.com/han-tyumi/naibi/compare/v0.3.2...v0.3.3
 [0.3.2]: https://github.com/han-tyumi/naibi/compare/v0.3.1...v0.3.2
 [0.3.1]: https://github.com/han-tyumi/naibi/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/han-tyumi/naibi/compare/v0.2.1...v0.3.0
