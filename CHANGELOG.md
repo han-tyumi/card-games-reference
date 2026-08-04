@@ -28,6 +28,20 @@ release procedure is in
 
 ## [Unreleased]
 
+## [0.3.5] — 2026-08-04
+
+### Fixed
+
+- stop the site's worker answering for branch previews
+
+### Changed
+
+- Shorten the search placeholder to two examples that fit
+- Put the preview link on the pull request, as one comment
+- Lead the search placeholder with the verb
+- Drop the floor control when one player is chosen
+- Say that a floor of one means alone
+
 ## [0.3.4] — 2026-08-04
 
 ### Changed
@@ -155,7 +169,8 @@ than served out of the default branch.
 - A difficulty the filter could not rank passed every difficulty filter, because
   `undefined > undefined` is false whichever way round it is written.
 
-[Unreleased]: https://github.com/han-tyumi/naibi/compare/v0.3.4...HEAD
+[Unreleased]: https://github.com/han-tyumi/naibi/compare/v0.3.5...HEAD
+[0.3.5]: https://github.com/han-tyumi/naibi/compare/v0.3.4...v0.3.5
 [0.3.4]: https://github.com/han-tyumi/naibi/compare/v0.3.3...v0.3.4
 [0.3.3]: https://github.com/han-tyumi/naibi/compare/v0.3.2...v0.3.3
 [0.3.2]: https://github.com/han-tyumi/naibi/compare/v0.3.1...v0.3.2
