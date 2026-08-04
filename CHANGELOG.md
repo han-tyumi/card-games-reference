@@ -28,6 +28,13 @@ release procedure is in
 
 ## [Unreleased]
 
+## [0.3.4] — 2026-08-04
+
+### Changed
+
+- State the standard-52 premise in the preparation heading
+- Stop the preview cleanup deploying, which is why it failed
+
 ## [0.3.3] — 2026-08-04
 
 ### Changed
@@ -148,7 +155,8 @@ than served out of the default branch.
 - A difficulty the filter could not rank passed every difficulty filter, because
   `undefined > undefined` is false whichever way round it is written.
 
-[Unreleased]: https://github.com/han-tyumi/naibi/compare/v0.3.3...HEAD
+[Unreleased]: https://github.com/han-tyumi/naibi/compare/v0.3.4...HEAD
+[0.3.4]: https://github.com/han-tyumi/naibi/compare/v0.3.3...v0.3.4
 [0.3.3]: https://github.com/han-tyumi/naibi/compare/v0.3.2...v0.3.3
 [0.3.2]: https://github.com/han-tyumi/naibi/compare/v0.3.1...v0.3.2
 [0.3.1]: https://github.com/han-tyumi/naibi/compare/v0.3.0...v0.3.1
