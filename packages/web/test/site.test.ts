@@ -23,7 +23,7 @@ import {
   renderFigureSvg,
 } from "naibi";
 import { buildSite } from "../build-web.ts";
-import { facetsFor } from "../records.ts";
+import { facetsFor, searchRecords } from "../records.ts";
 import { matches } from "../assets/facets.js";
 
 const games = loadGames();
@@ -933,17 +933,55 @@ test("a first install is not reported as an update", () => {
   assert.match(html, /if \(!updating\) return;/, "first install is not guarded");
 });
 
-test("the search box does not undersell what it searches", () => {
-  // It said "Search every rule" while the index has always covered names,
-  // aliases, families and tags too, and now covers the deck. A reader who
-  // believes the placeholder will not think to type a game's name into it,
-  // which is the most common thing anyone types into a search box.
+test("the search placeholder fits the width the project commits to", () => {
+  // Decision 0011 targets 320 CSS pixels, which is WCAG 2.2 Reflow rather than
+  // a guess at a phone. The previous placeholder named all five indexed fields
+  // and ran to 568px inside a box with 227px of room -- cut mid-word on a real
+  // handset. A placeholder nobody can finish reading undersells the index worse
+  // than a short one does.
+  //
+  // Character count stands in for the pixel measurement, which needs a browser.
+  // The bound comes from measuring the shipped stack at 320px: 227px of room,
+  // and no glyph in this text is narrower than about 6px, so 30 characters is
+  // comfortably inside it with room for a font this test cannot see.
   const placeholder = /<input id="q"[^>]*placeholder="([^"]*)"/.exec(text("index.html"))?.[1];
   assert.ok(placeholder, "the search box has no placeholder");
-  assert.doesNotMatch(placeholder, /^Search every rule/, "the placeholder still claims only rules");
-  for (const covered of ["names", "families", "tags", "decks"]) {
-    assert.ok(placeholder.includes(covered), `the placeholder does not mention ${covered}`);
+  assert.ok(
+    placeholder.length <= 30,
+    `the placeholder is ${placeholder.length} characters and will be cut at 320px: "${placeholder}"`,
+  );
+
+  // And it still must not claim the index covers only the rules, which is the
+  // fault the long version was written to fix. Naming no field at all is fine;
+  // naming one wrongly is not.
+  assert.doesNotMatch(placeholder, /^Search every rule/, "the placeholder claims only rules");
+});
+
+test("the placeholder shows the index reaches past names", () => {
+  // Examples instead of a field list. "bower" is a word from the rules and
+  // "euchre deck" is a pack, so between them a reader can see the box is not
+  // just a name lookup -- which is what the long field list was for.
+  const placeholder = /<input id="q"[^>]*placeholder="([^"]*)"/.exec(text("index.html"))![1]!;
+  const query = placeholder.toLowerCase();
+
+  // Whatever the examples are, they have to actually find something, or the
+  // placeholder is teaching a query that returns nothing.
+  const records = searchRecords(games);
+  for (const word of query.split(/[^a-z]+/).filter((w) => w.length > 3)) {
+    const found = records.some((r) =>
+      Object.values(r).flat().join(" ").toLowerCase().includes(word),
+    );
+    assert.ok(found, `the placeholder suggests "${word}", which is in no entry`);
   }
+
+  // At least one example must not be a game's own name, or it demonstrates
+  // nothing the reader did not already assume.
+  const names = new Set(games.flatMap((g) => [g.name, ...g.aliases]).map((n) => n.toLowerCase()));
+  const words = query.split(/[^a-z]+/).filter((w) => w.length > 3);
+  assert.ok(
+    words.some((w) => !names.has(w)),
+    `every example is a game name, so the placeholder shows nothing new: "${placeholder}"`,
+  );
 });
 
 test("the search box is labelled", () => {
