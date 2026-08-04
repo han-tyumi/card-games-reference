@@ -1232,6 +1232,22 @@ test("a preview still points its canonical URLs at the published site", () => {
   );
 });
 
+test("a preview does not promise what it has taken away", () => {
+  // The published blurb says the site works offline and installs to a home
+  // screen. A preview ships neither the worker nor the manifest, so on a
+  // preview that sentence is false -- and a page saying yes when the answer is
+  // no is the exact failure the filters below it exist to remove. Found by
+  // looking at a built preview, not by a test, which is why there is one now.
+  const previewIndex = previewText("index.html");
+  assert.doesNotMatch(previewIndex, /Works offline/, "a preview claims to work offline");
+  assert.doesNotMatch(previewIndex, /installs to your home screen/, "a preview claims to install");
+  assert.match(previewIndex, /does not work offline and cannot be installed/);
+
+  // And the published site still says it, because there it is true.
+  assert.match(text("index.html"), /Works offline once/);
+  assert.match(text("index.html"), /installs to your home screen/);
+});
+
 test("a preview says on the page that it is not the published site", () => {
   // The URL says /preview/ and nobody reads URLs on a phone.
   assert.match(previewText("index.html"), /id="preview-banner"/);

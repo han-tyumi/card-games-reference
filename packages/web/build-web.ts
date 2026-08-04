@@ -205,7 +205,8 @@ ${opts.preview ? "" : `<link rel="manifest" href="${up}manifest.webmanifest">`}
 <div class="wrap${opts.wide ? " wrap--wide" : ""}">
 ${
   opts.preview
-    ? `<p class="updated" id="preview-banner">Preview build — not the published site.</p>`
+    ? `<p class="updated" id="preview-banner">Preview build — not the published site.
+It does not work offline and cannot be installed.</p>`
     : `<p class="updated" id="updated" hidden>A newer version is ready.
 <button id="reload" type="button">Reload</button></p>`
 }
@@ -655,11 +656,18 @@ function printPage(games: CardGame[], preview: boolean): string {
 function indexPage(games: CardGame[], preview: boolean): string {
   const chips = chipValues(games);
   const body: string[] = [];
+  // A preview has no service worker and no manifest, so the published blurb's
+  // promise is false on one. Saying a page works offline when it does not is
+  // the exact failure the filters below exist to remove, and it does not stop
+  // being one because the page is a preview.
+  const promise = preview
+    ? ""
+    : ` Works offline once
+loaded, and <a href="about.html#install">installs to your home screen</a>.`;
   body.push(`<header class="masthead">
 <h1>${TITLE}</h1>
 <p class="pron">NYE-bee</p>
-<p class="blurb">${esc(TAGLINE)} ${games.length} games. Works offline once
-loaded, and <a href="about.html#install">installs to your home screen</a>.</p>
+<p class="blurb">${esc(TAGLINE)} ${games.length} games.${promise}</p>
 <nav class="site-nav">
 <a href="about.html">About</a>
 <a href="${PDF_URL}">Print the booklet (PDF)</a>
