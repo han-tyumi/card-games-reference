@@ -43,7 +43,7 @@ import {
 // The same module the browser loads, so the words this indexes and the words a
 // query is split into cannot drift apart.
 import { buildIndex } from "./assets/search.js";
-import { facetsFor, searchRecords } from "./records.ts";
+import { chipValues, facetsFor, searchRecords } from "./records.ts";
 
 const PACKAGE_ROOT = fileURLToPath(new URL(".", import.meta.url));
 const REPO_ROOT = fileURLToPath(new URL("../..", import.meta.url));
@@ -383,24 +383,71 @@ function chipLabel(category: string): string {
     .replace(/ \([^)]*\)$/, "");
 }
 
+/**
+ * One labelled group of chips.
+ *
+ * Radios carry an "Any" chip because a radio group always has exactly one
+ * selection, so "no opinion" needs somewhere to live. Checkboxes do not: none
+ * ticked already says any, and an "Any" checkbox would need scripting to
+ * behave and would sit lit beside the values it contradicts.
+ *
+ * The heading is a <span> and not a <label>, because it labels a group rather
+ * than a control and a <label> with no `for` labels nothing. The group carries
+ * `role="group"` and points at it, which is what makes a screen reader announce
+ * "Family, Rummy, checkbox" rather than reading seven unrelated checkboxes.
+ *
+ * `extra` is markup placed inside the group but outside the chip row — the
+ * players floor, which belongs to that control and to no other.
+ */
 function chipGroup(
   name: string,
   label: string,
   options: [string, string][],
+  type: "radio" | "checkbox" = "radio",
+  extra = "",
 ): string {
+  const heading = `${name}-label`;
   return (
-    `<div class="facet"><label>${esc(label)}</label><div class="chips">` +
+    `<div class="facet"><span class="facetlabel" id="${heading}">${esc(label)}</span>` +
+    `<div class="chips" role="group" aria-labelledby="${heading}">` +
     options
       .map(([value, text], i) => {
         const id = `${name}-${i}`;
         return (
-          `<input type="radio" name="${name}" id="${id}" value="${esc(value)}"` +
-          `${value === "" ? " checked" : ""}>` +
+          `<input type="${type}" name="${name}" id="${id}" value="${esc(value)}"` +
+          `${type === "radio" && value === "" ? " checked" : ""}>` +
           `<label for="${id}">${esc(text)}</label>`
         );
       })
       .join("") +
-    `</div></div>`
+    `</div>${extra}</div>`
+  );
+}
+
+/**
+ * The optional floor under the players row.
+ *
+ * A native <details>, collapsed: keyboard operable, announced correctly and
+ * findable by find-in-page when open, for no JavaScript at all — matching every
+ * other control here.
+ *
+ * It ships `hidden` because it means nothing until a count is chosen, and
+ * app.js reveals it when one is. It also **opens on load when the URL carries a
+ * floor**: a shared link that applies a filter from a collapsed panel is this
+ * project's own "says yes when the answer is no" wearing a different hat.
+ *
+ * The options are rewritten by app.js with live counts. They are rendered here
+ * as bare numbers so the control exists in the markup, and so `allowed` has a
+ * real list to validate a URL against before anything has been rendered.
+ */
+function playersFloor(values: string[]): string {
+  return (
+    `<details class="floor" id="floor" hidden>` +
+    `<summary>Might you be fewer?</summary>` +
+    `<div class="floorrow"><label for="from">As few as</label>` +
+    `<select id="from" name="from">` +
+    values.map((v) => `<option value="${v}">${v}</option>`).join("") +
+    `</select></div></details>`
   );
 }
 
@@ -577,6 +624,7 @@ function printPage(games: CardGame[]): string {
 }
 
 function indexPage(games: CardGame[]): string {
+  const chips = chipValues(games);
   const body: string[] = [];
   body.push(`<header class="masthead">
 <h1>${TITLE}</h1>
@@ -596,10 +644,34 @@ ${/* "Search every rule" undersold an index that has always carried names,
      aliases, families and tags as well, and now carries the deck. A reader who
      believes the placeholder will not think to type a game's name into it. */ ""}
 <input id="q" type="search" placeholder="Search names, families, tags, decks and rules — try bower, or slap" autocomplete="off">
-${chipGroup("players", "Players", [
-  ["", "Any"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["8", "8"],
+${/* Derived from the corpus, not typed out. The hand-typed row skipped 7 while
+     22 games seat 7, and stopped at 8 while six games seat more. The floor
+     below widens the count downward and is the whole of the range control. */ ""}
+${chipGroup(
+  "players",
+  "Players",
+  [["", "Any"] as [string, string], ...chips.players.map((n) => [n, n] as [string, string])],
+  "radio",
+  playersFloor(chips.players),
+)}
+${chipGroup("decks", "Decks on hand", [
+  ["", "Any"] as [string, string],
+  ...chips.decks.map((n) => [n, n] as [string, string]),
 ])}
-${chipGroup("decks", "Decks on hand", [["", "Any"], ["1", "1"], ["2", "2"]])}
+${/* Two independent obstacles, each box ruling out the games that carry it, so
+     ticking both is "a plain 52 and nothing done to it" -- 50 games, and the
+     most common request on this axis. Checkboxes rather than a ceiling because
+     neither obstacle contains the other: a deck with no jokers can still have
+     cards taken out of it. */ ""}
+${chipGroup(
+  "prep",
+  "Your deck",
+  [
+    ["jokers", "No jokers needed"],
+    ["strip", "No cards removed"],
+  ],
+  "checkbox",
+)}
 ${chipGroup("minutes", "Time", [["", "Any"], ["15", "≤15 min"], ["30", "≤30 min"], ["60", "≤60 min"]])}
 ${/* A ceiling, not an exact match: "Easy" returns the simple games too. Time
      says that in its chips ("≤30 min"); difficulty has nowhere to put it, so
@@ -612,10 +684,12 @@ ${/* Last, because the four above answer "what can we play right now" and this
      constraint. Built from CATEGORY_ORDER rather than typed out, so a category
      added to the schema gets a chip instead of being quietly unfilterable, and
      it is an exact match rather than a ceiling. */ ""}
-${chipGroup("category", "Family", [
-  ["", "Any"] as [string, string],
-  ...CATEGORY_ORDER.map((c) => [c, chipLabel(c)] as [string, string]),
-])}
+${chipGroup(
+  "category",
+  "Family",
+  CATEGORY_ORDER.map((c) => [c, chipLabel(c)] as [string, string]),
+  "checkbox",
+)}
 </div>`);
 
   // Beside the count rather than in the footer: the thought "put this on
@@ -634,17 +708,32 @@ ${chipGroup("category", "Family", [
       `<li><a href="games/${game.id}.html"><h2>${esc(game.name)}</h2>` +
         `<p class="meta">${esc(playersLine(game))} · ${esc(durationLine(game))} · ` +
         `${esc(game.difficulty)} · ${esc(categoryLabel(game.category))}</p>` +
+        // Filled by app.js when a range is set and this game seats every count
+        // in it. Separate from .where, which says where a search matched:
+        // "plays with any of 4-6" is a fact about the game, not about a query.
+        `<p class="covers"></p>` +
         `<p class="where"></p></a></li>`,
     );
   }
   body.push(`</ul>`);
   body.push(
-    `<p class="empty" id="empty" hidden>Nothing matches. ` +
+    // The reason is written by app.js. An empty list under six controls is a
+    // puzzle otherwise: the reader has to work out which of them did it.
+    `<p class="empty" id="empty" hidden><span id="why">Nothing matches.</span> ` +
       `<button id="reset" type="button">Clear filters</button></p>`,
   );
   body.push(
     `<script type="application/json" id="facets">` +
       `${embed(JSON.stringify(facetsFor(games)))}</script>`,
+  );
+  // The family names, so the empty state can say "the Rummy family" rather
+  // than "rummy-type". The same block the print sheet already carries, for the
+  // same reason.
+  body.push(
+    `<script type="application/json" id="labels">` +
+      `${embed(
+        JSON.stringify(Object.fromEntries(CATEGORY_ORDER.map((c) => [c, categoryLabel(c)]))),
+      )}</script>`,
   );
 
   return page({

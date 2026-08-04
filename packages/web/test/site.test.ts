@@ -23,6 +23,8 @@ import {
   renderFigureSvg,
 } from "naibi";
 import { buildSite } from "../build-web.ts";
+import { facetsFor } from "../records.ts";
+import { matches } from "../assets/facets.js";
 
 const games = loadGames();
 const site = buildSite(games);
@@ -141,22 +143,48 @@ test("GitHub Pages is told not to run this through Jekyll", () => {
 
 // --- links ----------------------------------------------------------------
 
+/**
+ * The filter groups on the index, sliced at their own boundaries.
+ *
+ * Not a single regex: the players group now contains a nested <details>, so
+ * "everything up to the next </div></div>" stops in the middle of it. Each
+ * group runs from its own opening tag to the next one, which is true however
+ * deeply a control nests inside.
+ */
+function filterGroups(html: string): { label: string; inner: string }[] {
+  const start = html.indexOf('<div class="filters">');
+  const end = html.indexOf('<div class="countrow">');
+  assert.ok(start >= 0 && end > start, "the index has no filters block");
+  return html
+    .slice(start, end)
+    .split('<div class="facet">')
+    .slice(1)
+    .map((inner) => ({
+      label: /^<span class="facetlabel" id="[\w-]+-label">([^<]+)<\/span>/.exec(inner)?.[1] ?? "",
+      inner,
+    }));
+}
+
 test("every family in the corpus has a chip to filter by", () => {
   // The chips are generated from CATEGORY_ORDER rather than typed out, and this
   // is what makes that worth doing: add a category to the schema, ship games in
   // it, and without this the family would simply be unreachable from the index
   // with nothing failing. The count is asserted too, so a chip for a category
   // that no longer exists is caught from the other side.
-  const index = text("index.html");
-  const group = /<div class="facet"><label>Family<\/label><div class="chips">(.*?)<\/div>/s.exec(
-    index,
-  );
+  const group = filterGroups(text("index.html")).find((g) => g.label === "Family");
   assert.ok(group, "the index has no Family facet");
 
-  const values = [...group[1]!.matchAll(/<input[^>]*value="([^"]*)"/g)].map((m) => m[1]!);
+  const values = [...group.inner.matchAll(/<input[^>]*value="([^"]*)"/g)].map((m) => m[1]!);
+  // No "Any" chip: this is a checkbox group, where none ticked already says
+  // any, and an "Any" checkbox would sit lit beside the values it contradicts.
+  // Checked before the comparison below, which is an assertion function and
+  // narrows `values` to the category union — after it, "" is not even a type
+  // this array could hold, and the check would not compile.
+  assert.ok(!values.includes(""), "a checkbox group carries an Any chip");
+
   assert.deepEqual(
     values,
-    ["", ...CATEGORY_ORDER],
+    [...CATEGORY_ORDER],
     "the family chips do not match the schema's categories, in order",
   );
 
@@ -169,9 +197,9 @@ test("every family in the corpus has a chip to filter by", () => {
 test("a family chip does not repeat the heading it sits under", () => {
   // "Rummy family" under a heading reading FAMILY says it twice, and
   // "Solitaire (1 player)" repeats the Players chips two rows above.
-  const group = /<label>Family<\/label><div class="chips">(.*?)<\/div>/s.exec(text("index.html"));
+  const group = filterGroups(text("index.html")).find((g) => g.label === "Family");
   assert.ok(group);
-  const labels = [...group[1]!.matchAll(/<label for="category-\d+">([^<]+)<\/label>/g)]
+  const labels = [...group.inner.matchAll(/<label for="category-\d+">([^<]+)<\/label>/g)]
     .map((m) => m[1]!)
     .filter((l) => l !== "Any");
 
@@ -652,28 +680,194 @@ test("each filter is one labelled group, which is what the spacing relies on", (
   // rather than a heading for the one below. That is a CSS rule no test can
   // check, but it depends on this markup, which one can.
   const html = text("index.html");
-  const facets = [...html.matchAll(/<div class="facet">([\s\S]*?)<\/div><\/div>/g)];
-
-  assert.equal(facets.length, 5, "expected one group per filter");
+  const groups = filterGroups(html);
 
   // Named, so changing one is a decision rather than a slip. "At most" used to
   // stand alone here and read as a heading with no noun -- at most WHAT.
   assert.deepEqual(
-    facets.map(([, inner]) => /<label>([^<]+)<\/label>/.exec(inner!)![1]),
-    ["Players", "Decks on hand", "Time", "Difficulty (at most)", "Family"],
+    groups.map((g) => g.label),
+    ["Players", "Decks on hand", "Your deck", "Time", "Difficulty (at most)", "Family"],
   );
-  for (const [, inner] of facets) {
-    assert.match(inner!, /^<label>[^<]+<\/label><div class="chips">/, "group is malformed");
-    assert.equal((inner!.match(/<div class="chips">/g) ?? []).length, 1);
+  for (const group of groups) {
+    assert.match(group.inner, /^<span class="facetlabel"[^>]*>[^<]+<\/span><div class="chips"/);
+    assert.equal((group.inner.match(/<div class="chips"/g) ?? []).length, 1);
   }
 
-  // Every radio lives inside a group, so none is left unlabelled.
-  const radios = (html.match(/<input type="radio"/g) ?? []).length;
-  const grouped = facets.reduce(
-    (n, [, inner]) => n + (inner!.match(/<input type="radio"/g) ?? []).length,
+  // Every input lives inside a group, so none is left unlabelled. Checkboxes
+  // as well as radios now, which is the half a count of radios would miss.
+  const inputs = (html.match(/<input type="(?:radio|checkbox)"/g) ?? []).length;
+  const grouped = groups.reduce(
+    (n, g) => n + (g.inner.match(/<input type="(?:radio|checkbox)"/g) ?? []).length,
     0,
   );
-  assert.equal(grouped, radios, "a filter chip sits outside a labelled group");
+  assert.equal(grouped, inputs, "a filter chip sits outside a labelled group");
+});
+
+test("the players and deck chips are derived from the corpus, not typed out", () => {
+  // The family chips were built from CATEGORY_ORDER "so a category added to the
+  // schema gets a chip instead of being quietly unfilterable". Players and
+  // decks were literals and drifted exactly as that comment predicted: the row
+  // skipped 7 while 22 games seat 7, and stopped at 2 decks while five games
+  // need more. Both rows are now generated, and this is what keeps them so.
+  const groups = filterGroups(text("index.html"));
+  const values = (label: string) =>
+    [...groups.find((g) => g.label === label)!.inner.matchAll(/<input[^>]*value="([^"]*)"/g)]
+      .map((m) => m[1]!)
+      .filter(Boolean);
+
+  const seats = Math.max(...games.map((g) => g.players.max));
+  assert.deepEqual(
+    values("Players"),
+    Array.from({ length: seats }, (_, i) => String(i + 1)),
+  );
+
+  // Only thresholds present in the data change the answer, because the filter
+  // is an "at most" ceiling -- a "4" chip would return a list identical to "3".
+  const decks = [...new Set(games.map((g) => g.equipment.standard_decks))]
+    .filter((n) => n > 0)
+    .sort((a, b) => a - b)
+    .map(String);
+  assert.deepEqual(values("Decks on hand"), decks);
+  assert.ok(!values("Decks on hand").includes("0"), "a purpose-built pack got a deck chip");
+});
+
+test("every game is reachable by some setting of every control", () => {
+  // Names no literal, so it cannot go stale, and it catches a future entry that
+  // the derivation mishandles however the values were produced. This is the
+  // whole point of deriving the rows.
+  const groups = filterGroups(text("index.html"));
+  const values = (label: string) =>
+    [...groups.find((g) => g.label === label)!.inner.matchAll(/<input[^>]*value="([^"]*)"/g)]
+      .map((m) => m[1]!)
+      .filter(Boolean);
+
+  const facets = facetsFor(games);
+  const players = values("Players");
+  const decks = values("Decks on hand");
+
+  for (const [i, game] of games.entries()) {
+    const facet = facets[i]!;
+    assert.ok(
+      players.some((n) => matches(facet, { players: n })),
+      `${game.id} seats ${game.players.min}-${game.players.max} and no players chip reaches it`,
+    );
+    // A purpose-built pack is deliberately unreachable by deck count, and is
+    // reachable with the control untouched -- the same treatment it gets from
+    // the preparation boxes.
+    if (game.equipment.standard_decks > 0) {
+      assert.ok(
+        decks.some((n) => matches(facet, { decks: n, players: String(game.players.min) })),
+        `${game.id} needs decks no chip offers`,
+      );
+    }
+    assert.ok(matches(facet, {}), `${game.id} is hidden with nothing set`);
+  }
+});
+
+test("the derived player row stays at or under 16 seats", () => {
+  // The one place a static assertion belongs. Deriving the row from data means
+  // one outlier can wreck it: a sixty-player entry would give the page a chip
+  // row useless for the 2-6 bulk where nearly everything lives. Sixteen is a
+  // judgement and not a measurement -- four above today's maximum, which leaves
+  // room for ordinary growth and fails on an outlier. Named here so a person
+  // decides whether the control should change, rather than the page quietly
+  // reshaping itself.
+  const seats = Math.max(...games.map((g) => g.players.max));
+  assert.ok(seats <= 16, `the corpus now seats ${seats}; the chip row needs a rethink`);
+});
+
+test("the floor is a native details, shipped closed and hidden", () => {
+  // Native so it is keyboard operable and announced correctly for no
+  // JavaScript. Hidden because it means nothing until a count is chosen, and
+  // closed because a widening control that starts open is a filter that starts
+  // engaged.
+  const html = text("index.html");
+  const floor = /<details class="floor" id="floor"([^>]*)>([\s\S]*?)<\/details>/.exec(html);
+  assert.ok(floor, "the players group has no floor control");
+  assert.match(floor[1]!, /\bhidden\b/, "the floor ships visible with no count chosen");
+  assert.doesNotMatch(floor[1]!, /\bopen\b/, "the floor ships open");
+  assert.match(floor[2]!, /<summary>[^<]+<\/summary>/, "the floor has no summary to open it by");
+
+  // Inside the players group and no other: it widens that control alone.
+  const players = filterGroups(html).find((g) => g.label === "Players")!;
+  assert.match(players.inner, /<details class="floor"/);
+});
+
+test("the floor names itself, separately from the chip row above it", () => {
+  // Two controls answering one question need two accessible names, or a screen
+  // reader announces the same one twice and the reader cannot tell them apart.
+  const html = text("index.html");
+  assert.match(html, /<label for="from">[^<]+<\/label>/, "the floor select is unlabelled");
+  const label = /<label for="from">([^<]+)<\/label>/.exec(html)![1]!;
+  const heading = /<span class="facetlabel" id="players-label">([^<]+)<\/span>/.exec(html)![1]!;
+  assert.notEqual(label.toLowerCase(), heading.toLowerCase());
+  assert.match(html, /<select id="from" name="from">/);
+});
+
+test("the floor offers every count the players row does", () => {
+  // Its options are rewritten with live counts by app.js, but the markup has to
+  // ship the full list: it is what readQuery validates a shared link against
+  // before anything has rendered, and a floor dropped there is a filter that
+  // silently stops working.
+  const html = text("index.html");
+  const options = [...html.matchAll(/<option value="(\d+)">/g)].map((m) => m[1]!);
+  const seats = Math.max(...games.map((g) => g.players.max));
+  assert.deepEqual(options, Array.from({ length: seats }, (_, i) => String(i + 1)));
+});
+
+test("the preparation boxes are checkboxes, and say what they rule out", () => {
+  // Not a ceiling: neither obstacle contains the other, so a deck with no
+  // jokers can still have cards taken out of it. And each box excludes rather
+  // than claims, so ticking both is "a plain 52 and nothing done to it" -- the
+  // most common request on this axis, which the capability model could not
+  // express at any setting.
+  const group = filterGroups(text("index.html")).find((g) => g.label === "Your deck");
+  assert.ok(group, "the index has no preparation group");
+  assert.equal((group.inner.match(/<input type="checkbox"/g) ?? []).length, 2);
+  assert.equal((group.inner.match(/<input type="radio"/g) ?? []).length, 0);
+
+  const values = [...group.inner.matchAll(/<input[^>]*value="([^"]*)"/g)].map((m) => m[1]!);
+  assert.deepEqual(values, ["jokers", "strip"]);
+  assert.ok(!values.includes(""), "the preparation group carries an Any chip");
+
+  const labels = [...group.inner.matchAll(/<label for="prep-\d+">([^<]+)<\/label>/g)].map(
+    (m) => m[1]!,
+  );
+  for (const label of labels) {
+    assert.match(label, /^No /, `"${label}" reads as a capability rather than an exclusion`);
+  }
+});
+
+test("the empty state has somewhere to put its reason, and keeps its button", () => {
+  const html = text("index.html");
+  assert.match(html, /<p class="empty" id="empty" hidden><span id="why">/);
+  assert.match(html, /<button id="reset" type="button">Clear filters<\/button>/);
+  // The families are needed to say "the Rummy family" rather than "rummy-type".
+  assert.match(html, /<script type="application\/json" id="labels">/);
+});
+
+test("a card has somewhere to say it covers the whole range", () => {
+  // Separate from .where, which says where a search matched: "plays with any of
+  // 4-6" is a fact about the game, not about a query.
+  const html = text("index.html");
+  const cards = (html.match(/<p class="covers"><\/p>/g) ?? []).length;
+  assert.equal(cards, games.length, "not every card can carry the coverage badge");
+  assert.match(text("style.css"), /\.covers:empty \{[^}]*display: none/, "an empty badge shows");
+});
+
+test("every chip group is announced as a group, and names itself", () => {
+  // A heading that is visually a heading and programmatically nothing is the
+  // ordinary way a filter row reaches a screen reader as seven loose
+  // checkboxes. It matters more now that two groups are multi-select.
+  for (const group of filterGroups(text("index.html"))) {
+    const chips = /<div class="chips" role="group" aria-labelledby="([\w-]+)"/.exec(group.inner);
+    assert.ok(chips, `the ${group.label} chips are not marked up as a group`);
+    assert.match(
+      group.inner,
+      new RegExp(`<span class="facetlabel" id="${chips[1]}">`),
+      `the ${group.label} group points at a heading that is not there`,
+    );
+  }
 });
 
 test("every page can tell the reader a new version has landed", () => {

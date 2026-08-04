@@ -7,10 +7,12 @@
  * service worker like everything else — so it keeps working with no signal.
  *
  * The ranking itself lives in search.js, shared with the build that writes the
- * index. What is left here is the part that touches the page.
+ * index. Every decision about what shows, in what order, what the floor offers
+ * and what the empty state says lives in facets.js, which is tested. What is
+ * left here is the part that touches the page.
  */
 
-import { plan, readQuery, writeQuery } from "./facets.js";
+import { emptyReason, floorOptions, plan, readQuery, writeQuery } from "./facets.js";
 import { labelsFor, score } from "./search.js";
 
 // Either the page has the whole apparatus or it has none of it: an entry page
@@ -24,27 +26,46 @@ const box = /** @type {HTMLInputElement | null} */ (document.getElementById("q")
 // Optional: the index is the only page that has one, and it is not worth
 // failing the whole page over.
 const printlink = /** @type {HTMLAnchorElement | null} */ (document.getElementById("printlink"));
+const labels = document.getElementById("labels");
+const why = document.getElementById("why");
+const floor = /** @type {HTMLDetailsElement | null} */ (document.getElementById("floor"));
+const from = /** @type {HTMLSelectElement | null} */ (document.getElementById("from"));
 
 if (list && data && count && empty && box) {
   /** @type {import("./facets.js").Facet[]} */
   const facets = JSON.parse(data.textContent ?? "[]");
+  /** @type {Record<string, string>} */
+  const families = JSON.parse(labels?.textContent ?? "{}");
   const items = /** @type {HTMLElement[]} */ (Array.from(list.children));
 
   /** @type {Record<string, string>} */
-  const state = { q: "", category: "", players: "", decks: "", minutes: "", difficulty: "" };
+  const state = {
+    q: "",
+    category: "",
+    players: "",
+    from: "",
+    decks: "",
+    minutes: "",
+    difficulty: "",
+    prep: "",
+  };
 
   const chips = Array.from(
     /** @type {NodeListOf<HTMLInputElement>} */ (document.querySelectorAll(".chips input")),
   );
 
   /**
-   * What each chip group actually offers, so a stale URL cannot filter to nothing.
+   * What each control actually offers, so a stale URL cannot filter to nothing.
    * @type {Record<string, Set<string>>}
    */
   const allowed = {};
   for (const input of chips) {
     (allowed[input.name] ??= new Set()).add(input.value);
   }
+  // The floor is a <select> rather than a chip, and its options are rewritten
+  // on every render — so this reads the full list the build shipped, before
+  // anything has pruned it to the chosen count.
+  if (from) allowed.from = new Set(Array.from(from.options, (option) => option.value));
 
   /** Keep the address bar in step, so a filtered view can be copied and shared. */
   const syncUrl = () => {
@@ -73,17 +94,47 @@ if (list && data && count && empty && box) {
     return loading;
   };
 
+  /**
+   * The floor's options, rebuilt because both the list and the counts on it
+   * depend on everything else the reader has set.
+   *
+   * @param {Map<number, {s: number, m: number}> | null} hits
+   */
+  const renderFloor = (hits) => {
+    if (!floor || !from) return;
+    // Meaningless with no count chosen: there is nothing for it to be below.
+    floor.hidden = !state.players;
+    if (!state.players) return;
+
+    const selected = state.from || state.players;
+    from.replaceChildren(
+      ...floorOptions(facets, state, hits).map((option) => {
+        const el = document.createElement("option");
+        el.value = option.value;
+        el.textContent = option.label;
+        el.selected = option.value === selected;
+        return el;
+      }),
+    );
+  };
+
   const apply = () => {
     const hits = state.q ? score(index, state.q) : null;
     const fields = index?.fields ?? [];
 
     // Every decision about what shows and in what order is made in facets.js,
     // which is tested. What is left here is moving DOM nodes about.
-    const { order, count: label } = plan(facets, state, hits);
+    const { order, count: label, marks } = plan(facets, state, hits);
     const showing = new Set(order);
 
     items.forEach((li, i) => {
       li.hidden = !showing.has(i);
+
+      // Says the game seats every count in the range, not just some of them.
+      // "These sort first" is otherwise invisible.
+      const covers = li.querySelector(".covers");
+      if (covers) covers.textContent = showing.has(i) ? (marks.get(i) ?? "") : "";
+
       const where = li.querySelector(".where");
       if (!where) return;
       const hit = hits ? hits.get(i) : null;
@@ -104,6 +155,9 @@ if (list && data && count && empty && box) {
 
     count.textContent = label;
     empty.hidden = order.length > 0;
+    if (why && order.length === 0) why.textContent = emptyReason(state, families);
+
+    renderFloor(hits);
 
     // The print sheet takes the same query, so what comes out of the printer is
     // what is on the screen. Its label says how many, because "Print these"
@@ -131,19 +185,44 @@ if (list && data && count && empty && box) {
 
   for (const input of chips) {
     input.addEventListener("change", () => {
-      state[input.name] = input.value;
+      if (input.type === "checkbox") {
+        // A checkbox group is every ticked value, and none ticked means any —
+        // which is why these groups have no "Any" chip to represent it.
+        state[input.name] = chips
+          .filter((chip) => chip.name === input.name && chip.checked)
+          .map((chip) => chip.value)
+          .join(",");
+      } else {
+        state[input.name] = input.value;
+      }
+
+      // Raising the count leaves a lower floor alone; lowering it past the
+      // floor collapses the range rather than inverting it. Normalised here so
+      // the URL and the <select> agree with what the filter is doing —
+      // playerRange would clamp it anyway, but silently.
+      if (input.name === "players") {
+        if (!state.players || Number(state.from) >= Number(state.players)) state.from = "";
+      }
+
       syncUrl();
       apply();
     });
   }
 
+  from?.addEventListener("change", () => {
+    // Storing the count itself would put a no-op in every shared link.
+    state.from = from.value === state.players ? "" : from.value;
+    syncUrl();
+    apply();
+  });
+
   document.getElementById("reset")?.addEventListener("click", () => {
     box.value = "";
     Object.keys(state).forEach((k) => (state[k] = ""));
-    const unset = /** @type {NodeListOf<HTMLInputElement>} */ (
-      document.querySelectorAll('.chips input[value=""]')
-    );
-    for (const el of unset) el.checked = true;
+    for (const input of chips) {
+      input.checked = input.type === "checkbox" ? false : input.value === "";
+    }
+    if (floor) floor.open = false;
     syncUrl();
     apply();
   });
@@ -158,8 +237,14 @@ if (list && data && count && empty && box) {
   Object.assign(state, readQuery(location.search, allowed));
   if (state.q) box.value = state.q;
   for (const input of chips) {
-    if (state[input.name] !== undefined) input.checked = input.value === state[input.name];
+    const value = state[input.name] ?? "";
+    input.checked =
+      input.type === "checkbox" ? value.split(",").includes(input.value) : input.value === value;
   }
+  // Open on arrival when the link carries a floor. A filter applied from a
+  // panel the reader cannot see is this project's own "says yes when the answer
+  // is no" wearing a different hat.
+  if (floor && state.from) floor.open = true;
   if (state.q) loadIndex().then(apply);
 
   apply();
