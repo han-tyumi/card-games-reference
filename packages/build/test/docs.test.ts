@@ -596,6 +596,39 @@ test("nothing reaches readers without passing first", () => {
   );
 });
 
+test("the preview cleanup edits the branch and deploys nothing", () => {
+  // Its first run failed in two seconds without reaching a runner. It declared
+  // the github-pages environment, which only the default branch may deploy to,
+  // and a pull_request event does not run there -- so the job was rejected at
+  // the gate. Not deploying is also the better shape: the next Deploy publishes
+  // the branch as it then stands, and after a merge that follows on its own.
+  // Comments stripped first: the file explains in prose why it does not ask for
+  // `pages: write`, and a test that greps the whole file would fail on the
+  // explanation. This checks configuration, not what the configuration says
+  // about itself -- which it caught on its own first run.
+  const cleanup = readFileSync(join(REPO_ROOT, ".github", "workflows", "preview-cleanup.yml"), "utf8")
+    .split("\n")
+    .filter((line) => !/^\s*#/.test(line))
+    .join("\n");
+
+  assert.doesNotMatch(cleanup, /environment:/, "the cleanup declares an environment again");
+  assert.doesNotMatch(cleanup, /deploy-pages/, "the cleanup deploys");
+  assert.doesNotMatch(cleanup, /upload-pages-artifact/, "the cleanup uploads a Pages artifact");
+
+  // Least privilege follows from that: it writes one branch and nothing else.
+  assert.match(cleanup, /permissions:\s*\n(\s*#[^\n]*\n)*\s*contents: write\s*\n/,
+    "the cleanup asks for permissions beyond writing the branch");
+  assert.doesNotMatch(cleanup, /pages: write/, "the cleanup still asks for pages: write");
+  assert.doesNotMatch(cleanup, /id-token: write/, "the cleanup still asks for id-token: write");
+
+  // It must still take turns with the deploy: pushing to `site` while a deploy
+  // has it cloned makes that deploy's push fail.
+  assert.match(cleanup, /group: pages/, "the cleanup can race a deploy's push");
+
+  // And a fork's branch never had a preview to remove.
+  assert.match(cleanup, /head\.repo\.full_name == github\.repository/);
+});
+
 test("the plugin the guide names is the plugin the repo enables", () => {
   // CONTRIBUTING tells contributors what .claude/ turns on for them. A rename
   // or a removal there is invisible -- the plugin simply stops loading, and the
