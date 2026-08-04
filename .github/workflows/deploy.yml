@@ -115,11 +115,21 @@ jobs:
             echo "Cloned the existing site branch."
           else
             echo "No site branch yet -- starting one."
-            git clone --depth 1 "$REMOTE" site
-            cd site
-            git checkout --orphan site
-            git rm -rq --cached . || true
-            find . -mindepth 1 -maxdepth 1 -not -name .git -exec rm -rf {} +
+            mkdir site
+            git -C site init -q -b site
+            git -C site remote add origin "$REMOTE"
+          fi
+
+          # A preview must never publish an empty root. Composing the site means
+          # uploading the whole branch, so the first build to create it -- or any
+          # build finding it damaged -- would take the published site down with it
+          # if this did not seed the root first. main's docs/ is the gated copy
+          # and main is green, which is the same content a root deploy ships.
+          if [ ! -f site/index.html ]; then
+            echo "The root is empty -- seeding it from main."
+            git clone --depth 1 --branch main "$REMOTE" seed
+            cp -r seed/docs/. site/
+            rm -rf seed
           fi
 
       - name: Put this build in its slot
