@@ -677,10 +677,24 @@ loaded, and <a href="about.html#install">installs to your home screen</a>.`;
 
   body.push(`<div class="filters">
 <label for="q">Search</label>
-${/* "Search every rule" undersold an index that has always carried names,
-     aliases, families and tags as well, and now carries the deck. A reader who
-     believes the placeholder will not think to type a game's name into it. */ ""}
-<input id="q" type="search" placeholder="Search names, families, tags, decks and rules — try bower, or slap" autocomplete="off">
+${/* Two examples rather than a list of fields.
+
+     "Search every rule" undersold an index that has always carried names,
+     aliases, families and tags, and now carries the deck -- but the fix for
+     that was a sentence naming all five, which ran to 568px and was cut
+     mid-word inside a box with 227px of room at the 320px width decision 0011
+     commits to. A placeholder nobody can finish reading undersells it worse.
+
+     Examples do the same job shorter: "bower" is a word from the rules and
+     "euchre deck" is a pack, so between them they show the index reaches past
+     names without naming a single field. The <label> above already says
+     Search, so the placeholder does not repeat it.
+
+     Measured at 320px: 190px against 227px of room, and still inside it under
+     every fallback in the stack. The variant beginning "try" fits the stack as
+     specified but only by 7px, which is not enough to survive a system font
+     this cannot measure from here. */ ""}
+<input id="q" type="search" placeholder="bower, or euchre deck" autocomplete="off">
 ${/* Derived from the corpus, not typed out. The hand-typed row skipped 7 while
      22 games seat 7, and stopped at 8 while six games seat more. The floor
      below widens the count downward and is the whole of the range control. */ ""}
