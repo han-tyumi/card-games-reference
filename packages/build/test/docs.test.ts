@@ -195,17 +195,44 @@ test("nothing built is described as unbuilt", () => {
     const exists = existsSync(join(REPO_ROOT, path));
     if (!exists) continue;
     for (const [file, section] of sections) {
-      // By paragraph with the wrapping flattened, not by line. The defect this
-      // exists for spanned two lines -- "The website, the mobile app, and the
-      // companion tools described in" / "[tools/README.md] are all planned but
-      // unbuilt" -- so a line-by-line version passed against the exact sentence
-      // it was written to catch. Which it did, on its first run.
-      const paragraphs = section.split(/\n\s*\n/).map((p) => p.replace(/\s+/g, " ").trim());
-      for (const paragraph of paragraphs) {
+      // By sentence, with the wrapping flattened first. Both halves of that
+      // matter and each was learned by getting it wrong.
+      //
+      // Flattened, because the defect this exists for spanned two lines --
+      // "The website, the mobile app, and the companion tools described in" /
+      // "[tools/README.md] are all planned but unbuilt" -- so a line-by-line
+      // version passed against the exact sentence it was written to catch.
+      //
+      // By sentence rather than by paragraph, because a paragraph is too coarse
+      // to tell "X is out of scope" from "X is in scope and these others are
+      // not". "Out of scope for v1. v1 is the rules data plus the build
+      // pipeline that turns it into Markdown and PDF." is correct prose that a
+      // paragraph rule reads as calling the booklet unbuilt -- and it passed
+      // only because the first version of this fix had deleted that sentence.
+      //
+      // The weakening accepted: a claim split across two sentences ("The
+      // website is described below. It is planned but unbuilt.") is not caught.
+      // A rule that fires on correct prose gets loosened or deleted, which
+      // catches nothing at all, so the narrower rule is the one that survives.
+      const sentences = section
+        .split(/\n\s*\n/)
+        // The emphasis markers are part of the lookbehind because a bold lead-in
+        // ends "for v1.**", and a plain [.!?] boundary keeps it joined to the
+        // sentence after it -- which is the whole false positive.
+        .flatMap((p) => p.replace(/\s+/g, " ").trim().split(/(?<=[.!?][*_"')\]]*)\s+/))
+        .filter(Boolean);
+      for (const paragraph of sentences) {
         if (!mentions.test(paragraph)) continue;
         assert.doesNotMatch(
           paragraph,
-          /\b(planned but unbuilt|not built|unbuilt|not started|out of scope)\b/i,
+          // Two shapes, because fixing the first left the second in place. The
+          // past participle -- "planned but unbuilt" -- is what the README
+          // said. The future tense -- "when the website package gets built" --
+          // is the same defect in tools/README.md, and it survived the fix and
+          // this test's first version both. "when it is built" about the tools
+          // that genuinely are not built stays legal, because that paragraph
+          // does not name one of the things above.
+          /\b(planned but unbuilt|not built|unbuilt|not started|out of scope)\b|\b(gets|will be|yet to be|has yet to be|is going to be|would be) built\b/i,
           `${file} calls ${what} unbuilt, but ${path} exists:\n  ${paragraph}`,
         );
       }
