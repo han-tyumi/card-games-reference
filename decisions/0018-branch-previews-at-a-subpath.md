@@ -124,6 +124,19 @@ something else deploys, since the cleanup no longer publishes its own removal.
 What lingers carries `noindex` and says on the page that it is not the published
 site, so it is stale rather than misleading.
 
+> **Both paragraphs above were measured false, and are true again as of
+> [0019](0019-the-worker-declines-the-preview-subtree.md).** The reasoning here
+> runs one way — a preview's own worker destroying production's cache — and stops
+> before the containment that runs the other way. Production's worker is
+> registered from the site root, so its scope contains `preview/<branch>/`, and
+> it answered for every preview URL out of its own cache. A preview therefore did
+> work offline for anyone carrying the site, a republished preview showed the
+> reader whichever build they opened first, and a preview deleted from the branch
+> went on being served at 200 after the origin returned 404 — a lifetime nothing
+> in the cleanup path could end. 0019 has the measurements. What is left standing
+> here is the decision itself: previews at a subpath, shipping no worker of their
+> own, for the reason given.
+
 A branch name is not a path. Slugs keep `[A-Za-z0-9._-]`, turn `/` into `-`, and
 must begin with an alphanumeric — so no branch can name its way to `..` and have
 `rm -rf preview/..` take the site with it. Git already forbids `..` in a ref;

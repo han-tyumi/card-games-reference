@@ -19,6 +19,13 @@ name: Clean up previews
 # served until something else deploys. It carries noindex and says on the page
 # that it is not the published site, so what lingers is stale rather than
 # misleading.
+#
+# That cost is the ORIGIN's, and for one release it was not the whole one. The
+# site's worker used to answer for preview URLs out of its own cache, so a slot
+# removed here went on being served at 200 to anyone who had opened it while the
+# origin returned 404 -- a lifetime nothing in this workflow could end. The
+# worker declines the preview subtree now, which is what makes the paragraph
+# above the full account rather than the visible part of one.
 on:
   pull_request:
     types: [closed]
