@@ -32,6 +32,9 @@ permissions:
   # Only what it needs. It writes one branch and deploys nothing, so it wants
   # neither `pages: write` nor `id-token: write`.
   contents: write
+  # To retire the preview comment, so a closed pull request stops carrying a
+  # link to something that is no longer there.
+  pull-requests: write
 
 # Shares the deploy workflow's group. Nothing here deploys, but a cleanup
 # pushing to `site` while a deploy has it cloned would make that deploy's push
@@ -77,3 +80,31 @@ jobs:
           git push origin site
           echo "Removed preview/$SLUG. It stops being served at the next deploy." \
             >> "$GITHUB_STEP_SUMMARY"
+
+      # Deploy left a comment with the preview link. Leaving it pointing at a
+      # directory that has just been deleted is worse than having left no
+      # comment, so it is edited in place rather than deleted -- a comment that
+      # vanishes reads as something having gone wrong.
+      - name: Retire the preview comment
+        if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          ID=$(gh api "repos/$REPO/issues/$PR/comments" --paginate \
+                 --jq '.[] | select(.body | contains("<!-- naibi-preview -->")) | .id' | head -1)
+          if [ -z "$ID" ]; then
+            echo "No preview comment on #$PR."
+            exit 0
+          fi
+          # printf rather than a heredoc: a heredoc body has to sit at column
+          # zero, which ends the YAML block scalar this step is written in.
+          BODY=$(printf '%s\n' \
+            '<!-- naibi-preview -->' \
+            '**Preview removed.** This pull request is closed, so its build is no longer served.' \
+            '' \
+            '<sub>Posted by the Deploy workflow.</sub>')
+          gh api -X PATCH "repos/$REPO/issues/comments/$ID" -f body="$BODY" --silent
+          echo "Retired the preview comment on #$PR."
