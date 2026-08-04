@@ -110,6 +110,11 @@ jobs:
       - name: Fetch what is currently live
         run: |
           set -euo pipefail
+          # The token ends up in site/.git/config, which is then the directory
+          # handed to upload-pages-artifact. That is safe and was checked rather
+          # than assumed: the action excludes .git and .github from the tarball
+          # regardless of any input, so the credential cannot reach a public URL.
+          # If this ever stops uploading a git clone, that reasoning goes with it.
           REMOTE="https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
           if git clone --depth 1 --branch site "$REMOTE" site 2>/dev/null; then
             echo "Cloned the existing site branch."
@@ -148,9 +153,11 @@ jobs:
             mkdir -p "$SLOT"
           fi
           cp -r "$GITHUB_WORKSPACE/built/." "$SLOT/"
-          # Otherwise Pages runs the output through Jekyll, which drops files
-          # whose names begin with an underscore.
-          touch .nojekyll
+          # No `touch .nojekyll` here. It would do nothing twice over: an
+          # Actions deployment serves the artifact as it stands and never runs
+          # Jekyll, and upload-pages-artifact excludes dotfiles from the tarball
+          # by default anyway. The build already emits one into every slot, so
+          # the branch carries it if Pages is ever pointed at a branch instead.
 
       - name: Publish it
         env:
