@@ -427,3 +427,11 @@ ones — all eleven carry a `layout`.
 Equipment beyond the deck — the cribbage board, the chips, the spoons — is not filterable
 here; ten games declare something, which is too few to earn a control and enough
 to be worth a line on the card.
+
+**Asking what a game requires**, rather than what the reader has — "all the games
+that need two or more decks" — is a third question this page could serve and does
+not. Every control here is a ceiling on what the reader holds, which is the right
+shape for "what can we play right now" and cannot express the other direction at
+any setting. Measured in
+[2026-08-04-what-a-game-requires.md](2026-08-04-what-a-game-requires.md);
+nothing is built for it.
