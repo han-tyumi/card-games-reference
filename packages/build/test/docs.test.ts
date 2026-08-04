@@ -563,12 +563,36 @@ test("nothing reaches readers without passing first", () => {
     );
   }
 
-  // And that the thing deployed is the directory the build actually writes.
+  // And that what readers get is the gated copy rather than a rebuild.
+  //
+  // The deploy composes a `site` branch now, so it can serve branch previews at
+  // a subpath alongside the published site. That moved the shape of these
+  // assertions but not the property they exist for: production content is
+  // still the committed docs/ from a commit that passed, never something built
+  // during the deploy, because a rebuild there is a second opinion about what
+  // the corpus renders to and only one of the two is gated.
   const deploy = readFileSync(join(workflows, "deploy.yml"), "utf8");
-  assert.match(deploy, /path: docs/, "the deploy no longer publishes docs/");
+  assert.match(deploy, /cp -r source\/docs/, "production no longer ships the committed docs/");
+  assert.match(deploy, /path: site/, "the deploy publishes something other than the composed site");
   assert.ok(
     !/npm run web/.test(deploy),
     "the deploy rebuilds the site instead of shipping the gated copy",
+  );
+
+  // A rebuild is permitted for previews and nowhere else, and it must write
+  // somewhere that is not docs/ -- the published site is not a preview's to
+  // touch, and docs/ is gated against the corpus.
+  for (const build of deploy.match(/node packages\/web\/build-web\.ts[^\n]*/g) ?? []) {
+    assert.match(build, /--preview /, `the deploy builds the real site: ${build}`);
+    assert.doesNotMatch(build, /docs/, `a deploy-time build writes into docs/: ${build}`);
+  }
+
+  // Previews are published to this origin, so a fork's pull request must never
+  // be able to run this job.
+  assert.match(
+    deploy,
+    /head_repository\.full_name == github\.repository/,
+    "the deploy would publish a fork's branch to this origin",
   );
 });
 

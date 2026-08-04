@@ -114,55 +114,33 @@ function page(opts: {
   script?: string;
   /** Keep it out of search results. For pages that duplicate content. */
   noindex?: boolean;
+  /**
+   * A branch build served at a subpath, not the site.
+   *
+   * It ships **no service worker**, and that is not a nicety. The worker's
+   * activate step deletes every cache that is not its own, and the Cache API is
+   * scoped to an origin rather than to a path — so a preview under
+   * /naibi/preview/x/ wipes the offline copy of the real app under /naibi/.
+   * Measured, not inferred: visiting a preview in a shared profile left one
+   * cache where there had been the production one.
+   *
+   * No manifest either, since an installable preview is a way to end up with
+   * two apps on a home screen that look identical.
+   */
+  preview?: boolean;
   depth: number;
 }): string {
   const up = opts.depth === 0 ? "" : "../";
   // A directory and its index are one page; naming both splits whatever
   // ranking or share count the page accumulates between two URLs.
   const canonical = SITE_URL + opts.path.replace(/(^|\/)index\.html$/, "$1");
-  return `<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>${esc(opts.title)}</title>
-<meta name="description" content="${esc(opts.description)}">
-<meta name="theme-color" content="#1f3a5f">
-<link rel="canonical" href="${esc(canonical)}">
-${opts.noindex ? `<meta name="robots" content="noindex">` : ""}
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="${TITLE}">
-<meta property="og:title" content="${esc(opts.title)}">
-<meta property="og:description" content="${esc(opts.description)}">
-<meta property="og:url" content="${esc(canonical)}">
-<meta property="og:image" content="${SITE_URL}${OG_IMAGE}">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="${TITLE} — ${esc(TAGLINE)}">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="manifest" href="${up}manifest.webmanifest">
-<link rel="icon" href="${up}icons/icon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="${up}icons/icon-192.png">
-<link rel="stylesheet" href="${up}style.css">
-</head>
-<body>
-<div class="wrap${opts.wide ? " wrap--wide" : ""}">
-<p class="updated" id="updated" hidden>A newer version is ready.
-<button id="reload" type="button">Reload</button></p>
-${opts.body}
-<footer>
-<nav class="site-nav">
-<a href="${up}about.html">About</a>
-<a href="${PDF_URL}">Print the booklet (PDF)</a>
-<a href="${REPO_URL}">Source on GitHub</a>
-<a href="${ISSUES_URL}">Report a mistake</a>
-</nav>
-<p>Text licensed
-<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
-</footer>
-</div>
-${opts.script ? `<script type="module" src="${up}${opts.script}"></script>` : ""}
-<script>
+  // The service worker and its update notice. Omitted from a preview: the
+  // worker would register under the preview's own scope and then delete the
+  // real app's cache, because activate drops every cache that is not its own
+  // and the Cache API is scoped to the origin rather than the path.
+  const worker = opts.preview
+    ? ""
+    : `<script>
 /*
  * Cache-first means the page you are reading came from the cache, so a new
  * deployment is invisible until you navigate again -- and you have no way to
@@ -196,7 +174,55 @@ if ("serviceWorker" in navigator) {
 document.getElementById("reload").addEventListener("click", function () {
   location.reload();
 });
-</script>
+</script>`;
+
+  return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>${esc(opts.title)}</title>
+<meta name="description" content="${esc(opts.description)}">
+<meta name="theme-color" content="#1f3a5f">
+<link rel="canonical" href="${esc(canonical)}">
+${opts.noindex || opts.preview ? `<meta name="robots" content="noindex">` : ""}
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="${TITLE}">
+<meta property="og:title" content="${esc(opts.title)}">
+<meta property="og:description" content="${esc(opts.description)}">
+<meta property="og:url" content="${esc(canonical)}">
+<meta property="og:image" content="${SITE_URL}${OG_IMAGE}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="${TITLE} — ${esc(TAGLINE)}">
+<meta name="twitter:card" content="summary_large_image">
+${opts.preview ? "" : `<link rel="manifest" href="${up}manifest.webmanifest">`}
+<link rel="icon" href="${up}icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="${up}icons/icon-192.png">
+<link rel="stylesheet" href="${up}style.css">
+</head>
+<body>
+<div class="wrap${opts.wide ? " wrap--wide" : ""}">
+${
+  opts.preview
+    ? `<p class="updated" id="preview-banner">Preview build — not the published site.</p>`
+    : `<p class="updated" id="updated" hidden>A newer version is ready.
+<button id="reload" type="button">Reload</button></p>`
+}
+${opts.body}
+<footer>
+<nav class="site-nav">
+<a href="${up}about.html">About</a>
+<a href="${PDF_URL}">Print the booklet (PDF)</a>
+<a href="${REPO_URL}">Source on GitHub</a>
+<a href="${ISSUES_URL}">Report a mistake</a>
+</nav>
+<p>Text licensed
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
+</footer>
+</div>
+${opts.script ? `<script type="module" src="${up}${opts.script}"></script>` : ""}
+${worker}
 </body>
 </html>
 `;
@@ -345,13 +371,14 @@ function gameArticle(game: CardGame): string {
   return parts.join("\n");
 }
 
-function gamePage(game: CardGame): string {
+function gamePage(game: CardGame, preview: boolean): string {
   return page({
     title: `${game.name} — how to play | ${TITLE}`,
     description: `How to play ${game.name}: ${playersLine(game)}, ${durationLine(game)}, ${game.decks}.`,
     body: `<a class="backlink" href="../">All games</a>\n${gameArticle(game)}`,
     path: `games/${game.id}.html`,
     depth: 1,
+    preview,
   });
 }
 
@@ -458,7 +485,7 @@ function playersFloor(values: string[]): string {
  * used to sit under every single game, which read as protesting too much: it is
  * how the project works, not a fact about Klondike. Said once, here.
  */
-function aboutPage(games: CardGame[]): string {
+function aboutPage(games: CardGame[], preview: boolean): string {
   const body = `<a class="backlink" href="./">All games</a>
 <article class="game">
 <h1>About ${TITLE}</h1>
@@ -558,6 +585,7 @@ has moved, <a href="${ISSUES_URL}">say so</a> and it gets fixed.</p>
     body,
     path: "about.html",
     depth: 0,
+    preview,
   });
 }
 
@@ -574,7 +602,7 @@ has moved, <a href="${ISSUES_URL}">say so</a> and it gets fixed.</p>
  * out of the service worker's precache: it costs nothing until someone asks for
  * it, at the price of being the one page that does not work offline.
  */
-function printPage(games: CardGame[]): string {
+function printPage(games: CardGame[], preview: boolean): string {
   const parts: string[] = [];
   parts.push(`<a class="backlink" href="./">All games</a>`);
   parts.push(`<header class="sheet">`);
@@ -620,10 +648,11 @@ function printPage(games: CardGame[]): string {
     // It carries every game already published at its own URL. Indexed, it
     // would compete with seventy-two real pages and win on nothing.
     noindex: true,
+    preview,
   });
 }
 
-function indexPage(games: CardGame[]): string {
+function indexPage(games: CardGame[], preview: boolean): string {
   const chips = chipValues(games);
   const body: string[] = [];
   body.push(`<header class="masthead">
@@ -749,6 +778,7 @@ ${chipGroup(
     wide: true,
     script: "app.js",
     depth: 0,
+    preview,
   });
 }
 
@@ -762,16 +792,32 @@ ${chipGroup(
  * readers, so a stale copy is not a cosmetic problem: it is the published rules
  * disagreeing with the source they came from.
  */
-export function buildSite(games: CardGame[]): Map<string, string | Buffer> {
+/**
+ * @param preview build a branch copy for a subpath rather than the site itself.
+ *
+ * A preview is the same pages, minus everything that claims to be the real
+ * thing: no service worker, no manifest, no sitemap or robots.txt, and
+ * `noindex` on every page. See `page()` for why the worker in particular is not
+ * optional — it would delete the installed app's offline cache.
+ *
+ * Canonical URLs still point at production, which is correct: a preview is a
+ * copy of a page that lives there, and saying so is what keeps the two from
+ * competing in a search index.
+ */
+export function buildSite(
+  games: CardGame[],
+  preview = false,
+): Map<string, string | Buffer> {
   const files = new Map<string, string | Buffer>();
 
-  files.set("index.html", indexPage(games));
-  files.set("about.html", aboutPage(games));
-  files.set("print.html", printPage(games));
+  files.set("index.html", indexPage(games, preview));
+  files.set("about.html", aboutPage(games, preview));
+  files.set("print.html", printPage(games, preview));
 
   // Sixty game pages are one click from the index, which a crawler will find on
   // its own eventually. Listing them says so on the first visit instead.
   const urls = ["", "about.html", ...games.map((g) => `games/${g.id}.html`)];
+  if (!preview) {
   files.set(
     "sitemap.xml",
     `<?xml version="1.0" encoding="UTF-8"?>\n` +
@@ -780,8 +826,9 @@ export function buildSite(games: CardGame[]): Map<string, string | Buffer> {
       `\n</urlset>\n`,
   );
   files.set("robots.txt", `Sitemap: ${SITE_URL}sitemap.xml\n`);
+  }
   files.set("search-index.json", JSON.stringify(buildIndex(searchRecords(games))));
-  for (const game of games) files.set(`games/${game.id}.html`, gamePage(game));
+  for (const game of games) files.set(`games/${game.id}.html`, gamePage(game, preview));
 
   for (const asset of ["style.css", "app.js", "search.js", "facets.js", "print.js"]) {
     files.set(asset, readFileSync(join(ASSETS, asset), "utf8"));
@@ -791,6 +838,7 @@ export function buildSite(games: CardGame[]): Map<string, string | Buffer> {
     files.set(`icons/${icon}`, readFileSync(join(ASSETS, "icons", icon)));
   }
 
+  if (!preview) {
   files.set(
     "manifest.webmanifest",
     JSON.stringify(
@@ -829,6 +877,7 @@ export function buildSite(games: CardGame[]): Map<string, string | Buffer> {
   // that there is no reason to be clever about what to keep: install once and
   // the entire reference is available with no signal. The worker never caches
   // itself, and the manifest is fetched by the browser outside its control.
+  if (!preview) {
   const precache = [...files.keys()].filter(
     (f) =>
       !f.endsWith(".webmanifest") &&
@@ -896,6 +945,9 @@ self.addEventListener("fetch", (event) => {
 `,
   );
 
+  }
+  }
+
   // Stops GitHub Pages running the output through Jekyll.
   files.set(".nojekyll", "");
 
@@ -921,13 +973,22 @@ function same(built: string | Buffer, path: string): boolean {
 
 function main(): number {
   const check = process.argv.includes("--check");
+  // A branch build for a Pages subpath. Written wherever it is told rather than
+  // to docs/, which is the published site and is gated against the corpus --
+  // a preview must never be able to touch it.
+  const previewAt = process.argv.indexOf("--preview");
+  const target = previewAt >= 0 ? process.argv[previewAt + 1] : undefined;
+  if (previewAt >= 0 && !target) {
+    console.error("--preview needs a directory to write to.");
+    return 1;
+  }
   const games = loadGames();
   if (games.length === 0) {
     console.error("No games found. Nothing to build.");
     return 1;
   }
 
-  const files = buildSite(games);
+  const files = buildSite(games, target !== undefined);
 
   if (check) {
     const stale = [...files]
@@ -956,18 +1017,19 @@ function main(): number {
     return 0;
   }
 
-  rmSync(OUT, { recursive: true, force: true });
-  mkdirSync(join(OUT, "games"), { recursive: true });
-  mkdirSync(join(OUT, "icons"), { recursive: true });
+  const out = target ?? OUT;
+  rmSync(out, { recursive: true, force: true });
+  mkdirSync(join(out, "games"), { recursive: true });
+  mkdirSync(join(out, "icons"), { recursive: true });
 
   let bytes = 0;
   for (const [name, content] of files) {
-    writeFileSync(join(OUT, name), content);
+    writeFileSync(join(out, name), content);
     bytes += typeof content === "string" ? Buffer.byteLength(content) : content.byteLength;
   }
 
   console.log(
-    `Wrote ${files.size} files to docs/ ` +
+    `Wrote ${files.size} files to ${target ?? "docs/"} ` +
       `(${games.length} games, ${(bytes / 1024).toFixed(0)} KB uncompressed).`,
   );
   return 0;

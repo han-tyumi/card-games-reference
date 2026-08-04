@@ -5,48 +5,178 @@ name: Deploy
 # Pages used to build from the branch, which meant it deployed in parallel with
 # Validate rather than after it -- on one commit the deploy started a full
 # second before the tests did. A red commit could and did reach readers. This
-# runs on Validate succeeding instead, so nothing ships unvalidated.
+# runs on Validate succeeding instead, so nothing ships unvalidated. That
+# guarantee is why this file is shaped the way it is, and branch previews do not
+# weaken it: the `site` branch below is written ONLY from a commit whose Validate
+# went green, whichever branch that commit was on.
 #
-# docs/ is committed and gated, so there is nothing to build here: the job
-# uploads the directory as it stands in the commit that passed.
+# What is live is exactly the `site` branch:
+#
+#   /                    the published site, from main
+#   /preview/<branch>/   a branch build, for looking at before merging
+#
+# Previews carry no service worker. Its activate step deletes every cache that
+# is not its own, and the Cache API is scoped to an origin rather than a path, so
+# a preview would wipe the offline copy of the installed app -- measured, not
+# assumed. `--preview` in build-web.ts drops the worker, the manifest and the
+# sitemap, and marks every page noindex. Canonical URLs still point at
+# production, which is what keeps the two out of each other's search results.
 on:
   workflow_run:
     workflows: ["Validate"]
     types: [completed]
-    branches: [main]
   workflow_dispatch:
 
 permissions:
-  contents: read
+  # `contents: write` so the composed site can be pushed to its own branch. That
+  # branch holds no source and is the only one this workflow writes.
+  contents: write
   pages: write
   id-token: write
 
 # One deploy at a time, and never cancel one in flight -- a half-finished
 # deployment of a site people read offline is worse than a slightly late one.
+# It also serialises writes to the `site` branch, so two branches going green
+# together cannot race each other's push.
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
   deploy:
+    # A fork's pull request must never publish to this origin.
     if: >-
       github.event_name == 'workflow_dispatch' ||
-      github.event.workflow_run.conclusion == 'success'
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_repository.full_name == github.repository)
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
-      # The commit that passed, not whatever main has drifted to since.
+      - name: Work out which slot this commit fills
+        id: slot
+        env:
+          BRANCH: ${{ github.event.workflow_run.head_branch || github.ref_name }}
+        run: |
+          set -euo pipefail
+          if [ "$BRANCH" = "main" ]; then
+            echo "path=." >> "$GITHUB_OUTPUT"
+            echo "preview=false" >> "$GITHUB_OUTPUT"
+          else
+            # A branch name is not a path. Anything outside this set is dropped
+            # rather than escaped, so no branch can name its way out of preview/.
+            SLUG=$(printf '%s' "$BRANCH" | tr '/' '-' | tr -cd 'A-Za-z0-9._-')
+            # Must start alphanumeric, which rules out "." and ".." reaching a
+            # path. Git already forbids those in a ref, but a slot that could be
+            # ".." would mean `rm -rf preview/..` deleting the whole site, and
+            # that is not a thing to leave resting on another tool's rules.
+            case "$SLUG" in
+              [A-Za-z0-9]*) ;;
+              *) echo "Refusing to build a preview slot from branch '$BRANCH'"; exit 1 ;;
+            esac
+            echo "path=preview/$SLUG" >> "$GITHUB_OUTPUT"
+            echo "preview=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # The commit that passed, not whatever the branch has drifted to since.
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          path: source
+
+      # main publishes docs/ exactly as committed: Validate has already checked
+      # it is up to date against the corpus, so rebuilding here could only
+      # introduce a difference. A branch is built fresh with --preview, because
+      # the committed docs/ is the real site and carries the worker.
+      - uses: actions/setup-node@v4
+        if: steps.slot.outputs.preview == 'true'
+        with:
+          node-version: "22.18"
+          cache: npm
+          cache-dependency-path: source/package-lock.json
+
+      - name: Build the preview
+        if: steps.slot.outputs.preview == 'true'
+        working-directory: source
+        run: |
+          npm ci
+          node packages/web/build-web.ts --preview "$GITHUB_WORKSPACE/built"
+
+      - name: Use the committed site
+        if: steps.slot.outputs.preview != 'true'
+        run: cp -r source/docs "$GITHUB_WORKSPACE/built"
+
+      - name: Fetch what is currently live
+        run: |
+          set -euo pipefail
+          REMOTE="https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          if git clone --depth 1 --branch site "$REMOTE" site 2>/dev/null; then
+            echo "Cloned the existing site branch."
+          else
+            echo "No site branch yet -- starting one."
+            git clone --depth 1 "$REMOTE" site
+            cd site
+            git checkout --orphan site
+            git rm -rq --cached . || true
+            find . -mindepth 1 -maxdepth 1 -not -name .git -exec rm -rf {} +
+          fi
+
+      - name: Put this build in its slot
+        env:
+          SLOT: ${{ steps.slot.outputs.path }}
+        run: |
+          set -euo pipefail
+          cd site
+          if [ "$SLOT" = "." ]; then
+            # Replace the published site, and only it. The previews belong to
+            # other branches and are not this commit's to delete.
+            find . -mindepth 1 -maxdepth 1 \
+              -not -name .git -not -name preview -exec rm -rf {} +
+          else
+            rm -rf "$SLOT"
+            mkdir -p "$SLOT"
+          fi
+          cp -r "$GITHUB_WORKSPACE/built/." "$SLOT/"
+          # Otherwise Pages runs the output through Jekyll, which drops files
+          # whose names begin with an underscore.
+          touch .nojekyll
+
+      - name: Publish it
+        env:
+          BRANCH: ${{ github.event.workflow_run.head_branch || github.ref_name }}
+          SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
+        run: |
+          set -euo pipefail
+          cd site
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Nothing changed."
+          else
+            git commit -m "Publish $BRANCH at ${SHA:0:7}"
+            git push origin site
+          fi
 
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: docs
+          # The whole branch: the site and every live preview. Uploading only
+          # this build's slot would take everything else down with it.
+          path: site
 
       - id: deploy
         uses: actions/deploy-pages@v4
+
+      - name: Say where it went
+        env:
+          SLOT: ${{ steps.slot.outputs.path }}
+          URL: ${{ steps.deploy.outputs.page_url }}
+        run: |
+          if [ "$SLOT" = "." ]; then
+            echo "Published the site: $URL" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Preview: ${URL%/}/$SLOT/" >> "$GITHUB_STEP_SUMMARY"
+          fi
