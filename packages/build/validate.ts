@@ -108,6 +108,29 @@ function main(): number {
         `on record (npm run originality).`,
     );
   }
+  // Optional fields are invisible by default: an entry without one looks
+  // exactly like an entry that never needed one. Naming the counts is the same
+  // rule as the line above -- silence is not coverage -- but the reading is
+  // different, so the wording has to be too. `deal` and `figure_refs` are
+  // conditional by schema ("omit it where one number covers every case"), so a
+  // low count is those rules working and not a backlog. Reported, never failed.
+  // Read off the schema rather than listed here, so a field added to the schema
+  // starts being counted without anyone remembering to add it.
+  const shape = schema as { properties: Record<string, unknown>; required: string[] };
+  const optional = Object.keys(shape.properties).filter((key) => !shape.required.includes(key));
+
+  const carried = (field: string) =>
+    parsed.filter(({ data }) => {
+      const value = data[field];
+      return value !== undefined && value !== null && !(Array.isArray(value) && value.length === 0);
+    }).length;
+
+  console.log(
+    "\nOptional fields, carried by the entries that call for them — " +
+      optional.map((field) => `${field} ${carried(field)}/${parsed.length}`).join(", ") +
+      ".",
+  );
+
   if (failures > 0) {
     console.log(`${failures} file(s) need attention.`);
     return 1;

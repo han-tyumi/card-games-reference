@@ -1,6 +1,7 @@
 # The checked envelope, and the five copies of "which fields are prose"
 
-- **Status:** Proposed
+- **Status:** Proposed — split in two; the first half is being built, the second
+  waits on a reader
 - **Date:** 2026-08-05
 
 Item 3 of [the before-more-games handoff](2026-08-04-before-more-games-handoff.md),
@@ -79,6 +80,29 @@ backfill debt here, and a coverage report must not imply one.
    fresh holes.
 5. **`npm run validate` reports optional-field coverage**, worded so a low
    conditional count reads as a rule working rather than as a gap.
+
+## Split into two changes
+
+The decision above is unchanged. How it lands is not: the two halves need
+different kinds of scrutiny, and fusing them makes both harder to check.
+
+**First — the list.** `PROSE_FIELDS` is introduced and the four code sites
+derive from it, with the field list *exactly as it stands today*. No entry
+changes, no fingerprint changes, no stamp goes stale, the gate stays green. It
+is a pure consolidation whose correctness is mechanical: either the consumers
+derive from the constant or a test says they do not. The coverage report ships
+here too.
+
+**Second — the field.** `background` joins the constant, which is a one-line
+change once the first half exists. That one line reds the gate on four entries
+and pulls in the whole re-reading pass: judging pairs by eye, rewriting prose
+that ships to readers, and stamping a date that asserts someone read them.
+
+They are separated because the second half cannot be verified the way the first
+can. A rewrite is a judgement about whether two sentences are too alike, and a
+stamp is a person's claim to have looked — neither is settled by a green gate.
+Shipping them together would mean the mechanical half waits on the judgement
+half, and the judgement half arrives buried inside a refactor.
 
 ## Consequences
 

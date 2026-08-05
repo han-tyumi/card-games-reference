@@ -83,6 +83,29 @@ export const SECTIONS = [
  */
 export const BACKGROUND_HEADING = "Background";
 
+/**
+ * The prose fields a source could be copied into.
+ *
+ * This is what gets compared against sources, what the coincidence baseline is
+ * measured over, what a `checked` fingerprint covers, and what the corpus tests
+ * sweep. It was four hand-kept copies of the same three strings, which is three
+ * chances to add a prose field and leave one behind.
+ *
+ * Deliberately NOT derived from SECTIONS, and not the same question. SECTIONS
+ * is a render order, and background is kept out of it on purpose so a generator
+ * cannot put the eighteenth century before the deal. Whether prose renders
+ * early and whether prose can be plagiarised are unrelated, so a field must be
+ * able to join this list without moving up the page.
+ */
+export const PROSE_FIELDS = [
+  "setup",
+  "play",
+  "goal_and_scoring",
+] as const satisfies readonly (keyof CardGame)[];
+
+/** One of the prose fields. */
+export type ProseField = (typeof PROSE_FIELDS)[number];
+
 export function gameFiles(): string[] {
   return readdirSync(GAMES_DIR)
     .filter((name) => name.endsWith(".json"))
@@ -133,12 +156,20 @@ export function loadGames(): CardGame[] {
  * fingerprint of what was read turns "checked on the 1st" into a statement the
  * validator can test, and lets it say "edited since" instead of nothing.
  *
- * Only the three prose fields, because they are the only ones a source could be
- * copied into. Retagging a game or fixing its deal table does not invalidate a
- * reading of its rules.
+ * PROSE_FIELDS and nothing else, because those are the only ones a source could
+ * be copied into. Retagging a game or fixing its deal table does not invalidate
+ * a reading of its rules. Reading that list rather than repeating it here is
+ * what stops the fingerprint covering less than the check actually reads.
+ *
+ * An absent optional field contributes nothing rather than an empty slot. That
+ * matters when one joins the list: only the entries that actually carry it see
+ * their fingerprint move, so re-reading is scoped to the prose that gained
+ * cover instead of the whole corpus.
  */
 export function proseFingerprint(game: CardGame): string {
-  const text = [game.setup, game.play, game.goal_and_scoring].join("\u0000");
+  const text = PROSE_FIELDS.map((field) => game[field] ?? "")
+    .filter((prose) => prose.length > 0)
+    .join("\u0000");
   return createHash("sha256").update(text, "utf8").digest("hex").slice(0, 16);
 }
 
