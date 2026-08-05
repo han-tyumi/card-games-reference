@@ -28,6 +28,12 @@ release procedure is in
 
 ## [Unreleased]
 
+## [0.3.7] — 2026-08-05
+
+### Changed
+
+- Measure the originality bar from a sample, not from every pair
+
 ## [0.3.6] — 2026-08-04
 
 ### Changed
@@ -175,7 +181,8 @@ than served out of the default branch.
 - A difficulty the filter could not rank passed every difficulty filter, because
   `undefined > undefined` is false whichever way round it is written.
 
-[Unreleased]: https://github.com/han-tyumi/naibi/compare/v0.3.6...HEAD
+[Unreleased]: https://github.com/han-tyumi/naibi/compare/v0.3.7...HEAD
+[0.3.7]: https://github.com/han-tyumi/naibi/compare/v0.3.6...v0.3.7
 [0.3.6]: https://github.com/han-tyumi/naibi/compare/v0.3.5...v0.3.6
 [0.3.5]: https://github.com/han-tyumi/naibi/compare/v0.3.4...v0.3.5
 [0.3.4]: https://github.com/han-tyumi/naibi/compare/v0.3.3...v0.3.4
