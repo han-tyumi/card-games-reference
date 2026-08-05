@@ -20,7 +20,7 @@ import { fileURLToPath } from "node:url";
 
 import { Ajv2020 } from "ajv/dist/2020.js";
 
-import { SCHEMA_PATH, categoryLabel, gamesByCategory, loadGames } from "naibi";
+import { PROSE_FIELDS, SCHEMA_PATH, categoryLabel, gamesByCategory, loadGames } from "naibi";
 import { isNewer } from "../release.ts";
 
 const REPO_ROOT = fileURLToPath(new URL("../../..", import.meta.url));
@@ -323,6 +323,25 @@ test("the contributor guide says which kind of document it is", () => {
   assert.ok(
     contributing.includes("decisions/"),
     "CONTRIBUTING does not point at the historical records",
+  );
+});
+
+test("the contributor guide names the fields the fingerprint actually covers", () => {
+  // CONTRIBUTING tells contributors which fields a `checked` date covers, and
+  // they act on it: the surrounding paragraph says a purely mechanical move
+  // between fields can keep its original date. If that list and PROSE_FIELDS
+  // drift apart, the guide is telling people it is safe to keep a date that no
+  // longer has cover. A constant cannot be imported into prose, so it is pinned
+  // here instead.
+  const flat = contributing.replace(/\s+/g, " ");
+  const claim = /fingerprint covers ([^.]*?), so /.exec(flat);
+  assert.ok(claim, "CONTRIBUTING no longer says which fields the fingerprint covers");
+
+  const named = [...claim[1]!.matchAll(/`([a-z_]+)`/g)].map((match) => match[1]);
+  assert.deepEqual(
+    named,
+    [...PROSE_FIELDS],
+    "CONTRIBUTING and PROSE_FIELDS disagree about what a checked date covers",
   );
 });
 

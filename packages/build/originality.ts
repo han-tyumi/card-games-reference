@@ -31,12 +31,20 @@ import { join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 import type { CardGame } from "naibi";
-import { GAMES_DIR, loadGames, proseFingerprint } from "naibi";
+import { GAMES_DIR, PROSE_FIELDS, loadGames, proseFingerprint } from "naibi";
 
 const SOURCES_DIR = fileURLToPath(new URL("../../.sources", import.meta.url));
 
-/** The prose fields. Procedural writing is where every match has been found. */
-const FIELDS = ["setup", "play", "goal_and_scoring"] as const;
+/**
+ * Every passage of ours worth comparing, from one entry.
+ *
+ * PROSE_FIELDS decides which fields those are — see its note in `naibi`. Empty
+ * ones are dropped rather than compared, so an optional field that an entry
+ * does not carry costs nothing here.
+ */
+function passagesOf(game: CardGame): string[] {
+  return PROSE_FIELDS.map((field) => game[field] ?? "").filter((text) => text.length > 0);
+}
 
 /**
  * Function words only. Card-game vocabulary -- deal, trick, trump, discard --
@@ -566,9 +574,11 @@ function checkGame(game: CardGame, limits: Thresholds): Match[] {
   const sources = sourcesFor(game.id);
   if (sources.size === 0) return [];
 
-  return FIELDS.flatMap((field) =>
-    [...sources].flatMap(([name, text]) => compare(game[field], text, name, limits)),
-  );
+  return PROSE_FIELDS.flatMap((field) => {
+    const ours = game[field];
+    if (!ours) return [];
+    return [...sources].flatMap(([name, text]) => compare(ours, text, name, limits));
+  });
 }
 
 /**
@@ -675,7 +685,7 @@ function main(): number {
   // The bar is measured, not chosen: whatever our own entries manage against
   // each other, a real source has to beat.
   const all = loadGames();
-  const passages = all.flatMap((g) => [g.setup, g.play, g.goal_and_scoring]);
+  const passages = all.flatMap(passagesOf);
   const chosen = argv.includes("--min");
   const limits: Thresholds = chosen
     ? { ...DEFAULTS, order: Number(argv[argv.indexOf("--min") + 1]) }
@@ -721,11 +731,13 @@ function main(): number {
     checked += 1;
 
     const matches = checkGame(game, limits).sort((a, b) => b.order - a.order);
-    const follows = FIELDS.flatMap((field) =>
-      [...sources]
-        .map(([name, text]) => alignPassage(game[field], text, `${name}:${field}`))
-        .filter((a) => a.follows),
-    );
+    const follows = PROSE_FIELDS.flatMap((field) => {
+      const ours = game[field];
+      if (!ours) return [];
+      return [...sources]
+        .map(([name, text]) => alignPassage(ours, text, `${name}:${field}`))
+        .filter((a) => a.follows);
+    });
 
     if (matches.length === 0 && follows.length === 0) {
       console.log(`ok   ${game.id} (${sources.size} source${sources.size === 1 ? "" : "s"})`);

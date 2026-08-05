@@ -15,7 +15,9 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
-import { loadGames } from "naibi";
+import { readFileSync } from "node:fs";
+
+import { PROSE_FIELDS, SCHEMA_PATH, loadGames, proseFingerprint } from "naibi";
 import {
   DEFAULTS,
   PAIR_SAMPLE,
@@ -209,6 +211,56 @@ test("empty or missing source text finds nothing rather than throwing", () => {
   assert.deepEqual(flags("", "Some source prose about dealing cards."), []);
 });
 
+// --- the prose fields, and the consumers that must agree on them -----------
+
+test("the fingerprint covers every field the check reads, and nothing else", () => {
+  // The defect this replaces: "which fields are prose" was written out in four
+  // places and kept in step by hand. A field added to one and missed in another
+  // means either prose that ships unchecked, or a `checked` date that survives
+  // an edit to the very text it claims to cover. Both are silent.
+  //
+  // Tested by behaviour rather than by comparing two lists, because comparing
+  // lists only proves they were copied correctly — this proves the fingerprint
+  // actually moves with the field.
+  const [game] = loadGames();
+  assert.ok(game);
+
+  for (const field of PROSE_FIELDS) {
+    const edited = { ...game, [field]: `${game[field]} An added sentence.` };
+    assert.notEqual(
+      proseFingerprint(edited),
+      proseFingerprint(game),
+      `editing ${field} did not change the fingerprint, so a check of it would survive the edit`,
+    );
+  }
+
+  // And the other direction: a field nobody could copy a source into must not
+  // invalidate a reading of the rules. Adding an alias is not a rewrite.
+  assert.equal(
+    proseFingerprint({ ...game, aliases: [...game.aliases, "Another Name"] }),
+    proseFingerprint(game),
+    "a non-prose field invalidated the check, which would make re-reading meaningless busywork",
+  );
+});
+
+test("every prose field is a string field of the schema", () => {
+  // PROSE_FIELDS is typed against keyof CardGame, so a typo cannot compile —
+  // but a field could be renamed in the schema while the constant kept the old
+  // name and quietly read undefined off every entry.
+  //
+  // Checked against the schema rather than against an entry, because a prose
+  // field is allowed to be optional: asserting it is present on some game would
+  // reject exactly the case this list exists to accommodate.
+  const schema = JSON.parse(readFileSync(SCHEMA_PATH, "utf8")) as {
+    properties: Record<string, { type?: string }>;
+  };
+  for (const field of PROSE_FIELDS) {
+    const property = schema.properties[field];
+    assert.ok(property, `${field} is not a field of the schema at all`);
+    assert.equal(property.type, "string", `${field} is in PROSE_FIELDS but is not prose`);
+  }
+});
+
 // --- the sample the corpus measurements are taken over ---------------------
 
 /**
@@ -219,7 +271,9 @@ test("empty or missing source text finds nothing rather than throwing", () => {
  * the machine rather than checking anything.
  */
 const games = loadGames();
-const passages = games.flatMap((g) => [g.setup, g.play, g.goal_and_scoring]);
+const passages = games.flatMap((g) =>
+  PROSE_FIELDS.map((field) => g[field] ?? "").filter((text) => text.length > 0),
+);
 let measured: Thresholds | undefined;
 const bar = () => (measured ??= baseline(passages));
 
