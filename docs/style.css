@@ -243,6 +243,34 @@ a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset:
 .sheet .game[hidden], .sheet-actions[hidden] { display: none; }
 article.game[hidden] { display: none; }
 
+/* The print sheet carries every game, so a browser lays out all of them before
+   it shows anything, and that is the cost that grows with the corpus rather
+   than the megabyte everyone looks at. Measured in Chromium with the CPU
+   throttled 4x to stand in for a mid-range phone: 2.5s to load at 72 articles,
+   7.9s at 288. Skipping what is off screen brings the same 288 to 1.2s.
+
+   `.sheet ~` and not `article.game`, which is the whole difference between a
+   scoped fix and a site-wide one. content-visibility brings layout containment
+   with it, containment stops margins collapsing through the element, and the
+   unscoped version therefore made every one of the 72 game pages 14px taller.
+   Measured, in screenshots, after writing it the other way first. A game page
+   has one article and it is in view, so it had nothing to gain for that.
+
+   contain-intrinsic-size keeps a placeholder box for what has been skipped, so
+   the scrollbar is roughly honest rather than wildly wrong; `auto` means a
+   section measured once remembers its real height. A wrong guess costs scroll
+   accuracy and nothing else, which is why 7000px is measured rather than
+   picked: the median article is 8144px at 390px wide and 6838px once the
+   column stops widening, and the first guess here was 1200px, which made the
+   sheet claim a sixth of its real length.
+
+   Find-in-page, anchors and assistive technology all still reach skipped
+   content -- that is the difference between this and hiding it. */
+.sheet ~ article.game {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 7000px;
+}
+
 /* Shown only when a new deployment has taken over behind this page. Sits at the
    top of the flow rather than floating over the text, so it never covers a rule
    someone is mid-way through reading. */
@@ -552,5 +580,14 @@ footer p { margin: 0; }
   a {
     color: inherit;
     text-decoration: none;
+  }
+
+  /* Nothing is off screen on paper: every page of a print job has to be laid
+     out, so the skipping above has nothing to win here and one thing to lose.
+     Chromium prints identically either way -- 1496 PDF pages at 288 articles
+     with the rule and without it -- but this is the line between a sheet that
+     prints and a stack of blank paper, and it is one line. */
+  .sheet ~ article.game {
+    content-visibility: visible;
   }
 }

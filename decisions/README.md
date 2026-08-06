@@ -36,6 +36,7 @@ part.
 | [0018](0018-branch-previews-at-a-subpath.md) | Branch previews at a Pages subpath, from a composed `site` branch | Accepted |
 | [0019](0019-the-worker-declines-the-preview-subtree.md) | The site's service worker declines the preview subtree | Accepted |
 | [0020](0020-the-bar-is-measured-from-a-bounded-sample.md) | Measure the originality bar from a bounded sample of pairs | Accepted |
+| [0021](0021-two-payload-budgets-and-what-happens-at-them.md) | Two payload budgets, and what happens when one is reached | Accepted |
 
 ## The format
 

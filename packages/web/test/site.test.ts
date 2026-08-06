@@ -22,7 +22,7 @@ import {
   renderDiagramSvg,
   renderFigureSvg,
 } from "naibi";
-import { buildSite } from "../build-web.ts";
+import { buildSite, payloads } from "../build-web.ts";
 import { facetsFor, searchRecords } from "../records.ts";
 import { matches } from "../assets/facets.js";
 
@@ -37,10 +37,18 @@ const text = (name: string): string => {
 
 const pages = [...site.keys()].filter((name) => name.endsWith(".html"));
 
-/** The precache list the service worker ships with. */
-const precache: string[] = JSON.parse(
-  /const ASSETS = (\[.*?\]);/s.exec(text("sw.js"))![1]!,
-);
+/**
+ * The precache list the service worker ships with, both tiers of it.
+ *
+ * Two lists rather than one because they fail differently -- the shell is
+ * atomic and the pages are best effort -- and every test below that asks "is
+ * this cached" means either.
+ */
+const listOf = (name: string): string[] =>
+  JSON.parse(new RegExp(`const ${name} = (\\[.*?\\]);`, "s").exec(text("sw.js"))![1]!);
+const shell: string[] = listOf("SHELL");
+const gamePages: string[] = listOf("PAGES");
+const precache: string[] = [...shell, ...gamePages];
 
 // --- shape ----------------------------------------------------------------
 
@@ -1008,8 +1016,11 @@ test("the precache covers everything the site is made of", () => {
 });
 
 test("the precache lists nothing that is not shipped", () => {
-  // addAll() rejects as a whole if any entry 404s, so one stale filename means
-  // the app installs nothing at all and offline silently never works.
+  // This test now carries more weight than it used to, not less. A stale
+  // filename in the SHELL still 404s an atomic addAll and installs nothing; a
+  // stale one among the PAGES is now *tolerated*, so it fails quietly and
+  // forever rather than loudly and once. Tolerance is for the network and this
+  // is the check that keeps it from covering for a wrong manifest.
   const phantom = precache.filter((name) => name !== "./" && !site.has(name));
   assert.deepEqual(phantom, []);
 });
@@ -1107,6 +1118,165 @@ test("the worker answers for the site and leaves branch previews alone", () => {
 
   // Still nothing to do with another origin, which was already true.
   assert.equal(workerTakes("https://elsewhere.test/naibi/index.html"), "declined");
+});
+
+test("the shell is atomic, the game pages are not, and both are cached", () => {
+  // addAll() is all or nothing by specification, so one dropped request used to
+  // mean the reader got NO offline copy rather than most of one. The odds of a
+  // clean run are (1-p)^N, which falls as the corpus grows while nothing about
+  // the reader's connection changes: measured in Chromium against a server
+  // dropping 0.5% of requests, eight installs each, one addAll over 84 entries
+  // succeeded 5 times and over 300 entries succeeded ONCE. Tiered, the same 300
+  // succeeded 8 times out of 8, holding 298.6 of 300 entries on average.
+  //
+  // Which list a file is on is the whole of that behaviour, so it is asserted
+  // rather than left to the reader of the generated worker.
+  assert.ok(shell.includes("./"), "the start URL is not in the atomic tier");
+  assert.ok(shell.includes("index.html"));
+  assert.ok(shell.includes("style.css"));
+  assert.ok(shell.includes("search-index.json"), "search would be silently dead offline");
+  assert.deepEqual(
+    shell.filter((f) => f.startsWith("games/")),
+    [],
+    "a game page is in the atomic tier, so one bad request costs the whole install",
+  );
+  assert.equal(gamePages.length, games.length, "every game page is in the best-effort tier");
+
+  // The shell is the part that does NOT grow with the corpus, which is what
+  // makes the split worth anything. Ten entries today; a handful of icons and
+  // scripts is the shape, not the exact number.
+  assert.ok(shell.length < 20, `the shell has grown to ${shell.length} entries`);
+});
+
+/**
+ * Run the generated worker's install step against a Cache that drops requests.
+ *
+ * The worker is run rather than read, the same way workerTakes() runs the fetch
+ * listener: the question is what install() *does* when a request fails, and a
+ * regex over the source answers a different question badly.
+ *
+ * `addAll` rejects as a whole if any of its URLs would fail, because that is
+ * what the specification says it does and it is the entire behaviour under
+ * test. Stubbing it as "push them all" is how the first version of this passed
+ * against a worker that had been reverted to one atomic addAll.
+ *
+ * @param fails which URLs the network refuses.
+ */
+async function installWorker(
+  source: string,
+  fails: (url: string) => boolean,
+): Promise<{ outcome: "installed" | "failed"; cached: string[] }> {
+  const listeners: Record<string, (event: { waitUntil(p: Promise<unknown>): void }) => void> = {};
+  const cached: string[] = [];
+  let waited: Promise<unknown> | undefined;
+  let skipped = false;
+
+  const cache = {
+    addAll: async (urls: string[]) => {
+      if (urls.some(fails)) throw new Error("one of these could not be fetched");
+      cached.push(...urls);
+    },
+    add: async (url: string) => {
+      if (fails(url)) throw new Error("could not be fetched");
+      cached.push(url);
+    },
+    put: () => {},
+  };
+
+  new Function("self", "caches", "fetch", "location", source)(
+    {
+      addEventListener: (type: string, fn: (event: never) => void) =>
+        void (listeners[type] = fn as never),
+      registration: { scope: "https://example.test/" },
+      skipWaiting: () => void (skipped = true),
+      clients: { claim: () => {} },
+    },
+    { match: async () => undefined, open: async () => cache, keys: async () => [] },
+    async () => ({ ok: true, clone: () => ({}) }),
+    new URL("https://example.test/"),
+  );
+
+  const install = listeners["install"];
+  assert.ok(install, "the worker registers no install listener");
+  install({ waitUntil: (promise) => void (waited = promise) });
+  assert.ok(waited, "install did not call waitUntil, so the browser will not wait for it");
+
+  const outcome = await waited.then(
+    () => (skipped ? ("installed" as const) : ("failed" as const)),
+    () => "failed" as const,
+  );
+  return { outcome, cached };
+}
+
+test("a failed page does not throw away the pages that succeeded", async () => {
+  // Every third game page refuses. One addAll over the whole list caches
+  // nothing at all in that situation, which is the behaviour this replaced.
+  let seen = 0;
+  const flaky = (url: string): boolean => {
+    if (!url.startsWith("games/")) return false;
+    seen += 1;
+    return seen % 3 === 0;
+  };
+
+  const { outcome, cached } = await installWorker(text("sw.js"), flaky);
+
+  assert.equal(outcome, "installed", "dropped pages failed the whole install");
+  assert.ok(
+    cached.length > shell.length + gamePages.length * 0.5,
+    `only ${cached.length} of ${precache.length} entries survived a lossy install`,
+  );
+  for (const file of shell) {
+    assert.ok(cached.includes(file), `${file} is shell and must be cached or install fails`);
+  }
+});
+
+test("a shell that cannot be fetched fails the install rather than half-working", async () => {
+  // The other direction, and the reason the shell is still atomic: an app whose
+  // stylesheet is missing from the cache is not an app that works offline, and
+  // a failed install is retried on the next navigation. Tolerance is for the
+  // pages, deliberately and only.
+  const { outcome, cached } = await installWorker(text("sw.js"), (url) => url === "style.css");
+
+  assert.equal(outcome, "failed", "the install reported success without its own stylesheet");
+  assert.deepEqual(cached, [], "a rejected addAll must not leave a half-filled cache");
+});
+
+test("the two payloads that grow with the corpus are inside their budgets", () => {
+  // Measured on 2026-08-06 at 72 games, and both grow linearly: 6.9 KB gzip per
+  // game on the precache, 3.7 KB on the sheet, straight to within 1.1% across
+  // slices of 18, 36, 54 and 72. The ceilings are where each stops being a
+  // background cost and starts being a thing the reader notices, and what to do
+  // when one is reached is written down in decisions/0021 rather than left for
+  // whoever trips this to invent under time pressure.
+  //
+  // Over the wire, not on disk: Pages serves these gzipped (checked against the
+  // live site's response headers), so the uncompressed figure overstates what a
+  // reader downloads by about three times. The device number is reported by the
+  // build; this asserts the one somebody pays for.
+  const p = payloads(site);
+  const KB = 1024;
+
+  assert.ok(
+    p.precacheGzip <= 1500 * KB,
+    `a first install now downloads ${(p.precacheGzip / KB).toFixed(0)} KB over ${p.entries} ` +
+      `entries, past the 1500 KB budget. See decisions/0021: the answer is to stop ` +
+      `precaching every game page at install and fill them in the background instead.`,
+  );
+
+  assert.ok(
+    p.printGzip <= 800 * KB,
+    `print.html is now ${(p.printGzip / KB).toFixed(0)} KB over the wire and ` +
+      `${(p.printRaw / KB).toFixed(0)} KB to parse, past the 800 KB budget. See ` +
+      `decisions/0021: the answer is for the sheet to assemble the selection from the ` +
+      `game pages the worker has already cached.`,
+  );
+
+  // Silence is not coverage: a budget that only speaks when it is breached says
+  // nothing about the approach to it. The build prints these on every run, and
+  // this is the line that keeps that reporting honest by naming the same
+  // numbers from the same function.
+  assert.ok(p.entries > games.length, "the payload report is not counting the whole precache");
+  assert.ok(p.precacheGzip > 0 && p.printGzip > 0, "the payload report measures nothing");
 });
 
 test("the cache name changes when the content does, and only then", () => {
