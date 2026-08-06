@@ -1,0 +1,107 @@
+{
+  "id": "caribbean-stud",
+  "name": "Caribbean Stud",
+  "aliases": [
+    "Caribbean Stud Poker",
+    "Casino Stud Poker"
+  ],
+  "category": "casino",
+  "players": {
+    "min": 2,
+    "max": 7,
+    "ideal": 5
+  },
+  "decks": "1 standard deck (52 cards), plus chips or counters",
+  "equipment": {
+    "standard_decks": 1,
+    "jokers": 0,
+    "special_deck": null,
+    "other": [
+      "Chips or counters"
+    ]
+  },
+  "setup": "Poker hands, ranked the usual way, played against the dealer rather than against each other. That last part removes the thing most poker is about: there is nobody to bluff, because the dealer never makes a decision. What is left is a bet on your own five cards against a hand that follows a fixed rule.\n\nOne player deals and banks. In a casino that seat belongs to the house; at a kitchen table give it to whoever can cover the payouts, and pass it on before the evening turns into a very slow transfer of somebody's money.\n\nEach player who wants a hand puts up an ante before the deal. Where a jackpot stake is being offered, that goes down at the same time and is settled entirely separately — see the variants.\n\nThe dealer gives five cards face down to each player and five to themselves, then turns one of their own face up. That single exposed card is all you learn about the hand you are up against, and it is the whole of what you have to work with.\n\nPlayers look at their own cards, and everyone at the table is up against the same single dealer hand. That is worth noticing before the first deal: cards compared around the table would tell everybody something about what the dealer cannot be holding, which is information the game is not built to survive. Casinos have their own rules about it; a home table should agree its own, and the simplest is that you play your own five cards and say nothing about them.",
+  "play": "One decision each, made after looking at your five cards and the dealer's single upcard.\n\n- Raise. Put up a second stake of exactly twice your ante. There is no other amount, and this is the only bet you will make.\n- Fold. Give the hand up and lose the ante.\n\nEveryone decides in turn, and the decision is final. There is no drawing, no second round of betting and nothing to do afterwards; the rest of the hand is settlement.\n\nOnce every player has raised or folded, the dealer turns their remaining four cards face up. Now the qualifier decides everything that follows: THE DEALER'S HAND ONLY PLAYS IF IT CONTAINS AN ACE AND A KING, OR IS A PAIR OR BETTER.\n\nIF THE DEALER DOES NOT QUALIFY\n\nCards are not compared. Every player still in is paid even money on the ante, and the raise — twice the size — is handed straight back. It does not matter whether your hand was a royal flush or the worst five cards at the table: the raise wins nothing, which is the sting in the game and the reason a huge hand can feel wasted.\n\nIF THE DEALER QUALIFIES\n\nEach remaining player's five cards are compared with the dealer's, on the standard poker rankings.\n\n- Your hand is better. The ante is paid even money, and the raise is paid at the ladder below — which is where the game's money is, since it climbs to a hundred to one.\n- The dealer's hand is better. Both stakes are lost.\n- The two are exactly equal. Both stakes are returned and nothing changes hands.\n\nA casino usually caps what one hand can pay however the ladder works out, so a big hand at high stakes can be worth less than the multiplier suggests. At home there is no cap unless the banker sets one, and a banker who does not think about that before dealing has agreed to a liability they have not counted.",
+  "scoring_table": [
+    {
+      "item": "Ante, dealer does not qualify",
+      "value": "1 to 1",
+      "note": "the raise is returned, whatever you were holding"
+    },
+    {
+      "item": "Ante, beating a qualifying dealer",
+      "value": "1 to 1"
+    },
+    {
+      "item": "Raise: pair or less",
+      "value": "1 to 1"
+    },
+    {
+      "item": "Raise: two pair",
+      "value": "2 to 1"
+    },
+    {
+      "item": "Raise: three of a kind",
+      "value": "3 to 1"
+    },
+    {
+      "item": "Raise: straight",
+      "value": "4 to 1"
+    },
+    {
+      "item": "Raise: flush",
+      "value": "5 to 1"
+    },
+    {
+      "item": "Raise: full house",
+      "value": "7 to 1"
+    },
+    {
+      "item": "Raise: four of a kind",
+      "value": "20 to 1"
+    },
+    {
+      "item": "Raise: straight flush",
+      "value": "50 to 1"
+    },
+    {
+      "item": "Raise: royal flush",
+      "value": "100 to 1"
+    }
+  ],
+  "goal_and_scoring": "Take more from the banker than you put in. Hands are settled one at a time and there is no running total; what is in front of you is the score.\n\nEvery hand resolves through the same two questions, in this order: did the dealer qualify, and if so, whose five cards are better. The first question is the one that shapes how the game feels. The dealer fails to qualify a little under half the time, and on every one of those hands the raise — the bigger of your two stakes — is dead money that comes back untouched. Holding four of a kind against a dealer who cannot show ace-king pays you your ante and nothing else.\n\nThat is also why the fold decision is not the one it looks like. Folding costs the ante; raising costs twice the ante on top. The usual guidance is to raise on any pair or better and fold below ace-king, which is roughly where the raise stops being worth its price. A table-ready version of the fuller strategy is to call with ace-king-jack-eight-three or better, which gives away a further tenth of a per cent against playing it perfectly.\n\nWhen the dealer does qualify, the ante pays even money and the raise pays on the ladder above. A pair is worth the same as a high card there — the ladder only starts climbing at two pair — and it climbs steeply at the top, which is what people remember about the game and not what pays for most of their evening.\n\nThe rankings are standard five-card poker throughout, so a straight beats three of a kind, a flush beats a straight, and suits break nothing. Two identical hands are a tie and both stakes come back.\n\nThe house edge is real and it lives in the qualifier: play as well as the game can be played and it still costs about 2.6 per cent of everything staked. Two figures get quoted for this game and they are both true — that one measures against the ante and the raise together, while the larger number you will see elsewhere measures against the ante alone, which is the smaller of the two stakes. Neither moves much whatever you do with the cards. A jackpot stake is worse again unless the meter has grown very large. Whoever banks the game at home is being handed that edge, which is a reason to rotate the seat rather than to argue about who gets it.",
+  "variants": [
+    {
+      "name": "The progressive jackpot",
+      "description": "A separate fixed stake, put down with the ante, that pays on the strength of your own five cards alone — it takes no notice of the dealer, the qualifier, or whether you folded. A flush or better pays, with the smaller hands paying set amounts and a straight flush usually taking a share of a running meter and a royal flush the lot. It is the worst bet on the table by some distance until the meter has grown enormous, and it is the reason the game is offered."
+    },
+    {
+      "name": "Playing it at home without a house",
+      "description": "The banker holds a real edge here, so rotate the seat every few hands or the evening has a foregone conclusion. Set a cap on what a single hand can pay before dealing — a hundred to one on a raise is a serious liability at any stake worth playing for — and agree it out loud. Dropping the qualifier makes the game close to even and rather duller; halving the raise to one ante instead of two is the gentler adjustment."
+    },
+    {
+      "name": "The stud game it borrows from",
+      "description": "Traditional stud poker is a different animal: cards are dealt one at a time, most of them face up, with a betting round after each, and every player is playing against the others rather than against a bank. Bluffing exists there because the opponents make decisions and can be made to regret them. Seven Card Stud is in this collection and is the closest relative here."
+    }
+  ],
+  "difficulty": "easy",
+  "duration_minutes": "20-60",
+  "tags": [
+    "betting",
+    "luck",
+    "large-group",
+    "beginner-friendly"
+  ],
+  "sources_consulted": [
+    "Pagat",
+    "Wikipedia"
+  ],
+  "checked": {
+    "date": "2026-08-06",
+    "prose": "2873d1545b5ee03c",
+    "sources": [
+      "Pagat",
+      "Wikipedia"
+    ]
+  }
+}

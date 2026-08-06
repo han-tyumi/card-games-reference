@@ -91,7 +91,7 @@ A tournament has a definite end. Everyone starts with an identical stack, the bl
 
 ## Variants
 
-**Omaha** — Same four betting rounds and the same five shared cards, but each player is dealt four hole cards instead of two and must use exactly two of them together with exactly three from the board. That rigid requirement is easy to misread: four hearts in your hand and three on the table is not a flush, because only two of yours can play. Hands run much bigger than in Hold'em, and the pot-limit betting structure is the usual companion.
+**Omaha** — Four hole cards each rather than two, and a rigid rule that exactly two of them play alongside exactly three from the board. That single constraint is easy to misread — four hearts in your hand and three on the table is not a flush, because only two of yours can count — and it changes the game enough that Omaha has its own entry in this collection rather than living here. Pot-limit betting is its usual companion.
 
 **Short-deck (six-plus) Hold'em** — All the deuces through fives are stripped out, leaving a 36-card pack, and everything else about the deal and the betting stays put. The thinner deck rearranges the hand rankings: a flush becomes harder to make than a full house and outranks it, and three of a kind beats a straight. The ace still plays low, now completing a nine-high run with the six. Antes from every player commonly replace the blinds.
 

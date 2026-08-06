@@ -90,7 +90,7 @@
   "variants": [
     {
       "name": "Omaha",
-      "description": "Same four betting rounds and the same five shared cards, but each player is dealt four hole cards instead of two and must use exactly two of them together with exactly three from the board. That rigid requirement is easy to misread: four hearts in your hand and three on the table is not a flush, because only two of yours can play. Hands run much bigger than in Hold'em, and the pot-limit betting structure is the usual companion."
+      "description": "Four hole cards each rather than two, and a rigid rule that exactly two of them play alongside exactly three from the board. That single constraint is easy to misread — four hearts in your hand and three on the table is not a flush, because only two of yours can count — and it changes the game enough that Omaha has its own entry in this collection rather than living here. Pot-limit betting is its usual companion."
     },
     {
       "name": "Short-deck (six-plus) Hold'em",

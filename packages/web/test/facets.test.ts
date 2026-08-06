@@ -231,7 +231,14 @@ test("the count says 'of' only when something is filtered out", () => {
   assert.equal(countLabel(72, 72), "72 games");
   assert.equal(countLabel(15, 72), "15 of 72 games");
   assert.equal(countLabel(0, 72), "0 of 72 games");
-  assert.equal(plan(facets, { category: "casino" }, null).count.endsWith("of 72 games"), true);
+  // Against the real corpus, so the total is the corpus's own size. Written out
+  // as 72 it was a count of the collection on the day it was typed, and the
+  // first entry added after that broke it -- the one thing this file is full of
+  // machinery to avoid.
+  assert.equal(
+    plan(facets, { category: "casino" }, null).count.endsWith(`of ${facets.length} games`),
+    true,
+  );
 });
 
 test("a query ranks by score, and the chips still apply on top", () => {

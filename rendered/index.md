@@ -2,7 +2,7 @@
 
 # Card Game Rules — Index
 
-72 games, free to reuse under CC BY-SA 4.0.
+75 games, free to reuse under CC BY-SA 4.0.
 
 ## Solitaire (1 player)
 
@@ -98,6 +98,7 @@
 | [BS](bs.md) | 2-10 players (best with 5) | 1 standard deck (52 cards), jokers removed; 2 decks shuffled together for six or more players | 15-30 minutes | Simple |
 | [Five Card Draw](five-card-draw.md) | 2-6 players (best with 5) | 1 standard deck (52 cards), plus chips or counters for everyone | 20-60 minutes | Simple |
 | [Mus](mus.md) | 4 players | 1 standard deck stripped to 40 cards (8s, 9s and 10s removed), or a 40-card Spanish pack | 45-90 minutes | Complex |
+| [Omaha](omaha.md) | 2-10 players (best with 6) | 1 standard deck (52 cards), plus chips or counters for everyone | 30-120 minutes | Medium |
 | [Seven Card Stud](seven-card-stud.md) | 2-8 players (best with 8) | 1 standard deck (52 cards), plus chips to bet with | 60+ minutes | Medium |
 | [Teen Patti](teen-patti.md) | 3-8 players (best with 5) | 1 standard deck (52 cards); chips or counters for the pot | 30-60 minutes | Easy |
 | [Texas Hold'em](texas-holdem.md) | 2-10 players (best with 6) | 1 standard deck (52 cards), plus chips or counters for everyone | 30-120 minutes | Easy |
@@ -109,4 +110,6 @@
 | --- | --- | --- | --- | --- |
 | [Baccarat](baccarat.md) | 2-12 players (best with 6) | 6 to 8 standard decks shuffled together; eight is the casino norm and six is usual online | 30-60 minutes | Easy |
 | [Blackjack](blackjack.md) | 2-8 players (best with 5) | 1 to 8 standard decks shuffled together; six is the casino norm, one or two is fine at home | 30-60 minutes | Easy |
+| [Caribbean Stud](caribbean-stud.md) | 2-7 players (best with 5) | 1 standard deck (52 cards), plus chips or counters | 20-60 minutes | Easy |
 | [Red Dog](red-dog.md) | 2-8 players (best with 4) | 1 to 8 standard decks shuffled together; six is the casino norm, and more packs is better for the player rather than worse | 15-30 minutes | Simple |
+| [Three Card Poker](three-card-poker.md) | 2-7 players (best with 4) | 1 standard deck (52 cards), plus chips or counters | 15-45 minutes | Simple |
