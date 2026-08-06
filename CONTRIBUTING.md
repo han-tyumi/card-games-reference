@@ -26,10 +26,19 @@ version right matters more than covering every variation.
    other reference. The details people argue about are the ones worth nailing
    down: who leads first, is the ace high or low, what happens on a tie, what
    happens when the stock runs out.
-4. Describe the **most widely played modern version** in the main text. Put
+4. **State only what a source you actually read supports.** The originality
+   check compares your wording against those sources; nothing anywhere compares
+   your *facts* against them, and a confident sentence nobody can back is the
+   one failure the tooling will never report. Three entries written in one
+   sitting carried two of them — a table rule neither source mentioned, and a
+   house edge quoted against a different denominator from the source's, which
+   made our number read as a contradiction of the first page a reader would
+   check. Where two sources give different figures, say so and say why, rather
+   than picking the one you like.
+5. Describe the **most widely played modern version** in the main text. Put
    notable alternatives in `variants` — two to five is right for this project.
    Exhaustive regional coverage is explicitly not the goal.
-5. Check the wording against your sources **now, while the entry is fresh**, not
+6. Check the wording against your sources **now, while the entry is fresh**, not
    in a sweep at the end of a batch — that is how the last one went, and it was
    painful. Put the source text in `.sources/<slug>/` (gitignored) and run
    `npm run originality -- --game <slug>`. A run that says it checked nothing
@@ -37,14 +46,14 @@ version right matters more than covering every variation.
    `npm run originality -- --stamp <date> <slug>`, naming only what you read.
    The `originality-pass` skill has the fetch recipe and the network control it
    insists on first.
-6. Update the README's `**Status:**` count, its collection blurb and its family
+7. Update the README's `**Status:**` count, its collection blurb and its family
    table. Three tests in `packages/build/test/docs.test.ts` fail until you do.
-7. Run `npm run build`, and commit everything it regenerates: `rendered/`,
+8. Run `npm run build`, and commit everything it regenerates: `rendered/`,
    `docs/` **and `rendered/naibi.pdf`**. All three are gated — the booklet
    joined them once the font it embeds was vendored into the repository, which
    is what made it reproducible off one machine. See
    [0013](decisions/0013-vendor-the-fonts-and-gate-the-booklet.md).
-8. `npm run check`.
+9. `npm run check`.
 
 Prose fields accept a light Markdown convention: blank lines separate
 paragraphs, and lines starting with `- ` become bullets. Both the Markdown and
