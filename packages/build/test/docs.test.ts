@@ -84,8 +84,12 @@ test("the checked-status ledger matches the corpus", () => {
   // after twelve more had been added and stamped. The README's counts were
   // already checked here and this one was not, so it drifted silently.
   const stated = new Map<string, number>();
+  // "entry" as well as "entries": a pass that read one entry has to be able to
+  // say so in English, and the plural-only pattern silently skipped the heading
+  // rather than failing on it -- which reads in the diff as a pass nobody
+  // recorded rather than as a pattern that could not see it.
   for (const [, count, date] of contributing.matchAll(
-    /\*\*(\d+) entries, checked (\d{4}-\d{2}-\d{2})\*\*/g,
+    /\*\*(\d+) entr(?:y|ies), checked (\d{4}-\d{2}-\d{2})\*\*/g,
   )) {
     stated.set(date!, Number(count));
   }

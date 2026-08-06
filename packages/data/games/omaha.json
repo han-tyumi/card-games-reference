@@ -1,0 +1,122 @@
+{
+  "id": "omaha",
+  "name": "Omaha",
+  "aliases": [
+    "Omaha Hold'em",
+    "Omaha Holdem",
+    "Pot-Limit Omaha",
+    "PLO"
+  ],
+  "category": "bluffing",
+  "players": {
+    "min": 2,
+    "max": 10,
+    "ideal": 6
+  },
+  "decks": "1 standard deck (52 cards), plus chips or counters for everyone",
+  "equipment": {
+    "standard_decks": 1,
+    "jokers": 0,
+    "special_deck": null,
+    "other": [
+      "Chips or counters",
+      "A dealer button, or any small marker"
+    ]
+  },
+  "setup": "Four cards each instead of two, and a rule about how many of them may be used. That is the whole difference from the shared-card game most people learn first, and it changes more than it sounds like it should.\n\nEveryone plays from a stack of chips in front of them. What is on the table is what you can lose in a hand and what you can win from anyone else; you never reach into a pocket mid-hand, though between hands you may usually top up to whatever the table allows. Six players makes the standard game and nine or ten fills a table, but it works down to two.\n\nA marker called the button shows who is nominally dealing, and it moves one seat clockwise after every hand. It decides the order everyone speaks in, so moving it is what shares out the advantage of acting late.\n\nBefore any card is dealt, the two players clockwise of the button put in forced bets: the small blind first, then the big blind, usually double it. These exist so that the first hand of the night already has something in the middle worth playing for, and they are how stakes get named — a one-two game means blinds of one and two. Heads-up the order inverts, with the button posting the small blind and acting first before the shared cards appear and last after them.\n\nThe dealer then gives four cards face down to each player, one at a time clockwise from the small blind. Nobody sees anyone else's until a showdown, and a hand shown at a showdown must be shown in full — all four, not the two that played.\n\nCards rank ace high, and the ace also serves as the low end of a five-high run. Suits never break a tie. Equal hands split the pot.",
+  "layout": {
+    "rows": [
+      [
+        {
+          "kind": "hand",
+          "label": "Opponents' hole cards",
+          "repeat": 3,
+          "cards": 4,
+          "face": "down"
+        }
+      ],
+      [
+        {
+          "kind": "stock",
+          "label": "Deck",
+          "face": "down"
+        },
+        {
+          "kind": "gap"
+        },
+        {
+          "kind": "tableau",
+          "label": "Flop",
+          "repeat": 3,
+          "cards": 1
+        },
+        {
+          "kind": "tableau",
+          "label": "Turn",
+          "cards": 1
+        },
+        {
+          "kind": "tableau",
+          "label": "River",
+          "cards": 1
+        }
+      ],
+      [
+        {
+          "kind": "hand",
+          "label": "Your hole cards",
+          "cards": 4
+        }
+      ]
+    ],
+    "caption": "Four cards in front of each player and five in the middle. A finished hand takes exactly two from your own four and exactly three from the board — no other combination is legal, however good it looks."
+  },
+  "play": "One rule governs everything else, so it comes first. Exactly two of your four cards, and exactly three of the five on the table. Not one, not three, not all four. It is not a maximum and not a minimum, and it applies to every hand you ever make here.\n\nThat single sentence is what people misread, and they misread it in the same direction every time. Holding three hearts with two more on the board is not a flush, because only two of yours may play and the board offers only two more. Holding an ace when the board shows four to a straight does not make you that straight either. Read the hand as a fixed shape rather than a pool of seven cards, and it stops catching you out.\n\nA hand runs through four betting rounds, with the dealer turning more shared cards between them.\n\nWHAT YOU CAN DO ON YOUR TURN\n\n- Check. Pass the turn along without staking anything, which is only open to you if nobody has bet yet this round.\n- Bet. Be the first to put chips in.\n- Call. Match the most anyone has staked this round.\n- Raise. Put in more than that, which brings the turn back round to everyone still in.\n- Fold. Give the hand up. What you have already staked stays where it is.\n\nA round closes when everyone still holding cards has acted and everyone still in has staked the same amount for that round, all-ins aside. Chips already in the middle are never taken back.\n\nBEFORE THE FLOP\n\nThe blinds are live bets, so the round opens on the player clockwise of the big blind, who must at least match it to continue. It runs clockwise and ends on the big blind, who may raise even when nobody else has.\n\nTHE FLOP, THE TURN, THE RIVER\n\nThe dealer burns a card face down and turns three face up in the middle; a betting round follows. Then a burn and a fourth card, and a round. Then a burn and a fifth, and the last round. From the flop onwards the first player still in clockwise of the button speaks first and the button speaks last.\n\nHOW MUCH YOU MAY BET\n\nPot limit is the usual structure and the one the game is named for in its commonest form. The ceiling on a bet is what the pot holds; the ceiling on a raise is what the pot would hold once you had called, which is the part worth doing slowly.\n\nWork it in that order. Say the middle holds 50 and someone bets 50, so there is 100 out there. You call the 50 in your head first, making 150, and 150 is what you may raise by. Put in 200 altogether and the pot stands at 300. Repeat that twice and the reason people call pot limit a shove in slow motion is on the table in front of you.\n\nThe floor on a raise is the size of the last bet or raise. A short all-in below that does not reopen the betting for anyone who has already acted for the full amount, though it does not restrict a player yet to speak.\n\nAll-in works as it does anywhere: you may always put your last chip in, you can win from each opponent only as much as you staked yourself, and anything wagered past that is set aside in a side pot for the players who covered it.\n\nTHE SHOWDOWN\n\nIf two or more are left after the final round, cards come face up. The last player to bet or raise shows first; if nobody bet, it is the first player clockwise of the button. Beaten hands may be mucked face down rather than shown.\n\nEach player names their best five cards under the two-and-three rule, and a hand in contention has to be shown complete — all four hole cards, including the two that did nothing. A hand can also end long before this: the moment everyone else folds, whoever is left takes the pot without showing anything.",
+  "figure_refs": [
+    "poker-hands-strongest",
+    "poker-hands-middle",
+    "poker-hands-weakest",
+    "poker-ace-straights"
+  ],
+  "goal_and_scoring": "There is no running score. Each hand is a fight over one pot, and there are two ways to take it: hold the best five cards at the showdown, or be the last player who has not folded. Nothing distinguishes the two afterwards — an uncontested pot spends the same.\n\nHands are compared by the standard poker categories, and within a category by rank, with leftover cards settling near-ties in order. The categories are the ones on the strips above and mean here exactly what they mean everywhere else. What differs is which hands are reachable: because three of your five cards always come off the same board everyone shares, made hands run much bigger than players arriving from a two-card game expect. A flush that would win a Hold'em pot outright is an ordinary holding here, and two players making the same straight is common enough that splitting is a normal outcome rather than a curiosity.\n\nThe same board also means nobody can hold a hand the board does not offer. If the five shared cards contain no pair and no three of a suit, then nobody at the table has a full house or a flush, whatever they are representing. Reading what is impossible is most of what separates players here.\n\nEqual hands split the pot; an odd chip goes to the first player clockwise of the button. Where all-ins have built side pots, each is settled on its own among the players who were in it, so a short stack can take the main pot while a stronger hand collects everything above it.\n\nA cash game has no end: chips are stakes, you may join or leave between hands, and your result is whatever is in front of you when you stand up. A tournament ends when one player holds every chip, with equal starting stacks, blinds rising on a clock, and finishing position rather than chip count deciding where you came.",
+  "variants": [
+    {
+      "name": "Omaha hi-lo, eight or better",
+      "description": "The pot is divided between the best high hand and the best qualifying low one. A low has to be five cards of different ranks, none higher than an eight, and straights and flushes do not count against it, so the best possible low is A-2-3-4-5 — which is also a straight, and can therefore win both halves at once. The two-and-three rule applies separately to each half, so the two cards making your low need not be the two making your high. When no low qualifies, the high hand takes everything. Sharing half a pot with another low is called being quartered, and it is how a hand that looked strong ends up losing money."
+    },
+    {
+      "name": "Five-card Omaha, and Big O",
+      "description": "Five hole cards each rather than four, with the showdown rule untouched: still exactly two from your hand and three from the board. The extra card multiplies the possible two-card combinations from six to ten, which raises the winning hand again and makes the game markedly looser. Played high-only it is usually called five-card Omaha; played hi-lo eight-or-better it is Big O."
+    },
+    {
+      "name": "Courchevel",
+      "description": "Five hole cards, and the first of the shared cards is turned face up before the opening bets rather than as part of the flop. Everyone therefore acts before the flop already knowing a fifth of the board, and the flop itself adds only two more cards. Played both high and hi-lo."
+    },
+    {
+      "name": "No-limit and fixed-limit Omaha",
+      "description": "The same game with a different ceiling on the betting. Fixed limit, once the standard form, keeps every bet at a set size and caps the raises in a round, which suits hi-lo where hands are often split and building a huge pot serves nobody. No limit exists but is rare, because four cards make strong hands so often that threatening a whole stack loses much of its meaning."
+    }
+  ],
+  "difficulty": "medium",
+  "duration_minutes": "30-120",
+  "tags": [
+    "betting",
+    "bluffing",
+    "strategy",
+    "two-player",
+    "large-group",
+    "long-game"
+  ],
+  "sources_consulted": [
+    "Pagat",
+    "Wikipedia"
+  ],
+  "checked": {
+    "date": "2026-08-06",
+    "prose": "f2d88feccdf08357",
+    "sources": [
+      "Pagat",
+      "Wikipedia"
+    ]
+  }
+}

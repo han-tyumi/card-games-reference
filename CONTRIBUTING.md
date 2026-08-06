@@ -485,7 +485,26 @@ recorded here. A clean result is still only a clean result: the tool cannot
 certify prose original, and two sources per entry is its floor, not a thorough
 search.
 
-**72 of 72 checks record which sources they had**, in `checked.sources`. They
+**3 entries, checked 2026-08-06** — `omaha`, `three-card-poker` and
+`caribbean-stud`, written for this collection rather than inherited, and read against pagat and Wikipedia before it shipped. The one
+finding was the sentence stating the rule the game turns on: exactly two cards
+from your hand and exactly three from the board. It was left. The numbers are
+the rule and "exactly" is doing the work in it — the sentence after it exists to
+say the count is neither a maximum nor a minimum — and what the source puts
+around that clause, the showdown framing and who takes the pot, is not what our
+entry says. Three Card Poker's one finding was a forty-word sentence of ours
+aligned against a seven-word glossary line, which is what a false positive looks
+like here. Caribbean Stud's was five sentences in the source's order at 31%
+average similarity, one of them paired with the page's own title.
+
+What the pass caught in those two was not copying but two claims of ours that
+the sources did not support: a rule about players not showing each other their
+cards, and a house edge quoted against a different denominator from the one the
+source used. Both were rewritten to what could be shown. Finding those is not
+what this tool is for, and it found them anyway — read the sources rather than
+only the report. Stamped by an agent, on the same terms as the pass above.
+
+**75 of 75 checks record which sources they had**, in `checked.sources`. They
 come from three different places and are not equally strong. The 31 stamped by
 the 2026-08-03 passes were logged as they were made: the tool writes the files
 it actually compared against, matched back to the attributed names, and refuses

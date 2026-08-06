@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 286 317.6" width="458" height="508" role="img" aria-label="Omaha setup diagram">
+<title>Omaha setup</title>
+<rect x="88.0" y="8.0" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="88.0" y="9.6" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="88.0" y="11.2" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="88.0" y="12.8" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="128.0" y="8.0" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="128.0" y="9.6" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="128.0" y="11.2" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="128.0" y="12.8" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="168.0" y="8.0" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="168.0" y="9.6" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="168.0" y="11.2" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="168.0" y="12.8" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="8.0" y="100.8" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="88.0" y="100.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="128.0" y="100.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="168.0" y="100.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="208.0" y="100.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="248.0" y="100.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="128.0" y="188.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="128.0" y="190.4" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="128.0" y="192.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="128.0" y="193.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="143.0" y="62.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Opponents' hole cards</text>
+<text x="23.0" y="150.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Deck</text>
+<text x="143.0" y="150.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Flop</text>
+<text x="223.0" y="150.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Turn</text>
+<text x="263.0" y="150.8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">River</text>
+<text x="143.0" y="243.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Your</text>
+<text x="143.0" y="252.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">hole cards</text>
+<text x="143.0" y="269.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Four cards in front of each player and five in the</text>
+<text x="143.0" y="281.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">middle. A finished hand takes exactly two from your own</text>
+<text x="143.0" y="293.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">four and exactly three from the board — no other</text>
+<text x="143.0" y="305.6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">combination is legal, however good it looks.</text>
+</svg>
