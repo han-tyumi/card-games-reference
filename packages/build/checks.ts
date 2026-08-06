@@ -356,3 +356,42 @@ export function crossFileProblems(entries: readonly NamedEntry[]): string[][] {
 
   return problems;
 }
+
+/**
+ * Aliases that more than one entry answers to.
+ *
+ * Reported, never failed, and the asymmetry with the rule above is deliberate.
+ * An alias that is another game's *name* is a conflict: someone typing the
+ * exact title of one game should not find a different game competing at the top
+ * of the results. An alias two games share has no primary claimant -- neither
+ * Speed nor Spit is "the" Slam -- and both really are called it, so dropping
+ * either would mean a reader searching the name they know finds nothing.
+ *
+ * What has to be true instead is that a search returns every claimant and says
+ * why each one is there. That is asserted in the web tests, against the real
+ * index, rather than here. This exists so the count stays visible as the corpus
+ * grows: one shared alias in 292 labels today, and collisions grow faster than
+ * the corpus does.
+ *
+ * @returns one row per shared alias, each naming the files that carry it.
+ */
+export function sharedAliases(
+  entries: readonly NamedEntry[],
+): { alias: string; files: string[] }[] {
+  const holders = new Map<string, { alias: string; files: string[] }>();
+
+  for (const { file, data } of entries) {
+    const aliases = Array.isArray(data["aliases"]) ? (data["aliases"] as string[]) : [];
+    for (const alias of aliases) {
+      const aliasKey = key(alias);
+      if (aliasKey === null) continue;
+      const seen = holders.get(aliasKey);
+      if (seen) seen.files.push(file);
+      else holders.set(aliasKey, { alias, files: [file] });
+    }
+  }
+
+  return [...holders.values()]
+    .filter((row) => row.files.length > 1)
+    .sort((a, b) => a.alias.localeCompare(b.alias));
+}

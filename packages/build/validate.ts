@@ -24,7 +24,7 @@ import {
   proseFingerprint,
 } from "naibi";
 import type { Entry, NamedEntry } from "./checks.ts";
-import { checkEntry, crossFileProblems } from "./checks.ts";
+import { checkEntry, crossFileProblems, sharedAliases } from "./checks.ts";
 
 function describe(error: ErrorObject): string {
   const location = error.instancePath.replace(/^\//, "");
@@ -129,6 +129,26 @@ function main(): number {
     "\nOptional fields, carried by the entries that call for them — " +
       optional.map((field) => `${field} ${carried(field)}/${parsed.length}`).join(", ") +
       ".",
+  );
+
+  // Kept rather than forbidden: two games can honestly answer to one name, and
+  // dropping either would mean a reader searching the one they know finds
+  // nothing. What must hold instead -- that a search returns every claimant and
+  // says why each is there -- is asserted in the web tests. This line exists so
+  // the number is visible rather than discovered, and it says so when there are
+  // none, because a report that can come back empty has to say which empty it
+  // means. See decisions/0022.
+  const answeredTwice = sharedAliases(parsed);
+  const labels = parsed.reduce(
+    (sum, { data }) => sum + 1 + (Array.isArray(data["aliases"]) ? data["aliases"].length : 0),
+    0,
+  );
+  console.log(
+    answeredTwice.length === 0
+      ? `No alias is shared by more than one entry (${labels} names and aliases).`
+      : `Aliases more than one entry answers to, kept so both stay findable — ` +
+          answeredTwice.map((row) => `"${row.alias}" (${row.files.join(", ")})`).join(", ") +
+          `. ${answeredTwice.length} of ${labels} names and aliases.`,
   );
 
   if (failures > 0) {
