@@ -394,8 +394,8 @@ sources open, across four passes. Earlier work counted search-engine hits, which
 the section below explains does not work, so those passes are not evidence of
 anything and are not counted here.
 
-**38 entries, checked 2026-08-01** — pagat and Wikipedia, fetched and read
-side by side with our prose, and every one of the 38 attributes both. Ten
+**37 entries, checked 2026-08-01** — pagat and Wikipedia, fetched and read
+side by side with our prose, and every one of the 37 attributes both. Ten
 others that this pass covered attributed only one of the two, which meant
 nobody could say what the pass had actually had for them; they were re-read on
 2026-08-03 and carry that date now. The pass covered 60 entries on the day; the ones
@@ -419,8 +419,10 @@ was reorganised rather than reworded. Those twelve carry 2026-08-03 now — they
 were re-read to record which sources a check actually had, and are the third
 group below.
 
-**34 entries, checked 2026-08-03**, in three groups. The first twelve are the
-ones the 2026-08-01 pass had only
+**31 entries, checked 2026-08-03**, in three groups, after `dou-dizhu`,
+`mau-mau` and `piquet` were re-read on 2026-08-05 and carry that date now. The
+groups are described below as the pass ran, so those three still appear in
+them. The first twelve are the ones the 2026-08-01 pass had only
 one source for, re-read one at a time against a second and a third rather than
 in a sweep: `accordion`, `beggar-my-neighbour`, `forty-thieves`, `freecell`,
 `golf-multiplayer`, `klondike`, `koi-koi`, `mau-mau`, `pyramid`, `speed`,
@@ -461,14 +463,44 @@ different rule from ours, which is what a collision on the name of a thing looks
 like. The order findings were `setup` and `goal_and_scoring` sections against
 the sequence the games themselves impose, judged the way Spades was and left.
 
+**4 entries, checked 2026-08-05** — `conquian`, `dou-dizhu`, `mau-mau` and
+`piquet`, the four that carry a `background`. That field joined the fingerprint
+that day, having until then been prose that shipped to readers and was never
+compared against anything: the originality tool did not read it, so no earlier
+pass could have shown anyone a finding in it. Each was re-read against two
+sources it attributes — pagat and Wikipedia, except Mau-Mau, which has no pagat
+page and was read against Wikipedia and Game Rules.
+
+**Nothing was flagged in a `background` at all, and nothing was rewritten.** The
+findings were elsewhere and all were judged and left: a `bomb` definition in
+`dou-dizhu` that has no other phrasing, a `setup` order finding in `conquian`
+and another in `piquet` — six of seven order findings across all passes are now
+`setup` sections — and a `goal_and_scoring` alignment in `conquian` whose paired
+sentences turned out to be about unrelated things, which is what the order
+heuristic looks like when it fires on noise.
+
+This is the one pass stamped by an agent rather than a person. It did the
+fetching, the reading and the judging; `checked` has no field for that, so it is
+recorded here. A clean result is still only a clean result: the tool cannot
+certify prose original, and two sources per entry is its floor, not a thorough
+search.
+
 **72 of 72 checks record which sources they had**, in `checked.sources`. They
-come from two different places and are not equally strong. The 34 stamped by
+come from three different places and are not equally strong. The 31 stamped by
 the 2026-08-03 passes were logged as they were made: the tool writes the files
 it actually compared against, matched back to the attributed names, and refuses
-to stamp a source it cannot match or a check with fewer than two. The other 38
+to stamp a source it cannot match or a check with fewer than two. Another 37
 are 2026-08-01 entries whose own `sources_consulted` names both of the two that
 pass read, so that record is reconstructed from the pass description and
 corroborated by the entry rather than logged at the time.
+
+The remaining 4 are the 2026-08-05 pass, and they are the one set stamped by an
+agent rather than a person. `background` joined the fingerprint that day, so the
+four entries carrying it had prose that had never been compared against a
+source; they were re-read against two sources each and re-stamped. Nothing was
+rewritten — every finding was a term of art or the formulaic order of a setup —
+and that judgement was the agent's. `checked` has no field for who did the
+reading, which is why it is written here instead.
 
 No check now carries a date and a fingerprint with no source count beside it.
 That gap was closed by re-reading rather than by guessing — a check whose source
@@ -540,9 +572,9 @@ vocabulary scores like independent writing, so nothing here can certify an entry
 clean — only find the ones worth reading beside their source.
 
 **Moving prose between fields does not need re-reading, but prove it.** The
-fingerprint covers `setup`, `play` and `goal_and_scoring`, so lifting a
-paragraph out of `setup` into `background` trips the check without a word having
-changed. The rule exists to catch rewording, not relocation — so where a move is
+fingerprint covers `setup`, `play`, `goal_and_scoring` and `background`, so
+lifting a paragraph out of one and into another trips the check without a word
+having changed. The rule exists to catch rewording, not relocation — so where a move is
 purely mechanical, verify it and keep the original date. Verify means: the
 paragraphs of the old field, sorted, are exactly the paragraphs of the two new
 fields, sorted; the moved text appears verbatim in the original; and the other

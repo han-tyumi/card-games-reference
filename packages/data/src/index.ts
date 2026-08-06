@@ -101,6 +101,7 @@ export const PROSE_FIELDS = [
   "setup",
   "play",
   "goal_and_scoring",
+  "background",
 ] as const satisfies readonly (keyof CardGame)[];
 
 /** One of the prose fields. */
