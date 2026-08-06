@@ -1,6 +1,6 @@
 # What to do before adding more games
 
-- **Status:** Open — §§1-3 done, §4 untouched
+- **Status:** Done — §§1-4 all answered; see each section for where
 - **Date:** 2026-08-04
 
 Main is at **v0.3.5**. The corpus is 72 games, `npm run check` exits 0 at 466
@@ -115,6 +115,17 @@ originality coverage but says nothing about field coverage — the same "silence
 not coverage" rule, not yet pointed at the schema.
 
 ## 4. Alias collisions are not checked
+
+**Done.** Measured: 292 names and aliases, 291 distinct, one collision — `Slam`,
+on Speed and Spit, and both games really are called it.
+[0022](../decisions/0022-two-games-may-answer-to-one-name.md) keeps them both,
+on the grounds that whichever gave the name up would become unfindable by a name
+people use. `npm run validate` now reports the collisions and says so when there
+are none, and the two things that decision rests on — that a search for a shared
+name returns every claimant with a reason, and that their cards are not
+identical — are asserted against the real index.
+
+The original text follows.
 
 `slam` is an alias on both `speed` and `spit`, and the corpus validates clean.
 There is a duplicate-**name** check (`checks.test.ts`, "duplicate name, also used

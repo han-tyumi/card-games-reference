@@ -10,7 +10,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
-import { loadGames } from "naibi";
+import { durationLine, loadGames, playersLine } from "naibi";
 import { FIELDS, buildIndex, labelsFor, score, tokenise } from "../assets/search.js";
 import { searchRecords } from "../records.ts";
 
@@ -413,4 +413,88 @@ test("a pack hit says it was found in the deck", () => {
   const mask = hits.get(belote)?.m ?? 0;
   assert.ok(mask & 128, "a stripped-pack hit is not attributed to the deck");
   assert.ok(labelsFor(index.fields, mask).includes("the deck"));
+});
+
+// --- names two games answer to --------------------------------------------
+
+test("an alias two games share finds both of them, and says why", () => {
+  // `Slam` is an alias on Speed and on Spit, and both are honestly called it.
+  // The decision (0022) is to keep both rather than make one of them give the
+  // name up, because dropping either means a reader searching the name they
+  // know finds nothing. What that decision rests on is this: the search has to
+  // return every game that answers to the word, and each card has to say why it
+  // is in the list. A ranking that quietly kept only the best claimant would
+  // look like a working search and be the exact failure the decision assumed
+  // away.
+  //
+  // Derived from the corpus rather than written out, so a shared alias added
+  // later is covered by this without anyone remembering to extend it.
+  const claimants = new Map<string, number[]>();
+  games.forEach((game, doc) => {
+    for (const alias of game.aliases) {
+      const key = alias.trim().toLowerCase();
+      claimants.set(key, [...(claimants.get(key) ?? []), doc]);
+    }
+  });
+
+  const shared = [...claimants].filter(([, docs]) => docs.length > 1);
+  assert.ok(
+    shared.length > 0,
+    "no alias is shared any more -- delete this test or the decision it defends",
+  );
+
+  for (const [alias, docs] of shared) {
+    const hits = hitsFor(alias);
+    for (const doc of docs) {
+      const hit = hits.get(doc);
+      assert.ok(hit, `"${alias}" does not find ${games[doc]!.name}, which answers to it`);
+      // Not merely present: present with a reason the card can print. Both
+      // games matched on `alias`, which is what "found in other names" is.
+      assert.ok(
+        hit.m & 64,
+        `"${alias}" finds ${games[doc]!.name} without attributing it to other names`,
+      );
+    }
+
+    // And they are the answer, not buried under games that merely mention the
+    // word in prose -- Contract Bridge says "slam" in its scoring, legitimately.
+    const best = [...hits.entries()].sort((a, b) => b[1].s - a[1].s).slice(0, docs.length);
+    assert.deepEqual(
+      best.map(([doc]) => doc).sort(),
+      [...docs].sort(),
+      `"${alias}" ranks something else above the games actually called it`,
+    );
+  }
+});
+
+test("games sharing an alias are told apart by what their cards print", () => {
+  // The reader's job after searching a shared name is to work out which one
+  // they meant, and the only thing they have to do it with is the card: the
+  // name, then players, time, difficulty and family. Two entries answering to
+  // one alias whose cards read identically would leave them with a coin flip.
+  //
+  // Speed and Spit differ in two of the four -- 2-4 players against 2, and
+  // 5-15 minutes against 10-25 -- which is what makes "look a bit closer" a
+  // real instruction rather than a hope.
+  const card = (game: (typeof games)[number]) =>
+    [playersLine(game), durationLine(game), game.difficulty, game.category].join(" · ");
+
+  const claimants = new Map<string, number[]>();
+  games.forEach((game, doc) => {
+    for (const alias of game.aliases) {
+      const key = alias.trim().toLowerCase();
+      claimants.set(key, [...(claimants.get(key) ?? []), doc]);
+    }
+  });
+
+  for (const [alias, docs] of claimants) {
+    if (docs.length < 2) continue;
+    const cards = docs.map((doc) => card(games[doc]!));
+    assert.equal(
+      new Set(cards).size,
+      cards.length,
+      `${docs.map((d) => games[d]!.name).join(" and ")} both answer to "${alias}" and print ` +
+        `the same card, so nothing on screen tells them apart`,
+    );
+  }
 });

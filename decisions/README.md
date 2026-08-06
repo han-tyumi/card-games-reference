@@ -37,6 +37,7 @@ part.
 | [0019](0019-the-worker-declines-the-preview-subtree.md) | The site's service worker declines the preview subtree | Accepted |
 | [0020](0020-the-bar-is-measured-from-a-bounded-sample.md) | Measure the originality bar from a bounded sample of pairs | Accepted |
 | [0021](0021-two-payload-budgets-and-what-happens-at-them.md) | Two payload budgets, and what happens when one is reached | Accepted |
+| [0022](0022-two-games-may-answer-to-one-name.md) | Two games may answer to one name | Accepted |
 
 ## The format
 
