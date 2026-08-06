@@ -10,7 +10,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
-import { durationLine, loadGames, playersLine } from "naibi";
+import { loadGames } from "naibi";
 import { FIELDS, buildIndex, labelsFor, score, tokenise } from "../assets/search.js";
 import { searchRecords } from "../records.ts";
 
@@ -463,38 +463,6 @@ test("an alias two games share finds both of them, and says why", () => {
       best.map(([doc]) => doc).sort(),
       [...docs].sort(),
       `"${alias}" ranks something else above the games actually called it`,
-    );
-  }
-});
-
-test("games sharing an alias are told apart by what their cards print", () => {
-  // The reader's job after searching a shared name is to work out which one
-  // they meant, and the only thing they have to do it with is the card: the
-  // name, then players, time, difficulty and family. Two entries answering to
-  // one alias whose cards read identically would leave them with a coin flip.
-  //
-  // Speed and Spit differ in two of the four -- 2-4 players against 2, and
-  // 5-15 minutes against 10-25 -- which is what makes "look a bit closer" a
-  // real instruction rather than a hope.
-  const card = (game: (typeof games)[number]) =>
-    [playersLine(game), durationLine(game), game.difficulty, game.category].join(" · ");
-
-  const claimants = new Map<string, number[]>();
-  games.forEach((game, doc) => {
-    for (const alias of game.aliases) {
-      const key = alias.trim().toLowerCase();
-      claimants.set(key, [...(claimants.get(key) ?? []), doc]);
-    }
-  });
-
-  for (const [alias, docs] of claimants) {
-    if (docs.length < 2) continue;
-    const cards = docs.map((doc) => card(games[doc]!));
-    assert.equal(
-      new Set(cards).size,
-      cards.length,
-      `${docs.map((d) => games[d]!.name).join(" and ")} both answer to "${alias}" and print ` +
-        `the same card, so nothing on screen tells them apart`,
     );
   }
 });

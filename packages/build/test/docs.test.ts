@@ -765,3 +765,32 @@ test("the plugin the guide names is the plugin the repo enables", () => {
     );
   }
 });
+
+test("the schema does not name the prose fields it cannot keep up with", () => {
+  // The `checked` descriptions used to say the fingerprint covered "setup +
+  // play + goal_and_scoring". They went on saying it after `background` joined
+  // PROSE_FIELDS, so the schema — which is the document contributors read to
+  // learn what a stamp means — understated its own cover by a field. A schema
+  // description cannot import a constant, so the fix was to stop enumerating
+  // and point at PROSE_FIELDS; this is what stops the enumeration coming back.
+  const schema = JSON.parse(readFileSync(SCHEMA_PATH, "utf8")) as {
+    properties: { checked: { description: string; properties: Record<string, { description: string }> } };
+  };
+  const checked = schema.properties.checked;
+  const said = [checked.description, ...Object.values(checked.properties).map((p) => p.description)];
+
+  for (const description of said) {
+    const named = PROSE_FIELDS.filter((field) => description.includes(field));
+    assert.deepEqual(
+      named,
+      [],
+      `the checked schema names ${named.join(", ")}, which is a list that has already gone stale once`,
+    );
+  }
+
+  // And it still points somewhere a reader can follow.
+  assert.ok(
+    said.some((description) => description.includes("PROSE_FIELDS")),
+    "the checked schema no longer says where the real list lives",
+  );
+});

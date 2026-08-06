@@ -271,9 +271,26 @@ test("every prose field is a string field of the schema", () => {
  * the machine rather than checking anything.
  */
 const games = loadGames();
-const passages = games.flatMap((g) =>
-  PROSE_FIELDS.map((field) => g[field] ?? "").filter((text) => text.length > 0),
-);
+/**
+ * The passages, and which game each one came from.
+ *
+ * A parallel array rather than arithmetic on the index. A passage's game was
+ * `Math.floor(i / 3)` for as long as PROSE_FIELDS held three fields, and
+ * stopped being it the day `background` joined: four entries contribute a
+ * fourth passage, so every index after the first of them named the wrong game.
+ * That went on passing, because what it feeds is compared against a ratio.
+ */
+const passages: string[] = [];
+const gameOf: number[] = [];
+games.forEach((game, index) => {
+  for (const field of PROSE_FIELDS) {
+    const text = game[field] ?? "";
+    if (text.length > 0) {
+      passages.push(text);
+      gameOf.push(index);
+    }
+  }
+});
 let measured: Thresholds | undefined;
 const bar = () => (measured ??= baseline(passages));
 
@@ -305,17 +322,23 @@ test("the sample is bounded, and does not drop an entry to stay bounded", () => 
 });
 
 test("the sample does not lean on a passage's neighbours, which are its own game", () => {
-  // Passages arrive as [setup, play, goal_and_scoring] per game, so neighbours
-  // are one entry's own three fields. Those resemble each other for reasons
-  // that have nothing to do with copying, and a sampler drawn from near
-  // neighbours would quietly measure that instead. The stride-7 sweep this
-  // replaces always took i+1 first, which made 2.15% of its pairs same-game.
+  // Passages arrive grouped by game, so a passage's neighbours are its own
+  // entry's other fields. Those resemble each other for reasons that have
+  // nothing to do with copying, and a sampler drawn from near neighbours would
+  // quietly measure that instead. The stride-7 sweep this replaces always took
+  // i+1 first, which made 2.15% of its pairs same-game.
   const pairs = [...samplePairs(passages.length)];
-  const sameGame = pairs.filter(([i, j]) => Math.floor(i / 3) === Math.floor(j / 3)).length;
+  const sameGame = pairs.filter(([i, j]) => gameOf[i!] === gameOf[j!]).length;
 
-  // What an unbiased sample would give: each passage has two same-game partners
-  // out of every other passage there is.
-  const unbiased = 2 / (passages.length - 1);
+  // What an unbiased sample would give. Averaged over passages rather than
+  // assumed to be two apiece: an entry carrying a `background` has three
+  // same-game partners and the rest have two.
+  const sizes = new Map<number, number>();
+  for (const game of gameOf) sizes.set(game, (sizes.get(game) ?? 0) + 1);
+  const unbiased =
+    gameOf.reduce((sum, game) => sum + (sizes.get(game)! - 1), 0) /
+    gameOf.length /
+    (passages.length - 1);
   assert.ok(
     sameGame / pairs.length <= unbiased * 1.2,
     `${((sameGame / pairs.length) * 100).toFixed(2)}% of sampled pairs are one game's own ` +

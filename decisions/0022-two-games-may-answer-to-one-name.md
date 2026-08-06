@@ -60,10 +60,11 @@ and the real search index rather than assumed:
    with those games ranked above anything that merely mentions the word. A
    ranking that quietly kept the best claimant would look like a working search
    and would be precisely the failure this decision assumes away.
-2. **Games sharing an alias do not print the same card.** Speed and Spit differ
+2. **Whether the cards can tell them apart is reported.** Speed and Spit differ
    in two of the four facts a card carries — 2-4 players against 2, and 5-15
    minutes against 10-25 — which is what makes "look a bit closer" an
-   instruction rather than a hope.
+   instruction rather than a hope. A pair whose cards read identically is named
+   in the report as one a reader cannot resolve on the index.
 
 Both tests derive the shared aliases from the corpus, so one added later is
 covered without anyone remembering to extend them.
@@ -82,13 +83,18 @@ Nothing about the corpus changes. One line of reporting appears in
 `npm run validate`, and the property the decision rests on is now defended by
 tests instead of by nobody having broken it yet.
 
-**Collisions do not fail the build, but an unresolvable one does.** Two entries
+**Nothing here fails a build, including the unresolvable case.** Two entries
 answering to one name whose cards read identically leaves the reader with a coin
-flip, and there is no wording that fixes it — so that combination stops the
-build and asks for a human decision about the pair, which may well be that they
-are the same game twice. There are zero such cases today, and the conjunction is
-rare: it needs a shared alias *and* the same players, time, difficulty and
-family.
+flip — but there is no wording that fixes it, and two close relatives sharing a
+name is a fact about card games rather than a defect in an entry. It gets its
+own line in the report instead, naming the pair, and whoever reads that decides
+whether they are really one game filed twice. There are zero such cases today,
+and the conjunction is rare: it needs a shared alias *and* the same players,
+time, difficulty and family.
+
+This was a red build for one commit, which is the wrong shape for it: a check
+that cannot be satisfied by editing anything is a demand rather than a rule, and
+the corpus would have had to change to suit the tooling.
 
 The reader still has to open one of the two to be sure. That is accepted rather
 than solved: the card carries four facts, and no set of four facts distinguishes

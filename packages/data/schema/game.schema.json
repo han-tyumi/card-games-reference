@@ -525,7 +525,7 @@
       }
     },
     "checked": {
-      "description": "When this entry's prose was last read against its sources, and a fingerprint of the prose as it stood at that moment. The fingerprint is what makes the record mean anything: edit setup, play or goal_and_scoring afterwards and the validator reports the entry as changed since it was checked, rather than letting a date sit there implying a check that no longer covers the text. Absent means never checked, which is not the same as checked and clean.",
+      "description": "When this entry's prose was last read against its sources, and a fingerprint of the prose as it stood at that moment. The fingerprint is what makes the record mean anything: edit any of the prose fields afterwards and the validator reports the entry as changed since it was checked, rather than letting a date sit there implying a check that no longer covers the text. Absent means never checked, which is not the same as checked and clean.",
       "type": "object",
       "additionalProperties": false,
       "required": [
@@ -539,7 +539,7 @@
           "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
         },
         "prose": {
-          "description": "Fingerprint of setup + play + goal_and_scoring at check time.",
+          "description": "Fingerprint of the entry's prose at check time. Which fields that covers is PROSE_FIELDS in the naibi package; naming them here instead is how this description came to claim three of them for a day after a fourth joined.",
           "type": "string",
           "pattern": "^[0-9a-f]{16}$"
         },
