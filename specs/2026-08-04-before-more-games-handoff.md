@@ -1,6 +1,6 @@
 # What to do before adding more games
 
-- **Status:** Open — §1 done, §§2-4 untouched
+- **Status:** Open — §§1-3 done, §4 untouched
 - **Date:** 2026-08-04
 
 Main is at **v0.3.5**. The corpus is 72 games, `npm run check` exits 0 at 466
@@ -65,6 +65,20 @@ case still does not.
 
 ## 2. Two payload thresholds, measured but undecided
 
+**Done.** Both now have a budget, reported on every build and asserted in the
+suite, and [0021](../decisions/0021-two-payload-budgets-and-what-happens-at-them.md)
+records what happens when each is reached. The measurements below are kept as
+they were taken — they are the before half — with one correction that changed
+the conclusion: **these are uncompressed figures.** Pages serves the site
+gzipped, so a first install downloads 574 KB rather than 1.8 MB, and 300 games
+is 2.0 MB over the wire rather than 7.5.
+
+The sheet's real cost turned out to be the device rather than the wire (8.2s to
+load 288 articles with the CPU throttled 4×, fixed with one CSS rule), and the
+install had a problem nobody had looked for: `addAll` is atomic, so at 300
+entries on a link dropping 0.5% of requests it succeeded once in eight attempts.
+Both are in 0021.
+
 | | at 72 games | per game | at 300 games |
 | --- | --- | --- | --- |
 | precache (first install) | 1.8 MB | 25 KB | **7.5 MB** |
@@ -83,6 +97,16 @@ assets against 95ms for 4) but **not** the update-notice latency (2199ms against
 1927ms). The notice does not get slower as the corpus grows.
 
 ## 3. Half-filled optional fields
+
+**Done**, and it was not what this section thought it was.
+[The checked envelope](2026-08-05-the-checked-envelope-design.md) has the
+measurement: `deal` and `figure_refs` are conditional by schema, so low counts
+are those rules working rather than a backlog. The real gap was that `background`
+is prose that had never been compared against a source at all. It is inside
+`PROSE_FIELDS` now, the four entries carrying one were re-read and re-stamped,
+and `npm run validate` reports every optional field's coverage off the schema.
+
+The original text follows.
 
 `background` on 4/72, `deal` on 8/72, `figure_refs` on 3/72. Each is a deferred
 decision, and every game added while it stays deferred is one more entry to
