@@ -150,6 +150,19 @@ function main(): number {
           answeredTwice.map((row) => `"${row.alias}" (${row.files.join(", ")})`).join(", ") +
           `. ${answeredTwice.length} of ${labels} names and aliases.`,
   );
+  // The case a reader cannot resolve on the index: same name, same four facts
+  // on the card, so nothing on screen tells the two apart. Said out loud rather
+  // than failed, because no wording fixes it and two close relatives sharing a
+  // name is a fact about card games. Whoever reads this decides whether the
+  // pair is one game filed twice.
+  const alike = answeredTwice.filter((row) => row.alike);
+  if (alike.length > 0) {
+    console.log(
+      `Of those, ${alike.length} cannot be told apart on the index — ` +
+        alike.map((row) => `"${row.alias}" (${row.files.join(", ")})`).join(", ") +
+        `. Same players, time, difficulty and family, so only the name differs.`,
+    );
+  }
 
   if (failures > 0) {
     console.log(`${failures} file(s) need attention.`);

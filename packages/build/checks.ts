@@ -358,6 +358,24 @@ export function crossFileProblems(entries: readonly NamedEntry[]): string[][] {
 }
 
 /**
+ * What the index card prints under a game's name, as one comparable string.
+ *
+ * Not the card's markup -- the four facts a reader picks between two games
+ * with. Kept here beside the alias reading it serves, and deliberately not
+ * importing the site's own formatting: this is "are these two rows different",
+ * not "what exactly do they say".
+ */
+function cardFacts(data: Entry): string {
+  const players = asRecord(data["players"]);
+  return [
+    `${players?.["min"] ?? "?"}-${players?.["max"] ?? "?"}`,
+    String(data["duration_minutes"] ?? "?"),
+    String(data["difficulty"] ?? "?"),
+    String(data["category"] ?? "?"),
+  ].join(" · ");
+}
+
+/**
  * Aliases that more than one entry answers to.
  *
  * Reported, never failed, and the asymmetry with the rule above is deliberate.
@@ -373,12 +391,19 @@ export function crossFileProblems(entries: readonly NamedEntry[]): string[][] {
  * grows: one shared alias in 292 labels today, and collisions grow faster than
  * the corpus does.
  *
+ * `alike` marks the case a reader cannot resolve on the index at all -- the
+ * cards print the same four facts, so the only thing separating them is the
+ * name they were not searching by. That is reported too and not failed: there
+ * is no wording that fixes it, and two close relatives sharing a name is a fact
+ * about card games rather than a defect in the entry. Someone reading the
+ * report can decide whether the pair is really one game twice.
+ *
  * @returns one row per shared alias, each naming the files that carry it.
  */
 export function sharedAliases(
   entries: readonly NamedEntry[],
-): { alias: string; files: string[] }[] {
-  const holders = new Map<string, { alias: string; files: string[] }>();
+): { alias: string; files: string[]; alike: boolean }[] {
+  const holders = new Map<string, { alias: string; files: string[]; cards: string[] }>();
 
   for (const { file, data } of entries) {
     const aliases = Array.isArray(data["aliases"]) ? (data["aliases"] as string[]) : [];
@@ -386,12 +411,21 @@ export function sharedAliases(
       const aliasKey = key(alias);
       if (aliasKey === null) continue;
       const seen = holders.get(aliasKey);
-      if (seen) seen.files.push(file);
-      else holders.set(aliasKey, { alias, files: [file] });
+      if (seen) {
+        seen.files.push(file);
+        seen.cards.push(cardFacts(data));
+      } else {
+        holders.set(aliasKey, { alias, files: [file], cards: [cardFacts(data)] });
+      }
     }
   }
 
   return [...holders.values()]
     .filter((row) => row.files.length > 1)
+    .map(({ alias, files, cards }) => ({
+      alias,
+      files,
+      alike: new Set(cards).size < cards.length,
+    }))
     .sort((a, b) => a.alias.localeCompare(b.alias));
 }

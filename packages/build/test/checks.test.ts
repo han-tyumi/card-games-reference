@@ -24,6 +24,7 @@ import {
   checkTagSemantics,
   crossFileProblems,
   durationBounds,
+  sharedAliases,
 } from "../checks.ts";
 
 /** Asserts a rule fired, and that its message names the thing that is wrong. */
@@ -319,4 +320,77 @@ test("a clean corpus produces no problems at all", () => {
     { file: "snap.json", data: { id: "snap", name: "Snap", aliases: [] } },
   ];
   assert.deepEqual(crossFileProblems(entries), [[], []]);
+});
+
+// --- names two entries answer to ------------------------------------------
+
+const card = (over: Partial<Entry> = {}): Entry => ({
+  players: { min: 2, max: 4 },
+  duration_minutes: "10-20",
+  difficulty: "easy",
+  category: "shedding",
+  ...over,
+});
+
+test("an alias two entries answer to is reported, not failed", () => {
+  // Both games really are called it, so neither gives the name up -- decision
+  // 0022. A collision is a thing to know about, and knowing needs it counted.
+  const entries = [
+    { file: "speed.json", data: card({ id: "speed", name: "Speed", aliases: ["Slam"] }) },
+    { file: "spit.json", data: card({ id: "spit", name: "Spit", aliases: ["Slam"], players: { min: 2, max: 2 } }) },
+  ];
+
+  assert.deepEqual(
+    crossFileProblems(entries).flat(),
+    [],
+    "a shared alias failed validation, which decision 0022 says it must not",
+  );
+
+  const shared = sharedAliases(entries);
+  assert.equal(shared.length, 1);
+  assert.equal(shared[0]!.alias, "Slam");
+  assert.deepEqual(shared[0]!.files, ["speed.json", "spit.json"]);
+});
+
+test("a shared alias whose cards read alike is marked, and still not failed", () => {
+  // The case a reader cannot resolve on the index: same name, and the four
+  // facts a card prints are the same too, so only the name they were not
+  // searching by separates them. There is no wording that fixes that, which is
+  // why it is a line in the report rather than a red build -- someone reading
+  // it decides whether the pair is one game filed twice.
+  const twins = [
+    { file: "a.json", data: card({ id: "a", name: "A", aliases: ["Slam"] }) },
+    { file: "b.json", data: card({ id: "b", name: "B", aliases: ["Slam"] }) },
+  ];
+  assert.deepEqual(crossFileProblems(twins).flat(), []);
+  assert.equal(sharedAliases(twins)[0]!.alike, true);
+
+  // One differing fact is enough to tell them apart, and each of the four
+  // counts: a marker that only watched players would call three of these alike.
+  for (const different of [
+    { players: { min: 3, max: 4 } },
+    { duration_minutes: "30-60" },
+    { difficulty: "medium" },
+    { category: "trick-taking" },
+  ]) {
+    const pair = [
+      { file: "a.json", data: card({ id: "a", name: "A", aliases: ["Slam"] }) },
+      { file: "b.json", data: card({ id: "b", name: "B", aliases: ["Slam"], ...different }) },
+    ];
+    assert.equal(
+      sharedAliases(pair)[0]!.alike,
+      false,
+      `${Object.keys(different)[0]} differing did not make the pair distinguishable`,
+    );
+  }
+});
+
+test("an alias only one entry carries is not a collision", () => {
+  assert.deepEqual(
+    sharedAliases([
+      { file: "a.json", data: card({ id: "a", name: "A", aliases: ["Slam", "Spoons"] }) },
+      { file: "b.json", data: card({ id: "b", name: "B", aliases: ["Snap"] }) },
+    ]),
+    [],
+  );
 });
