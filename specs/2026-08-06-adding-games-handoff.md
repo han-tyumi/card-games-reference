@@ -3,9 +3,8 @@
 - **Status:** Open — written for whoever adds the next entries
 - **Date:** 2026-08-06
 
-Main is at **v0.6.0**, or v0.7.0 once the pull request carrying Omaha, Three
-Card Poker and Caribbean Stud lands. The corpus is **75 games**, `npm run check`
-exits 0 at 481 tests, and
+Main is at **v0.7.0**. The corpus is **75 games**, `npm run check` exits 0 at
+481 tests, and
 [the before-more-games handoff](2026-08-04-before-more-games-handoff.md) is
 closed: all four of the things that got more expensive with the corpus have been
 measured and answered.
@@ -87,9 +86,22 @@ and the batch still shipped two claims that were wrong:
   said 2.56% against a different denominator, making our number read as a
   contradiction of the source a reader would check first.
 
-Both were caught by reading the fetched source text, not by the report. **The
-tool checks whether prose was copied. Nothing checks whether it is true.** That
-is the job of whoever writes the entry, and it is now stated in CONTRIBUTING.
+Both were caught by reading the fetched source text, not by the report.
+
+**And then it happened again, in the same batch.** Reviewing the three entries
+before merging them turned up three more claims their sources do not carry: a
+house edge given as one number where the two sources give 2.01% and about 3.4%
+against different denominators; a frequency for how often a Caribbean Stud
+dealer fails to qualify, which neither source states at all; and an absolute —
+that the hand bet cannot be placed without an ante — which pagat contradicts
+outright. The originality report flagged none of the three, on either pass.
+
+So: **the tool checks whether prose was copied. Nothing checks whether it is
+true.** That is the job of whoever writes the entry, it is now step 4 of
+CONTRIBUTING's "Adding a game", and the six errors behind that rule were all
+found the same way — by rereading the fetched source against the finished entry,
+once at writing time and once before merging. Budget for the second read. Six
+for six says the first one is not enough.
 
 ## Candidates, with the family counts at 75
 
@@ -116,6 +128,10 @@ and then said out loud.
   reports an unstamped entry and cannot report a false one.
 - **Do not add a game to balance a family table.** The counts are a description
   of the collection, not a target.
+- **Do not skip the second read.** Every factual error in the first batch
+  survived writing, survived the originality pass, and was caught only by going
+  back to the source with the finished entry in hand. Half of them were caught
+  after the pull request was already approved.
 - **Do not reword a term of art to clear a finding.** The poker hand ranks, "the
   right bower", a qualifier's exact wording — rewriting those makes the entry
   wrong, which is a worse outcome than a finding somebody has to read.
