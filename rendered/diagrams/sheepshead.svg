@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 332" width="442" height="531" role="img" aria-label="Sheepshead setup diagram">
+<title>Sheepshead setup</title>
+<rect x="103.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="103.0" y="9.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="103.0" y="11.2" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="103.0" y="12.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="103.0" y="14.4" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="103.0" y="16.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="143.0" y="8.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="143.0" y="9.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="143.0" y="11.2" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="143.0" y="12.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="143.0" y="14.4" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="143.0" y="16.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="83.0" y="104.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="83.0" y="105.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="83.0" y="107.2" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="83.0" y="108.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="83.0" y="110.4" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="83.0" y="112.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="104.0" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="105.6" width="30" height="42" rx="3" fill="#7e8b9a" stroke="#5b6672" stroke-width="1"/>
+<rect x="163.0" y="104.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="163.0" y="105.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="163.0" y="107.2" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="163.0" y="108.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="163.0" y="110.4" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="163.0" y="112.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="200.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="201.6" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="203.2" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="204.8" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="206.4" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<rect x="123.0" y="208.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="118.0" y="66.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Second</text>
+<text x="118.0" y="75.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">to pick</text>
+<text x="158.0" y="66.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Third</text>
+<text x="158.0" y="75.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">to pick</text>
+<text x="98.0" y="162.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">First</text>
+<text x="98.0" y="171.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">to pick, leads</text>
+<text x="138.0" y="162.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">The</text>
+<text x="138.0" y="171.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">blind</text>
+<text x="178.0" y="162.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Fourth</text>
+<text x="178.0" y="171.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">to pick</text>
+<text x="138.0" y="258.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Dealer,</text>
+<text x="138.0" y="267.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">picks last</text>
+<text x="138.0" y="284.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Six cards each and two face down in the middle uses up</text>
+<text x="138.0" y="296.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">all thirty-two. The chance to pick starts at the</text>
+<text x="138.0" y="308.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">dealer's left and goes clockwise; that same seat leads</text>
+<text x="138.0" y="320.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">to the first trick.</text>
+</svg>
