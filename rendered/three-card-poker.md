@@ -15,7 +15,7 @@ One player is the dealer and everyone else plays against them rather than agains
 
 The dealer needs a full pack, well shuffled, and a way to keep each player's stakes apart, because two independent bets sit in front of every player and they are settled by different rules.
 
-Before any card is dealt, each player who wants a hand puts up an ante. That is the price of being dealt in. Anyone may also, at the same moment, put up a second and quite separate stake — this project calls it the hand bet, the casinos call it Pair Plus, and it is a wager on your own three cards being worth something regardless of what the dealer turns out to hold. You may back either, or both; the ante is what buys you cards, so the hand bet alone is not a way in.
+Before any card is dealt, each player who wants a hand puts up an ante. That is the price of being dealt in. Anyone may also, at the same moment, put up a second and quite separate stake — this project calls it the hand bet, the casinos call it Pair Plus, and it is a wager on your own three cards being worth something regardless of what the dealer turns out to hold. You may back either, or both. The ante is what buys you cards, and a few tables will let you put up the hand bet on its own without one — an option that is to the player's disadvantage, so it is offered rather than recommended.
 
 The dealer then gives three cards face down to each player and three to themselves, and nobody sees the dealer's until every player has decided what to do.
 
@@ -28,7 +28,7 @@ Every player looks at their three cards and makes exactly one decision.
 - Play. Add a second stake equal to your ante. This is not a raise and there is no amount to choose; you are simply staying in.
 - Fold. Give the hand up. The ante is lost, and so is the hand bet if you made one, whatever your cards were worth.
 
-The usual advice is to play any hand as good as queen-six-four and to fold everything below it, which is the point where staying in stops costing more than folding does.
+The usual advice is to play any hand as good as queen-six-four and to fold everything below it, which is the point where staying in stops costing more than folding does. That one line is the whole of optimal play here.
 
 Once every player has chosen, the dealer turns their three cards face up. Now the qualifier matters: the dealer's hand only plays if it is queen high or better.
 
@@ -58,7 +58,9 @@ The ante bonus is paid on the ante for holding a straight or better, and it is t
 
 The hand bet ignores the dealer completely. A pair pays even money, and the ladder climbs steeply from there to forty to one for a straight flush, because three cards make those shapes rarely.
 
-The pay tables above are the common ones and they are not universal — the hand bet in particular is where a house trims, and a table paying three to one on a flush rather than four is the same game with a materially worse deal. Read the layout before you sit down. The ante side gives up around three and a half per cent to the dealer under these payouts, which is why the dealer's seat is the one that stays occupied.
+The pay tables above are the common ones and they are not universal — the hand bet in particular is where a house trims, and a table paying three to one on a flush rather than four is the same game with a materially worse deal. Read the layout before you sit down.
+
+Played as well as it can be played, the ante side costs about 2 per cent, and adding the hand bet costs a little more rather than less. You will also see the figure quoted as around 3.4 per cent: that one measures against the ante alone, where the first measures against everything you stake in a hand, and neither is wrong. The strategy that gets you there is short — play queen-six-four or better, fold below it, and leave the hand bet alone.
 
 Hands rank the same way whichever bet is being settled, and the order is the three-card one: straight flush, three of a kind, straight, flush, pair, high card. Between two hands of the same shape the higher ranks decide it, ace high down to two, and a hand identical all the way down is a tie.
 

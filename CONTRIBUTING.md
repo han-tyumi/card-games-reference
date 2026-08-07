@@ -494,8 +494,7 @@ recorded here. A clean result is still only a clean result: the tool cannot
 certify prose original, and two sources per entry is its floor, not a thorough
 search.
 
-**3 entries, checked 2026-08-06** — `omaha`, `three-card-poker` and
-`caribbean-stud`, written for this collection rather than inherited, and read against pagat and Wikipedia before it shipped. The one
+**1 entry, checked 2026-08-06** — `omaha`, written for this collection rather than inherited, and read against pagat and Wikipedia before it shipped. The one
 finding was the sentence stating the rule the game turns on: exactly two cards
 from your hand and exactly three from the board. It was left. The numbers are
 the rule and "exactly" is doing the work in it — the sentence after it exists to
@@ -512,6 +511,19 @@ cards, and a house edge quoted against a different denominator from the one the
 source used. Both were rewritten to what could be shown. Finding those is not
 what this tool is for, and it found them anyway — read the sources rather than
 only the report. Stamped by an agent, on the same terms as the pass above.
+
+**2 entries, checked 2026-08-07** — `three-card-poker` and `caribbean-stud`,
+re-read after a review of the day's own work found three claims in them that
+their sources did not carry. Two were figures: a house edge stated as one number
+where the two sources give 2.01% and about 3.4% against different denominators,
+and a frequency for how often a Caribbean Stud dealer fails to qualify, which
+neither source states at all. The third was an absolute — that the hand bet
+cannot be placed without an ante — which pagat contradicts outright, noting that
+some tables allow it and that taking the option costs the player. None of the
+three was a copying finding, and the originality report flagged none of them:
+the only findings on the re-run were the same two false positives as before.
+That is twice now that reading the sources has caught what comparing against
+them cannot.
 
 **75 of 75 checks record which sources they had**, in `checked.sources`. They
 come from three different places and are not equally strong. The 31 stamped by

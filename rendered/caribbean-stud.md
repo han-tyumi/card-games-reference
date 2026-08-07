@@ -50,7 +50,7 @@ A casino usually caps what one hand can pay however the ladder works out, so a b
 
 Take more from the banker than you put in. Hands are settled one at a time and there is no running total; what is in front of you is the score.
 
-Every hand resolves through the same two questions, in this order: did the dealer qualify, and if so, whose five cards are better. The first question is the one that shapes how the game feels. The dealer fails to qualify a little under half the time, and on every one of those hands the raise — the bigger of your two stakes — is dead money that comes back untouched. Holding four of a kind against a dealer who cannot show ace-king pays you your ante and nothing else.
+Every hand resolves through the same two questions, in this order: did the dealer qualify, and if so, whose five cards are better. The first question is the one that shapes how the game feels, because whenever the dealer cannot qualify the raise — the bigger of your two stakes — is dead money that comes straight back untouched. Holding four of a kind against a dealer who cannot show ace-king pays you your ante and nothing else.
 
 That is also why the fold decision is not the one it looks like. Folding costs the ante; raising costs twice the ante on top. The usual guidance is to raise on any pair or better and fold below ace-king, which is roughly where the raise stops being worth its price. A table-ready version of the fuller strategy is to call with ace-king-jack-eight-three or better, which gives away a further tenth of a per cent against playing it perfectly.
 
