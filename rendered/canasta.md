@@ -11,7 +11,7 @@
 
 ## Setup
 
-Four players in two fixed partnerships, partners sitting opposite each other. Shuffle two full 52-card decks together with four jokers: 108 cards. Cut for seats and first deal if you want a formal start, high card choosing; after that the deal passes clockwise each hand.
+Four players, paired off across the table and staying paired all game. Shuffle two full 52-card decks together with four jokers: 108 cards. Cut for seats and first deal if you want a formal start, high card choosing; after that the deal passes clockwise each hand.
 
 Deal 11 cards to each player, one at a time. Set the remaining cards face down in the middle as the stock and turn its top card face up beside it to begin the discard pile. If that upcard is a joker, a two, or a red three, turn another card on top of it and keep going until an ordinary card is showing. When that happens the pile starts the hand frozen; leave the wild card or red three sticking out crossways so everyone can see it stays frozen.
 
@@ -21,11 +21,11 @@ Melds belong to the partnership, not the player, so keep them all in one group i
 
 ## Play
 
-Play goes clockwise, and a turn has three parts: take cards, meld if you want to, then discard one card face up on the pile. Melding is optional; taking and discarding are not.
+Play goes clockwise, and a turn has three parts: take cards, meld if you want to, then throw one card onto the discard pile to close it. Melding is optional; taking and discarding are not.
 
 Taking cards. Either draw the top card of the stock, or take the whole discard pile when you are entitled to. If you ever draw a red three, lay it down face up at once and draw another card to replace it.
 
-Melds. A meld is three or more cards of the same rank, four through ace, and suits are irrelevant. Jokers and twos are wild and may be included, but a meld must always hold at least two natural cards and may never hold more than three wild cards. There are no sequences in Canasta. Your side may have only one meld of any given rank, so instead of starting a second you add to the one already on the table; either partner may add to any of the side's melds at any time. Cards on the table stay there and cannot be taken back into hand.
+Melds. A meld is a rank collected three deep or more, anything from a four up to an ace, with suits playing no part. Jokers and twos are wild and may be included, but a meld must always hold at least two natural cards and may never hold more than three wild cards. There are no sequences in Canasta. Your side may have only one meld of any given rank, so instead of starting a second you add to the one already on the table; either partner may add to any of the side's melds at any time. Cards on the table stay there and cannot be taken back into hand.
 
 Threes. Red threes are never melded or held in hand; they sit face up in front of you doing nothing but scoring. Black threes may be melded only on the turn you go out, and only as a natural set of three or four with no wild card among them.
 
@@ -35,9 +35,9 @@ Taking the discard pile. You must use the top card immediately in a meld, and yo
 
 Black threes. Discarding a black three stops the next player from taking the pile no matter what they hold, but that block lasts one turn only and does not freeze the pile.
 
-Canastas. A meld of seven or more cards is a canasta. Square it up and mark it with a red card on top if it is natural (no wilds) or a black card if it is mixed. You may keep adding cards afterwards, but laying a wild card on a natural canasta turns it into a mixed one.
+Canastas. Seven cards of one rank, or more, makes a canasta. Square it up and mark it with a red card on top if it is natural (no wilds) or a black card if it is mixed. You may keep adding cards afterwards, but laying a wild card on a natural canasta turns it into a mixed one.
 
-Going out. You go out when you play the last card from your hand, whether as a discard, a new meld, or an addition to an existing one; finishing with a meld and no discard is allowed. Your side must have completed at least one canasta first. Before you touch anything on your turn you may ask your partner "may I go out?" and you are bound by the yes or no you get. Once you have melded or reached for the pile, you have given up the right to ask.
+Going out. You go out when you play the last card from your hand, whether as a discard, a new meld, or an addition to an existing one; finishing with a meld and no discard is allowed. Your side must have completed at least one canasta first. Before you touch anything on your turn you are allowed one question across the table — "may I go out?" — and whichever answer comes back binds you. Once you have melded or reached for the pile, you have given up the right to ask.
 
 If your side has not melded yet and you draw from the stock into a hand you can lay down complete, canasta included, you may go out concealed on the spot without meeting the minimum count. Take the pile instead of drawing and that concession disappears: you must make the minimum, and the concealed bonus is not yours to claim.
 

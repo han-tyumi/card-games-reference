@@ -37,7 +37,7 @@ The hook. Bidding last is less of a privilege than it looks, because one figure 
 
 Write every bid on the score sheet before a card is played. Bids cannot be revised once the first lead is made.
 
-The play. The player to the dealer's left leads to the first trick and may lead anything at all, trump included; there is no rule against leading trump early. Going clockwise, each player must follow the suit led if they hold a card of it. A player holding none of the led suit may play any card, trump or otherwise, and is under no obligation either to trump or to try to win. The trick is taken by the highest trump in it, or, if no trump was played, by the highest card of the suit led. The winner of the trick leads to the next. On a no-trump deal the highest card of the suit led always wins.
+The play. Whoever sits on the dealer's left opens, and may open with anything at all — trump included, since nothing here holds it back. Going clockwise, anybody holding the suit that was led has to play one. A player holding none of the led suit may play any card, trump or otherwise, and is under no obligation either to trump or to try to win. Whichever trump on the trick is biggest takes it; with no trump on it, the biggest card of the opening suit does. The winner of the trick leads to the next. On a no-trump deal nothing can beat the opening suit, so its biggest card always wins.
 
 Keep the tricks you win in your own stack rather than a communal pile, since everyone has to be able to count their own at the end. In long hands it is worth restating bids aloud partway through.
 
@@ -49,9 +49,11 @@ When the last trick of a deal has been taken, compare each player's count with t
 
 You win by holding the highest total when the agreed run of deals is finished. There is no target to race to and no sudden-death ending; the game is over when the arc is over.
 
-The standard scoring is all-or-nothing per hand. Hit your contract on the nose and the hand pays a flat 10 with the size of the contract added on top, so a fulfilled 3 is worth 13 and a fulfilled 0 is worth 10. Land anywhere else, above or below, and the hand pays you nothing at all. Overtricks earn no consolation whatever: bidding three and taking four is exactly as worthless as bidding three and taking two, which is what makes deliberately dumping a trick on an opponent a real weapon.
+Two methods are in general use, and you have to settle which before the first deal, because they reward completely different bidding.
 
-A common gentler version awards every player 1 point per trick taken regardless of whether they hit their bid, plus a flat 10-point bonus for hitting it exactly. That keeps trailing players engaged; the strict version produces sharper swings and a tenser endgame. Choose one before the first deal, because the two reward completely different bidding.
+The one usually described as the most widespread is the generous one: every player takes 1 point per trick won whatever happened, and anybody who hit their bid exactly adds a flat 10 on top. A bid of 2 brought home is 12; missed, it still pays a point a trick, which keeps a trailing player interested.
+
+The other is all-or-nothing. Hit your contract on the nose and the hand pays a flat 10 with the size of the contract added, so a fulfilled 3 is worth 13 and a fulfilled 0 is worth 10; land anywhere else, above or below, and it pays nothing whatever. Overtricks earn no consolation at all — bidding three and taking four is exactly as worthless as bidding three and taking two, which is what makes deliberately dumping a trick on an opponent a real weapon. It swings harder and ends tenser, and it is where the game's other names come from: the scorer blots out every failed bid, leaving the sheet covered in blobs.
 
 A bid of zero is the most dependable score on the sheet, since it pays 10 and requires no cards at all. It is also the hardest thing to defend once someone leads a suit you are void in and you are forced to spend a card that might win.
 

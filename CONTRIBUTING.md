@@ -403,7 +403,7 @@ sources open, across four passes. Earlier work counted search-engine hits, which
 the section below explains does not work, so those passes are not evidence of
 anything and are not counted here.
 
-**30 entries, checked 2026-08-01** — pagat and Wikipedia, fetched and read
+**27 entries, checked 2026-08-01** — pagat and Wikipedia, fetched and read
 side by side with our prose, and every one of the 37 attributes both. Ten
 others that this pass covered attributed only one of the two, which meant
 nobody could say what the pass had actually had for them; they were re-read on
@@ -595,7 +595,7 @@ So the second read is not the last one either. Nineteen corrections across three
 entries, none of them a copying finding, none of them flagged. Stamped by an
 agent, on the same terms as the two passes above.
 
-**7 entries, checked 2026-08-08**, in three groups. The first is `sueca`, opened
+**10 entries, checked 2026-08-08**, in four groups. The first is `sueca`, opened
 for one reason and rewritten for four. The reason was a corpus-internal duplicate: its sentence for what wins
 a trick stood one article away from `euchre`'s, twenty words identical. Nothing
 here checks for that. `npm run originality` compares an entry against its
@@ -691,20 +691,34 @@ Seeger-Fabian; the flush, nob, heels, skunk and 121 figures — and every one
 holds. Both carried verbatim runs, all pre-existing and all rewritten except
 three left on the kept list by name.
 
-**Seventeen errors in six entries chosen by position is not a sample that can be
-explained away, and the two clean ones say something too: what survives is the
-arithmetic somebody checked, and what fails is the prose around it.** The
-2026-08-01 pass compared wording against sources; it did not check facts against
-them, because at the time nobody had worked out that those are different jobs.
-30 entries still carry that date. They should be assumed unverified until
+The fourth group is `hearts`, `oh-hell` and `canasta`. `oh-hell` had one that
+matters: it called the all-or-nothing method "the standard scoring" and the
+trick-plus-bonus method "a common gentler version", where pagat calls the second
+one *perhaps the most widespread*. `hearts` had one soft claim, that "most
+groups" let a moon-shooter deduct 26 rather than charge everyone else, where the
+sources present the two simply as the shooter's choice. `canasta` had none: its
+minimum-count ladder of 15, 50, 90 and 120 against the score bands, its 500 and
+300 for canastas, and its 11-card deal are all exactly right.
+
+**Ten entries audited. Seven faulty, three clean, twenty-two errors between
+them.** And the three clean ones have something in common worth handing on:
+`skat`, `cribbage` and `canasta` are the three densest scoring systems in the
+collection. What survives is the arithmetic — the tables, the ladders, the
+thresholds, everything somebody obviously sat down and checked. What fails is
+the prose around it: who is allowed to do a thing, what happens on a tie, which
+of two conventions is the common one. **Look there first.**
+
+The 2026-08-01 pass compared wording against sources; it did not check facts
+against them, because at the time nobody had worked out that those are different
+jobs. 27 entries still carry that date. They should be assumed unverified until
 somebody reads them.
 
 **78 of 78 checks record which sources they had**, in `checked.sources`. They
-come from three different places and are not equally strong. 44 were logged as
+come from three different places and are not equally strong. 47 were logged as
 they were made — the 31 from the 2026-08-03 passes, plus the 2026-08-06,
 2026-08-07 and 2026-08-08 entries: the tool writes the files it actually compared against,
 matched back to the attributed names, and refuses to stamp a source it cannot
-match or a check with fewer than two. Another 30 are 2026-08-01 entries whose
+match or a check with fewer than two. Another 27 are 2026-08-01 entries whose
 own `sources_consulted` names both of the two that pass read, so that record is
 reconstructed from the pass description and corroborated by the entry rather
 than logged at the time.
