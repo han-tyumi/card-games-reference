@@ -403,7 +403,7 @@ sources open, across four passes. Earlier work counted search-engine hits, which
 the section below explains does not work, so those passes are not evidence of
 anything and are not counted here.
 
-**33 entries, checked 2026-08-01** — pagat and Wikipedia, fetched and read
+**30 entries, checked 2026-08-01** — pagat and Wikipedia, fetched and read
 side by side with our prose, and every one of the 37 attributes both. Ten
 others that this pass covered attributed only one of the two, which meant
 nobody could say what the pass had actually had for them; they were re-read on
@@ -595,7 +595,7 @@ So the second read is not the last one either. Nineteen corrections across three
 entries, none of them a copying finding, none of them flagged. Stamped by an
 agent, on the same terms as the two passes above.
 
-**4 entries, checked 2026-08-08**, in two groups. The first is `sueca`, opened
+**7 entries, checked 2026-08-08**, in three groups. The first is `sueca`, opened
 for one reason and rewritten for four. The reason was a corpus-internal duplicate: its sentence for what wins
 a trick stood one article away from `euchre`'s, twenty words identical. Nothing
 here checks for that. `npm run originality` compares an entry against its
@@ -672,18 +672,39 @@ the deal starts from, and a generic opener. A fifth was left, because "the top
 card of the discard pile" is on the kept list below and pagat's sentence around
 it states a different rule.
 
-**Twelve errors in three entries chosen by position is not a sample that can be
-explained away.** The 2026-08-01 pass compared wording against sources; it did
-not check facts against them, because at the time nobody had worked out that
-those are different jobs. 33 entries still carry that date. They should be
-assumed unverified until somebody reads them.
+The last three are `euchre`, `skat` and `cribbage`, taken next because a dense
+scoring system is where an error costs a reader most. **`euchre` had five;
+`skat` and `cribbage` had none of substance.**
+
+`euchre` restricted going alone to whoever named trump, where both sources let
+any player go alone — maker or defender — and allow both at once. The lone
+defender's euchre, worth 4 rather than 2 in both sources' *main* scoring, had
+been demoted to an optional variant and given an invented precondition: that the
+maker must already be alone. The opening lead on a lone hand had rule and
+variant swapped, both sources giving it to the player on the loner's left. A
+renege was said to cost 4 against a lone hand, which neither source states. And
+the scoring list had no row for a lone defender at all.
+
+`skat` and `cribbage` were checked on the claims most likely to be wrong — base
+and null values, the schneider thresholds, the overbid deduction and
+Seeger-Fabian; the flush, nob, heels, skunk and 121 figures — and every one
+holds. Both carried verbatim runs, all pre-existing and all rewritten except
+three left on the kept list by name.
+
+**Seventeen errors in six entries chosen by position is not a sample that can be
+explained away, and the two clean ones say something too: what survives is the
+arithmetic somebody checked, and what fails is the prose around it.** The
+2026-08-01 pass compared wording against sources; it did not check facts against
+them, because at the time nobody had worked out that those are different jobs.
+30 entries still carry that date. They should be assumed unverified until
+somebody reads them.
 
 **78 of 78 checks record which sources they had**, in `checked.sources`. They
-come from three different places and are not equally strong. 41 were logged as
+come from three different places and are not equally strong. 44 were logged as
 they were made — the 31 from the 2026-08-03 passes, plus the 2026-08-06,
 2026-08-07 and 2026-08-08 entries: the tool writes the files it actually compared against,
 matched back to the attributed names, and refuses to stamp a source it cannot
-match or a check with fewer than two. Another 33 are 2026-08-01 entries whose
+match or a check with fewer than two. Another 30 are 2026-08-01 entries whose
 own `sources_consulted` names both of the two that pass read, so that record is
 reconstructed from the pass description and corroborated by the entry rather
 than logged at the time.

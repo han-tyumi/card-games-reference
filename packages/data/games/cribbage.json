@@ -20,7 +20,7 @@
       "cribbage board, or pencil and paper"
     ]
   },
-  "setup": "Two players, one standard 52-card deck, and a cribbage board with two pegs each. Cards rank king high down to ace low, and for counting purposes an ace is 1, a face card is 10, and everything else is worth its index. The ace is always low and runs never turn the corner: ace-two-three is a run, queen-king-ace is not.\n\nCut for the deal: low card deals first, and the deal alternates every hand afterwards. Cutting for the first deal matters, because the dealer's edge is real and it swaps every deal.\n\nDeal six cards to each player, one at a time, and put the rest of the deck face down to one side. Look at your six and lay two of them face down in a pile off to the dealer's side of the board. Those four cards are the crib, an extra hand that the dealer alone will score at the end of the deal, so the non-dealer throws to it defensively and the dealer throws to it generously. Neither player looks at the crib until the hands have been played out.\n\nOnce both hands are down to four cards and the crib is out of the way, the non-dealer makes a cut; the dealer lifts the upper half clear, takes whichever card the cut has exposed underneath, and sets it face up on the reassembled deck. This is the starter, and it is shared: both hands and the crib count it as a fifth card at the end of the deal, though it is not used during the play. If the starter is a jack, the dealer immediately pegs 2 for his heels; strict play requires the claim before the opening lead, and a dealer who forgets forfeits the 2.\n\nBoth pegs start off the board. Score by leapfrogging the back peg ahead of the front one, so the gap always shows what you just scored.",
+  "setup": "Two players, one standard 52-card deck, and a cribbage board with two pegs each. Cards rank king high down to ace low, and for counting purposes an ace is 1, a face card is 10, and everything else is worth its index. The ace is always low and runs never turn the corner: ace-two-three is a run, queen-king-ace is not.\n\nCut for the deal: low card deals first, and the deal alternates every hand afterwards. Cutting for the first deal matters, because the dealer's edge is real and it swaps every deal.\n\nDeal six cards to each player, one at a time, and put the rest of the deck face down to one side. Look at your six and lay two of them face down in a pile off to the dealer's side of the board. Those four cards are the crib, an extra hand that the dealer alone will score at the end of the deal, so the non-dealer throws to it defensively and the dealer throws to it generously. Neither player looks at the crib until the hands have been played out.\n\nOnce both hands are down to four cards and the crib is out of the way, the non-dealer makes a cut; the dealer lifts the upper half clear, takes whichever card the cut has exposed underneath, and sets it face up on the reassembled deck. This is the starter, and it is shared: both hands and the crib count it as a fifth card at the end of the deal. It sits out the pegging entirely. A jack turned as the starter is worth 2 to the dealer there and then, called two for his heels; strict play wants it claimed before the opening lead, and a dealer who forgets forfeits it.\n\nBoth pegs start off the board. Score by leapfrogging the back peg ahead of the front one, so the gap always shows what you just scored.",
   "layout": {
     "rows": [
       [
@@ -243,8 +243,8 @@
     "Masters of Games"
   ],
   "checked": {
-    "date": "2026-08-01",
-    "prose": "1827f2a080da4ee3",
+    "date": "2026-08-08",
+    "prose": "8e698bb010cee5fe",
     "sources": [
       "Pagat",
       "Wikipedia"
