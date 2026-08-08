@@ -129,7 +129,7 @@
       ]
     }
   ],
-  "goal_and_scoring": "Count the card points in your side's tricks. Re has to reach 121 of the 240 and Kontra needs only 120, since a tie in cards goes to the defenders. Announcing changes those numbers: say Kontra and your own bar rises to 121, and every no-90 or no-60 you announce replaces the bar with the one you promised, so a side that said no 60 must actually take 181 and loses the hand at 180 however comfortable that sounds.\n\nWhat gets written down is a single figure per deal, plus for the winners and minus for the losers, so the four columns always add to nothing. The figure is built by adding a point for each thing that actually happened, and almost everything counts once: the win itself, every thirty-point threshold the losers fell under, a clean sweep of the tricks, each negative announcement anybody made, and each of those the winners went on to play through anyway. Re and Kontra are the exception at two points each, and they count for whichever side ends up collecting rather than for whoever said them. The table has the full list.\n\nFour more are available in a normal hand only, and never in a solo. One goes to Kontra simply for beating the queens of clubs. One goes for taking a trick worth 40 or more, which is itself called a doppelkopf and can only happen when all four cards are tens or aces. One goes for capturing an opponent's ace of diamonds, the fox. One goes for winning the final trick with a jack of clubs, known as Charlie Miller.\n\nA soloist's figure is tripled and written into their own column alone, while each of the three opponents takes the untripled figure with the sign reversed. Losing a solo you talked up is the expensive way to spend an evening.\n\nThere is no target score in the rules. A session is an agreed number of deals, usually whole rounds of the table so that everybody deals equally often, and the highest running total at the end wins. A tournament round is twenty-four deals and is stopped at a hundred minutes of play, which is a fair guide to how long a dozen hands will take you.",
+  "goal_and_scoring": "Count the card points in your side's tricks. Re has to reach 121 of the 240 and Kontra needs only 120, since a tie in cards goes to the defenders. Announcing changes those numbers. Say Kontra and your own bar rises to 121. And every negative announcement replaces your bar with the one you promised — 151 for no 90, 181 for no 60, 211 for no 30, and every trick for schwarz — so a side that said no 60 loses the hand at 180, however comfortable 180 sounds.\n\nWhat gets written down is a single figure per deal, plus for the winners and minus for the losers, so the four columns always add to nothing. The figure is built by adding a point for each thing that actually happened, and almost everything counts once: the win itself, every thirty-point threshold the losers fell under, a clean sweep of the tricks, each negative announcement anybody made, and each of those the winners went on to play through anyway. Re and Kontra are the exception at two points each, and they count for whichever side ends up collecting rather than for whoever said them. The table has the full list.\n\nFour more are available in a normal hand only, and never in a solo. One goes to Kontra simply for beating the queens of clubs. One goes for taking a trick worth 40 or more, which is itself called a doppelkopf and can only happen when all four cards are tens or aces. One goes for capturing an opponent's ace of diamonds, the fox. One goes for winning the final trick with a jack of clubs, known as Charlie Miller.\n\nA soloist's figure is tripled and written into their own column alone, while each of the three opponents takes the untripled figure with the sign reversed. Losing a solo you talked up is the expensive way to spend an evening.\n\nThere is no target score in the rules. A session is an agreed number of deals, usually whole rounds of the table so that everybody deals equally often, and the highest running total at the end wins. A tournament round is twenty-four deals and is stopped at a hundred minutes of play, which is a fair guide to how long a dozen hands will take you.",
   "scoring_table": [
     {
       "item": "Ace",
@@ -194,7 +194,7 @@
     {
       "item": "A trick worth 40 or more",
       "value": "+1",
-      "note": "the doppelkopf the game is named for"
+      "note": "a trick of that size is itself called a doppelkopf"
     },
     {
       "item": "Caught an opponent's ace of diamonds",
@@ -249,7 +249,7 @@
   ],
   "checked": {
     "date": "2026-08-07",
-    "prose": "28e0984a52f609ae",
+    "prose": "b83adf2ffae90de3",
     "sources": [
       "Deutscher Doppelkopf-Verband",
       "Pagat",

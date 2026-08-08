@@ -555,7 +555,7 @@ measuring the chrome.
 
 **And then the part this section exists for.** The tool found no copying worth
 keeping, and the second read — the fetched sources open beside the finished
-entries — found **fourteen statements that were wrong**, and cut back a further
+entries — found **fourteen statements that were wrong** at that point, and cut back a further
 set of claims that no source carried: a prevalence nobody had counted, an
 immigration date nobody had written down, a house rule called standard on no
 authority. A sample of the fourteen, because the shape of them is the useful
@@ -577,8 +577,23 @@ part:
 
 Not one of them was a copying finding, and the report flagged not one of them.
 The three entries had been written from notes rather than from open pages, and
-they were still wrong in fourteen places. Stamped by an agent, on the same terms
-as the two passes above.
+they were still wrong in fourteen places.
+
+**Then a third read, with the pull request already approved, found five more.**
+Two of them are worth naming because they are the kind that survives a careful
+second pass. Doppelkopf's `scoring_table` still carried the claim about the
+game's name that the second read had corrected in its prose — a fix applied in
+one of the two places that stated it, which is exactly the drift the tables in
+this project exist to prevent. And Schieber Jass never mentioned that most Swiss
+tables now move the 11 points from the ace to the six in Undenufe, which would
+have had a reader counting a whole contract wrong. The other three were an
+entry giving two different answers to one situation, a list of four announced
+targets that named two, and a scoring schedule that is the five-handed one and
+did not say so in an entry that seats three to five.
+
+So the second read is not the last one either. Nineteen corrections across three
+entries, none of them a copying finding, none of them flagged. Stamped by an
+agent, on the same terms as the two passes above.
 
 **78 of 78 checks record which sources they had**, in `checked.sources`. They
 come from three different places and are not equally strong. 37 were logged as

@@ -57,7 +57,7 @@ None of these may be said before your side has said Re or Kontra, so the ladder 
 
 ## Goal & scoring
 
-Count the card points in your side's tricks. Re has to reach 121 of the 240 and Kontra needs only 120, since a tie in cards goes to the defenders. Announcing changes those numbers: say Kontra and your own bar rises to 121, and every no-90 or no-60 you announce replaces the bar with the one you promised, so a side that said no 60 must actually take 181 and loses the hand at 180 however comfortable that sounds.
+Count the card points in your side's tricks. Re has to reach 121 of the 240 and Kontra needs only 120, since a tie in cards goes to the defenders. Announcing changes those numbers. Say Kontra and your own bar rises to 121. And every negative announcement replaces your bar with the one you promised — 151 for no 90, 181 for no 60, 211 for no 30, and every trick for schwarz — so a side that said no 60 loses the hand at 180, however comfortable 180 sounds.
 
 What gets written down is a single figure per deal, plus for the winners and minus for the losers, so the four columns always add to nothing. The figure is built by adding a point for each thing that actually happened, and almost everything counts once: the win itself, every thirty-point threshold the losers fell under, a clean sweep of the tricks, each negative announcement anybody made, and each of those the winners went on to play through anyway. Re and Kontra are the exception at two points each, and they count for whichever side ends up collecting rather than for whoever said them. The table has the full list.
 
@@ -83,7 +83,7 @@ There is no target score in the rules. A session is an agreed number of deals, u
 | No 90, no 60, no 30 or schwarz announced | +1 each | counted whichever side announced it |
 | Winners played through an announcement | +1 each | 120 against no 90, 90 against no 60, 60 against no 30, 30 against schwarz |
 | Kontra beat the queens of clubs | +1 | normal hands only, never in a solo |
-| A trick worth 40 or more | +1 | the doppelkopf the game is named for |
+| A trick worth 40 or more | +1 | a trick of that size is itself called a doppelkopf |
 | Caught an opponent's ace of diamonds | +1 | — |
 | Jack of clubs took the last trick | +1 | — |
 | Solo | x3 for the soloist | each opponent takes the untripled figure with the sign reversed |

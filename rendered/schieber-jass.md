@@ -32,7 +32,7 @@ Choosing the game. Forehand — the player to the dealer's right — either name
 
 - Any of the four suits as trumps.
 - Obenabe, no trumps and every suit ranking downward from the ace.
-- Undenufe, no trumps and every suit ranking upward from the six, so the six is the best card in it and the ace the worst.
+- Undenufe, no trumps and every suit ranking upward from the six, so the six is the best card in it and the ace the worst. Most tables now move the 11 points across with it, making the six worth 11 and the ace nothing, and some of those let four sixes stand as a Weis in place of four aces. Older Swiss practice, and the Vorarlberg and South Tyrol forms, leave the values where they are; ask.
 
 With no trump suit there is no Puur and no Nell, so 32 points go missing. The four eights make them up, counting 8 each instead of nothing, and the deal is worth 157 again.
 
@@ -77,7 +77,7 @@ Which leaves the case where both sides could cross on the same trick, and this i
 | --- | --- | --- |
 | Jack of trumps (Puur) | 20 | — |
 | Nine of trumps (Nell) | 14 | — |
-| Ace, any suit | 11 | — |
+| Ace, any suit | 11 | in Undenufe, most tables give this 11 to the six and the ace nothing |
 | Ten, any suit | 10 | — |
 | King, any suit | 4 | — |
 | Queen, any suit | 3 | — |
