@@ -1,9 +1,9 @@
 # Adding games: what one costs, and what bites
 
 - **Status:** Open — written for whoever adds the next entries
-- **Date:** 2026-08-06
+- **Date:** 2026-08-06, updated 2026-08-08
 
-Main is at **v0.7.0**. The corpus is **75 games**, `npm run check` exits 0 at
+Main is at **v0.8.0**. The corpus is **78 games**, `npm run check` exits 0 at
 481 tests, and
 [the before-more-games handoff](2026-08-04-before-more-games-handoff.md) is
 closed: all four of the things that got more expensive with the corpus have been
@@ -63,7 +63,27 @@ Each of these cost real time in the first batch.
   they had". Adding entries without touching these fails the build, which is the
   intended behaviour and not a surprise to debug.
 - **`.sources/` is other people's copyrighted prose.** Gitignored, and deleted
-  when the check is done.
+  when the check is done. Deleting it means the next prose edit needs a re-fetch
+  before you can re-stamp, so leave it until the entry is genuinely finished.
+- **The stamper wants one file per attributed source name.** `--stamp` slugs
+  each filename and matches it against `sources_consulted`; anything unmatched
+  is a stray and it refuses the whole stamp. Four separate pagat pages had to be
+  concatenated into one `pagat.txt`, and a file named for the document rather
+  than the publisher had to be renamed. Name the file after the source as the
+  entry attributes it.
+- **Fix a fact in the prose and the `scoring_table` still has the old one.**
+  This happened, and it survived a whole second read: a claim corrected in
+  `goal_and_scoring` sat uncorrected in the table two screens below it. The
+  tables exist to stop a fact drifting between two statements of it, and nothing
+  checks an entry against its own table. Grep the entry for the claim you just
+  changed.
+- **A source can contradict itself, not just the other sources.** pagat's
+  Schieber page and its Coiffeur page give different French-suit mappings for
+  the same multipliers. Two sources agreeing is not the only bar; one source
+  agreeing with itself is worth a glance too.
+- **The URL warning above is not enough — use the A-Z index.** `sheeps.html`
+  guessed from the game name is a 404; the page is `shep.html`. Every Jass page
+  needed the index as well.
 
 ## What the originality tool does and does not do
 
@@ -103,7 +123,18 @@ found the same way — by rereading the fetched source against the finished entr
 once at writing time and once before merging. Budget for the second read. Six
 for six says the first one is not enough.
 
-## Candidates, with the family counts at 75
+**It also never compares our entries with each other.** It compares an entry
+against its sources, and that is all — so a sentence copied from one of our own
+entries into another is invisible to it, which is how `euchre` and `sueca` came
+to carry the same twenty-word sentence for a year. The irony is that the tool
+computes that comparison on every run, 5,302 of our own passage pairs, to
+calibrate its bar; it keeps the numbers and throws away which pair produced
+them. Measured exhaustively there are 387 cross-game pairs above the bar, but
+the top of that list is the shared vocabulary the project has decided to keep,
+and a hypothesis that multiplicity would separate the two was tested and failed.
+Treat it as a reading list somebody has to sit down with, not a check to bolt on.
+
+## Candidates, with the family counts at 78
 
 | Family | Now | Missing, roughly in order of how conspicuous |
 | --- | --- | --- |
@@ -113,13 +144,18 @@ for six says the first one is not enough.
 | Solitaire | 11 | Aces Up, Scorpion, Beleaguered Castle |
 | Shedding | 13 | Zheng Shangyou, Pusoy Dos |
 | Matching & collecting | 14 | Michigan/Newmarket, Pig, Authors |
-| Trick-taking | 16 | **Doppelkopf, Sheepshead, Jass, Bezique, Solo Whist** |
+| Trick-taking | 19 | **Bezique, Solo Whist** |
 
-Trick-taking is the largest family and still missing the major continental
-games, which is the biggest single gap by importance rather than by count. Those
-are also the densest entries to write — real scoring schedules, and Sheepshead
-and Doppelkopf both have live regional variation that has to be picked between
-and then said out loud.
+Doppelkopf, Sheepshead and Schieber Jass were added on 2026-08-08 and are the
+reason trick-taking moved from 16 to 19. They cost about what this document
+predicted — roughly 1,500 words each — and the regional variation did have to be
+picked between and said out loud, in each entry's own prose rather than only in
+`variants`. Bezique is the conspicuous remainder, and is worth doing while
+`pinochle`, which descends from it, is fresh.
+
+Do not read the counts as a target. The smallest family is not the most
+important gap, and the section below on what a re-read of one inherited entry
+turned up is a better guide to where the next hour goes.
 
 ## What not to do
 
@@ -128,10 +164,12 @@ and then said out loud.
   reports an unstamped entry and cannot report a false one.
 - **Do not add a game to balance a family table.** The counts are a description
   of the collection, not a target.
-- **Do not skip the second read.** Every factual error in the first batch
-  survived writing, survived the originality pass, and was caught only by going
-  back to the source with the finished entry in hand. Half of them were caught
-  after the pull request was already approved.
+- **Do not skip the second read — and do not assume it is the last one.** The
+  batch of 2026-08-08 found fourteen wrong statements on the second read and
+  **five more on a third, after the pull request had been approved**. Then a
+  re-read of one *inherited* entry, `sueca`, found three more that had been
+  shipped since 2026-08-01. Budget three passes over anything you write, and
+  treat an entry you did not write as unverified rather than as done.
 - **Do not reword a term of art to clear a finding.** The poker hand ranks, "the
   right bower", a qualifier's exact wording — rewriting those makes the entry
   wrong, which is a worse outcome than a finding somebody has to read.

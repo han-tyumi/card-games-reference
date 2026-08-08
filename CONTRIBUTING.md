@@ -403,7 +403,7 @@ sources open, across four passes. Earlier work counted search-engine hits, which
 the section below explains does not work, so those passes are not evidence of
 anything and are not counted here.
 
-**37 entries, checked 2026-08-01** — pagat and Wikipedia, fetched and read
+**36 entries, checked 2026-08-01** — pagat and Wikipedia, fetched and read
 side by side with our prose, and every one of the 37 attributes both. Ten
 others that this pass covered attributed only one of the two, which meant
 nobody could say what the pass had actually had for them; they were re-read on
@@ -595,12 +595,50 @@ So the second read is not the last one either. Nineteen corrections across three
 entries, none of them a copying finding, none of them flagged. Stamped by an
 agent, on the same terms as the two passes above.
 
+**1 entry, checked 2026-08-08** — `sueca`, opened for one reason and rewritten
+for four. The reason was a corpus-internal duplicate: its sentence for what wins
+a trick stood one article away from `euchre`'s, twenty words identical. Nothing
+here checks for that. `npm run originality` compares an entry against its
+sources and never against the rest of the collection — and it computes exactly
+that comparison anyway, 5,302 of our own pairs per run, to calibrate the bar,
+then keeps the numbers and discards which pair produced them.
+
+Measuring it exhaustively found **394 cross-game passage pairs at or above the
+bar** before the rewrite below and **387 after it** — the one sentence accounted
+for seven of them — which sounds worse than it is. The top of that list is the vocabulary
+this project has already decided to keep: the ace-ten card values across
+`belote`, `skat` and `doppelkopf`, the rummy stock-and-discard sentence across
+five entries. A hypothesis that multiplicity would separate a propagated formula
+from shared vocabulary was tested and **failed** — the legitimate phrases are the
+most multiple of all. Six entries state the trick-winning rule and five state it
+in visibly different sentences; only `euchre` and `sueca` were one sentence used
+twice. So a corpus-internal report is a reading list needing 394 judgements, not
+a gate, and it is not built.
+
+**Re-reading `sueca` to earn the re-stamp then found three claims its sources do
+not carry**, none of them related to the duplicate that opened it:
+
+- The deal combined two sources' incompatible halves — dealing in a single block
+  of ten, from the dealer's right — and called the result Portuguese custom. One
+  source pairs the block deal with the dealer's *left*; the other calls that
+  pairing Brazilian. Neither states the combination the entry had.
+- The revoke penalty was inverted. The entry made a four-game rubber the rule
+  "most groups" use and demoted to a "milder convention" the two-game penalty
+  that is the only one either source states.
+- The 60-all tie was written as a dead hand. One source states, and the other
+  lists, a carry-over that makes the next deal worth an extra game.
+
+That entry came from the 2026-08-01 pass. It is one entry, so it proves nothing
+about the other 35 — but it is the first inherited entry anybody has re-read
+with the sources open since, and it had three. Worth a pass of its own before
+the next batch of new games.
+
 **78 of 78 checks record which sources they had**, in `checked.sources`. They
-come from three different places and are not equally strong. 37 were logged as
-they were made — the 31 from the 2026-08-03 passes, plus the 2026-08-06 and
-2026-08-07 entries: the tool writes the files it actually compared against,
+come from three different places and are not equally strong. 38 were logged as
+they were made — the 31 from the 2026-08-03 passes, plus the 2026-08-06,
+2026-08-07 and 2026-08-08 entries: the tool writes the files it actually compared against,
 matched back to the attributed names, and refuses to stamp a source it cannot
-match or a check with fewer than two. Another 37 are 2026-08-01 entries whose
+match or a check with fewer than two. Another 36 are 2026-08-01 entries whose
 own `sources_consulted` names both of the two that pass read, so that record is
 reconstructed from the pass description and corroborated by the entry rather
 than logged at the time.
