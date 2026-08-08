@@ -403,7 +403,7 @@ sources open, across four passes. Earlier work counted search-engine hits, which
 the section below explains does not work, so those passes are not evidence of
 anything and are not counted here.
 
-**27 entries, checked 2026-08-01** — pagat and Wikipedia, fetched and read
+**25 entries, checked 2026-08-01** — pagat and Wikipedia, fetched and read
 side by side with our prose, and every one of the 37 attributes both. Ten
 others that this pass covered attributed only one of the two, which meant
 nobody could say what the pass had actually had for them; they were re-read on
@@ -595,7 +595,7 @@ So the second read is not the last one either. Nineteen corrections across three
 entries, none of them a copying finding, none of them flagged. Stamped by an
 agent, on the same terms as the two passes above.
 
-**10 entries, checked 2026-08-08**, in four groups. The first is `sueca`, opened
+**12 entries, checked 2026-08-08**, in five groups. The first is `sueca`, opened
 for one reason and rewritten for four. The reason was a corpus-internal duplicate: its sentence for what wins
 a trick stood one article away from `euchre`'s, twenty words identical. Nothing
 here checks for that. `npm run originality` compares an entry against its
@@ -700,7 +700,18 @@ sources present the two simply as the shooter's choice. `canasta` had none: its
 minimum-count ladder of 15, 50, 90 and 120 against the score bands, its 500 and
 300 for canastas, and its 11-card deal are all exactly right.
 
-**Ten entries audited. Seven faulty, three clean, twenty-two errors between
+The fifth group is `pinochle` and `scopa`. `pinochle` needed the right source
+before it needed anything else: pagat's A-Z entry for the name leads to *Auction*
+Pinochle, the three-player game, and the entry describes single-deck partnership
+Pinochle, which is a different page. Read against the right one its melds are
+exact — 150 for the run, 40 and 20 for the marriages, 10 for the dix, 40 for the
+pinochle, 100/80/60/40 for the arounds, and 250 available in tricks. Its one
+error was the target: a flat "first side to 1000", where the source's version
+plays to 1500. It now names both and adds the rule for a simultaneous crossing.
+`scopa` had none — its four contested points, both tie rules and the primiera
+scale all hold.
+
+**Twelve entries audited. Eight faulty, four clean, twenty-three errors between
 them.** And the three clean ones have something in common worth handing on:
 `skat`, `cribbage` and `canasta` are the three densest scoring systems in the
 collection. What survives is the arithmetic — the tables, the ladders, the
@@ -714,11 +725,11 @@ jobs. 27 entries still carry that date. They should be assumed unverified until
 somebody reads them.
 
 **78 of 78 checks record which sources they had**, in `checked.sources`. They
-come from three different places and are not equally strong. 47 were logged as
+come from three different places and are not equally strong. 49 were logged as
 they were made — the 31 from the 2026-08-03 passes, plus the 2026-08-06,
 2026-08-07 and 2026-08-08 entries: the tool writes the files it actually compared against,
 matched back to the attributed names, and refuses to stamp a source it cannot
-match or a check with fewer than two. Another 27 are 2026-08-01 entries whose
+match or a check with fewer than two. Another 25 are 2026-08-01 entries whose
 own `sources_consulted` names both of the two that pass read, so that record is
 reconstructed from the pass description and corroborated by the entry rather
 than logged at the time.

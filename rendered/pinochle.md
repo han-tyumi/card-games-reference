@@ -13,9 +13,9 @@
 
 This entry describes single-deck partnership auction Pinochle: four players, two fixed partnerships, one 48-card pinochle pack. Double-deck partnership Pinochle, which is at least as widely played in North America, is described under variants.
 
-The pack holds two copies of ace, ten, king, queen, jack and nine in each suit, 48 cards in all. Rank within a suit is not what you expect: the ace is high, but the ten sits second, above the king. The full order is A, 10, K, Q, J, 9 from high to low. When two identical cards meet in the same trick, the one played first outranks the copy.
+Each suit is twelve deep rather than thirteen, because it holds only six ranks and holds each of them twice: ace, ten, king, queen, jack, nine. Forty-eight cards in all. Rank within a suit is not what you expect: the ace is high, but the ten sits second, above the king. The full order is A, 10, K, Q, J, 9 from high to low. When two identical cards meet in the same trick, the one played first outranks the copy.
 
-Partners sit opposite each other. Settle the first deal however you like, high cut being usual, then pass the deal clockwise. Shuffle, cut, and deal every card out clockwise in packets of three or four until each player holds twelve. There is no stock and no widow in this version; all 48 cards are in hands from the start.
+Partners face one another across the table. Settle the first deal however you like, high cut being usual, then pass the deal clockwise. Shuffle, cut, and deal every card out clockwise in packets of three or four until each player holds twelve. There is no stock and no widow in this version; all 48 cards are in hands from the start.
 
 Rule a score sheet with one column per partnership. Each hand produces a bid, a meld figure and a trick figure for each side before anything is combined, so leave room to write all three rather than only a running total.
 
@@ -34,7 +34,7 @@ Melding. All four players lay their scoring combinations face up on the table at
 The tricks. The high bidder leads to the first trick and play runs clockwise. Give this one a moment before you start, because it is the rule most likely to differ from what somebody at the table learned: in the auction game the lead belongs to the contractor, but the versions of partnership Pinochle played without an auction hand it to the player at the dealer's left instead. The rules for playing a card are strict, which is the feature that separates Pinochle from most trick games:
 
 - If you can follow suit you must, and if you can also beat the highest card of that suit already played, you must do that as well.
-- If you cannot follow suit, you must play a trump if you hold one, even when it cannot win the trick.
+- Void in the suit led, you are obliged to trump if you have anything to trump with, and that obligation stands even when your trump is already beaten.
 - If the trick has already been trumped and you cannot follow suit, you must beat the trump on the table when you are able; holding only lower trumps, you must still play one of them.
 - Only when you can neither follow suit nor trump may you play whatever you like.
 
@@ -68,7 +68,7 @@ A run already contains the royal marriage, so you do not also claim the 40 for i
 
 Settling a hand. Each side totals its meld together with the counters it captured. Where the contractors have matched or beaten the number they bid, both columns simply take what was earned. Falling short is another matter: the contract is set, everything the contracting pair earned that hand evaporates, and their column takes a penalty the size of the bid itself, which is quite capable of pushing a total into the negatives. Some groups soften that by letting a set side keep the meld it laid down and only deducting the bid; the harsher version given here is the more common one. The defending side scores its meld and counters as normal, subject to the same requirement that meld needs at least one trick to stand, which means a defending pair shut out of every trick records nothing at all for the hand.
 
-First side to 1000 points wins. The customary tie-break is that the contracting side's score is settled first, so if both sides cross the target in the same hand the contractors win, having taken the risk. Some groups play to 1500, and some let a side stop play mid-hand to claim the game.
+The game runs to an agreed total, with 1000 and 1500 both in common use, and the first side past it wins. Should both sides cross in the same deal, the declaring side takes the game whatever the two totals actually are — they carried the contract, so they get the benefit of arriving first. The customary tie-break is that the contracting side's score is settled first, so if both sides cross the target in the same hand the contractors win, having taken the risk. Some groups play to 1500, and some let a side stop play mid-hand to claim the game.
 
 | Scores | Value | Notes |
 | --- | --- | --- |
@@ -84,7 +84,7 @@ First side to 1000 points wins. The customary tie-break is that the contracting 
 | Queens around | 60 | double 600 |
 | Jacks around | 40 | double 400 |
 | Contract set | minus the bid | the contractors' meld and counters are lost as well |
-| Game | 1000 | — |
+| Game | 1000 or 1500 | agreed beforehand; a simultaneous crossing goes to the declaring side |
 
 ## Variants
 

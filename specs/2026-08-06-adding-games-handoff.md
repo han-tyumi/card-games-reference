@@ -81,9 +81,15 @@ Each of these cost real time in the first batch.
   Schieber page and its Coiffeur page give different French-suit mappings for
   the same multipliers. Two sources agreeing is not the only bar; one source
   agreeing with itself is worth a glance too.
-- **The URL warning above is not enough — use the A-Z index.** `sheeps.html`
-  guessed from the game name is a 404; the page is `shep.html`. Every Jass page
-  needed the index as well.
+- **The URL warning above is not enough — use the A-Z index, and then check
+  the page you landed on.** `sheeps.html` guessed from the game name is a 404;
+  the page is `shep.html`. Worse, the index is not one-to-one: "Rummy" lists two
+  pages and one of them is Indian Rummy, which is a separate entry here; "Pinochle"
+  lists five and the first is the three-player auction game, where our entry is the
+  four-player partnership one; and "Five Card Draw" is not in the index at all,
+  only under Draw Poker. Read the page's own title and breadcrumb before you read
+  anything else — auditing `pinochle` against Auction Pinochle would have produced
+  a page of confident corrections, every one of them wrong.
 
 ## What the originality tool does and does not do
 
@@ -156,8 +162,8 @@ picked between and said out loud, in each entry's own prose rather than only in
 Do not read the counts as a target, and do not start here at all. On
 2026-08-08 three entries from the 2026-08-01 pass were audited — picked by
 position across several families, then three more chosen for the density of
-their scoring, then three more again — **ten audited, seven faulty, twenty-two
-errors**. The three that were clean are the three densest scoring systems in the
+their scoring, then five more again — **twelve audited, eight faulty,
+twenty-three errors**. The three that were clean are the three densest scoring systems in the
 collection, which is the useful part: the arithmetic survives and the prose
 around it does not. Check who is allowed to do a thing, what happens on a tie,
 and which of two conventions is called the common one. A fixed-limit
@@ -165,7 +171,7 @@ raise cap given as three where the source says four; a contract that inverted
 what happens on a tied deal; a burn card invented and then used in an
 arithmetic; a target score neither source mentions. CONTRIBUTING has the list.
 
-**27 entries still carry 2026-08-01 and should be assumed unverified.** That
+**25 entries still carry 2026-08-01 and should be assumed unverified.** That
 pass compared wording against sources and did not check facts against them,
 because at the time nobody had separated the two jobs. Reading those 33 is worth
 more than any new entry, and at roughly three per sitting it is about eleven
