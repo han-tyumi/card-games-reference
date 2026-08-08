@@ -99,7 +99,7 @@
 | Game | Players | Deck | Time | Difficulty |
 | --- | --- | --- | --- | --- |
 | [BS](bs.md) | 2-10 players (best with 5) | 1 standard deck (52 cards), jokers removed; 2 decks shuffled together for six or more players | 15-30 minutes | Simple |
-| [Five Card Draw](five-card-draw.md) | 2-6 players (best with 5) | 1 standard deck (52 cards), plus chips or counters for everyone | 20-60 minutes | Simple |
+| [Five Card Draw](five-card-draw.md) | 2-6 players (best with 6) | 1 standard deck (52 cards), plus chips or counters for everyone | 20-60 minutes | Simple |
 | [Mus](mus.md) | 4 players | 1 standard deck stripped to 40 cards (8s, 9s and 10s removed), or a 40-card Spanish pack | 45-90 minutes | Complex |
 | [Omaha](omaha.md) | 2-10 players (best with 6) | 1 standard deck (52 cards), plus chips or counters for everyone | 30-120 minutes | Medium |
 | [Seven Card Stud](seven-card-stud.md) | 2-8 players (best with 8) | 1 standard deck (52 cards), plus chips to bet with | 60+ minutes | Medium |

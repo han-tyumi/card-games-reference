@@ -403,7 +403,7 @@ sources open, across four passes. Earlier work counted search-engine hits, which
 the section below explains does not work, so those passes are not evidence of
 anything and are not counted here.
 
-**36 entries, checked 2026-08-01** — pagat and Wikipedia, fetched and read
+**33 entries, checked 2026-08-01** — pagat and Wikipedia, fetched and read
 side by side with our prose, and every one of the 37 attributes both. Ten
 others that this pass covered attributed only one of the two, which meant
 nobody could say what the pass had actually had for them; they were re-read on
@@ -595,8 +595,8 @@ So the second read is not the last one either. Nineteen corrections across three
 entries, none of them a copying finding, none of them flagged. Stamped by an
 agent, on the same terms as the two passes above.
 
-**1 entry, checked 2026-08-08** — `sueca`, opened for one reason and rewritten
-for four. The reason was a corpus-internal duplicate: its sentence for what wins
+**4 entries, checked 2026-08-08**, in two groups. The first is `sueca`, opened
+for one reason and rewritten for four. The reason was a corpus-internal duplicate: its sentence for what wins
 a trick stood one article away from `euchre`'s, twenty words identical. Nothing
 here checks for that. `npm run originality` compares an entry against its
 sources and never against the rest of the collection — and it computes exactly
@@ -633,12 +633,57 @@ about the other 35 — but it is the first inherited entry anybody has re-read
 with the sources open since, and it had three. Worth a pass of its own before
 the next batch of new games.
 
+The other three are `belote`, `five-card-draw` and `rummy` — the first
+deliberate audit of the 2026-08-01 group, and the reason the paragraph above
+stops short of a recommendation no longer applies. `sueca` had been a sample of
+one, and chosen for a reason. These three were chosen **by position**: the group
+sorted by id, every twelfth entry taken. Three different families, no
+cherry-picking, both attributed sources fetched and read against each entry.
+
+**All three had errors. Twelve in total, plus four verbatim runs.**
+
+- `five-card-draw`, five. A fixed-limit round was given as a bet and **three**
+  raises where pagat says four, twice. A first round checked all the way round
+  was said to carry on to the draw, where pagat throws the cards in and redeals
+  — which the entry's own jacks-or-better variant already described correctly,
+  so it contradicted itself. A burn card was stated as procedure and then used
+  in an arithmetic: one source has no burn at all, the other burns before each
+  player's replacements, and pagat's own sum is 6 x 8 = 48 without one. The
+  exhausted-stock rebuild pulled in folded hands, which neither source includes.
+  And `players.ideal` was 5 against the one source that opines, which says six.
+- `belote`, four. Both sources say the takers make their contract with **at
+  least as many** points as the defenders; the entry required strictly more,
+  which inverts what happens at 81-all. On top of that it promoted `litige` —
+  pagat's "some play that", absent from Wikipedia — to the main rule, and gave
+  it four sentences. The target was "501 for a short game and 1000 for a full
+  evening" where both sources say 1000 flatly and neither mentions 501. And a
+  simultaneous crossing of the target was awarded to the takers where pagat says
+  the game is drawn.
+- `rummy`, three, all of them prevalence. One meld a turn is the standard and
+  multiple is "some people play"; the entry had the looser form as "the more
+  common modern game". A target of "most often 100 or 500" appears in neither
+  source. Ending the hand after a second cycle of the stock was given as what
+  "most groups" do, where the suggestions are a third exhaustion or a single
+  reuse.
+
+The four verbatim runs were all in `rummy` and all pre-existing: a set defined
+in pagat's words down to the "such as", the stock-and-discard sentence, the seat
+the deal starts from, and a generic opener. A fifth was left, because "the top
+card of the discard pile" is on the kept list below and pagat's sentence around
+it states a different rule.
+
+**Twelve errors in three entries chosen by position is not a sample that can be
+explained away.** The 2026-08-01 pass compared wording against sources; it did
+not check facts against them, because at the time nobody had worked out that
+those are different jobs. 33 entries still carry that date. They should be
+assumed unverified until somebody reads them.
+
 **78 of 78 checks record which sources they had**, in `checked.sources`. They
-come from three different places and are not equally strong. 38 were logged as
+come from three different places and are not equally strong. 41 were logged as
 they were made — the 31 from the 2026-08-03 passes, plus the 2026-08-06,
 2026-08-07 and 2026-08-08 entries: the tool writes the files it actually compared against,
 matched back to the attributed names, and refuses to stamp a source it cannot
-match or a check with fewer than two. Another 36 are 2026-08-01 entries whose
+match or a check with fewer than two. Another 33 are 2026-08-01 entries whose
 own `sources_consulted` names both of the two that pass read, so that record is
 reconstructed from the pass description and corroborated by the entry rather
 than logged at the time.

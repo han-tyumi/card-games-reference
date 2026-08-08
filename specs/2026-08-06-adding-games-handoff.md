@@ -153,9 +153,19 @@ picked between and said out loud, in each entry's own prose rather than only in
 `variants`. Bezique is the conspicuous remainder, and is worth doing while
 `pinochle`, which descends from it, is fresh.
 
-Do not read the counts as a target. The smallest family is not the most
-important gap, and the section below on what a re-read of one inherited entry
-turned up is a better guide to where the next hour goes.
+Do not read the counts as a target, and do not start here at all. On
+2026-08-08 three entries from the 2026-08-01 pass were audited — picked by
+position, every twelfth in the sorted group, across three families — and **all
+three had errors: twelve in total, plus four verbatim runs**. A fixed-limit
+raise cap given as three where the source says four; a contract that inverted
+what happens on a tied deal; a burn card invented and then used in an
+arithmetic; a target score neither source mentions. CONTRIBUTING has the list.
+
+**33 entries still carry 2026-08-01 and should be assumed unverified.** That
+pass compared wording against sources and did not check facts against them,
+because at the time nobody had separated the two jobs. Reading those 33 is worth
+more than any new entry, and at roughly three per sitting it is about eleven
+sittings. Bezique will still be there.
 
 ## What not to do
 

@@ -13,9 +13,9 @@
 
 Use one 52-card pack with the jokers removed. Any fair method picks the first dealer; drawing cards and giving the deal to the highest is common, with tied drawers drawing again. The deal then passes to the left after each hand, which means it simply alternates in the two-player game.
 
-How many cards you get depends on the size of the table. With two players, deal 10 each. With three or four, deal 7 each. With five or six, deal 6 each. Deal one card at a time, face down, clockwise, starting with the player on the dealer's left.
+How many cards you get depends on the size of the table. With two players, deal 10 each. With three or four, deal 7 each. With five or six, deal 6 each. Deal one card at a time, face down and clockwise, beginning on the dealer's left.
 
-Put the rest of the pack face down in the middle as the stock, then turn its top card face up beside it to start the discard pile. Only the top card of that pile is ever available, so keep it squared up rather than spread.
+What is left becomes the stock, face down in the middle, with a single card turned beside it to open the discard pile. Only the top card of that pile is ever available, so keep it squared up rather than spread.
 
 Aces are low. A-2-3 is a run and Q-K-A is not, unless you agree otherwise before the first deal. For scoring, an ace is 1 point, each numbered card is worth its number, and a jack, queen or king is 10. The player to the dealer's left takes the first turn.
 
@@ -29,7 +29,7 @@ Aces are low. A-2-3 is a run and Q-K-A is not, unless you agree otherwise before
 
 ## Play
 
-You are trying to get rid of every card in your hand by arranging them into melds. A set is three or four cards of the same rank, such as three nines. A run is three or more cards of one suit in sequence, such as 5♠ 6♠ 7♠. A card can only belong to one meld at a time.
+You are trying to get rid of every card in your hand by arranging them into melds. A set is a rank collected up: three nines, or all four of them. A run is three or more cards of one suit in sequence, such as 5♠ 6♠ 7♠. A card can only belong to one meld at a time.
 
 A turn has three parts and always happens in this order.
 
@@ -39,11 +39,11 @@ Second, meld if you want to. Lay any complete set or run from your hand face up 
 
 Third, discard. Put one card face up on the discard pile. That ends your turn and passes play to the left. The one thing you cannot do is take the top discard and immediately throw the same card back.
 
-Two points worth agreeing before you deal, because tables differ. Some groups let you lay down as many melds as you like on a turn while others allow only one per turn, and some require you to have melded something of your own before you are allowed to lay off on other players. The looser version of both is the more common modern game.
+Two points worth agreeing before you deal, because tables differ and the accounts of the game differ with them. One meld a turn is the older rule and the one still written down as standard, though plenty of groups let you lay down as many as you like. Laying off runs the other way: some accounts let you add to anybody's melds from the start, and others hold you back until you have laid down a meld of your own.
 
 The hand ends when somebody goes out, which means playing their last card. You can go out by melding, by laying off, or by discarding your final card, and any mix of those in one turn. In the basic game you do not need to keep a card back for a final discard, though a good number of households insist on it.
 
-If nobody has gone out by the time the stock is empty, take the discard pile, leave its top card where it is as the only card of a new discard pile, and turn the rest face down as a fresh stock. Shuffling that new stock first is common and harmless. The player who found the stock empty draws from the new one and finishes their turn as normal, and play continues to the left. If the pack cycles a second time with nobody out, most groups end the hand there and score the cards as they stand.
+If nobody has gone out by the time the stock is empty, take the discard pile, leave its top card where it is as the only card of a new discard pile, and turn the rest face down as a fresh stock. Shuffling that new stock first is common and harmless. The player who found the stock empty draws from the new one and finishes their turn as normal, and play continues to the left. A stubborn hand can in principle circle for ever, so cap it before you start: ending after the stock has run out for the third time, or allowing the discard pile just one reuse, are both suggested. When the cap is reached the hand ends and the cards are scored as they stand.
 
 Going out in a single turn, with no previous melds or lay-offs at all, is going rummy and pays double. To do it you must put your entire hand down on one turn, having laid nothing on the table earlier in the deal.
 
@@ -51,7 +51,7 @@ Going out in a single turn, with no previous melds or lay-offs at all, is going 
 
 ## Goal & scoring
 
-The object of each hand is to be first to shed every card. The object of the game is to reach an agreed target, most often 100 or 500, over as many hands as it takes; a fixed number of deals works just as well as long as everyone agrees before the first shuffle.
+The object of each hand is to be first to shed every card. Play runs to an agreed target, over as many hands as that takes. No figure is standard, so pick one before the first shuffle — or agree a fixed number of deals instead, which works just as well.
 
 When a player goes out, everyone else counts the cards still in their hand. Melds already on the table do not count for or against anybody, and neither do cards you laid off. Aces are 1, numbered cards are face value, and jacks, queens and kings are 10 each. The winner of the hand scores the sum of everything all the other players are left holding.
 

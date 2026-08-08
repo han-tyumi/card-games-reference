@@ -191,7 +191,7 @@
       ]
     }
   ],
-  "goal_and_scoring": "At the end of the hand each side counts the card values in the tricks it took, whoever took the last trick adds 10 for it, and each side adds the declarations it is entitled to.\n\nEverything then hinges on one comparison: did the takers finish with more than their opponents? If so, nothing needs adjusting anywhere and each side banks the total it just counted. If not, the deal has collapsed into what French players call dedans. Nothing the takers gathered stays with them. The full 162 crosses the table, and so does every declaration point earned during the deal, theirs as well as the defenders' own, all of it written into the defenders' column. Belote-rebelote is the exception that survives: those 20 belong to the player who called them and are not affected by how badly the rest of the deal went.\n\nDead level at 81 each is a litige, and the two halves of it are treated quite differently. The defenders' 81 is written down immediately. The takers' 81 is not written down at all, nor is it thrown away — it waits, unowned, and attaches itself to the next deal in which a contract is actually brought home, going to that side on top of whatever they score there. Should the following deal tie as well, a second 81 joins the first and the pot keeps swelling until somebody finally succeeds. Plenty of tables do without any of this and simply strike the takers' half out. Since a litige is the one deal capable of paying nobody anything, settle which way you play it before you start.\n\nTaking all eight tricks is capot and pays 90 above the trick score, so a side that sweeps the hand books 252 before anything it declared.\n\nThe match runs to an agreed total, 501 for a short game and 1000 for a full evening being the usual choices, and the first side past it wins. When both sides cross in the same deal, count the takers first; they carried the risk, so they take the game.",
+  "goal_and_scoring": "At the end of the hand each side counts the card values in the tricks it took, whoever took the last trick adds 10 for it, and each side adds the declarations it is entitled to.\n\nEverything then hinges on one comparison: did the takers finish with at least as many points as their opponents? If so, nothing needs adjusting anywhere and each side banks the total it just counted — and note the direction of that, because it makes a dead heat at 81 apiece a success for the takers rather than a failure. Only when the takers come out strictly behind has the deal collapsed into what French players call dedans. Nothing the takers gathered stays with them. The full 162 crosses the table, and so does every declaration point earned during the deal, theirs as well as the defenders' own, all of it written into the defenders' column. Belote-rebelote is the exception that survives: those 20 belong to the player who called them and are not affected by how badly the rest of the deal went.\n\nTaking all eight tricks is capot and pays 90 above the trick score, so a side that sweeps the hand books 252 before anything it declared.\n\nThe match runs to 1000 points and the first side to reach it wins. Should both sides cross in the same deal, the game is drawn.",
   "scoring_table": [
     {
       "item": "Jack of trumps",
@@ -285,6 +285,10 @@
     {
       "name": "Short-handed belote",
       "description": "Belote for two or three players drops the partnership and keeps everything else: both rankings, the card values, the declarations and belote-rebelote, the obligations to follow, beat and trump, and the taker alone against whoever is left. What has no settled form is the deal, which differs from region to region and from app to app — some three-player versions share out all thirty-two cards and do without a talon, others keep the retourne and a face-down remainder, and the two-player versions usually draw from a stock after each trick until it is exhausted and then play out the closing tricks under the full obligations. Fix the deal and the target score before you start rather than halfway through. Useful for learning the ranking without three other people waiting."
+    },
+    {
+      "name": "Litige",
+      "description": "A different way of handling the 81-all deal, which the main rules simply award to the takers. Under litige only the defenders write their 81 down; the takers' half is neither scored nor discarded but waits, unowned, and attaches itself to the next deal somebody actually brings home, going to that side on top of whatever they score there. Tie again and a second 81 joins the first, so the pot swells until a contract finally succeeds. It turns the one deal that can otherwise feel like nothing happened into something worth winning the next one for."
     }
   ],
   "difficulty": "medium",
@@ -305,8 +309,8 @@
     "Nordic Card Games"
   ],
   "checked": {
-    "date": "2026-08-01",
-    "prose": "065cbde20fe11412",
+    "date": "2026-08-08",
+    "prose": "2615a098918f3df7",
     "sources": [
       "Pagat",
       "Wikipedia"
