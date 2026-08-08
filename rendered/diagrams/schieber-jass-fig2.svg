@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 199" width="442" height="318" role="img" aria-label="Schieber Jass: Every other suit. The jack drops back to fourth and is worth 2, the nine is worth nothing, and the ten is still the second most valuable card in the suit.">
+<title>Every other suit. The jack drops back to fourth and is worth 2, the nine is worth nothing, and the ten is still the second most valuable card in the suit.</title>
+<rect x="51.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="66.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">A♠</text>
+<text x="66.0" y="71.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">11</text>
+<rect x="87.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="102.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">K♠</text>
+<text x="102.0" y="71.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">4</text>
+<rect x="123.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="138.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">Q♠</text>
+<text x="138.0" y="71.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">3</text>
+<rect x="159.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="174.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">J♠</text>
+<text x="174.0" y="71.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">2</text>
+<rect x="195.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="210.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">10♠</text>
+<text x="210.0" y="71.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">10</text>
+<rect x="51.0" y="87.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="66.0" y="112.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">9♠</text>
+<rect x="87.0" y="87.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="102.0" y="112.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">8♠</text>
+<rect x="123.0" y="87.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="138.0" y="112.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">7♠</text>
+<rect x="159.0" y="87.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="174.0" y="112.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#5b6672">6♠</text>
+<text x="51.0" y="17.0" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Plain suit</text>
+<text x="138.0" y="163.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Every other suit. The jack drops back to fourth and is</text>
+<text x="138.0" y="175.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">worth 2, the nine is worth nothing, and the ten is</text>
+<text x="138.0" y="187.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">still the second most valuable card in the suit.</text>
+</svg>

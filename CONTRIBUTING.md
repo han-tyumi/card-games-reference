@@ -512,8 +512,9 @@ source used. Both were rewritten to what could be shown. Finding those is not
 what this tool is for, and it found them anyway — read the sources rather than
 only the report. Stamped by an agent, on the same terms as the pass above.
 
-**2 entries, checked 2026-08-07** — `three-card-poker` and `caribbean-stud`,
-re-read after a review of the day's own work found three claims in them that
+**5 entries, checked 2026-08-07**, in two groups. The first two are
+`three-card-poker` and `caribbean-stud`, re-read after a review of the day's own
+work found three claims in them that
 their sources did not carry. Two were figures: a house edge stated as one number
 where the two sources give 2.01% and about 3.4% against different denominators,
 and a frequency for how often a Caribbean Stud dealer fails to qualify, which
@@ -525,16 +526,86 @@ the only findings on the re-run were the same two false positives as before.
 That is twice now that reading the sources has caught what comparing against
 them cannot.
 
-**75 of 75 checks record which sources they had**, in `checked.sources`. They
-come from three different places and are not equally strong. The 31 stamped by
-the 2026-08-03 passes were logged as they were made: the tool writes the files
-it actually compared against, matched back to the attributed names, and refuses
-to stamp a source it cannot match or a check with fewer than two. Another 37
-are 2026-08-01 entries whose own `sources_consulted` names both of the two that
-pass read, so that record is reconstructed from the pass description and
-corroborated by the entry rather than logged at the time.
+The other three are `doppelkopf`, `sheepshead` and `schieber-jass`, written for
+this collection and read against **three** sources apiece before they shipped:
+pagat and Wikipedia in every case, plus the Deutscher Doppelkopf-Verband's
+tournament rules, sheepshead.org's basic rules, and German Wikipedia
+respectively. **All three were flagged. Nine passages carried 13 REUSE findings
+between them, and every one was rewritten**; the re-run came back clear.
 
-The remaining 4 are the 2026-08-05 pass, and they are the one set stamped by an
+Most of that was one sentence. The clause naming what wins a trick — highest
+trump, else highest card of the suit led — collided with four separate source
+files at once, and the same sentence had been written into all three new entries
+because it is the sentence every trick-taking game needs. `belote` and `skat`
+were already carrying near-identical versions of it, which nothing checks,
+because the tool compares an entry against its sources and never against the
+rest of the corpus. That is the failure the 2026-08-01 pass named — one
+trick-taking formula propagating into five entries — arriving again from a
+direction no report covers. The three were given genuinely different sentences
+rather than one shared one, which cleared the findings as well.
+
+What was left was judged and kept: a short conditional of the source's sitting
+inside a longer sentence of ours, and a ranking of ours aligned against an
+eight-handed partnership rule it has nothing to do with. One ORDER finding
+disappeared for an instructive reason. It rested on five sentence pairs, two of
+which matched our prose against **the source page's own title**, and merging
+pagat's four pages into the one file the check attributes them to made it go
+away. An ORDER score on a short passage against a page with chrome in it is
+measuring the chrome.
+
+**And then the part this section exists for.** The tool found no copying worth
+keeping, and the second read — the fetched sources open beside the finished
+entries — found **fourteen statements that were wrong** at that point, and cut back a further
+set of claims that no source carried: a prevalence nobody had counted, an
+immigration date nobody had written down, a house rule called standard on no
+authority. A sample of the fourteen, because the shape of them is the useful
+part:
+
+- Doppelkopf's suit solo had the declared suit's trumps **above** the queens and
+  jacks. They go below: the ranking was stated backwards.
+- Schieber Jass said 34 points go missing when there is no trump suit. It is 32,
+  and the arithmetic is two subtractions long. Nobody had done it.
+- Sheepshead said no trump may be played to a fail lead, which is the opposite
+  of the rule, and explained a lone picker's score as the picker's and partner's
+  columns combined, which is 3 where the schedule says 4.
+- Doppelkopf credited the 40-point trick with giving the game its name. The name
+  is from the doubled pack, as that entry's own `background` said two paragraphs
+  later.
+- Sheepshead's setup diagram seated the pick order the wrong way round the
+  table. Either order validates and either one draws, which is the whole problem
+  with a picture generated from data nobody re-read.
+
+Not one of them was a copying finding, and the report flagged not one of them.
+The three entries had been written from notes rather than from open pages, and
+they were still wrong in fourteen places.
+
+**Then a third read, with the pull request already approved, found five more.**
+Two of them are worth naming because they are the kind that survives a careful
+second pass. Doppelkopf's `scoring_table` still carried the claim about the
+game's name that the second read had corrected in its prose — a fix applied in
+one of the two places that stated it, which is exactly the drift the tables in
+this project exist to prevent. And Schieber Jass never mentioned that most Swiss
+tables now move the 11 points from the ace to the six in Undenufe, which would
+have had a reader counting a whole contract wrong. The other three were an
+entry giving two different answers to one situation, a list of four announced
+targets that named two, and a scoring schedule that is the five-handed one and
+did not say so in an entry that seats three to five.
+
+So the second read is not the last one either. Nineteen corrections across three
+entries, none of them a copying finding, none of them flagged. Stamped by an
+agent, on the same terms as the two passes above.
+
+**78 of 78 checks record which sources they had**, in `checked.sources`. They
+come from three different places and are not equally strong. 37 were logged as
+they were made — the 31 from the 2026-08-03 passes, plus the 2026-08-06 and
+2026-08-07 entries: the tool writes the files it actually compared against,
+matched back to the attributed names, and refuses to stamp a source it cannot
+match or a check with fewer than two. Another 37 are 2026-08-01 entries whose
+own `sources_consulted` names both of the two that pass read, so that record is
+reconstructed from the pass description and corroborated by the entry rather
+than logged at the time.
+
+The remaining 4 are the 2026-08-05 pass, the first set stamped by an
 agent rather than a person. `background` joined the fingerprint that day, so the
 four entries carrying it had prose that had never been compared against a
 source; they were re-read against two sources each and re-stamped. Nothing was

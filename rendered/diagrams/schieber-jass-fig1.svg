@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276 211" width="442" height="338" role="img" aria-label="Schieber Jass: Trumps, high to low, with hearts as trumps. The jack and nine jump to the front carrying the two largest values; the ten ranks below the queen and is worth more than the king and queen together.">
+<title>Trumps, high to low, with hearts as trumps. The jack and nine jump to the front carrying the two largest values; the ten ranks below the queen and is worth more than the king and queen together.</title>
+<rect x="51.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="66.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">J♥</text>
+<text x="66.0" y="71.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Puur, 20</text>
+<rect x="87.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="102.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">9♥</text>
+<text x="102.0" y="71.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">Nell, 14</text>
+<rect x="123.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="138.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">A♥</text>
+<text x="138.0" y="71.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">11</text>
+<rect x="159.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="174.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">K♥</text>
+<text x="174.0" y="71.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">4</text>
+<rect x="195.0" y="21.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="210.0" y="46.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">Q♥</text>
+<text x="210.0" y="71.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">3</text>
+<rect x="51.0" y="87.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="66.0" y="112.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">10♥</text>
+<text x="66.0" y="137.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b6672">10</text>
+<rect x="87.0" y="87.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="102.0" y="112.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">8♥</text>
+<rect x="123.0" y="87.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="138.0" y="112.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">7♥</text>
+<rect x="159.0" y="87.0" width="30" height="42" rx="3" fill="#ffffff" stroke="#5b6672" stroke-width="1"/>
+<text x="174.0" y="112.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a4243b">6♥</text>
+<text x="51.0" y="17.0" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Trumps</text>
+<text x="138.0" y="163.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">Trumps, high to low, with hearts as trumps. The jack</text>
+<text x="138.0" y="175.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">and nine jump to the front carrying the two largest</text>
+<text x="138.0" y="187.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">values; the ten ranks below the queen and is worth more</text>
+<text x="138.0" y="199.0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5b6672">than the king and queen together.</text>
+</svg>
