@@ -28,6 +28,12 @@ release procedure is in
 
 ## [Unreleased]
 
+## [0.8.1] — 2026-08-08
+
+### Fixed
+
+- correct three unsourced claims in Sueca, and de-duplicate its trick rule (#12)
+
 ## [0.8.0] — 2026-08-08
 
 ### Added
@@ -220,7 +226,8 @@ than served out of the default branch.
 - A difficulty the filter could not rank passed every difficulty filter, because
   `undefined > undefined` is false whichever way round it is written.
 
-[Unreleased]: https://github.com/han-tyumi/naibi/compare/v0.8.0...HEAD
+[Unreleased]: https://github.com/han-tyumi/naibi/compare/v0.8.1...HEAD
+[0.8.1]: https://github.com/han-tyumi/naibi/compare/v0.8.0...v0.8.1
 [0.8.0]: https://github.com/han-tyumi/naibi/compare/v0.7.0...v0.8.0
 [0.7.0]: https://github.com/han-tyumi/naibi/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/han-tyumi/naibi/compare/v0.5.0...v0.6.0
