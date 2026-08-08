@@ -403,7 +403,7 @@ sources open, across four passes. Earlier work counted search-engine hits, which
 the section below explains does not work, so those passes are not evidence of
 anything and are not counted here.
 
-**25 entries, checked 2026-08-01** — pagat and Wikipedia, fetched and read
+**22 entries, checked 2026-08-01** — pagat and Wikipedia, fetched and read
 side by side with our prose, and every one of the 37 attributes both. Ten
 others that this pass covered attributed only one of the two, which meant
 nobody could say what the pass had actually had for them; they were re-read on
@@ -595,7 +595,7 @@ So the second read is not the last one either. Nineteen corrections across three
 entries, none of them a copying finding, none of them flagged. Stamped by an
 agent, on the same terms as the two passes above.
 
-**12 entries, checked 2026-08-08**, in five groups. The first is `sueca`, opened
+**15 entries, checked 2026-08-08**, in six groups. The first is `sueca`, opened
 for one reason and rewritten for four. The reason was a corpus-internal duplicate: its sentence for what wins
 a trick stood one article away from `euchre`'s, twenty words identical. Nothing
 here checks for that. `npm run originality` compares an entry against its
@@ -711,7 +711,23 @@ plays to 1500. It now names both and adds the rule for a simultaneous crossing.
 `scopa` had none — its four contested points, both tie rules and the primiera
 scale all hold.
 
-**Twelve entries audited. Eight faulty, four clean, twenty-three errors between
+The sixth group is `contract-bridge`, `texas-holdem` and `gin-rummy`, and it is
+the one that says the most about how to read a source. All three came back
+almost clean on fact. Bridge's whole scoring apparatus is exact — 20, 30 and
+40-then-30 per trick, 500/750 and 1000/1500 for the slams, both doubled
+undertrick ladders, the insult, the honours — with a single imprecision, an
+overtrick line that implied 40 in notrump where the rate is 30.
+
+`gin-rummy` looked like an error and is not. pagat's main rules give 20 for
+gin, 10 for an undercut and 20 a box; the entry uses 25 for all three, which is
+pagat's *second* listed variation. But Wikipedia gives 25/25/25 as the current
+standard and names 20 and 10 as the **early official** values. So the entry
+follows the modern convention and the two sources disagree about which is
+standard — which is a thing to say out loud, not a thing to correct. It now says
+it. **Not every mismatch with a source is an error, and the way to tell is to
+read the other one before reaching for the keyboard.**
+
+**Fifteen entries audited. Eight faulty, seven clean, twenty-four errors between
 them.** And the three clean ones have something in common worth handing on:
 `skat`, `cribbage` and `canasta` are the three densest scoring systems in the
 collection. What survives is the arithmetic — the tables, the ladders, the
@@ -725,11 +741,11 @@ jobs. 27 entries still carry that date. They should be assumed unverified until
 somebody reads them.
 
 **78 of 78 checks record which sources they had**, in `checked.sources`. They
-come from three different places and are not equally strong. 49 were logged as
+come from three different places and are not equally strong. 52 were logged as
 they were made — the 31 from the 2026-08-03 passes, plus the 2026-08-06,
 2026-08-07 and 2026-08-08 entries: the tool writes the files it actually compared against,
 matched back to the attributed names, and refuses to stamp a source it cannot
-match or a check with fewer than two. Another 25 are 2026-08-01 entries whose
+match or a check with fewer than two. Another 22 are 2026-08-01 entries whose
 own `sources_consulted` names both of the two that pass read, so that record is
 reconstructed from the pass description and corroborated by the entry rather
 than logged at the time.

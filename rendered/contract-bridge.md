@@ -11,7 +11,7 @@
 
 ## Setup
 
-Bridge is for exactly four people in two fixed partnerships, partners facing each other. Seats are named for the compass points, so one side is North and South and the other East and West, and those names are used for everything from filling in the score to discussing the hand afterwards.
+Bridge seats exactly four, locked into two partnerships for the session, each player facing their partner. Seats are named for the compass points, so one side is North and South and the other East and West, and those names are used for everything from filling in the score to discussing the hand afterwards.
 
 Settle seats and the first deal by spreading a shuffled pack face down and having everyone draw a card. The two highest play against the two lowest; the highest card of all picks a seat and deals first. The deal then moves one place clockwise after every hand.
 
@@ -34,7 +34,7 @@ The dealer calls first and calling passes clockwise. On your turn you make exact
 - Double. Available only when the last bid was made by an opponent and nothing but passes has followed it. It is a claim that the contract will fail. It changes nothing about the play and nothing about how many tricks are needed; it only inflates the score, multiplying what declarer earns for succeeding and what the defenders collect for beating it.
 - Redouble. Available only to the side whose bid has just been doubled, again with nothing but passes since. It inflates the same figures further.
 
-Any fresh bid cancels a double or redouble, and the new contract starts out undoubled. The auction closes when a call is followed by three passes in a row, and the last bid made becomes the contract. Should all four players pass immediately, nobody has undertaken anything: at rubber bridge the hand is thrown in and the next dealer deals, while at duplicate the board is recorded as a zero for both sides.
+Any fresh bid cancels a double or redouble, and the new contract starts out undoubled. The auction closes when a call is followed by three passes in a row, and the last bid made becomes the contract. Should all four players pass immediately, nobody has undertaken anything: at rubber bridge the deal is abandoned and passes on, while at duplicate the board is recorded as a zero for both sides.
 
 Beware the trap in the doubled part-score. Because the trick score is what gets multiplied, doubling can push a modest contract over the hundred-point threshold and hand the opponents a game they had not bid for. Doubling is a scoring weapon, not a defensive one.
 
@@ -46,11 +46,11 @@ The side that made the final bid plays the contract. Declarer is whichever of th
 
 PLAYING THE HAND
 
-The defender on declarer's left leads to the first trick before anything is revealed, so that lead has to be chosen from the auction alone. Only then does dummy lay all thirteen cards face up on the table, sorted into suits, with the trump suit placed at dummy's right. Declarer now plays both hands, naming which card to play from dummy when it is dummy's turn.
+Before anything at all is revealed, the defender sitting to declarer's left has to open — which means choosing that card from the auction and nothing else. Only then does dummy lay all thirteen cards face up on the table, sorted into suits, with the trump suit placed at dummy's right. Declarer now plays both hands, naming which card to play from dummy when it is dummy's turn.
 
 Dummy is a spectator for the rest of the hand. Dummy chooses nothing, advises nobody, and may not look at another player's cards; the one thing dummy may properly do is ask declarer whether a suit really is exhausted before a revoke becomes established.
 
-Each trick runs clockwise from whoever leads. You must follow the suit led if you hold it; with none of that suit you may play anything, trump or discard, and you are never obliged to win a trick you could win. A trick goes to the highest trump played to it, or, if it contains no trump, to the highest card of the suit led. The winner leads to the next trick, and thirteen tricks are played out.
+Each trick runs clockwise from whoever leads. You must follow the suit led if you hold it; with none of that suit you may play anything, trump or discard, and you are never obliged to win a trick you could win. Whichever trump on the trick is biggest takes it, and where no trump was played, the biggest card of the opening suit does. The winner leads to the next trick, and thirteen tricks are played out.
 
 Failing to follow suit while holding the suit is a revoke. It stays correctable until the offending side leads or plays to the following trick, at which point it is established; correcting it in time costs nothing beyond the exposure, and a defender's withdrawn card becomes a penalty card that has to be played at the first legal opportunity.
 
@@ -87,7 +87,7 @@ Honours are a rubber-bridge relic: a bonus for holding a clutch of top trumps in
 | Small slam, twelve tricks bid and made | 500 not vulnerable, 750 vulnerable | — |
 | Grand slam, thirteen tricks bid and made | 1000 not vulnerable, 1500 vulnerable | — |
 | Making any doubled contract (the insult) | 50 | 100 if redoubled. |
-| Each overtrick, undoubled | Same as a contracted trick | — |
+| Each overtrick, undoubled | 20 in a minor, 30 in a major or notrump | notrump overtricks are 30, not the 40 the first contracted trick pays |
 | Each overtrick, doubled | 100 not vulnerable, 200 vulnerable | Twice that if redoubled. |
 | Each undertrick, undoubled | 50 not vulnerable, 100 vulnerable | — |
 | Doubled undertricks, not vulnerable | 100, 200, 200, then 300 each | — |

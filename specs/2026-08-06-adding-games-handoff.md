@@ -162,8 +162,8 @@ picked between and said out loud, in each entry's own prose rather than only in
 Do not read the counts as a target, and do not start here at all. On
 2026-08-08 three entries from the 2026-08-01 pass were audited — picked by
 position across several families, then three more chosen for the density of
-their scoring, then five more again — **twelve audited, eight faulty,
-twenty-three errors**. The three that were clean are the three densest scoring systems in the
+their scoring, then eight more again — **fifteen audited, eight faulty,
+twenty-four errors**. The three that were clean are the three densest scoring systems in the
 collection, which is the useful part: the arithmetic survives and the prose
 around it does not. Check who is allowed to do a thing, what happens on a tie,
 and which of two conventions is called the common one. A fixed-limit
@@ -171,7 +171,7 @@ raise cap given as three where the source says four; a contract that inverted
 what happens on a tied deal; a burn card invented and then used in an
 arithmetic; a target score neither source mentions. CONTRIBUTING has the list.
 
-**25 entries still carry 2026-08-01 and should be assumed unverified.** That
+**22 entries still carry 2026-08-01 and should be assumed unverified.** That
 pass compared wording against sources and did not check facts against them,
 because at the time nobody had separated the two jobs. Reading those 33 is worth
 more than any new entry, and at roughly three per sitting it is about eleven

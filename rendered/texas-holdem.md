@@ -65,7 +65,7 @@ THE SHOWDOWN
 
 If two or more players are still in after the final round, hands are revealed. Whoever made the last bet or raise shows first; if the last round was checked all the way round, the first remaining player clockwise from the button shows first, and anyone who knows they are beaten may fold face down instead of showing.
 
-Each player forms the best five-card hand available from seven cards: their two hole cards and the five on the table. Any combination counts. You may use both hole cards, only one, or neither at all, and using neither is called playing the board.
+Seven cards are available to everybody still in — the two nobody else has seen plus the five in the middle — and the hand you hold is whichever five of those seven is strongest. Any combination counts. You may use both hole cards, only one, or neither at all, and using neither is called playing the board.
 
 A hand can also end long before this. The moment everyone else folds, the last player standing takes the pot immediately and never has to show what they were holding.
 
