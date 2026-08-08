@@ -129,7 +129,7 @@ entries into another is invisible to it, which is how `euchre` and `sueca` came
 to carry the same twenty-word sentence for a year. The irony is that the tool
 computes that comparison on every run, 5,302 of our own passage pairs, to
 calibrate its bar; it keeps the numbers and throws away which pair produced
-them. Measured exhaustively there are 394 cross-game pairs above the bar, but
+them. Measured exhaustively there are 387 cross-game pairs above the bar, but
 the top of that list is the shared vocabulary the project has decided to keep,
 and a hypothesis that multiplicity would separate the two was tested and failed.
 Treat it as a reading list somebody has to sit down with, not a check to bolt on.

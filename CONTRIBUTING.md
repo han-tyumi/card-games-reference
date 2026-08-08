@@ -604,7 +604,8 @@ that comparison anyway, 5,302 of our own pairs per run, to calibrate the bar,
 then keeps the numbers and discards which pair produced them.
 
 Measuring it exhaustively found **394 cross-game passage pairs at or above the
-bar**, which sounds worse than it is. The top of that list is the vocabulary
+bar** before the rewrite below and **387 after it** — the one sentence accounted
+for seven of them — which sounds worse than it is. The top of that list is the vocabulary
 this project has already decided to keep: the ace-ten card values across
 `belote`, `skat` and `doppelkopf`, the rummy stock-and-discard sentence across
 five entries. A hypothesis that multiplicity would separate a propagated formula
